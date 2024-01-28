@@ -109,8 +109,14 @@
     background-image: url("/map.png");
   }
 
-  :global(.dark) #inner-wrapper {
+  /* :global(.dark) #inner-wrapper {
     background-color: rgba(0, 0, 0, 0.7);
+  } */
+
+  @media (prefers-color-scheme: dark) {
+    #inner-wrapper {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
   }
 
   #inner-wrapper:hover {

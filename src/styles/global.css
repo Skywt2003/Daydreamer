@@ -1,5 +1,11 @@
-html.dark {
+/* html.dark {
   @apply bg-neutral-900 text-white;
+} */
+
+@media (prefers-color-scheme: dark) {
+  html {
+    @apply bg-neutral-900 text-white;
+  }
 }
 
 :root {
