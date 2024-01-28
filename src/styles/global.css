@@ -1,0 +1,140 @@
+html.dark {
+  @apply bg-neutral-900 text-white;
+}
+
+:root {
+  @apply font-serif;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.container,
+.wide-container {
+  @apply mx-auto;
+}
+
+/* screen size specification settings */
+
+/* 320 - 768 */
+:root {
+  font-size: 14px;
+}
+
+.container {
+  @apply max-w-sm;
+}
+
+.wide-container {
+  @apply max-w-2xl;
+}
+
+/* 640 - 768 */
+@screen sm {
+  :root {
+    font-size: 14px;
+  }
+
+  .container {
+    @apply max-w-md;
+  }
+
+  /* the width of wide container should be narrower while screen get wider  */
+  .wide-container {
+    @apply max-w-3xl;
+  }
+}
+
+/* 768 - 1024 */
+@screen md {
+  :root {
+    font-size: 16px;
+  }
+
+  .container {
+    @apply max-w-xl;
+  }
+
+  .wide-container {
+    @apply max-w-4xl;
+  }
+}
+
+/* 1024 - 1280 */
+@screen lg {
+  :root {
+    font-size: 18px;
+  }
+
+  .container {
+    @apply max-w-2xl;
+  }
+
+  .wide-container {
+    @apply max-w-4xl;
+  }
+}
+
+/* 1280 - 1536 - */
+@screen xl {
+  .container {
+    @apply max-w-3xl;
+  }
+
+  .wide-container {
+    @apply max-w-4xl;
+  }
+}
+
+/* Colors */
+
+.primary-color {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.secondary-color {
+  @apply text-gray-500;
+}
+
+.tertiary-color {
+  @apply text-gray-400 dark:text-gray-600;
+}
+
+.border-color {
+  @apply border border-gray-200 dark:border-neutral-800;
+}
+
+hr {
+  @apply border-gray-200 dark:border-neutral-800;
+}
+
+.link {
+  @apply transition-all;
+}
+
+.link:hover {
+  @apply underline text-gray-700 dark:text-gray-300 cursor-pointer;
+}
+
+/* Title */
+
+/* 页面主标题 */
+h1 {
+  @apply text-5xl font-black leading-tight;
+}
+
+/* 分节标题 */
+h2 {
+  @apply text-4xl font-black leading-snug drop-shadow-xl;
+}
+
+/* 展示信息 */
+h3 {
+  @apply text-3xl font-bold leading-snug drop-shadow-lg;
+}
+
+h4 {
+  @apply text-xl font-bold leading-snug;
+}
+
+h5 {
+  @apply text-lg font-bold leading-snug;
+}

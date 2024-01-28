@@ -1,0 +1,181 @@
+---
+import BoxWrapper from "./BoxWrapper.astro";
+
+import Box from "./Box.astro";
+import Map from "./Map.astro";
+import MBTI from "./MBTI.astro";
+import NotASwot from "./NotASwot.astro";
+import LearnMore from "./LearnMore.astro";
+---
+
+<div class="text-center secondary-color mt-4">
+  <p id="too-small-hint">
+    <i class="ri-alert-line"></i> 您的屏幕太小，这里的组件无法正常显示。
+  </p>
+  <p id="touch-hint">
+    <i class="ri-smartphone-line"></i> 触摸磁铁可以进行交互。
+  </p>
+</div>
+
+<div id="bento-wrapper" class="relative mx-auto max-w-md lg:max-w-4xl mt-8">
+  <BoxWrapper top="0" left="0" width="25%" height="25%" smt="0" sml="0">
+    <Box>
+      <div class="p-4 flex flex-col items-center">
+        <img
+          src="/avatar.png"
+          alt="My Avatar"
+          class="rounded-full w-24 h-24 shadow-md"
+        />
+        <h4 class="mt-2 text-xl font-bold drop-shadow-md">SkyWT</h4>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <!-- bg_image="linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),linear-gradient(120deg,#84fab0 0%,#8fd3f4 100%)" -->
+  <BoxWrapper top="0" left="25%" width="25%" height="25%" smt="0" sml="50%">
+    <Box bg_image="linear-gradient(120deg,#84fab0 0%,#8fd3f4 100%)">
+      <div class="p-4">
+        <h3>
+          💻📱⌚️🛠️<br />
+          科技数码<br />爱好者
+        </h3>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper top="0" left="50%" width="50%" height="25%" smt="50%" sml="0">
+    <MBTI />
+  </BoxWrapper>
+
+  <BoxWrapper top="25%" left="0" width="50%" height="25%" smt="100%" sml="0">
+    <Box bg_image="linear-gradient(30deg, #415462, #C78EA8);">
+      <div class="p-4">
+        <h3>
+          <span class="secondary-color">立志成为</span>
+          <br />
+          <span>全栈工程师 ⚙️</span>
+        </h3>
+        <a
+          href="https://github.com/Skywt2003"
+          target="_blank"
+          class="secondary-color text-sm link mt-2"
+        >
+          <i class="ri-github-line"></i> 我的 GitHub <i
+            class="ri-external-link-line"></i>
+        </a>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper top="25%" left="50%" width="50%" height="50%" smt="150%" sml="0">
+    <Map />
+  </BoxWrapper>
+
+  <BoxWrapper top="50%" left="0%" width="25%" height="50%" smt="250%" sml="0">
+    <Box bg_image="url('/quzhou_tower.jpeg')">
+      <div class="p-4 z-10">
+        <p class="absolute top-4 left-4 text-sm">
+          <i class="ri-home-line"></i> 故乡
+        </p>
+        <h3 class="pt-2 text-center">
+          浙<br />江<br />衢<br />州
+        </h3>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper
+    top="50%"
+    left="25%"
+    width="25%"
+    height="25%"
+    smt="250%"
+    sml="50%"
+  >
+    <Box bg_image="url('/hnu.jpg')">
+      <div class="p-4">
+        <p class="absolute top-4 left-4 text-sm">
+          <i class="ri-graduation-cap-line"></i> 本科在读
+        </p>
+        <div class="text-center">
+          <h3 class="pt-2">湖南大学</h3>
+          <p class="mt-2 font-bold">Hunan University</p>
+        </div>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper
+    top="75%"
+    left="25%"
+    width="25%"
+    height="25%"
+    smt="300%"
+    sml="50%"
+  >
+    <NotASwot />
+  </BoxWrapper>
+
+  <BoxWrapper top="75%" left="50%" width="25%" height="25%" smt="350%" sml="0">
+    <Box>
+      <div class="p-4">
+        <h3>Self-hoster</h3>
+        <a
+          href="https://lab.skywt.cn"
+          class="mt-2 secondary-color text-sm link"
+        >
+          看看我的自托管项目
+        </a>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper
+    top="75%"
+    left="75%"
+    width="25%"
+    height="25%"
+    smt="350%"
+    sml="50%"
+  >
+    <LearnMore />
+  </BoxWrapper>
+
+  <div id="bento-placeholder"></div>
+</div>
+
+<style>
+  @media (max-width: 319px) {
+    #bento-wrapper {
+      @apply hidden;
+    }
+    #touch-hint {
+      @apply hidden;
+    }
+  }
+  @media (min-width: 320px) {
+    #too-small-hint {
+      @apply hidden;
+    }
+  }
+
+  @screen lg {
+    #touch-hint {
+      @apply hidden;
+    }
+  }
+
+  #bento-placeholder {
+    padding-bottom: 400%;
+  }
+
+  @screen lg {
+    #bento-placeholder {
+      padding-bottom: 100%;
+    }
+  }
+
+  h3 {
+    @apply font-black;
+  }
+</style>

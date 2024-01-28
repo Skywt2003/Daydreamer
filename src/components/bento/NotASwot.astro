@@ -1,0 +1,38 @@
+---
+
+---
+
+<div
+  id="inner-wrapper"
+  class="absolute left-0 top-0 bottom-0 right-0 m-4 flex flex-col justify-center border-color rounded-2xl shadow-lg shadow-gray-100 dark:shadow-gray-900 tertiary-color"
+>
+  <div class="p-4">
+    <h3 class="text-center">
+      不是一个<br />
+      <span class="grayscale">❌</span><br />
+      做题家
+    </h3>
+  </div>
+</div>
+
+<style>
+  #inner-wrapper {
+    @apply transition-all bg-blend-overlay;
+    @apply bg-white dark:bg-black;
+  }
+
+  #inner-wrapper:hover {
+    /* background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.7)
+    ); */
+    @apply bg-gradient-to-b from-gray-500 to-gray-700;
+    @apply bg-transparent;
+    @apply text-white;
+  }
+
+  #inner-wrapper:hover span {
+    @apply grayscale-0;
+  }
+</style>

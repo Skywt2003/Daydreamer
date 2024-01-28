@@ -1,0 +1,56 @@
+---
+
+---
+
+<a class="link" id="themeToggle">system</a>
+
+<script>
+  const getSetTheme: () => string = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme"))
+      return localStorage.getItem("theme") as string;
+    else return "system";
+  };
+
+  const getSystemTheme: () => string = () => {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const setClass: (targetTheme: string) => void = (targetTheme) => {
+    const targetList = document.documentElement.classList;
+    if (targetTheme === "light") {
+      if (targetList.contains("dark")) targetList.remove("dark");
+    } else {
+      if (!targetList.contains("dark")) targetList.add("dark");
+    }
+  };
+
+  // initial theme setting
+  const setTheme: string = getSetTheme();
+  const systemTheme: string = getSystemTheme();
+  if (setTheme === "system") setClass(systemTheme);
+  else setClass(setTheme);
+
+  const themeToggleBtn = document.getElementById("themeToggle") as HTMLElement;
+
+  const handleToggleClick: () => void = () => {
+    const setTheme = getSetTheme();
+    const systemTheme = getSystemTheme();
+    if (setTheme === "system") {
+      themeToggleBtn.innerText = "dark";
+      setClass("dark");
+      window.localStorage.setItem("theme", "dark");
+    } else if (setTheme === "dark") {
+      themeToggleBtn.innerText = "light";
+      setClass("light");
+      window.localStorage.setItem("theme", "light");
+    } else {
+      themeToggleBtn.innerText = "system";
+      setClass(systemTheme);
+      window.localStorage.removeItem("theme");
+    }
+  };
+
+  themeToggleBtn.addEventListener("click", handleToggleClick);
+</script>

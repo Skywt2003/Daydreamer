@@ -1,0 +1,32 @@
+---
+interface Props {
+  name: string;
+  desc: string;
+  url: string;
+  tech?: string;
+}
+
+const { name, desc, url, tech } = Astro.props;
+---
+
+<li class="p-4 basis-full sm:basis-1/2">
+  <div
+    class="p-4 border-color rounded-lg shadow-md shadow-gray-100 dark:shadow-gray-900"
+  >
+    <h5 class="primary-color link"><a href={url}>{name}</a></h5>
+    <p class="mt-2 secondary-color">{desc}</p>
+    <div class="mt-4">
+      <a
+        class="github-button"
+        href={url}
+        data-color-scheme="no-preference: light; light: light; dark: dark;"
+        data-icon="octicon-star"
+        data-size="large"
+        data-show-count="true"
+        aria-label="Star this project on GitHub"
+      >
+        Star
+      </a>
+    </div>
+  </div>
+</li>

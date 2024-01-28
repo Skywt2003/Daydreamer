@@ -1,0 +1,35 @@
+---
+interface Props {
+  bg_image?: string;
+  bg_hover_overlay?: string;
+}
+
+// 如果使用半透明来压混，会出现夜间模式颜色不一致
+const { bg_image = "none", bg_hover_overlay = "rgb(88,88,88)" } = Astro.props;
+---
+
+<div
+  id="inner-wrapper"
+  role="button"
+  class="absolute left-0 top-0 bottom-0 right-0 m-4 flex flex-col justify-center border-color rounded-2xl shadow-lg shadow-gray-100 dark:shadow-gray-900 bg-white dark:bg-black primary-color"
+>
+  <slot />
+</div>
+
+<style
+  define:vars={{
+    bg_image,
+    bg_hover_overlay,
+  }}
+>
+  #inner-wrapper {
+    @apply transition-all bg-center bg-cover bg-no-repeat bg-blend-overlay;
+    background-image: var(--bg_image);
+  }
+
+  #inner-wrapper:hover,
+  #inner-wrapper:active {
+    background-color: var(--bg_hover_overlay);
+    @apply text-white;
+  }
+</style>

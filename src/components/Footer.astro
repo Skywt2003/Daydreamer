@@ -1,0 +1,53 @@
+---
+import CCBadge from "./CCBadge.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<footer class="container text-center mb-8">
+  <hr class="my-8" />
+  <p class="m-4">
+    Designed & crafted by SkyWT. Powered by
+    <a href="http://astro.build" target="_blank" class="link">Astro</a>.
+    <ThemeToggle />
+  </p>
+  <p class="m-4">
+    Copyright &copy; 2017-2024 <a href="https://skywt.cn/" class="link">
+      skywt.cn
+    </a>. All Rights Reserved.
+  </p>
+  <p class="m-4">
+    <a
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
+      target="_blank"
+      class="link"
+    >
+      <img src="/mps.png" alt="China's MPS Badge" class="inline-block" />
+      浙公网安备33080202000472号
+    </a>
+    |
+    <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+      浙ICP备2021019606号-1
+    </a>
+  </p>
+  <div class="m-4">
+    <CCBadge />
+    <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1">
+      <img
+        src="/not-by-ai.svg"
+        alt="Not By AI Badge"
+        class="inline-block h-8"
+      />
+    </a>
+    <a
+      href="https://www.foreverblog.cn/"
+      target="_blank"
+      class="inline-block mx-1"
+    >
+      <img
+        src="https://img.foreverblog.cn/logo_en_default.png"
+        alt="Forever Blog Badage"
+        class="inline-block h-6 grayscale"
+      />
+    </a>
+  </div>
+</footer>
