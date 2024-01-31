@@ -65,3 +65,8 @@ Light Mode 有阴影很正常，但是 Dark Mode 不该有阴影的。
 
 light: shadow-gray-100
 dark: shadow-gray-900
+
+## 解析 YAML
+
+非常幸运地，官方提供的文档正好以这个为例：
+https://docs.astro.build/en/recipes/add-yaml-support/

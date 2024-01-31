@@ -1,8 +1,23 @@
 ---
+interface Props {
+  includeHome?: boolean;
+}
 
+const { includeHome = true } = Astro.props;
 ---
 
 <ul>
+  {
+    includeHome && (
+      <li>
+        <a class="link" href="/">
+          <i class="ri-newspaper-line" />
+          Home
+        </a>
+      </li>
+    )
+  }
+
   <li>
     <a class="link" href="https://blog.skywt.cn/">
       <i class="ri-newspaper-line"></i>
