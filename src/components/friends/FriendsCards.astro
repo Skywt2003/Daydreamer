@@ -1,0 +1,25 @@
+---
+import FriendCard from "./FriendCard.astro";
+
+import yml from "./config.yml";
+
+interface Friend {
+  name: string;
+  desc: string;
+  url: string;
+  avatar: string;
+}
+---
+
+<ul class="flex flex-wrap mt-4">
+  {
+    yml.friends.map((friend: Friend) => (
+      <FriendCard
+        name={friend.name}
+        desc={friend.desc}
+        url={friend.url}
+        avatar={friend.avatar}
+      />
+    ))
+  }
+</ul>

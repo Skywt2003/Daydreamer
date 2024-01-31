@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Menu from "../components/Menu.astro";
 import Bento from "../components/bento/Bento.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import ProjectsCards from "../components/projects/ProjectsCards.astro";
 ---
 
-<Layout title="SkyWT">
+<Layout title="SkyWT" includeHeader={false}>
   <main>
     <section class="container min-h-screen flex flex-col justify-center">
       <!-- <div
@@ -27,173 +27,132 @@ import ProjectCard from "../components/ProjectCard.astro";
 
       <div class="mt-12 font-thin tertiary-color fade-in">
         <span class="mr-2">SkyWT</span>
-        <Menu />
+        <Menu includeHome={false} />
       </div>
       <p id="scroll-hint" class="mt-2 font-thin tertiary-color opacity-0">
         <i class="ri-mouse-line"></i>
         滚动滚轮或滑动触控板继续浏览
         <i class="ri-arrow-down-line"></i>
       </p>
+      <script>
+        const showScrollHint = () => {
+          let scrollHintEle = document.querySelector(
+            "#scroll-hint",
+          ) as HTMLElement;
+          scrollHintEle.classList.add("fade-in");
+          scrollHintEle.classList.remove("opacity-0");
+        };
+        setTimeout(showScrollHint, 5000);
+      </script>
       <p id="too-small-hint" class="mt-2 primary-color">
         <i class="ri-alert-line"></i> 本站针对屏幕宽度不小于 320 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
       </p>
     </section>
-  </main>
 
-  <section class="my-8 py-20 bg-neutual-100 dark:bg-neutral-900">
-    <Bento />
-  </section>
+    <section class="my-8 py-20 bg-neutual-100 dark:bg-neutral-900">
+      <Bento />
+    </section>
 
-  <section class="py-20 bg-neutual-50 dark:bg-neutral-800">
-    <div class="wide-container text-center">
-      <p class="secondary-color">简洁优雅的 Typecho 博客主题</p>
-      <h2 class="my-4 primary-color">Daydream</h2>
-      <div class="my-8">
-        <a
-          class="github-button"
-          href="https://github.com/Skywt2003/Daydream"
-          data-color-scheme="no-preference: light; light: light; dark: dark;"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star Skywt2003/Daydream on GitHub"
-        >
-          Star
-        </a>
-        <a
-          class="github-button"
-          href="https://github.com/Skywt2003/Daydream/fork"
-          data-color-scheme="no-preference: light; light: light; dark: dark;"
-          data-icon="octicon-repo-forked"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Fork Skywt2003/Daydream on GitHub"
-        >
-          Fork
-        </a>
-        <script async defer src="/js/github-buttons.js"></script>
-      </div>
+    <section class="py-20 bg-neutual-50 dark:bg-neutral-800">
+      <div class="wide-container text-center">
+        <p class="secondary-color">简洁优雅的 Typecho 博客主题</p>
+        <h2 class="my-4 primary-color">Daydream</h2>
+        <div class="my-8">
+          <a
+            class="github-button"
+            href="https://github.com/Skywt2003/Daydream"
+            data-color-scheme="no-preference: light; light: light; dark: dark;"
+            data-icon="octicon-star"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star Skywt2003/Daydream on GitHub"
+          >
+            Star
+          </a>
+          <a
+            class="github-button"
+            href="https://github.com/Skywt2003/Daydream/fork"
+            data-color-scheme="no-preference: light; light: light; dark: dark;"
+            data-icon="octicon-repo-forked"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Fork Skywt2003/Daydream on GitHub"
+          >
+            Fork
+          </a>
+          <script async defer src="/js/github-buttons.js"></script>
+        </div>
 
-      <div class="my-8">
-        <img
-          src="/daydream_pc_light.png"
-          alt="Daydream Typecho Blog Theme Screenshot (Light Mode)"
-          class="shadow-lg rounded-2xl dark:hidden"
-        />
-        <img
-          src="/daydream_pc_dark.png"
-          alt="Daydream Typecho Blog Theme Screenshot (Dark Mode)"
-          class="shadow-lg rounded-2xl shadow-gray-900 hidden dark:block"
-        />
-      </div>
-    </div>
-  </section>
-
-  <section class="wide-container my-8 py-20">
-    <h3 class="m-6 primary-color">只是为了好玩……</h3>
-    <ul class="flex flex-wrap mt-4">
-      <ProjectCard
-        name="Writecho"
-        desc="纯手写的 Typecho 主题。"
-        url="https://github.com/Skywt2003/Writecho"
-      />
-      <ProjectCard
-        name="vuecho"
-        desc="使用 Vue 实现的 Typecho 前端。"
-        url="https://github.com/Skywt2003/vuecho"
-      />
-      <ProjectCard
-        name="kindle-zhcn-clippings-to-json"
-        desc="Kindle 书摘解析器 npm 模块。"
-        url="https://github.com/Skywt2003/kindle-zhcn-clippings-to-json"
-      />
-      <ProjectCard
-        name="sky"
-        desc="基于 Argon 的 Typecho 主题。"
-        url="https://github.com/Skywt2003/sky"
-      />
-      <ProjectCard
-        name="PasteBurn"
-        desc="阅后即焚，守护隐私。"
-        url="https://github.com/Skywt2003/PasteBurn"
-      />
-    </ul>
-  </section>
-
-  <hr class="container py-8" />
-  <section class="container my-8 py-20">
-    <h2 class="primary-color text-center">友谊地久天长。</h2>
-    <p>此处应显示一些友情链接。</p>
-    <FriendCard
-      name="fzf404"
-      desc="你们的小 f"
-      url="https://www.fzf404.art"
-      avatar="https://img.fzf404.art/avatar.webp"
-    />
-  </section>
-
-  <hr class="container py-8" />
-  <section class="container my-8 py-20">
-    <div>
-      <h2 class="my-6 primary-color">关于本站</h2>
-      <!-- <p class="mt-2">
-        Built with
-        <a href="https://astro.build/" target="_blank">
-          <img src="/astro.svg" alt="Astro" class="inline-block h-4" />
-        </a>
-        <a href="https://tailwindcss.com/" target="_blank">
+        <div class="my-8">
           <img
-            src="/tailwindcss.svg"
-            alt="Tailwind CSS"
-            class="inline-block h-4"
+            src="/daydream_pc_light.png"
+            alt="Daydream Typecho Blog Theme Screenshot (Light Mode)"
+            class="shadow-lg rounded-2xl dark:hidden"
           />
-        </a>
-      </p> -->
-      <p id="uptime">载入中……</p>
-      <script>
-        const uptime = document.getElementById("uptime") as HTMLElement;
-        const now = new Date();
-        const grt = new Date("12/11/2017 11:00:00");
-        const getUptime: () => void = () => {
-          now.setTime(now.getTime() + 250);
-          const diff = now.getTime() - grt.getTime();
-          const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
-          const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
-          const mnum = Math.floor(
-            diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
-          );
-          const snum = Math.round(
-            diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
-          );
+          <img
+            src="/daydream_pc_dark.png"
+            alt="Daydream Typecho Blog Theme Screenshot (Dark Mode)"
+            class="shadow-lg rounded-2xl shadow-gray-900 hidden dark:block"
+          />
+        </div>
+      </div>
+    </section>
 
-          uptime.innerText =
-            "本站已运行 " +
-            dnum.toString() +
-            " 天 " +
-            hnum.toString() +
-            " 小时 " +
-            mnum.toString() +
-            " 分 " +
-            snum.toString() +
-            " 秒。";
-        };
-        setInterval(getUptime, 250);
-      </script>
-      <p class="mt-2">（此处应该写一段看起来高端的话）</p>
-      <p class="mt-2">查看设计手记（此处应该有一个超链接）</p>
-    </div>
-  </section>
+    <section class="wide-container my-8 py-20">
+      <h3 class="m-6 primary-color">只是为了好玩……</h3>
+      <ProjectsCards />
+    </section>
+
+    <!-- <hr class="container py-8" />
+  <section class="wide-container my-8 py-20">
+    <h3 class="m-6 primary-color">友谊地久天长。</h3>
+    <Friends />
+  </section> -->
+
+    <section class="wide-container my-8 py-20">
+      <h3>导航</h3>
+    </section>
+
+    <hr class="container py-8" />
+    <section class="container my-8 py-20">
+      <div>
+        <h2 class="my-6 primary-color">关于本站</h2>
+        <p id="uptime">载入时间中……</p>
+        <script>
+          const uptime = document.getElementById("uptime") as HTMLElement;
+          const now = new Date();
+          const grt = new Date("12/11/2017 11:00:00");
+          const getUptime: () => void = () => {
+            now.setTime(now.getTime() + 250);
+            const diff = now.getTime() - grt.getTime();
+            const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
+            const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
+            const mnum = Math.floor(
+              diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
+            );
+            const snum = Math.round(
+              diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
+            );
+
+            uptime.innerText =
+              "本站已运行 " +
+              dnum.toString() +
+              " 天 " +
+              hnum.toString() +
+              " 小时 " +
+              mnum.toString() +
+              " 分 " +
+              snum.toString() +
+              " 秒。";
+          };
+          setInterval(getUptime, 250);
+        </script>
+        <p class="mt-2">（此处应该写一段看起来高端的话）</p>
+        <p class="mt-2">查看设计手记（此处应该有一个超链接）</p>
+      </div>
+    </section>
+  </main>
 </Layout>
-
-<script>
-  const showScrollHint = () => {
-    let scrollHintEle = document.querySelector("#scroll-hint") as HTMLElement;
-    scrollHintEle.classList.add("fade-in");
-    scrollHintEle.classList.remove("opacity-0");
-  };
-
-  setTimeout(showScrollHint, 5000);
-</script>
 
 <style>
   .fade-in {

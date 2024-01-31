@@ -75,7 +75,7 @@
   }
 
   .wide-container {
-    @apply max-w-4xl;
+    @apply max-w-5xl;
   }
 }
 
@@ -86,7 +86,7 @@
   }
 
   .wide-container {
-    @apply max-w-4xl;
+    @apply max-w-5xl;
   }
 }
 
@@ -97,7 +97,7 @@
 }
 
 .secondary-color {
-  @apply text-gray-500 dark:text-neutral-500;
+  @apply text-gray-500 dark:text-neutral-400;
 }
 
 .tertiary-color {
@@ -120,29 +120,40 @@ hr {
   @apply underline text-gray-700 dark:text-neutral-300;
 }
 
+.card {
+  @apply primary-color;
+  @apply bg-white dark:bg-neutral-800;
+  @apply rounded-lg shadow-md shadow-gray-100 dark:shadow-neutral-800;
+}
+
 /* Title */
 
 /* 页面主标题 */
 h1 {
   @apply text-5xl font-black leading-tight;
+  @apply primary-color;
 }
 
 /* 分节标题 */
 h2 {
   @apply text-4xl font-black leading-snug drop-shadow-xl;
+  @apply primary-color;
 }
 
 /* 展示信息 */
 h3 {
   @apply text-3xl font-bold leading-snug drop-shadow-lg;
+  @apply primary-color;
 }
 
 h4 {
   @apply text-xl font-bold leading-snug;
+  @apply primary-color;
 }
 
 h5 {
   @apply text-lg font-bold leading-snug;
+  @apply primary-color;
 }
 
 .all-0 {

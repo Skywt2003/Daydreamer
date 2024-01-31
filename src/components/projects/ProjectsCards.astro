@@ -1,0 +1,19 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+import yml from "./config.yml";
+
+interface Project {
+  name: string;
+  desc: string;
+  url: string;
+}
+---
+
+<ul class="flex flex-wrap mt-4">
+  {
+    yml.projects.map((project: Project) => (
+      <ProjectCard name={project.name} desc={project.desc} url={project.url} />
+    ))
+  }
+</ul>

@@ -1,0 +1,16 @@
+projects:
+  - name: Writecho
+    desc: 纯手写的 Typecho 主题。
+    url: https://github.com/Skywt2003/Writecho
+  - name: vuecho
+    desc: 使用 Vue 实现的 Typecho 前端。
+    url: https://github.com/Skywt2003/vuecho
+  - name: kindle-zhcn-clippings-to-json
+    desc: Kindle 书摘解析器 npm 模块。
+    url: https://github.com/Skywt2003/kindle-zhcn-clippings-to-json
+  - name: sky
+    desc: 基于 Argon 的 Typecho 主题。
+    url: https://github.com/Skywt2003/sky
+  - name: PasteBurn
+    desc: 阅后即焚，守护隐私。
+    url: https://github.com/Skywt2003/PasteBurn
