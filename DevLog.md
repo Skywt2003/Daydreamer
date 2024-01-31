@@ -43,10 +43,17 @@ https://medium.com/@mezoistvan/finally-a-css-only-solution-to-hover-on-touchscre
 
 终极解决方案：onclick=""
 
+88b110c 的版本，选择的方案是 hover 显示背景图片，普通情况下 bento 作为简洁的白底黑字的组件。
+这样有一个问题：hover 纯粹为显示服务了，而按照正常的逻辑 hover 应该是起到「提示用户可点击」的功能的。
+
+我觉得还是和 Bento.me 的设计一样，不要用 hover 来交互比较好。总体布局杂乱的情况，之后想办法。从 88b110c 之后修改。
+（其实超喜欢这个版本的 Map 组件的……可惜不得不改掉了 😭）
+
+颜色深的 Box，shadow 会看不出来。为了保持视觉的统一性，不宜使用过大的 shadow。
+
 ## Darkmode
 
-gray
-neutual
+gray 与 neutual
 
 ## Shadow
 

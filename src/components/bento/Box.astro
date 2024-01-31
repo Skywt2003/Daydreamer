@@ -1,37 +1,14 @@
 ---
 interface Props {
-  bg_image?: string;
-  bg_hover_overlay?: string;
+  url?: String;
 }
 
-// 如果使用半透明来压混，会出现夜间模式颜色不一致
-const { bg_image = "none", bg_hover_overlay = "rgb(88,88,88)" } = Astro.props;
+const { url } = Astro.props;
 ---
 
-<!-- role="button" -->
 <div
   id="inner-wrapper"
-  class="absolute all-0 m-4 flex flex-col justify-center bento-border primary-color"
-  onclick=""
+  class=`absolute all-0 m-4 flex flex-col justify-center bento-border primary-color bento-bg${url ? " clickable" : " "}`
 >
   <slot />
 </div>
-
-<style
-  define:vars={{
-    bg_image,
-    bg_hover_overlay,
-  }}
->
-  #inner-wrapper {
-    @apply transition-all bg-center bg-cover bg-no-repeat bg-blend-overlay;
-    background-image: var(--bg_image);
-    @apply bg-white dark:bg-black;
-  }
-
-  #inner-wrapper:hover,
-  #inner-wrapper:active {
-    background-color: var(--bg_hover_overlay);
-    @apply text-white;
-  }
-</style>

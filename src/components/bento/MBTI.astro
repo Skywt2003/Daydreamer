@@ -4,7 +4,7 @@
 
 <div
   id="inner-wrapper"
-  class="absolute all-0 m-4 flex flex-col justify-center bento-border primary-color"
+  class="absolute all-0 m-4 flex flex-col justify-center bento-border primary-color bento-bg"
   onclick=""
 >
   <div class="text-right p-4">
@@ -24,31 +24,3 @@
     </a>
   </div>
 </div>
-
-<style>
-  #inner-wrapper {
-    @apply transition-all bg-blend-overlay;
-    @apply bg-white dark:bg-black;
-  }
-
-  h3,
-  p,
-  a {
-    @apply transition-all;
-  }
-
-  #inner-wrapper:hover {
-    background-image: linear-gradient(
-      to right,
-      rgba(51, 164, 116, 0.5),
-      rgba(51, 164, 116, 1)
-    );
-    @apply bg-transparent;
-    @apply text-white;
-  }
-
-  #inner-wrapper:hover p,
-  #inner-wrapper:hover h3 {
-    @apply text-white;
-  }
-</style>

@@ -113,11 +113,23 @@ hr {
 }
 
 .link {
-  @apply transition-all;
+  @apply transition-all cursor-pointer;
 }
 
 .link:hover {
-  @apply underline text-gray-700 dark:text-gray-300 cursor-pointer;
+  @apply underline text-gray-700 dark:text-gray-300;
+}
+
+button {
+  @apply transition-all;
+  @apply shadow-lg p-1 rounded-xl;
+  @apply primary-color text-sm;
+  @apply bg-white dark:bg-black;
+}
+
+button:hover {
+  @apply text-gray-300 dark:text-gray-700;
+  @apply bg-gray-700 dark:bg-gray-300;
 }
 
 /* Title */

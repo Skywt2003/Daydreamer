@@ -1,0 +1,23 @@
+---
+interface Props {
+  bg_image: string;
+}
+
+// 如果使用半透明来压混，会出现夜间模式颜色不一致
+const { bg_image } = Astro.props;
+---
+
+<div
+  id="inner-wrapper"
+  class="absolute all-0 m-4 flex flex-col justify-center bento-border"
+>
+  <slot />
+</div>
+
+<style define:vars={{ bg_image }}>
+  #inner-wrapper {
+    @apply bg-center bg-cover bg-no-repeat bg-blend-overlay text-white;
+    background-image: var(--bg_image);
+    background-color: rgb(88, 88, 88);
+  }
+</style>

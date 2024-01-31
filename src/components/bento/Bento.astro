@@ -2,9 +2,9 @@
 import BoxWrapper from "./BoxWrapper.astro";
 
 import Box from "./Box.astro";
+import BgBox from "./BgBox.astro";
 import Map from "./Map.astro";
 import MBTI from "./MBTI.astro";
-import NotASwot from "./NotASwot.astro";
 import LearnMore from "./LearnMore.astro";
 ---
 
@@ -12,27 +12,24 @@ import LearnMore from "./LearnMore.astro";
   <p id="too-small-hint">
     <i class="ri-alert-line"></i> 您的屏幕太小，这里的组件无法正常显示。
   </p>
-  <p id="touch-hint">
+  <!-- <p id="touch-hint">
     <i class="ri-smartphone-line"></i> 触摸磁铁可以进行交互。
-  </p>
+  </p> -->
 </div>
 
 <div id="bento-wrapper" class="relative mx-auto max-w-md lg:max-w-4xl mt-8">
-  <BoxWrapper top="0" left="0" width="25%" height="25%" smt="0" sml="0">
+  <BoxWrapper top="0" left="0" width="25%" height="25%" smt="50%" sml="0">
     <Box>
       <div class="p-4 flex flex-col items-center">
-        <img
-          src="/avatar.png"
-          alt="My Avatar"
-          class="rounded-full w-24 h-24 border shadow-lg"
-        />
-        <h4 class="mt-2 text-xl font-bold drop-shadow-md">SkyWT</h4>
+        不知道<br />
+        应该<br />
+        写点啥
       </div>
     </Box>
   </BoxWrapper>
 
-  <BoxWrapper top="0" left="25%" width="25%" height="25%" smt="0" sml="50%">
-    <Box bg_image="linear-gradient(120deg,#84fab0 0%,#8fd3f4 100%)">
+  <BoxWrapper top="0" left="25%" width="25%" height="25%" smt="50%" sml="50%">
+    <Box>
       <div class="p-4">
         <h3>
           💻📱⌚️🛠️<br />
@@ -42,12 +39,77 @@ import LearnMore from "./LearnMore.astro";
     </Box>
   </BoxWrapper>
 
-  <BoxWrapper top="0" left="50%" width="50%" height="25%" smt="50%" sml="0">
+  <BoxWrapper top="0" left="50%" width="50%" height="25%" smt="100%" sml="0">
     <MBTI />
   </BoxWrapper>
 
-  <BoxWrapper top="25%" left="0" width="50%" height="25%" smt="100%" sml="0">
-    <Box bg_image="linear-gradient(30deg, #415462, #C78EA8);">
+  <BoxWrapper top="25%" left="0%" width="25%" height="50%" smt="200%" sml="0">
+    <BgBox bg_image="url('/quzhou_tower.jpeg')">
+      <div class="p-4 z-10">
+        <p class="absolute top-4 left-4 text-sm">
+          <i class="ri-home-line"></i> 故乡
+        </p>
+        <h3 class="pt-2 text-center">
+          浙<br />江<br />衢<br />州
+        </h3>
+      </div>
+    </BgBox>
+  </BoxWrapper>
+
+  <BoxWrapper
+    top="25%"
+    left="25%"
+    width="25%"
+    height="25%"
+    smt="200%"
+    sml="50%"
+  >
+    <BgBox bg_image="url('/hnu.jpg')">
+      <div class="p-4">
+        <p class="absolute top-4 left-4 text-sm">
+          <i class="ri-graduation-cap-line"></i> 本科在读
+        </p>
+        <div class="text-center">
+          <h3 class="pt-2">湖南大学</h3>
+          <p class="mt-2 font-bold">Hunan University</p>
+        </div>
+      </div>
+    </BgBox>
+  </BoxWrapper>
+
+  <BoxWrapper top="25%" left="50%" width="50%" height="25%" smt="150%" sml="0">
+    <Map />
+  </BoxWrapper>
+
+  <BoxWrapper top="50%" left="25%" width="50%" height="25%" smt="0" sml="0">
+    <div class="absolute all-0 m-4 flex flex-col justify-center items-center">
+      <h3 class="primary-color" id="type"></h3>
+    </div>
+  </BoxWrapper>
+  <script>
+    import TypeIt from "typeit";
+    new TypeIt("#type", {
+      strings: "嗨 👋 我是 SkyWT。<br>很高兴认识你～",
+      speed: 100,
+      waitUntilVisible: true,
+    }).go();
+  </script>
+
+  <BoxWrapper
+    top="50%"
+    left="75%"
+    width="25%"
+    height="25%"
+    smt="250%"
+    sml="50%"
+  >
+    <Box url="#">
+      <div class="p-4">不知道写啥</div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper top="75%" left="0" width="50%" height="25%" smt="300%" sml="0">
+    <Box>
       <div class="p-4">
         <h3>
           <span class="secondary-color">立志成为</span>
@@ -66,65 +128,10 @@ import LearnMore from "./LearnMore.astro";
     </Box>
   </BoxWrapper>
 
-  <BoxWrapper top="25%" left="50%" width="50%" height="50%" smt="150%" sml="0">
-    <Map />
-  </BoxWrapper>
-
-  <BoxWrapper top="50%" left="0%" width="25%" height="50%" smt="250%" sml="0">
-    <Box bg_image="url('/quzhou_tower.jpeg')">
-      <div class="p-4 z-10">
-        <p class="absolute top-4 left-4 text-sm">
-          <i class="ri-home-line"></i> 故乡
-        </p>
-        <h3 class="pt-2 text-center">
-          浙<br />江<br />衢<br />州
-        </h3>
-      </div>
-    </Box>
-  </BoxWrapper>
-
-  <BoxWrapper
-    top="50%"
-    left="25%"
-    width="25%"
-    height="25%"
-    smt="250%"
-    sml="50%"
-  >
-    <Box bg_image="url('/hnu.jpg')">
-      <div class="p-4">
-        <p class="absolute top-4 left-4 text-sm">
-          <i class="ri-graduation-cap-line"></i> 本科在读
-        </p>
-        <div class="text-center">
-          <h3 class="pt-2">湖南大学</h3>
-          <p class="mt-2 font-bold">Hunan University</p>
-        </div>
-      </div>
-    </Box>
-  </BoxWrapper>
-
-  <BoxWrapper
-    top="75%"
-    left="25%"
-    width="25%"
-    height="25%"
-    smt="300%"
-    sml="50%"
-  >
-    <NotASwot />
-  </BoxWrapper>
-
   <BoxWrapper top="75%" left="50%" width="25%" height="25%" smt="350%" sml="0">
-    <Box bg_image="linear-gradient(30deg, #0056D2, #0056D2);">
-      <div class="p-4">
-        <h3>Self-hoster</h3>
-        <a
-          href="https://lab.skywt.cn"
-          class="mt-4 secondary-color text-sm link"
-        >
-          看看我的<br />自托管项目
-        </a>
+    <Box>
+      <div class="flex flex-col items-center">
+        <img src="/avatar.png" alt="My Avatar" class="rounded-full w-24 h-24" />
       </div>
     </Box>
   </BoxWrapper>
@@ -133,8 +140,70 @@ import LearnMore from "./LearnMore.astro";
     top="75%"
     left="75%"
     width="25%"
-    height="25%"
+    height="12.5%"
     smt="350%"
+    sml="50%"
+  >
+    <Box url="#">
+      <div class="p-4">
+        <div class="absolute top-1 right-2 text-sm">
+          <i class="ri-external-link-line"></i>
+        </div>
+        <p class="text-center">
+          <i class="ri-file-list-line"></i>
+          我的简历
+        </p>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper
+    top="87.5%"
+    left="75%"
+    width="25%"
+    height="12.5%"
+    smt="375%"
+    sml="50%"
+  >
+    <Box url="#">
+      <div class="p-4">
+        <div class="absolute top-1 right-2 text-sm">
+          <i class="ri-external-link-line"></i>
+        </div>
+        <p class="text-center">
+          <i class="ri-mail-line"></i>
+          me@skywt.cn
+        </p>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper top="100%" left="0%" width="25%" height="25%" smt="450%" sml="0">
+    <Box>
+      <div class="p-4">
+        <h3 class="text-center tertiary-color font-light">
+          不是一个<br />
+          ❌<br />
+          做题家
+        </h3>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper top="100%" left="25%" width="50%" height="25%" smt="400%" sml="0">
+    <Box>
+      <div class="p-4 text-center">
+        <h3>青春无悔热爱<br />之类的 quote</h3>
+      </div>
+    </Box>
+  </BoxWrapper>
+
+  <BoxWrapper
+    top="100%"
+    left="75%"
+    width="25%"
+    height="25%"
+    smt="450%"
     sml="50%"
   >
     <LearnMore />
@@ -158,19 +227,13 @@ import LearnMore from "./LearnMore.astro";
     }
   }
 
-  @screen lg {
-    #touch-hint {
-      @apply hidden;
-    }
-  }
-
   #bento-placeholder {
-    padding-bottom: 400%;
+    padding-bottom: 500%;
   }
 
   @screen lg {
     #bento-placeholder {
-      padding-bottom: 100%;
+      padding-bottom: 125%;
     }
   }
 
@@ -179,6 +242,18 @@ import LearnMore from "./LearnMore.astro";
   }
 
   :global(.bento-border) {
-    @apply rounded-2xl shadow-lg shadow-gray-200 dark:shadow-gray-800;
+    @apply rounded-2xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+  }
+
+  :global(.bento-bg) {
+    @apply bg-white dark:bg-neutral-800;
+  }
+
+  :global(.clickable) {
+    @apply cursor-pointer transition-all;
+  }
+
+  :global(.clickable:active) {
+    transform: scale(0.98);
   }
 </style>
