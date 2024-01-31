@@ -53,7 +53,11 @@ https://medium.com/@mezoistvan/finally-a-css-only-solution-to-hover-on-touchscre
 
 ## Darkmode
 
-gray 与 neutual
+### gray 与 neutual
+
+从 white 到 black，并不止 gray 一种过渡方式。Tailwind 提供了 gray、neutral、cool、warm 四种方式，每种都有 100 到 900 从白到黑的过渡值。
+
+Darkmode 下的背景应该使用什么颜色呢？如果用 black，就是俗称的「A 屏黑」，看久了眼睛会很不舒服。如果用 gray-900，看起来会偏蓝。用 neutral-900 是最舒服的选择。
 
 ## Shadow
 

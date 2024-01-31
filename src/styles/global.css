@@ -93,15 +93,15 @@
 /* Colors */
 
 .primary-color {
-  @apply text-gray-700 dark:text-gray-300;
+  @apply text-gray-700 dark:text-neutral-300;
 }
 
 .secondary-color {
-  @apply text-gray-500;
+  @apply text-gray-500 dark:text-neutral-500;
 }
 
 .tertiary-color {
-  @apply text-gray-400 dark:text-gray-600;
+  @apply text-gray-400 dark:text-neutral-600;
 }
 
 .border-color {
@@ -117,19 +117,7 @@ hr {
 }
 
 .link:hover {
-  @apply underline text-gray-700 dark:text-gray-300;
-}
-
-button {
-  @apply transition-all;
-  @apply shadow-lg p-1 rounded-xl;
-  @apply primary-color text-sm;
-  @apply bg-white dark:bg-black;
-}
-
-button:hover {
-  @apply text-gray-300 dark:text-gray-700;
-  @apply bg-gray-700 dark:bg-gray-300;
+  @apply underline text-gray-700 dark:text-neutral-300;
 }
 
 /* Title */
