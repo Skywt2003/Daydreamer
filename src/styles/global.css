@@ -144,3 +144,7 @@ h4 {
 h5 {
   @apply text-lg font-bold leading-snug;
 }
+
+.all-0 {
+  @apply left-0 right-0 top-0 bottom-0;
+}

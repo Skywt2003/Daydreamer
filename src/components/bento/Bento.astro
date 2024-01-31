@@ -24,14 +24,13 @@ import LearnMore from "./LearnMore.astro";
         <img
           src="/avatar.png"
           alt="My Avatar"
-          class="rounded-full w-24 h-24 shadow-md"
+          class="rounded-full w-24 h-24 border shadow-lg"
         />
         <h4 class="mt-2 text-xl font-bold drop-shadow-md">SkyWT</h4>
       </div>
     </Box>
   </BoxWrapper>
 
-  <!-- bg_image="linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),linear-gradient(120deg,#84fab0 0%,#8fd3f4 100%)" -->
   <BoxWrapper top="0" left="25%" width="25%" height="25%" smt="0" sml="50%">
     <Box bg_image="linear-gradient(120deg,#84fab0 0%,#8fd3f4 100%)">
       <div class="p-4">
@@ -55,14 +54,14 @@ import LearnMore from "./LearnMore.astro";
           <br />
           <span>全栈工程师 ⚙️</span>
         </h3>
-        <a
+        <!-- <a
           href="https://github.com/Skywt2003"
           target="_blank"
           class="secondary-color text-sm link mt-2"
         >
           <i class="ri-github-line"></i> 我的 GitHub <i
             class="ri-external-link-line"></i>
-        </a>
+        </a> -->
       </div>
     </Box>
   </BoxWrapper>
@@ -117,14 +116,14 @@ import LearnMore from "./LearnMore.astro";
   </BoxWrapper>
 
   <BoxWrapper top="75%" left="50%" width="25%" height="25%" smt="350%" sml="0">
-    <Box>
+    <Box bg_image="linear-gradient(30deg, #0056D2, #0056D2);">
       <div class="p-4">
         <h3>Self-hoster</h3>
         <a
           href="https://lab.skywt.cn"
-          class="mt-2 secondary-color text-sm link"
+          class="mt-4 secondary-color text-sm link"
         >
-          看看我的自托管项目
+          看看我的<br />自托管项目
         </a>
       </div>
     </Box>
@@ -177,5 +176,9 @@ import LearnMore from "./LearnMore.astro";
 
   h3 {
     @apply font-black;
+  }
+
+  :global(.bento-border) {
+    @apply rounded-2xl shadow-lg shadow-gray-200 dark:shadow-gray-800;
   }
 </style>

@@ -4,7 +4,8 @@
 
 <div
   id="inner-wrapper"
-  class="absolute left-0 top-0 bottom-0 right-0 m-4 flex flex-col justify-center border-color rounded-2xl shadow-lg shadow-gray-100 dark:shadow-gray-900 primary-color"
+  class="absolute all-0 m-4 flex flex-col justify-center bento-border primary-color"
+  onclick=""
 >
   <div class="text-right p-4">
     <img src="/infj.svg" alt="INFJ" class="absolute left-0 bottom-0 h-[120%]" />
@@ -30,6 +31,12 @@
     @apply bg-white dark:bg-black;
   }
 
+  h3,
+  p,
+  a {
+    @apply transition-all;
+  }
+
   #inner-wrapper:hover {
     background-image: linear-gradient(
       to right,
@@ -40,7 +47,8 @@
     @apply text-white;
   }
 
-  #inner-wrapper:hover > div > h3 {
+  #inner-wrapper:hover p,
+  #inner-wrapper:hover h3 {
     @apply text-white;
   }
 </style>
