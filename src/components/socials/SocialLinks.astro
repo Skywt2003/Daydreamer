@@ -1,0 +1,27 @@
+---
+import yml from "./config.yml";
+
+interface SocialLink {
+  name: string;
+  icon: string;
+  id: string;
+  url: string;
+}
+---
+
+<ul>
+  {
+    yml.socials.map((social: SocialLink) => (
+      <li class="m-2">
+        <a href={social.url} target="_blank">
+          <i class={social.icon} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+<style>
+  li {
+    @apply inline-block;
+  }
+</style>

@@ -59,12 +59,14 @@ https://medium.com/@mezoistvan/finally-a-css-only-solution-to-hover-on-touchscre
 
 Darkmode 下的背景应该使用什么颜色呢？如果用 black，就是俗称的「A 屏黑」，看久了眼睛会很不舒服。如果用 gray-900，看起来会偏蓝。用 neutral-900 是最舒服的选择。
 
+但是如果白天用 neutral，则会感觉色调太暖。综合决定：白天用 gray，夜晚用 neutral。
+
 ## Shadow
 
 Light Mode 有阴影很正常，但是 Dark Mode 不该有阴影的。
 
 light: shadow-gray-100
-dark: shadow-gray-900
+dark: shadow-neutral-900
 
 ## 解析 YAML
 

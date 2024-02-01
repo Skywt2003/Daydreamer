@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Menu from "../components/Menu.astro";
 import Bento from "../components/bento/Bento.astro";
 import ProjectsCards from "../components/projects/ProjectsCards.astro";
+import SocialLinks from "../components/socials/SocialLinks.astro";
+import GithubButton from "../components/buttons/GithubButton.astro";
 ---
 
 <Layout title="SkyWT" includeHeader={false}>
@@ -49,38 +51,21 @@ import ProjectsCards from "../components/projects/ProjectsCards.astro";
       </p>
     </section>
 
-    <section class="my-8 py-20 bg-neutual-100 dark:bg-neutral-900">
+    <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-900">
       <Bento />
     </section>
 
-    <section class="py-20 bg-neutual-50 dark:bg-neutral-800">
+    <section>
+      <h3 class="text-center">这里应该放点什么东西。</h3>
+    </section>
+
+    <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-800">
       <div class="wide-container text-center">
         <p class="secondary-color">简洁优雅的 Typecho 博客主题</p>
         <h2 class="my-4 primary-color">Daydream</h2>
         <div class="my-8">
-          <a
-            class="github-button"
-            href="https://github.com/Skywt2003/Daydream"
-            data-color-scheme="no-preference: light; light: light; dark: dark;"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star Skywt2003/Daydream on GitHub"
-          >
-            Star
-          </a>
-          <a
-            class="github-button"
-            href="https://github.com/Skywt2003/Daydream/fork"
-            data-color-scheme="no-preference: light; light: light; dark: dark;"
-            data-icon="octicon-repo-forked"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Fork Skywt2003/Daydream on GitHub"
-          >
-            Fork
-          </a>
-          <script async defer src="/js/github-buttons.js"></script>
+          <GithubButton type="star" target="Skywt2003/Daydream" />
+          <GithubButton type="fork" target="Skywt2003/Daydream" />
         </div>
 
         <div class="my-8">
@@ -92,7 +77,7 @@ import ProjectsCards from "../components/projects/ProjectsCards.astro";
           <img
             src="/daydream_pc_dark.png"
             alt="Daydream Typecho Blog Theme Screenshot (Dark Mode)"
-            class="shadow-lg rounded-2xl shadow-gray-900 hidden dark:block"
+            class="shadow-lg rounded-2xl shadow-neutral-900 hidden dark:block"
           />
         </div>
       </div>
@@ -111,6 +96,7 @@ import ProjectsCards from "../components/projects/ProjectsCards.astro";
 
     <section class="wide-container my-8 py-20">
       <h3>导航</h3>
+      <SocialLinks />
     </section>
 
     <hr class="container py-8" />

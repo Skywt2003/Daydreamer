@@ -1,0 +1,21 @@
+socials:
+  - name: Email
+    icon: ri-mail-line
+    id: me@skywt.cn
+    url: mailto:me@skywt.cn
+  - name: GitHub
+    icon: ri-github-line
+    id: Skywt2003
+    url: https://github.com/Skywt2003
+  - name: Telegram
+    icon: ri-telegram-line
+    id: "@Skywt2003"
+    url: https://t.me/Skywt2003
+  - name: Twitter (X)
+    icon: ri-twitter-line
+    id: "@skywt2003"
+    url: https://twitter.com/skywt2003
+  # - name: QQ
+  #   icon: ri-qq-line
+  #   id:
+  #   url:
