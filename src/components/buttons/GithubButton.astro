@@ -1,0 +1,109 @@
+---
+interface Props {
+  type: string;
+  target: string;
+}
+
+const { type, target } = Astro.props;
+---
+
+<github-button data-message={target}>
+  {
+    type == "star" && (
+      <div id="button-wrapper" class="inline-block">
+        <>
+          <a id="btn" href={`https://github.com/${target}`} target="_blank">
+            <i class="ri-star-line" />
+            &nbsp;
+            <span>Star</span>
+          </a>
+          {/*<a id="cnt" href="#" target="_blank">
+            0
+          </a>*/}
+        </>
+      </div>
+    )
+  }
+
+  {
+    type == "fork" && (
+      <div id="button-wrapper" class="inline-block">
+        <>
+          <a id="btn" href={target} target="_blank">
+            <i class="ri-git-fork-line" />
+            &nbsp;
+            <span>Fork</span>
+          </a>
+          {/*<a id="cnt" href="#" target="_blank">
+            9
+          </a>*/}
+        </>
+      </div>
+    )
+  }
+
+  {
+    type == "follow" && (
+      <div id="button-wrapper" class="inline-block">
+        <a id="btn" href={target} target="_blank">
+          <i class="ri-user-follow-line" />
+          &nbsp;
+          <span>Follow</span>
+        </a>
+        {/*<a id="cnt" href="#" target="_blank">
+          9
+        </a>*/}
+      </div>
+    )
+  }
+</github-button>
+
+<!-- <script>
+  class GithubButton extends HTMLElement {
+    constructor() {
+      super();
+
+      if (this.dataset.message == "star") {
+        try {
+          // const response = fetch(
+          //   "http://api.github.com/repos/skywt2003/Daydream",
+          // );
+          // const json = response.json();
+          // console.log(json);
+          // console.log(json.stargazers_count);
+
+          const cnt = this.querySelector("#cnt") as HTMLElement;
+          cnt.hidden = false;
+          // cnt.innerText = json.stargazers_count;
+          cnt.innerText = "123";
+        } catch (error) {
+          console.log("ERROR: ", error);
+        }
+      }
+    }
+  }
+
+  customElements.define("github-button", GithubButton);
+</script> -->
+
+<style>
+  #button-wrapper {
+    @apply text-xs font-bold;
+    @apply select-none;
+  }
+
+  #btn {
+    @apply px-2 py-1 inline-flex align-bottom;
+    @apply border rounded transition-all;
+    @apply bg-gray-100 dark:bg-neutral-800;
+    @apply border-gray-300 dark:border-neutral-800;
+    @apply hover:bg-gray-200 dark:hover:bg-neutral-700;
+  }
+
+  /* #cnt {
+    @apply px-2 py-1 inline-flex;
+    @apply bg-white border-y border-r border-gray-300 rounded-e;
+    @apply hover:text-blue-600 transition-all;
+    @apply align-bottom;
+  } */
+</style>
