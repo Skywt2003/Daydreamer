@@ -1,0 +1,77 @@
+---
+
+---
+
+<div class="primary-color">
+  <div class="align-center">
+    <span>感觉如何？</span>
+    <div class="inline-flex px-2">
+      <i id="star-1" class="star ri-star-line"></i>
+      <i id="star-2" class="star ri-star-line"></i>
+      <i id="star-3" class="star ri-star-line"></i>
+      <i id="star-4" class="star ri-star-line"></i>
+      <i id="star-5" class="star ri-star-line"></i>
+    </div>
+    <span id="submit" class="link">提交</span>
+  </div>
+  <p id="hint"></p>
+</div>
+
+<script>
+  const stars = document.querySelectorAll(".star");
+  const hint = document.querySelector("#hint") as HTMLElement;
+  const submit = document.querySelector("#submit") as HTMLElement;
+  let rate = 0;
+  let submitted = false;
+
+  stars.forEach(function (star, index) {
+    star.addEventListener("click", function () {
+      if (submitted) return false;
+      rate = index;
+      stars.forEach(function (s, i) {
+        if (i <= index) {
+          s.classList.add("ri-star-fill");
+          s.classList.remove("ri-star-line");
+        } else {
+          s.classList.remove("ri-star-fill");
+          s.classList.add("ri-star-line");
+        }
+      });
+    });
+  });
+
+  submit.addEventListener("click", function () {
+    // stars.forEach(function (star, index) {
+    //   star.removeEventListener;
+    // });
+    submitted = true;
+    let hintText = "";
+    switch (rate) {
+      case 0:
+        hintText = "感谢你的评价。";
+        break;
+      case 1:
+        hintText = "感谢你的评价。";
+        break;
+      case 2:
+        hintText = "感谢你的评价。";
+        break;
+      case 3:
+        hintText = "谢谢你的喜欢！";
+        break;
+      case 4:
+        hintText = "谢谢你的喜欢！";
+        break;
+    }
+    submit.innerText = hintText;
+    submit.classList.remove("link");
+    hint.innerText =
+      "这个评价组件我还没写后端，所以你的评价不会被提交。你开心就好 😁";
+  });
+</script>
+
+<style>
+  i {
+    @apply p-1 text-xl text-gray-500;
+  }
+</style>

@@ -5,6 +5,8 @@ import Bento from "../components/bento/Bento.astro";
 import ProjectsCards from "../components/projects/ProjectsCards.astro";
 import SocialLinks from "../components/socials/SocialLinks.astro";
 import GithubButton from "../components/buttons/GithubButton.astro";
+
+import Rating from "../components/Rating.astro";
 ---
 
 <Layout title="SkyWT" includeHeader={false}>
@@ -134,6 +136,10 @@ import GithubButton from "../components/buttons/GithubButton.astro";
           <span id="uptime"></span>
         </p>
         <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> -->
+      </div>
+
+      <div class="my-4">
+        <Rating />
       </div>
 
       <script>
