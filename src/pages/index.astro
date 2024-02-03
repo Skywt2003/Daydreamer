@@ -124,6 +124,13 @@ import Rating from "../components/Rating.astro";
     <section class="container my-8">
       <div class="primary-color">
         <h2 class="my-6">关于本站</h2>
+        <div class="my-4 p-2 card">
+          <p>
+            ⚙️
+            这个网站目前还在开发测试阶段，只上线了部分功能，并且可能会出现奇怪的
+            bug。
+          </p>
+        </div>
         <p class="mt-2">欢迎来到 skywt.cn，这是我在信息汪洋里的一个家。</p>
         <p class="mt-2">
           几乎每年，我都会使用新的技术重新设计我的网站。你现在看到的是 2024
@@ -134,6 +141,7 @@ import Rating from "../components/Rating.astro";
         <p class="mt-2">
           从创建至今，这个网站已运行
           <span id="uptime"></span>
+          <span>。</span>
         </p>
         <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> -->
       </div>
@@ -159,14 +167,10 @@ import Rating from "../components/Rating.astro";
           );
 
           uptime.innerText =
-            dnum.toString() +
-            " 天 " +
-            hnum.toString() +
-            " 小时 " +
-            mnum.toString() +
-            " 分 " +
-            snum.toString() +
-            " 秒。";
+            (dnum ? dnum.toString() + " 天 " : "") +
+            (hnum ? hnum.toString() + " 小时 " : "") +
+            (mnum ? mnum.toString() + " 分 " : "") +
+            (snum ? snum.toString() + " 秒" : "");
         };
         setInterval(getUptime, 250);
       </script>

@@ -1,14 +1,30 @@
 ---
 interface Props {
-  url?: String;
+  url?: string;
 }
 
 const { url } = Astro.props;
 ---
 
-<div
-  id="inner-wrapper"
-  class=`absolute all-0 m-4 flex flex-col justify-center bento-border primary-color bento-bg${url ? " clickable" : " "}`
->
-  <slot />
-</div>
+{
+  url ? (
+    <a href={url}>
+      <div
+        id="inner-wrapper"
+        class="all-0 primary-color bento-border bento-bg clickable"
+      >
+        <slot />
+      </div>
+    </a>
+  ) : (
+    <div id="inner-wrapper" class="all-0 primary-color bento-border bento-bg">
+      <slot />
+    </div>
+  )
+}
+
+<style>
+  #inner-wrapper {
+    @apply absolute m-4 flex flex-col justify-center;
+  }
+</style>
