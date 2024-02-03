@@ -17,10 +17,11 @@ import LearnMore from "./LearnMore.astro";
 <div id="bento-wrapper" class="relative mx-auto max-w-md lg:max-w-4xl mt-8">
   <BoxWrapper top="0" left="0" width="25%" height="25%" smt="50%" sml="0">
     <Box>
-      <div class="p-4 flex flex-col items-center">
-        不知道<br />
-        应该<br />
-        写点啥
+      <div class="p-4">
+        <h3>
+          💻📱⌚️🛠️<br />
+          科技数码<br />爱好者
+        </h3>
       </div>
     </Box>
   </BoxWrapper>
@@ -28,10 +29,7 @@ import LearnMore from "./LearnMore.astro";
   <BoxWrapper top="0" left="25%" width="25%" height="25%" smt="50%" sml="50%">
     <Box>
       <div class="p-4">
-        <h3>
-          💻📱⌚️🛠️<br />
-          科技数码<br />爱好者
-        </h3>
+        <h3>Self-hoster</h3>
       </div>
     </Box>
   </BoxWrapper>
@@ -100,8 +98,10 @@ import LearnMore from "./LearnMore.astro";
     smt="250%"
     sml="50%"
   >
-    <Box url="#">
-      <div class="p-4">不知道写啥</div>
+    <Box>
+      <div class="p-4">
+        <h3>读万卷书</h3>
+      </div>
     </Box>
   </BoxWrapper>
 
@@ -112,15 +112,10 @@ import LearnMore from "./LearnMore.astro";
           <span class="secondary-color">立志成为</span>
           <br />
           <span>全栈工程师 ⚙️</span>
+          <!-- <span>独立开发者 👨‍💻</span> -->
+          <!-- <span>黑客与画家 🎨</span> -->
+          <!-- <span>终身学习者 📚</span> -->
         </h3>
-        <!-- <a
-          href="https://github.com/Skywt2003"
-          target="_blank"
-          class="secondary-color text-sm link mt-2"
-        >
-          <i class="ri-github-line"></i> 我的 GitHub <i
-            class="ri-external-link-line"></i>
-        </a> -->
       </div>
     </Box>
   </BoxWrapper>
@@ -189,8 +184,12 @@ import LearnMore from "./LearnMore.astro";
 
   <BoxWrapper top="100%" left="25%" width="50%" height="25%" smt="400%" sml="0">
     <Box>
-      <div class="p-4 text-center">
-        <h3>青春无悔热爱<br />之类的 quote</h3>
+      <div class="p-8">
+        <i class="ri-double-quotes-l font-4xl"></i>
+        <p class="font-bold">
+          黑客与画家的共同之处，在于他们都是创作者。与作曲家、建筑师、作家一样，黑客和画家都是试图创作出优秀的作品。
+        </p>
+        <p class="mt-2 text-right">——《黑客与画家》</p>
       </div>
     </Box>
   </BoxWrapper>
@@ -245,6 +244,7 @@ import LearnMore from "./LearnMore.astro";
 
   :global(.clickable) {
     @apply cursor-pointer transition-all;
+    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
   }
 
   :global(.clickable:active) {

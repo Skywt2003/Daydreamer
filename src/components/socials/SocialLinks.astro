@@ -5,17 +5,21 @@ interface SocialLink {
   name: string;
   icon: string;
   id: string;
-  url: string;
+  url?: string;
 }
 ---
 
 <ul>
   {
     yml.socials.map((social: SocialLink) => (
-      <li class="m-2">
-        <a href={social.url} target="_blank">
+      <li class="m-2 cursor-pointer primary-color">
+        {social.url ? (
+          <a href={social.url} target="_blank">
+            <i class={social.icon} />
+          </a>
+        ) : (
           <i class={social.icon} />
-        </a>
+        )}
       </li>
     ))
   }

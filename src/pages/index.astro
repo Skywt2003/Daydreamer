@@ -9,7 +9,37 @@ import GithubButton from "../components/buttons/GithubButton.astro";
 
 <Layout title="SkyWT" includeHeader={false}>
   <main>
-    <section class="container min-h-screen flex flex-col justify-center">
+    <section>
+      <div class="container min-h-screen flex flex-col justify-center">
+        <h1 class="drop-shadow-xl primary-color fade-in">
+          <span>✨ Passion <br /> Never Fails.</span>
+        </h1>
+        <h4 class="mt-4 font-bold drop-shadow-xl secondary-color fade-in">
+          热爱与激情永不止息。
+        </h4>
+        <div class="mt-12 font-thin tertiary-color fade-in">
+          <span class="mr-2">SkyWT</span>
+          <Menu includeHome={false} />
+        </div>
+        <p id="scroll-hint" class="mt-2 font-thin tertiary-color opacity-0">
+          <i class="ri-mouse-line"></i>
+          滚动滚轮或滑动触控板继续浏览
+          <i class="ri-arrow-down-line"></i>
+        </p>
+        <script>
+          const showScrollHint = () => {
+            let scrollHintEle = document.querySelector(
+              "#scroll-hint",
+            ) as HTMLElement;
+            scrollHintEle.classList.add("fade-in");
+            scrollHintEle.classList.remove("opacity-0");
+          };
+          setTimeout(showScrollHint, 5000);
+        </script>
+        <p id="too-small-hint" class="mt-2 primary-color">
+          <i class="ri-alert-line"></i> 本站针对屏幕宽度不小于 320 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
+        </p>
+      </div>
       <!-- <div
         class="absolute top-0 right-0 h-screen -z-10 transform-gpu overflow-hidden w-full blur-3xl"
         aria-hidden="true"
@@ -20,46 +50,19 @@ import GithubButton from "../components/buttons/GithubButton.astro";
         >
         </div>
       </div> -->
-      <h1 class="drop-shadow-xl primary-color fade-in">
-        <span>✨ Passion <br /> Never Fails.</span>
-      </h1>
-      <h4 class="mt-4 font-bold drop-shadow-xl secondary-color fade-in">
-        热爱与激情永不止息。
-      </h4>
-
-      <div class="mt-12 font-thin tertiary-color fade-in">
-        <span class="mr-2">SkyWT</span>
-        <Menu includeHome={false} />
-      </div>
-      <p id="scroll-hint" class="mt-2 font-thin tertiary-color opacity-0">
-        <i class="ri-mouse-line"></i>
-        滚动滚轮或滑动触控板继续浏览
-        <i class="ri-arrow-down-line"></i>
-      </p>
-      <script>
-        const showScrollHint = () => {
-          let scrollHintEle = document.querySelector(
-            "#scroll-hint",
-          ) as HTMLElement;
-          scrollHintEle.classList.add("fade-in");
-          scrollHintEle.classList.remove("opacity-0");
-        };
-        setTimeout(showScrollHint, 5000);
-      </script>
-      <p id="too-small-hint" class="mt-2 primary-color">
-        <i class="ri-alert-line"></i> 本站针对屏幕宽度不小于 320 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
-      </p>
     </section>
 
-    <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-900">
+    <hr class="container" />
+
+    <section class="my-8">
       <Bento />
     </section>
 
-    <section>
+    <!-- <section class="py-20 bg-white dark:bg-neutral-800">
       <h3 class="text-center">这里应该放点什么东西。</h3>
-    </section>
+    </section> -->
 
-    <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-800">
+    <!-- <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-900">
       <div class="wide-container text-center">
         <p class="secondary-color">简洁优雅的 Typecho 博客主题</p>
         <h2 class="my-4 primary-color">Daydream</h2>
@@ -81,11 +84,13 @@ import GithubButton from "../components/buttons/GithubButton.astro";
           />
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-900">
+    <hr class="container" />
+
+    <section class="my-8 bg-gray-100 dark:bg-neutral-900">
       <div class="wide-container">
-        <h3 class="m-6 primary-color">只是为了好玩……</h3>
+        <h2 class="m-6 primary-color">只是为了好玩……</h2>
         <ProjectsCards />
       </div>
     </section>
@@ -96,48 +101,69 @@ import GithubButton from "../components/buttons/GithubButton.astro";
     <Friends />
   </section> -->
 
-    <section class="wide-container my-8 py-20">
-      <h3>导航</h3>
-      <SocialLinks />
-    </section>
+    <!-- <hr class="container" /> -->
 
-    <hr class="container py-8" />
-    <section class="container my-8 py-20">
-      <div>
-        <h2 class="my-6 primary-color">关于本站</h2>
-        <p id="uptime">载入时间中……</p>
-        <script>
-          const uptime = document.getElementById("uptime") as HTMLElement;
-          const now = new Date();
-          const grt = new Date("12/11/2017 11:00:00");
-          const getUptime: () => void = () => {
-            now.setTime(now.getTime() + 250);
-            const diff = now.getTime() - grt.getTime();
-            const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
-            const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
-            const mnum = Math.floor(
-              diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
-            );
-            const snum = Math.round(
-              diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
-            );
-
-            uptime.innerText =
-              "本站已运行 " +
-              dnum.toString() +
-              " 天 " +
-              hnum.toString() +
-              " 小时 " +
-              mnum.toString() +
-              " 分 " +
-              snum.toString() +
-              " 秒。";
-          };
-          setInterval(getUptime, 250);
-        </script>
-        <p class="mt-2">（此处应该写一段看起来高端的话）</p>
-        <p class="mt-2">查看设计手记（此处应该有一个超链接）</p>
+    <!-- <section class="wide-container my-8">
+      <div class="primary-color flex flex-wrap">
+        <div class="basis-full sm:basis-1/2 p-4">
+          <h3 class="text-center">博客文章</h3>
+          <div class="card p-4 mt-4">最新文章</div>
+          <div class="card p-4 mt-4">全部文章</div>
+          <div class="card p-4 mt-4">订阅博客</div>
+        </div>
+        <div class="basis-full sm:basis-1/2 p-4 sm:border-l">
+          <h3 class="text-center">实验室</h3>
+        </div>
       </div>
+    </section> -->
+
+    <hr class="container" />
+
+    <section class="container my-8">
+      <div class="primary-color">
+        <h2 class="my-6">关于本站</h2>
+        <p class="mt-2">欢迎来到 skywt.cn，这是我在信息汪洋里的一个家。</p>
+        <p class="mt-2">
+          几乎每年，我都会使用新的技术重新设计我的网站。你现在看到的是 2024
+          版。这一版本由 Astro、TypeScript、Tailwind.css 等技术驱动，由
+          ChatGPT、Copilot
+          等协助编写。感谢这些技术让开发体验变得如此优雅和美妙。
+        </p>
+        <p class="mt-2">
+          从创建至今，这个网站已运行
+          <span id="uptime"></span>
+        </p>
+        <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> -->
+      </div>
+
+      <script>
+        const uptime = document.getElementById("uptime") as HTMLElement;
+        const now = new Date();
+        const grt = new Date("12/11/2017 11:00:00");
+        const getUptime: () => void = () => {
+          now.setTime(now.getTime() + 250);
+          const diff = now.getTime() - grt.getTime();
+          const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
+          const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
+          const mnum = Math.floor(
+            diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
+          );
+          const snum = Math.round(
+            diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
+          );
+
+          uptime.innerText =
+            dnum.toString() +
+            " 天 " +
+            hnum.toString() +
+            " 小时 " +
+            mnum.toString() +
+            " 分 " +
+            snum.toString() +
+            " 秒。";
+        };
+        setInterval(getUptime, 250);
+      </script>
     </section>
   </main>
 </Layout>
@@ -161,5 +187,13 @@ import GithubButton from "../components/buttons/GithubButton.astro";
     #too-small-hint {
       @apply hidden;
     }
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  hr {
+    @apply my-16;
   }
 </style>

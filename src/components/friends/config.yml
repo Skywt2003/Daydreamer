@@ -6,45 +6,124 @@ friends:
   - name: 甘小蔗
     desc: Ganxiaozhe's Values
     url: https://gxzv.com/
+    avatar: https://gxzv.com/lib/img/me/avatar.jpg
   - name: 枝因
     desc: 「Oh god, these stars. 」
     url: https://viyi.cc/
+    avatar: https://viyi.cc/images/icon.png
   - name: Ayu
     desc: 「三脚猫多面手，努力学习世界的一切。」
     url: https://ayu.land/
+    avatar: ./visitor.png
   - name: 昼河万里
     desc: 「一起去看月亮吧。」
     url: https://tothemoonriver.icu/
+    avatar: https://tothemoonriver.icu/img/avatar_hu1f7fd3bb10d1d6e480fe680f98f799d1_738451_300x0_resize_box_3.png
   - name: Hzao
     desc: 「」
     url: https://blog.hzao.top/
+    avatar: ./visitor.png
   - name: 安擎
     desc: 「By the power of language. 」
     url: https://angine.tech/
+    avatar: ./visitor.png
   - name: widcardw
     desc: 「不是多面手。」
     url: https://widcard.win/
+    avatar: https://avatars.githubusercontent.com/u/55699713?v=4
   - name: 山川行貉
     desc: 「快让我在雪地上撒点儿野。」
     url: https://www.scxho.cn/
+    avatar: https://cravatar.cn/avatar/24e54d6a6ac9c59d9d5ee44c825b8c0a?&d=mm&s=200
   - name: 明石
     desc: 「青春无悔热爱。」
     url: https://imakashi.eu.org/
+    avatar: https://imakashi.eu.org/asset/overall/img/headicon.webp
   - name: Leo's
     desc: 「THIS IS MY STORY. 」
     url: https://www.isolitude.cn/
+    avatar: https://pic.isolitude.cn/2022/01/28/683727a137bb0.png
   - name: idealclover
     desc: 「Stay simple, stay naive. 」
     url: https://idealclover.top/
+    avatar: https://cdn.idealclover.cn/Projects/homepage/icon.png
   - name: 张哄 Heo
     desc: 「分享设计与科技生活。」
     url: https://blog.zhheo.com/
+    avatar: https://zhheo.com/img/icon.webp
   - name: 一蓑烟雨
     desc: 「一蓑烟雨任平生。」
     url: https://easyf12.top/
+    avatar: https://bu.dusays.com/2023/12/24/6587c7764111a.webp
   - name: 折影轻梦
     desc: 「纯粹、热爱、勇敢。」
     url: https://nexmoe.com/
-  - name: Sun
-    desc: 「自强不息，厚德载物。」
-    url: https://www.iaesun.com/
+    avatar: https://nexmoe.com/
+  # - name: Sun
+  #   desc: 「自强不息，厚德载物。」
+  #   url: https://www.iaesun.com/
+
+  - name: ZigZagK
+    desc: HDU ACMer 学长
+    url: https://zigzagk.top/
+    avatar: https://zigzagk.top/usr/uploads/2018/07/176242131.png
+  - name: Vexoben
+    desc: 温柔可爱的二马同学
+    url: https://vexoben.lofter.com/
+    avatar: https://avaimg.lf127.net/img/SUtyQ05welkyZlJXM2FmMCtZVDNTaE5LcUhvRURVSkgvVXJoMTdvd0pNYzBLVzFDWno3RkhBPT0.jpg?imageView&thumbnail=64x64&quality=90&type=jpg
+  - name: SCl
+    desc: 文字触动人心的「状元」同学
+    url: https://aferaferafer.lofter.com/
+    avatar: https://avaimg.lf127.net/img/L3hNTUkwa3F4bkNxMkhucUJYVzBtb25SVkhIcjRydU9UQm5BMzNZY2F6bEcvKzBieVdLZUhBPT0.jpg?imageView&thumbnail=128x128&quality=90&type=jpg
+  # - name: StarlightXXY
+  #   desc: 很优秀的小胡同学
+  #   url: https://starlightxyy.cn
+  - name: ymzqwq
+    desc: 很强的 ymz 同学
+    url: https://ymzqwq.wordpress.com/
+    avatar: ./visitor.png
+  - name: LLL
+    desc: 英姿飒爽霈
+    url: https://lll2560660.lofter.com/
+    avatar: https://lll2560660.lofter.com/
+  - name: 杨小花
+    desc: 杨小花 🌸～
+    url: https://acheing.com/
+    avatar: ./visitor.png
+  - name: CaptainSlow
+    desc: 立场坚定斗志强的船长
+    url: https://capata.top/
+    avatar: ./visitor.png
+
+  - name: B1ue1nWh1te
+    desc: 很强的学长。「云卷云舒，处之泰然。」
+    url: https://www.seaeye.cn/
+    avatar: https://img.seaeye.cn/img/seaeye/portrait.jpg
+  # - name: BKCat
+  #   desc: 小苏班长。「成年人要学会做自己的事情。」
+  #   url: https://bkcat.cn/
+  #   avatar: ./visitor.png
+  - name: WuJean
+    desc: 「岳麓山下你和我。」
+    url: https://wujean.github.io/
+    avatar: https://wujean.github.io/img/avatar.png
+  - name: 贰猹的小窝
+    desc: 「用这生命中的每一秒，给自己一个不后悔的未来。」
+    url: https://noionion.top/
+    avatar: ./visitor.png
+  - name: Ripple
+    desc: 「超高校级的游戏玩家！」
+    url: https://hiripple.com/
+    avatar: https://ripple.eu.org/Ripplelog-icon.png
+  - name: CYP0633
+    desc: 「我们都曾是海滩上玩沙堡的孩子。现在仍是，只不过不在海滩上罢了。」
+    url: https://cyp0633.icu/
+    avatar: https://cyp0633-public-resource.oss-cn-qingdao.aliyuncs.com/blog/cyp0633-icon.jpg
+  - name: Mufanc
+    desc: 「星河璀璨丶凡尘點點。」
+    url: https://blog.mufanc.xyz/
+    avatar: https://blog.mufanc.xyz/assets/images/avatar.jpeg
+  - name: Ekennis
+    desc: 「Ekke の Space」
+    url: https://noobzyk.top/
+    avatar: https://ekkepic.oss-cn-beijing.aliyuncs.com/img/20210701163204.png

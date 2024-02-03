@@ -15,7 +15,6 @@ socials:
     icon: ri-twitter-line
     id: "@skywt2003"
     url: https://twitter.com/skywt2003
-  # - name: QQ
-  #   icon: ri-qq-line
-  #   id:
-  #   url:
+  - name: QQ
+    icon: ri-qq-line
+    id: 请查询 qq.skywt.cn 的 TXT 记录

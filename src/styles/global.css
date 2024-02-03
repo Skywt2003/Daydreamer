@@ -2,9 +2,13 @@
   @apply bg-neutral-900 text-white;
 } */
 
+html {
+  @apply bg-gray-100;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
-    @apply bg-neutral-900 text-white;
+    @apply bg-neutral-900;
   }
 }
 
@@ -123,7 +127,16 @@ hr {
 .card {
   @apply primary-color;
   @apply bg-white dark:bg-neutral-800;
-  @apply rounded-lg shadow-md shadow-gray-100 dark:shadow-neutral-800;
+  @apply rounded-xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+}
+
+.card-clickable {
+  @apply cursor-pointer transition-all;
+  @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+}
+
+.card-clickable:active {
+  transform: scale(0.98);
 }
 
 /* Title */
