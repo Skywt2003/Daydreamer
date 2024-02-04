@@ -31,9 +31,11 @@
       stars.forEach(function (s, i) {
         if (i <= index) {
           s.classList.add("ri-star-fill");
+          s.classList.add("active");
           s.classList.remove("ri-star-line");
         } else {
           s.classList.remove("ri-star-fill");
+          s.classList.remove("active");
           s.classList.add("ri-star-line");
         }
       });
@@ -73,5 +75,9 @@
 <style>
   i {
     @apply p-1 text-xl text-gray-500;
+  }
+
+  .active {
+    @apply text-yellow-500;
   }
 </style>

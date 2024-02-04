@@ -172,3 +172,9 @@ h5 {
 .all-0 {
   @apply left-0 right-0 top-0 bottom-0;
 }
+
+.font-kai {
+  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", 'Noto Serif SC',
+    serif;
+  ;
+}

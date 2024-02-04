@@ -9,15 +9,12 @@ const { url } = Astro.props;
 {
   url ? (
     <a href={url}>
-      <div
-        id="inner-wrapper"
-        class="all-0 primary-color bento-border bento-bg clickable"
-      >
+      <div id="inner-wrapper" class="all-0 bento-border bento-bg clickable">
         <slot />
       </div>
     </a>
   ) : (
-    <div id="inner-wrapper" class="all-0 primary-color bento-border bento-bg">
+    <div id="inner-wrapper" class="all-0 bento-border bento-bg">
       <slot />
     </div>
   )
