@@ -1,100 +1,58 @@
-/* html.dark {
-  @apply bg-neutral-900 text-white;
-} */
+:root {
+  @apply font-serif;
+  font-family: "Noto Serif SC", serif;
+}
 
 html {
   @apply bg-gray-100;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
+  @media (prefers-color-scheme: dark) {
     @apply bg-neutral-900;
   }
 }
 
 :root {
-  @apply font-serif;
-  font-family: 'Noto Serif SC', serif;
-}
-
-.container,
-.wide-container {
-  @apply mx-auto;
-}
-
-/* screen size specification settings */
-
-/* 320 - 768 */
-:root {
   font-size: 14px;
+  @screen sm {
+    font-size: 14px;
+  }
+  @screen md {
+    font-size: 16px;
+  }
+  @screen lg {
+    font-size: 18px;
+  }
 }
 
 .container {
+  @apply mx-auto;
   @apply max-w-sm;
+  @screen sm {
+    @apply max-w-md;
+  }
+  @screen md {
+    @apply max-w-xl;
+  }
+  @screen lg {
+    @apply max-w-2xl;
+  }
+  @screen xl {
+    @apply max-w-3xl;
+  }
 }
 
 .wide-container {
+  @apply mx-auto;
   @apply max-w-2xl;
-}
-
-/* 640 - 768 */
-@screen sm {
-  :root {
-    font-size: 14px;
-  }
-
-  .container {
-    @apply max-w-md;
-  }
-
-  /* the width of wide container should be narrower while screen get wider  */
-  .wide-container {
+  @screen sm {
     @apply max-w-3xl;
   }
-}
-
-/* 768 - 1024 */
-@screen md {
-  :root {
-    font-size: 16px;
-  }
-
-  .container {
-    @apply max-w-xl;
-  }
-
-  .wide-container {
+  @screen md {
     @apply max-w-4xl;
   }
-}
-
-/* 1024 - 1280 */
-@screen lg {
-  :root {
-    font-size: 18px;
-  }
-
-  .container {
-    @apply max-w-2xl;
-  }
-
-  .wide-container {
+  @screen lg {
     @apply max-w-5xl;
   }
 }
-
-/* 1280 - 1536 - */
-@screen xl {
-  .container {
-    @apply max-w-3xl;
-  }
-
-  .wide-container {
-    @apply max-w-5xl;
-  }
-}
-
-/* Colors */
 
 .primary-color {
   @apply text-gray-700 dark:text-neutral-300;
@@ -118,28 +76,40 @@ hr {
 
 .link {
   @apply transition-all cursor-pointer;
-}
-
-.link:hover {
-  @apply underline text-gray-700 dark:text-neutral-300;
+  &:hover {
+    @apply underline text-gray-700 dark:text-neutral-300;
+  }
 }
 
 .card {
   @apply primary-color;
   @apply bg-white dark:bg-neutral-800;
   @apply rounded-xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+
+  &.clickable {
+    @apply cursor-pointer transition-all;
+    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+    &:active {
+      transform: scale(0.98);
+    }
+  }
 }
 
-.card-clickable {
-  @apply cursor-pointer transition-all;
-  @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+.bento-border {
+  @apply rounded-2xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+
+  &.clickable {
+    @apply cursor-pointer transition-all;
+    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+    &:active {
+      transform: scale(0.98);
+    }
+  }
 }
 
-.card-clickable:active {
-  transform: scale(0.98);
+.bento-bg {
+  @apply bg-white dark:bg-neutral-800;
 }
-
-/* Title */
 
 /* 页面主标题 */
 h1 {
@@ -169,12 +139,10 @@ h5 {
   @apply primary-color;
 }
 
-.all-0 {
-  @apply left-0 right-0 top-0 bottom-0;
+.font-kai {
+  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", "Noto Serif SC", serif;
 }
 
-.font-kai {
-  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", 'Noto Serif SC',
-    serif;
-  ;
+.all-0 {
+  @apply left-0 right-0 top-0 bottom-0;
 }

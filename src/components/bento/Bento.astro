@@ -207,46 +207,27 @@ import LearnMore from "./LearnMore.astro";
   <div id="bento-placeholder"></div>
 </div>
 
-<style>
-  @media (max-width: 319px) {
-    #bento-wrapper {
+<style lang="scss">
+  #bento-wrapper {
+    @media (max-width: 319px) {
       @apply hidden;
     }
   }
-  @media (min-width: 320px) {
-    #too-small-hint {
+
+  #too-small-hint {
+    @media (min-width: 320px) {
       @apply hidden;
     }
   }
 
   #bento-placeholder {
     padding-bottom: 500%;
-  }
-
-  @screen lg {
-    #bento-placeholder {
+    @screen lg {
       padding-bottom: 125%;
     }
   }
 
   h3 {
     @apply font-black;
-  }
-
-  :global(.bento-border) {
-    @apply rounded-2xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
-  }
-
-  :global(.bento-bg) {
-    @apply bg-white dark:bg-neutral-800;
-  }
-
-  :global(.clickable) {
-    @apply cursor-pointer transition-all;
-    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
-  }
-
-  :global(.clickable:active) {
-    transform: scale(0.98);
   }
 </style>

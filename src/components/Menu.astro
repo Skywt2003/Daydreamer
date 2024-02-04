@@ -44,16 +44,15 @@ const { includeHome = true } = Astro.props;
   </li>
 </ul>
 
-<style>
+<style lang="scss">
   ul {
     @apply inline-block;
-  }
 
-  li {
-    @apply inline-block ml-2;
-  }
-
-  li:first-child {
-    @apply ml-0 !important;
+    li {
+      @apply inline-block ml-2;
+      &:first-child {
+        @apply ml-0;
+      }
+    }
   }
 </style>

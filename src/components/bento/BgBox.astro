@@ -15,7 +15,7 @@ const { bg_image, dim = true } = Astro.props;
   <slot />
 </div>
 
-<style define:vars={{ bg_image }}>
+<style define:vars={{ bg_image }} lang="scss">
   #inner-wrapper {
     @apply bg-center bg-cover bg-no-repeat bg-blend-overlay text-white;
     background-image: var(--bg_image);

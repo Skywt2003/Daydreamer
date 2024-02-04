@@ -13,17 +13,17 @@
   </div>
 </a>
 
-<style>
+<style lang="scss">
   #inner-wrapper {
     @apply transition-all bg-blend-overlay;
-  }
 
-  #inner-wrapper:hover {
-    @apply bg-black dark:bg-neutral-600;
-    @apply border-8  border-dashed border-gray-500 dark:border-neutral-400;
-  }
+    &:hover {
+      @apply bg-black dark:bg-neutral-600;
+      @apply border-8  border-dashed border-gray-500 dark:border-neutral-400;
 
-  #inner-wrapper:hover > div > h3 {
-    @apply text-white;
+      h3 {
+        @apply text-white;
+      }
+    }
   }
 </style>

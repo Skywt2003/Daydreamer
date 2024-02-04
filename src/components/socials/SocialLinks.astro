@@ -12,7 +12,7 @@ interface SocialLink {
 <ul>
   {
     yml.socials.map((social: SocialLink) => (
-      <li class="m-2 cursor-pointer primary-color">
+      <li class="m-2 cursor-pointer primary-color inline-block">
         {social.url ? (
           <a href={social.url} target="_blank">
             <i class={social.icon} />
@@ -24,8 +24,3 @@ interface SocialLink {
     ))
   }
 </ul>
-<style>
-  li {
-    @apply inline-block;
-  }
-</style>
