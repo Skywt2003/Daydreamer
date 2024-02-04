@@ -3,7 +3,7 @@ name: Deploy Alpha Version
 on:
   push:
     branches:
-      - main
+      - dev
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: dev
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:

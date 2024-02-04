@@ -3,7 +3,7 @@ name: Deploy Stable Version
 on:
   push:
     branches:
-      - stable
+      - main
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: stable
+          ref: main
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
