@@ -10,7 +10,7 @@ interface Project {
 }
 ---
 
-<ul class="flex flex-wrap mt-4">
+<ul class="flex flex-wrap mt-4 sm:mx-2">
   {
     yml.projects.map((project: Project) => (
       <ProjectCard name={project.name} desc={project.desc} url={project.url} />

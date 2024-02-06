@@ -10,13 +10,23 @@ html {
   }
 }
 
+/*
+0 - 320 no
+320 - 640 xs
+640 - 768 sm
+768 - 1024 md
+1024 - 1280 lg
+1280 - 1536 xl
+1536 - inf 2xl
+*/
+
 :root {
-  font-size: 14px;
+  font-size: 16px;
   @screen sm {
-    font-size: 14px;
+    font-size: 16px;
   }
   @screen md {
-    font-size: 16px;
+    font-size: 17px;
   }
   @screen lg {
     font-size: 18px;
@@ -24,10 +34,10 @@ html {
 }
 
 .container {
-  @apply mx-auto;
-  @apply max-w-sm;
+  @apply mx-auto px-4;
+  @apply max-w-md;
   @screen sm {
-    @apply max-w-md;
+    @apply max-w-lg;
   }
   @screen md {
     @apply max-w-xl;
@@ -42,15 +52,18 @@ html {
 
 .wide-container {
   @apply mx-auto;
-  @apply max-w-2xl;
+  @apply max-w-lg;
   @screen sm {
-    @apply max-w-3xl;
+    @apply max-w-xl;
   }
   @screen md {
-    @apply max-w-4xl;
+    @apply max-w-2xl;
   }
   @screen lg {
     @apply max-w-5xl;
+  }
+  @screen 2xl {
+    @apply max-w-6xl;
   }
 }
 

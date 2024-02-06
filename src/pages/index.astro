@@ -39,7 +39,7 @@ import Rating from "../components/Rating.astro";
           setTimeout(showScrollHint, 5000);
         </script>
         <p id="too-small-hint" class="mt-2 primary-color">
-          <i class="ri-alert-line"></i> 本站针对屏幕宽度不小于 320 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
+          <i class="ri-alert-line"></i> 本站针对屏幕宽度不小于 375 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
         </p>
       </div>
       <!-- <div
@@ -192,7 +192,7 @@ import Rating from "../components/Rating.astro";
   }
 
   #too-small-hint {
-    @media (min-width: 320px) {
+    @media (min-width: 375px) {
       @apply hidden;
     }
   }
