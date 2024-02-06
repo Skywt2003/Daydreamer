@@ -1,0 +1,13 @@
+menu:
+  - name: 博客
+    icon: ri-newspaper-line
+    url: https://blog.skywt.cn/
+  - name: 实验室
+    icon: ri-server-line
+    url: https://lab.skywt.cn/
+  - name: 友人
+    icon: ri-contacts-line
+    url: https://blog.skywt.cn/friends
+  - name: 关于
+    icon: ri-cup-line
+    url: https://blog.skywt.cn/about
