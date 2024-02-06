@@ -4,7 +4,7 @@
 
 <div
   id="inner-wrapper"
-  class="absolute all-0 m-4 flex flex-col justify-center bento-border primary-color"
+  class="absolute all-0 m-2 sm:m-4 flex flex-col justify-center bento-border primary-color"
   onclick=""
 >
   <p class="absolute top-4 left-4 text-sm z-10">
@@ -104,32 +104,23 @@
   }
 </script> -->
 
-<style>
-  #inner-wrapper {
-    @apply transition-all bg-center bg-cover bg-no-repeat bg-blend-overlay bg-transparent;
-    background-image: url("/map.png");
-  }
-
-  /* :global(.dark) #inner-wrapper {
-    background-color: rgba(0, 0, 0, 0.7);
-  } */
-
-  @media (prefers-color-scheme: dark) {
-    #inner-wrapper {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-  }
-
-  #inner-wrapper:hover {
-    background-color: rgba(0, 0, 0, 0.4);
-    @apply text-white;
-  }
-
+<style lang="scss">
   #address {
     display: none;
   }
 
-  #inner-wrapper:hover > #address {
-    display: block;
+  #inner-wrapper {
+    @apply transition-all bg-center bg-cover bg-no-repeat bg-blend-overlay bg-transparent;
+    background-image: url("/map.png");
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+      @apply text-white;
+      #address {
+        display: block;
+      }
+    }
   }
 </style>

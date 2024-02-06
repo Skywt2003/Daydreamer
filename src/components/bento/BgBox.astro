@@ -10,12 +10,12 @@ const { bg_image, dim = true } = Astro.props;
 
 <div
   id="inner-wrapper"
-  class=`absolute all-0 m-4 flex flex-col justify-center bento-border${dim?" dim":""}`
+  class=`absolute all-0 m-2 sm:m-4 flex flex-col justify-center bento-border${dim?" dim":""}`
 >
   <slot />
 </div>
 
-<style define:vars={{ bg_image }}>
+<style define:vars={{ bg_image }} lang="scss">
   #inner-wrapper {
     @apply bg-center bg-cover bg-no-repeat bg-blend-overlay text-white;
     background-image: var(--bg_image);

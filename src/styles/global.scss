@@ -1,0 +1,161 @@
+:root {
+  @apply font-serif;
+  font-family: "Noto Serif SC", serif;
+}
+
+html {
+  @apply bg-gray-100;
+  @media (prefers-color-scheme: dark) {
+    @apply bg-neutral-900;
+  }
+}
+
+/*
+0 - 320 no
+320 - 640 xs
+640 - 768 sm
+768 - 1024 md
+1024 - 1280 lg
+1280 - 1536 xl
+1536 - inf 2xl
+*/
+
+:root {
+  font-size: 16px;
+  @screen sm {
+    font-size: 16px;
+  }
+  @screen md {
+    font-size: 17px;
+  }
+  @screen lg {
+    font-size: 18px;
+  }
+}
+
+.container {
+  @apply mx-auto px-4;
+  @apply max-w-md;
+  @screen sm {
+    @apply max-w-lg;
+  }
+  @screen md {
+    @apply max-w-xl;
+  }
+  @screen lg {
+    @apply max-w-2xl;
+  }
+  @screen xl {
+    @apply max-w-3xl;
+  }
+}
+
+.wide-container {
+  @apply mx-auto;
+  @apply max-w-lg;
+  @screen sm {
+    @apply max-w-xl;
+  }
+  @screen md {
+    @apply max-w-2xl;
+  }
+  @screen lg {
+    @apply max-w-5xl;
+  }
+  @screen 2xl {
+    @apply max-w-6xl;
+  }
+}
+
+.primary-color {
+  @apply text-gray-700 dark:text-neutral-300;
+}
+
+.secondary-color {
+  @apply text-gray-500 dark:text-neutral-400;
+}
+
+.tertiary-color {
+  @apply text-gray-400 dark:text-neutral-600;
+}
+
+.border-color {
+  @apply border border-gray-200 dark:border-neutral-800;
+}
+
+hr {
+  @apply border-gray-200 dark:border-neutral-800;
+}
+
+.link {
+  @apply transition-all cursor-pointer;
+  &:hover {
+    @apply underline text-gray-700 dark:text-neutral-300;
+  }
+}
+
+.card {
+  @apply primary-color;
+  @apply bg-white dark:bg-neutral-800;
+  @apply rounded-xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+
+  &.clickable {
+    @apply cursor-pointer transition-all;
+    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.bento-border {
+  @apply rounded-2xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+
+  &.clickable {
+    @apply cursor-pointer transition-all;
+    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.bento-bg {
+  @apply bg-white dark:bg-neutral-800;
+}
+
+/* 页面主标题 */
+h1 {
+  @apply text-5xl font-black leading-tight;
+  @apply primary-color;
+}
+
+/* 分节标题 */
+h2 {
+  @apply text-4xl font-black leading-snug drop-shadow-xl;
+  @apply primary-color;
+}
+
+/* 展示信息 */
+h3 {
+  @apply text-3xl font-bold leading-snug drop-shadow-lg;
+  @apply primary-color;
+}
+
+h4 {
+  @apply text-xl font-bold leading-snug;
+  @apply primary-color;
+}
+
+h5 {
+  @apply text-lg font-bold leading-snug;
+  @apply primary-color;
+}
+
+.font-kai {
+  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", "Noto Serif SC", serif;
+}
+
+.all-0 {
+  @apply left-0 right-0 top-0 bottom-0;
+}

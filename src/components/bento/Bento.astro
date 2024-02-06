@@ -8,9 +8,14 @@ import MBTI from "./MBTI.astro";
 import LearnMore from "./LearnMore.astro";
 ---
 
-<div class="text-center secondary-color mt-4">
-  <p id="too-small-hint">
-    <i class="ri-alert-line"></i> 您的屏幕太小，这里的组件无法正常显示。
+<div id="too-small-hint" class="text-center secondary-color mt-4">
+  <i class="ri-alert-line text-4xl"></i>
+  <p class="mt-2">您的屏幕太小，这一部分的自我介绍 Bento 组件无法正常显示。</p>
+  <p class="mt-2">请尝试在浏览器中缩小页面字号，或者使用屏幕更大的设备浏览，</p>
+  <p class="mt-2">
+    <a class="link" href="https://blog.skywt.cn/about">
+      看看 <i class="ri-cup-line"></i> 关于 页面
+    </a>
   </p>
 </div>
 
@@ -183,9 +188,9 @@ import LearnMore from "./LearnMore.astro";
 
   <BoxWrapper top="100%" left="25%" width="50%" height="25%" smt="400%" sml="0">
     <Box>
-      <div class="p-8">
-        <i class="ri-double-quotes-l font-4xl"></i>
-        <p class="font-bold font-kai text-lg">
+      <div class="p-8 relative">
+        <i class="ri-double-quotes-l text-2xl absolute top-8 left-8"></i>
+        <p class="font-bold font-kai text-lg pl-8">
           黑客与画家的共同之处，在于他们都是创作者。与作曲家、建筑师、作家一样，黑客和画家都是试图创作出优秀的作品。
         </p>
         <p class="mt-2 text-right">——《黑客与画家》</p>
@@ -207,46 +212,27 @@ import LearnMore from "./LearnMore.astro";
   <div id="bento-placeholder"></div>
 </div>
 
-<style>
-  @media (max-width: 319px) {
-    #bento-wrapper {
+<style lang="scss">
+  #bento-wrapper {
+    @media (max-width: 374px) {
       @apply hidden;
     }
   }
-  @media (min-width: 320px) {
-    #too-small-hint {
+
+  #too-small-hint {
+    @media (min-width: 375px) {
       @apply hidden;
     }
   }
 
   #bento-placeholder {
     padding-bottom: 500%;
-  }
-
-  @screen lg {
-    #bento-placeholder {
+    @screen lg {
       padding-bottom: 125%;
     }
   }
 
   h3 {
     @apply font-black;
-  }
-
-  :global(.bento-border) {
-    @apply rounded-2xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
-  }
-
-  :global(.bento-bg) {
-    @apply bg-white dark:bg-neutral-800;
-  }
-
-  :global(.clickable) {
-    @apply cursor-pointer transition-all;
-    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
-  }
-
-  :global(.clickable:active) {
-    transform: scale(0.98);
   }
 </style>

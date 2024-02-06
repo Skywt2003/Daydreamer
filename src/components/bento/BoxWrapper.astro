@@ -24,16 +24,14 @@ const { top, left, width, height, smt, sml } = Astro.props;
     smt,
     sml,
   }}
+  lang="scss"
 >
   #outer-wrapper {
     margin-top: var(--smt);
     left: var(--sml);
     width: calc(var(--width) * 2);
     padding-top: calc(var(--height) * 2);
-  }
-
-  @screen lg {
-    #outer-wrapper {
+    @screen lg {
       margin-top: var(--top);
       left: var(--left);
       width: var(--width);

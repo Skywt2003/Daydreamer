@@ -1,0 +1,51 @@
+---
+interface Props {
+  includeHome?: boolean;
+}
+
+const { includeHome = true } = Astro.props;
+
+interface MenuItem {
+  name: string;
+  icon: string;
+  url: string;
+}
+
+import yml from "./config.yml";
+---
+
+<ul>
+  {
+    includeHome && (
+      <li>
+        <a class="link" href="/">
+          <i class="ri-newspaper-line" />
+          主页
+        </a>
+      </li>
+    )
+  }
+  {
+    yml.menu.map((item: MenuItem) => (
+      <li>
+        <a class="link" href={item.url}>
+          <i class={item.icon} />
+          {item.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  ul {
+    @apply inline-block;
+
+    li {
+      @apply inline-block ml-2;
+      &:first-child {
+        @apply ml-0;
+      }
+    }
+  }
+</style>
