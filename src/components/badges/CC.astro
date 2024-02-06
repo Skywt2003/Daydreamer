@@ -1,0 +1,29 @@
+---
+interface Props {
+  by?: boolean;
+  nc?: boolean;
+  sa?: boolean;
+  nd?: boolean;
+}
+
+const { by = true, nc = true, sa = false, nd = false } = Astro.props;
+
+let license = "";
+if (by) license += "-by";
+if (nc) license += "-nc";
+if (sa) license += "-sa";
+if (nd) license += "-nd";
+license = license.slice(1);
+---
+
+<a
+  href={"https://creativecommons.org/licenses/" + license + "/4.0/"}
+  target="_blank"
+  class="inline-block mx-1"
+>
+  <img class="inline-block w-6 h-6" src="/cc/cc.svg" />
+  {by && <img class="inline-block w-6 h-6" src="/cc/by.svg" />}
+  {nc && <img class="inline-block w-6 h-6" src="/cc/nc.svg" />}
+  {sa && <img class="inline-block w-6 h-6" src="/cc/sa.svg" />}
+  {nd && <img class="inline-block w-6 h-6" src="/cc/nd.svg" />}
+</a>
