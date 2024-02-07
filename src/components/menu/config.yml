@@ -7,7 +7,7 @@ menu:
     url: https://lab.skywt.cn/
   - name: 友人
     icon: ri-contacts-line
-    url: https://blog.skywt.cn/friends
+    url: /friends
   - name: 关于
     icon: ri-cup-line
     url: https://blog.skywt.cn/about

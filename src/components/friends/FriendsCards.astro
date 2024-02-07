@@ -5,7 +5,9 @@ import yml from "./config.yml";
 
 interface Friend {
   name: string;
-  desc: string;
+  section?: boolean;
+  desc?: string;
+  slogan?: string;
   url: string;
   avatar: string;
 }
@@ -13,13 +15,27 @@ interface Friend {
 
 <ul class="flex flex-wrap mt-4">
   {
-    yml.friends.map((friend: Friend) => (
-      <FriendCard
-        name={friend.name}
-        desc={friend.desc}
-        url={friend.url}
-        avatar={friend.avatar}
-      />
-    ))
+    yml.friends.map((friend: Friend) =>
+      friend.section ? (
+        <div class="basis-full">
+          <h2 class="my-2 text-center">{friend.name}</h2>
+          {friend.desc && (
+            <p class="text-center secondary-color">
+              <i class="ri-double-quotes-l" />
+              {friend.desc}
+              <i class="ri-double-quotes-r" />
+            </p>
+          )}
+        </div>
+      ) : (
+        <FriendCard
+          name={friend.name}
+          desc={friend.desc}
+          slogan={friend.slogan}
+          url={friend.url}
+          avatar={friend.avatar}
+        />
+      ),
+    )
   }
 </ul>
