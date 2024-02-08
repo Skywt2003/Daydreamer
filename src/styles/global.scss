@@ -51,7 +51,7 @@ html {
 }
 
 .wide-container {
-  @apply mx-auto w-11/12;
+  @apply mx-auto w-10/12;
 }
 
 .primary-color {
@@ -113,7 +113,7 @@ hr {
 
 /* 页面主标题 */
 h1 {
-  @apply text-5xl font-black leading-tight;
+  @apply text-5xl font-black leading-tight drop-shadow-xl;
   @apply primary-color;
 }
 
