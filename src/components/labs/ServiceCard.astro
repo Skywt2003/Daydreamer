@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  app: string;
+  url: string;
+  method: string;
+}
+
+const { name, app, url, method } = Astro.props;
+
+import LinkCard from "../LinkCard.astro";
+---
+
+<LinkCard url={url}>
+  <div class="m-2">
+    <h5 class="primary-color">{name}</h5>
+    <p class="mt-1 secondary-color text-sm">{app}</p>
+  </div>
+</LinkCard>

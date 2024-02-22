@@ -4,10 +4,10 @@ menu:
     url: https://blog.skywt.cn/
   - name: 实验室
     icon: ri-server-line
-    url: https://lab.skywt.cn/
+    url: /lab
   - name: 友人
     icon: ri-contacts-line
     url: /friends
   - name: 关于
     icon: ri-cup-line
-    url: https://blog.skywt.cn/about
+    url: /about

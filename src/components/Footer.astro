@@ -2,41 +2,55 @@
 import CC from "./badges/CC.astro";
 import NotByAI from "./badges/NotByAI.astro";
 import Menu from "./menu/Menu.astro";
+
+interface Props {
+  path: string[];
+}
+
+const { path } = Astro.props;
 ---
 
 <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900">
   <div class="wide-container secondary-color text-sm">
-    <div class="m-4">
-      <Menu showIcon={false} />
+    <div class="m-4 flex justify-between flex-wrap">
+      <div>
+        <a class="link" href="/"> SkyWT</a>
+        {path.map((pathItem) => <span> / {pathItem}</span>)}
+      </div>
+      <div>
+        <Menu showIcon={false} />
+      </div>
     </div>
     <hr />
-    <p class="m-4">
-      &#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
-      <a
-        href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
-        target="_blank"
-        class="link before:content-[url('/mps.png')] before:align-middle"
-      >
-        浙公网安备33080202000472号</a
-      > /
-      <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
-        浙ICP备2021019606号-1
-      </a>
-    </p>
-    <div class="m-4">
-      <CC by={true} nc={true} />
-      <NotByAI />
-      <a
-        href="https://www.foreverblog.cn/"
-        target="_blank"
-        class="inline-block mx-1"
-      >
-        <img
-          src="https://img.foreverblog.cn/logo_en_default.png"
-          alt="Forever Blog Badage"
-          class="inline-block h-4 grayscale"
-        />
-      </a>
+    <div class="m-4 flex justify-between flex-wrap">
+      <p>
+        &#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+        <a
+          href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
+          target="_blank"
+          class="link before:content-[url('/mps.png')] before:align-middle"
+        >
+          浙公网安备33080202000472号</a
+        > /
+        <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+          浙ICP备2021019606号-1
+        </a>
+      </p>
+      <div>
+        <CC by={true} nc={true} />
+        <NotByAI />
+        <a
+          href="https://www.foreverblog.cn/"
+          target="_blank"
+          class="inline-block mx-1"
+        >
+          <img
+            src="https://img.foreverblog.cn/logo_en_default.png"
+            alt="Forever Blog Badage"
+            class="inline-block h-4 grayscale"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </footer>

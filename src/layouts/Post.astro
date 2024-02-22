@@ -1,0 +1,21 @@
+---
+const { frontmatter } = Astro.props;
+
+import Layout from "./Layout.astro";
+---
+
+<Layout
+  title={frontmatter.title}
+  includeHeader={true}
+  path={[frontmatter.title]}
+>
+  <main>
+    <section class="container mt-16">
+      <h1 class="primary-color">{frontmatter.title}</h1>
+      <hr class="my-8" />
+      <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
+        <slot />
+      </article>
+    </section>
+  </main>
+</Layout>

@@ -5,7 +5,10 @@ export default {
     extend: {},
   },
   // darkMode: "class",
-  plugins: [require("tailwindcss-animated")],
+  plugins: [
+    require("tailwindcss-animated"),
+    require("@tailwindcss/typography"),
+  ],
   experimental: {
     applyComplexClasses: true,
   },
