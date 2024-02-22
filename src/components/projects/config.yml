@@ -1,7 +1,7 @@
 projects:
-  - name: Daydream
-    desc: 简洁优雅、功能强大的 Typecho 博客主题。
-    url: Skywt2003/Daydream
+  # - name: Daydream
+  #   desc: 简洁优雅、功能强大的 Typecho 博客主题。
+  #   url: Skywt2003/Daydream
   - name: Writecho
     desc: 一个纯手写的 Typecho 博客主题。
     url: Skywt2003/Writecho

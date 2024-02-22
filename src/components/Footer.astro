@@ -1,47 +1,43 @@
 ---
-import CCBadge from "./CCBadge.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+import CC from "./badges/CC.astro";
+import NotByAI from "./badges/NotByAI.astro";
+import Menu from "./menu/Menu.astro";
 ---
 
-<footer class="container text-center mb-8 secondary-color">
-  <hr class="my-8" />
-  <p class="m-4">
-    &#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a>. Powered
-    by
-    <a href="http://astro.build" target="_blank" class="link">Astro</a>.
-    <!-- <ThemeToggle /> -->
-  </p>
-  <p class="m-4">
-    <a
-      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
-      target="_blank"
-      class="link before:content-[url('/mps.png')] before:align-middle"
-    >
-      浙公网安备33080202000472号</a
-    > /
-    <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
-      浙ICP备2021019606号-1
-    </a>
-  </p>
-  <div class="m-4">
-    <CCBadge />
-    <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1">
-      <img
-        src="/not-by-ai.svg"
-        alt="Not By AI Badge"
-        class="inline-block h-8"
-      />
-    </a>
-    <a
-      href="https://www.foreverblog.cn/"
-      target="_blank"
-      class="inline-block mx-1"
-    >
-      <img
-        src="https://img.foreverblog.cn/logo_en_default.png"
-        alt="Forever Blog Badage"
-        class="inline-block h-6 grayscale"
-      />
-    </a>
+<footer class="py-8 bg-gray-100 dark:bg-neutral-800">
+  <div class="wide-container secondary-color text-sm">
+    <div class="m-4">
+      <Menu showIcon={false} />
+    </div>
+    <hr />
+    <div></div>
+    <p class="m-4">
+      &#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+      <a
+        href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
+        target="_blank"
+        class="link before:content-[url('/mps.png')] before:align-middle"
+      >
+        浙公网安备33080202000472号</a
+      > /
+      <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        浙ICP备2021019606号-1
+      </a>
+    </p>
+    <div class="m-4">
+      <CC by={true} nc={true} />
+      <NotByAI />
+      <a
+        href="https://www.foreverblog.cn/"
+        target="_blank"
+        class="inline-block mx-1"
+      >
+        <img
+          src="https://img.foreverblog.cn/logo_en_default.png"
+          alt="Forever Blog Badage"
+          class="inline-block h-4 grayscale"
+        />
+      </a>
+    </div>
   </div>
 </footer>

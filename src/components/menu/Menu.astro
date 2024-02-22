@@ -1,9 +1,10 @@
 ---
 interface Props {
   includeHome?: boolean;
+  showIcon?: boolean;
 }
 
-const { includeHome = true } = Astro.props;
+const { includeHome = true, showIcon = true } = Astro.props;
 
 interface MenuItem {
   name: string;
@@ -19,7 +20,7 @@ import yml from "./config.yml";
     includeHome && (
       <li>
         <a class="link" href="/">
-          <i class="ri-newspaper-line" />
+          {showIcon && <i class="ri-home-line" />}
           主页
         </a>
       </li>
@@ -29,7 +30,7 @@ import yml from "./config.yml";
     yml.menu.map((item: MenuItem) => (
       <li>
         <a class="link" href={item.url}>
-          <i class={item.icon} />
+          {showIcon && <i class={item.icon} />}
           {item.name}
         </a>
       </li>

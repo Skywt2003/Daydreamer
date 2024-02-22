@@ -2,13 +2,46 @@
 import Menu from "./menu/Menu.astro";
 ---
 
-<header class="container mt-12">
+<header class="mt-12 pb-4 text-center">
   <h1 class="mt-6">SkyWT</h1>
-  <h4 class="mt-4 secondary-color">Subtitle</h4>
+  <h5 class="mt-4 secondary-color">热爱与激情永不止息</h5>
 </header>
 
 <div
-  class="py-4 font-thin tertiary-color sticky top-0 backdrop-blur-md flex justify-center"
+  class="py-4 font-thin tertiary-color sticky top-0 backdrop-blur-md z-10 transition-all"
+  id="navbar-wrapper"
 >
-  <Menu />
+  <div class="wide-container flex justify-center relative">
+    <p id="navbar-brand" class="absolute left-4 font-bold hidden">
+      <a href="/" class="link">SkyWT</a>
+    </p>
+    <!-- <p class="absolute right-4">SkyWT</p> -->
+    <Menu />
+  </div>
 </div>
+
+<script is:inline>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    console.log(entries);
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>
+
+<style lang="scss">
+  .sticked {
+    @apply bg-white bg-opacity-50 dark:bg-neutral-800 dark:bg-opacity-50;
+    @apply shadow-lg;
+
+    #navbar-brand {
+      display: block;
+    }
+  }
+</style>

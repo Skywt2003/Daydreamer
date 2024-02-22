@@ -92,7 +92,44 @@ import Rating from "../components/Rating.astro";
 
     <section class="my-8 bg-gray-100 dark:bg-neutral-900">
       <div class="wide-container">
-        <h2 class="m-6 primary-color">只是为了好玩……</h2>
+        <h2 class="my-6 primary-color text-center">只是为了好玩……</h2>
+        <div class="card m-2 sm:m-6 sm:my-4 p-4 flex flex-wrap justify-between">
+          <div
+            class="basis-full sm:basis-1/2 shrink-0 flex flex-col justify-center p-4"
+          >
+            <h3>✨ Daydream</h3>
+            <p class="mt-4 secondary-color">
+              简洁优雅、功能强大的 Typecho 博客主题。<br />
+              现已支持 PJAX 全站无刷新。<br />
+            </p>
+            <p class="mt-2 secondary-color">
+              <a
+                href="https://github.com/skywt2003/Daydream"
+                class="link"
+                target="_blank"><i class="ri-github-line"></i> GitHub</a
+              > /
+              <a href="https://beta.skywt.cn" class="link" target="_blank"
+                >体验 Demo <i class="ri-external-link-line"></i></a
+              >
+            </p>
+            <div class="mt-4">
+              <GithubButton
+                type="star"
+                target="https://github.com/skywt2003/Daydream"
+              />
+            </div>
+          </div>
+          <img
+            src="/daydream_pc_dark.png"
+            alt="Daydream Theme Screenshot"
+            class="basis-full sm:basis-1/2 w-full sm:w-1/2 rounded-2xl shadow-lg shadow-neutral-900 border-8 border-neutral-900 hidden dark:block"
+          />
+          <img
+            src="/daydream_pc_light.png"
+            alt="Daydream Theme Screenshot"
+            class="basis-full sm:basis-1/2 w-full sm:w-1/2 rounded-2xl shadow-lg shadow-gray-200 border-8 border-gray-200 dark:hidden"
+          />
+        </div>
         <ProjectsCards />
       </div>
     </section>
@@ -123,12 +160,12 @@ import Rating from "../components/Rating.astro";
 
     <section class="container my-8">
       <div class="primary-color">
-        <h2 class="my-6">关于本站</h2>
+        <h2 class="my-6 text-center">关于本站</h2>
         <div class="my-4 p-2 card">
           <p>
             ⚙️
             这个网站目前还在开发测试阶段，只上线了部分功能，并且可能会出现奇怪的
-            bug。
+            bug。<br />博客、友链等其他页面也即将上线。
           </p>
         </div>
         <p class="mt-2">欢迎来到 skywt.cn，这是我在信息汪洋里的一个家。</p>
