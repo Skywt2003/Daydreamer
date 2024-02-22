@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   includeHeader?: boolean;
+  path?: string[];
 }
 
-const { title, includeHeader = true } = Astro.props;
+const { title, includeHeader = true, path = [] } = Astro.props;
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -29,7 +30,7 @@ import "../styles/global.scss";
     />
   </head>
   <body>
-    {includeHeader && <Header />}
+    {includeHeader && <Header path={path} />}
     <slot />
     <Footer />
   </body>
