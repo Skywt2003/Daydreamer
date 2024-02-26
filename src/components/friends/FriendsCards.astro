@@ -17,10 +17,10 @@ interface Friend {
   {
     yml.friends.map((friend: Friend) =>
       friend.section ? (
-        <div class="basis-full">
-          <h2 class="my-2 text-center">{friend.name}</h2>
+        <div class="basis-full mb-4 mx-4">
+          <h3 class="my-2 mt-8">{friend.name}</h3>
           {friend.desc && (
-            <p class="text-center secondary-color">
+            <p class="secondary-color">
               <i class="ri-double-quotes-l" />
               {friend.desc}
               <i class="ri-double-quotes-r" />

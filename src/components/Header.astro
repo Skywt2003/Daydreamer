@@ -1,24 +1,34 @@
 ---
 import Menu from "./menu/Menu.astro";
+
+interface Props {
+  path?: string[];
+}
+
+const { path = [] } = Astro.props;
 ---
 
-<header class="mt-12 pb-4 text-center">
-  <h1 class="mt-6">SkyWT</h1>
-  <h5 class="mt-4 secondary-color">热爱与激情永不止息</h5>
+<header class="mt-12 wide-container">
+  <h5 class="mt-4 mx-4 secondary-color">
+    SkyWT
+    {path.map((pathItem) => <span> / {pathItem}</span>)}
+  </h5>
 </header>
 
-<div
+<nav
   class="py-4 font-thin tertiary-color sticky top-0 backdrop-blur-md z-10 transition-all"
   id="navbar-wrapper"
 >
-  <div class="wide-container flex justify-center relative">
-    <p id="navbar-brand" class="absolute left-4 font-bold hidden">
+  <div class="wide-container flex relative">
+    <div class="mx-4">
+      <Menu />
+    </div>
+    <!-- <p id="navbar-brand" class="absolute left-4 font-bold hidden">
       <a href="/" class="link">SkyWT</a>
-    </p>
+    </p> -->
     <!-- <p class="absolute right-4">SkyWT</p> -->
-    <Menu />
   </div>
-</div>
+</nav>
 
 <script is:inline>
   const headerEl = document.querySelector("#navbar-wrapper");

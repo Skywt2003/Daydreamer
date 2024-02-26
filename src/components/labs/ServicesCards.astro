@@ -1,0 +1,35 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+
+import yml from "./config.yml";
+
+interface Type {
+  name: string;
+  services: Service[];
+}
+
+interface Service {
+  name: string;
+  app: string;
+  url: string;
+  method: string;
+}
+---
+
+{
+  yml.types.map((type: Type) => (
+    <div class="mt-8">
+      <h3>{type.name}</h3>
+      <ul class="flex flex-wrap mt-4">
+        {type.services.map((service: Service) => (
+          <ServiceCard
+            name={service.name}
+            app={service.app}
+            url={service.url}
+            method={service.method}
+          />
+        ))}
+      </ul>
+    </div>
+  ))
+}

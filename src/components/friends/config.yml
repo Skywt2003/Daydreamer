@@ -1,7 +1,7 @@
 friends:
   - name: 🌍 网上邻居
     section: true
-    desc: 天涯若比邻
+    desc: 天涯若比邻。
   - name: fzf404
     desc:
     slogan: 社会主义接班人。
@@ -21,7 +21,7 @@ friends:
     desc: 神奇的网站，有趣的灵魂。
     slogan: 三脚猫多面手，努力学习世界的一切。
     url: https://ayu.land/
-    avatar:
+    avatar: placeholder
   - name: 昼河万里
     desc:
     slogan: 一起去看月亮吧。
@@ -31,12 +31,12 @@ friends:
     desc: 很厉害的何老师。
     slogan: 男大学生，独立开发者，SSC Winner。
     url: https://blog.hzao.top/
-    avatar:
+    avatar: placeholder
   - name: 安擎
     desc:
     slogan: By the power of language.
     url: https://angine.tech/
-    avatar:
+    avatar: placeholder
   - name: 山川行貉
     desc:
     slogan: 快让我在雪地上撒点儿野。
@@ -77,13 +77,10 @@ friends:
     slogan: 一蓑烟雨任平生。
     url: https://easyf12.top/
     avatar: https://bu.dusays.com/2023/12/24/6587c7764111a.webp
-  # - name: Sun
-  #   desc: 「自强不息，厚德载物。」
-  #   url: https://www.iaesun.com/
 
   - name: 🌟 旧友们
     section: true
-    desc: 我们曾经终日游荡，在故乡的青山上
+    desc: 我们曾经终日游荡，在故乡的青山上。
   - name: ZigZagK
     desc: HDU ACMer 学长。
     slogan:
@@ -107,26 +104,21 @@ friends:
     desc: 很强的 ymz 同学。
     slogan: 春宵苦短，少女前进吧！
     url: https://ymzqwq.wordpress.com/
-    avatar:
+    avatar: placeholder
   - name: LLL
     desc: 英姿飒爽霈。
     slogan: 真诚地对待生活，我相信生活也会真诚对我。
     url: https://lll2560660.lofter.com/
     avatar: https://avaimg.lf127.net/img/73a4045fa68755c8/cWVMdzVOVkV6R0E0Zm5sQ1RzWkoxVXo5VTF4RDF2dUNJTzIrR3VnOFpBQT0.jpg?imageView&thumbnail=96x96&quality=90&type=jpg
-  # - name: 杨小花
-  #   desc: 杨小花 🌸～
-  #   slogan:
-  #   url: https://acheing.com/
-  #   avatar:
   - name: CaptainSlow
     desc: 立场坚定斗志强的船长。
     slogan: 做智慧而勤劳的人。
     url: https://capata.top/
-    avatar:
+    avatar: placeholder
 
   - name: 🏫 HNUers
     section: true
-    desc: 大学生活
+    desc: We're happy, free, confused and lonely at the same time.
   - name: B1ue1nWh1te
     desc: 很强的学长。
     slogan: 云卷云舒，处之泰然。
@@ -140,7 +132,7 @@ friends:
     desc:
     slogan: 用这生命中的每一秒，给自己一个不后悔的未来。
     url: https://noionion.top/
-    avatar:
+    avatar: placeholder
   - name: Ripple
     desc:
     slogan: 超高校级的游戏玩家！

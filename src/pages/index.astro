@@ -11,8 +11,8 @@ import Rating from "../components/Rating.astro";
 
 <Layout title="SkyWT" includeHeader={false}>
   <main>
-    <section>
-      <div class="container min-h-screen flex flex-col justify-center">
+    <section class="min-h-screen flex flex-col justify-center">
+      <div class="container">
         <h1 class="drop-shadow-xl primary-color fade-in">
           <span>✨ Passion <br /> Never Fails.</span>
         </h1>
@@ -54,83 +54,73 @@ import Rating from "../components/Rating.astro";
       </div> -->
     </section>
 
-    <hr class="container" />
+    <!-- <hr class="container" /> -->
 
-    <section class="my-8">
+    <section>
       <Bento />
     </section>
 
-    <!-- <section class="py-20 bg-white dark:bg-neutral-800">
-      <h3 class="text-center">这里应该放点什么东西。</h3>
-    </section> -->
+    <!-- <hr class="container" />
 
-    <!-- <section class="my-8 py-20 bg-gray-100 dark:bg-neutral-900">
-      <div class="wide-container text-center">
-        <p class="secondary-color">简洁优雅的 Typecho 博客主题</p>
-        <h2 class="my-4 primary-color">Daydream</h2>
-        <div class="my-8">
-          <GithubButton type="star" target="Skywt2003/Daydream" />
-          <GithubButton type="fork" target="Skywt2003/Daydream" />
-        </div>
-
-        <div class="my-8">
-          <img
-            src="/daydream_pc_light.png"
-            alt="Daydream Typecho Blog Theme Screenshot (Light Mode)"
-            class="shadow-lg rounded-2xl dark:hidden"
-          />
-          <img
-            src="/daydream_pc_dark.png"
-            alt="Daydream Typecho Blog Theme Screenshot (Dark Mode)"
-            class="shadow-lg rounded-2xl shadow-neutral-900 hidden dark:block"
-          />
-        </div>
+    <section>
+      <div class="container">
+        <h2 class="text-center">分享生活</h2>
+        <div class="primary-color flex flex-wrap"></div>
       </div>
     </section> -->
 
     <hr class="container" />
 
-    <section class="my-8 bg-gray-100 dark:bg-neutral-900">
+    <section>
       <div class="wide-container">
-        <h2 class="my-6 primary-color text-center">只是为了好玩……</h2>
-        <div class="card m-2 sm:m-6 sm:my-4 p-4 flex flex-wrap justify-between">
+        <h4 class="secondary-color text-center">
+          <i class="ri-code-s-slash-line"></i> 我的项目集
+        </h4>
+        <h1 class="primary-color leading-normal text-center">
+          独立设计和开发<br />只是为了好玩……
+        </h1>
+        <div class="mt-8">
           <div
-            class="basis-full sm:basis-1/2 shrink-0 flex flex-col justify-center p-4"
+            class="card m-2 sm:m-6 sm:my-4 p-4 flex flex-wrap justify-between"
           >
-            <h3>✨ Daydream</h3>
-            <p class="mt-4 secondary-color">
-              简洁优雅、功能强大的 Typecho 博客主题。<br />
-              现已支持 PJAX 全站无刷新。<br />
-            </p>
-            <p class="mt-2 secondary-color">
-              <a
-                href="https://github.com/skywt2003/Daydream"
-                class="link"
-                target="_blank"><i class="ri-github-line"></i> GitHub</a
-              > /
-              <a href="https://beta.skywt.cn" class="link" target="_blank"
-                >体验 Demo <i class="ri-external-link-line"></i></a
-              >
-            </p>
-            <div class="mt-4">
-              <GithubButton
-                type="star"
-                target="https://github.com/skywt2003/Daydream"
-              />
+            <div
+              class="basis-full sm:basis-1/2 shrink-0 flex flex-col justify-center p-4"
+            >
+              <h3>✨ Daydream</h3>
+              <p class="mt-4 secondary-color">
+                简洁优雅、功能强大的 Typecho 博客主题。<br />
+                现已支持 PJAX 全站无刷新。<br />
+              </p>
+              <p class="mt-2 secondary-color">
+                <a
+                  href="https://github.com/skywt2003/Daydream"
+                  class="link"
+                  target="_blank"><i class="ri-github-line"></i> GitHub</a
+                > /
+                <a href="https://beta.skywt.cn" class="link" target="_blank"
+                  >体验 Demo <i class="ri-external-link-line"></i></a
+                >
+              </p>
+              <div class="mt-4">
+                <GithubButton
+                  type="star"
+                  target="https://github.com/skywt2003/Daydream"
+                />
+              </div>
             </div>
+            <img
+              src="/daydream_pc_dark.png"
+              alt="Daydream Theme Screenshot"
+              class="basis-full sm:basis-1/2 w-full sm:w-1/2 rounded-2xl shadow-lg shadow-neutral-900 border-8 border-neutral-900 hidden dark:block"
+            />
+            <img
+              src="/daydream_pc_light.png"
+              alt="Daydream Theme Screenshot"
+              class="basis-full sm:basis-1/2 w-full sm:w-1/2 rounded-2xl shadow-lg shadow-gray-200 border-8 border-gray-200 dark:hidden"
+            />
           </div>
-          <img
-            src="/daydream_pc_dark.png"
-            alt="Daydream Theme Screenshot"
-            class="basis-full sm:basis-1/2 w-full sm:w-1/2 rounded-2xl shadow-lg shadow-neutral-900 border-8 border-neutral-900 hidden dark:block"
-          />
-          <img
-            src="/daydream_pc_light.png"
-            alt="Daydream Theme Screenshot"
-            class="basis-full sm:basis-1/2 w-full sm:w-1/2 rounded-2xl shadow-lg shadow-gray-200 border-8 border-gray-200 dark:hidden"
-          />
+          <ProjectsCards />
         </div>
-        <ProjectsCards />
       </div>
     </section>
 
@@ -140,52 +130,36 @@ import Rating from "../components/Rating.astro";
     <Friends />
   </section> -->
 
-    <!-- <hr class="container" /> -->
-
-    <!-- <section class="wide-container my-8">
-      <div class="primary-color flex flex-wrap">
-        <div class="basis-full sm:basis-1/2 p-4">
-          <h3 class="text-center">博客文章</h3>
-          <div class="card p-4 mt-4">最新文章</div>
-          <div class="card p-4 mt-4">全部文章</div>
-          <div class="card p-4 mt-4">订阅博客</div>
-        </div>
-        <div class="basis-full sm:basis-1/2 p-4 sm:border-l">
-          <h3 class="text-center">实验室</h3>
-        </div>
-      </div>
-    </section> -->
-
     <hr class="container" />
 
-    <section class="container my-8">
-      <div class="primary-color">
-        <h2 class="my-6 text-center">关于本站</h2>
-        <div class="my-4 p-2 card">
-          <p>
+    <section>
+      <div class="container primary-color">
+        <h2>关于本站</h2>
+        <div class="mt-8 prose dark:prose-neutral dark:prose-invert max-w-none">
+          <p class="card p-2">
             ⚙️
             这个网站目前还在开发测试阶段，只上线了部分功能，并且可能会出现奇怪的
-            bug。<br />博客、友链等其他页面也即将上线。
+            bug。<br />博客、友链等其他页面也即将上线。敬请期待～
           </p>
+          <p>欢迎来到 skywt.cn，这是我在信息汪洋里的一个家。</p>
+          <p>
+            几乎每年，我都会使用新的技术重新设计我的网站。你现在看到的是 2024
+            版。这一版本由 Astro、TypeScript、Tailwind.css 等技术驱动，由
+            ChatGPT、Copilot
+            等协助编写。感谢这些技术让开发体验变得如此优雅和美妙。
+          </p>
+          <p>
+            这个网站的整套程序，命名为 Daydreamer。我将其定义为一个持续开发的
+            playground，之后将会尝试陆续添加各种好玩的功能。
+          </p>
+          <p>
+            从创建至今，这个网站已运行
+            <span id="uptime"></span>
+            <span>。</span>
+          </p>
+          <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> -->
+          <Rating />
         </div>
-        <p class="mt-2">欢迎来到 skywt.cn，这是我在信息汪洋里的一个家。</p>
-        <p class="mt-2">
-          几乎每年，我都会使用新的技术重新设计我的网站。你现在看到的是 2024
-          版。这一版本由 Astro、TypeScript、Tailwind.css 等技术驱动，由
-          ChatGPT、Copilot
-          等协助编写。感谢这些技术让开发体验变得如此优雅和美妙。
-        </p>
-        <p class="mt-2">
-          这个网站的整套程序，命名为 Daydreamer。我将其定义为一个持续开发的
-          playground，之后将会尝试陆续添加各种好玩的功能。
-        </p>
-        <p class="mt-2">
-          从创建至今，这个网站已运行
-          <span id="uptime"></span>
-          <span>。</span>
-        </p>
-        <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> -->
-        <Rating />
       </div>
 
       <script>
@@ -232,6 +206,10 @@ import Rating from "../components/Rating.astro";
     @media (min-width: 375px) {
       @apply hidden;
     }
+  }
+
+  section {
+    @apply py-16;
   }
 
   p {
