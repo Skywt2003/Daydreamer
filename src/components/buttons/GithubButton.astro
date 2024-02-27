@@ -12,7 +12,7 @@ const { type, target } = Astro.props;
     type == "star" && (
       <div id="button-wrapper" class="inline-block">
         <>
-          <a id="btn" href={`https://github.com/${target}`} target="_blank">
+          <a id="btn" href={target} target="_blank">
             <i class="ri-star-line" />
             &nbsp;
             <span>Star</span>
