@@ -1,29 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
 import ServicesCards from "../components/labs/ServicesCards.astro";
+
+import Page from "../layouts/Page.astro";
 ---
 
-<Layout title="Friends" path={["实验室"]}>
-  <main>
-    <section class="mt-8">
-      <div class="bg-white dark:bg-neutral-800 h-[30rem]">
-        <div
-          class="wide-container h-full px-4 flex flex-col justify-center items-center sm:items-start"
-        >
-          <h1 class="my-6">实验室</h1>
-          <!-- <h5 class="secondary-color">SkyWT 实验室。</h5> -->
-        </div>
-      </div>
-      <article class="wide-container">
-        <ServicesCards />
-      </article>
-    </section>
-  </main>
-</Layout>
-
-<style lang="scss" is:global>
-  h2 {
-    @apply my-8;
-  }
-</style>
+<Page
+  title="实验室"
+  heading="生命不息，折腾不止。"
+  caption="我自托管的各种开源服务。"
+>
+  <ServicesCards />
+</Page>

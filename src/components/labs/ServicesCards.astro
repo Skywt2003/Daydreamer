@@ -3,7 +3,7 @@ import ServiceCard from "./ServiceCard.astro";
 
 import yml from "./config.yml";
 
-interface Type {
+interface ServiceType {
   name: string;
   services: Service[];
 }
@@ -17,8 +17,8 @@ interface Service {
 ---
 
 {
-  yml.types.map((type: Type) => (
-    <div class="mt-8">
+  yml.types.map((type: ServiceType) => (
+    <div class="mt-16">
       <h3>{type.name}</h3>
       <ul class="flex flex-wrap mt-4">
         {type.services.map((service: Service) => (

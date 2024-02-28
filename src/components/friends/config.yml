@@ -1,160 +1,154 @@
-friends:
+types:
   - name: 🌍 网上邻居
-    section: true
     desc: 天涯若比邻。
-  - name: fzf404
-    desc:
-    slogan: 社会主义接班人。
-    url: https://www.fzf404.art/
-    avatar: https://img.fzf404.art/avatar.webp
-  - name: 甘小蔗
-    desc:
-    slogan: Ganxiaozhe's Values.
-    url: https://gxzv.com/
-    avatar: https://gxzv.com/lib/img/me/avatar.jpg
-  - name: 枝因
-    desc:
-    slogan: Oh god, these stars.
-    url: https://viyi.cc/
-    avatar: https://viyi.cc/images/icon.png
-  - name: Ayu
-    desc: 神奇的网站，有趣的灵魂。
-    slogan: 三脚猫多面手，努力学习世界的一切。
-    url: https://ayu.land/
-    avatar: placeholder
-  - name: 昼河万里
-    desc:
-    slogan: 一起去看月亮吧。
-    url: https://tothemoonriver.icu/
-    avatar: https://tothemoonriver.icu/img/avatar_hu1f7fd3bb10d1d6e480fe680f98f799d1_738451_300x0_resize_box_3.png
-  - name: Hzao
-    desc: 很厉害的何老师。
-    slogan: 男大学生，独立开发者，SSC Winner。
-    url: https://blog.hzao.top/
-    avatar: placeholder
-  - name: 安擎
-    desc:
-    slogan: By the power of language.
-    url: https://angine.tech/
-    avatar: https://avatars.githubusercontent.com/u/77579735
-  - name: 山川行貉
-    desc:
-    slogan: 快让我在雪地上撒点儿野。
-    url: https://www.scxho.cn/
-    avatar: https://cravatar.cn/avatar/24e54d6a6ac9c59d9d5ee44c825b8c0a?&d=mm&s=200
-  - name: 明石
-    desc:
-    slogan: 青春无悔热爱。
-    url: https://imakashi.eu.org/
-    avatar: https://imakashi.eu.org/asset/overall/img/headicon.webp
-  - name: Leo's
-    desc: 同为 INFJ。
-    slogan: THIS IS MY STORY.
-    url: https://www.isolitude.cn/
-    avatar: https://pic.isolitude.cn/2022/01/28/683727a137bb0.png
-  - name: 张哄 Heo
-    desc: 极具设计感的网站。
-    slogan: 分享设计与科技生活。
-    url: https://blog.zhheo.com/
-    avatar: https://zhheo.com/img/icon.webp
-  - name: idealclover
-    desc:
-    slogan: Stay simple, stay naive.
-    url: https://idealclover.top/
-    avatar: https://cdn.idealclover.cn/Projects/homepage/icon.png
-  - name: 折影轻梦
-    desc:
-    slogan: 纯粹、热爱、勇敢。
-    url: https://nexmoe.com/
-    avatar: https://nexmoe.com/
-  - name: widcardw
-    desc:
-    slogan: 不是多面手。
-    url: https://widcard.win/
-    avatar: https://avatars.githubusercontent.com/u/55699713?v=4
-  - name: 一蓑烟雨
-    desc:
-    slogan: 一蓑烟雨任平生。
-    url: https://easyf12.top/
-    avatar: https://bu.dusays.com/2023/12/24/6587c7764111a.webp
-
+    friends:
+      - name: fzf404
+        desc:
+        slogan: 社会主义接班人。
+        url: https://www.fzf404.art/
+        avatar: https://img.fzf404.art/avatar.webp
+      - name: 甘小蔗
+        desc:
+        slogan: Ganxiaozhe's Values.
+        url: https://gxzv.com/
+        avatar: https://gxzv.com/lib/img/me/avatar.jpg
+      - name: 枝因
+        desc:
+        slogan: Oh god, these stars.
+        url: https://viyi.cc/
+        avatar: https://viyi.cc/images/icon.png
+      - name: Ayu
+        desc: 神奇的网站，有趣的灵魂。
+        slogan: 三脚猫多面手，努力学习世界的一切。
+        url: https://ayu.land/
+        avatar: placeholder
+      - name: 昼河万里
+        desc:
+        slogan: 一起去看月亮吧。
+        url: https://tothemoonriver.icu/
+        avatar: https://tothemoonriver.icu/img/avatar_hu1f7fd3bb10d1d6e480fe680f98f799d1_738451_300x0_resize_box_3.png
+      - name: Hzao
+        desc: 很厉害的何老师。
+        slogan: 男大学生，独立开发者，SSC Winner。
+        url: https://blog.hzao.top/
+        avatar: placeholder
+      - name: 安擎
+        desc:
+        slogan: By the power of language.
+        url: https://angine.tech/
+        avatar: https://avatars.githubusercontent.com/u/77579735
+      - name: 山川行貉
+        desc:
+        slogan: 快让我在雪地上撒点儿野。
+        url: https://www.scxho.cn/
+        avatar: https://cravatar.cn/avatar/24e54d6a6ac9c59d9d5ee44c825b8c0a?&d=mm&s=200
+      - name: 明石
+        desc:
+        slogan: 青春无悔热爱。
+        url: https://imakashi.eu.org/
+        avatar: https://imakashi.eu.org/asset/overall/img/headicon.webp
+      - name: Leo's
+        desc: 同为 INFJ。
+        slogan: THIS IS MY STORY.
+        url: https://www.isolitude.cn/
+        avatar: https://pic.isolitude.cn/2022/01/28/683727a137bb0.png
+      - name: 张哄 Heo
+        desc: 极具设计感的网站。
+        slogan: 分享设计与科技生活。
+        url: https://blog.zhheo.com/
+        avatar: https://zhheo.com/img/icon.webp
+      - name: idealclover
+        desc:
+        slogan: Stay simple, stay naive.
+        url: https://idealclover.top/
+        avatar: https://cdn.idealclover.cn/Projects/homepage/icon.png
+      - name: 折影轻梦
+        desc:
+        slogan: 纯粹、热爱、勇敢。
+        url: https://nexmoe.com/
+        avatar: https://nexmoe.com/
+      - name: widcardw
+        desc:
+        slogan: 不是多面手。
+        url: https://widcard.win/
+        avatar: https://avatars.githubusercontent.com/u/55699713?v=4
+      - name: 一蓑烟雨
+        desc:
+        slogan: 一蓑烟雨任平生。
+        url: https://easyf12.top/
+        avatar: https://bu.dusays.com/2023/12/24/6587c7764111a.webp
   - name: 🌟 旧友们
-    section: true
     desc: 我们曾经终日游荡，在故乡的青山上。
-  - name: ZigZagK
-    desc: HDU ACMer 学长。
-    slogan:
-    url: https://zigzagk.top/
-    avatar: https://zigzagk.top/usr/uploads/2018/07/176242131.png
-  - name: Vexoben
-    desc: 温柔可爱的二马同学。
-    slogan: 悠然心会，妙处难与君说。
-    url: https://vexoben.lofter.com/
-    avatar: https://avaimg.lf127.net/img/SUtyQ05welkyZlJXM2FmMCtZVDNTaE5LcUhvRURVSkgvVXJoMTdvd0pNYzBLVzFDWno3RkhBPT0.jpg?imageView&thumbnail=64x64&quality=90&type=jpg
-  - name: SCl
-    desc: 文字触动人心的「状元」同学。
-    slogan: 想把我说给你听。
-    url: https://aferaferafer.lofter.com/
-    avatar: https://avaimg.lf127.net/img/L3hNTUkwa3F4bkNxMkhucUJYVzBtb25SVkhIcjRydU9UQm5BMzNZY2F6bEcvKzBieVdLZUhBPT0.jpg?imageView&thumbnail=128x128&quality=90&type=jpg
-  # - name: StarlightXXY
-  #   desc: 很优秀的小胡同学。
-  #   slogan:
-  #   url: https://starlightxyy.cn
-  - name: ymzqwq
-    desc: 很强的 ymz 同学。
-    slogan: 春宵苦短，少女前进吧！
-    url: https://ymzqwq.wordpress.com/
-    avatar: placeholder
-  - name: LLL
-    desc: 英姿飒爽霈。
-    slogan: 真诚地对待生活，我相信生活也会真诚对我。
-    url: https://lll2560660.lofter.com/
-    avatar: https://avaimg.lf127.net/img/73a4045fa68755c8/cWVMdzVOVkV6R0E0Zm5sQ1RzWkoxVXo5VTF4RDF2dUNJTzIrR3VnOFpBQT0.jpg?imageView&thumbnail=96x96&quality=90&type=jpg
-  - name: CaptainSlow
-    desc: 立场坚定斗志强的船长。
-    slogan: 做智慧而勤劳的人。
-    url: https://capata.top/
-    avatar: placeholder
-
+    friends:
+      - name: ZigZagK
+        desc: HDU ACMer 学长。
+        slogan:
+        url: https://zigzagk.top/
+        avatar: https://zigzagk.top/usr/uploads/2018/07/176242131.png
+      - name: Vexoben
+        desc: 温柔可爱的二马同学。
+        slogan: 悠然心会，妙处难与君说。
+        url: https://vexoben.lofter.com/
+        avatar: https://avaimg.lf127.net/img/SUtyQ05welkyZlJXM2FmMCtZVDNTaE5LcUhvRURVSkgvVXJoMTdvd0pNYzBLVzFDWno3RkhBPT0.jpg?imageView&thumbnail=64x64&quality=90&type=jpg
+      - name: SCl
+        desc: 文字触动人心的「状元」同学。
+        slogan: 想把我说给你听。
+        url: https://aferaferafer.lofter.com/
+        avatar: https://avaimg.lf127.net/img/L3hNTUkwa3F4bkNxMkhucUJYVzBtb25SVkhIcjRydU9UQm5BMzNZY2F6bEcvKzBieVdLZUhBPT0.jpg?imageView&thumbnail=128x128&quality=90&type=jpg
+      - name: ymzqwq
+        desc: 很强的 ymz 同学。
+        slogan: 春宵苦短，少女前进吧！
+        url: https://ymzqwq.wordpress.com/
+        avatar: placeholder
+      - name: LLL
+        desc: 英姿飒爽霈。
+        slogan: 真诚地对待生活，我相信生活也会真诚对我。
+        url: https://lll2560660.lofter.com/
+        avatar: https://avaimg.lf127.net/img/73a4045fa68755c8/cWVMdzVOVkV6R0E0Zm5sQ1RzWkoxVXo5VTF4RDF2dUNJTzIrR3VnOFpBQT0.jpg?imageView&thumbnail=96x96&quality=90&type=jpg
+      - name: CaptainSlow
+        desc: 立场坚定斗志强的船长。
+        slogan: 做智慧而勤劳的人。
+        url: https://capata.top/
+        avatar: placeholder
   - name: 🏫 HNUers
-    section: true
     desc: We're happy, free, confused and lonely at the same time.
-  - name: B1ue1nWh1te
-    desc: 很强的学长。
-    slogan: 云卷云舒，处之泰然。
-    url: https://www.seaeye.cn/
-    avatar: https://img.seaeye.cn/img/seaeye/portrait.jpg
-  # - name: BKCat
-  #   desc: 小苏班长。「成年人要学会做自己的事情。」
-  #   url: https://bkcat.cn/
-  #   avatar:
-  - name: 贰猹的小窝
-    desc:
-    slogan: 用这生命中的每一秒，给自己一个不后悔的未来。
-    url: https://noionion.top/
-    avatar: placeholder
-  - name: Ripple
-    desc:
-    slogan: 超高校级的游戏玩家！
-    url: https://hiripple.com/
-    avatar: https://ripple.eu.org/Ripplelog-icon.png
-  - name: CYP0633
-    desc:
-    slogan: 我们都曾是海滩上玩沙堡的孩子。现在仍是，只不过不在海滩上罢了。
-    url: https://cyp0633.icu/
-    avatar: https://cyp0633-public-resource.oss-cn-qingdao.aliyuncs.com/blog/cyp0633-icon.jpg
-  - name: WuJean
-    desc:
-    slogan: 岳麓山下你和我。
-    url: https://wujean.github.io/
-    avatar: https://wujean.github.io/img/avatar.png
-  - name: Mufanc
-    desc:
-    slogan: 星河璀璨，凡尘点点。
-    url: https://blog.mufanc.xyz/
-    avatar: https://blog.mufanc.xyz/assets/images/avatar.jpeg
-  - name: Ekennis
-    desc:
-    slogan: Ekke の Space.
-    url: https://noobzyk.top/
-    avatar: https://ekkepic.oss-cn-beijing.aliyuncs.com/img/20210701163204.png
+    friends:
+      - name: B1ue1nWh1te
+        desc: 很强的学长。
+        slogan: 云卷云舒，处之泰然。
+        url: https://www.seaeye.cn/
+        avatar: https://img.seaeye.cn/img/seaeye/portrait.jpg
+      # - name: BKCat
+      #   desc: 小苏班长。「成年人要学会做自己的事情。」
+      #   url: https://bkcat.cn/
+      #   avatar:
+      - name: 贰猹的小窝
+        desc:
+        slogan: 用这生命中的每一秒，给自己一个不后悔的未来。
+        url: https://noionion.top/
+        avatar: placeholder
+      - name: Ripple
+        desc:
+        slogan: 超高校级的游戏玩家！
+        url: https://hiripple.com/
+        avatar: https://ripple.eu.org/Ripplelog-icon.png
+      - name: CYP0633
+        desc:
+        slogan: 我们都曾是海滩上玩沙堡的孩子。现在仍是，只不过不在海滩上罢了。
+        url: https://cyp0633.icu/
+        avatar: https://cyp0633-public-resource.oss-cn-qingdao.aliyuncs.com/blog/cyp0633-icon.jpg
+      - name: WuJean
+        desc:
+        slogan: 岳麓山下你和我。
+        url: https://wujean.github.io/
+        avatar: https://wujean.github.io/img/avatar.png
+      - name: Mufanc
+        desc:
+        slogan: 星河璀璨，凡尘点点。
+        url: https://blog.mufanc.xyz/
+        avatar: https://blog.mufanc.xyz/assets/images/avatar.jpeg
+      - name: Ekennis
+        desc:
+        slogan: Ekke の Space.
+        url: https://noobzyk.top/
+        avatar: https://ekkepic.oss-cn-beijing.aliyuncs.com/img/20210701163204.png

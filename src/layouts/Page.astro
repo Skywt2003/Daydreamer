@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import ServicesCards from "../components/labs/ServicesCards.astro";
+
+interface Props {
+  title: string;
+  heading: string;
+  caption: string;
+}
+
+const { title, heading, caption } = Astro.props;
+---
+
+<Layout title={title} path={[title]}>
+  <main>
+    <section class="mt-8">
+      <div class="bg-white dark:bg-neutral-800 h-[30rem]">
+        <div
+          class="wide-container h-full px-4 flex flex-col justify-center items-center sm:items-start"
+        >
+          <h1 class="mt-4">{heading}</h1>
+          <h5 class="mt-4 secondary-color">{caption}</h5>
+        </div>
+      </div>
+      <div class="wide-container">
+        <slot />
+      </div>
+    </section>
+  </main>
+</Layout>

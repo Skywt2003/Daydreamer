@@ -1,22 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import FriendsCards from "../components/friends/FriendsCards.astro";
+
+import Page from "../layouts/Page.astro";
 ---
 
-<Layout title="Friends" path={["友人"]}>
-  <main>
-    <section class="mt-8">
-      <div class="bg-white dark:bg-neutral-800 h-[30rem]">
-        <div
-          class="wide-container h-full px-4 flex flex-col justify-center items-center sm:items-start"
-        >
-          <h1 class="mt-4">友谊地久天长。</h1>
-          <h5 class="mt-4 secondary-color">SkyWT 的朋友们。</h5>
-        </div>
-      </div>
-      <div class="wide-container">
-        <FriendsCards />
-      </div>
-    </section>
-  </main>
-</Layout>
+<Page title="友人" heading="友谊地久天长。" caption="SkyWT 的朋友们。">
+  <FriendsCards />
+</Page>

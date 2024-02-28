@@ -3,6 +3,12 @@ import FriendCard from "./FriendCard.astro";
 
 import yml from "./config.yml";
 
+interface FriendType {
+  name: string;
+  desc: string;
+  friends: [Friend];
+}
+
 interface Friend {
   name: string;
   section?: boolean;
@@ -13,29 +19,28 @@ interface Friend {
 }
 ---
 
-<ul class="flex flex-wrap mt-4">
-  {
-    yml.friends.map((friend: Friend) =>
-      friend.section ? (
-        <div class="basis-full mb-4 mx-4">
-          <h3 class="my-2 mt-8">{friend.name}</h3>
-          {friend.desc && (
-            <p class="secondary-color">
-              <i class="ri-double-quotes-l" />
-              {friend.desc}
-              <i class="ri-double-quotes-r" />
-            </p>
-          )}
-        </div>
-      ) : (
-        <FriendCard
-          name={friend.name}
-          desc={friend.desc}
-          slogan={friend.slogan}
-          url={friend.url}
-          avatar={friend.avatar}
-        />
-      ),
-    )
-  }
-</ul>
+{
+  yml.types.map((type: FriendType) => (
+    <div class="mt-16">
+      <h3>{type.name}</h3>
+      {type.desc && (
+        <p class="secondary-color mt-2">
+          <i class="ri-double-quotes-l" />
+          {type.desc}
+          <i class="ri-double-quotes-r" />
+        </p>
+      )}
+      <ul class="flex flex-wrap mt-4">
+        {type.friends.map((friend: Friend) => (
+          <FriendCard
+            name={friend.name}
+            desc={friend.desc}
+            slogan={friend.slogan}
+            url={friend.url}
+            avatar={friend.avatar}
+          />
+        ))}
+      </ul>
+    </div>
+  ))
+}

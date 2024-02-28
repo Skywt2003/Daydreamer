@@ -8,7 +8,7 @@ types:
       - name: Whisper
         app: WordPress
         url: https://whisper.skywt.cn
-        method: Docker
+        method: Docker 🚧
       - name: Write
         app: Typecho
         url: https://write.skywt.cn
@@ -21,8 +21,24 @@ types:
         app: Snapdrop
         url: https://drop.skywt.cn
         method: Docker
+      - name: CV
+        app: WebCV
+        url: https://cv.skywt.cn
+        method: Vercel
   - name: 开发与工具
     services:
+      - name: Git
+        app: Gitea
+        url: https://git.skywt.cn
+        method: Docker
+      - name: Code
+        app: Code-server
+        url: https://code.skywt.cn
+        method: Docker
+      - name: Password
+        app: VaultWarden
+        url: https://pass.skywt.cn
+        method: Docker
       - name: Memos
         app: memos
         url: https://memos.skywt.cn
@@ -30,7 +46,7 @@ types:
       - name: ChatGPT
         app: Better ChatGPT
         url: https://chat.skywt.cn
-        method: Docker
+        method: Vercel
       - name: Docs
         app: Outline
         url: https://docs.skywt.cn
@@ -38,18 +54,6 @@ types:
       - name: Papers
         app: Paperless-ngx
         url: https://paper.skywt.cn
-        method: Docker
-      - name: Code
-        app: Code-server
-        url: https://code.skywt.cn
-        method: Docker
-      - name: Git
-        app: Gitea
-        url: https://git.skywt.cn
-        method: Docker
-      - name: Minecraft
-        app: Minecraft Server
-        url:
         method: Docker
       - name: RSS
         app: FreshRSS
@@ -67,10 +71,6 @@ types:
         app: ArchiveBox
         url: https://archive.skywt.cn
         method: Docker
-      - name: Password
-        app: VaultWarden
-        url: https://pass.skywt.cn
-        method: Docker
       - name: Analytics
         app: Matomo
         url: https://analytics.skywt.cn
@@ -87,6 +87,10 @@ types:
         app: Headscale
         url: https://vpn.skywt.cn
         method: Docker
+      - name: Minecraft
+        app: Minecraft Server
+        url:
+        method: Docker 💤
   - name: 文件存储
     services:
       - name: Cloud
@@ -101,7 +105,7 @@ types:
         app: WebDAV
         url: https://webdav.skywt.cn
         method: Docker
-      - name: ObS
+      - name: Object Storage
         app: MinIO
         url: https://os.skywt.cn
         method: Docker
@@ -114,7 +118,7 @@ types:
       - name: pgAdmin
         app: pgAdmin
         url: https://pgadmin.skywt.cn
-        method: Docker
+        method: Docker 💤
       - name: phpMyAdmin
         app: phpMyAdmin
         url: https://phpmyadmin.skywt.cn
@@ -126,7 +130,7 @@ types:
       - name: Status
         app: Netdata
         url: https://status.skywt.cn
-        method: Docker
+        method: Systemd
       - name: Dashboard
         app: Grafana
         url: https://dash.skywt.cn

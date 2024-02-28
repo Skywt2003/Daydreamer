@@ -51,7 +51,7 @@ html {
 }
 
 .wide-container {
-  @apply mx-auto w-10/12;
+  @apply mx-auto w-11/12 sm:w-10/12;
 }
 
 .primary-color {
