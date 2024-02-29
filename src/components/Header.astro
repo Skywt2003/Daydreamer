@@ -9,24 +9,24 @@ const { path = [] } = Astro.props;
 ---
 
 <header class="mt-12 wide-container">
-  <h5 class="mt-4 mx-4 secondary-color">
+  <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center">
     SkyWT
     {path.map((pathItem) => <span> / {pathItem}</span>)}
   </h5>
 </header>
 
 <nav
-  class="py-4 font-thin tertiary-color sticky top-0 backdrop-blur-md z-10 transition-all"
+  class="py-4 font-thin sticky top-0 backdrop-blur-md z-10 transition-all"
   id="navbar-wrapper"
 >
-  <div class="wide-container flex relative">
-    <div class="mx-4">
+  <div class="wide-container flex justify-center sm:justify-between flex-wrap">
+    <h5 class="mx-2 hidden sm:block secondary-color">
+      <a href="/" class="link">SkyWT</a>
+      {path.map((pathItem) => <span> / {pathItem}</span>)}
+    </h5>
+    <div class="mx-2 secondary-color">
       <Menu />
     </div>
-    <!-- <p id="navbar-brand" class="absolute left-4 font-bold hidden">
-      <a href="/" class="link">SkyWT</a>
-    </p> -->
-    <!-- <p class="absolute right-4">SkyWT</p> -->
   </div>
 </nav>
 
@@ -49,9 +49,5 @@ const { path = [] } = Astro.props;
   .sticked {
     @apply bg-white bg-opacity-50 dark:bg-neutral-800 dark:bg-opacity-50;
     @apply shadow-lg;
-
-    #navbar-brand {
-      display: block;
-    }
   }
 </style>
