@@ -13,6 +13,7 @@ interface Service {
   app: string;
   url: string;
   method: string;
+  status?: string;
 }
 ---
 
@@ -27,6 +28,7 @@ interface Service {
             app={service.app}
             url={service.url}
             method={service.method}
+            status={service.status}
           />
         ))}
       </ul>

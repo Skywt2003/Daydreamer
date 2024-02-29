@@ -1,10 +1,10 @@
 types:
-  - name: 公共服务
+  - name: 🌟 公共服务
     services:
       - name: Blog
         app: Typecho
         url: https://blog.skywt.cn
-        method: Docker
+        method: Docker, Upyun
       - name: Whisper
         app: WordPress
         url: https://whisper.skywt.cn
@@ -12,7 +12,7 @@ types:
       - name: Write
         app: Typecho
         url: https://write.skywt.cn
-        method: Docker
+        method: Docker, Upyun
       - name: Books
         app: Calibre-web
         url: https://books.skywt.cn
@@ -25,7 +25,7 @@ types:
         app: WebCV
         url: https://cv.skywt.cn
         method: Vercel
-  - name: 开发与工具
+  - name: 👨‍💻 开发与工具
     services:
       - name: Git
         app: Gitea
@@ -51,10 +51,10 @@ types:
         app: Outline
         url: https://docs.skywt.cn
         method: Docker
-      - name: Papers
-        app: Paperless-ngx
-        url: https://paper.skywt.cn
-        method: Docker
+      # - name: Papers
+      #   app: Paperless-ngx
+      #   url: https://paper.skywt.cn
+      #   method: Docker
       - name: RSS
         app: FreshRSS
         url: https://rss.skywt.cn
@@ -91,7 +91,8 @@ types:
         app: Minecraft Server
         url:
         method: Docker 💤
-  - name: 文件存储
+        status: stopped
+  - name: 🗃️ 文件存储
     services:
       - name: Cloud
         app: Nextcloud
@@ -109,7 +110,7 @@ types:
         app: MinIO
         url: https://os.skywt.cn
         method: Docker
-  - name: 管理工具
+  - name: ⚙️ 管理工具
     services:
       - name: Console
         app: Cockpit
@@ -119,6 +120,7 @@ types:
         app: pgAdmin
         url: https://pgadmin.skywt.cn
         method: Docker 💤
+        status: stopped
       - name: phpMyAdmin
         app: phpMyAdmin
         url: https://phpmyadmin.skywt.cn
