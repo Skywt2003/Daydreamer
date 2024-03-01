@@ -16,15 +16,15 @@ const { path = [] } = Astro.props;
 </header>
 
 <nav
-  class="py-4 font-thin sticky top-0 backdrop-blur-md z-10 transition-all"
+  class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all"
   id="navbar-wrapper"
 >
   <div class="wide-container flex justify-center sm:justify-between flex-wrap">
-    <h5 class="mx-2 hidden sm:block secondary-color">
+    <h5 class="m-2 hidden sm:block secondary-color">
       <a href="/" class="link">SkyWT</a>
       {path.map((pathItem) => <span> / {pathItem}</span>)}
     </h5>
-    <div class="mx-2 secondary-color">
+    <div class="m-2 secondary-color">
       <Menu />
     </div>
   </div>
@@ -34,7 +34,6 @@ const { path = [] } = Astro.props;
   const headerEl = document.querySelector("#navbar-wrapper");
   const sentinalEl = document.querySelector("header");
   const handler = (entries) => {
-    console.log(entries);
     if (!entries[0].isIntersecting) {
       headerEl.classList.add("sticked");
     } else {

@@ -1,7 +1,7 @@
 menu:
   - name: 博客
     icon: ri-newspaper-line
-    url: https://blog.skywt.cn/
+    url: /blog
   - name: 实验室
     icon: ri-server-line
     url: /lab

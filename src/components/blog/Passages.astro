@@ -1,0 +1,46 @@
+---
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+
+import { marked } from "marked";
+---
+
+{
+  posts.map((post: Post) => (
+    <>
+      <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
+        {post.fields.headPic.value && (
+          <img src={post.fields.headPic.value} alt={post.title} />
+        )}
+        <a href={"/blog/" + post.slug} class="no-underline link">
+          <h1>{post.title}</h1>
+        </a>
+        <p set:html={marked.parse(post.digest)} />
+        <a href={"/blog/" + post.slug} class="no-underline link">
+          阅读更多
+        </a>
+      </article>
+      <hr class="my-8" />
+    </>
+  ))
+}
+
+<style lang="scss">
+  .link {
+    @apply transition-all;
+    &:hover {
+      @apply underline;
+    }
+  }
+
+  img {
+    @apply shadow-lg rounded;
+  }
+
+  h1 {
+    @apply leading-normal;
+  }
+</style>

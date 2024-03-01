@@ -1,0 +1,106 @@
+---
+export async function getStaticPaths() {
+  const url = new URL("https://blog.skywt.cn/api/posts");
+  url.search = new URLSearchParams({
+    page: "1",
+    pageSize: "10000",
+    showDigest: "more",
+    showContent: "false",
+  }).toString();
+  const response = await fetch(url);
+  const data = await response.json();
+  const posts = data.data.dataSet;
+
+  let ret: {
+    params: {
+      slug: string;
+    };
+  }[] = [];
+  posts.map((post: Post) => {
+    ret.push({
+      params: {
+        slug: post.slug,
+      },
+    });
+  });
+  return ret;
+}
+
+const { slug } = Astro.params;
+
+const url = new URL("https://blog.skywt.cn/api/post");
+url.search = new URLSearchParams({
+  slug: slug,
+}).toString();
+const response = await fetch(url);
+const data = await response.json();
+const post = data.data;
+
+if (post.fields.linkTo.value) {
+  return Astro.redirect(post.fields.linkTo.value);
+}
+
+import Layout from "../../layouts/Layout.astro";
+import Comments from "../../components/blog/Comments.astro";
+---
+
+<Layout title={post.title} includeHeader={true} path={["博客", post.title]}>
+  <main>
+    <section class="container mt-32">
+      {
+        post.fields.headPic.value && (
+          <img src={post.fields.headPic.value} alt={post.title} class="mb-8" />
+        )
+      }
+      <h1 class="primary-color leading-relaxed">{post.title}</h1>
+      <p class="mt-4 secondary-color leading-relaxed">
+        <i class="ri-calendar-line"></i>
+        <span>{post.date.year} 年 {post.date.month} 月 {post.date.day} 日</span>
+        {
+          post.fields.pubPlace.value && (
+            <>
+              <br />
+              <i class="ri-map-pin-line" />
+              <span>{post.fields.pubPlace.value}</span>
+            </>
+          )
+        }
+        {
+          post.commentsNum && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        }
+      </p>
+
+      <hr class="my-8" />
+      <p class="card p-2 my-8">
+        ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a
+          href={post.permalink}
+          class="link underline">原博客的这篇文章</a
+        >。
+      </p>
+
+      <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
+        <Fragment set:html={post.text} />
+      </article>
+
+      <hr class="my-8" />
+
+      <Comments
+        slug={slug}
+        commentsNum={post.commentsNum}
+        permalink={post.permalink}
+      />
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+  img {
+    @apply shadow-lg rounded;
+  }
+</style>

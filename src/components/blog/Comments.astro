@@ -1,0 +1,42 @@
+---
+interface Props {
+  slug: string;
+  commentsNum: number;
+  permalink: string;
+}
+
+const { slug, commentsNum, permalink } = Astro.props;
+
+const url = new URL("https://blog.skywt.cn/api/comments");
+url.search = new URLSearchParams({
+  page: "1",
+  pageSize: "100",
+  order: "desc",
+  slug: slug,
+}).toString();
+const response = await fetch(url);
+const data = await response.json();
+const comments = data.data.dataSet;
+
+import Comment from "./Comment.astro";
+---
+
+<h2>
+  <i class="ri-discuss-line"></i>
+  {commentsNum ? "共 " + commentsNum + " 条评论" : "暂无评论"}
+</h2>
+
+{comments.map((comment: Comment) => <Comment commentObj={comment} level={0} />)}
+
+<hr class="my-8" />
+
+<h2>
+  <i class="ri-discuss-line"></i>
+  发表评论
+</h2>
+<p class="primary-color card my-4 p-2">
+  🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a
+    href={permalink}
+    class="link underline">原博客的这篇文章</a
+  >底部评论区发表评论。
+</p>

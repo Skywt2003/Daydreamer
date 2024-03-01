@@ -12,4 +12,7 @@ export default defineConfig({
   vite: {
     plugins: [yaml()],
   },
+  redirects: {
+    "/blog/1": "/blog",
+  },
 });

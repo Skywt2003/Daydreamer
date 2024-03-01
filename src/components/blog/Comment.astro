@@ -1,0 +1,49 @@
+---
+interface Props {
+  commentObj: Comment;
+  level: number;
+}
+
+const { commentObj, level } = Astro.props;
+
+const avatarUrl = "https://gravatar.com/avatar/" + commentObj.mailHash;
+
+// 引用自身，用于嵌套评论
+import { default as CommentCopy } from "./Comment.astro";
+
+function formatTimestamp(timestamp: number) {
+  const date = new Date(timestamp * 1000);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${year} 年 ${month} 月 ${day} 日 ${hours}:${minutes}`;
+}
+---
+
+<div class="primary-color my-4">
+  <div class="flex items-center">
+    <img src={avatarUrl} class="rounded-full w-12 mr-2" />
+    <div class="m-2">
+      {
+        commentObj.url ? (
+          <a href={commentObj.url} class="link" target="_blank">
+            <h4>{commentObj.author}</h4>
+          </a>
+        ) : (
+          <h4>{commentObj.author}</h4>
+        )
+      }
+      <p class="mt-1">{formatTimestamp(commentObj.created)}</p>
+    </div>
+  </div>
+  <p class="mt-2">{commentObj.text}</p>
+  <div class="ml-8">
+    {
+      commentObj.children.map((child: Comment) => (
+        <CommentCopy commentObj={child} level={level + 1} />
+      ))
+    }
+  </div>
+</div>
