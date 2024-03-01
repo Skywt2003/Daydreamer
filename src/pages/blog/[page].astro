@@ -1,5 +1,7 @@
 ---
-export async function getStaticPaths({ paginate }) {
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
   const url = new URL("https://blog.skywt.cn/api/posts");
   url.search = new URLSearchParams({
     page: "1",
@@ -12,7 +14,9 @@ export async function getStaticPaths({ paginate }) {
   const posts = data.data.dataSet;
 
   return paginate(posts, { pageSize: 10 });
-}
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page } = Astro.props;
 
