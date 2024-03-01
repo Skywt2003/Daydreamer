@@ -12,7 +12,7 @@ import { marked } from "marked";
   posts.map((post: Post) => (
     <>
       <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
-        {post.fields.headPic.value && (
+        {post.fields.headPic && post.fields.headPic.value && (
           <img src={post.fields.headPic.value} alt={post.title} />
         )}
         <a href={"/blog/" + post.slug} class="no-underline link">

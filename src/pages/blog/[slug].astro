@@ -36,7 +36,7 @@ const response = await fetch(url);
 const data = await response.json();
 const post = data.data;
 
-if (post.fields.linkTo.value) {
+if (post.fields.linkTo && post.fields.linkTo.value) {
   return Astro.redirect(post.fields.linkTo.value);
 }
 
@@ -48,7 +48,7 @@ import Comments from "../../components/blog/Comments.astro";
   <main>
     <section class="container mt-32">
       {
-        post.fields.headPic.value && (
+        post.fields.headPic && post.fields.headPic.value && (
           <img src={post.fields.headPic.value} alt={post.title} class="mb-8" />
         )
       }
@@ -57,7 +57,7 @@ import Comments from "../../components/blog/Comments.astro";
         <i class="ri-calendar-line"></i>
         <span>{post.date.year} 年 {post.date.month} 月 {post.date.day} 日</span>
         {
-          post.fields.pubPlace.value && (
+          post.fields.pubPlace && post.fields.pubPlace.value && (
             <>
               <br />
               <i class="ri-map-pin-line" />

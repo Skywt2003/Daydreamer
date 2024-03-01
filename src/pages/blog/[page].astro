@@ -11,7 +11,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   }).toString();
   const response = await fetch(url);
   const data = await response.json();
-  const posts = data.data.dataSet;
+  const posts: Post[] = data.data.dataSet;
 
   return paginate(posts, { pageSize: 10 });
 }) satisfies GetStaticPaths;
