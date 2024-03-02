@@ -1,0 +1,224 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>湖大个人门户登录浅析与实现</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 湖大个人门户登录浅析与实现</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 湖大个人门户登录浅析与实现</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>湖大个人门户登录浅析与实现</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 05 月 13 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hnu-portal-login-analysis-implementation" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>最初目的只是想看看个人门户查询图书馆借阅书籍的接口，写个还书提醒的程序（因为借的书总是忘记还，过期了图书馆不仅不会提醒还不能直接续借，得付滞纳金……），结果就一发不可收拾，研究了一下 HNU 的个人门户登录逻辑并用 Python 浅浅实现了一下。</p><!--more--><p><strong>⚠️ 警告：本文介绍的研究试验仅供学习交流，请勿用于任何非法用途。</strong></p><p>提示：为了保证账号安全性，本文中所有的示例字符串都进行了一些字符的修改。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="湖南大学「统一身份认证」截图"></p><p>研究地址：<a href="http://cas.hnu.edu.cn/cas/login">http://cas.hnu.edu.cn/cas/login</a>，其实是「统一身份认证」，应该是想做一个类似 SSO 的东西。非常神奇的是这个网站直接用 https 访问会出错，但是登录之后又会跳转 https。</p><h2>按下「登录」之后</h2><p>审查元素可以看到整个表单的 HTML 代码是这样的：</p><pre><code class="lang-html">&lt;form id=&quot;fm1&quot; action=&quot;/cas/login&quot; method=&quot;post&quot; data-bitwarden-watching=&quot;1&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;p class=&quot;error text-left&quot; id=&quot;errormsg&quot;&gt;&lt;/p&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+            &lt;div class=&quot;input-group-addon&quot;&gt;&lt;img src=&quot;assets/images/user.png&quot;&gt;&lt;/div&gt;
+            &lt;input id=&quot;username&quot; name=&quot;username&quot; class=&quot;form-control user-input&quot; tabindex=&quot;1&quot; placeholder=&quot;职工号/学号&quot; type=&quot;text&quot; value=&quot;&quot; size=&quot;25&quot; autocomplete=&quot;off&quot; data-com.bitwarden.browser.user-edited=&quot;yes&quot;&gt;
+            &lt;input type=&quot;button&quot; id=&quot;sendsms&quot; class=&quot;btn btn-primary get-code-btn&quot; value=&quot;获取动态口令&quot; style=&quot;display:none&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+            &lt;div class=&quot;input-group-addon&quot;&gt;&lt;img src=&quot;assets/images/lock.png&quot;&gt;&lt;/div&gt;
+            &lt;input id=&quot;password&quot; name=&quot;password&quot; class=&quot;form-control pwd-input&quot; tabindex=&quot;2&quot; onkeyup=&quot;CreateRatePasswdReq(this);&quot; placeholder=&quot;请输入个人门户密码&quot; type=&quot;password&quot; value=&quot;&quot; size=&quot;25&quot; autocomplete=&quot;off&quot; data-com.bitwarden.browser.user-edited=&quot;yes&quot;&gt;
+            &lt;a class=&quot;forget-pwd&quot; target=&quot;_blank&quot; href=&quot;http://cas.hnu.edu.cn/securitycenter/findPwd/index.zf&quot;&gt;忘记密码&lt;!--忘记登录密码 ?--&gt; &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;code&quot; id=&quot;kaptcha&quot; style=&quot;display: none;&quot;&gt;
+        &lt;!--
+        &lt;div class=&quot;col-xs-2 text-left p-r-0 code-text&quot;&gt;
+            &lt;span&gt;验证码 &lt;/span&gt;
+        &lt;/div&gt;--&gt;
+        &lt;div&gt;
+            &lt;div class=&quot;col-xs-5&quot; style=&quot;border:1px solid #777777;&quot;&gt;
+                &lt;input id=&quot;authcode&quot; name=&quot;authcode&quot; class=&quot;form-control&quot; tabindex=&quot;2&quot; style=&quot;text-align:center;&quot; placeholder=&quot;输入验证码&quot; type=&quot;text&quot; value=&quot;&quot; size=&quot;10&quot; autocomplete=&quot;off&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-xs-7 p-0 code-img&quot;&gt;&lt;img id=&quot;yzmPic&quot; onclick=&quot;javascript:refreshCode();&quot; class=&quot;&quot; src=&quot;kaptcha?time=1652268176109&quot;&gt;
+                &lt;a href=&quot;javascript:refreshCode();&quot;&gt;
+                    看不清&lt;!--看不清 ?--&gt; &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;login-info row&quot;&gt;
+        &lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12  login-button&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-block btn-primary login-btn&quot; id=&quot;dl&quot;&gt;登 录 &lt;/button&gt;&lt;/div&gt;
+        &lt;div class=&quot;col-lg-3 col-md-3 col-sm-3 col-xs-4 remember-me &quot; style=&quot;display:none;&quot;&gt;
+            &lt;input class=&quot;default-checkbox checkbox&quot; type=&quot;checkbox&quot; name=&quot;rememberMe&quot; value=&quot;true&quot; id=&quot;rember&quot;&gt;
+            &lt;label for=&quot;rember&quot;&gt;记住我 &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;execution&quot; value=&quot;9e4a732f-501e-4dee-8a8f-2e6a9faedb4a_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUTNaUWVrNXVRMVl6WVhWM2EwMWlWbnAyWkM5MFZHdFdjbUoyU2pFMmFFTk1iSHBEWWxoemMzcDFOMlZEZDNZclZrZElka05MTjBkUFpraDFTR1V6VmxCNVVUTkhMMjVsWXpRNFpUQktOMk4yVTA1VVExWnBUV2RZUzJWUFpVTTBPSEpOUm1sSVJUZ3lOMUJ4Tm1OdldrNW9jRTVsTWtwcFpYVm9PRGRhYlROek5tOVVlVW80ZUhaMGJUVkJhREZpVUdrMEwwbGxlbFZKVkVKS1VUUjFMMUZXZUZSYWRVOVdaVkZTTVVNclIyWXlNVU0wZFVKVlNVRXlRbEE1UVdrNWIzQnVZMjVHVVN0M1JtUmhhMXBNUzA4NGRFdzVTbFpLTlVFMlUwRm9UMVIyV2pCUWIzTkxhRnBGVlVkNVlucFFVVmxJVVcwemJrUlVVRGwwTkRBMlZtVndjQzhyT0c0cmRpdFdXV0pWVm5KUWJFTjNhRFJXVFdKUWFWWjJVM2xMWkhSNVkyRk5XVW8zYUVNelRFWmtVUzlMZEU1QlVqY3paMUUzV0d0VllUZHVWRU5GUkdsb2VXUnZWbVVyVVdaRU5IRm1kbk5aWjFKR05WaExWMUl3YkdFcmJUWlFaMVZhVFhVNVNuSjFPRXN5V0doaEx6WnphekJIVFZvd1N6WXZRVWQ1TTBoM1lUSTBRV3RsVmxWYVdFZHRTUzlJVkVWTVptOUdjMm9yTkdSdk5VdHdkbTlqY25wYVluUnRaRGR3YmxCRVFtUlBWR1YyZEVKS1ZFczVhMVJDYlRGek9VZDVkVEpRYnpsYWNsWTNNVEozVm5CaVZsb3ZMMlpUT0hoR1ZrRkdOM1JKTkRCcGNITmxhRzh4VFd4b2VGZHpOaXMyWm1oR1IyRjNVa1lyY201clkyNTNSSEJsZEVkaGIxSkxkVkZaUW5KTFlscExjaXRYYTBSa1FqazRZalk0ZFVsTWFTc3ZUazFUVlhSTGRUVndUMlVyYWxsUVRHOTNkbEZrUjFOcEsxaEtlbUl6TXpWUVNERXhZelZRVEZkVlMxRk5VbFJqVVZkQ2FtMVhTa1JEZDBkdk5WbHpkV1Z1Y0dsM1UwVkliekZaVjFaNWVUaGliVTVZUW00MWFVTlFUbWQzY1daUk1YQjBPV0p1YzJaNmMwOVdPV0UwU0ZScEsyY3dZWE5LWjBOMGRWWnlkREV5TnpGd1ZFZFpkalJOU0RrMFQzWkZUR1JKVFVsamVtSkhWWGwxV2xoaGVreFJRV3BIT0dKdE5FVk9PVUZKVFVrM2RVVkRWa2tyT0N0SU5VUlNWMFJUWVUxTU5WSkVVemsyUm5nMlVFMXBVbEpyWldoU2JFSk9jM2g1YWs1cFZGQkhha3BKZEVsSGNHTTFhVGxSWVdGR1JrczFjSGRhVTJoaVVXMW1NVkpsUm1NMVRYY3pNMEk1T0N0SlMwTm9OVzlKZWtWQlRHZDBVMGh0TVdGek5WUTBiV3BaVDBVMmJWazBXbU56T0hWeFpUSktWbVV2Y0RsUGEwdGllVlprTldaVmVFUjFOa3RoUTNCWk5YZGpkSG81UkVoSVYyZzBkVXgwYWxaTmFuY3lXa1pWU1VoeUwycHFUWGRpWTFCQ2RrZ3hSMWg1VUhvdmQxY3pUa1EzWW5oQlEyNHZSa1JuV2tKNFNsWlhaVmRXYUhWc1lqQjZRekpSVmpKcVNrdHJURzlqZWxGRk0wSkxaVU52Y0hNMlRtVmhkMWhOV1VodmEzaFVZMHRKTm5FemJHdExjazVLVUhoV1VUaE5NazVCWkZGWk1qVndiRTB3T1RKVGFrZHRiMDFtV25WbFlXSlJNMWg0YkRCc1kwNVhjbnBUYVROblVWTjVha01yVW14d1MyRktXRmhSV1ZkbWJsRkVaRGhFV1ROR1VEWlpZVnAyYWtkR2NVMUZTR1ExY1ZCM2VVTlZObkJPTVZwNlF5dDFWR3BIZEZORk5WcEhiazFpUVhWRGRtZHpjbU51ZFhWMmNHOVphVlZLTUhRMk5sZ3lLMmRCZUd4Qk16Y3hjbkpoUVdoVlYzUXZhVkk1TVVGS2FERmtVRWw0ZWtkdlVVRlNZVE5LV2t3emVqVjZTazF3TjFSdFJGZzBPVm9yT1hCNFNpdEJVbXMxU0hWWWJWcFBhMVY1VmxkTU1TdHlkVXRrTVdoa01FOTZhMmhOTUhnMWVrVmpTbHB6YlZjd0sweFdkRXBYV1UweVpESkJkRWwyWWxOM1YyMUpTME01VVRsc1VuRjZWVk5OS3prNEwzbEZLM2xzYzNoVVpHZEliMUkxZVhKTWRUbHNObE5pVkdOYVV6ZFlVWE41TTB0blJ6bE1iMFJCVmxkMVIzcHFaRFJpVTBoWGVHVkpXWEY1VkVaWGR6TmFWMDlwVTNoYVlXbHNkWFJUUkVvMGVXdHBVV3QwZVVSUU16SkllR2xXYlcxUmJHaHlSMmR6ZG5SdE1WbHpZV0pZVEhOalkxbDFNRXB0VmxCWFF6Sk5RWFZpZDBsUVJUZFJWMkZ3UWxka01qVjZVbXBqZFhRMk1HUjRjRnBrU1hFM1lWb3pZV3hSVkU5SlJFUkdkMU0yTlU1VGJFeHlZMUpVYUZnMVJISmhNRVl5Y0RSUFltUnNSVW93VFhwT1ZWZzBkV3RESzNwNFNFTjFSR1ZxVUhkNmFtdGlVR0ZxU1RGVE1rUmhMMVpRTUhOUWIwcEQuMXNRWGZiNDlvbUJhLW9HYV9lbGpfMTF0WDdHVmJzMzVZb3ZkVEE0eHkweHR5azVWanBLS2VfbW5XSjZkeTdlZEV0SDNfQ3dTTkRYX3dvMFNGRWdEQUE=&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;_eventId&quot; value=&quot;submit&quot;&gt;
+&lt;/form&gt;</code></pre><p>整个表单的 id 是 <code>fm1</code>，可以看到其中「登录」按钮组件 id 为<code>dl</code>。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" alt="文件树" title="文件树"></p><p>查看文件树，我们大概可以猜到 <code>/cas/js/login/login.js</code> 是负责处理登录操作的代码，<code>pwdYz.js</code> 用来验证密码的强度，<code>security.js</code> 是下面会用到的 RSA 加密算法的代码。</p><p>按下这个登录按钮之后会发生什么呢？我们可以看到 <code>login.js</code> 中有这样一段代码：</p><pre><code class="lang-js">jQuery.getJSON(&quot;v2/getPubKey&quot;,function(data){
+    Modulus = data[&quot;modulus&quot;];
+    public_exponent = data[&quot;exponent&quot;];
+});
+
+// ...
+
+$(&quot;#dl&quot;).click(function(){
+    checkForm();
+})
+
+// ...
+
+function checkForm(){
+    // ...
+    var password = $(&quot;#password&quot;).val();
+    var key = new RSAUtils.getKeyPair(publice_exponent, &quot;&quot;, Modulus);
+    var reversedPwd = password.split(&quot;&quot;).reverse().join(&quot;&quot;);
+    var encrypedPwd = RSAUtils.encryptedString(key,reversedPwd);
+    $(&quot;#password&quot;).val(encrypedPwd);
+    $(&quot;#fm1&quot;).submit();
+}</code></pre><p>当按下 <code>#dl</code> 之后，调用 <code>checkForm()</code> 函数，先是检查输入框是否为空，然后用一些神秘的 RSA 算法将用户输入的密码初步加密了一下，再提交表单发请求。</p><p>比较鬼畜的是这里直接改 password 输入框的内容，再用表单提交，这会导致在点击按钮之后密码框的密码突然变成一长串乱码，使得一般的密码管理器总是记下错误的密码……不知道为啥要这样写。</p><p>至于这里用 RSA 加密用到的公钥，也就是 <code>Modulus</code> 和 <code>public_exponent</code> 两个东西，可以看到是事先向 <code>v2/getPubKey</code> 发请求取得的。</p><h2>POST 都发了些啥</h2><p>正常登录之后找到向 <code>/cas/login</code> 发送的 POST 请求，可以看到有效载荷有以下几个：</p><pre><code class="lang-js">username: 202108060109
+password: 90c4e8b1be56a82f34df187379147d50bc694556c7451e8fd5c2a4047cf22385151cbc698ed84e0562915487e18f2420f4cb6c633149cef07d192a041038a73f
+authcode: 
+execution: 9e4a732f-501e-4dee-8a8f-2e6a9faedb4a_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUTNaUWVrNXVRMVl6WVhWM2EwMWlWbnAyWkM5MFZHdFdjbUoyU2pFMmFFTk1iSHBEWWxoemMzcDFOMlZEZDNZclZrZElka05MTjBkUFpraDFTR1V6VmxCNVVUTkhMMjVsWXpRNFpUQktOMk4yVTA1VVExWnBUV2RZUzJWUFpVTTBPSEpOUm1sSVJUZ3lOMUJ4Tm1OdldrNW9jRTVsTWtwcFpYVm9PRGRhYlROek5tOVVlVW80ZUhaMGJUVkJhREZpVUdrMEwwbGxlbFZKVkVKS1VUUjFMMUZXZUZSYWRVOVdaVkZTTVVNclIyWXlNVU0wZFVKVlNVRXlRbEE1UVdrNWIzQnVZMjVHVVN0M1JtUmhhMXBNUzA4NGRFdzVTbFpLTlVFMlUwRm9UMVIyV2pCUWIzTkxhRnBGVlVkNVlucFFVVmxJVVcwemJrUlVVRGwwTkRBMlZtVndjQzhyT0c0cmRpdFdXV0pWVm5KUWJFTjNhRFJXVFdKUWFWWjJVM2xMWkhSNVkyRk5XVW8zYUVNelRFWmtVUzlMZEU1QlVqY3paMUUzV0d0VllUZHVWRU5GUkdsb2VXUnZWbVVyVVdaRU5IRm1kbk5aWjFKR05WaExWMUl3YkdFcmJUWlFaMVZhVFhVNVNuSjFPRXN5V0doaEx6WnphekJIVFZvd1N6WXZRVWQ1TTBoM1lUSTBRV3RsVmxWYVdFZHRTUzlJVkVWTVptOUdjMm9yTkdSdk5VdHdkbTlqY25wYVluUnRaRGR3YmxCRVFtUlBWR1YyZEVKS1ZFczVhMVJDYlRGek9VZDVkVEpRYnpsYWNsWTNNVEozVm5CaVZsb3ZMMlpUT0hoR1ZrRkdOM1JKTkRCcGNITmxhRzh4VFd4b2VGZHpOaXMyWm1oR1IyRjNVa1lyY201clkyNTNSSEJsZEVkaGIxSkxkVkZaUW5KTFlscExjaXRYYTBSa1FqazRZalk0ZFVsTWFTc3ZUazFUVlhSTGRUVndUMlVyYWxsUVRHOTNkbEZrUjFOcEsxaEtlbUl6TXpWUVNERXhZelZRVEZkVlMxRk5VbFJqVVZkQ2FtMVhTa1JEZDBkdk5WbHpkV1Z1Y0dsM1UwVkliekZaVjFaNWVUaGliVTVZUW00MWFVTlFUbWQzY1daUk1YQjBPV0p1YzJaNmMwOVdPV0UwU0ZScEsyY3dZWE5LWjBOMGRWWnlkREV5TnpGd1ZFZFpkalJOU0RrMFQzWkZUR1JKVFVsamVtSkhWWGwxV2xoaGVreFJRV3BIT0dKdE5FVk9PVUZKVFVrM2RVVkRWa2tyT0N0SU5VUlNWMFJUWVUxTU5WSkVVemsyUm5nMlVFMXBVbEpyWldoU2JFSk9jM2g1YWs1cFZGQkhha3BKZEVsSGNHTTFhVGxSWVdGR1JrczFjSGRhVTJoaVVXMW1NVkpsUm1NMVRYY3pNMEk1T0N0SlMwTm9OVzlKZWtWQlRHZDBVMGh0TVdGek5WUTBiV3BaVDBVMmJWazBXbU56T0hWeFpUSktWbVV2Y0RsUGEwdGllVlprTldaVmVFUjFOa3RoUTNCWk5YZGpkSG81UkVoSVYyZzBkVXgwYWxaTmFuY3lXa1pWU1VoeUwycHFUWGRpWTFCQ2RrZ3hSMWg1VUhvdmQxY3pUa1EzWW5oQlEyNHZSa1JuV2tKNFNsWlhaVmRXYUhWc1lqQjZRekpSVmpKcVNrdHJURzlqZWxGRk0wSkxaVU52Y0hNMlRtVmhkMWhOV1VodmEzaFVZMHRKTm5FemJHdExjazVLVUhoV1VUaE5NazVCWkZGWk1qVndiRTB3T1RKVGFrZHRiMDFtV25WbFlXSlJNMWg0YkRCc1kwNVhjbnBUYVROblVWTjVha01yVW14d1MyRktXRmhSV1ZkbWJsRkVaRGhFV1ROR1VEWlpZVnAyYWtkR2NVMUZTR1ExY1ZCM2VVTlZObkJPTVZwNlF5dDFWR3BIZEZORk5WcEhiazFpUVhWRGRtZHpjbU51ZFhWMmNHOVphVlZLTUhRMk5sZ3lLMmRCZUd4Qk16Y3hjbkpoUVdoVlYzUXZhVkk1TVVGS2FERmtVRWw0ZWtkdlVVRlNZVE5LV2t3emVqVjZTazF3TjFSdFJGZzBPVm9yT1hCNFNpdEJVbXMxU0hWWWJWcFBhMVY1VmxkTU1TdHlkVXRrTVdoa01FOTZhMmhOTUhnMWVrVmpTbHB6YlZjd0sweFdkRXBYV1UweVpESkJkRWwyWWxOM1YyMUpTME01VVRsc1VuRjZWVk5OS3prNEwzbEZLM2xzYzNoVVpHZEliMUkxZVhKTWRUbHNObE5pVkdOYVV6ZFlVWE41TTB0blJ6bE1iMFJCVmxkMVIzcHFaRFJpVTBoWGVHVkpXWEY1VkVaWGR6TmFWMDlwVTNoYVlXbHNkWFJUUkVvMGVXdHBVV3QwZVVSUU16SkllR2xXYlcxUmJHaHlSMmR6ZG5SdE1WbHpZV0pZVEhOalkxbDFNRXB0VmxCWFF6Sk5RWFZpZDBsUVJUZFJWMkZ3UWxka01qVjZVbXBqZFhRMk1HUjRjRnBrU1hFM1lWb3pZV3hSVkU5SlJFUkdkMU0yTlU1VGJFeHlZMUpVYUZnMVJISmhNRVl5Y0RSUFltUnNSVW93VFhwT1ZWZzBkV3RESzNwNFNFTjFSR1ZxVUhkNmFtdGlVR0ZxU1RGVE1rUmhMMVpRTUhOUWIwcEQuMXNRWGZiNDlvbUJhLW9HYV9lbGpfMTF0WDdHVmJzMzVZb3ZkVEE0eHkweHR5azVWanBLS2VfbW5XSjZkeTdlZEV0SDNfQ3dTTkRYX3dvMFNGRWdEQUE=
+_eventId: submit</code></pre><p>由于是直接表单提交的而不是用 js 发的请求，可以直接在上面的 html 代码里根据 name 找到各个字段源于哪里。</p><ul><li><code>username</code> 就是用户名（即学号）。</li><li><code>password</code> 就是加密后的 <code>encrypedPwd</code>。</li><li><code>authcode</code> 是图片验证码输入框中内容。图片验证码有时候显示有时候不显示，不显示时该字段就留为空。具体显示逻辑尚不清楚。</li><li><code>execution</code> 源于表单中一个不可见的 input 元素，值是一串乱码，每次加载页面其值不同。意义不明。可能是与 JSESSIONID 匹配用于某种验证机制。</li><li><code>_eventId</code> 也源于一个不可见的 input 元素，值总为 <code>submit</code>。</li></ul><p>以上五个字段都是可以得到的。</p><p>同时注意到 POST 中携带了若干 Cookies：</p><pre><code class="lang-js">JSESSIONID=808D31AC4F6F45E8EA8D8F05E2C76C74.cas30;
+_pv0=KI+EtIxj2UDs/BXMv0vdZmI5APblUZJyrVMXRSekKrN5+bfckHbJmzPKaku45uKVc02qmwhWAisV1fsVG3B6NScgp8RNOGmd3vjBGTnPy10/bkYnbNF7sxpkzKqxHuHG9iPSu9gAGf3p1fvnIE5iQQBicDhdYg6cDD/7J45Dzfr1K4UnL4KN7Ph79o3hPCz8++7ECbXgABbOJU5SdCX5KSPkfPP9GcBqwzN1UYUu8Z6/6MGW12okSx4GO7J/j13A0E++BcNpeBdnSGAmI4Pdq4grl92whh8GkCGUzec84fdGx+hXn/w/uggLohZVKxGHkqrwKFYkT0uW2+hR7SZUQTWHH5oVcNqjKxJNUD5a2br0DdM9ethXox+DaTYD5bgeyidNqpgfDRDHTvvGda3r3r5CrwnYP/pmPXBslnllk5U=</code></pre><p>也就是说，为了模拟发送 POST 请求，我们要拿到五个表单字段内容、两个 Cookie。</p><h3>JSESSIONID</h3><p>可以看到在最初载入登录页面的时候，就带上了一个 <code>Set-Cookie</code>：</p><pre><code class="lang-js">JSESSIONID=4736615D840602A1B50AF6D6298C3A1E.cas32;
+  Path=/cas;
+  HttpOnly</code></pre><p><code>JSESSIONID</code> 是 Servlet 容器（tomcat，jetty）用来记录用户 session 的 Cookie。看起来就是它了。</p><h3>getPubKey</h3><p>观察发现，页面在加载之后就向 <code>v2/getPubKey</code> 发送了请求，可以得到这样的返回数据：</p><pre><code class="lang-json">{
+  &quot;modulus&quot;:&quot;991d141f56c671c9c55d31c35ae55901faaeea8dd4be5b2e6d7e38274e9feada58a4c47a554dae2adb71a6618d42a9d6be817f9aa8f5eb8de53acc56be4e2473&quot;,
+  &quot;exponent&quot;:&quot;10001&quot;
+}</code></pre><p>这两个应该是生成密钥对的参数，具体原理尚不清楚。总之根据此可以用上面的代码算出相同的 <code>encrypedPwd</code>。</p><p>同时这个请求还在请求头中返回了以下 <code>Set-Cookie</code>：</p><pre><code class="lang-js">_pv0=gd1g%2FkuF8nKPObhdqygtrVhcdleX1lJEhbjuFFpqPt42mTUyjKN4icZFlgsrcVJMQYzcP7QluP4NPDUstVZpiyzxnMC%2Bxvj5HZhcKUttP1DgSNgAolMMgwEJD6GMxvV%2FrgffR0SW3i5PDd%2B3p8kGGv57d3Fs0uEVuYa6rtKZpAFoL5k5b%2B8XYtrOqMiLr3RnKT26xLiBv70imOLmSrLn2qPtepFj3D9xxSU5cwzlKTk%2BUSXYowGZlcNo%2BvBsL9dOIy%2FvlI6x6A%2BdqY4RyQ6Ft9KGUnxpZgkSTsSMm86yevTh9YSnzVY%2F8eoz1HA2CsS6Vw6%2FKTSjavRHjVguJY7R7r5CsWa0gVtpF7IT1E1%2FE8qYp5VxDbYLIEVPs85xkjKRbyqg%2F7WkQS2OnV%2F02mCGWAoRtxKs7qD%2BNLSD8eL1aFA%3D;
+  Domain=cas.hnu.edu.cn; Path=/</code></pre><p>于是 <code>_pv0</code> 这个 Cookie 的问题解决了。</p><h3>密码加密</h3><p>这个密码加密算法用了相同目录下的 <code>security.js</code> 代码，是个源于 1998 年的 js 库，但是具体看不懂。</p><p>这段注释里面说了作者，可以去<a href="https://ohdave.com/rsa/">官网</a>看到这个代码的介绍：</p><pre><code class="lang-js">/*
+ * RSA, a suite of routines for performing RSA public-key computations in JavaScript.
+ * Copyright 1998-2005 David Shapiro.
+ * Dave Shapiro
+ * dave@ohdave.com 
+ * changed by Fuchun, 2010-05-06
+ * fcrpg2005@gmail.com
+ */</code></pre><p>代码作者并没有给出对应的 Python 版本，如何在 Python 脚本里实现呢？<strong>有几种解决方案（从难到易）：</strong></p><ul><li>研究加密原理，使用 PyCrypto、RSA、M2Crypto 等 Python 库<strong>自己实现</strong>。</li><li>使用 Jiphy 等工具<strong>将 JavaScript 代码转换为 Python 代码</strong>。由于不能保证完全兼容，一般需要了解原理，对转换后的代码进行一定的修改。实测失败了。</li><li>直接用 js 代码<strong>跑一个 HTTPServer</strong>，发请求调用函数。比较麻烦，有点小题大做，不够优雅。</li><li><p>使用 PyV8 或者 Pyexecjs，<strong>在 Python 中调用 JavaScript 代码</strong>。需要小小地改写一下 <code>security.js</code>。使用这种方法成功了。</p><ul><li>Tips：PyV8 安装难度非常大，折腾死我了……推荐 Pyexecjs，是依赖于 Node.js 的库，用起来比较轻松。</li></ul></li></ul><p>这个具体实现挺奇怪的，把用户的密码倒过来再加密，有点迷惑。</p><h2>发送 POST 请求</h2><p>经过测试，最简请求只需要发两个 Cookie、五个 form-data。</p><pre><code class="lang-bash">curl 'http://cas.hnu.edu.cn/cas/login' \
+  -H 'Cookie: JSESSIONID=2001762369FF0645ED3EC64382613117.im32; _pv0=wgfGE0rwBEr3341hmwwtiojDjR30dBqfRxrBe9kPlurTSU%2B4u%2FlWwZzHtzbY1I2OeeLAsHJfU7ftg%2BuIcZF8hMs3QsayPvTVi%2FUb55RTnLmJjgjp%2B6vti%2BlQj9iXJP6uu0hsUs8Oc2LVNbOiuq6Ezr4iyLHxTr%2BPFc2pxeunZ2XTKIMcKLpnoMcRuSyuG5TLTmUzJYG55A7m6Xqrn0Vu8KjOXlwpadDhi01JZxaHxAC6Ge02Zcc%2BCB3Rv8%2BAiQwE6VLu%2Fvmm%2B3URsxCOpD2FoE2c2xUVjuHVcdbpgkpLUaNahQM3sKBgmG7fr1RyYH7dIvi%2BNqWuNcC3O5KcsoIwGhxo216CQ6c0yrBqqWqfPq%2BTxmlNZyUoXJ%2B5DUgsnB0bYpB7pL7wxtGOGkn4F%2BCv44yDn8%2BUb5oHwQyyZM24%2BeY%3D' \
+  --data-raw 'username=202108060109&amp;password=84b38bf84fbdcdf46acd06410fc194de10f896679fb3d2fab1e8e1b725d8828a3610df5afe4ffb8ae31744969b1d5d855a5844d8454bb052fafb15af5f930dd5&amp;authcode=&amp;execution=f77fe468-1dc5-4fdb-b883-f881ed207045_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUWtFMlJFc3ZlakZCY0ZRM1FYVmFWakZCYW1zdlFXcERlVlp1ZEhWTGNreFBSM0Z5WTFsMkwzbFpkVWRUWmtKak1FUjFVblpaTjJ0UVpVNUljRTlMWkZGdGNFNVhlREo0V21oNVZFY3JLMkVyU0c1dE0zQkZiVEE1TDBaaGVrSXlaMWxrUms1cVdUTXZLMmxhT0hoWVdYWlpWa2Q0TDBWWFJEWm9kRXN3T0VoTmMzbG5jRll3Y1d3dmNEaEZNMlZHYUd0aFZURlNibk5wZGpacWRqWnBhV3BtT1RKa1REZDNlVzQ1WVhBelJrbzVWSFF2U25WYVpERlhiMVZ0TjA5R2JXSm1aVVZDTHpOSU5tdzBUMDVTYm1OV1ZFeHZjbVJZZVhZNWVFeEJaRU4yY2tOdFZHSndNbU5CV0VOckwxWmpTVWxDVGk5RVFXdHJkWFl3Tkc1WmMyNWtUR3N6SzJwbVFtazRhRkoxTW5vMFZtOU5PRkJ4ZFZkYU9WTkZNM1JZVlhKM0syTlRNRkpGTVVzNFVWTnFjbXhUTkV4Vk1HRmtkWEJGWWxwaVpuRnNlVzFMYmtKa01rUldabFZGWVhodUwxaElhVE5WY1VkRVQybGhWVzhyZVZRM1ZYVjNZeXRwYlZwRU1IUjZjRE53V1ZaeE1VbGxMMmRIT1N0dlYyOVdhVVZPV0c1b2RHeHBNM05qZGtSTFJsbDBNSFoyWTJGR2JqVnlWazlWUW10TFpuUm9RME5yYldwbmMyVTRjbVJ2VkhoeFJqUkJhR1JqUjJoWlJDdG5URTVRUlhOUVJrTlVVM3BtY0VaNmExUlBja00xV21sS056RjRWR1ZHTDAxU1kwZGtTRTVtWldoR1JGb3JNWGR0YWxwd1QwcFBOelJ3VjFCNVNFYzFibVl6THpaTk1rdzBkSEJ5TW1KS05ETkhZVnBQU0ZsbmFTdFJhM3BEVUhGbU1VSkxNMk00ZW1WdGRrWlpia1E1ZDBSWVQwUkZiVVozSzNGeWFGTm9lbTVXWkd3dmJUTkhOMWRrV1RSd0szRnNUaXQ2UlRoQ1VHcDFWeTlwUzJ0MlFXUktOVzF5ZVV0b00zSnNORkozVGtOTmRtbFllVEpESzBJM1dWVlFSelp0VDJzNVoycDZPVFJKUm5nNE1tc3pUR2hHYUhkNVVIZHFTa1J1VDJSU05ucHVWVFZ4VmtSRmFXVjRSVk5MYnpOU2JGRnJiV05aTmxBMFdUUlhhbTVEZFZKVmJqWXhaM1IyUjBSdFdrWTVjRzE0UkU5TWJrcE5ORzFsT0M5NWRVRmFVV1pZU25adFREUnZkalZYWXpaWWRXOVNSVmhWUnpNMkwxaEJiM3AzWWk5clJtSTFSWFZ6YVZKMmVuSmlkbFpCWWs0cmJYYzNhbkpvVEdkVFVqUlBSWGxNY1c1WE1uRXdlVFZoV0VOQmRFVlRLellyVmpOd2FWSk9lR3hqWVRKSWIzZEdSVEZ3UkVKdE5FUXpRVUpGUW1WVGJtMUVSR3BWU2xWU1NXMUNaVGwyWlVwVGNFVnFOR2dyTUVaUVdVSmtiMk40Y0ZSdFlXbDJWREJPUkVORlJtTmxibWhUVFVOWVYzRmpUaXR6YUVObVRqRm9RWEU1V25jMFdHTlhkalJWY1haVGEyUnNURzFUWlZCRWVuSnVia1YyY1VOaU1tODRMMDl0V0ZSSGJHOTFVR3B6ZFZSQlpqZG5PVVJNY0hKcFFqWlpVbVVyTm5VMk4ybEJkWFpqUkc0MGJrZ3pTRkEyVWswelZXdEJlSGxHTVRsd1ZIRkxVbVkzUlhaRlExTlRWVzk0YjNCQk15OUthVVV4VldKWFNFWTNMMmx2Y0hkSGVFSkJORUpLZEdWaFlrbDNaSEpOTlM4dmIySmtRazEyUW5CWmJYUTJUeXR3V1ZBNWJHNDNSbWxpUVc1T1ExaFJaRTFGTms1TFZERm9jV2RwVkRCeWJIRk1RWEl2VVhNd1ZsWkZZVlpRSzJaM2FGVndhbGxtTUc4eFVtMXJjRFV2Y1ZJNVkxVTRRWEZHVW1WWFlWcDNhRmMwZUVaaFVUZGpVVzE1U1dwT04wNVNUR1I2YlRkaVRrNWFTVGRJVTI1QkwzaE9WWFJVT1RWWGNGWmxkSFpWWlUwMGJreFNUa3hXZDJWd1VubElTRFE0VldwVFFWTnJiMVF2UWxkbFJuSkdURTFYV1VZcmRYWjJWV2RvYTB4a01uVlVha013ZWtSRE1qRTRZMDVrV1ZjMGFWQnZMMVI2TVhCTWExbHNUWFZOUWxCbWEzaGhOMWxuUWsxbWQxWm5lUzlPUzBWNEwycGFSR3RqVHpBdlNXazVVM3BwTjNKbGFWRjNjV0p2U2xscFVHNVNaV05MZVhsSmNGSlFSazFKVkhwd04wbEJkR1l6UjA1RGNtMVVZMkY0ZEZGRVlYRjViblpIWlVOTWFWZzNXbWxpYjNnd2QyVnVWVFZoUzBkb2RETXJLMjVGVDBNM2NXNXNkVWQwUVRKT1MwUklWM1JES3poNFFuUjBZbWg0WVV0TWRqTnlUMFZvVVcwclpGVnNRV1JWWXpJd1dWaDFNekp3Ym0xTE4zbHdhVGxqTUdvelRXbFVRMWhXY25KR2NrOU9jMjlpZURGVkx5OVVhWE00Vm5Od1kwNDRVRUZDUm5vNWNXZ3ZaRTE1TmxoSGIxa3JkVlJMYUVOVlpXTlZTRkZNYVd4UGQwSnguSGtGOV9LMFVHZ2gwcG9yUTY2bzJFWkRlQlFTNi1pczVMcE8wTHFrVzJLMFhVY2JlanM0ZXdYRzBmUlFEVHlfV1RaOVg1aUQzNjNSaEdsa3BOTVB6OGc%3D&amp;_eventId=submit'</code></pre><p>这些内容好像是没有过期时间的。</p><h2>POST 请求之后</h2><p>对 <code>login</code> 发完 POST 请求之后，返回的并不是 200 而是 302，附带了若干 <code>Set-Cookie</code>：</p><pre><code class="lang-js">CASPRIVACY=;
+  Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/cas/; Secure
+_pf0=yNlillHGbCY1t2AdPozsaozqFnWzSZo59I6ehvg2XsA=;
+  Max-Age=86400; Expires=Thu, 12-May-2022 11:45:18 GMT; Domain=cas.hnu.edu.cn; Path=/; HttpOnly
+_pm0=;
+  Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Domain=cas.hnu.edu.cn; Path=/
+_pc0=vUfpP1MGYarocLQgQgfAFRsxO2HyBGTzEcg+mGwf+7yewseSDEDYQSGEUIdSz+Oi;
+  Domain=cas.hnu.edu.cn; Path=/; HttpOnly
+iPlanetDirectoryPro=ZOMenIjL39gmMSKoZAowUqSSd9jimVIhN6ocARhLTD+zeFQPTWyBUSEZdxwS70lbXbLDi0WKL6LTsydgeCfSwJ+aeSPdfSfwj58sBE0eqSCboGqrMtXlz99xb+ia8dcBe2+vpFHGBjdT4we+WJyPs8+rzHOPMOf108uyV7M8zM9scARGxhoHOnADRQx33iKJPEP4qmlkBlw3A9MV9XFtO0MNV/iSn6bcSNujfUHFOa/xZ9fRsd5fMXFnFScsBEGgUxQKDpU02thXp7efiPP55ymb3c04Xova6g2M6qBl+xi1PfH2pfW5wyujRko4/istmw1dZBPEcB7tlaCw9SeXKgXs/viGuhI/JbeuzN7/kIBPtTm2bl48FamXdXohYElt;
+  Domain=cas.hnu.edu.cn; Path=/</code></pre><ul><li>302 响应标头中，<code>Location</code> 字段为 <code>http://pt.hnu.edu.cn/</code>，也就是说重定向到了个人门户。</li><li>个人门户 301 到  https 的个人门户。很奇怪，登录页面没有跳转 https（甚至不支持 https），倒是登录之后会跳转，而且居然还是 301。</li><li>https 个人门户（<code>https://pt.hnu.edu.cn/</code>）又 302 回到了登录页面（<code>http://cas.hnu.edu.cn/cas/login?service=https%3A%2F%2Fpt.hnu.edu.cn%2F</code>）带了个参数。这一波操作十分迷惑。</li><li><p>最后登录页面（<code>http://cas.hnu.edu.cn/cas/login?service=https%3A%2F%2Fpt.hnu.edu.cn%2F</code>）又 302 到了 一个 ticket 地址（<code>https://pt.hnu.edu.cn/?ticket=ST-2355568-yPfsfBJ3ABdVnkpKlbJS-zfsoft.com</code>）。对该 <code>ticket</code> 地址的请求，也返回了一个 <code>Set-Cookie</code>：</p><pre><code class="lang-js">wisportalId=F-e_MS4pRlGt8WU8IU_r9cOMPRcM-VuRMMfSe2xK;
+  path=/</code></pre></li><li>结果 302 回到了个人门户（<code>https://pt.hnu.edu.cn/</code>），也就是回到了个人门户的主页面。带上 Cookie 来到这个页面之后终于 200 了。</li></ul><p>猜测这一串操作就是为了设置这些 Cookie，进入主页面即根据检测到的 Cookie 合法性判断用户。可以验证两次对 <code>https://pt.hnu.edu.cn/</code> 的访问，区别只在于有没有 <code>wisportalId</code> 这个 Cookie。</p><p>这段重定向非常麻烦也很复杂，理论上我们可以在 Python 里写个 <code>while</code> 循环，但是 <code>requests</code> 库的请求可以帮我们自动处理重定向。一通重定向之后，<code>prepareRequest</code> 对象中的 Cookie 就存储了我们想要的 <code>wisportalId</code> 等 Cookie。</p><pre><code class="lang-python">&gt;&gt;&gt; postLogin.history
+[&lt;Response [302]&gt;, &lt;Response [301]&gt;, &lt;Response [302]&gt;, &lt;Response [302]&gt;, &lt;Response [302]&gt;]</code></pre><h2>登录成功后的请求</h2><p>对图书馆数据的请求：</p><pre><code class="lang-bash">curl 'https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail?_=1652352553585' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en,zh-CN;q=0.9,zh;q=0.8' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: route=a09caef73920180c25245f140604ba0b; wisportalId=WHYE4cN7TZAjB-AVLMHEjx56pELpBe5SbIrFjbMR' \
+  -H 'Referer: https://pt.hnu.edu.cn/personal-center' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36' \
+  -H 'sec-ch-ua: &quot; Not A;Brand&quot;;v=&quot;99&quot;, &quot;Chromium&quot;;v=&quot;101&quot;, &quot;Google Chrome&quot;;v=&quot;101&quot;' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: &quot;macOS&quot;' \
+  --compressed</code></pre><p>经过试验，可以发现只要带上 <code>wisportalId</code> 这一个 Cookie 就可以了。</p><pre><code class="lang-bash">curl 'https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail' \
+  -H 'Cookie: wisportalId=WHYE4cN7TZAjB-AVLMHEjx56pELpBe5SbIrFjbMR'</code></pre><p>所以这个 Cookie 是我们的最终成果，也是登录之后的关键。</p><p>返回结果是 json 格式，就是我图书馆借的所有书的数据。</p><pre><code class="lang-json">{
+    &quot;data&quot;:[
+        {
+            &quot;attachment&quot;:&quot;0&quot;,
+            &quot;barcode&quot;:&quot;XS0028533&quot;,
+            &quot;loancount&quot;:&quot;0&quot;,
+            &quot;loandate&quot;:&quot;2022-04-25&quot;,
+            &quot;returndate&quot;:&quot;2022-05-25&quot;,
+            &quot;title&quot;:&quot;未来简史：从智人到神人：a brief history of tomorrow&quot;
+        }
+    ],
+    &quot;error_code&quot;:0,
+    &quot;message&quot;:&quot;请求成功!&quot;
+}</code></pre><p>实测这个 <code>wisportalId</code> 是有一个有效时间的，过一点时间之后就会失效。应该是有续租的借口，不过目前未见系统对登录频率有什么严格的限制，所以暂时懒得研究了，失效了重新登录就好。</p><h2>Python 代码实现</h2><h3>Requests 库发请求</h3><p><code>requests</code> 库应该无需介绍了。</p><p>最后的实现有一点不足，就是最后的一波重定向是 <code>requests</code> 帮我处理了的，表现为最后一个请求发出之后结果没有 301/302 而是 200，然后 <code>postLogin</code> 对象（类型为 <code>prepareRequest</code>）里的 Cookie 改变了。然而 <code>prepareRequest</code> 这个类型没有提取 Cookie 的成员函数……我们只能将其作为一个 Header 拿出来，直接放到之后请求的 Header 里。</p><p>或许改写成 <code>while</code> 循环自己模拟这个重定向会更好。</p><h3>BeautifulSoup 解析 HTML</h3><p>一开始想尝试用 <code>xml.dom.minidom</code> 这样的解析器尝试构建 DOM，结果想起来 HTML 并不是标准的 XML 实现，并且湖大这个网页说不定也不是规范的 HTML……</p><p>所以直接用 <code>BeautifulSoup</code> 了，这是一个可以用于解析 HTML 文件的库，常用于网页爬虫。</p><p>需要注意的一个点是，在获取 name 为 <code>execution</code> 的 input 元素的 <code>value</code> 时，name 这个关键字和 <code>find()</code> 成员函数的形参名冲突，所以必须用 attrs 的写法：</p><pre><code class="lang-python"># 错误的写法：找不到元素
+execution = pageSoup.find(name='execution').get('value')
+# 正确的写法：
+execution = pageSoup.find(attrs={'name': 'execution'}).get('value') # name 关键字和形参列表冲突</code></pre><h3>Pyexecjs 调用 js</h3><p>一开始尝试用 PyV8，结果安装起来非常麻烦，折腾了半天也没搞定，后来就发现了 Pyexecjs 这个替代品。需要 Node.js 环境才能使用。</p><p>在这里我们可以用「预编译」js 文件的方式来调用，只要在 js 里封装好了 <code>getResult()</code> 函数，Python 里可以 call：</p><pre><code class="lang-python">with open('security.js', 'r', encoding='utf-8') as jsfile:
+    jstext = jsfile.read()
+ctx = execjs.compile(jstext)
+encrypedPwd = ctx.call('getResult', exponent, modulus, password)</code></pre><h3>完整代码实现</h3><p>这是还没封装的简陋代码，只把拿到的数据输出了。</p><pre><code class="lang-python">username = '202108060109'
+password = 'YourPassWord'
+
+import requests
+from bs4 import BeautifulSoup
+import execjs
+
+getPage = requests.get('http://cas.hnu.edu.cn/cas/login')
+print('GET http://cas.hnu.edu.cn/cas/login : ' + str(getPage.status_code))
+pageSoup = BeautifulSoup(getPage.text, 'html.parser')
+execution = pageSoup.find(attrs={'name': 'execution'}).get('value') # name 关键字和形参列表冲突
+myJSESSIONID = getPage.cookies['JSESSIONID']
+print('Cookie JSESSIONID: ' + myJSESSIONID)
+
+myCookies = {'JSESSIONID': myJSESSIONID}
+getPubKey = requests.get('http://cas.hnu.edu.cn/cas/v2/getPubKey', cookies=myCookies)
+print('GET http://cas.hnu.edu.cn/cas/v2/getPubKey : ' + str(getPubKey.status_code))
+modulus = getPubKey.json()['modulus']
+exponent = getPubKey.json()['exponent']
+_pv0 = getPubKey.cookies['_pv0']
+print('Cookie _pv0: ' + _pv0)
+
+with open('security.js', 'r', encoding='utf-8') as jsfile:
+    jstext = jsfile.read()
+ctx = execjs.compile(jstext)
+encrypedPwd = ctx.call('getResult', exponent, modulus, password)
+print(encrypedPwd)
+
+authcode = ''
+_eventId = 'submit'
+
+myUA = r'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15'
+
+postData = {'username': username, 'password': encrypedPwd, 'authcode': authcode, 'execution': execution, '_eventId': _eventId}
+postCookies = {'JSESSIONID': myJSESSIONID, '_pv0': _pv0}
+postHeaders = {'User-Agent': myUA}
+postLogin = requests.post('http://cas.hnu.edu.cn/cas/login', data=postData, cookies=postCookies, headers=postHeaders)
+print('POST http://cas.hnu.edu.cn/cas/login : ' + str(postLogin.status_code))
+print(postLogin.history)
+
+cookies = postLogin.request.headers['Cookie']
+headers = {'User-Agent': myUA, 'Cookie': cookies}
+getBooks = requests.get('https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail', headers=headers)
+print(getBooks.text)</code></pre><p>完结撒花 🎉</p><h2>下一步</h2><ul><li>自己实现模拟重定向，精确拿到那几个 Cookie；</li><li>探索验证码出现的机制，或许加上验证码的处理；</li><li>摸索更多的接口。</li></ul> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 3 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/04cbc6f1f5ee0e2475e07cb81cc2f7ab" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://gxzv.com" class="link" target="_blank"> <h4>Ganxiaozhe</h4> </a> <p class="mt-1">2022 年 6 月 6 日 8:33</p> </div> </div> <p class="mt-2">无意逛到本站，其实那个直接改 password 输入框的内容站在开发者的角度，主要是因为前端用的表单提交方式，直接覆盖表单内容再提交是最为便捷的，另外这也能有效防止监听（网络传输&amp;客户端安全）。网络传输是因为登录页没有 SSL，至于客户端安全这个，我之前软件开发时遇到过这类需求：监听浏览器中的登录页，在跳转前通过 JSHook 获取表单数据。
+
+话说回来其本质皆在保护密码原文，包括后面将密码倒序再加密，大概率也是开发者的小聪明。另外如果自己用图个方便的话，推荐 Node.js+Electron(Nightmare)，干这方面极为顺手^ ^</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2022 年 6 月 6 日 8:35</p> </div> </div> <p class="mt-2">大佬好强！！学习了～</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/14f26f3972414bf3696e89bbef9c1a3d" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://acheing.com" class="link" target="_blank"> <h4>FlowerYang</h4> </a> <p class="mt-1">2022 年 5 月 19 日 9:45</p> </div> </div> <p class="mt-2">SKY好强QwQ
+一些想法：
+其实模拟登陆可以用BurpSuite抓包来分析？感觉更方便一点OvO
+可以用request.session？相当于get一次后会话不会关闭，遇到302之类的Cookie什么都会带着走
+https://gitee.com/FlowerYang/HappySCU/tree/master/Daka
+一个川大的打卡脚本OvO</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/hnu-portal-login-analysis-implementation" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 湖大个人门户登录浅析与实现</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

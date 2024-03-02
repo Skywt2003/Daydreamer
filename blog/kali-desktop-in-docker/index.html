@@ -1,0 +1,67 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>MacOS 用 Docker 安装 Kali Linux “虚拟机”</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / MacOS 用 Docker 安装 Kali Linux “虚拟机”</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / MacOS 用 Docker 安装 Kali Linux “虚拟机”</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r> <img src="https://skywt.cn/usr/uploads/2021/12/3508335548.png" alt="MacOS 用 Docker 安装 Kali Linux “虚拟机”" class="mb-8" data-astro-cid-4sn4zg3r> <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>MacOS 用 Docker 安装 Kali Linux “虚拟机”</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 12 月 29 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 2 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/kali-desktop-in-docker" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>M1 macOS 上很令人头疼的就是虚拟机软件，想装 Kali 的虚拟机，试了一大堆感觉没一个能用的，Parallels 17 是最完美的也是贵得最离谱的，UTM 作为开源免费的解决方案从 iPad 而来，实在有点拉垮，VMware Fusion、VirtualBox 都还不支持 M1 芯片……<br>于是某天突发奇想：有没有可能拿 Kali Linux 的 Docker 容器当虚拟机，然后 VNC 连接桌面来使用呢？</p><!--more--><p>[info]更新：现在 VMware Fusion 已经有 M1 macOS 的公共预览版了（<a href="https://blogs.vmware.com/teamfusion/2021/09/fusion-for-m1-public-tech-preview-now-available.html">在这里</a>）（虽然不官方支持 Windows11arm），可以直接用这个安装 Kali Linux。<br>不过这就没有 Docker 好玩！！[/info]</p><h2>关于 host 网络</h2><p>本来想要让容器加入 host 网络，可以和宿主机共享网络，结果尝试之后发现容器里和宿主机里的网络信息仍然是不一样的，而且各种连接也连不上。</p><p>去查了下资料了解到，Docker for MacOS 其实并不是完全标准的 Docker 实现。一般 Linux 上运行的 Docker 是「容器和宿主机共用 Linux 内核」，而 MacOS 本身不是 Linux，它的 Docker 在虚拟机上运行，总之就是不支持这个 host 网络。</p><p>非常形象的两张图，Linux 下网络是这样的：</p><p><img src="https://skywt.cn/usr/uploads/2021/12/1315966079.jpeg" alt="Linux 下的 Docker 网络结构" title="Linux 下的 Docker 网络结构"></p><p>而 MacOS 下是这样的：</p><p><img src="https://skywt.cn/usr/uploads/2021/12/511187941.jpeg" alt="MacOS 下的 Docker 网络结构" title="MacOS 下的 Docker 网络结构"></p><p>解决方案也不是没有，比如 <a href="https://github.com/wojas/docker-mac-network">docker-mac-network</a> 这个项目是用 OpenVPN 建立信道，不过实践起来都非常麻烦，感觉对于本项目而言没有必要。</p><p>于是只能选择开放 SSH、VNC 之类的几个端口了。</p><h2>运行容器</h2><p>Kali 官方提供了 <a href="https://www.kali.org/docs/containers/official-kalilinux-docker-images/">Docker 镜像</a>，是支持 arm64 架构的！</p><p>由于没法使用 host 网络，我们启动的时候就最好要设置好开放的端口。留个 22 给 SSH，5900 开始的几个留给 VNC：</p><pre><code class="lang-sh">docker run -itd -P \
+  --name kali \
+  -p 22:22 \
+  -p 5900:5900 \
+  -p 5901:5901 \
+  -p 5902:5902 \
+  kalilinux/kali-rolling</code></pre><h2>安装环境</h2><p>这个 kali 的镜像基本上是个空壳，啥都没有。要先换源，然后装一些包，包括图形环境。</p><p>阿里云的源：</p><pre><code>deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</code></pre><pre><code class="lang-sh">docker exec -it kali bash
+nano /etc/apt/sources.list
+apt-get update &amp; apt-get upgrade
+apt-get install kali-linux-arm kali-desktop-core kali-desktop-xfce</code></pre><p>其他一些可以安装的包列举在<a href="https://www.kali.org/docs/general-use/metapackages/">这里</a>。</p><p>安装之后最好 <code>commit</code> 一下，可以做个备份，免得玩坏了下次重新安装……</p><h2>配置运行 TightVNC</h2><pre><code class="lang-sh">apt-get install tightvncserver</code></pre><p>创建一个新的用户并给予 root 权限（不建议以 root 用户登录），同时最好加入 sudoers 里（<code>visudo</code>）。<br>然后切换到新用户运行 <code>vncpasswd</code>，会提示设置 VNC 连接的密码。之后就可以在当前用户下直接启动 VNCServer 了：</p><pre><code class="lang-sh">tightvncserver :1 -geometry 1440x900</code></pre><p>第一次启动会自动在 <code>~/.vnc/</code> 目录下生成默认的 <code>xstartup</code> 配置文件。</p><p>VNCServer 的端口默认从 5900 开始，<code>:0</code> 表示 5900，<code>:1</code> 就表示 5901。不同的端口可以配置登陆不同的用户。</p><p><code>-geometry</code> 选项调整分辨率。之后进入 Kali 会发现系统设置里的分辨率是没法调整的，进入 Display 设置就显示错误。实际上分辨率只能在启动 VNCServer 的时候控制。<br>我的 Macbook 屏幕比例是 16:10，比较适合的分辨率是 <code>1440x900</code>。</p><p>使用 <code>tightvncserver -kill :1</code> 停止。不结束进程就直接 <code>docker stop kali</code> 相当于强制关机，第二次启动图形环境会有进程占用问题，要手动处理。</p><h2>客户端连接</h2><p>地址直接填写本机 <code>127.0.0.1:5901</code> 即可。由于是本地的连接，就不做 SSH 通道加密啥的了。</p><p>今天才发现，MacOS 有个深藏不露的自带的 VNC 客户端，叫做「屏幕共享」。应用列表里都找不到，搜索才能找到。也可以直接在 Safari 里输入 <code>vnc://127.0.0.1:5901</code> 进入这个 App（Chrome 好像也行）。<br>也可以用 VNC Viewer 客户端连接。</p><p><img src="https://skywt.cn/usr/uploads/2021/12/3508335548.png" alt="VNC Viewer 连接，体验极佳！" title="VNC Viewer 连接，体验极佳！"></p><p>也可以用 noVNC，直接在浏览器里用（虽说这样就不像一个「虚拟机」了 QwQ）。</p><pre><code class="lang-sh">apt-get install net-tools
+apt-get install novnc
+/usr/share/novnc/utils/launch.sh --listen 5901 --vnc localhost:5900</code></pre><p>浏览器访问 <code>http://127.0.0.1:25901/vnc.html</code> 即可连接。</p><h2>其他奇怪的探索</h2><p>基于异想天开的想要找一个 Windows 虚拟机解决方案的想法，发现真的存在 ReactOS 的 Docker 镜像（<a href="https://github.com/hectorm/docker-qemu-reactos">这个项目</a>），并且居然在 arm64 上可以奇迹般地跑起来……（虽然不知道这玩意是怎么在 Docker 容器里运行的）</p><pre><code class="lang-sh">docker run --detach \
+  --name reactos \
+  --publish 127.0.0.1:5900:5900/tcp \
+  --publish 127.0.0.1:6080:6080/tcp \
+  docker.io/hectormolinero/qemu-reactos:latest</code></pre><p>于是去体验了一下 ReactOS on Docker，虽然，基本上是卡得没法用的状态。Firefox 网页基本上加载不出……<br>并且在第二次启动之后，之前装的软件居然都打不开了，显示「FILE_NOT_FOUND」。估计是我没正常关机而是直接 <code>docker stop reactos</code> 的原因。</p><p><img src="https://skywt.cn/usr/uploads/2021/12/101399875.png" alt="ReactOS 的奇妙体验" title="ReactOS 的奇妙体验"></p><p>不能说像，简直一模一样。「Windows 经典」主题，非常复古。想想毕竟是个伟大的开源项目，这个体验还是挺有意思的。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 2 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/e451fea6d7ad2e5cadc71a1d873b52aa" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://capata.top" class="link" target="_blank"> <h4>CapDocker</h4> </a> <p class="mt-1">2022 年 2 月 16 日 6:38</p> </div> </div> <p class="mt-2">呜呜呜前几天才知道有Docker这种好东西~
+看到Sky早就开玩了真是开心呀！
+多多交流~</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/14f26f3972414bf3696e89bbef9c1a3d" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://acheing.com" class="link" target="_blank"> <h4>杨小花</h4> </a> <p class="mt-1">2022 年 1 月 5 日 11:55</p> </div> </div> <p class="mt-2">能不能出一个mac M1装burpsuite破解版的教程啊QwQ</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/kali-desktop-in-docker" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / MacOS 用 Docker 安装 Kali Linux “虚拟机”</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

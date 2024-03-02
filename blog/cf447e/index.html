@@ -1,0 +1,188 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 447E - DZY Loves Fibonacci Numbers 题解：线段树</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 447E - DZY Loves Fibonacci Numbers 题解：线段树</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 447E - DZY Loves Fibonacci Numbers 题解：线段树</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 447E - DZY Loves Fibonacci Numbers 题解：线段树</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 01 月 29 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf447e" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <h2>Description</h2><p><a href="https://codeforces.com/problemset/problem/447/E" title="LInk">Link</a></p><p>In mathematical terms, the sequence $F_n$ of Fibonacci numbers is defined by the recurrence relation</p><p>$$F_1 = 1; F_2 = 1; F_n = F_{n - 1} + F_{n - 2} (n &gt; 2)$$</p><p>DZY loves Fibonacci numbers very much. Today DZY gives you an array consisting of n integers: $a_1, a_2, \dots, a_n$. Moreover, there are $m$ queries, each query has one of the two types:</p><!--more--><ol><li>Format of the query "1 l r". In reply to the query, you need to add $F_{i - l + 1}$ to each element $a_i$, where $l \leq i \leq r$.</li><li>Format of the query "2 l r". In reply to the query you should output the value of  modulo $1000000009 (10^9 + 9)$.</li></ol><p>Help DZY reply to all the queries.</p><ul><li>time limit per test: 4 seconds</li><li>memory limit per test: 256 megabytes</li><li>input: standard input</li><li>output: standard output</li></ul><h2>Input</h2><p>The first line of the input contains two integers $n$ and $m (1 ≤ n, m ≤ 300000)$. The second line contains $n$ integers $a_1, a_2, \dots, a_n$ ($1 ≤ a_i ≤ 10^9$) — initial array $a$.</p><p>Then, $m$ lines follow. A single line describes a single query in the format given in the statement. It is guaranteed that for each query inequality $1 ≤ l ≤ r ≤ n$ holds.</p><h2>Output</h2><p>For each query of the second type, print the value of the sum on a single line.</p><h2>Examples</h2><p><strong>input</strong></p><pre><code>4 4
+1 2 3 4
+1 1 4
+2 1 4
+1 2 4
+2 1 3
+</code></pre><p><strong>output</strong></p><pre><code>17
+12
+</code></pre><h2>Note</h2><p>After the first query, $a = [2, 3, 5, 7]$.</p><p>For the second query, $sum = 2 + 3 + 5 + 7 = 17$.</p><p>After the third query, $a = [2, 4, 6, 9]$.</p><p>For the fourth query, $sum = 2 + 4 + 6 = 12$.</p><h2>Translation</h2><p>题意：给出一个数组 $a_i$，现在有 $m$ 个操作，每个操作给出 L 和 R，可能是将这个区间里所有数字加上斐波那契数列对应的项（第 $i$ 个数字加 $F_{i-L+1}$），或者是查询这个区间所有值之和。</p><h2>Analysis</h2><p>肯定想到用线段树。但是一般的线段树只能维护加和，需要考虑如何对斐波那契数列也构造 lazy tag。可以发现以下两个结论：</p><ul><li>如果只存数列的前两项 a 和 b，可以推出这个数列，包括可以 $\Theta(1)$ 推出第 $n$ 项和前 $n$ 项之和。列表可以发现规律：</li></ul><table><thead><tr><th align="center">1</th><th align="center">2</th><th align="center">3</th><th align="center">4</th><th align="center">5</th><th align="center">...</th><th align="center">n</th></tr></thead><tbody><tr><td align="center">a</td><td align="center">b</td><td align="center">a+b</td><td align="center">a+2b</td><td align="center">2a+3b</td><td align="center">...</td><td align="center">$F_{n-2}a+F_{n-1}b$</td></tr></tbody></table><p>（$F_i$ 表示斐波那契数列第 $i$ 项）</p><ul><li>如何 $\Theta(1)$ 求和？</li></ul><p>$$Sum = \sum_{i=1}^{n} a\ast F_{n-2}+b\ast F_{n-1} = a\ast sum_{n-2} +b\ast sum_{n-1}+a$$</p><p>（$sum_i$ 表示斐波那契前 $i$ 项前缀和）</p><ul><li>这样的数列具有可加性，也就是 lazy tag 如果直接累计不会有问题。</li></ul><p>这样我们可以写一个 Fibonacci 相关的模块：</p><pre><code class="lang-cpp">namespace Fibonacci{
+    int f[maxn],sum[maxn];
+
+    inline void build(){
+        f[1]=f[2]=1;sum[1]=1;sum[2]=2;
+        for (int i=3;i&lt;=N;i++) f[i]=(f[i-1]+f[i-2])%tt,sum[i]=(sum[i-1]+f[i])%tt;
+    }
+
+    inline int query(int a,int b,int n){
+        if (n==0) return 0; else
+        if (n==1) return a%tt; else
+        if (n==2) return b%tt; else
+        return (f[n-2]*a%tt+f[n-1]*b%tt)%tt;
+    }
+
+    inline int get_sum(int a,int b,int n){
+        if (n==0) return 0; else
+        if (n==1) return a%tt; else
+        if (n==2) return (a+b)%tt; else
+        return (a*sum[n-2]%tt+b*sum[n-1]%tt+a%tt)%tt;
+    }
+}</code></pre><p>那么接下来我们可以写一个变异的线段树了。打两个烂标记 tag_a 和 tag_b 分别表示数列第一项和第二项。需要注意的是，update 操作时在向下“分割”的时候需要特别注意下数列左端点的两种情况。</p><p>建树是不需要的，可以假装原来的序列全是 0，询问的时候再前缀和累加。可以少写一个 build 了～</p><h2>Code</h2><p>写这题需要耐心……</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+#define int long long
+
+const int maxn=300005,N=300000;
+const int tt=1000000009;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+inline void plus_mod(int &amp;x,int y){
+    x=(x+y)%tt;
+}
+
+namespace Fibonacci{
+    int f[maxn],sum[maxn];
+
+    inline void build(){
+        f[1]=f[2]=1;sum[1]=1;sum[2]=2;
+        for (int i=3;i&lt;=N;i++) f[i]=(f[i-1]+f[i-2])%tt,sum[i]=(sum[i-1]+f[i])%tt;
+    }
+
+    inline int query(int a,int b,int n){
+        if (n==0) return 0; else
+        if (n==1) return a%tt; else
+        if (n==2) return b%tt; else
+        return (f[n-2]*a%tt+f[n-1]*b%tt)%tt;
+    }
+
+    inline int get_sum(int a,int b,int n){
+        if (n==0) return 0; else
+        if (n==1) return a%tt; else
+        if (n==2) return (a+b)%tt; else
+        return (a*sum[n-2]%tt+b*sum[n-1]%tt+a%tt)%tt;
+    }
+}
+
+#define ls ((p&lt;&lt;1))
+#define rs ((p&lt;&lt;1)+1)
+#define mid (((tr-tl)&gt;&gt;1)+tl)
+
+namespace SegmentTree{
+    int sum[maxn*4];
+    int tag_a[maxn*4],tag_b[maxn*4];
+
+    inline void push_down(int tl,int tr,int p){
+        int as=Fibonacci::query(tag_a[p],tag_b[p],mid+1-tl+1);
+        int bs=Fibonacci::query(tag_a[p],tag_b[p],mid+2-tl+1);
+        plus_mod(sum[ls],Fibonacci::get_sum(tag_a[p],tag_b[p],mid-tl+1));
+        plus_mod(sum[rs],Fibonacci::get_sum(as,bs,tr-(mid+1)+1));
+        plus_mod(tag_a[ls],tag_a[p]); plus_mod(tag_b[ls],tag_b[p]);
+        plus_mod(tag_a[rs],as); plus_mod(tag_b[rs],bs);
+        tag_a[p]=tag_b[p]=0;
+    }
+
+    inline void update(int sl,int sr,int tl,int tr,int p,int a,int b,int st){
+        if (sl&lt;=tl &amp;&amp; tr&lt;=sr){
+            plus_mod(sum[p],Fibonacci::get_sum(a,b,tr-tl+1));
+            plus_mod(tag_a[p],a); plus_mod(tag_b[p],b);
+            return;
+        }
+        push_down(tl,tr,p);
+        int as,bs;
+        if (sl&lt;=mid  ){
+            update(sl,sr,tl,mid,ls,a,b,st);
+            as=Fibonacci::query(a,b,mid+1-max(sl,tl)+1);
+            bs=Fibonacci::query(a,b,mid+2-max(sl,tl)+1);
+        } else {
+            as=a;bs=b;
+        }
+        if (mid+1&lt;=sr) update(sl,sr,mid+1,tr,rs,as,bs,mid+1);
+        sum[p]=(sum[ls]+sum[rs])%tt;
+    }
+    
+    inline int query(int sl,int sr,int tl,int tr,int p){
+        if (sl&lt;=tl &amp;&amp; tr&lt;=sr) return sum[p];
+        push_down(tl,tr,p);
+        int ret=0;
+        if (sl&lt;=mid  ) plus_mod(ret,query(sl,sr,tl,mid,ls));
+        if (mid+1&lt;=sr) plus_mod(ret,query(sl,sr,mid+1,tr,rs));
+        return ret%tt;
+    }
+}
+
+int n,m;
+int a[maxn],sum[maxn];
+
+signed main(){
+    Fibonacci::build();
+    n=read();m=read();
+    for (int i=1;i&lt;=n;i++) a[i]=read(),sum[i]=(sum[i-1]+a[i])%tt;
+    for (int i=1;i&lt;=m;i++){
+        int opt=read(),x=read(),y=read();
+        if (opt==1){
+            SegmentTree::update(x,y,1,n,1,1,1,x);
+        } else if (opt==2){
+            int ans=SegmentTree::query(x,y,1,n,1);
+            printf(&quot;%lld\n&quot;,(ans+sum[y]-sum[x-1]+tt)%tt);
+        }
+    }
+    return 0;
+}</code></pre><p>颓了半个学期文化课，该回来颓 OI 了 :new_moon_with_face:</p><p>我的博客并没有弃坑！</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf447e" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 447E - DZY Loves Fibonacci Numbers 题解：线段树</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

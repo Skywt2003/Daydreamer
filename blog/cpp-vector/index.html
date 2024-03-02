@@ -1,0 +1,130 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>（转）C++ 中 Vector 的使用总结</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / （转）C++ 中 Vector 的使用总结</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / （转）C++ 中 Vector 的使用总结</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>（转）C++ 中 Vector 的使用总结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 12 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cpp-vector" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>在c++中，vector 是一个十分有用的容器。它能够像容器一样存放各种类型的对象，简单地说，vector是一个能够存放任意类型的动态数组，能够增加和压缩数据。<br>vector 在C++ 标准模板库中的部分内容，它是一个多功能的，能够操作多种数据结构和算法的模板类和函数库。</p><!--more--><h2>特别注意</h2><p>使用vector需要注意以下几点：</p><ol><li>如果你要表示的向量长度较长（需要为向量内部保存很多数），容易导致内存泄漏，而且效率会很低；</li><li>Vector作为函数的参数或者返回值时，需要注意它的写法：</li></ol><pre><code class="lang-cpp">double Distance(vector&lt;int&gt;&amp;a, vector&lt;int&gt;&amp;b)</code></pre><p>其中的“&”绝对不能少！！！</p><h2>实例</h2><p>简单的使用方法如下：</p><p><code>vector&lt;int&gt;test;</code>：建立一个 vector，int 为数组元素的数据类型，test 为动态数组名</p><p><code>test.push_back(1);</code></p><p><code>test.push_back(2); </code> //把1和2压入vector，这样test[0]就是1,test[1]就是2</p><p>自己见到的实例：</p><p><code>vector&lt;vector&lt;Point2f&gt; &gt; points;</code>  //定义一个二维数组</p><p><code>points[0].size();</code>   //指第一行的列数</p><h3>基本操作</h3><ol><li>头文件：<code>#include&lt;vector&gt;</code></li><li>创建vector对象：<code>vector&lt;int&gt; vec;</code></li><li>尾部插入数字：<code>vec.push_back(a);</code></li><li>使用下标访问元素：<code>cout&lt;&lt;vec[0]&lt;&lt;endl;</code> 记住下标是从0开始的。</li><li>使用迭代器访问元素</li></ol><pre><code class="lang-cpp">vector&lt;int&gt;::iterator it;
+for(it=vec.begin();it!=vec.end();it++) cout&lt;&lt;*it&lt;&lt;endl;
+</code></pre><ol start="6"><li>插入元素：<code>vec.insert(vec.begin()+i,a);</code> 在第i+1个元素前面插入a;</li><li>删除元素：<code>vec.erase(vec.begin()+2);</code> 删除第3个元素</li></ol><p><code>vec.erase(vec.begin()+i,vec.end()+j); 删除区间[i,j-1];区间从0开始</code></p><ol start="8"><li>向量大小：<code>vec.size();</code></li><li>清空：<code>vec.clear();</code></li></ol><p>特别提示：<a href="https://blog.csdn.net/duan19920101/article/details/51679517" title="这里有 begin(">这里有 begin() 与 end() 函数、front() 与 back() 的差别</a> 与 end() 函数、front() 与 back() 的差别")</p><h3>重要说明</h3><p>vector的元素不仅仅可以是int,double,string,还可以是结构体，但是要注意：结构体要定义为全局的，否则会出错。</p><pre><code class="lang-cpp">#include&lt;stdio.h&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;iostream&gt;
+using namespace std;
+ 
+typedef struct rect{
+    int id;
+    int length;
+    int width;
+ 
+　　//对于向量元素是结构体的，可在结构体内部定义比较函数，下面按照id,length,width升序排序。
+　　bool operator&lt; (const rect &amp;a)  const{
+        if(id!=a.id)
+            return id&lt;a.id;
+        else{
+            if(length!=a.length)
+                return length&lt;a.length;
+            else
+                return width&lt;a.width;
+        }
+    }
+}Rect;
+ 
+int main(){
+    vector&lt;Rect&gt; vec;
+    Rect rect;
+    rect.id=1;
+    rect.length=2;
+    rect.width=3;
+    vec.push_back(rect);
+    vector&lt;Rect&gt;::iterator it=vec.begin();
+    cout&lt;&lt;(*it).id&lt;&lt;' '&lt;&lt;(*it).length&lt;&lt;' '&lt;&lt;(*it).width&lt;&lt;endl;    
+ 
+return 0;
+ 
+}
+</code></pre><h3>算法</h3><ol><li>使用reverse将元素翻转：需要头文件 <code>#include&lt;algorithm&gt;</code></li></ol><p><code>reverse(vec.begin(),vec.end());</code>将元素翻转，即逆序排列。（在vector中，如果一个函数中需要两个迭代器，一般后一个都不包含）</p><ol start="2"><li>使用sort排序：需要头文件 <code>#include&lt;algorithm&gt;</code>，</li></ol><p><code>sort(vec.begin(),vec.end());</code> （默认是按升序排列,即从小到大）</p><p>可以通过重写排序比较函数按照降序比较，如下：</p><p>定义排序比较函数：</p><pre><code class="lang-cpp">bool Comp(const int &amp;a,const int &amp;b){
+    return a&gt;b;
+}
+</code></pre><p>调用时：<code>sort(vec.begin(),vec.end(),Comp)</code>，这样就降序排序。</p><ol start="3"><li>输出 Vector 中的元素</li></ol><pre><code class="lang-cpp">vector&lt;float&gt; vecClass; 
+int nSize = vecClass.size();
+</code></pre><p>打印 vecClass 方法一：</p><pre><code class="lang-cpp">for(int i=0;i&lt;nSize;i++) {
+   cout&lt;&lt;vecClass[i]&lt;&lt;&quot;     &quot;;
+}
+   cout&lt;&lt;endl;
+</code></pre><p>需要注意的是：以方法一进行输出时，数组的下表必须保证是整数。</p><p>打印 vecClass 方法二：</p><pre><code class="lang-cpp">for(int i=0;i&lt;nSize;i++)  {
+   cout&lt;&lt;vecClass.at(i)&lt;&lt;&quot;     &quot;;
+}
+   cout&lt;&lt;endl;
+</code></pre><p>打印 vecClass 方法三：（输出某一指定的数值时不方便）</p><pre><code class="lang-cpp">for(vector&lt;float&gt;::iterator it = vecClass.begin();it!=vecClass.end();it++) {
+    cout&lt;&lt;*it&lt;&lt;&quot;   &quot;;
+}
+    cout&lt;&lt;endl;
+</code></pre><p>二维数组使用：</p><pre><code class="lang-cpp">#include &quot;stdafx.h&quot;
+#include &lt;cv.h&gt;
+#include &lt;vector&gt; 
+#include &lt;iostream&gt; 
+using namespace std;
+int main(){
+    using namespace std;
+    int out[3][2] = { 1, 2, 
+             3, 4,
+            5, 6 };
+    vector &lt;int*&gt; v1;
+ 
+    v1.push_back(out[0]);
+    v1.push_back(out[1]);
+    v1.push_back(out[2]);
+ 
+    cout &lt;&lt; v1[0][0] &lt;&lt; endl;//1
+    cout &lt;&lt; v1[0][1] &lt;&lt; endl;//2
+    cout &lt;&lt; v1[1][0] &lt;&lt; endl;//3
+    cout &lt;&lt; v1[1][1] &lt;&lt; endl;//4
+    cout &lt;&lt; v1[2][0] &lt;&lt; endl;//5
+    cout &lt;&lt; v1[2][1] &lt;&lt; endl;//6
+ 
+    return 0;
+}
+</code></pre><p><a href="http://blog.csdn.net/duan19920101/article/details/51557854" title="vector 中 insert(">vector 中 insert() 的用法详解</a> 的用法详解")</p><p>转载自 <a href="https://blog.csdn.net/duan19920101/article/details/50617190" title="C++ 中vector的使用方法 - CSDN博客">C++ 中vector的使用方法 - CSDN博客</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cpp-vector" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / （转）C++ 中 Vector 的使用总结</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

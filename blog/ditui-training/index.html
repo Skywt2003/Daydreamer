@@ -1,0 +1,127 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>递推专项训练五题题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 递推专项训练五题题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 递推专项训练五题题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>递推专项训练五题题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 28 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/ditui-training" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>今天的 XY 题居然是递推专题，五道题目全都是递推，30+个人 AK 了……</p><blockquote>递推是按照一定的规律来计算序列中的每个项，通常是通过计算前面的一些项来得出序列中的指定项的值。其思想是把一个复杂的庞大的计算过程转化为简单过程的多次重复，该算法利用了计算机速度快和不知疲倦的机器特点。</blockquote><!--more--><p>"利用了计算机速度快和不知疲倦的机器特点" :no_mouth:</p><p>蛇皮目录</p><h2>问题一</h2><h3>题目描述</h3><p>在所有的 N 位数中，有多少个数中有偶数个数字 3？</p><p>Time Limit: 1000ms<br>Memory Limit: 65536Bit</p><h4>输入输出格式</h4><p>读入一个数 N。</p><p>输出答案。由于结果可能很大，你只需要输出这个答案 mod 12345 的值。</p><h4>样例输入</h4><pre><code>2</code></pre><h4>样例输出</h4><pre><code>73</code></pre><h4>数据范围</h4><p>1&lt;=N&lt;=1000</p><h3>问题分析</h3><p>很明显是递推（或者说 DP）。容易想到定义 $f(i)$ 表示在 $i$ 位数中有多少个数中有偶数个数字 3，但是这样如何进行状态转移呢？很明显，单纯这么定义无法直接状态转移。所以我们再定义 $g(i)$ 表示 $i$ 位数中有多少个数字中有奇数个数字 3。</p><p>考虑状态转移，对于 $f(i)$ 和 $g(i)$，肯定与 $i-1$ 位数字的情况有关。先考虑 $f(i)$：</p><ul><li>如果第 $i$ 位数字（也就是相较于 $i-1$ 位，新增的一位数字）是 3，那么剩下的 $i-1$ 位就应该有奇数个 3，方案数是 $g(i-1)$；</li><li>如果第 $i$ 位数字不是 3，则可以是除了 3 以外的 9 个数字，剩下的 $i-1$ 位应当有偶数个 3，方案数：$f(i-1)\ast 9$</li></ul><p>同理可以得出 $g(i)$ 的状态转移。转移方程：</p><pre><code class="lang-math">f(i)=f(i-1)\ast 9+g(i-1) \\
+g(i)=g(i-1)\ast 9+f(i-1)</code></pre><h3>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1005,tt=12345;
+int n,f[maxn],g[maxn];
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    if (n==1) {printf(&quot;9\n&quot;);return 0;}
+    f[1]=8;g[1]=1;
+    for (int i=2;i&lt;=n;i++){
+        f[i]=(f[i-1]*9%tt+g[i-1])%tt;
+        g[i]=(g[i-1]*9%tt+f[i-1])%tt;
+    }
+    printf(&quot;%d\n&quot;,f[n]);
+    return 0;
+}</code></pre><h2>问题二</h2><h3>题目描述</h3><p>用 1×1 和 2×2 的磁砖不重叠地铺满 N×3 的地板，共有多少种方案？</p><h4>样例输入</h4><pre><code>2</code></pre><h4>样例输出</h4><pre><code>3</code></pre><p>（数据范围、时空限制、输入输出格式同上）</p><h3>问题分析</h3><p>一看到这题可能会想到轮廓线 DP……其实根本没有这么复杂，注意到只有 1×1 和 2×2 两种地砖，那么对于每个 2×3 的矩形有两种情况：右边一块 2×2、左边两块 1×1 和 左边一块 2×2、右边两块 1×1。还有另一种情况就是每行三块 1×1。定义 $f(i)$ 表示铺 $i$ 行的方案数，那么递推式很容易得出：</p><pre><code class="lang-math">f(i)=f(i-2)\ast 2+f(i-1)</code></pre><h3>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1005,tt=12345;
+int n,f[maxn];
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    f[0]=1;
+    for (int i=1;i&lt;=n;i++) f[i]=(f[i-2]*2%tt+f[i-1])%tt;
+    printf(&quot;%d\n&quot;,f[n]);
+    return 0;
+}</code></pre><h2>问题三</h2><h3>题目描述</h3><p>从原点出发，一步只能向右走、向上走或向左走。恰好走 N 步且不经过已走的点共有多少种走法？</p><h4>样例输入</h4><pre><code>2</code></pre><h4>样例输出</h4><pre><code>7</code></pre><p>（数据范围、时空限制、输入输出格式同上）</p><h3>问题分析</h3><p>一看这题，可能难点主要在“不经过已走的点”如何处理。如果我们定义 $f(i)$ 表示走了 i 步的方案数，那么“不经过已走的点”就没法处理了。<br>不妨定义 $f(i,0/1/2)$ 表示走了 i 步，最后一步向上/左/右走的方案数。那么上次是向右边走，这次就不能向左边走；上次向左，这次就不能向右。这样就可以直接进行状态转移了：</p><pre><code class="lang-math">f(i,0)=f(i-1,0)+f(i-1,1)+f(i-1,2) \\
+f(i,1)=f(i-1,0)+f(i-1,1) \\
+f(i,2)=f(i-1,0)+f(i-1,2)</code></pre><h3>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1005,tt=12345;
+int n,f[maxn][3];
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    f[1][0]=f[1][1]=f[1][2]=1;
+    for (int i=2;i&lt;=n;i++){
+        f[i][0]=(f[i-1][0]+f[i-1][1]+f[i-1][2])%tt;
+        f[i][1]=(f[i-1][0]+f[i-1][1])%tt;
+        f[i][2]=(f[i-1][0]+f[i-1][2])%tt;
+    }
+    printf(&quot;%d\n&quot;,(f[n][0]+f[n][1]+f[n][2])%tt);
+    return 0;
+}</code></pre><h2>问题四</h2><h3>题目描述</h3><p>圆周上有 N 个点。连接任意多条（可能是 0 条）不相交的弦（共用端点也算相交）共有多少种方案？</p><h4>样例输入</h4><pre><code>4</code></pre><h4>样例输出</h4><pre><code>9</code></pre><p>（数据范围、时空限制、输入输出格式同上）</p><h3>问题分析</h3><p>也是很显然的递推题……一般这种题目我们可以“找规律”：</p><ul><li>如果只有 0 个点，无法连接，只有一种方案，即全部不连。$f(0)=1$。</li><li>同理，如果只有一个点，$f(1)=1$。</li><li>如果有两个点，要么连接，要么不连，$f(2)=2$。</li><li>（重头戏来了）如果有三个点，则新加入的点要么不与其他两个点连接（方案数：$f(2)$），要么随便选一个连接，“孤立”剩下的一个点，共 4 种方案。</li><li><p>（真正的重头戏）如果再加入一个点呢？</p><ul><li>不与其他三个点连接，方案数 $f(3)$</li><li>与某个点连接，<strong>可以看成连成的这条边把点集分成了两部分，左右两部分剩下的点分别连边，方案数分别相乘</strong>。</li></ul></li></ul><p>在上述手算过程中我们发现了规律，总结出递推式就是：</p><pre><code class="lang-math">f(i)=f(i-1)+ \sum_{j=0}^{i-2} f(j)\ast f(i-j-2)</code></pre><h3>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1005,tt=12345;
+int n,f[maxn];
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    f[0]=f[1]=1;f[2]=2;
+    for (int i=3;i&lt;=n;i++){
+        f[i]=f[i-1];
+        for (int j=0;j&lt;=i-2;j++) f[i]=(f[i]+f[j]*f[i-j-2]%tt)%tt;
+    }
+    printf(&quot;%d\n&quot;,f[n]);
+    return 0;
+}</code></pre><h2>问题五</h2><h3>题目描述</h3><p>在网格中取一个 N×1 的矩形，并把它当作一个无向图。这个图有 2(N+1) 个顶点，有 3(N-1)+4 条边。这个图有多少个生成树？</p><h4>样例输入</h4><pre><code>1</code></pre><h4>样例输出</h4><pre><code>4</code></pre><p>（数据范围、时空限制、输入输出格式同上）</p><h3>问题分析</h3><p>（为了方便起见，在这里的分析中，我假设矩形从下到上安排）<br>首先我们可以定义 $f(i)$ 表示高度为 $i$ 的矩形形成生成树的个数。最开始我想到一个 naive 的想法：最底下的一个矩形有四种情况，上面每增加一个就有三种情况（如图），所以答案就是 $4\ast 3^{n-1}$ ！</p><p><center><img src="https://skywt.cn/wp-content/uploads/2018-08-28-21-59-26屏幕截图.png" /></center></p><p>但是现实很残酷，很显然“梯子形”没有被我考虑到，即这样的情况：</p><p><center><img src="https://skywt.cn/wp-content/uploads/2018-08-28-22-02-50屏幕截图.png" /></center></p><p>所以我们不得不换一种定义：$f(i,0/1)$ 表示有 $i$ 个正方形，其中最上面一个正方形的最上面一条边取了/没取。因为接下来加入的正方形只和最上面一条边有关。考虑状态转移：</p><ul><li>先考虑 $f(i,1)$ 如何转移：很简单，新加入的正方形上面一条边不取，只有一种情况，即“|  |”。</li><li><p>接下来看看 $f(i,0)$ 怎么转移。</p><ul><li>如果下面矩形最上面一条边没取，则有两种情况：左上、右上。</li></ul><ul><li>如果下面矩形最上面一条边取了，那么我们还要再考虑一种情况：<strong>可以把这条边拿来当做加入的正方形的最上面一条边</strong>（这个真的是想不到）。这样才保证了上面所述的“梯子形”可以考虑到。</li></ul></li></ul><p>转移方程：</p><pre><code class="lang-math">f(i,0)=f(i-1,1)\ast 2+f(i-1,0)\ast 3 \\
+f(i,1)=f(i-1,1)+f(i-1,0)</code></pre><h3>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1005,tt=12345;
+int n,f[maxn][2];
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    f[1][0]=3;f[1][1]=1;
+    for (int i=2;i&lt;=n;i++){
+        f[i][0]=(f[i-1][1]*2%tt+f[i-1][0]*3%tt)%tt;
+        f[i][1]=(f[i-1][0]+f[i-1][1])%tt;
+    }
+    printf(&quot;%d\n&quot;,(f[n][0]+f[n][1])%tt);
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/ditui-training" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 递推专项训练五题题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

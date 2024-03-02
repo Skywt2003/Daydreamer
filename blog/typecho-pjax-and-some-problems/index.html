@@ -1,0 +1,139 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Typecho 主题 PJAX 无刷新以及遇到的一些问题</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Typecho 主题 PJAX 无刷新以及遇到的一些问题</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Typecho 主题 PJAX 无刷新以及遇到的一些问题</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Typecho 主题 PJAX 无刷新以及遇到的一些问题</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 10 月 18 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/typecho-pjax-and-some-problems" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>最近给 Typecho 主题 <a href="https://github.com/Skywt2003/Daydream">Daydream</a> 加上了 PJAX 无刷新。本以为加一段代码就好，结果遇到了一大堆问题，无法提交评论、插件无效、数学公式没法渲染……特此记录一下。</p><!--more--><h2>什么是 PJAX</h2><blockquote>pjax = pushState + ajax</blockquote><p>对于传统的 Typecho 主题，实际上就是<strong>服务端渲染</strong>（SSR）的代表，用户每请求一个页面，服务器（php）就渲染好这个页面的内容（包括文章、评论之类的动态内容），渲染好一个静态的 HTML 然后传给浏览器。这样虽然方便，但是不难发现传输数据量其实不小。在加载不同的页面的时候，有不少部分是重复渲染的，比如页面的页眉、页脚，每个页面都是一样的，但是加载每个页面都要重新加载一次。这就会降低访问体验。</p><p>而以调用 Restful 接口等方式进行<strong>客户端渲染</strong>（CSR）的<strong>单页应用程序</strong>（SPA）则是与之对立的另一个典型。用户第一次访问只加载一个页面框架，其中的 js 代码通过接口向服务器请求数据，然后在客户端进行渲染。进入新的页面链接时只刷新需要更新的部分（一般是通过 DOM 操作）。这样每次只需要修改页面中很少的信息量，可以加快加载的速度。这称为<strong>无刷新技术</strong>。然而 Typecho 并不是以这种 CSR 的思路构建的。<br>（我之前开过的一个坑 <a href="https://github.com/Skywt2003/vuecho">Vuecho</a> 其实就是这种尝试，这是一个 demo：<a href="https://alpha.skywt.cn/">alpha.skywt.cn</a>）</p><p>那么 PJAX 实际上就是以上两者的「折中方案」。通过这段神奇的 js 代码，它可以自己判断哪些部分刷新了，然后在刷新（或者进入新的页面）时通过 DOM 操作更新要更新的部分。虽然后端的实现完全是服务器端渲染，但是前端看起来就好像是客户端渲染一样，实现<strong>全站无刷新</strong>，可以获得非常迅捷的体验。</p><h2>给 Typecho 主题加上 PJAX</h2><p>⚠️ 本文使用的是 <a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a>。</p><p>这一步其实非常简单（麻烦的在后面），<br>首先把博客的动态内容（即从一个页面进入另一个页面要更新的内容）用一个 <code>&lt;div&gt;</code> 之类的标签包裹起来，并将 id 设置为 <code>pjax-container</code>。这个容器就叫做 PJAX 容器。<br>在这个容器外部，是刷新页面不需要更新的部分，如每个页面都一样的页眉、导航栏、页脚。<br>在这个容器内部，是刷新页面需要重新加载的部分，比如从文章列表进入一篇文章，容器中的内容由「文章列表」改变为「文章内容」。</p><p>一般主题的结构包含 <code>header.php</code>、<code>footer.php</code>，只要在 <code>header.php</code> 的末尾加上容器的开放 tag，在 <code>footer.php</code> 的开头加上容器的封闭 tag 即可。最后渲染出来的页面应该像是这样：</p><pre><code class="lang-html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;!-- ... --&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;&lt;!-- 页眉，标题什么的 --&gt;&lt;/header&gt;
+        &lt;nav&gt;&lt;!-- 导航栏什么的 --&gt;&lt;/nav&gt;
+        &lt;main id=&quot;pjax-container&quot;&gt;
+            &lt;!-- 网站主体内容，文章列表 / 文章内容 / 评论什么的 --&gt;
+        &lt;/main&gt;
+        &lt;script&gt;
+            // 下面要加上的代码
+        &lt;/script&gt;
+        &lt;footer&gt;&lt;!-- 页脚什么的 --&gt;&lt;/footer&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><p>在 footer.php 或者其他地方（PJAX 容器的后面，就是上面这段代码的 <code>&lt;script&gt;</code> 部分）加上这段代码：</p><pre><code class="lang-js">$(document).pjax('a[href^=&quot;&lt;?php $this-&gt;options-&gt;siteUrl()?&gt;&quot;]:not(a[target=&quot;_blank&quot;])', {
+    container: '#pjax-container',
+    fragment: '#pjax-container'
+});
+$(document).on('pjax:send',function() {
+    // alert('开始加载');
+    // 开始加载时要运行的代码（如显示加载动画）
+});
+$(document).on('pjax:complete', function() {   
+    // alert('加载完成');
+    // 加载完成后要运行的代码（如去除加载动画）
+});</code></pre><p>传入 pjax 函数的第一个参数是 selector，它告诉 PJAX，只对于目标为本站内的且没有设置在新页面打开（<code>target=&quot;_blank&quot;</code>）的链接进行无刷新加载，其他链接（如站外链接）则会正常加载。<br>第二个参数是 container，指定 id 为 <code>pjax-container</code> 的元素作为 PJAX 容器，当然也可以任意修改。可以查阅<a href="https://github.com/defunkt/jquery-pjax">文档</a>修改更多参数。</p><p><code>on</code> 和 <code>complete</code> 都是 PJAX 事件，文档里也列举了更多事件。可以用这个测试一下 PJAX 开启成功了没有。</p><p>经过以上步骤（应该）可以发现页面之间的切换明显变快了。</p><h2>解决评论问题</h2><p>启用 PJAX 后，如果从一个页面进入另一个页面（比如从首页进入某个文章页面），提交评论会发现页面刷新了一下（或者 Safari 干脆显示无法加载），没法正常发表评论。必须手动刷新这个页面才能发评论。</p><p>这是因为 Typecho 提交评论的 js 脚本放在 <code>&lt;head&gt;</code> 里（F12 可以看到），而当我们刷新页面，<code>&lt;head&gt;</code> 中的脚本并不会更新（因为其在 PJAX 容器之外）。所以只有第一次进入页面可以正常提交评论，进入其他页面后就不行。</p><p>解决方法也很简单。在评论区加上这段从 <code>&lt;head&gt;</code> 里 copy 出来的代码：</p><pre><code class="lang-js">(function() {
+    window.TypechoComment = {
+        dom: function(id) {
+            return document.getElementById(id);
+        },
+        create: function(tag, attr) {
+            var el = document.createElement(tag);
+            for (var key in attr) {
+                el.setAttribute(key, attr[key]);
+            }
+            return el;
+        },
+        reply: function(cid, coid) {
+            var comment = this.dom(cid),
+                parent = comment.parentNode,
+                response = this.dom('&lt;?php echo $this-&gt;respondId; ?&gt;'),
+                input = this.dom('comment-parent'),
+                form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                textarea = response.getElementsByTagName('textarea')[0];
+            if (null == input) {
+                input = this.create('input', {
+                    'type': 'hidden',
+                    'name': 'parent',
+                    'id': 'comment-parent'
+                });
+                form.appendChild(input);
+            }
+            input.setAttribute('value', coid);
+            if (null == this.dom('comment-form-place-holder')) {
+                var holder = this.create('div', {
+                    'id': 'comment-form-place-holder'
+                });
+                response.parentNode.insertBefore(holder, response);
+            }
+            comment.appendChild(response);
+            this.dom('cancel-comment-reply-link').style.display = '';
+            if (null != textarea &amp;&amp; 'text' == textarea.name) {
+                textarea.focus();
+            }
+            return false;
+        },
+        cancelReply: function() {
+            var response = this.dom('&lt;?php echo $this-&gt;respondId; ?&gt;'),
+                holder = this.dom('comment-form-place-holder'),
+                input = this.dom('comment-parent');
+            if (null != input) {
+                input.parentNode.removeChild(input);
+            }
+            if (null == holder) {
+                return true;
+            }
+            this.dom('cancel-comment-reply-link').style.display = 'none';
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();</code></pre><p>注意其中的 <code>&lt;?php echo $this-&gt;respondId; ?&gt;</code>，这就是前文评论失败的原因——每个页面的 <code>respondId</code> 不一样，所以这个是需要刷新的。</p><p>除此之外，需要关闭 Typecho 后台的「设置」-「评论」-「评论提交」中取消勾选「开启反垃圾保护」。这个选项实际上是开启反 CSRF 攻击的防护，即每次加载页面服务器会传一个每次不同的随机字符串（在页面里表单最后面一个名为 <code>_</code> 的 hidden input 元素），提交评论时表单里会带上它，而用 PJAX 的方式去拿这个字符串非常麻烦，索性关闭了。最好加上一些反垃圾评论的插件，因为没有了反 CSRF 防护，可以用脚本轻易多次提交评论。</p><p>经过以上的修改，应该可以正常提交评论了。</p><h2>解决插件问题</h2><p>KaTeX 数学公式没法渲染（第一次加载能渲染，进入新页面没法渲染），也是和评论类似的问题。渲染 KaTeX 公式的这段 js 代码：</p><pre><code class="lang-js">renderMathInElement(
+    document.body,
+    {
+        delimiters: [
+            {left: &quot;$$&quot;, right: &quot;$$&quot;, display: true},
+            {left: &quot;$&quot;, right: &quot;$&quot;, display: false},
+        ]
+    }
+);</code></pre><p>放在 PJAX 容器之外，所以只会在最初加载页面的时候执行一次。它涉及到 DOM 操作，我们希望它每次都能执行。解决方法是放在 PJAX 容器内部，或者在 <code>complete</code> 事件中也执行一次。</p><p>除此之外，包括 aplayer 插件、fancybox 图片灯箱、代码高亮等等都是类似的问题，只要把 DOM 操作的代码放到 PJAX 容器内部即可。</p><p>经过以上的操作，基本上网站的 PJAX 就没问题啦。享受极速的响应吧～</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 3 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/9d40f07345f91fed52568b76e513aaf1" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://blog.iyuan.ltd/" class="link" target="_blank"> <h4>iYuan</h4> </a> <p class="mt-1">2022 年 12 月 26 日 8:26</p> </div> </div> <p class="mt-2">牛哇，我加 pjax 也遇到好多问题，修了好久，曾一度想把 pjax 删掉。。。</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/9d40f07345f91fed52568b76e513aaf1" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://blog.iyuan.ltd/" class="link" target="_blank"> <h4>iYuan</h4> </a> <p class="mt-1">2022 年 12 月 26 日 8:27</p> </div> </div> <p class="mt-2">欸？我的 IP 怎么被识别成江苏了</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2022 年 12 月 26 日 8:33</p> </div> </div> <p class="mt-2">是我用了 CDN 导致 IP 没有被 Typecho 正确识别……现在修复了。</p> <div class="ml-8">  </div> </div> </div> </div> </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/typecho-pjax-and-some-problems" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Typecho 主题 PJAX 无刷新以及遇到的一些问题</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

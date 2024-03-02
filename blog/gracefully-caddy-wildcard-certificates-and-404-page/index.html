@@ -1,0 +1,84 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>优雅地使用 Caddy 配置泛域名证书与 404 页面</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 优雅地使用 Caddy 配置泛域名证书与 404 页面</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 优雅地使用 Caddy 配置泛域名证书与 404 页面</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>优雅地使用 Caddy 配置泛域名证书与 404 页面</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 02 月 12 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/gracefully-caddy-wildcard-certificates-and-404-page" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>从 Nginx 换到 Caddy 之后，被 Caddyfile 的简洁优雅深深震撼了。特别是自动申请 SSL 证书的功能实在强大。</p><p>既然配置简化了，我们也可以尝试一些更优雅炫酷的配置方式，比如配置泛域名证书，我的期望是访问一个没有在 Caddyfile 中列出的 xxx.skywt.cn 会显示 404 页面。</p><!--more--><h2>泛域名证书</h2><p>使用泛域名证书的另一个好处是，如果我需要解析新的子域名 abc.skywt.cn，不需要去阿里云设置 DNS 解析，直接在 Caddyfile 里加上这个域名的配置就可以，因为所有子域名默认都被解析到了这个服务器。</p><p>配置泛域名证书只能用 DNS challenge 的验证方式，需要在 DNS 提供商处设置指定的 TXT 记录。Caddy 的插件可以帮我们自动完成这一点。</p><p>在 Caddy 文档的 <a href="https://caddyserver.com/docs/caddyfile/patterns#wildcard-certificates">Common Caddyfile Patterns - Wildcard certificates</a> 小节中介绍了配置泛域名证书的语法：</p><pre><code>*.example.com {
+    tls {
+        dns &lt;provider_name&gt; [&lt;params...&gt;]
+    }
+    # ...
+}</code></pre><p>为了使 Caddy 支持我们使用的 DNS provider，需要使用对应的 Caddy 插件。我的 DNS 是阿里云（alidns），插件是这个 <a href="https://github.com/caddy-dns/alidns">alidns</a>。</p><p>使用新的插件需要重新编译主程序。我们可以在官方的<a href="https://caddyserver.com/download?package=github.com%2Fcaddy-dns%2Falidns">这个页面</a>下载预装了对应 DNS 插件的 Caddy 二进制文件，也可以用 <a href="https://github.com/caddyserver/xcaddy">Xcaddy</a> 这个「插件管理器」来自己编译。</p><h3>用 Xcaddy 管理插件</h3><p>官方的文档写得很清楚，安装好 xcaddy 后，为了编译一个带有 alidns 的 caddy，直接运行这个命令：</p><pre><code class="lang-shell">xcaddy build \
+    --with github.com/caddy-dns/alidns</code></pre><p>编译完成后就可以看到相同目录下多出了个 caddy 可执行文件，就是编译好的二进制文件。</p><p>替换安装目录下的 caddy 程序就可以了。安装目录一般是 <code>/usr/bin/caddy</code>，可以用 <code>whereis caddy</code> 查看。</p><h3>配置 API Key</h3><p>当然首先要在阿里云设置 DNS 解析，A 记录，解析 *.skywt.cn 到服务器 IP。</p><p>然后去阿里云控制台申请 API Key 和 Secret，在 Caddyfile 里写如下配置：</p><pre><code>*.skywt.cn {
+    tls {   
+        dns alidns {
+            access_key_id BALABALABALABALA
+            access_key_secret BALABALABALABALA
+                }
+    }
+    # ...
+}</code></pre><h2>404 页面</h2><p>我希望的结果是如果访问 xxx.skywt.cn，没有与 Caddyfile 配置的任何一个其他网站匹配，就显示 <code>skywt.cn</code> 目录下的 <code>404.html</code>，同时返回 404 状态码。</p><p>Caddy 的泛域名配置默认优先级最低（阿里云 DNS 也是），所以无需担心这个配置影响其他网站正常运行。</p><p>为了显示 <code>404.html</code>，可以 <code>rewrite * /404.html</code>。</p><p>返回状态码则可以直接在 <code>file_server</code> 小节中加上 <code>status 404</code>。这个功能貌似是经过了<a href="https://github.com/caddyserver/caddy/issues/3312">一番讨论</a>之后加上的。文档中的相关说明在<a href="https://caddyserver.com/docs/caddyfile/directives/file_server">这里</a>。</p><p>由于 <code>404.html</code> 引用了同目录下的资源文件，但是如果直接访问的话引用地址（如 <code>//xxx.skywt.cn/assets</code>）又没有进行重定向，资源会加载不出。解决方法是 <code>redir /assets/* https://skywt.cn{uri}</code>（当然 rewrite 也可以）。</p><p>404 页面放一句一言。有内味了。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/02/3056187439.png" alt="404 页面的截图" title="404 页面的截图"></p><h2>Caddyfile</h2><p>完整的 Caddyfile（部分）如下：</p><pre><code>*.skywt.cn {
+    tls {
+        dns alidns {
+            access_key_id BALABALABALABALA
+            access_key_secret BALABALABALABALA
+        }
+    }
+    redir /assets/* https://skywt.cn{uri}
+    root * /data/www/skywt.cn
+    rewrite * /404.html
+    file_server {
+        status 404
+    }
+}
+
+skywt.cn {
+    # ...
+}
+
+blog.skywt.cn {
+    # ...
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/gracefully-caddy-wildcard-certificates-and-404-page" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 优雅地使用 Caddy 配置泛域名证书与 404 页面</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

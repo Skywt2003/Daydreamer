@@ -1,0 +1,221 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>ZOJ 3649 Social Net：最大生成树+树上倍增 DP</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / ZOJ 3649 Social Net：最大生成树+树上倍增 DP</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / ZOJ 3649 Social Net：最大生成树+树上倍增 DP</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>ZOJ 3649 Social Net：最大生成树+树上倍增 DP</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 03 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/zoj3649" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4839" title="ZOJ 3649 Social Net">ZOJ 3649 Social Net</a></p><!--more--><h2>Problem</h2><p>There are $n$ individuals  $(2 &lt;= n &lt;= 30000)$. Everyone has one or more friends. And everyone can contact all people by friend-relation. If two persons aren't friends, they also can contact by their friends. Each pair of friends have a friendship value $a_i$ $(1 &lt;= a_i &lt;= 50000)$.<br>Firstly, you will relieve some friend-relation. The rest of the friend-relation is the social net. The net is unique in all test cases. In this net, everyone can contact all people by rest friend-relation. The net has a minimum number of friend-relation. And the net has maximum sum of friendship value. We want to get the maximum sum.<br>Secondly, everyone has an angry value $bi$ $(1 &lt;= b_i &lt;= 100000)$. We have $q$ operations $(1 &lt;= q &lt;= 30000)$: Person $X$ wants to contact person $Y$, this operation merely has one sequence which describes the process. The sequence consists of persons' angry value. The persons are on the process.<br>We suppose the sequence is $c_1, c_2, c_3, ... ,c_i$. Here $c_i$ means the angry value of the $i$th people in the sequence.<br>We attempt to find the maximum $c_k-c_j$ $(c_k &gt;= c_j, j &lt;= k)$.</p><p>Example:<br>The sequence is 3(X), 4, 5, 6, 7, 5, 9, 4, 11(Y). The maximum $c_k-c_j$ is 11-3=8.<br>The sequence is 3(X), 4, 5, 6, 7, 5, 9, 2, 11(Y). The maximum $c_k-c_j$ is 11-2=9.<br>The sequence is 3(X), 10, 2, 5(Y). The maximum $c_k-c_j$ is 10-3=7.</p><h2>Input</h2><p>The input contains multiple test cases. Each test case begins with a line containing a single integer $n$. The following line contains $n$ integers $b_i$.<br>The subsequent line describe the number of relations $m$ $(n &lt;= m &lt;= 50000)$. The next $m$ lines contain the information about relations: $x$, $y$, $a_i$. Their friendship value is $a_i$.<br>Afterward gives $q$. The next $q$ lines contain the operations: $x$, $y$. person $X$ wants to contact person $Y$.</p><h2>Output</h2><p>For each case, print maximum sum of friendship value of the net on the first line.<br>The next $q$ lines contain the answers of every operations.</p><h2>Sample Input</h2><pre><code>6
+3 5 1 7 3 5
+7
+1 2 5
+1 3 6
+2 4 7
+2 5 8
+3 6 9
+4 5 1
+5 6 2
+5
+6 1
+6 2
+6 3
+6 4
+6 5
+
+</code></pre><h2>Sample Output</h2><pre><code>35
+2
+4
+0
+6
+4
+
+</code></pre><h2>Translation</h2><p>题目意思抽象出来是：给你 $n$ 个点的一张图，先求最大生成树，然后在树里给出一大堆询问，对于每对询问给出两个参数 $x_i,y_i$，问你树上这两点之间最短路上 $w(j)-w(i)$ 的最大值，其中要保证 $i &lt;= j$。</p><h2>Analysis</h2><p>第一问求最大生成树果断的 Kruskal，不用讲了……</p><p>第二问，如果直接问我们路径上 $w(j)-w(i)$ 的最大值，很显然可以用树上倍增解决，但是麻烦之处就在于这个 $i \le j$。这可怎么办呢？</p><p>我们可以用一个分治的思想：如果把 $X$ 到 $Y$ 的路径看成一个数列，那么我们可以从中间割开，左右分别处理出答案，然后最终答案就是这个数列里右边的最大值和左边的最小值之差，和左右答案取个 max。</p><p>那么我们自然想到了：维护五个树上倍增数组：</p><ul><li>$F(i,j)$ 表示从 $i$ 点向上推 $2^j$ 个单位的点；</li><li>$max_num(i,j)$ 表示从 $i$ 点向上推 $2^j$ 个单位的距离内 $w(i)$ 的最大值；</li><li>$min_num(i,j)$ 表示从 $i$ 点向上推 $2^j$ 个单位的距离内 $w(i)$ 的最小值；</li><li>$dif_upd(i,j)$ 表示从 $i$ 点向上推 $2^j$ 个单位的距离内的差值最大值；</li><li>$dif_dwn(i,j)$ 表示从 $i$ 点向上推 $2^j$ 个单位的距离内的<strong>反向差值</strong>最大值；</li></ul><p>什么叫“反向差值”呢？根据 $i \le j$，“正向差值”是指对于 $i \le j$ 的差值，“反向差值” 则是对于 $j \le i$ 的差值。</p><p>其实思路清晰，写起来并不算麻烦。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=30005,maxm=60005,maxe=50005;
+int n,m,q,w[maxn],fa[maxn],deep[maxn],sum=0;
+int tot=0,lnk[maxn],nxt[maxm],son[maxm];
+int f[maxn][20],max_num[maxn][20],min_num[maxn][20],dif_upd[maxn][20],dif_dwn[maxn][20];
+bool vis[maxn];
+struct Edge{
+    int x,y,w;
+}e[maxe];
+inline int max3(int x,int y,int z){
+    return z&gt;max(x,y)?z:max(x,y);
+}
+inline bool Compare(Edge a,Edge b){
+    return a.w&gt;b.w;
+}
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline int Abs(int x){
+    return x&lt;0?-x:x;
+}
+inline void add(int x,int y){
+    tot++;son[tot]=y;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline void Init(){
+    memset(w,0,sizeof(w));
+    memset(fa,0,sizeof(fa));
+    memset(deep,0,sizeof(deep));
+    memset(f,0,sizeof(f));
+    memset(max_num,0,sizeof(max_num));
+    memset(min_num,0,sizeof(min_num));
+    memset(dif_upd,0,sizeof(dif_upd));
+    memset(dif_dwn,0,sizeof(dif_dwn));
+    tot=0;sum=0;
+    memset(lnk,0,sizeof(lnk));
+    memset(nxt,0,sizeof(nxt));
+    memset(son,0,sizeof(son));
+    memset(vis,0,sizeof(vis));
+    memset(e,0,sizeof(e));
+}
+inline int getfa(int x){
+    if (fa[x]==x) return x;
+    fa[x]=getfa(fa[x]);
+    return fa[x];
+}
+inline void Kruskal(){
+    sort(e+1,e+1+m,Compare);
+    for (int i=1;i&lt;=n;i++) fa[i]=i;
+    int cnt=0;
+    for (int i=1;i&lt;=m&amp;&amp;cnt&lt;n-1;i++){
+        int fx=getfa(e[i].x),fy=getfa(e[i].y);
+        if (fx==fy) continue;
+        sum+=e[i].w;
+        add(e[i].x,e[i].y);add(e[i].y,e[i].x);
+        fa[fx]=fy;cnt++;
+    }
+    if (cnt!=n-1) printf(&quot;ERROR!!!!!\n&quot;);
+}
+inline void BuildTree(int x){
+    vis[x]=1;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        fa[son[i]]=x;
+        deep[son[i]]=deep[x]+1;
+        BuildTree(son[i]);
+    }
+}
+inline void Build(){
+    for (int i=1;i&lt;=n;i++){
+        f[i][0]=fa[i];
+        max_num[i][0]=max(w[i],w[fa[i]]);
+        min_num[i][0]=min(w[i],w[fa[i]]);
+        dif_upd[i][0]=w[fa[i]]-w[i];dif_dwn[i][0]=w[i]-w[fa[i]];
+    }
+    for (int j=1;j&lt;20;j++)
+        for (int i=1;i&lt;=n;i++){
+            f[i][j]=f[f[i][j-1]][j-1];
+            max_num[i][j]=max(max_num[i][j-1],max_num[f[i][j-1]][j-1]);
+            min_num[i][j]=min(min_num[i][j-1],min_num[f[i][j-1]][j-1]);
+            dif_upd[i][j]=max3(dif_upd[i][j-1],dif_upd[f[i][j-1]][j-1],max_num[f[i][j-1]][j-1]-min_num[i][j-1]);
+            dif_dwn[i][j]=max3(dif_dwn[i][j-1],dif_dwn[f[i][j-1]][j-1],max_num[i][j-1]-min_num[f[i][j-1]][j-1]);
+        }
+    // for (int i=1;i&lt;=n;i++){
+    //     printf(&quot;I=%d -------------\n&quot;,i);
+    //     for (int j=0;j&lt;19;j++) printf(&quot;%d &quot;,f[i][j]);printf(&quot;\n&quot;);
+    //     printf(&quot;MAX_NUM: &quot;);for (int j=0;j&lt;19;j++) printf(&quot;%d &quot;,max_num[i][j]);printf(&quot;\n&quot;);
+    //     printf(&quot;MIN_NUM: &quot;);for (int j=0;j&lt;19;j++) printf(&quot;%d &quot;,min_num[i][j]);printf(&quot;\n&quot;);
+    //     printf(&quot;DIF_UPD: &quot;);for (int j=0;j&lt;19;j++) printf(&quot;%d &quot;,dif_upd[i][j]);printf(&quot;\n&quot;);
+    //     printf(&quot;DIF_DWN: &quot;);for (int j=0;j&lt;19;j++) printf(&quot;%d &quot;,dif_dwn[i][j]);printf(&quot;\n&quot;);
+    //     printf(&quot;\n&quot;);
+    // }
+}
+inline int GetAnswer(int x,int y){
+    int ret=0;
+    int now_min=1e8,now_max=0;
+    if (x==y) return 0;
+    for (int i=19;i&gt;=0;i--) if (deep[f[x][i]]&gt;=deep[y]){
+        ret=max3(ret, max_num[x][i]-now_min, dif_upd[x][i]);
+        now_min=min(now_min,min_num[x][i]);
+        x=f[x][i];
+    }
+    for (int i=19;i&gt;=0;i--) if (deep[f[y][i]]&gt;=deep[x]){
+        ret=max3(ret, now_max-min_num[y][i], dif_dwn[y][i]);
+        now_max=max(now_max,max_num[y][i]);
+        y=f[y][i];
+    }
+    if (x==y) return ret;
+    for (int i=19;i&gt;=0;i--) if (f[x][i]!=f[y][i]){
+        ret=max3(ret,dif_upd[x][i],dif_dwn[y][i]);
+        ret=max3(ret,max_num[x][i]-now_min,now_max-min_num[y][i]);
+        now_min=min(now_min,min_num[x][i]);
+        now_max=max(now_max,max_num[y][i]);
+        x=f[x][i];y=f[y][i];
+    }
+    ret=max3(ret,dif_upd[x][0],dif_dwn[y][0]);
+    ret=max3(ret,max_num[x][0]-now_min,now_max-min_num[y][0]);
+    now_min=min(now_min,min_num[x][0]);
+    now_max=max(now_max,max_num[y][0]);
+    ret=max(ret,now_max-now_min);
+    return ret;
+}
+int main(){
+    while (scanf(&quot;%d&quot;,&amp;n)!=-1){
+        Init();
+        for (int i=1;i&lt;=n;i++) w[i]=read(),fa[i]=i;
+        m=read();
+        for (int i=1;i&lt;=m;i++) e[i].x=read(),e[i].y=read(),e[i].w=read();
+        Kruskal();printf(&quot;%d\n&quot;,sum);
+
+        memset(fa,0,sizeof(fa));
+        deep[1]=1;BuildTree(1);
+        //printf(&quot;Deep:&quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,deep[i]);printf(&quot;\n&quot;);
+        //for (int i=1;i&lt;=n;i++) printf(&quot;fa[%d]=%d\n&quot;,i,fa[i]);printf(&quot;\n&quot;);
+
+        Build();
+        q=read();
+        for (int i=1;i&lt;=q;i++){
+            int x=read(),y=read();
+            printf(&quot;%d\n&quot;,GetAnswer(x,y));
+        }
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/zoj3649" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / ZOJ 3649 Social Net：最大生成树+树上倍增 DP</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

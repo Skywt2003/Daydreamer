@@ -1,0 +1,109 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 510D Fox And Jumping：DP + 数论 + 离散</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 510D Fox And Jumping：DP + 数论 + 离散</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 510D Fox And Jumping：DP + 数论 + 离散</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 510D Fox And Jumping：DP + 数论 + 离散</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 10 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf510d" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>很伤心，为什么NOIP不能用 C++11……</p><p>CodeForces 510D Fox And Jumping：<a href="https://codeforces.com/problemset/problem/510/D" title="510D">510D</a></p><!--more--><h2>Problem</h2><p>Fox Ciel is playing a game. In this game there is an infinite long tape with cells indexed by integers (positive, negative and zero). At the beginning she is standing at the cell 0.</p><p>There are also n cards, each card has 2 attributes: length $l_i$ and cost $c_i$. If she pays $c_i$ dollars then she can apply i-th card. After applying i-th card she becomes able to make jumps of length $l_i$, i. e. from cell $x$ to cell $(x - l_i)$ or cell $(x + l_i)$.</p><p>She wants to be able to jump to any cell on the tape (possibly, visiting some intermediate cells). For achieving this goal, she wants to buy some cards, paying as little money as possible.</p><p>If this is possible, calculate the minimal cost.</p><h2>Input</h2><p>The first line contains an integer n $(1 ≤ n ≤ 300)$, number of cards.</p><p>The second line contains n numbers $l_i$ $(1 ≤ l_i ≤ 10^9)$, the jump lengths of cards.</p><p>The third line contains n numbers $c_i$ $(1 ≤ c_i ≤ 105)$, the costs of cards.</p><h2>Output</h2><p>If it is impossible to buy some cards and become able to jump to any cell, output -1. Otherwise output the minimal cost of buying such set of cards.</p><h2>Examples</h2><h3>input #1</h3><pre><code>3
+100 99 9900
+1 1 1
+
+</code></pre><h3>Output #1</h3><pre><code>2
+
+</code></pre><h3>Input #2</h3><pre><code>5
+10 20 30 40 50
+1 1 1 1 1
+
+</code></pre><h3>Output #2</h3><pre><code>-1
+
+</code></pre><h3>Input #3</h3><pre><code>8
+4264 4921 6321 6984 2316 8432 6120 1026
+4264 4921 6321 6984 2316 8432 6120 1026
+
+</code></pre><h3>Output #3</h3><pre><code>7237
+
+</code></pre><h2>Translation</h2><p>题目大意是：Fox 现在在一个一维数轴上，给定 N 张卡片，选每张卡分别要付 $P_i$ 的钱，可以让 Fox 有走 $L_i$ 长度的技能。问你最少要多少钱买卡片可以让 Fox 抵达数轴上每个地方。</p><h2>Solution</h2><p>显然要通过“某种操作”组合出 1，有 1 就可以铺满数轴了，因为 1 是所有正整数的因子。那么对于两张卡 i 和 j ，都购买以后可以组合出的最小单位就是 $gcd(L_i,L_j)$ 。所以这题就转化成：<br>从 N 个数字里选择一部分，使得它们的 $L_i$ 最大公因数为 1，并且 $\sum P_i$ 最小。</p><p>这样的题目我们很容易令我们想到DP：<code>F[i][j][k]</code> 表示前 i 个数字里选择了 j 个，并且它们的最大公因数是 k。很快我们就发现了问题：题目里说 $(1 ≤ l_i ≤ 10^9)$ ……这样数组无论如何存不下的……但是！！！可以证明最多只有 $N^2$ 个最大公因数！那么我们完全可以用 map 进行离散。但是这样内存好像还是会爆炸……推出转移方程以后发现：当前状态只与 i-1 的状态有关！那么可以用滚动数组。内存就优化下来了～～</p><p>思考一下，很容易得出转移方程。只要注意几个细节就可以了。（代码如下）</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;map&gt;
+using namespace std;
+const int maxn=305;
+int n,a[maxn],p[maxn],to[maxn*maxn],f[2][maxn][maxn*maxn],cnt=0,ans,INF;
+map &lt;int,int&gt; back; // 为了压缩内存，建立映射关系 (离散)
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline int gcd(int x,int y){
+    if (y==0) return x;
+    return gcd(y,x%y);
+}
+int main(){
+    n=read();
+    for (int i=1;i&lt;=n;i++) a[i]=read();
+    for (int i=1;i&lt;=n;i++) p[i]=read();
+    memset(f,63,sizeof(f));INF=f[0][0][0];
+    cnt++;to[cnt]=0;back[0]=cnt; // 建立基本映射单位的过程
+    f[0][0][1]=0;
+    for (int i=1;i&lt;=n;i++)
+    for (int j=0;j&lt;=i;j++){
+        int oldcnt=cnt;
+        for (int k=1;k&lt;=oldcnt;k++){
+            if (f[1-(i&amp;1)][j][k]&lt;f[i&amp;1][j][k]) f[i&amp;1][j][k]=f[1-(i&amp;1)][j][k];
+
+            if (j==0||f[1-(i&amp;1)][j-1][k]==INF) continue;
+            int now=gcd(to[k],a[i]);
+            if (back[now]==0) {cnt++;to[cnt]=now;back[now]=cnt;}
+            int nowx=back[now];
+            if (f[1-(i&amp;1)][j-1][k]+p[i] &lt; f[i&amp;1][j][nowx]) f[i&amp;1][j][nowx]=f[1-(i&amp;1)][j-1][k]+p[i];
+        }
+    }
+    ans=INF;int st=back[1];
+    if (st) for (int i=1;i&lt;=n;i++) if (f[n&amp;1][i][st]&lt;ans) ans=f[n&amp;1][i][st];
+    if (ans-INF) printf(&quot;%d\n&quot;,ans); else printf(&quot;-1\n&quot;);
+    return 0;
+}</code></pre><hr><p>自豪地，完全自己想出来的～～～</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4f3a60a87052f17f33989f2f25de8a65" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://zigzagk.top" class="link" target="_blank"> <h4>ZigZagK</h4> </a> <p class="mt-1">2018 年 7 月 22 日 14:54</p> </div> </div> <p class="mt-2">都C++11了当然上&lt;code&gt;unordered_map&lt;/code&gt;啦。</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf510d" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 510D Fox And Jumping：DP + 数论 + 离散</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

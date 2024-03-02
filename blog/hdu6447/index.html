@@ -1,0 +1,151 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>HDU 6447 YJJ&#39;s Salesman 题解：排序+离散+树状数组</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / HDU 6447 YJJ&#39;s Salesman 题解：排序+离散+树状数组</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / HDU 6447 YJJ&#39;s Salesman 题解：排序+离散+树状数组</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>HDU 6447 YJJ&#39;s Salesman 题解：排序+离散+树状数组</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 11 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hdu6447" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <h2>Problem Description</h2><p>YJJ is a salesman who has traveled through western country. YJJ is always on journey. Either is he at the destination, or on the way to destination.<br>One day, he is going to travel from city $A$ to southeastern city $B$. Let us assume that A is $(0,0)$ on the rectangle map and $B (10^9,10^9)$. YJJ is so busy so he never turn back or go twice the same way, he will only move to east, south or southeast, which means, if YJJ is at $(x,y)$ now $(0\leqslant x\leqslant 10^9,0\leqslant y\leqslant 10^9)$, he will only forward to $(x+1,y)$, $(x,y+1)$ or $(x+1,y+1)$.</p><!--more--><p>On the rectangle map from $(0,0)$ to $(10^9,10^9)$, there are several villages scattering on the map. Villagers will do business deals with salesmen from northwestern, but not northern or western. In mathematical language, this means when there is a village $k$ on $(x_k,y_k)$ $(1\leqslant x_k \leqslant 10^9,1\leqslant y_k\leqslant 10^9)$, only the one who was from $(x_k−1,y_k−1)$ to $(x_k,y_k)$ will be able to earn $v_k$ dollars.(YJJ may get different number of dollars from different village.)</p><p>YJJ has no time to plan the path, can you help him to find maximum of dollars YJJ can get.</p><h2>Input</h2><p>The first line of the input contains an integer $T (1\leqslant T\leqslant 10)$,which is the number of test cases.</p><p>In each case, the first line of the input contains an integer $N (1\leqslant N\leqslant 10^5)$.The following $N$ lines, the $k$-th line contains 3 integers, $x_k,y_k,v_k (0\leqslant v_k\leqslant 10^3)$, which indicate that there is a village on $(x_k,y_k)$ and he can get $v_k$ dollars in that village.<br>The positions of each village is distinct.</p><h2>Output</h2><p>The maximum of dollars YJJ can get.</p><h2>Sample Input</h2><pre><code>1
+3
+1 1 1
+1 2 2
+3 3 1</code></pre><h2>Sample Output</h2><pre><code>3</code></pre><h2>Translation</h2><p>平面上有 N 个村庄，YJJ 经过第 k 个村庄可以得到 $v_k$ 的钱。<br>如果 XJJ 当前在 $(x,y)$，那么每一秒 TA 只能走到 $(x+1,y)$, $(x,y+1)$ 或者 $(x+1,y+1)$。<br>对于第 k 个村庄，其处于 $(x_k,y_k)$，只有 YJJ 从 $(x_k−1,y_k−1)$ 走来才可以得到 $v_k$ 的钱。<br>现在要求出 TA 最多可以得到多少钱。</p><h2>Analysis</h2><p>因为这种题目有横坐标、纵坐标两个约束变量，我们自然想到对横坐标进行排序；<br>排序之后我们只需要考虑 y 了。我们发现可以枚举一个村庄 $P(x,y)$，那么其左下角的所有村庄到 $P$ 都是可行的；所以我们需要求加和。树状数组或者线段树。<br>但是 y 又很大，所以先离散，再树状数组/线段树解决。注意这里要用到树状数组求区间最大值。</p><p>从 <a href="https://captainslow.tk/" title="@CaptainSlow">@CaptainSlow</a> 那里学来的<del>奇技淫巧</del>，用命名空间的确可以让你的代码看起来很高端，特别是像线段树、树状数组这样的算法写在一个 namespace 里……</p><h2>Code</h2><p>我很懒地直接复制线段树的板子了……</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#define CLEAR(_) memset(_,0,sizeof(_))
+using namespace std;
+const int maxn=200005;
+
+int T,n,ans,f[maxn];
+struct Village{
+    int x,y,ys,w;
+};
+vector &lt;Village&gt; a;
+
+namespace SegmentTree{
+    int tree[maxn*4],tag[maxn*4];
+    inline void clear(){
+        CLEAR(tree);CLEAR(tag);
+    }
+    inline void push_down(int tl,int tr,int p){
+        int mid=((tr-tl)&gt;&gt;1)+tl;
+        tree[p&lt;&lt;1]=max(tree[p&lt;&lt;1],tag[p]);
+        tag[p&lt;&lt;1]+=tag[p];
+        tree[(p&lt;&lt;1)+1]=max(tree[(p&lt;&lt;1)+1],tag[p]);
+        tag[(p&lt;&lt;1)+1]+=tag[p];
+        tag[p]=0;
+    }
+    inline void update(int sl,int sr,int tl,int tr,int delta,int p){
+        if (sl&lt;=tl&amp;&amp;sr&gt;=tr){
+            tree[p]=max(tree[p],delta);
+            tag[p]+=delta;
+            return;
+        }
+        push_down(tl,tr,p);
+        int mid=((tr-tl)&gt;&gt;1)+tl;
+        if (sl&lt;=mid) update(sl,sr,tl,mid,delta,p&lt;&lt;1);
+        if (mid&lt;sr)  update(sl,sr,mid+1,tr,delta,(p&lt;&lt;1)+1);
+        tree[p]=max(tree[p&lt;&lt;1],tree[(p&lt;&lt;1)+1]);
+    }
+    inline int query(int sl,int sr,int tl,int tr,int p){
+        if (sl&gt;sr) return 0;
+        if (sl&lt;=tl&amp;&amp;sr&gt;=tr) return tree[p];
+        int ret=0;
+        push_down(tl,tr,p);
+        int mid=((tr-tl)&gt;&gt;1)+tl;
+        if (sl&lt;=mid) ret=max(ret,query(sl,sr,tl,mid,p&lt;&lt;1));
+        if (mid&lt;sr)  ret=max(ret,query(sl,sr,mid+1,tr,(p&lt;&lt;1)+1));
+        return ret;
+    }
+}
+
+inline void init(){
+    ans=0;
+    a.clear();CLEAR(f);
+    SegmentTree::clear();
+}
+
+inline bool compare_x(Village aa,Village bb){
+    return (aa.x&lt;bb.x)||((aa.x==bb.x)&amp;&amp;(aa.y&gt;bb.y));
+}
+inline bool compare_y(Village aa,Village bb){
+    return aa.y&lt;bb.y;
+}
+
+/* 
+ * 要先对 y 坐标离散化，不然没法搞
+ */
+inline void discrete(){
+    sort(a.begin(),a.end(),compare_y);
+    int cnt=0;
+    for (int i=0;i&lt;a.size();i++){
+        cnt+=(bool)((i==0)||(a[i].y!=a[i-1].y));
+        a[i].ys=cnt;
+    }
+}
+
+int main(){
+    scanf(&quot;%d&quot;,&amp;T);
+    while (T--){
+        init();
+        scanf(&quot;%d&quot;,&amp;n);
+        for (int i=0;i&lt;n;i++){
+            int x,y,z;
+            scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+            a.push_back((Village){x,y,0,z});
+        }
+        discrete();
+        sort(a.begin(),a.end(),compare_x);
+        for (int i=0;i&lt;n;i++){
+            f[i]=a[i].w+SegmentTree::query(1,a[i].ys-1,1,n*2,1);
+            // printf(&quot;F[%d]=%d\n&quot;,i,f[i]);
+            ans=max(ans,f[i]);
+            SegmentTree::update(a[i].ys,a[i].ys,1,n*2,f[i],1);
+        }
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/hdu6447" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / HDU 6447 YJJ&#39;s Salesman 题解：排序+离散+树状数组</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,115 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 01 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-635-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 635 Div2 T3 LonglongestPathTree 题解</p><!--more--><hr><h2>Translation</h2><p>有一棵加权树，你可以从树中删除一条边，并添加一条长度相同的边，并且保证这样的操作过后新的图仍然是一棵树。<br>计算并返回这样操作过后的树的最大直径。</p><p>树以三个 vector <int> A, B 和 L 给出，表示 A[i] 和 B[i] 之间有一条长度为 L[i] 的边，$0 \leqslant i \leqslant n-2$。<br>点从 0 开始编号。<br>数据范围：$2 \leqslant n \leqslant 2000$。<br>（为什么 TC 一遇到正经题目数据范围就这么大？！）</p><blockquote><ul><li>N will be between 2 and 2,000, inclusive.</li><li>Arrays A, B and L will each contain N-1 elements.</li><li>Each element of A and B will be between 0 and N-1, inclusive.</li><li>Each element of L will be between 1 and 1,000,000,000, inclusive.</li><li>A and B will describe a tree.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li><li>Stack limit (MB): 256</li></ul></blockquote><h2>Examples</h2><p>样例零：</p><pre><code>{0,0,0}
+{1,2,3}
+{2,4,8}</code></pre><p>Returns: <code>14</code></p><p>原来的树最远的点对是 (2,3)，他们之间的距离（即直径）是 12。如果我们移除边 1-0 并添加 3-1，则新的树直径为 14，这个方案是最优的。</p><blockquote>The tree has 4 vertices and 3 edges: 1-0 (length 2), 2-0 (length 4) and 0-3 (length 8). Currently, the farthest pair of vertices is (2,3); their distance is 8+4=12. If we remove the edge 1-0 and add an edge 3-1, we'll get a tree with edges 2-0 (length 4), 0-3 (length 8) and 3-1 (length 2). Now, the fathest pair of vertices is (2,1); their distance is 8+4+2=14. Obviously, we can't do better than that (but this is not the only way to achieve distance 14).</blockquote><p>样例一：</p><pre><code>{0,1,2,3}
+{1,2,3,4}
+{1,2,3,4}</code></pre><p>Returns: <code>10</code></p><p>不需要更改树，答案已经最优了。</p><blockquote>One optimal solution is not changing the tree.</blockquote><p>样例二：</p><pre><code>{0,1,0,3,0,6,7,7,8,9,11}
+{1,2,3,4,5,5,5,8,9,10,9}
+{100,1000,100,1000,1,10,10,10,10,100,100}</code></pre><p>Returns: <code>2410</code></p><h2>Original</h2><blockquote>There is a weighted tree with N vertices. The vertices are numbered 0 through N-1.<br>You're given a description of the tree in three vector <int>s: A, B and L. For each 0 &lt;= i &lt;= N-2, there's an edge between vertices A[i] and B[i]; the length of this edge is L[i].<br>In a tree, each pair of vertices is connected by exactly one simple path. The distance between those vertices is the sum of lengths of edges on that simple path. The diameter of the tree is the maximum of all those pairwise distances.<br>You're allowed to remove one of the edges and then add another edge. There are two constraints: the length of this edge must be the same as the length of the removed edge and the resulting graph must again be a tree.<br>Compute and return the maximum diameter of the resulting tree that can be achieved this way.</blockquote><h2>Analysis</h2><p>看到这题，一股亲切感扑面而来。没错，就是这题！<a href="https://skywt.cn/posts/cf294e/" title="CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题">CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题</a>，当时折腾了我半天的这题！</p><p>那题同样是删除一条边、添一条同样长度的边、保证一棵树……唯一的不同是：那题让我们求“新的树中两两点之间距离之和最小值”，即 $\displaystyle \frac {\sum_{i=1,j=1}^{i=n,j=n,i \not = j} dist(i,j)} 2$ 最小值；而这题让我们求“新的树中两两点之间距离的最大值（即直径）的最大值”，即 $\displaystyle max(dist(i,j))$ 的最大值。<br>回顾那题的做法：枚举边，连接分开的两棵树的重心。这启发我们思考：会不会这题的做法也和树的直径、重心的什么性质有关呢？</p><p>看数据范围：$2 \leqslant n \leqslant 2000$……看来必须采用 $\Theta (N^2)$ 的做法。<br>首先肯定是要枚举删除的边。删除这条边以后原来的树分成了两棵树。接下来假设我们加入了这条边，称为 $add\\_ edge$，分类讨论：</p><ul><li>如果新的直径没有经过这条边，那么等于新的直径不会大于两棵分开的树的直径……说明添加这条边没什么意义……所以既然我们添加了边，那么新的树的直径一定要经过这条边。</li><li>既然新的树直径通过 $add \\_ edge$，那么就是左边的树连到 $add\\_ edge$ 的左边端点，右边的树连到右边端点；我们可以思考：如何让左边的树、右边的树中，连到的 $add\\_ edge$ 的端点能走的最长路径最长呢？</li><li>“最长”的不就是直径吗？所以 $add\\_ edge$ <strong>只需要连接左右两树的直径就可以了</strong>！！！</li></ul><p>所以只要枚举 $add\\_ edge$，然后求左树直径、右树直径，加上这条边长度即可。</p><h2>Code</h2><p>Topcoder 的编译器又出锅了，极限数据本地跑是 0.18s，但是交上去超时……（上次似乎某题也是一样的情况）</p><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define CLEAR(_) memset(_,0,sizeof(_))
+#define CLEAR_MAX(_) memset(_,0x3f,sizeof(_))
+#define CLEAR_MIN(_) memset(_,0x80,sizeof(_))
+
+using namespace std;
+const int maxn=2005,maxe=4005;
+int n;
+int tot=0,lnk[maxn],nxt[maxe],son[maxe];
+long long w[maxe];
+long long ans;
+bool vis[maxn];
+
+class LonglongestPathTree {
+public:
+    long long getLength( vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; L ) ;
+};
+
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline void init(){
+    tot=0;CLEAR(lnk);CLEAR(nxt);CLEAR(son);CLEAR(w);
+    ans=0;
+}
+inline long long Find(int x,int &amp;res){
+    vis[x]=true;res=x;
+    long long now_ret=0;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        int nnd;
+        long long nnf=Find(son[i],nnd)+w[i];
+        if (nnf&gt;now_ret) now_ret=nnf,res=nnd;
+    }
+    return now_ret;
+}
+long long LonglongestPathTree::getLength(vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; L) {
+    init();
+    n=A.size()+1;
+    for (int i=0;i&lt;n-1;i++) add(A[i],B[i],L[i]),add(B[i],A[i],L[i]);
+    for (int i=0;i&lt;n-1;i++){
+        long long now=L[i],now1,now2;
+        int x=-1,y=-1;
+
+        CLEAR(vis);vis[B[i]]=true;
+        x=y=-1;
+        now1=Find(A[i],x);
+        CLEAR(vis);vis[B[i]]=true;
+        now2=Find(x,y);
+        now+=max(now1,now2);
+
+        CLEAR(vis);vis[A[i]]=true;
+        x=y=-1;
+        now1=Find(B[i],x);
+        CLEAR(vis);vis[A[i]]=true;
+        now2=Find(x,y);
+        now+=max(now1,now2);
+
+        ans=max(ans,now);
+    }
+    return ans;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-635-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

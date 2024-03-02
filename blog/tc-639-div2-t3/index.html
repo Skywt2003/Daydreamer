@@ -1,0 +1,147 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 26 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-639-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 639 DIv2 T3 BoardFoldingDiv2 题解</p><p>这是我博客的第 66 篇文章，庆祝一下 :tada:</p><!--more--><hr><h2>Translation</h2><p>有一个 n 行 m 列的矩阵，每个元素都是 0 或 1；现在你可以沿着平行于矩阵边缘的直线“翻折”，必须保证翻折后重合的两个面上的对应元素相同。问你经过一系列翻折操作后，可能产生多少不同的矩阵。如果两个矩阵大小、元素相同，但是对于最初大矩阵左上角坐标不同，则这两个矩阵不同。<br>数据范围 $1\leqslant n,m \leqslant 50$。</p><blockquote><ul><li>paper will contain between 1 and 50 elements, inclusive.</li><li>Each element of paper will contain between 1 and 50 elements, inclusive.</li><li>All elements of paper will have the same length.</li><li>paper will contain only characters '0' and '1'.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li><li>Stack limit (MB): 256</li></ul></blockquote><h2>Examples</h2><p>样例零：</p><pre><code>{&quot;10&quot;,
+ &quot;11&quot;}</code></pre><p>Returns: <code>1</code></p><p>这张纸根本没法折。</p><blockquote>There is no valid way to fold this paper, so there is just one possible outcome.</blockquote><p>样例一：</p><pre><code>{&quot;1111111&quot;,
+ &quot;1111111&quot;}</code></pre><p>Returns: <code>84</code></p><p>这张纸可以随便折。一共有 84 种方案。</p><blockquote>We can fold it into any of the 84 possible subrectangles of the original rectangle.</blockquote><p>样例三：</p><pre><code>{&quot;0110&quot;,
+ &quot;1001&quot;,
+ &quot;1001&quot;,
+ &quot;0110&quot;}</code></pre><p>Returns: <code>9</code></p><p>横着、竖着都可以沿中线对折，共 9 种方案。</p><h2>Original</h2><blockquote>Little Petya likes puzzles a lot. Recently he has received one as a gift from his mother. The puzzle has the form of a rectangular sheet of paper that is divided into N rows by M columns of unit square cells. Rows are numbered 0 through N-1 from top to bottom, and columns 0 through M-1 from left to right. Each cell is colored either black or white. You are given a description of the paper, the exact format is specified at the end of this problem statement.  The goal of the puzzle is to fold the paper. This has to be done in a sequence of turns. In each turn, Petya has to fold the paper according to the rules below. He can end the process after any number of turns (including zero), even if there are still valid ways to fold the paper.  In each turn, Petya must follow these steps: To start folding, he must choose a line that is parallel to one of the sides of the paper and passes between two rows/columns of cells. He can then take the smaller part of the paper and fold it on top of the larger part. (If the line divides the current paper in half, he can fold either half on top of the other.) There is one additional restriction: Petya may only perform the fold if all cells of the part that is being folded land on equally-colored cells of the part that remains in place.  For example, consider the following paper (with 0 and 1 representing white and black):<br>10010101<br>11110100<br>00000000<br>01101110<br>Here, Petya could choose the vertical line that goes between the two leftmost columns and the rest of the paper. Note that this is a valid choice: as he makes the fold, the cells from the leftmost two columns will all match their counterparts in the right part of the paper. This is how the paper looks like after the fold (with periods representing empty spaces):<br>..010101<br>..110100<br>..000000<br>..101110<br>Clearly, even after multiple folds the paper will always look like a subrectangle of the original paper. Two states of the game are considered the same if that rectangle has the same dimensions and the same offset with respect to the original top left corner of the paper. (Note that folding order does not matter. Two different sequences of folding may produce the same final state.)  You are given a description of the original state of the paper as a vector <string> paper. Here N is the number of elements in paper and M is the length of its each element. For each i and j, the character paperi is either '0' (meaning that the cell (i,j) is white) or '1' (the cell is black). Compute and return the number of possible final states of the game.</blockquote><h2>Analysis</h2><p>首先必须想明白一个很重要的结论（其实原题题目里都提示你了）：<strong>横向翻折与纵向翻折是独立的</strong>。也就是说我们可以先处理横向翻折的情况，得出方案数，再处理纵向翻折，<strong>最后两者相乘就是答案</strong>。<br>有了这个结论，问题就很简单了。我们直接做一次区间 DP 就可以方便地得出翻折方案数，累计即可。</p><h2>Code</h2><p>代码实现起来有点复杂，但是只要思路清晰其实并不难。</p><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=55;
+int n,m,ans1,ans2;
+bool vis[maxn][maxn]; // vis[i][j]: 第i个cell开始的一段长度为j的闭区间能否与i+j+1开始的一段等长的闭区间匹配
+// 即[i,i+j]与[i+j+1,i+2*j+1]两段区间的cells是否对称
+// 注意j是整个区间半长
+bool f[maxn][maxn]; // F[i][j]: 能否折叠得只剩[i,j]区间
+class BoardFoldingDiv2 {
+public:
+    int howMany( vector &lt;string&gt; paper );
+};
+inline bool Check(int x,int y,bool mode,vector &lt;string&gt; paper){ // 验证两行/两列是否相同的函数
+    // mode: 竖向验证(true)(||)或横向验证(false)(=)
+    if (mode){
+        for (int i=0;i&lt;n;i++) if (paper[i][x]!=paper[i][y]) return false;
+        // printf(&quot;Check Succesful: %d %d\n&quot;,x,y);
+        return true;
+    } else {
+        for (int i=0;i&lt;m;i++) if (paper[x][i]!=paper[y][i]) return false;
+        return true;
+    }
+    return false;
+}
+int BoardFoldingDiv2::howMany(vector &lt;string&gt; paper) {
+    n=paper.size();
+    if (n==0) return 0;
+    m=paper[0].length();
+
+    // Part 1: build ans1 -------------------------------
+
+    memset(vis,0,sizeof(vis));
+    for (int i=0;i&lt;m-1;i++) vis[i][1]=Check(i,i+1,true,paper);
+    for (int L=3;L&lt;=m;L+=2)
+    for (int i=0;i&lt;m-L;i++){
+        int j=i+L;
+        if ((j&gt;=m)||(!vis[i+1][L/2])) continue;
+        vis[i][(L+1)/2]=Check(i,j,true,paper);
+    }
+
+    memset(f,0,sizeof(f));
+    f[0][m-1]=true;
+    for (int L=m-1;L&gt;=0;L--)
+    for (int i=0;i&lt;m-L;i++){
+        int j=i+L;
+        if (j&gt;=m) continue;
+        for (int k=i;(k&lt;=j)&amp;&amp;(!f[i][j]);k++){
+            if ((j+(j-k+1)&lt;m)&amp;&amp;(vis[k][j-k+1])){ // 先考虑右边一块向左边折叠情况
+                f[i][j]|=f[i][j+(j-k+1)];
+            }
+            if ((i-(k-i+1)&gt;=0)&amp;&amp;(vis[i-(k-i+1)][k-i+1])){ // 左边一块向右折叠
+                f[i][j]|=f[i-(k-i+1)][j];
+            }
+        }
+    }
+    ans1=0;
+    for (int i=0;i&lt;m;i++)
+    for (int j=i;j&lt;m;j++) ans1+=f[i][j];
+    if (m==1) ans1=1;
+
+    // Part 2: build ans2 -------------------------------
+
+    memset(vis,0,sizeof(vis));
+    for (int i=0;i&lt;n-1;i++) vis[i][1]=Check(i,i+1,false,paper);
+    for (int L=3;L&lt;=n;L+=2)
+    for (int i=0;i&lt;n-L;i++){
+        int j=i+L;
+        if ((j&gt;=n)||(!vis[i+1][L/2])) continue;
+        vis[i][(L+1)/2]=Check(i,j,false,paper);
+    }
+
+    memset(f,0,sizeof(f));
+    f[0][n-1]=true;
+    for (int L=n-1;L&gt;=0;L--)
+    for (int i=0;i&lt;n-L;i++){
+        int j=i+L;
+        if (j&gt;=n) continue;
+        for (int k=i;(k&lt;=j)&amp;&amp;(!f[i][j]);k++){
+            if ((j+(j-k+1)&lt;n)&amp;&amp;(vis[k][j-k+1])){ // 先考虑下面一块向上边折叠情况
+                f[i][j]|=f[i][j+(j-k+1)];
+            }
+            if ((i-(k-i+1)&gt;=0)&amp;&amp;(vis[i-(k-i+1)][k-i+1])){ // 上面一块向下折叠
+                f[i][j]|=f[i-(k-i+1)][j];
+            }
+        }
+    }
+    ans2=0;
+    for (int i=0;i&lt;n;i++)
+    for (int j=i;j&lt;n;j++) ans2+=f[i][j];
+    if (n==1) ans2=1;
+
+    // printf(&quot;ANS1=%d  ANS2=%d\n&quot;,ans1,ans2);
+    return ans1*ans2;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-639-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

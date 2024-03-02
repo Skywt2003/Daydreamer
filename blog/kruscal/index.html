@@ -1,0 +1,140 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Kruskal 算法求最小生成树与次小生成树</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Kruskal 算法求最小生成树与次小生成树</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Kruskal 算法求最小生成树与次小生成树</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Kruskal 算法求最小生成树与次小生成树</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 30 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/kruscal" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Kruscal 算法是求最小生成树的基础算法，很容易求得最小生成树，但是怎么利用这个算法求非严格次小生成树与严格次小生成树呢？</p><!--more--><h2>Kruskal 算法</h2><h3>做法</h3><p>这个算法很基础，也很好理解，首先对所有边的权值从小到大排序（既然是要求最小生成树），从边权最小的边开始枚举，对于每条边，如果其两个端点目前不联通，则加入这条边，否则说明加入这条边会成环，就不加。“加入这条边”的操作（也就是合并联通块）用并查集解决。</p><h3>证明</h3><p>（其实这个算法 yy 一下就大概知道了……）</p><p>Wikipedia 上说：</p><blockquote>可以用反证法：如果这条边不在最小生成树中，它连接的两个连通分量最终还是要连起来的，通过其他的连法，那么另一种连法与这条边一定构成了环，而环中一定有一条权值大于这条边的边，用这条边将其替换掉，图仍旧保持连通，但总权值减小了。也就是说，如果不选取这条边，最后构成的生成树的总权值一定不会是最小的。</blockquote><p>讲得详细点：<br>假设按照 Kruskal 算法加入的边集为 $e_1,e_2,e_3,\dots,e_{m-1},e_m$ ，形成了树 $T_1$；<br>（用反证法）假设这时候求得的 $T_1$ 不是该图的最小生成树，则存在最小生成树 $T_2$；假设其边集为 $p_1,p_2,p_3,\dots,p_{m-1},p_m$；<br>那么这两个集合有一个前缀是相同的（可能前缀长度为0），即 $e_1=p_1,e_2=p_2,\dots,e_{k-1}=p_{k-1}$，直到 $p_k &gt; e_k$。<br>假设现在我们强制把 $e_k$ 也加入 $T_2$，那么现在一定会形成一个环，这个环里 $p_k &gt; e_k$，也就是说把 $p_k$ 去掉会形成一棵更小的生成树。<br>说明前面的假设错误，证得这时 $T_1$ 是最小生成树。</p><h2>次小生成树</h2><p>先介绍一种超级暴力的做法，枚举最小生成树（MST）上的边，把这条边去掉重新跑 MST……</p><p>现在怎么用 Kruskal 求次小生成树呢？首先说说非严格次小生成树的做法（所谓非严格次小生成树，就是可能有多个最小生成树的情况下次小生成树可以被认为是最小生成树）。</p><p>在 Kruskal 算法里我们可以标记哪些边在 MST 里，那么现在我们可以枚举每条不在 MST 上的边，考虑把这条边加入的情况。<br>显然，加入这条边会形成环。我们要求的可是次小生成树，可仍然是一棵树。那么在加入这条边后形成的环里，我们肯定要去掉一条边。去掉那条边呢？<br>假设去掉边 $e_k$ ，加入 $p_k$ ，为了确保我们得到的是次小生成树，我们要使 $p_k-e_k$ 最小（显然 $p_k \geqslant e_k$）。所以对于每个 $p_k$，让 $e_k$ 尽量大就可以了，换句话说我们要找到加入 $p_k$ 所在的环里的最大边，替换之，看看答案。最后找到最接近最小生成树的答案就可以了。<br>如何实现“加入 $p_k$ 所在的环里的最大边”这一神奇的操作呢？用树上倍增（类似 LCA 的做法）就可以了。</p><p>再考虑严格次小生成树的做法。我们需要确保 “加入 $p_k$ 所在的环里的最大边” 不与 $p_k$ 相同，多写一个特殊判断的 DFS 就可以实现了。</p><h3>参考代码</h3><p>洛谷模板题：[P4180 【模板】严格次小生成树[BJWC2010]](<a href="https://www.luogu.org/problemnew/show/P4180">https://www.luogu.org/problemnew/show/P4180</a> "P4180 【模板】严格次小生成树[BJWC2010]")</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=100005,maxe=300005;
+int n,m,fa[maxn],f[maxn][18],to[maxn][18],deep[maxn];
+int tot=0,lnk[maxn],nxt[maxe*2],son[maxe*2],w[maxe*2];
+bool vis[maxn];
+long long ans=(long long)1&lt;&lt;60,sum=0;
+struct SideData{
+    int x,y,w;
+    bool used;
+}a[maxe];
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline bool cmp(SideData aa,SideData bb){
+    return aa.w&lt;bb.w;
+}
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline int getfa(int x){
+    if (fa[x]==x) return x;
+    fa[x]=getfa(fa[x]);
+    return fa[x];
+}
+inline void Kruscal(){
+    for (int i=1;i&lt;=n;i++) fa[i]=i;
+    int cnt=0;
+    for (int i=1;i&lt;=m&amp;&amp;cnt&lt;n-1;i++){
+        int fx=getfa(a[i].x),fy=getfa(a[i].y);
+        if (fx==fy) continue;
+        cnt++;a[i].used=1;sum+=(long long)a[i].w;
+        fa[fx]=fy;
+        add(a[i].x,a[i].y,a[i].w);
+        add(a[i].y,a[i].x,a[i].w);
+    }
+}
+inline void Build(int x,int id,int lst){
+    vis[x]=1;
+    f[x][0]=w[id];to[x][0]=lst;
+    for (int i=1;i&lt;18;i++) f[x][i]=max(f[x][i-1],f[to[x][i-1]][i-1]),to[x][i]=to[to[x][i-1]][i-1];
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]) deep[son[i]]=deep[x]+1,Build(son[i],i,x);
+}
+inline int Query(int x,int y){
+    //printf(&quot;Query: %d %d =&gt; &quot;,x,y);
+    int ret=0;
+    if (deep[x]&lt;deep[y]) swap(x,y);
+    for (int i=17;i&gt;=0;i--) if (deep[to[x][i]]&gt;=deep[y]) ret=max(ret,f[x][i]),x=to[x][i];
+    for (int i=17;i&gt;=0;i--) if (to[x][i]!=to[y][i]) ret=max(ret,max(f[x][i],f[y][i])),x=to[x][i],y=to[y][i];
+    ret=max(ret,max(f[x][0],f[y][0]));
+    //printf(&quot;%d %d\n&quot;,x,y);
+    return ret;
+}
+inline int ExQuery(int x,int y,int z){
+    int ret=0;
+    if (deep[x]&lt;deep[y]) swap(x,y);
+    for (int i=17;i&gt;=0;i--) if (deep[to[x][i]]&gt;=deep[y]){
+        if (f[x][i]!=z) ret=max(ret,f[x][i]);
+        x=to[x][i];
+    }
+    for (int i=17;i&gt;=0;i--) if (to[x][i]!=to[y][i]){
+        if (f[x][i]!=z) ret=max(ret,f[x][i]);
+        if (f[y][i]!=z) ret=max(ret,f[y][i]);
+        x=to[x][i];y=to[y][i];
+    }
+    if (f[x][0]!=z) ret=max(ret,f[x][0]);
+    if (f[y][0]!=z) ret=max(ret,f[y][0]);
+    return ret;
+}
+int main(){
+    n=read();m=read();
+    for (int i=1;i&lt;=m;i++) a[i].x=read(),a[i].y=read(),a[i].w=read();
+    sort(a+1,a+1+m,cmp);
+    Kruscal();
+    deep[1]=1;
+    Build(1,0,0);
+    for (int i=1;i&lt;=m;i++) if (!a[i].used){
+        int qry=Query(a[i].x,a[i].y);
+        if (qry==a[i].w) qry=ExQuery(a[i].x,a[i].y,qry);
+        long long now=sum-(long long)qry+(long long)a[i].w;
+        if (now&gt;sum) ans=min(ans,now);
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre><h2>参考</h2><p><a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" title="Kruskal's algorithm - Wikipedia">Kruskal's algorithm - Wikipedia</a><br>（维基百科英文版解禁了吗？！不用魔法居然可以访问……）<br><a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E9%B2%81%E6%96%AF%E5%85%8B%E5%B0%94%E6%BC%94%E7%AE%97%E6%B3%95" title="克鲁斯克尔算法 - 维基百科，自由的百科全书">克鲁斯克尔算法 - 维基百科，自由的百科全书</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/kruscal" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Kruskal 算法求最小生成树与次小生成树</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,158 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 274D Lovely Matrix：“冗余点” 建边 + 拓扑</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 274D Lovely Matrix：“冗余点” 建边 + 拓扑</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 274D Lovely Matrix：“冗余点” 建边 + 拓扑</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 274D Lovely Matrix：“冗余点” 建边 + 拓扑</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 06 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf274d" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>题目链接：<a href="http://codeforces.com/problemset/problem/274/D" title="CodeForces 274D Lovely Matrix">CodeForces 274D Lovely Matrix</a><br>今天看<a href="http://codeforces.com/blog/entry/6759" title="CF官方题解">CF官方题解</a>的时候学来一句话，暴力解法称为 “The naïve solution” :joy:</p><!--more--><h2>Problem</h2><p>Lenny had an n × m matrix of positive integers. He loved the matrix so much, because each row of the matrix was sorted in non-decreasing order. For the same reason he calls such matrices of integers lovely.</p><p>One day when Lenny was at school his little brother was playing with Lenny's matrix in his room. He erased some of the entries of the matrix and changed the order of some of its columns. When Lenny got back home he was very upset. Now Lenny wants to recover his matrix.</p><p>Help him to find an order for the columns of the matrix so that it's possible to fill in the erased entries of the matrix to achieve a lovely matrix again. Note, that you can fill the erased entries of the matrix with any integers.</p><h2>Input</h2><p>The first line of the input contains two positive integers n and m $(1 ≤ n·m ≤ 10^5)$. Each of the next n lines contains m space-separated integers representing the matrix. An integer -1 shows an erased entry of the matrix. All other integers (each of them is between $0$ and $10^9$ inclusive) represent filled entries.</p><h2>Output</h2><p>If there exists no possible reordering of the columns print -1. Otherwise the output should contain m integers $p_1, p_2, ..., p_m$ showing the sought permutation of columns. So, the first column of the lovely matrix will be p1-th column of the initial matrix, the second column of the lovely matrix will be $p_2$-th column of the initial matrix and so on.</p><h2>Examples</h2><h3>Input #1</h3><pre><code>3 3
+1 -1 -1
+1 2 1
+2 -1 1
+
+</code></pre><h3>Output #1</h3><pre><code>3 1 2 
+
+</code></pre><h3>Input #2</h3><pre><code>2 3
+1 2 2
+2 5 4
+
+</code></pre><h3>Output #2</h3><pre><code>1 3 2 
+
+</code></pre><h3>Input #3</h3><pre><code>2 3
+1 2 3
+3 2 1
+
+</code></pre><h3>Output #3</h3><pre><code>-1
+
+</code></pre><h2>Translation</h2><p>给你一个 n 行 m 列的矩阵，其中 -1 可以换成任何数字。要你重新安排这些列的顺序，使得矩阵每行单调不降。如果做不到则输出 -1。</p><h2>Analysis</h2><p>看到这题很容易想到是拓扑排序，但是对于每一行我们都需要 $N^2$ 地建边，显然会超时。这时候就要用到一个黑科技：利用冗余点建边。</p><p>对于每一行的每一个元素，我们可以在它和第一个比它小的元素之间增加一个“冗余点”，在它和第一个比它大的元素之间也建一个“冗余点”，然后让它与这两个“冗余点”连边。其实具体在实现的时候，我们是对于每行的元素排序做的，这样建边时间复杂度就降到 $\Theta (N\ast M)$，但是空间要开两倍（因为增加的“冗余点”也要加入拓扑排序）。这是一种典型的空间换时间的思想。</p><p>建边核心代码如下：</p><pre><code class="lang-cpp">inline void Build(int k){ // K 代表当前行，rcd[].x 存储了已经排好序的每行数据
+    for (int i=1;i&lt;=m;i++) ans[i].id=i;
+    int s=-1;bool fst=true; // fst 标记最小的元素，由于没有比其更小的元素，所以它之前不需要增加冗余点。最大元素也类似。
+    while (rcd[k][s+1].x==-1) s++; // 对于-1可以忽略，不加入拓扑排序
+    for (int i=s+1;i&lt;m;){ // 排序去重的做法
+        int j=i;cnt++;
+        if (!fst) add(cnt-1+m,rcd[k][i].id);
+        while (rcd[k][j+1].x==rcd[k][i].x&amp;&amp;j+1&lt;m){
+            j++;
+            if (!fst) add(cnt-1+m,rcd[k][j].id);
+        }
+        fst=false;
+        if (j+1&lt;m) for (int t=i;t&lt;=j;t++) add(rcd[k][t].id,cnt+m);
+        i=j+1;
+    }
+}</code></pre><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200005,maxe=400005;
+int n,m,cnt=0;
+int tot=0,lnk[maxn],nxt[maxe],son[maxe],ind[maxe];
+struct WT{
+    int x,id;
+}ans[maxn];
+vector&lt;int&gt; a[maxn];
+vector&lt;WT&gt; rcd[maxn];
+queue&lt;int&gt; que;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline void add(int x,int y){
+    x++;y++;
+    tot++;ind[y]++;son[tot]=y;nxt[tot]=lnk[x];lnk[x]=tot;
+    //printf(&quot;Add an edge: %d  -&gt; %d\n&quot;,x,y);
+}
+inline bool cmp(WT aa,WT bb){
+    return aa.x&lt;bb.x;
+}
+inline void Build(int k){
+    for (int i=1;i&lt;=m;i++) ans[i].id=i;
+    int s=-1;bool fst=true;
+    while (rcd[k][s+1].x==-1) s++;
+    for (int i=s+1;i&lt;m;){
+        int j=i;cnt++;
+        if (!fst) add(cnt-1+m,rcd[k][i].id);
+        while (rcd[k][j+1].x==rcd[k][i].x&amp;&amp;j+1&lt;m){
+            j++;
+            if (!fst) add(cnt-1+m,rcd[k][j].id);
+        }
+        fst=false;
+        if (j+1&lt;m) for (int t=i;t&lt;=j;t++) add(rcd[k][t].id,cnt+m);
+        i=j+1;
+    }
+}
+inline void Topology(){
+    for (int i=1;i&lt;=m;i++) if (ind[i]==0) ans[i].x=1,que.push(i);
+    while (!que.empty()){
+        int x=que.front();que.pop();
+        for (int i=lnk[x];i;i=nxt[i]){
+            ind[son[i]]--;
+            ans[son[i]].x=max(ans[son[i]].x,ans[x].x+bool(son[i]&lt;=m));
+            if (ind[son[i]]==0) que.push(son[i]);
+        }
+    }
+}
+int main(){
+    n=read();m=read();
+    for (int i=1;i&lt;=n;i++){
+        for (int j=0;j&lt;m;j++){
+            int now=read();
+            a[i].push_back(now);
+            rcd[i].push_back((WT){now,j});
+        }
+        sort(rcd[i].begin(),rcd[i].end(),cmp);
+    }
+    for (int i=1;i&lt;=n;i++) Build(i);
+    Topology();
+    sort(ans+1,ans+1+m,cmp);
+    if (ans[1].x==0){printf(&quot;-1\n&quot;);return 0;}
+    for (int i=1;i&lt;=m;i++) printf(&quot;%d &quot;,ans[i].id);
+    printf(&quot;\n&quot;);
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf274d" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 274D Lovely Matrix：“冗余点” 建边 + 拓扑</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,142 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 07 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj3967" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>题目链接：<a href="https://uva.onlinejudge.org/external/15/1599.pdf" title="UVa 1599 Ideal Path">UVa 1599 Ideal Path</a> 或者 <a href="http://poj.org/problem?id=3967" title="POJ 3967 Ideal Path">POJ 3967 Ideal Path</a></p><p>POJ 上居然不能用 vector ！！！强烈不满！</p><!--more--><p>（本博客以 UVa 上的题目为准）</p><h2>Problem</h2><p>New labyrinth attraction is open in New Lostland amusement park. The labyrinth consists of n rooms connected by m passages. Each passage is colored into some color ci. Visitors of the labyrinth are dropped from the helicopter to the room number 1 and their goal is to get to the labyrinth exit located in the room number n.</p><p>Labyrinth owners are planning to run a contest tomorrow. Several runners will be dropped to the room number 1. They will run to the room number n writing down colors of passages as they run through them. The contestant with the shortest sequence of colors is the winner of the contest. If there are several contestants with the same sequence length, the one with the ideal path is the winner. The path is the ideal path if its color sequence is the lexicographically smallest among shortest paths.</p><p>Andrew is preparing for the contest. He took a helicopter tour above New Lostland and made a picture of the labyrinth. Your task is to help him find the ideal path from the room number 1 to the room number n that would allow him to win the contest.</p><p><strong>Note:</strong> A sequence (a1, a2, . . . , ak) is lexicographically smaller than a sequence (b1, b2, . . . , bk) if there exists i such that ai &lt; bi , and aj = bj for all j &lt; i.</p><h2>Input</h2><p>The input file contains several test cases, each of them as described below.<br>The first line of the input file contains integers n and m — the number of rooms and passages, respectively $(2 ≤ n ≤ 100000, 1 ≤ m ≤ 200000)$. The following m lines describe passages, each passage is described with three integer numbers: ai, bi, and ci — the numbers of rooms it connects and its color $(1 ≤ a_i, b_i ≤ n, 1 ≤ c_i ≤ 10^9)$. Each passage can be passed in either direction. Two rooms can be connected with more than one passage, there can be a passage from a room to itself. It is guaranteed that it is possible to reach the room number n from the room number 1.</p><h2>Output</h2><p>For each test case, the output must follow the description below.<br>The first line of the output file must contain k — the length of the shortest path from the room<br>number 1 to the room number n. The second line must contain k numbers — the colors of passages in<br>the order they must be passed in the ideal path.</p><h2>Sample Input</h2><pre><code>4 6
+1 2 1
+1 3 2
+3 4 3
+2 3 1
+2 4 4
+3 1 1
+
+</code></pre><h2>Sample Output</h2><pre><code>2
+1 3
+
+</code></pre><h2>Analysis</h2><p>这题是《算法竞赛入门经典》上面的原题，在书上作者还加粗标注：<strong>“此题非常重要，强烈建议读者编写程序！”</strong>但是写起来似乎并没有这么简单……</p><p>想法比较简单，如果光问我们最短路径，这就是入门题；关键是要让最短路径上颜色字典序最小，并且还要输出。可以从终点 n 开始反向 BFS，求出每个点到 n 点的距离 $dist(n)$，这样处理的好处是：在之后正向 BFS 处理的时候，可以方便地得出某个点是否在最短路径中。<br>处理好反向的 BFS 之后，处理正向的求答案的 BFS 才是重头戏。其实也是 BFS 的思想，但是写起来却不像我们平常的“维护一个队列”的 BFS。我们需要把每步可能的走法都单独维护。具体处理起来还有技巧：将所有下一步的可能全都存在 vector 里，然后<strong>排序去重</strong>，加入下次的处理队列里。这样很大程度地避免了元素重复与空间浪费。<br>具体实现的时候，可以用两个 vector，一个 now，一个 next。详见代码的 GetAns 部分～</p><p>emm，咨询 dalao 听说，据说 POJ 是不能用 vector 的……害怕……<br><del>代码懒得改了……</del></p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100005,maxe=400005;
+int T,n,e,dst[maxn],INF,dist=0;
+bool vis[maxn];
+struct VertexInfo{
+    int x,c;
+};
+vector&lt;int&gt; ans,edge[maxn],color[maxn];
+vector&lt;VertexInfo&gt; now,nxt;
+queue&lt;int&gt; que;
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline void init(){
+    memset(dst,0x3f,sizeof(dst));INF=dst[0];
+    for (int i=1;i&lt;=n;i++) edge[i].clear(),color[i].clear();
+}
+inline void BFS(int s){
+    memset(vis,0,sizeof(vis));
+    que.push(s);vis[s]=1;dst[s]=0;
+    while (!que.empty()){
+        int x=que.front();que.pop();
+        for (int i=0;i&lt;edge[x].size();i++) if (!vis[edge[x][i]]){
+            vis[edge[x][i]]=true;
+            dst[edge[x][i]]=dst[x]+1;
+            que.push(edge[x][i]);
+        }
+    }
+}
+inline bool CompareColor(VertexInfo aa,VertexInfo bb){
+    return aa.c&lt;bb.c||(aa.c==bb.c&amp;&amp;aa.x&lt;bb.x);
+}
+inline void GetAns(int s){
+    memset(vis,0,sizeof(vis));ans.clear();
+    //Init Vector &quot;now&quot;
+    vis[s]=1;now.clear();
+    now.push_back((VertexInfo){s,-1});
+
+    for (int t=1;t&lt;=dist;t++){ // Do BT BFS
+        nxt.clear();
+        for (int i=0;i&lt;now.size();i++){
+            VertexInfo head=now[i];
+            for (int j=0;j&lt;edge[head.x].size();j++) if (!vis[edge[head.x][j]]){
+                if (t+dst[edge[head.x][j]]!=dist) continue;
+                nxt.push_back((VertexInfo){edge[head.x][j],color[head.x][j]});
+            }
+        }
+
+        now.clear();
+        sort(nxt.begin(),nxt.end(),CompareColor);
+        for (int i=0;i&lt;nxt.size()&amp;&amp;nxt[i].c==nxt[0].c;i++){
+            if (i!=0&amp;&amp;nxt[i].x==nxt[i-1].x) continue;
+            now.push_back(nxt[i]);
+            vis[nxt[i].x]=true;
+        }
+        ans.push_back(now[0].c);
+    }
+}
+int main(){
+    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;e)!=-1){
+        init();
+        for (int i=1;i&lt;=e;i++){
+            int x=read(),y=read(),z=read();
+            edge[x].push_back(y);color[x].push_back(z);
+            edge[y].push_back(x);color[y].push_back(z);
+        }
+        BFS(n);dist=dst[1];
+        GetAns(1);
+        printf(&quot;%d\n&quot;,(int)ans.size());
+        printf(&quot;%d&quot;,ans[0]);
+        for (int i=1;i&lt;ans.size();i++) printf(&quot; %d&quot;,ans[i]);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/e451fea6d7ad2e5cadc71a1d873b52aa" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://capata.wang" class="link" target="_blank"> <h4>CaptainSlow</h4> </a> <p class="mt-1">2018 年 10 月 21 日 1:48</p> </div> </div> <p class="mt-2">小盖哥牛逼啊！不过我好像没怎么看懂...</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/poj3967" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

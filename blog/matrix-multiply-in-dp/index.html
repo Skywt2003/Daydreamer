@@ -1,0 +1,423 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>矩阵乘法在动态规划中的应用</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 矩阵乘法在动态规划中的应用</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 矩阵乘法在动态规划中的应用</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>矩阵乘法在动态规划中的应用</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 10 月 02 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/matrix-multiply-in-dp" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>$$
+\begin{bmatrix}
+x_{11} &amp; x_{12} &amp; x_{13} \\
+x_{21} &amp; x_{22} &amp; x_{23} \\
+x_{31} &amp; x_{32} &amp; x_{33}
+\end{bmatrix}
+$$</p><blockquote>每增加一个维度，世界便会增加无限的美感。</blockquote><!--more--><h2>从 Fibonacci 数列开始</h2><p>矩阵乘法应用的入门题。</p><p>如果把 $F_n$ 放在矩阵里，构造出一个 1×2 的矩阵 $\begin{bmatrix}  F_{n-1} &amp; F_{n-2}\end{bmatrix}$，就可以构造一个转移矩阵：</p><p>$$
+\begin{bmatrix}
+   F_{n-1} &amp; F_{n-2}
+\end{bmatrix}
+\ast
+\begin{bmatrix}
+  1 &amp; 1 \\
+  1 &amp; 0
+\end{bmatrix} =
+\begin{bmatrix}
+   F_{n-1}+F_{n-2}  &amp; F_{n-1}
+\end{bmatrix} =
+\begin{bmatrix}
+   F_{n} &amp; F_{n-1}
+\end{bmatrix}
+$$</p><p>这里 $\begin{bmatrix}  1 &amp; 1 \\  1 &amp; 0\end{bmatrix}$ 就是转移矩阵。也就是说只需要将构造的 $\begin{bmatrix}   F_{n-1} &amp; F_{n-2}\end{bmatrix}$ 乘以转移矩阵就可以得到 $\begin{bmatrix}   F_{n} &amp; F_{n-1}\end{bmatrix}$。显然可以用快速幂优化了。</p><p>其实也可以写成 4×4 的矩阵进行推导：</p><p>$$
+\displaystyle
+\begin{bmatrix}
+   F_{n+1} &amp; F_n \\
+   F_n &amp; F_{n-1}
+\end{bmatrix} =
+\begin{bmatrix}
+   1 &amp; 1 \\
+   1 &amp; 0
+\end{bmatrix}^n =
+\underbrace{
+\begin{bmatrix}
+   1 &amp; 1 \\
+   1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+   1 &amp; 1 \\
+   1 &amp; 0
+\end{bmatrix}\cdots
+\begin{bmatrix}
+   1 &amp; 1 \\
+   1 &amp; 0
+\end{bmatrix}
+}_ {\text{n times}}
+$$</p><h2>拓展一下？</h2><p>由上面的例子，我们可以扩展一下：对于这样的递推式：</p><p>$$F_{n}=F_{n-1}+F_{n-2}+\dots+F_{n-k}$$</p><p>我们其实都可以通过构造矩阵的方法来优化，快速计算 $F_n$。<br>（不过很多简单的递推式也可以求通项公式……）</p><h2>POJ 3233 Matrix Power Series</h2><h3>Description</h3><p>Link： <a href="http://poj.org/problem?id=3233">POJ 3233 Matrix Power Series</a></p><blockquote><p>Given a $n × n$  matrix $A$ and a positive integer $k$, find the sum $S = A + A^2 + A^3 + \dots + A^k$.</p><p>$n \leqslant 30$, $k \leqslant 10^9$ and $m &lt; 10^4$.</p></blockquote><h3>Hint</h3><p>一道比较典型的矩阵乘法优化递推的题目。有很多方法。</p><h3>Analysis #1</h3><p>先把矩阵 $A$ 看成一个数字。由题可知：</p><p>$$F(n)=A + A^2 + A^3 + \dots + A^n$$</p><p>那么</p><p>$$F(n)=A \ast F(n-1) + A$$</p><p>显然我们可以构造一个转移矩阵：</p><p>$$
+\begin{bmatrix}
+  A^{n-1} &amp; F_{n-1} \\
+  0 &amp; 1
+\end{bmatrix} \ast 
+\begin{bmatrix}
+  A &amp; A \\
+  0 &amp; 1
+\end{bmatrix} =
+\begin{bmatrix}
+  A^{n} &amp; F_{n} \\
+  0 &amp; 1
+\end{bmatrix}
+$$</p><p>也就是说我们发现：</p><p>$$
+\begin{bmatrix}
+  A &amp; A \\
+  0 &amp; 1
+\end{bmatrix} \ast
+\begin{bmatrix}
+  A &amp; A \\
+  0 &amp; 1
+\end{bmatrix} =
+\begin{bmatrix}
+  A^2 &amp; A^2+A \\
+  0 &amp; 1
+\end{bmatrix}
+$$</p><p>则：</p><p>$$
+S=
+\begin{bmatrix}
+  A &amp; A \\
+  0 &amp; 1
+\end{bmatrix} ^k
+$$</p><p>写一个<del>一百多行的</del>矩阵套矩阵快速幂就可以了。</p><h3>Analysis #2</h3><p>这是最简单的方法。</p><p>$$F(n)=A + A^2 + A^3 + \dots + A^n$$</p><ol><li>$n$ 为偶数：</li></ol><p>$$F(n)=A+A^2+\dots+A^{n/2} +A^{n/2}\ast F(n/2)$$</p><ol start="2"><li>$n$ 为奇数：</li></ol><p>$$F(n)=A\ast F(n-1)+A$$</p><p>这样其实就是分治，可以 $\log k$ 求解。</p><h3>Analysis #3</h3><p>看看 $F(n)=A\ast F(n-1)+A$ 这个递推式，考虑用它推通项公式。</p><p>$$F(n)+\lambda = A\ast F(n-1)+A +\lambda$$</p><p>（我们用 $I$ 表示单位矩阵）</p><p>$$F(n)+\lambda = A \ast (F(n-1)+I+\frac {\lambda} {A})$$</p><p>得 $\displaystyle \lambda = I+\frac {\lambda} A$ ，解得 $\displaystyle \lambda =A\ast (A-I)^{-1}$</p><p>$(A-I)^{-1}$ 就是 $A-I$ 的<strong>逆矩阵</strong>。因为这个给你的矩阵是 $n\ast n$ 的<strong>方阵</strong>，所以其实可以直接用高斯消元求其逆矩阵。<br>接下来令 $G(n)=F(n)+A\ast (A-I)^{-1}$，那么</p><p>$$G(n)=A\ast G(n-1)$$</p><p>即</p><p>$$G(n)=A^{n-1}\ast G(1)$$</p><p>矩阵快速幂即可求解。</p><h3>Code</h3><p>我只写了第一种思路的代码……</p><p>这题代码有个坑点，如果全都开 <code>long long</code> 会过不了，必须开 <code>int</code> 让其自然溢出……可能数据有点问题<a href="http://poj.org/showmessage?message_id=354052">[1]</a>。</p><p><del>（不过谁能想到有人居然所有代码前面都加 <code>#define int long long</code> 的……）</del></p><pre><code class="lang-cpp">/*
+ * Vjudge CONTEST244508 矩阵乘法专题训练
+ * POJ 3233
+ * C - Matrix Power Series
+ * 180929 By SkyWT
+ */
+
+#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+#include&lt;map&gt;
+
+using namespace std;
+
+#define memset_clear(_) memset(_,0,sizeof(_))
+#define memset_clear_tre(_) memset(_,1,sizeof(_))
+#define memset_clear_reg(_) memset(_,-1,sizeof(_))
+#define memset_clear_max(_) memset(_,0x3f,sizeof(_))
+#define memset_clear_min(_) memset(_,0x80,sizeof(_))
+#define sqr(_) ((_)*(_))
+
+// #define int long long
+
+const int maxn=35;
+int n,k,tt;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+struct matrix{
+    int a[maxn][maxn];
+    void init(){ // 构造一个单位矩阵
+        memset(a,0,sizeof(a));
+        for (int i=0;i&lt;n;i++) a[i][i]=1;
+    }
+    void clear(){
+        memset(a,0,sizeof(a));
+    }
+    matrix operator +(matrix b){
+        matrix c;c.clear();
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;n;j++)
+            c.a[i][j]=a[i][j]+b.a[i][j];
+        return c;
+    }
+    matrix operator *(matrix b){
+        matrix c; c.clear();
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;n;j++)
+        for (int k=0;k&lt;n;k++)
+            c.a[i][j]=(c.a[i][j]+a[i][k]*b.a[k][j]%tt)%tt;
+        return c;
+    }
+    matrix operator ^(int b){
+        matrix ret; ret.init();
+        matrix w;   w.clear();
+        for (int i=0;i&lt;2;i++)
+        for (int j=0;j&lt;2;j++)
+            w.a[i][j]=a[i][j];
+        while (b){
+            if (b&amp;1) ret=ret*w;
+            w=w*w;b&gt;&gt;=1;
+        }
+        return ret;
+    }
+}fst;
+
+struct matrix_matrix{
+    matrix a[3][3];
+    void init(matrix number,bool flag){
+        if (flag){
+            a[0][0].init();a[1][1].init();
+            a[0][1].clear();a[1][0].clear();
+        } else {
+            a[0][0]=a[0][1]=number;
+            a[1][0].clear();a[1][1].init();
+        }
+    }
+    void clear(){
+        a[0][0].clear();a[0][1].clear();
+        a[1][0].clear();a[1][1].clear();
+    }
+    matrix_matrix operator *(matrix_matrix b){
+        matrix_matrix c; c.clear();
+        for (int i=0;i&lt;2;i++)
+        for (int j=0;j&lt;2;j++)
+        for (int k=0;k&lt;2;k++)
+            c.a[i][j]=(c.a[i][j]+a[i][k]*b.a[k][j]);
+        return c;
+    }
+    matrix_matrix operator ^(int b){
+        matrix tmp;
+        matrix_matrix ret;ret.init(tmp,true);
+        matrix_matrix w;w.init(fst,false);
+        while (b){
+            if (b&amp;1) ret=ret*w;
+            w=w*w;b&gt;&gt;=1;
+        }
+        return ret;
+    }
+    void write(){
+        for (int i=0;i&lt;n;i++){
+            for (int j=0;j&lt;n;j++) printf(&quot;%d &quot;,a[0][1].a[i][j]%tt);
+            printf(&quot;\n&quot;);
+        }
+    }juzhegn
+};
+
+signed main(){
+    n=read();k=read();tt=read();
+    for (int i=0;i&lt;n;i++)
+    for (int j=0;j&lt;n;j++)
+        fst.a[i][j]=read()%tt;
+    matrix_matrix now;
+    now.init(fst,false);
+    now=now^k;
+    now.write();
+    return 0;
+}</code></pre><h2>HDU 2065 "红色病毒"问题</h2><h3>Description</h3><p>Link：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2065">HDU 2065 "红色病毒"问题</a></p><blockquote><p>医学界发现的新病毒因其蔓延速度和 Internet 上传播的“红色病毒”不相上下，被称为“红色病毒”。经研究发现，该病毒及其变种的 DNA 的一条单链中，胞嘧啶、腺嘧啶均是成对出现的。  <br>现在有一长度为N的字符串，满足以下条件：</p><ol><li>字符串仅由 A,B,C,D 四个字母组成；</li><li>A 出现偶数次（也可以不出现）；</li><li>C 出现偶数次（也可以不出现）。</li></ol><p>计算满足条件的字符串个数。<br>当 N=2 时，所有满足条件的字符串有如下 6 个：BB,BD,DB,DD,AA,CC。<br>由于这个数据肯能非常庞大，你只要给出最后两位数字即可。</p></blockquote><h3>Hint</h3><p>矩阵优化 DP 的典型。</p><p>对于前面一题递推的题目，我们尚可直接用求通项的数学方法，但是这题似乎不行了……</p><h3>Analysis #1</h3><p>首先可以想到 <code>F[i]</code> 表示长度为 i 的字符串，偶数个 A 并且偶数个 C 的数量。但是直接这样定义显然是没法直接状态转移的……<br>我们自然想到分别在 DP 状态里记录下 A 和 C 了。<br>为了方便放进矩阵里，我们尽量定义成一个二维的：<code>F[i][0/1/2/3]</code>，i 表示字符串长度为 i，第二维讨论一下：</p><ol start="0"><li>A 和 C 均出现了偶数次；</li><li>A 出现了偶数次，C 出现了奇数次；</li><li>A 出现了奇数次，C 出现了偶数次；</li><li>A 和 C 均出现奇数次。</li></ol><p>那么就有如下转移方程：</p><p>$$
+F(i,0)=2\ast F(i-1,0) + F(i-1,1) + F(i-1,2) \\
+F(i,1)=2\ast F(i-1,1) + F(i-1,0) + F(i-1,3) \\
+F(i,2)=2\ast F(i-1,2) + F(i-1,0) + F(i-1,3) \\
+F(i,3)=2\ast F[i-1,3] + F(i-1,1) + F(i-1,2)
+$$</p><p>让我们对齐一下，以便于后续的推导：</p><p>$$
+F(i,0)=2\ast F(i-1,0) + 1\ast F(i-1,1) + 1\ast F(i-1,2) + 0\ast F(i-1,3) \\
+F(i,1)=1\ast F(i-1,0) + 2\ast F(i-1,1) + 0\ast F(i-1,2) + 1\ast F(i-1,3) \\
+F(i,2)=1\ast F(i-1,0) + 0\ast F(i-1,0) + 2\ast F(i-1,2) + 1\ast F(i-1,3) \\
+F(i,3)=0\ast F(i-1,0) + 1\ast F(i-1,1) + 1\ast F(i-1,2) + 2\ast F(i-1,3)
+$$</p><p>现在考虑通过矩阵转移。假设我们把 $F(i,j)$ 看成如下矩阵：</p><p>$$
+\begin{bmatrix}
+  F(i,0) \\
+  F(i,1) \\
+  F(i,2) \\
+  F(i,3)
+\end{bmatrix}
+$$</p><p>现在我们需要转移成这样子：</p><p>$$
+\begin{bmatrix}
+  2\ast F(i-1,0) + 1\ast F(i-1,1) + 1\ast F(i-1,2) + 0\ast F(i-1,3) \\
+  1\ast F(i-1,0) + 2\ast F(i-1,1) + 0\ast F(i-1,2) + 1\ast F(i-1,3) \\
+  1\ast F(i-1,0) + 0\ast F(i-1,0) + 2\ast F(i-1,2) + 1\ast F(i-1,3) \\
+  0\ast F(i-1,0) + 1\ast F(i-1,1) + 1\ast F(i-1,2) + 2\ast F(i-1,3)
+\end{bmatrix}
+$$</p><p>其实转移矩阵已经很显然了，就是那几个系数构成的矩阵：</p><p>$$
+\begin{bmatrix}
+  2 &amp; 1 &amp; 1 &amp; 0 \\
+  1 &amp; 2 &amp; 0 &amp; 1 \\
+  1 &amp; 0 &amp; 2 &amp; 1 \\
+  0 &amp; 1 &amp; 1 &amp; 2
+\end{bmatrix}
+$$</p><p>现在还有个微小的问题，这个矩阵是 4×4 的，但是原来是 4×1 的……4 行 1 列的矩阵可不能与 4 行 4 列的矩阵相乘。我们只能把 4×1 的矩阵写成 1×4 的：</p><p>$$
+\begin{bmatrix}
+  F(i,0) &amp; F(i,1) &amp; F(i,2) &amp; F(i,3)
+\end{bmatrix}
+$$</p><p>（可以发现这是一个沿”主对角线“对称的矩阵）<br>接下来考虑下初始矩阵，不难得出答案：</p><p>$$
+\begin{bmatrix}
+  2 &amp; 1 &amp; 1 &amp; 0
+\end{bmatrix} \ast
+\begin{bmatrix}
+  2 &amp; 1 &amp; 1 &amp; 0 \\
+  1 &amp; 2 &amp; 0 &amp; 1 \\
+  1 &amp; 0 &amp; 2 &amp; 1 \\
+  0 &amp; 1 &amp; 1 &amp; 2
+\end{bmatrix} ^{n-1} =
+\begin{bmatrix}
+  F(n,0) &amp; F(n,1) &amp; F(n,2) &amp; F(n,3)
+\end{bmatrix}
+$$</p><p>矩阵快速幂优化即可。</p><h3>Analysis #2</h3><p>网上题解搜得：泰勒级数？不会。</p><h3>Code</h3><p>需要注意题目的输入格式：</p><blockquote>每组输入的第一行是一个整数 T，表示测试实例的个数。下面是 T 行数据，每行一个整数 $N (1\leqslant N&lt;2^{64})$，当 T=0 时结束。</blockquote><p>N 达到了 $2^{64}$，所以我们需要开 <code>unsigned long long</code>。<br>（正常的操作当然是<code>#define int unsigned long long</code> 啦～）</p><p>解法 #1 的代码：</p><pre><code class="lang-cpp">/*
+ * Vjudge CONTEST 244508
+ * HDU 2065
+ * B - &quot;红色病毒&quot;问题
+ * 181002 By SkyWT
+ */
+
+#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+#include&lt;map&gt;
+
+using namespace std;
+
+#define memset_clear(_) memset(_,0,sizeof(_))
+#define memset_clear_tre(_) memset(_,1,sizeof(_))
+#define memset_clear_reg(_) memset(_,-1,sizeof(_))
+#define memset_clear_max(_) memset(_,0x3f,sizeof(_))
+#define memset_clear_min(_) memset(_,0x80,sizeof(_))
+#define sqr(_) ((_)*(_))
+
+#define int unsigned long long
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int maxn=5,tt=100;
+const int transfer[4][4]={{2,1,1,0},
+                          {1,2,0,1},
+                          {1,0,2,1},
+                          {0,1,1,2}};
+
+struct matrix{
+    int n,m,a[maxn][maxn];
+    void set_identity(){
+        memset_clear(a);
+        for (int i=0;i&lt;min(n,m);i++) a[i][i]=1;
+    }
+    void init(){
+        memset_clear(a);
+    }
+    void give(matrix &amp;b){
+        b.n=n;b.m=m;
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;m;j++)
+            b.a[i][j]=a[i][j];
+    }
+    matrix operator +(matrix b){
+        if (b.n!=n||b.m!=m) printf(&quot;ERROR: TWO DEFFERENT MATRIX MAKE +\n&quot;);
+        matrix c; c.init();
+        c.n=n;c.m=m;
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;m;j++)
+            c.a[i][j]=(a[i][j]+b.a[i][j])%tt;
+        return c;
+    }
+    matrix operator -(matrix b){
+        if (b.n!=n||b.m!=m) printf(&quot;ERROR: TWO DEFFERENT MATRIX MAKE -\n&quot;);
+        matrix c; c.init();
+        c.n=n;c.m=m;
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;m;j++)
+            c.a[i][j]=(a[i][j]-b.a[i][j]+tt)%tt;
+        return c;
+    }
+    matrix operator *(matrix b){
+        if (m!=b.n) printf(&quot;ERROR: TWO DEFFERENT MATRIX MAKE *\n&quot;);
+        matrix c; c.init();
+        c.n=n;c.m=b.m;
+        for (int i=0;i&lt;  n;i++)
+        for (int j=0;j&lt;  m;j++)
+        for (int k=0;k&lt;b.m;k++)
+            c.a[i][j]=(c.a[i][j]+a[i][k]*b.a[k][j]%tt)%tt;
+        return c;
+    }
+    matrix operator ^(int b){
+        matrix ret;ret.n=n;ret.m=m;ret.set_identity();
+        matrix w;w.n=n;w.m=m;give(w);
+        while (b){
+            if (b&amp;1) ret=ret*w;
+            w=w*w;b&gt;&gt;=1;
+        }
+        return ret;
+    }
+};
+
+signed main(){
+    int T=0,n=0;
+    scanf(&quot;%llu&quot;,&amp;T);
+    while (T){
+        for (int k=0;k&lt;T;k++){
+            scanf(&quot;%llu&quot;,&amp;n);
+
+            matrix now;now.init();
+            now.n=1;now.m=4;
+            now.a[0][0]=2;now.a[0][1]=now.a[0][2]=1;
+
+            matrix tomul;
+            tomul.n=4;tomul.m=4;
+            for (int i=0;i&lt;4;i++)
+            for (int j=0;j&lt;4;j++)
+                tomul.a[i][j]=transfer[i][j];
+
+            tomul=tomul^(n-1);
+            now=now*tomul;
+            printf(&quot;Case %llu: %llu\n&quot;,k+1,now.a[0][0]);
+        }
+        printf(&quot;\n&quot;);
+        scanf(&quot;%llu&quot;,&amp;T);
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/matrix-multiply-in-dp" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 矩阵乘法在动态规划中的应用</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,145 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 740D Alyona and a tree 题解：DFS + 二分</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 740D Alyona and a tree 题解：DFS + 二分</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 740D Alyona and a tree 题解：DFS + 二分</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 740D Alyona and a tree 题解：DFS + 二分</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 24 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf740d" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p><a href="http://codeforces.com/contest/740/problem/D" title="题目链接">题目链接</a><br>vector 真的好用～</p><!--more--><h2>Problem</h2><p>Alyona has a tree with $n$ vertices. The root of the tree is the vertex 1. In each vertex Alyona wrote an positive integer, in the vertex $i$ she wrote $a_i$. Moreover, the girl wrote a positive integer to every edge of the tree (possibly, different integers on different edges).</p><p>Let's define $dist(v, u)$ as the sum of the integers written on the edges of the simple path from $v$ to $u$.</p><p>The vertex $v$ controls the vertex $u$  $(v ≠ u)$ if and only if $u$ is in the subtree of $v$ and $dist(v, u) ≤ a_u$.</p><p>Alyona wants to settle in some vertex. In order to do this, she wants to know for each vertex $v$ what is the number of vertices $u$ such that $v$ controls $u$.</p><h2>Input</h2><p>The first line contains single integer $n$ $(1 ≤ n ≤ 2·105)$.</p><p>The second line contains $n$ integers $a_1, a_2, ..., a_n$ $(1 ≤ a_i ≤ 10^9)$ — the integers written in the vertices.</p><p>The next $(n - 1)$ lines contain two integers each. The $i$-th of these lines contains integers $p_i$ and $w_i$ $(1 ≤ p_i ≤ n, 1 ≤ w_i ≤ 10^9)$ — the parent of the $(i + 1)$-th vertex in the tree and the number written on the edge between $p_i$ and $(i + 1)$.</p><p>It is guaranteed that the given graph is a tree.</p><h2>Output</h2><p>Print $n$ integers — the $i$-th of these numbers should be equal to the number of vertices that the $i$-th vertex controls.</p><h2>Examples</h2><h3>Input #1</h3><pre><code>5
+2 5 1 4 6
+1 7
+1 1
+3 5
+3 6
+
+</code></pre><h3>Output #1</h3><pre><code>1 0 1 0 0
+
+</code></pre><h3>Input #2</h3><pre><code>5
+9 7 8 6 5
+1 1
+2 1
+3 1
+4 1
+
+</code></pre><h3>Output #2</h3><pre><code>4 3 2 1 0
+
+</code></pre><h2>Notes</h2><p>In the example test case the vertex 1 controls the vertex 3, the vertex 3 controls the vertex 5 (note that is doesn't mean the vertex 1 controls the vertex 5).</p><h2>Solution</h2><p>水题，很容易想到 $\Theta (N^2)$ 的想法，即两两枚举，显然超时。<br>考虑枚举一个点，去找控制它的点，从它的父亲开始找，一直往上……我们要找的是 $dist(i,j) ≤ a_i$ 的点。显然 j 不断往上，$dist(i,j)$ 单调递增。所以用二分或者树上倍增找就可以了。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+const int maxn=200005,maxe=400005;
+int n,tot=0,a[maxn],fa[maxn],sum[maxn],lnk[maxn],son[maxe],nxt[maxe],w[maxe];
+long long dst[maxn];
+bool vis[maxn];
+vector &lt;int&gt; vec;
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline long long myabs(long long x){
+    return x&gt;0?x:-x;
+}
+inline void BuildDistance(int x){
+    vis[x]=1;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        fa[son[i]]=x;
+        dst[son[i]]=(long long)dst[x]+w[i];
+        BuildDistance(son[i]);
+    }
+}
+inline long long GetDistance(int x,int y){
+    return myabs((long long)dst[x]-dst[y]);
+}
+inline void BuildSum(int x){
+    vis[x]=1;
+    int L=0,R=vec.size()-1,mid,now=-1;
+    while (L&lt;=R){
+        mid=((R-L)&gt;&gt;1)+L;
+        if ((long long)GetDistance(x,vec[mid])&lt;=(long long)a[x]){
+            now=mid;
+            R=mid-1;
+        } else L=mid+1;
+    }
+    if (now!=-1){
+        now=vec[now];
+        if (now!=x||GetDistance(x,now)&lt;=a[x]) sum[fa[x]]++,sum[fa[now]]--;
+    }
+    vec.push_back(x);
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        BuildSum(son[i]);
+    }
+    vec.erase(vec.end()-1);
+}
+inline void GetAnswer(int x){
+    vis[x]=1;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        GetAnswer(son[i]);
+        sum[x]+=sum[son[i]];
+    }
+}
+int main(){
+    n=read();
+    for (int i=1;i&lt;=n;i++) a[i]=read();
+    for (int i=2;i&lt;=n;i++){
+        int x=read(),y=read();
+        add(i,x,y);add(x,i,y);
+    }
+    BuildDistance(1);
+    memset(vis,0,sizeof(vis));
+    vec.clear();
+    vec.push_back(1);
+    BuildSum(1);
+    memset(vis,0,sizeof(vis));
+    GetAnswer(1);
+    for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,sum[i]);
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf740d" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 740D Alyona and a tree 题解：DFS + 二分</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,147 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>斯特林数的应用：HDU 6143 与 HDU 3625 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 斯特林数的应用：HDU 6143 与 HDU 3625 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 斯特林数的应用：HDU 6143 与 HDU 3625 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>斯特林数的应用：HDU 6143 与 HDU 3625 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 27 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/stirling-problems" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>斯特林数的具体应用例题：</p><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6143" title="HDU 6143 Killer Names">HDU 6143 Killer Names</a><br><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3625" title="HDU 3625 Examining the Rooms">HDU 3625 Examining the Rooms</a></p><p>我又来水博客了～</p><!--more--><h2>HDU 6143 Killer Names</h2><p>Time Limit: 2000/1000 MS (Java/Others) <br>Memory Limit: 65536/65536 K (Java/Others)</p><h3>Problem Description</h3><blockquote><p>Galen Marek, codenamed Starkiller, was a male Human apprentice of the Sith Lord Darth Vader. A powerful Force-user who lived during the era of the Galactic Empire, Marek originated from the Wookiee home planet of Kashyyyk as the sole offspring of two Jedi Knights—Mallie and Kento Marek—who deserted the Jedi Order during the Clone Wars. Following the death of his mother, the young Marek's father was killed in battle by Darth Vader. Though only a child, Marek possessed an exceptionally strong connection to the Force that the Dark Lord of the Sith sought to exploit.</p><p>When Marek died in 2 BBY, shortly after the formation of the Alliance, Vader endeavored to recreate his disciple by utilizing the cloning technologies of the planet Kamino. The accelerated cloning process—an enhanced version of the Kaminoan method which allowed for a rapid growth rate within its subjects—was initially imperfect and many clones were too unstable to take Marek's place as the Dark Lord's new apprentice. After months of failure, one particular clone impressed Vader enough for him to hope that this version might become the first success. But as with the others, he inherited Marek's power and skills at the cost of receiving his emotions as well, a side effect of memory flashes used in the training process.</p><p>— Wookieepedia</p></blockquote><p>Darth Vader is finally able to stably clone the most powerful soilder in the galaxy: the Starkiller. It is the time of the final strike to destroy the Jedi remnants hidden in every corner of the galaxy.</p><p>However, as the clone army is growing, giving them names becomes a trouble. A clone of Starkiller will be given a two-word name, a first name and a last name. Both the first name and the last name have exactly $n$ characters, while each character is chosen from an alphabet of size $m$. It appears that there are $m^{2n}$ possible names to be used.</p><p>Though the clone process succeeded, the moods of Starkiller clones seem not quite stable. Once an unsatisfactory name is given, a clone will become unstable and will try to fight against his own master. A name is safe if and only if no character appears in both the first name and the last name.</p><p>Since no two clones can share a name, Darth Vader would like to know the maximum number of clones he is able to create.</p><h3>Input</h3><p>The First line of the input contains an integer $T (T≤10)$, denoting the number of test cases. </p><p>Each test case contains two integers $n$ and $m$ $(1≤n,m≤2000)$.</p><h3>Output</h3><p>For each test case, output one line containing the maximum number of clones Vader can create.</p><p>Output the answer  mod $10^9+7$</p><h3>Sample Input</h3><pre><code>2
+3 2
+2 3
+
+</code></pre><h3>Sample Output</h3><pre><code>2
+18
+
+</code></pre><h3>Translation</h3><p>题目大意是，有 m 个字符，要你用这 m 个字符起名字，姓和名都是 n 个字符（每个字符从 m 个字符里选择），问你姓和名里的字母不能重复（也就是说姓里用了 i 字母，则名里不能用；反之亦然），有多少种起名方案。</p><h3>Solution</h3><p>看到这种“有多少种方案”的题目，显然是排列组合、斯特林数有关的（至少是类似“放球DP”相关的）。<br>可以枚举左边（即姓）选了多少种字符，假设选了 i 个这些字符是姓里不能用的，那么剩下的就是 M-i 个字符。</p><p>先考虑右边：显然，右边 n 个字符，每个字符都可以取 M-i 里的任意一个，方案数是： $(M-i)^N$</p><p>再考虑左边：左边其实可以看成有 N 个位置，需要选择 i 个字符——这其实就是<strong>第二类斯特林数</strong>！N 个不同的小球，分到 i 个相同的盒子里，盒子可以为空。但是实际上盒子是不同的，所以再乘以 $i!$ 即可。</p><p>最后的答案就是：</p><pre><code class="lang-math">\displaystyle \sum_{i=1}^{m-1} C_M^i\ast i! \ast s(N,i) \ast (M-i)^N</code></pre><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=2005,tt=1e9+7;
+int T,n,m,c[maxn][maxn],fac[maxn],f[maxn][maxn];
+inline void Build(){
+    for (int i=0;i&lt;=2000;i++) c[i][0]=1;
+    for (int i=1;i&lt;=2000;i++){
+        c[i][0]=c[i][i]=1;
+        for (int j=1;j&lt;i;j++) c[i][j]=(c[i-1][j]+c[i-1][j-1])%tt;
+    }
+    for (int i=1;i&lt;=2000;i++) f[i][1]=1;
+    for (int i=2;i&lt;=2000;i++)
+        for (int j=1;j&lt;=i;j++)
+            f[i][j]=(f[i-1][j-1]+(long long)f[i-1][j]*j%tt)%tt;
+    fac[0]=1;
+    for (int i=1;i&lt;=2000;i++) fac[i]=(long long)fac[i-1]*i%tt;
+}
+inline int qsm(int a,int b){
+    int ret=1,w=a;
+    while (b){
+        if (b&amp;1) ret=(long long)ret*w%tt;
+        b&gt;&gt;=1;w=(long long)w*w%tt;
+    }
+    return ret;
+}
+int main(){
+    scanf(&quot;%d&quot;,&amp;T);
+    Build();
+    while (T--){
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        int ans=0;
+        for (int i=1;i&lt;m;i++) ans=((long long)ans+(long long)c[m][i]%tt*fac[i]%tt*f[n][i]%tt*qsm(m-i,n)%tt)%tt;
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}
+</code></pre><h2>HDU 3625 Examining the Rooms</h2><h3>Problem Description</h3><p>A murder happened in the hotel. As the best detective in the town, you should examine all the N rooms of the hotel immediately. However, all the doors of the rooms are locked, and the keys are just locked in the rooms, what a trap! You know that there is exactly one key in each room, and all the possible distributions are of equal possibility. For example, if N = 3, there are 6 possible distributions, the possibility of each is 1/6. For convenience, we number the rooms from 1 to N, and the key for Room 1 is numbered Key 1, the key for Room 2 is Key 2, etc.<br>To examine all the rooms, you have to destroy some doors by force. But you don’t want to destroy too many, so you take the following strategy: At first, you have no keys in hand, so you randomly destroy a locked door, get into the room, examine it and fetch the key in it. Then maybe you can open another room with the new key, examine it and get the second key. Repeat this until you can’t open any new rooms. If there are still rooms un-examined, you have to randomly pick another unopened door to destroy by force, then repeat the procedure above, until all the rooms are examined.<br>Now you are only allowed to destroy at most K doors by force. What’s more, there lives a Very Important Person in Room 1. You are not allowed to destroy the doors of Room 1, that is, the only way to examine Room 1 is opening it with the corresponding key. You want to know what is the possibility of that you can examine all the rooms finally.</p><h3>Input</h3><p>The first line of the input contains an integer T (T ≤ 200), indicating the number of test cases. Then T cases follow. Each case contains a line with two numbers N and K. (1 &lt; N ≤ 20, 1 ≤ K &lt; N)</p><h3>Output</h3><p>Output one line for each case, indicating the corresponding possibility. Four digits after decimal point are preserved by rounding.</p><h3>Sample Input</h3><pre><code>3
+3 1
+3 2
+4 2
+
+</code></pre><h3>Sample Output</h3><pre><code>0.3333
+0.6667
+0.62500.3333 0.6667
+
+</code></pre><h3>Hint</h3><pre><code>Sample Explanation
+
+When N = 3, there are 6 possible distributions of keys:
+
+    Room 1    Room 2    Room 3    Destroy Times
+#1    Key 1    Key 2    Key 3    Impossible
+#2    Key 1    Key 3    Key 2    Impossible
+#3    Key 2    Key 1    Key 3    Two
+#4    Key 3    Key 2    Key 1    Two
+#5    Key 2    Key 3    Key 1    One
+#6    Key 3    Key 1    Key 2    One
+
+In the first two distributions, because Key 1 is locked in Room 1 itself and you can’t destroy Room 1, it is impossible to open Room 1. 
+In the third and forth distributions, you have to destroy Room 2 and 3 both. In the last two distributions, you only need to destroy one of Room 2 or Room 
+
+</code></pre><h3>Translation</h3><p>题目大意：有 N 个房间，现在你要检查所有房间。你可以暴力摧毁 K 扇门，但是第一个房间的门不能暴力破。每个房间里可能有其他房间的钥匙，问你最终可以检查所有房间的可能性（即概率）。</p><h3>Solution</h3><p>先不考虑 1 号房间的“贵宾”，我们发现，其实是要把房间分成 t 个环（t ≤ k）。<strong>环！环！环！第一类斯特林数！！！</strong></p><p>接下来考虑一下第一位贵宾的优待，我们只需要把破了第一位贵宾的门的情况全都减掉就可以了。总方案数就是：</p><pre><code class="lang-math">\displaystyle \sum_{i=1}^{n} s(n,i)-s(n-1,i-1)</code></pre><p>最后问我们概率，只要除以全排列 $N!$ 就可以了～</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=25;
+int T,n,m;
+long long f[maxn][maxn],fac[maxn];
+inline void BuildFact(){
+    fac[0]=1;
+    for (int i=1;i&lt;=20;i++) fac[i]=fac[i-1]*i;
+}
+inline void BuildStirlingNumber(){
+    f[1][1]=1;
+    for (int i=2;i&lt;=20;i++)
+        for (int j=1;j&lt;=i;j++)
+            f[i][j]=f[i-1][j-1]+(i-1)*f[i-1][j];
+}
+int main(){
+    BuildFact();
+    BuildStirlingNumber();
+    scanf(&quot;%d&quot;,&amp;T);
+    while (T--){
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        long long now=0;
+        for (int i=1;i&lt;=m;i++) now=now+f[n][i]-f[n-1][i-1];
+        printf(&quot;%.4f\n&quot;,(double)now/(double)fac[n]);
+    }
+    return 0;
+}
+</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/stirling-problems" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 斯特林数的应用：HDU 6143 与 HDU 3625 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

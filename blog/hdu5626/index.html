@@ -1,0 +1,110 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>HDU 5626 Clarke and points 题解：一道巧妙的贪心</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / HDU 5626 Clarke and points 题解：一道巧妙的贪心</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / HDU 5626 Clarke and points 题解：一道巧妙的贪心</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>HDU 5626 Clarke and points 题解：一道巧妙的贪心</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 10 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hdu5626" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Link: <a href="http://acm.hdu.edu.cn/showproblem.php?pid=5626" title="HDU 5626 Clarke and points">HDU 5626 Clarke and points</a></p><!--more--><h2>Problem Description</h2><p>Clarke is a patient with multiple personality disorder. One day he turned into a learner of geometric.<br>He did a research on a interesting distance called Manhattan Distance. The Manhattan Distance between point $A(x_A,y_A)$ and point $B(x_B,y_B)$ is $|x_A−x_B|+|y_A−y_B|$.<br>Now he wants to find the maximum distance between two points of n points.</p><h2>Input</h2><p>The first line contains a integer $T(1≤T≤5)$, the number of test case.<br>For each test case, a line followed, contains two integers n,seed $(2≤n≤1000000,1≤seed≤10^9)$, denotes the number of points and a random seed.<br>The coordinate of each point is generated by the followed code.</p><pre><code class="lang-cpp">long long seed;
+inline long long rand(long long l, long long r) {
+  static long long mo=1e9+7, g=78125;
+  return l+((seed*=g)%=mo)%(r-l+1);
+}
+
+// ...
+
+cin &gt;&gt; n &gt;&gt; seed;
+for (int i = 0; i &lt; n; i++)
+  x[i] = rand(-1000000000, 1000000000),
+  y[i] = rand(-1000000000, 1000000000);</code></pre><h2>Output</h2><p>For each test case, print a line with an integer represented the maximum distance.</p><h2>Sample Input</h2><pre><code>2
+3 233
+5 332</code></pre><h2>Sample Output</h2><pre><code>1557439953
+1423870062</code></pre><h2>Translation</h2><p>给你 N 个点的坐标，求出这 N 个点组成的点对之间曼哈顿距离最大值。</p><p>曼哈顿距离：</p><blockquote>The Manhattan Distance between point $A(x_A,y_A)$ and point $B(x_B,y_B)$ is $|x_A−x_B|+|y_A−y_B|$.</blockquote><h2>Analysis</h2><p>一看到这题，很容易令人想起“平面最近点对”问题。但是实际上这题和那题没有丝毫关系……</p><p>其实可以观察这个曼哈顿距离公式：</p><p>$$|x_A−x_B|+|y_A−y_B|$$</p><p>那么去绝对值，我们可以分类讨论四种最大值情况：</p><p>$$ x_A-x_B+y_A-y_B \\<br> x_B-x_A+y_A-y_B \\<br> x_A-x_B+y_B-y_A \\<br> x_B-x_A+y_B-y_A $$</p><p>经过变形，我们可以发现，完全可以令 $A_i=X_i+Y_i,B_i=X_i-Y_i$，那么答案就在 $(max(A_i)-min(A_i),max(B_i)-min(B_i))$ 之中了。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1000005;
+const long long INF=1e9;
+int T,n,x[maxn],y[maxn];
+long long seed;
+long long A[maxn],B[maxn],maxa,mina,maxb,minb;
+
+// A[i]=Xi+Yi;
+// B[i]=Xi-Yi;
+
+inline long long rand(long long l, long long r) { 
+    static long long mo=1e9+7, g=78125; 
+    return l+((seed*=g)%=mo)%(r-l+1); 
+}
+
+inline void build(int n,int seed){
+    for (int i=0;i&lt;n;i++)
+        x[i]=rand(-1000000000,1000000000),
+        y[i]=rand(-1000000000,1000000000),
+        A[i]=x[i]+y[i],maxa=max(maxa,A[i]),mina=min(mina,A[i]),
+        B[i]=x[i]-y[i],maxb=max(maxb,B[i]),minb=min(minb,B[i]);
+}
+
+inline void init(){
+    maxa=maxb=-INF;
+    mina=minb=INF;
+}
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+int main(){
+    T=read();
+    while (T--){
+        init();
+        n=read();seed=read();
+        build(n,seed);
+        printf(&quot;%lld\n&quot;,max(maxa-mina,maxb-minb));
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/hdu5626" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / HDU 5626 Clarke and points 题解：一道巧妙的贪心</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,266 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>树链剖分（Heavy-Light Decomposition）小结</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 树链剖分（Heavy-Light Decomposition）小结</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 树链剖分（Heavy-Light Decomposition）小结</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>树链剖分（Heavy-Light Decomposition）小结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 03 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/heavy-light-decomposition" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>树链剖分，可以把一棵树划分成多条链，对于每条链可以用线段树等数据结构进行维护，将树形结构的问题转化。</p><p>常见的方法是轻重链剖分，即 Heavy-Light Decomposition。</p><!--more--><p>[notice]这是一篇意识流式的总结，如果要入门树链剖分请不要看这篇……[/notice]</p><h2>前置知识</h2><p>LCA、线段树……</p><h2>一些定义</h2><p>需要构造如下数组：</p><ul><li><code>size[x]</code>：以 x 为根的子树的节点总数；</li><li><code>deep[x]</code>：x 的深度；</li><li><code>son[x]</code>：x 通过重链通向的儿子节点；</li><li><code>fa[x]</code>：x 的父节点；</li><li><code>top[x]</code>：x 所在重链的顶端节点；</li><li><code>id[x]</code>：节点 x 在线段树中的下标位置；</li><li><code>v[x]</code>：节点 x 的权值（对于边权，可以把边的权值归属于其下面的点，转化为点权处理）。</li></ul><p>另建一棵线段树存储重链信息。</p><p>如果 v 是 u 的儿子中 size 最大的一个，则 (u,v) 是<strong>重边</strong>，v 是 u 的<strong>重儿子</strong>，u 通向的其他儿子是<strong>轻边</strong>。</p><p>连续的重边形成<strong>重链</strong>。通过 <code>id[]</code> 可以将一条重链映射到线段树上的一条线段。</p><h2>关于复杂度的结论</h2><p><strong>结论一：</strong> 如果 $(u,v)$ 为轻边，则 <code>size[v]</code> 不会大于 <code>size[u]/2</code>。<br><strong>结论二：</strong> 重链和轻边的数量级相当。<br>由此可以得到：<br><strong>结论三：</strong> 从某一个点到根上经过的重链或轻边的总数在 $\log (n)$ 级别。这是树链剖分的核心。</p><p>据此，对于一条链上的操作可以做到 $\log(n)$。对于链上的修改，整条重链可以对应线段树的一个区间，存储 <code>top[]</code> 可以实现直接调到重链顶端，达到优化时间复杂度的目的。</p><h2>实现</h2><p>第一遍 DFS 构造出 <code>size[],son[],fa[],deep[]</code>，第二遍 DFS 造出 <code>top[],id[]</code>。</p><p>对于两点的路径修改，直接求出 LCA 后一直往上跳即可。<br>对于子树修改，直接当成 DFS 序处理。</p><p>对于构造 <code>id[]</code> 的 DFS  需要注意：本质上 <code>id[]</code> 是一个<strong>时间戳</strong>，即 DFS 序。为了使得重边在造出来的序中连续，便于线段树的处理，在遍历的时候要<strong>先遍历重儿子</strong>。涉及子树的操作也会方便很多。</p><h2>代码</h2><p>洛谷模板题 P3384：</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;cmath&gt;
+
+using namespace std;
+// #define int long long
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int maxn=1e5+5;
+const int maxe=2*maxn;
+
+int n,m,root,tt;
+
+void add(int &amp;x,int y){
+    x=(x+y%tt)%tt;
+}
+
+class SegmentTree{
+
+    #define mid (((tr-tl)&gt;&gt;1)+tl)
+    #define ls ((p&lt;&lt;1))
+    #define rs ((p&lt;&lt;1)+1)
+
+    private:
+        int tree[maxn*4],tag[maxn*4];
+
+        void push_down(int tl,int tr,int p){
+            add(tree[ls],tag[p]*(mid-tl+1)%tt);
+            add(tag[ls],tag[p]);
+            add(tree[rs],tag[p]*(tr-(mid+1)+1)%tt);
+            add(tag[rs],tag[p]);
+            tag[p]=0;
+        }
+
+    public:
+        SegmentTree(){
+            memset(tree,0,sizeof(tree));
+            memset(tag,0,sizeof(tag));
+        }
+
+        void update(int x,int tl,int tr,int p,int delta){
+            if (tl==tr &amp;&amp; tl==x){
+                add(tree[p],delta);
+                return;
+            }
+            push_down(tl,tr,p);
+            if (x&lt;=mid  ) update(x,tl,mid,ls,delta);
+            if (mid+1&lt;=x) update(x,mid+1,tr,rs,delta);
+            tree[p]=(tree[ls]+tree[rs])%tt;
+        }
+
+        void update(int sl,int sr,int tl,int tr,int p,int delta){
+            if (sl&lt;=tl &amp;&amp; tr&lt;=sr){
+                add(tree[p],(tr-tl+1)*delta%tt);
+                add(tag[p],delta);
+                return;
+            }
+            push_down(tl,tr,p);
+            if (sl&lt;=mid  ) update(sl,sr,tl,mid,ls,delta);
+            if (mid+1&lt;=sr) update(sl,sr,mid+1,tr,rs,delta);
+            tree[p]=(tree[ls]+tree[rs])%tt;
+        }
+
+        int query(int x,int tl,int tr,int p){
+            if (tl==tr &amp;&amp; x==tl) return tree[p]%tt;
+            push_down(tl,tr,p);
+            int ret=0;
+            if (x&lt;=mid  ) add(ret,query(x,tl,mid,ls));
+            if (mid+1&lt;=x) add(ret,query(x,mid+1,tr,rs));
+            return ret;
+        }
+
+        int query(int sl,int sr,int tl,int tr,int p){
+            if (sl&lt;=tl &amp;&amp; tr&lt;=sr) return tree[p]%tt;
+            push_down(tl,tr,p);
+            int ret=0;
+            if (sl&lt;=mid  ) add(ret,query(sl,sr,tl,mid,ls));
+            if (mid+1&lt;=sr) add(ret,query(sl,sr,mid+1,tr,rs));
+            return ret;
+        }
+};
+
+int tot=0,lnk[maxn],nxt[maxe],to[maxe];
+int size[maxn],deep[maxn],fa[maxn];
+int v[maxn];
+
+void add_edge(int x,int y){
+    tot++;to[tot]=y;
+    nxt[tot]=lnk[x];lnk[x]=tot;
+}
+
+int f[maxn][25];
+
+int get_lca(int x,int y){
+    if (deep[x]&lt;deep[y]) swap(x,y);
+    for (int i=23;i&gt;=0;i--) if (deep[f[x][i]] &gt;= deep[y]) x=f[x][i];
+    if (x==y) return x;
+    for (int i=23;i&gt;=0;i--) if (f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i];
+    return fa[x];
+}
+
+namespace HLD{
+    int son[maxn],top[maxn],id[maxn];
+
+    void make_tree(int x){
+        size[x]=1;
+        f[x][0]=fa[x];for (int i=1;i&lt;=23;i++) f[x][i]=f[f[x][i-1]][i-1];
+        int max_size=0,k=-1;
+        for (int i=lnk[x];i;i=nxt[i]) if (to[i]!=fa[x]){
+            fa[to[i]]=x;deep[to[i]]=deep[x]+1;
+            make_tree(to[i]);
+            size[x]+=size[to[i]];
+            if (size[to[i]]&gt;max_size) max_size=size[to[i]],k=to[i];
+        }
+        if (k!=-1) son[x]=k;
+    }
+
+    void make_chain(int x){
+        id[x]=++id[0];
+        if (son[fa[x]]!=x) top[x]=x; else top[x]=top[fa[x]];
+        if (son[x]) make_chain(son[x]);
+        for (int i=lnk[x];i;i=nxt[i]) if (to[i]!=fa[x] &amp;&amp; to[i]!=son[x]){
+            make_chain(to[i]);
+        }
+    }
+
+    void change_single(int x,int l,int delta,SegmentTree &amp;tree){
+        while (x!=l){
+            if (top[x]!=x){
+                if (deep[top[x]]&gt;=deep[l]) tree.update(id[top[x]]+1,id[x],1,n,1,delta),x=top[x];
+                else tree.update(id[l]+1,id[x],1,n,1,delta),x=l;
+            } else tree.update(id[x],1,n,1,delta),x=fa[x];
+        }
+        tree.update(id[x],1,n,1,delta);
+    }
+
+    void change_chain(int x,int y,int delta,SegmentTree &amp;tree){
+        int l=get_lca(x,y);
+        change_single(x,l,delta,tree);
+        change_single(y,l,delta,tree);
+        tree.update(id[l],1,n,1,-delta);
+    }
+
+    int query_single(int x,int l,SegmentTree &amp;tree){
+        int ret=0;
+        while (x!=l){
+            if (top[x]!=x){
+                if (deep[top[x]]&gt;=deep[l]) add(ret,tree.query(id[top[x]]+1,id[x],1,n,1)),x=top[x];
+                else add(ret,tree.query(id[l]+1,id[x],1,n,1)),x=l;
+            } else add(ret,tree.query(id[x],1,n,1)),x=fa[x];
+        }
+        add(ret,tree.query(id[x],1,n,1));
+        return ret;
+    }
+
+    int query_chain(int x,int y,SegmentTree &amp;tree){
+        int l=get_lca(x,y);
+        return (query_single(x,l,tree)+query_single(y,l,tree)-tree.query(id[l],1,n,1)+tt)%tt;
+    }
+
+    void change_subtree(int x,int delta,SegmentTree &amp;tree){
+        tree.update(id[x],id[x]+size[x]-1,1,n,1,delta);
+    }
+
+    int query_subtree(int x,SegmentTree &amp;tree){
+        return tree.query(id[x],id[x]+size[x]-1,1,n,1);
+    }
+}
+
+SegmentTree tree;
+
+signed main(){
+    n=read(),m=read(),root=read(),tt=read();
+    for (int i=1;i&lt;=n;i++) v[i]=read();
+    for (int i=1;i&lt;n;i++){
+        int x=read(),y=read();
+        add_edge(x,y);add_edge(y,x);
+    }
+
+    deep[root]=1;
+    HLD::make_tree(root);
+    HLD::make_chain(root);
+
+    for (int i=1;i&lt;=n;i++) tree.update(HLD::id[i],1,n,1,v[i]);
+
+    while (m--){
+        int opt=read(),x,y,z;
+        switch(opt){
+            case 1:
+                x=read(),y=read(),z=read()%tt;
+                HLD::change_chain(x,y,z,tree);
+                break;
+            case 2:
+                x=read(),y=read();
+                printf(&quot;%d\n&quot;,HLD::query_chain(x,y,tree));
+                break;
+            case 3:
+                x=read(),z=read()%tt;
+                HLD::change_subtree(x,z,tree);
+                break;
+            case 4:
+                x=read();
+                printf(&quot;%d\n&quot;,HLD::query_subtree(x,tree));
+                break;
+        }
+    }
+
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/heavy-light-decomposition" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 树链剖分（Heavy-Light Decomposition）小结</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

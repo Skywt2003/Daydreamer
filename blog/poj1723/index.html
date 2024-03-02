@@ -1,0 +1,90 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>POJ1723 士兵排队 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ1723 士兵排队 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ1723 士兵排队 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>POJ1723 士兵排队 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 03 月 13 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj1723" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>（<a href="http://poj.org/problem?id=1723" title="POJ题目链接">POJ题目链接</a>）</p><p>N soldiers of the land Gridland are randomly scattered around the country.<br>A position in Gridland is given by a pair (x,y) of integer coordinates. Soldiers can move - in one move, one soldier can go one unit up, down, left or right (hence, he can change either his x or his y coordinate by 1 or -1).</p><!--more--><p>最开始看这题想到的就是枚举队伍的起点、计算每个士兵移动到对应位置的最短路。题目中并没有确定士兵排队的顺序，那么如何确定士兵移动到的「对应位置」呢？显然，按照X坐标排序，第1个士兵移动到队伍的第1个，第2个士兵移动到第2个，……，第N个士兵移动到第N个位置。唯一有问题的是如果有多个士兵X坐标相同怎么办呢？容易证明，按照任意顺序这些士兵走的路加和相等。</p><p>然而枚举起点需要O（（MaxX-MinX）²），计算士兵又需要O（N），时间复杂度接近10^12，肯定要超时。这时候我们会想到：能不能直接确定队伍的y坐标？如果我们不需要士兵移动到指定位置，只需要他们移动到队伍所在行（也就是在y轴方向移动），我们称此为「第一阶段」，怎样才能使士兵们「第一阶段」移动距离最小？假设队伍在第Y行，我们列出这样的式子：|Y1-Y|+|Y2-Y|+……+|Yn-Y|，这就是「第一阶段」需要移动距离总和。显然只要排序后Y取中位数就可以了。</p><p>但是这样的复杂度仍然是O（N²<em>（MaxX-MinX）），最大达到2</em>10^8，还是要超时。这时候我们就会想到：能不能用类似的方法确定队伍起点的X坐标呢？仔细思考：如果队伍第一个横坐标为X，那么「第二阶段」需要移动距离总和就是：|X1-X|+|X2-(X+1)|+|X3-(X+2)|+……+|Xn-(X+n-1)|，变形得到：|X1-X|+|X2-1-X|+……+|Xn-n+1-X|，那么前面的Xi-i+1是可以构造的，排序取中位数又可以得到队伍第一个X坐标了！</p><p>还有一个问题是题目中规定：「Two or more soldiers must never occupy the same position at the same time. 」这个怎么解决？很简单，因为如果两个士兵X坐标不同，他们的路径一定不会相交；如果相同，有一个在前，更不会相交。</p><p>贴上代码：</p><pre class="line-numbers prism-highlight" data-start="1"><code class="language-cpp">#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+const int maxn=10005;
+int n,midnum_x,midnum_y,tmp[maxn],ans=0;
+struct WT{
+    int x,y;
+}a[maxn];
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch<'0'||ch>'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch>='0'&&ch<='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline bool cmp_by_y(WT aa,WT bb){
+    return aa.y<bb.y;
+}
+inline bool cmp(WT aa,WT bb){
+    return ((aa.x<bb.x)||((aa.x==bb.x)&&(aa.y<bb.y)));
+}
+inline int abs_(int x){
+    if (x<0) return -x; else return x;
+}
+inline int getdst(int x_1,int y_1,int x_2,int y_2){
+    return abs_(x_1-x_2)+abs_(y_1-y_2);
+}
+int main(){
+    n=read();
+    for (int i=1;i<=n;i++) a[i].x=read(),a[i].y=read();
+    sort(a+1,a+1+n,cmp_by_y);
+    midnum_y=a[(n+1)>>1].y;
+    sort(a+1,a+1+n,cmp);
+    for (int i=1;i<=n;i++) tmp[i]=a[i].x-i+1;
+    sort(tmp+1,tmp+1+n);
+    midnum_x=tmp[(n+1)>>1];
+    for (int i=1;i<=n;i++) ans+=getdst(a[i].x,a[i].y,midnum_x+i-1,midnum_y);
+    printf("%d\n",ans);
+    return 0;
+}
+</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/poj1723" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / POJ1723 士兵排队 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

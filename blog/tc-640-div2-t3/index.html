@@ -1,0 +1,89 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 640 Div2 T3 TwoNumberGroupsEasy 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 640 Div2 T3 TwoNumberGroupsEasy 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 640 Div2 T3 TwoNumberGroupsEasy 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 640 Div2 T3 TwoNumberGroupsEasy 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 26 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-640-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 640 DIv2 T3 TwoNumberGroupsEasy 题解</p><p>（TC SRM 从 640 到 616 持续施工～）<br>（<del>倒着开车，最为致命</del>）（<del>国庆之前怕是完不成了</del>）</p><!--more--><hr><h2>Translation</h2><p>给你两个 Multiset，你可以把这两个 Multiset 里的元素都模某个大于 1 的数 $m$，使得模完之后它们的距离最小。你要输出最小距离。<br>两个 Multiset 的距离定义为：要使得两个 Multiset 完全相同，需要删去的最少元素数量 $x$。<br>题目里给出数据的方式是：给你一个不多于 10 个元素的 vector A，然后给你一个和 A 一样大的 vector numA，numA[i] 表示 A[i] 这个元素在第一个 Multiset 中有几个。B 同理。</p><blockquote><ul><li>A and B will each contain between 1 and 10 elements, inclusive.</li><li>All elements of A will be distinct.</li><li>All elements of B will be distinct.</li><li>The number of elements in numA will be the same as the number of elements in A.</li><li>The number of elements in numB will be the same as the number of elements in B.</li><li>All elements of A and B will be between 1 and 1,000,000,000, inclusive.</li><li>All elements of numA and numB will be between 1 and 100,000, inclusive.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li></ul></blockquote><p>数据范围是：$A_i,B_i \leqslant 10^9,numA_i,numB_i \leqslant 10^5$。注意时限是 2s。</p><hr><h2>Examples</h2><p>样例零：</p><pre><code>{1,2,3,4}
+{2,1,1,1}
+{5,6,7,8}
+{1,1,1,2}</code></pre><p>Returns: <code>2</code></p><p>不难看出，A 是 <code>{1,1,2,3,4}</code> 而 B 是 <code>{5,6,7,8,8}</code>。当 M=2 时，所有数字模 2，则 (A modulo M) = <code>{0,0,1,1,1}</code> ，(B modulo M) = <code>{0,0,0,1,1}</code>，“距离”为 2。这已经是最小距离了。</p><blockquote>This input describes the multisets A = {1,1,2,3,4} and B = {5,6,7,8,8}. For M=2, we have (A modulo M) = {0,0,1,1,1} and (B modulo M) = {0,0,0,1,1}. The distance between these two multisets is 2, and that is the best we can get.</blockquote><p>样例一：</p><pre><code>{5,7}
+{1,1}
+{12,14}
+{1,1}</code></pre><p>Returns: <code>0</code></p><p>A 集合是 <code>{5,7}</code>，而 B 集合是 <code>{12,14}</code>，显然 M=7 时两个集合相同。</p><blockquote>The optimal solution is obtained for M = 7.</blockquote><hr><h2>Original</h2><blockquote>A multiset is the same thing as a set, with the difference that a multiset can contain multiple copies of the same element. For example, {1,1,1,2,3} is a multiset that contains three 1s, one 2, and one 3.<br>The distance between two multisets is the smallest total number of elements we need to erase from them in order to make them equal. For example, the distance between {1,1,2,2,3} and {1,2,2,4} is 3. Note that we can compute distance as follows: For each value, we count its occurrences in the first multiset, we count its occurrences in the second multiset, and we write down the difference between those two counts. The distance is then equal to the sum of all values we wrote down.<br>If S is a multiset, then (S modulo M) is the multiset of all values (x modulo M) where x belongs to S. For example, if S = {11,12,13,21,22} and M = 10, then (S modulo M) = {1,2,3,1,2} = {1,1,2,2,3}.<br>You have two multisets called A and B. The first multiset is described by the vector <int>s A and numA. For each valid i, the multiset contains numA[i] copies of the value A[i]. The second multiset is described by the vector <int>s B and numB in the same way.<br>We are now looking for a positive integer M with the following properties: M must be greater than 1, and the distance between (A modulo M) and (B modulo M) must be as small as possible. Compute and return the smallest possible distance.</blockquote><hr><h2>Analysis</h2><p>看到这题最暴力的想法就是：暴力枚举 $m$ 从 2 到 MaxNumber，每次都处理出距离，取最小。显然超时。<br>仔细思考可以发现：其实很多枚举到的 m 是“显然没有用的”，我们理想中的 $m$ 必须使得 A 与 B 中至少一对元素模 $m$ 后相同了。也就是说：</p><pre><code class="lang-math">A_i\equiv B_j  \pmod m \iff A_i-B_j \equiv 0 \pmod m</code></pre><p>显然 $m$ 是 $A_i-B_j$ 的因子。这告诉我们，只需要暴力枚举 $A_i,B_j$，然后将 $|A_i-B_j|$ 的因子作为 $m$ 暴力尝试，找最优解就可以了。因为我们枚举到的 $m$ 都是“有贡献”的（至少也是做了一点微小的贡献的），没有贡献的我们就都不用枚举了。<br>小于等于 $10^9$ 的数字的最大因子个数好像是 1000 左右（反正不会超过 2000），所以这样的做法不会超时。</p><hr><h2>Code</h2><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+vector&lt;int&gt; vec;
+map&lt;int,int&gt; cnt;
+map&lt;int,int&gt;::iterator it;
+class TwoNumberGroupsEasy {
+public:
+    int solve( vector &lt;int&gt; A, vector &lt;int&gt; numA, vector &lt;int&gt; B, vector &lt;int&gt; numB );
+};
+inline int MyAbs(int x){return x&gt;0?x:-x;}
+int TwoNumberGroupsEasy::solve(vector &lt;int&gt; A, vector &lt;int&gt; numA, vector &lt;int&gt; B, vector &lt;int&gt; numB) {
+    vec.clear();
+    for (int i=0;i&lt;A.size();i++)
+    for (int j=0;j&lt;B.size();j++){
+        int now=MyAbs(A[i]-B[j]);
+        for (int k=2;k&lt;=sqrt(now);k++) if (now%k==0){
+            vec.push_back(k);
+            if (now/k!=now) vec.push_back(now/k);
+        }
+        vec.push_back(now);
+    }
+    vec.push_back(1&lt;&lt;30);
+    int ret=1&lt;&lt;30;
+    for (int i=0;i&lt;vec.size();i++){
+        int m=vec[i];
+        cnt.clear();
+        if (m==0||m==1) continue;
+        int now=0;
+        for (int j=0;j&lt;A.size();j++) cnt[A[j]%m]+=numA[j];
+        for (int j=0;j&lt;B.size();j++) cnt[B[j]%m]-=numB[j];
+        for (it=cnt.begin();it!=cnt.end();it++) now+=MyAbs(it-&gt;second);
+        if (now&lt;ret) ret=now;
+    }
+    return ret;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-640-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 640 Div2 T3 TwoNumberGroupsEasy 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

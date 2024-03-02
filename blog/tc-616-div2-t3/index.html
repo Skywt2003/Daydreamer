@@ -1,0 +1,130 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 616 Div2 T3 TwoLLogo 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 616 Div2 T3 TwoLLogo 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 616 Div2 T3 TwoLLogo 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 616 Div2 T3 TwoLLogo 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 31 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-616-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 616 Div 2 T3 题解</p><!--more--><hr><h2>题目大意</h2><p>给你一个 N×M 的字符矩阵，代表 N 行 M 列的点。每个点可能是 <code>#</code> 或者 <code>.</code> （“障碍”与“空白”）。现在你要从中选出一些空白点使得它们构成两个 “L” 形状（即选出两条只有一个交点的线段组成）。有如下规定：</p><ul><li>必须是严格的 "L" 形状，不可以旋转；原图也不能旋转；</li><li>两条“线段”必须有正长度，并且长度要大于等于 2；</li><li>并且线段经过的所有点都必须是白色的。</li></ul><p>最后你需要在一幅图里找出两个 “L” 形状，<strong>并且这两个 "L" 不能有任何相交（即不可以占用公共的点）</strong>。问你有多少种方案。</p><p>题目里的字符矩阵以 <code>vector &lt;string&gt; grid</code> 给出。注意本题的时限是 3 秒。</p><blockquote><ul><li>grid will contain between 2 and 30 elements, inclusive.</li><li>All elements of grid will contain the same number of characters.</li><li>Each element of grid will contain between 2 and 30 characters, inclusive.</li><li>Each character of grid will be either '.' or '#'.</li><li>Time limit (s): 3.000</li><li>Memory limit (MB): 256</li></ul></blockquote><hr><h2>题目原文</h2><blockquote><p><em>Please note that this problem has a non-standard time limit: 3 seconds.</em></p><p>A yet unknown "LL Company" wants to design a logo. After a long discussion, company designers decided that the logo should consist of two letters L drawn in some way.</p><p>To start with something, designers drew N rows of M points each, one under another, so that these points form a rectangular grid. They also painted each point either white or black. Here is an example of what they could get for N = 4 and M = 5:</p><p><img src="http://www.topcoder.com/contest/problem/TwoLLogo/1.png" alt="" title=""></p><p>Designers agreed to draw each letter L as a union of a horizontal and a vertical line segment intersecting at their left and bottom ends, respectively. The segments must have positive lengths, and their endpoints must be white grid points. All grid points that lie on the segments must be white as well. For example, here are two valid placements of a letter:</p><p><img src="http://www.topcoder.com/contest/problem/TwoLLogo/2.png" alt="" title="">  233333 <img src="http://www.topcoder.com/contest/problem/TwoLLogo/3.png" alt="" title=""></p><p>Note that neither the letters nor the grid can be rotated.</p><p>The final requirement is that the two letters should be disjoint. That is, no white point should lie on two segments belonging to different letters.</p><p>You are given the grid with N rows and M columns, encoded as a vector <string> grid with N elements, each containing M characters. Each character is either '.' or '#', meaning that the corresponding point is either white or black, respectively. </p><p>Return the number of different possible logos with two L's drawn on them according to the requirements. Two logos are considered different if there is a pair of points that is connected by a line segment in exactly one of the logos.</p></blockquote><hr><h2>样例解释</h2><p>样例零：</p><pre><code>{&quot;....&quot;,
+ &quot;....&quot;}</code></pre><p>Returns: <code>1</code><br><img src="http://www.topcoder.com/contest/problem/TwoLLogo/4.png" alt="" title=""></p><p>样例一：</p><pre><code>{&quot;.##..&quot;,
+ &quot;...#.&quot;,
+ &quot;.#.#.&quot;,
+ &quot;#...#&quot;}</code></pre><p>Returns: <code>3</code><br>This is the example from the problem statement. The three possible logos look as follows:</p><p><img src="http://www.topcoder.com/contest/problem/TwoLLogo/5.png" alt="" title="">  <img src="http://www.topcoder.com/contest/problem/TwoLLogo/6.png" alt="" title="">  <img src="http://www.topcoder.com/contest/problem/TwoLLogo/7.png" alt="" title=""></p><p>样例五：</p><pre><code>{&quot;##############&quot;,
+ &quot;##############&quot;,
+ &quot;#.############&quot;,
+ &quot;#.############&quot;,
+ &quot;#.############&quot;,
+ &quot;#.############&quot;,
+ &quot;#.############&quot;,
+ &quot;#.############&quot;,
+ &quot;#.#####.######&quot;,
+ &quot;#.#####.######&quot;,
+ &quot;#.#####.######&quot;,
+ &quot;#....##.######&quot;,
+ &quot;#######.######&quot;,
+ &quot;#######.######&quot;,
+ &quot;#######.######&quot;,
+ &quot;#######.######&quot;,
+ &quot;#######.######&quot;,
+ &quot;#######.######&quot;,
+ &quot;#######......#&quot;,
+ &quot;##############&quot;}
+</code></pre><p>Returns: <code>1350</code></p><p>这幅图里只有两个 L 形状的“基准点”（即拐角），所以方案数量就是几条线段长度可能数量之乘积。<br><code>9×3×10×5=1350</code>。</p><p>……</p><hr><h2>分析</h2><p>一开始我们肯定可以想到一个 $\Theta (N^4\ast M^4)$ 的想法：枚举第一个 L 的左下角的点（以下我们称之为“基准点”），然后向上、向右枚举，累计所有情况。</p><p>然后我们可以发现，“向上、向右枚举”的过程可以免去，可以先构造数组 <code>up[i][j]</code> 和 <code>rght[i][j]</code>，分别表示点 (i,j) 向上、向右有几个白色的点。对于两个基准点 (i,j) 与 (k,t)，方案数就是 <code>up[i][j]*right[i][j]*up[k][t]*right[k][t]</code>……是吗？</p><p>但是我们又发现了问题：如何判断两个 L 是否相交呢？在刚才直接向上、向右枚举的时候我们可以方便地判断相交，但是现在我们这样的方式，就需要分以下几种情况讨论了：</p><ul><li>第一种，坠简单的情况，直接累加（懒得画图，直接用公式了……）：</li></ul><pre><code class="lang-math">XOXOX \\
+XOXOO \\
+XOXXX \\
+XOOOX \\
+XXXXX</code></pre><ul><li>然后就是分类讨论几种特殊情况，也就是存在交集的，以以下这种为例：</li></ul><pre><code class="lang-math">XXXXXX \\
+XOXXXX \\
+XOXOXX \\
+XOOOOX \\
+XXXOXX \\
+XXXOOO</code></pre><p>如果按前面两个 L 分别相乘计算势必会有重复，这时只要减去相交的一部分的重复情况就可以了。</p><p>复杂度 $\Theta (N^2\ast M^2)$，考虑细节有点麻烦。</p><hr><h2>代码</h2><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define CLEAR(_) memset(_,0,sizeof(_))
+#define CLEAR_MAX(_) memset(_,0x3f,sizeof(_))
+#define CLEAR_MIN(_) memset(_,0x80,sizeof(_))
+#define CLEAR_REG(_) memset(_,255,sizeof(_))
+
+using namespace std;
+const long long maxn=35;
+long long n,m;
+long long rght[maxn][maxn],up[maxn][maxn],ans;
+vector &lt;string&gt; a;
+
+template&lt;class T&gt; void checkmin(T &amp;a,const T &amp;b) { if (b&lt;a) a=b; } 
+template&lt;class T&gt; void checkmax(T &amp;a,const T &amp;b) { if (b&gt;a) a=b; }
+class TwoLLogo {
+public:
+    long long countWays( vector &lt;string&gt; grid ) ;
+};
+
+inline void init(){
+    ans=0;
+    CLEAR_REG(up);CLEAR_REG(rght);
+}
+inline void Build(){
+    for (long long i=0;i&lt;n;i++)
+    for (long long j=m-1;j&gt;=0;j--) if (a[i][j]=='.'){
+        up[i][j]=i==0?0:up[i-1][j]+1;
+        rght[i][j]=rght[i][j+1]+1;
+    } else up[i][j]=rght[i][j]=-1;
+}
+long long TwoLLogo::countWays(vector &lt;string&gt; grid) {
+    init();a=grid;
+    n=grid.size();m=grid[0].length();
+    Build();
+    for (long long i=0;i&lt;n;i++)
+    for (long long j=0;j&lt;m;j++) if (a[i][j]=='.')
+    for (long long k=0;k&lt;n;k++)
+    for (long long t=0;t&lt;m;t++) if ((a[k][t]=='.')&amp;&amp;((i!=k)||(j!=t))){
+        if ((up[i][j]==0)||(rght[i][j]==0)||(up[k][t]==0)||(rght[k][t]==0)) continue;
+        if ((i&lt;k)&amp;&amp;(j&gt;t)) ans+=rght[i][j]*up[i][j]*rght[k][t]*up[k][t]; else
+        if ((i&lt;k)&amp;&amp;(j&lt;t)) ans+=max((long long)0,
+            up[i][j]*rght[i][j]*min(up[k][t],k-i-1)*rght[k][t]+
+            up[i][j]*min(rght[i][j],t-j-1)*up[k][t]*rght[k][t]-
+            up[i][j]*min(up[k][t],k-i-1)*min(rght[i][j],t-j-1)*rght[k][t]); else
+        if ((i&lt;k)&amp;&amp;(j==t)) ans+=up[i][j]*rght[i][j]*min(up[k][t],k-i-1)*rght[k][t];
+        if ((i==k)&amp;&amp;(j&lt;t)) ans+=up[i][j]*up[k][t]*min(rght[i][j],t-j-1)*rght[k][t];
+    }
+    return ans;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-616-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 616 Div2 T3 TwoLLogo 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

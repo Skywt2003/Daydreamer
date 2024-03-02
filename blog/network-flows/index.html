@@ -1,0 +1,133 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>网络流最大流算法总结（Edmonds-Karp 算法+Dinic 算法）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 网络流最大流算法总结（Edmonds-Karp 算法+Dinic 算法）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 网络流最大流算法总结（Edmonds-Karp 算法+Dinic 算法）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>网络流最大流算法总结（Edmonds-Karp 算法+Dinic 算法）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 03 月 25 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/network-flows" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <blockquote>网络流（network-flows）是一种类比水流的解决问题方法，与线性规划密切相关。网络流的理论和应用在不断发展，出现了具有增益的流、多终端流、多商品流以及网络流的分解与合成等新课题。网络流的应用已遍及通讯、运输、电力、工程规划、任务分派、设备更新以及计算机辅助设计等众多领域。</blockquote><p>（2018.08.29 更新此文，你没有阅读过的船新版本）</p><!--more--><p>网络流是信息学竞赛中的常见题型了。</p><h2>网络流的定义</h2><p>“网络流（network-flows）是一种类比水流的解决问题方法。”<br>假设现在有一张有限的有向图 G，这张图上有一个源点 $s$，一个汇点 $t$，每条边都有一个最大流量（即容量），就像复杂的水管网络。现在我们定义几个概念：</p><ul><li><strong>源点（Sources）</strong>：一切流量流入的点。</li><li><strong>汇点（Sinks）</strong>：所有流量最终汇聚到的点。</li><li><strong>容量（Capacity）</strong>：一条边的最大流量。</li><li><strong>残量（Residual Capacity）</strong>：容量与流量之差。</li></ul><h2>网络流的三大基本性质</h2><p>网络流任何时刻总满足以下三条性质：<br><strong>1. 容量限制（Capacity Constraints）</strong>：$f(u,v)≤c(u,v)$，即一条边的流不能超过它的容量。（不然水管就要被挤爆了……）<br><strong>2. 斜对称（Skew Symmetry）</strong>：$f(u,v)=-f(v,u)$，即由 $u$ 到 $v$ 的净流必须是由 $v$ 到 $u$ 的净流的相反。假设有 $x$ 的流量从 $u$ 流到 $v$，那么就相当于有 $-x$ 的流量从 $v$ 流到 $u$。<br><strong>3. 流守恒（Flow Conservation）</strong>：对于除了源点 $s$ 和汇点 $t$ 以外的所有点，都满足：</p><pre><code class="lang-math">\displaystyle \sum_{p\in G} f(p,u)= \sum_{q\in G} f(u,q)</code></pre><p>也就是说任何一个点的入流等于其出流，源点和汇点除外。</p><h2>最大流问题</h2><p>现在假设有无限的流量从源点 $s$ 流入，我们要求出最后流到汇点t的最大流量（注意任何时候上面三个条件都要满足）。<br>对于最大流问题可以用 Edmonds-Karp 算法或 Dinic 算法解决。后者是前者的优化，但是前者更易于理解，所以我们先了解 Edmonds-Karp 算法。</p><h3>Edmonds-Karp 算法</h3><p>Edmonds-Karp 算法（简称EK）的主要步骤如下：</p><ol><li>找到一条源点到汇点的路径（其中每条边残量都要大于0）（这样的路径就是<strong>增广路（Augmenting Path）</strong>），并找出这条路径上每条边残量最小值 $min$；</li><li>将这条路径上每条边残量减去 min，将每条边的反向边加上 $min$（因为我们这条增广路是“随便找”的，不能保证解最优；将反向边加上 $min$ 相当于提供了“反悔”的机会），并将答案累计上 $min$；</li><li>重复以上过程，直到从 $s$ 到 $t$ 没有增广路为止。</li></ol><p>（由于<del>我太懒</del>EK算法似乎在任何情况下都没有优化了的 Dinic 好，这里就不给出代码了……）</p><h4>如何存储边</h4><p>要快速又节省空间地求出一条边的反向边并不简单。这里我们可以用邻接表存储：在读取边的信息的同时，<code>add(x,y,z)</code>，<code>add(y,x,0)</code>，这样一条边与其相邻边的边号总是相邻。我们如果<strong>从0开始存储边号</strong>，那么i的相邻边就是i^1，就是它的反向边！（^表示异或）</p><h3>Dinic 算法</h3><p>Dinic 算法是对 Edmonds-Karp 的优化。</p><h4>Edmonds-Karp 慢在哪里</h4><p>因为 EK 算法中走到各个点没有一定的顺序，可以理解为“任意”的，所以会出现一定的问题。假设从 $s$ 有两条路径走到 $x$（假设 $x$ 是增广路上的一个点），假设这两条路径中最小的残量分别为 $min1$、$min2$，如果 $min2$ 更大，我们应该选择 $min2$ 这条路径，但是根据 EK 的处理方法我们会选择 $min1$，这样会导致重复处理。所以 EK 算法就会慢。</p><p>如何解决这个问题呢？Dinic 算法引入了“分层图”这个东西。</p><h4>分层图</h4><p>对于 $s$ 开始通过 BFS 构造分层图，这样可以保证日后 DFS 使用的从 $s$ 到达 $x$ 的路径都是“最短路”（也就是最优路径）。</p><h4>Dinic 算法核心代码</h4><pre><code class="lang-cpp">inline bool BFS(){//这个函数的作用是构造分层图同时返回有无增广路 
+    memset(deep,0,sizeof(deep));
+    deep[s]=1;//源点的深度为1 
+    int head=0,tail=1;que[tail]=s;
+    while (head!=tail){
+        head++;
+        for (int i=lnk[que[head]];i!=-1;i=nxt[i]) if (w[i]&gt;0&amp;&amp;deep[son[i]]==0) deep[son[i]]=deep[que[head]]+1,que[++tail]=son[i];
+    }
+    if (deep[t]==0) return 0;//如果汇点深度为0说明没有被修正到，也就是说没有增广路 
+    return 1;
+}
+inline int DFS(int x,int now){//x为当前点，now为当前流量 
+    if (x==t) return now;
+    for (int i=cur[x];i!=-1;i=cur[x]=nxt[i]) if (deep[son[i]]==deep[x]+1&amp;&amp;w[i]!=0){
+        int nxtd=DFS(son[i],min(now,w[i]));
+        if (nxtd&gt;0){
+            w[i]-=nxtd;
+            w[i^1]+=nxtd;//反向边加  
+            return nxtd;//向上传递 
+        }
+    }
+    return 0;
+}
+inline void Dinic(){
+    while (BFS()){
+        for (int i=1;i&lt;=n;i++) cur[i]=lnk[i];
+        while (int now=DFS(s,1&lt;&lt;30)) ans+=now;//初始流量为正无穷 
+    }
+}</code></pre><h4>当前弧优化</h4><p>Dinic 算法仍然可以优化，这个优化称为“当前弧优化”。基于这样一个事实：任何一条增广路中一条边不会存在两次。所以我们可以加一个数组 <code>cur[x]</code> 表示当前 $x$ 这个点循环到的边。（具体参见完整代码）</p><h4>完整代码（含当前弧优化）</h4><p>（洛谷模版题“最大网络流”（<a href="https://www.luogu.org/problemnew/show/P3376" title="P3376">P3376</a>）测评通过）</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10005,maxe=200005;
+int n,m,s,t,tot=-1,ans=0,nxt[maxe],son[maxe],w[maxe],deep[maxn],lnk[maxn],que[maxn],cur[maxn];
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline bool BFS(){//这个函数的作用是构造分层图同时返回有无增广路 
+    memset(deep,0,sizeof(deep));
+    deep[s]=1;//源点的深度为1 
+    int head=0,tail=1;que[tail]=s;
+    while (head!=tail){
+        head++;
+        for (int i=lnk[que[head]];i!=-1;i=nxt[i]) if (w[i]&gt;0&amp;&amp;deep[son[i]]==0) deep[son[i]]=deep[que[head]]+1,que[++tail]=son[i];
+    }
+    if (deep[t]==0) return 0;//如果汇点深度为0说明没有被修正到，也就是说没有增广路 
+    return 1;
+}
+inline int DFS(int x,int now){//x为当前点，now为当前流量 
+    if (x==t) return now;
+    for (int i=cur[x];i!=-1;i=cur[x]=nxt[i]) if (deep[son[i]]==deep[x]+1&amp;&amp;w[i]!=0){
+        int nxtd=DFS(son[i],min(now,w[i]));
+        if (nxtd&gt;0){
+            w[i]-=nxtd;
+            w[i^1]+=nxtd;//反向边加  
+            return nxtd;//向上传递 
+        }
+    }
+    return 0;
+}
+inline void Dinic(){
+    while (BFS()){
+        for (int i=1;i&lt;=n;i++) cur[i]=lnk[i];
+        while (int now=DFS(s,1&lt;&lt;30)) ans+=now;//初始流量为正无穷 
+    }
+}
+int main(){
+    memset(lnk,-1,sizeof(lnk));//因为边号从0开始存储，所以-1表示没有边 
+    memset(nxt,-1,sizeof(nxt));
+    n=read();m=read();s=read();t=read();
+    for (int i=1;i&lt;=m;i++){
+        int x=read(),y=read(),z=read();
+        add(x,y,z);add(y,x,0);//构造反向边并且其边号与正向边相邻 
+    }
+    Dinic();
+    printf(&quot;%d\n&quot;,ans);
+    return 0;
+}</code></pre><h3>模板题</h3><p><a href="https://www.luogu.org/problemnew/show/P3376" title="洛谷3376">洛谷3376</a><br><a href="http://poj.org/problem?id=1273" title="POJ1273">POJ1273</a></p><hr><h2>参考</h2><p><a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%B5%81" title="网络流_百度百科">网络流_百度百科</a><br><a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E6%B5%81" title="网络流 - 维基百科，自由的百科全书">网络流 - 维基百科，自由的百科全书</a><br><a href="https://www.cnblogs.com/SYCstudio/p/7260613.html" title="Dinic算法（研究总结，网络流）">Dinic算法（研究总结，网络流）</a><br><a href="https://blog.csdn.net/dyt_b/article/details/79307596" title="网络流算法+例题整理 - CSDN博客">网络流算法+例题整理 - CSDN博客</a><br><a href="https://blog.csdn.net/qq_41357771/article/details/79416899" title="网络流【最大流&amp;&amp;最小割】——一篇简单易懂的博文">网络流【最大流&&最小割】——一篇简单易懂的博文</a><br><a href="http://www.matrix67.com/blog/archives/5190" title="网络流和棒球赛淘汰问题 | Matrix67: The Aha Moments">网络流和棒球赛淘汰问题 | Matrix67: The Aha Moments</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/network-flows" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 网络流最大流算法总结（Edmonds-Karp 算法+Dinic 算法）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

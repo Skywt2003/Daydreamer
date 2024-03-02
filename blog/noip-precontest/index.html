@@ -1,0 +1,91 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>NOIP 初赛题目整理（C++）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / NOIP 初赛题目整理（C++）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / NOIP 初赛题目整理（C++）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>NOIP 初赛题目整理（C++）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 26 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/noip-precontest" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>据说今年所有学校都没有推荐名额？？？</p><!--more--><h2>选择/问题求解部分</h2><h3>算法/数据结构系列</h3><h4>排序与复杂度</h4><p>CCF 可喜欢了 :new_moon_with_face:</p><hr><blockquote>在各种查找算法中，平均查找长度（与关键字比较次数的期望值）与查找表中元素个数n无关的查找方法是<br>A、顺序查找<br>B、散列查找<br>C、折半查找<br>D、动态查找</blockquote><ul><li>答案：<strong>B</strong></li><li>解析：<br>顺序查找是 $O(n)$ 的，折半查找（即二分查找）是 $\log(n)$ 的，显然都与 $n$ 有关。<br>动态查找长度是不确定的（其实和使用哪种动态查找有关）。而散列查找实质上就是哈希。</li></ul><blockquote>选择合适的散列函数 $h(key)$，散列法的查找效率期望是 $\Theta(1)$。它几乎与关键字的空间大小无关，也适合于关键字直接比较计算量大的问题。[[1]][link1]</blockquote><hr><blockquote>在待排序的数据表已经为有序时，下列排序算法中花费时间反而多的是（）。<br>A、堆排序<br>B、希尔排序<br>C、冒泡排序<br>D、快速排序</blockquote><ul><li>答案：<strong>D</strong></li><li>解析：<br>堆排序，花费时间显然不改变，<br>希尔排序和插入排序都不一定，因为有可能从前往后、从后往前比较，有两种情况。<br>我们都学过，快速排序在数据有序的时候会退化成 $O(n^2)$（也就是最差情况）。</li></ul><blockquote>快速排序是把数列按一个枢纽值分成两部分分别排序，所以效率高。但是若原数据为有序，并且选择的枢纽值为第一个数时，那在分块时会将一个第一个数前面的数（也就是没有）分为一块，将除第一个数的所有数分成了另一块。这样一来，每一次分块都只减少了一个值，而每次分块的时间为O（N），所以总时间为O（N^2）。[[2]][link2]</blockquote><hr><blockquote>在待排序的数据表已经为有序时，下列排序算法中时间复杂度会减少的是（）<br>A、    堆排序<br>B、希尔排序<br>C、冒泡排序<br>D、插入排序</blockquote><ul><li>答案：<strong>BD</strong></li><li>解析：<br>A：堆排序，复杂度与数据表是否有序无关；<br>B：希尔排序（是对插入排序的一个优化），显然会减少的，降为 $\Theta (n)$<br>C：冒泡排序，比较次数不变；<br>D：也降为 $\Theta (n)$。</li></ul><p>关于冒泡排序，其步骤是：</p><blockquote><ol><li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li><li>对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。</li><li>针对所有的元素重复以上的步骤，除了最后一个。</li><li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li></ol></blockquote><hr><blockquote>下列关于排序说法正确的是（）。<br>A、    插入排序、冒泡排序是稳定的<br>B、    选择排序的时间复杂度为 $O(n^2)$<br>C、    选择排序、希尔排序、快速排序、堆排序是不稳定的<br>D、    希尔排序、快速排序、堆排序的时间复杂度为 $O(n\log n)$</blockquote><ul><li>答案：<strong>ABC</strong></li><li>解析：</li></ul><blockquote>是否稳定看排序后原来相等两数是否会交换位置，因此，如果不是相邻两数比较交换的往往是不稳定。shell 是 $O(n^{1.3})$，一般达不到 $O(n\log n)$<br>——来自老师的官方题解……</blockquote><p>插入排序、冒泡排序都是相邻数字比较交换的，所以稳定；而选排、shell、快排、堆排都不是。<br>维基百科上其实说 shell 复杂度是 $\Theta(n \log^2 n)$。总之不可能是 $\Theta (n\log n)$。</p><hr><h4>图论</h4><hr><blockquote>假设我们用 $d=(a_1,a_2,\dots,,a_5)$，表示无向图 $G$ 的5个顶点的度数，下面给出的哪（些）组 $d$ 值合理（）<br>A、${5,4,4,3,1}$<br>B、${4,2,2,1,1}$<br>C、${3,3,3,2,2}$<br>D、${2,2,2,2,2}$</blockquote><ul><li>答案：<strong>BD</strong></li><li>解析：其实一开始看到这题可能会画图，但是最后发现可以直接利用无向图的一条性质：<strong>所有点的度数之和为偶数</strong>。</li></ul><hr><blockquote>以下关于图的正确说法是（）。<br>A、所有顶点的度数之和等于边数的2倍<br>B、所有顶点的度数之和不一定等于边数的2倍<br>C、任意一个图一定有偶数个奇点<br>D、在有向图中顶点的入度之和等于出度之和</blockquote><ul><li>答案：<strong>ACD</strong></li><li>解析：这题不难，只要画几张图看看就可以了。</li></ul><hr><blockquote>下列逻辑运算正确的是（）<br>A、A∧(A∨B)=A<br>B、A∨(A∧B)=A<br>C、A∧(C∨B)=A∧B∨A∧C<br>D、A∨(B∧C)=(A∨B)∧(A∨C)</blockquote><ul><li>答案：<strong>ABCD</strong></li><li>解析：<br>这题是非常典型的“逻辑运算表达式比较”。一个很神奇的做法就是：可以把参数看成集合，$∧$ 与 $∨$ 分别看成集合的 $∩$ 与 $∪$，就可以直接通过画韦恩图的方式判断了！<br>那么我们思考：为什么可以把 $∧$ 与 $∨$ 分别看成集合的 $∩$ 与 $∪$ 呢？根据意思来理解，“与”可以理解为“两个集合里都有”，也就是交；“或”可以理解为“两个集合之一有或都有”，自然就是集合并了。</li></ul><hr><blockquote>无向图 $G=(V,E)$，其中 $V={a,b,c,d,e,f}$，$E={(a,b),(a,e),(a,c),(b,e),(c,f),(f,d),(e,d)}$。对该图进行深度优先遍历，得到的顶点序列正确的是（）。<br>A、$a,b,e,c,d,f$<br>B、$a,c,f,e,b,d$<br>C、$a,e,b,c,f,d$<br>D、$a,b,e,d,f,c$</blockquote><ul><li>答案：<strong>D</strong></li><li><p>解析：图画出来是这样的：</p><pre><code class="lang-mermaid">graph TD;
+a---b
+a---e
+a---c
+b---e
+c---f
+f---d
+e---d</code></pre><p>需要注意的是 C 选项，$a,e,b,c,f,d$，其实当 $b$ 点“无路可走”时并非会走回 $a$ 点，而是从 $e$ 点继续向 $d$ 点走。只要稍微注意下就好了。</p></li></ul><hr><blockquote>下列关于图的说法正确的是：<br>A、欧拉图的每一个顶点都能作为某条欧拉闭迹的起点:<br>B、 一个图有欧拉闭迹当且仅当该图有零个奇点<br>C、 若一个无向图有奇数条边，则它必然不是二分图<br>D、若 G 是汉密尔顿图，则对 G 上的汉密尔顿圈 C，任意删去 n 个点，最多可将 C 划分为 n 段，反之亦然</blockquote><ul><li>答案：<strong>A</strong></li><li>解析：<br>这种定义题目最烦了……<br>B 因为没有说是联通图，所以是错的（坑点）。<br>C 显然是错的，二分图的定义是“顶点集V可分割为两个互不相交的子集，并且图中每条边依附的两个顶点都分属于这两个互不相交的子集，两个子集内的顶点不相邻。”<br>D 也是错的，前面半句是对的，错就错在“<strong>反之亦然</strong>”，这个事实的逆命题显然是不成立的。</li><li><p>补充一下相关概念：</p><blockquote><strong>哈密顿图</strong>（Hamiltonian path 或 Traceable path）是一个<a href="https://zh.wikipedia.org/wiki/%E7%84%A1%E5%90%91%E5%9C%96" title="无向图">无向图</a>，由天文学家<a href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%AF%86%E9%A1%BF" title="哈密顿">哈密顿</a>提出，由指定的起点前往指定的终点，途中经过所有其他节点且只经过一次。在<a href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E8%AE%BA" title="图论">图论</a>中是指含有哈密顿回路的图，闭合的哈密顿路径称作<strong>哈密顿回路</strong>（Hamiltonian cycle），含有图中所有顶点的路径称作<strong>哈密顿路径</strong>。</blockquote></li></ul><hr><h4>数据结构</h4><hr><blockquote>若已知一个栈的入栈顺序 $1,2,3,\dots,n$，其输出序列为 $P_1,P_2,P_3,\dots,P_n$（它是输入序列的一个排序），则在输出序列中可能出现的情况是（）<br>A、$Pj&lt;Pk&lt;Pi$，其中 $i&lt;j&lt;k$<br>B、$Pk&lt;Pj&lt;Pi$，其中 $i&lt;j&lt;k$<br>C、$Pj&lt;Pi&lt;Pk$，其中 $i&lt;j&lt;k$<br>D、$Pi&lt;Pk&lt;Pj$，其中 $i&lt;j&lt;k$</blockquote><ul><li>答案：<strong>BCD</strong></li><li>解析：直接搞个序列 1,2,3，所有情况都试试就可以了。</li></ul><hr><blockquote>设有一个含有 13 个元素的 Hash 表（0-12），Hash函数是：H(key)=key%13，其中%是求余数运算。用二次探查法解决冲突，则对于序列 (8,31,20,33,18,53,27)，则下列说法正确的是（）<br>A、18 在 4 号格子中<br>B、33 在 6 号格子中<br>C、31 在 5 号格子中<br>D、20 在 7 号格子中</blockquote><ul><li>答案：<strong>ABCD</strong></li><li>解析：<br>什么叫“二次探查法”呢？这里要补充一下<strong>哈希冲突</strong>以及<strong>各种处理方法</strong>：</li></ul><blockquote><p><strong>哈希冲突/哈希碰撞</strong><br>不同的 Key 值经过哈希函数 Hash(Key) 处理以后可能产生相同的值哈希地址，我们称这种情况为哈希冲突。任意的散列函数都不能避免产生冲突。</p><p><strong>处理哈希碰撞的方法</strong><br>若 key1,key2,key3 产生哈希冲突 (key1,key2,key3 值不相同，映射的哈希地址同为 key)，用以下方法确定它们的地址：</p><ol><li><strong>线性探测</strong><br>若当前 key 与原来 key 产生相同的哈希地址，则当前 key 存在该地址之后没有存任何元素的地址中：<br>key1：hash(key)+0<br>key2：hash(key)+1<br>key3：hash(key)+2</li><li><strong>二次探测</strong><br>若当前 key 与原来 key 产生相同的哈希地址，则当前 key 存在该地址后偏移量为（1,2,3...）的二次方地址处：<br>key1：hash(key)+0<br>key2：hash(key)+1^2<br>key3：hash(key)+2^2<br>[[4]][link4]</li></ol></blockquote><hr><h3>计算机常识系列</h3><p>你确定这是常识？？？</p><hr><blockquote>下列哪些属于内存储器？<br>A、硬盘<br>B、RAM<br>C、ROM<br>D、Cache</blockquote><ul><li>答案：<strong>BCD</strong></li></ul><hr><blockquote>按通信距离划分，计算机网络可以分为局域网和广域网。下列网络中属于局域网的是（）。<br>A、Internet<br>B、CERNET<br>C、Novell<br>D、以太网</blockquote><ul><li>答案：<strong>CD</strong></li></ul><hr><blockquote>如果互连的局域网高层分别采用 TCP/IP 协议与 SPX/IPX 协议，那么我们可以选择的互连设备应该是（） <br>A、中继器<br>B、网桥<br>C、网卡<br>D、路由器</blockquote><ul><li>答案：<strong>D</strong></li></ul><hr><blockquote>在微机系统中，最基本的输入输出模块BIOS存放在（）中。  <br>A、RAM<br>B、ROM<br>C、硬盘<br>D、寄存器</blockquote><ul><li>答案：<strong>B</strong></li></ul><hr><blockquote>下列地址中，属于 B 类 IP 地址的是（）<br>A、27.33.119.2<br>B、192.97.32.121<br>C、133.201.189.32<br>D、126.33.82.107</blockquote><ul><li>答案：<strong>C</strong></li></ul><p>这种概念题真是完全不知道……</p><blockquote>A 类：1.0.0.0 到 126.0.0.0。<br>B 类：128.0.0.0 到 191.255.255.255。<br>C 类：192.0.0.0 到 223.255.255.255。设有一个含有13个元素的Hash表（0-12），Hash函数是：H(key)=key%13，其中%是求余数运算。用二次探查法解决冲突，则对于序列(8,31,20,33,18,53,27)，则下列说法正确的是（）。<br>A、18在4号格子中   B、33在6号格子中  <br>C、31在5号格子中   D、20在7号格子中<br>D 类：D类IP地址第一个字节以“lll0”开始，它是一个专门保留的地址。它并不指向特定的网络，目前这一类地址被用在多点广播（Multicast）中。多点广播地址用来一次寻址一组计算机，它标识共享同一协议的一组计算机。<br>E 类：以“llll0”开始，为将来使用保留。[[3]][link3]</blockquote><hr><blockquote>下列关于高级语言的说法正确的是（）<br>A、Fortran 是历史上的第一个面向科学计算的高级语言<br>B、Pascal 和 C 都是编译执行的高级语言<br>C、Smalltalk 是历史上的第一个支持面向对象的语言<br>D、编译器将高级语言程序转变为目标代码</blockquote><ul><li>答案：<strong>ABD</strong></li><li>解析：Smalltalk 是第二个，第一个是 Simula67……（完全没听说过）</li></ul><hr><h3>数学题系列</h3><hr><blockquote>由a,b,c三种不同的数字组成一个7位数，要求不出现两个a相邻，也不出现两个b相邻，这样的7位数的个数为（）。</blockquote><ul><li>答案：<strong>577</strong></li><li>解析：<br>这题是人工模拟 DP……（直接排列组合似乎很难算出来）<br>Fi 表示进行到第 i 位、最后一位数字为 j 的方案数。随便推一下就好了。</li></ul><hr><blockquote>Kathy 函数是这样定义的：  <br>$f(1)=1$<br>$f(3)=3$<br>$f(2n)=f(n)$<br>$f(4n+1)=2f(2n+1)-f(n)$<br>$f(4n+3)=3f(2n+1)-2f(n)$<br>对于一个给定的数 $m=55$，求出所有满足 $f(n)=n,(n&lt;=m)$ 的自然数 $n$ 的个数</blockquote><ul><li>答案：<strong>13</strong></li><li>解析：<br>这题 BZOJ 上有<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1223">原题</a>！！！总之是规律非常难找，当时做这题的时候<del>大多数人都是手模了 55 个</del><br>据说正规解法是，把 n 转换为二进制，会发现 $f(n)=n$ 时 n 的二进制是个回文数……这个谁发现得了啊……吐血</li></ul><hr><h3>特别变态系列</h3><p>遇到这样的题目……自求多福吧……</p><blockquote><p>下列形状的三角形中，字母 a-i 分别表示数字 1,2,3,…,9。</p><pre><code>       a
+     b   c
+   d       e
+ f   g   h   i
+</code></pre><p>字母 a-i 同时满足下列条件：  <br>(1) $a&lt;f&lt;i$<br>(2) $b&lt;d,g&lt;h,c&lt;e$<br>(3) $a+b+d+f=f+g+h+i=i+e+c+a=19$</p><p>则满足条件的三角形个数为（）<br>A、2<br>B、3<br>C、4<br>D、5</p></blockquote><p>答案：<strong>C</strong></p><blockquote>除了暴枚，没有什么好方法了。</blockquote><h3>奇葩题目系列</h3><hr><blockquote>合唱演出在即，一名团员病倒了，不能参加。指挥排了一下队伍，如果10人一排，有一排少一人，如果12人一排，有一排还是少一人，如果15人一排，有一排仍少一人。请问这个未上百人的合唱团共有多少人？<br>A、59<br>B、60<br>C、61<br>D、62</blockquote><ul><li>答案：<strong>C</strong></li><li>解析：非常变态，本来算出来是 59 人，但是要加上一个病号和指挥！！！</li></ul><hr><h2>看程序写输出/完善程序部分</h2><p>这部分比前面要简单一点了。</p><hr><pre><code class="lang-cpp">#include&lt;iostream&gt;   
+using namespace std;
+int a[10000];
+int gcd(int m,int n){
+ while(n){
+     int r=m%n;m=n;n=r;
+ }
+ return m;
+}
+int main(){
+    int n=1000,r=202;
+    for(int i=1;i&lt;=n-r;i++) a[i]=n-i+1;
+    for(int i=2;i&lt;=r;i++){
+        int k=i;
+        for(int j=1;j&lt;=n-r;j++)
+        if(gcd(k,a[j])&gt;1){
+            int g=gcd(k,a[j]);
+            k/=g; a[j]/=g;
+            if(k==1) break;
+        }
+}
+int p=1,g=0;
+    for(int i=1;i&lt;=n-r;i++){
+        p*=a[i];
+        while(p%5==0){
+            p/=5; g++;
+        }
+        p%=5;
+    }
+    cout&lt;&lt;g&lt;&lt;endl;
+    return 0;
+}</code></pre><ul><li>输出：<strong>151</strong></li><li>解析：手模后可以发现其实这是求较大排列数末尾 0 个数……</li></ul><hr> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/noip-precontest" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / NOIP 初赛题目整理（C++）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

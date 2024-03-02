@@ -1,0 +1,82 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>最长上升子序列（LIS）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 最长上升子序列（LIS）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 最长上升子序列（LIS）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>最长上升子序列（LIS）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 02 月 07 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/lis" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>最长上升子序列，全称Longest Increasing Sequence，简称LIS，在计算机科学上是指一个序列中最长的单调递增的子序列（百度百科）。这个序列不一定是连续的。</p><!--more--><p>之前说过，动态规划就是把一个问题分成一大堆子问题，对这些子问题求解，最后求解出这个问题。如何求最长升序列？我们可以想到，随便取一个数字a[i]（当然是在序列里），要是我们知道a[i]之前的且最后一个数据比a[i]小的最长上升子序列长度该多好！直接+1就是以i为结尾的最长上升子序列长度。那么要知道之前的最长升序列长度，就要按照同样的方法找之前的之前……显然是动态规划。</p><h2>一、普通的DP方法</h2><p>定义F[i]表示以队列中第i个元素（a[i]）为结尾（<strong>其中第i个元素必取</strong>）的最长上升子序列长度。转移方程：</p><pre>F[i]=max(F[i],F[j]+1);  (a[i]>a[j] && i>j)</pre><p>这样求时间复杂度O（N²）。</p><h2>二、二分优化的方法</h2><p>另一种求法是二分优化。维护一个单调不降的序列que，同样定义F[i]为以队列中第i个元素（a[i]）为结尾（其中第i个元素必取）的最长上升子序列长度。有个贪心的想法：我们要让最长上升子序列尽量长，就要让序列中最后一个元素尽量小（这样才能让后面元素可以加入的可能性更大），所以对于每个数字a[i]，在序列中用二分找一个大于a[i]且最接近a[i]的数字替换，这样并不会影响序列的长度，也能保证解最优。如果序列里所有数字都小于a[i]就将其加入序列尾部。</p><p>这里有个问题：替换了序列中的元素，似乎并不能保证<strong>替换位置之后的元素在原序列a[i]之后出现</strong>？举个栗子：</p><pre>维护的序列（que数组）：1 3 5 7 9
+原序列（a数组）：1 3 5 7 9 <strong><span style="text-decoration: underline;">4</span></strong> 10（i=6，即现在要处理4这个数字）
+本次替换后：1 3 4 7 9</pre><p>很显然，原序列里1 3 4 7 9并不符合要求（没按照顺序来）。我们接着往下看：下一步，处理6，替换了7，序列变成了1 3 4 7 9 10，长度是6，正确答案是1 3 5 7 9 10，长度也是6，和答案一样！</p><p>其实替换不会减小序列长度，只会增加序列长度；如果之前把序列中某个元素替换成a[i]，那么之后新加入序列的元素（非替换）肯定都在a[i]之后！que序列并不是真正的最长上升序列，但是长度一定与真正的最长上升序列相等！这么优化可以把时间复杂度优化到O（Nlog2（N））。</p><p>代码（新鲜出炉的！！！）：</p><pre>#include<cstdio>
+#include<iostream>
+#include<cstring>
+using namespace std;
+const int maxn=100005;
+int n,a[maxn],que[maxn],len=0;
+inline int read(){
+ int ret=0,f=1;char ch=getchar();
+ while (ch<'0'||ch>'9') {if (ch=='-') f=-1;ch=getchar();}
+ while (ch>='0'&&ch<='9') ret=ret*10+ch-'0',ch=getchar();
+ return ret*f;
+}
+inline int find(int x){
+ int L=1,R=len;
+ while (L<=R){
+  int mid=((R-L)>>1)+L;
+  if (que[mid-1]<x&&x<que[mid]) return mid; else
+  if (x<que[mid]) R=mid-1; else
+  L=mid+1;
+ }
+ return 0;
+}
+int main(){
+ n=read();
+ for (int i=1;i<=n;i++){
+  a[i]=read();
+  int fd=find(a[i]);
+  if (fd==0) que[++len]=a[i]; else que[fd]=a[i];
+  }
+ printf("%d\n",len);
+ return 0;
+}</pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/lis" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 最长上升子序列（LIS）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

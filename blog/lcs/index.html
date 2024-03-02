@@ -1,0 +1,79 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>动态规划经典题目（三）：最长公共子序列（LCS）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 动态规划经典题目（三）：最长公共子序列（LCS）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 动态规划经典题目（三）：最长公共子序列（LCS）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（三）：最长公共子序列（LCS）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 02 月 08 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/lcs" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>写<a href="http://skywt.top/blog/lis/">最长上升子序列</a>和最长公共子序列两篇博客都是为了后面的最长公共上升子序列准备啊~</p><p>一个序列，如果是两个或多个已知序列的子序列，且是所有子序列中最长的，则它就是这两个序列的<strong>最长公共子序列（Longest Common Sequence，简称LCS）</strong>。</p><!--more--><p>一般求LCS，我们都采用动态规划解决。求两个序列的LCS一看找不到入手点，不像tower那题一样<strong>有明显的走向</strong>，所以难以推出上一步，难以划分子问题。仔细想想，存在公共子序列，就存在两个序列中存在元素相等（即A[i]=B[j]）的情况。那么我们就会想到枚举i和j。</p><p>（分析中所说的序列均为数组，下标从1开始，并非字符串）假设两个序列分别为A（长度为n）、B（长度为m），定义：Fi表示 A的第i位及之前 这段子序列与 B的第j位及之前 这段子序列，这两段子序列的LCS长度。分析一下：如果A[i]=B[j]，那么Fi就是Fi-1+1，也就是说公共子序列加了一位（这位上是「公共的」）；如果A[i]≠B[j]，那么Fi就是Fi-1和Fi里最大的（因为A[i]或者B[j]加不加都和答案没关系）。那么很容易得到转移方程：</p><pre>F[i][j]=max(F[i-1][j-1]+(A[i]==B[j]),F[i-1][j],F[i][j-1]);</pre><p>显然最后的答案就是Fn。时间复杂度是O（N²）。再开个二维数组s记录答案就可以了。以下是原题……</p><h2><strong> <span class="fontstyle0">最长公共子序列</span><span class="fontstyle1">(lcs.pas/c/cpp)</span></strong></h2><ul>
+     <li>
+<h4><span class="fontstyle0">问题描述</span></h4>
+</li>
+</ul><p><span class="fontstyle0">一个给定的子序列是在该序列中删去若干元素后得到的序列。例如，序列Z</span><span class="fontstyle2">=&lt;B,C,D,B&gt;</span><span class="fontstyle0">是序列</span><span class="fontstyle2">X=&lt;A,B,C,B,D,A,B&gt;</span><span class="fontstyle0">的子序列。</span></p><p><span class="fontstyle0">给定两个序列</span><span class="fontstyle2">X</span><span class="fontstyle0">和</span><span class="fontstyle2">Y</span><span class="fontstyle0">，当另一序列Z</span><span class="fontstyle0">既是</span><span class="fontstyle2">X</span><span class="fontstyle0">的子序列又是</span><span class="fontstyle2">Y</span><span class="fontstyle0">的子序列时，称</span><span class="fontstyle2">Z</span><span class="fontstyle0">是序列</span><span class="fontstyle2">X、</span><span class="fontstyle2">Y</span><span class="fontstyle0">的公共子序列。例如，若</span><span class="fontstyle2">X=&lt;A,B,C,B,D,A,B&gt;</span><span class="fontstyle0">，</span><span class="fontstyle2">Y=&lt;B,D,C,A,B,A&gt;</span><span class="fontstyle0">，那么</span><span class="fontstyle2">&lt;B,C,A&gt;</span><span class="fontstyle0">是</span><span class="fontstyle2">X</span><span class="fontstyle0">和</span><span class="fontstyle2">Y</span><span class="fontstyle0">的一个公共子序列，</span><span class="fontstyle2">&lt;B,C,B,A&gt;</span><span class="fontstyle0">也是</span><span class="fontstyle2">X</span><span class="fontstyle0">和</span><span class="fontstyle2">Y</span><span class="fontstyle0">的一个公共子序列。</span></p><p><span class="fontstyle0">编程求出给定的两个序列中，最长公共子序列的长度。</span></p><ul>
+     <li>
+<h4><span class="fontstyle0">输入格式</span></h4>
+</li>
+</ul><p><span class="fontstyle0">共两行，各一个字符串，第一个字符串表示第一个序列，第二个字符串表示第二个序列，两个字符串，长度均小于</span><span class="fontstyle2">1000</span><span class="fontstyle0">。</span></p><ul>
+     <li>
+<h4><span class="fontstyle0">输出格式</span></h4>
+</li>
+</ul><p><span class="fontstyle0">第一行：一个整数，即两个序列的公共子序列的长度。<br>第二行：最长公共子序列，如有多解，则尽量以第一个字符串为主。</span></p><ul>
+     <li>
+<h4><span class="fontstyle0">输入样例</span></h4>
+</li>
+</ul><pre><span class="fontstyle2">aabaaecd
+abcd
+
+</span></pre><ul>
+     <li>
+<h4><span class="fontstyle0">输出样例</span></h4>
+</li>
+</ul><pre><span class="fontstyle2">4
+</span><span class="fontstyle2">abcd
+</span></pre><ul>
+     <li>
+<h4>代码</h4>
+</li>
+</ul><pre>不见了！
+（懒得写代码了，有时间再补吧zzz）</pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/lcs" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 动态规划经典题目（三）：最长公共子序列（LCS）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

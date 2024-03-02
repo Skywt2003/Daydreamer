@@ -1,0 +1,89 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 12 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj3244" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>坠痛苦的是，POJ 的辣鸡 G++ 编译器不支持 <code>long long</code>，害得我调试调了半天……</p><h2>Description</h2><p>For every pair of triplets, $T_a = (I_a, J_a, K_a)$ and $T_b = (I_b, J_b, K_b)$, we define the difference value between $T_a$ and $T_b$ as follows:</p><p>$$ D(T_a, T_b) = \max (I_a − I_b, J_a − J_b, K_a − K_b) − \min (I_a − I_b, J_a − J_b, K_a − K_b) $$</p><p>Now you are given $N$ triplets, could you write a program to calculate the sum of the difference values between every unordered pair of triplets?</p><!--more--><h2>Input</h2><p>The input consists of several test cases. <br>Each test case begins with a line containing an integer $N$, denotes the number of triplets. Assume that we number the triplets as $T_1, T_2, \dots , T_N$. Then, there are following $N$ lines, each line contains three integers, giving the elements of each triplet.<br>A case with $N = 0$ indicates the end of the input.</p><h2>Sample Input</h2><pre><code>2
+1 2 3
+3 2 1
+3
+1 3 2
+4 0 7
+2 2 9
+0</code></pre><h2>Sample Output</h2><pre><code>4
+20</code></pre><h2>Hint</h2><p>Case 1: $D(T_1,T_2)=4$<br>Case 2: $D(T_1,T_2)+D(T_1,T_3)+D(T_2,T_3)=8+8+4=20$</p><p>You can assume that $N$, the number of triplets in each case, will not exceed 200,000 and the elements in triplets fit into $[-10^6,10^6]$.<br>The size of the input will not exceed 5 MB.</p><h2>Analysis</h2><h3>Solutoin #1</h3><p>很类似上次的<a href="https://skywt.cn/posts/hdu5626/" title="HDU 5626 Clarke and points">HDU 5626 Clarke and points</a>和<a href="https://skywt.cn/posts/hdu6447/" title="HDU 6447 YJJ’s Salesman">HDU 6447 YJJ’s Salesman</a>的结合，我们可以先分类讨论（因为这是一个轮换对称式，其实随便考虑一种情况就可以了）。</p><p>假设 $\max (I_a − I_b, J_a − J_b, K_a − K_b) = I_a - I_b$，那么就有：</p><p>$$I_a-I_b&gt;J_a-J_b,I_a-I_b&gt;K_a-K_b$$</p><p>变换得到：</p><p>$$I_a-J_a&gt;I_b-J_b,I_a-K_a-i_b-K_b$$</p><p>令 $A_i=I_i-J_i,B_i=I_i-K_i$，显然 $A_i&gt;A_j,B_i&gt;B_j$。<br>这就转换成<strong>区间选点问题</strong>了。只需要先按照 $A_i$ 排序，然后用线段树或者树状数组维护下就可以了～</p><h3>Solution #2</h3><p>上面的解法显然太麻烦了，其实有一种更加精妙的做法。</p><p>首先我们要知道一个超级重要的公式：</p><p>$$ \max(a,b,c)-\min(a,b,c) = \frac {|a-b|+|b-c|+|c-a|} 2 $$</p><p>所以可以得到：</p><p>$$ D(T_a, T_b) = \max (I_a − I_b, J_a − J_b, K_a − K_b) − \min (I_a − I_b, J_a − J_b, K_a − K_b) \\<br>= \frac {|I_a-I_b-J_a+J_b| + |J_a-J_b-K_a-K_b| + |K_a-K_b-I_a+I_b|} 2 $$</p><p>同样令 $A_i=I_i-J_i,B_i=J_i-K_i,C_i=K_i-A_i$，整理得到：</p><p>$$ D(T_a,T_b)=\frac {|A_a-A_b|+|B_a-B_b|+|C_a-C_b|} 2 $$</p><p>所以只需要对于每个 $A_i$，累计它与所有小于它的 $A_i$ 之差之和，对于 $B_i$ 和 $C_i$ 同理。即：</p><p>$$\sum D(T_i,T_j) = \frac {\sum_{A_i&lt; A_j} (A_j-A_i) +\sum_{C_i&lt; C_j} (C_j-C_i) + \sum_{C_i&lt; C_j} (C_j-C_i) } {2} $$</p><p>这个很好做，维护下加和就好了。</p><h2>Code</h2><p><del>第一种解法代码懒得写了……</del><br>\下面是解法二的代码。<strong>POJ 这题提交的时候如果语言选择 G++ 会 WA 掉，但是用 C++ 就过了……</strong>困扰了我很长时间……</p><p>嗯，原来在 FAQ 里面说了：</p><blockquote>Prior to the compiler upgrade in May 2009, we serviced C and C++ submissions using GCC 3.4.2. That version of GCC relies on the old MS VC++ 6 runtime library, which does not support the <code>%lld</code> and <code>%llu</code> specifiers for signed and unsigned <code>long long</code> types but allows the standard-incompliant <code>%lf</code> and <code>%lg</code> specifiers for floating-point types. The new GCC 4.4.0 comes with its own ISO C-conformant implementation of the printf function. Now you can use <code>%lld</code> and <code>%llu</code> with either C/C++ compiler, but <code>%lf</code> and <code>%lg</code> only work with MS VC++ 2008 Express. As a rule of thumb, you should always use the <code>%f</code> and <code>%g</code> specifiers instead for floating-point types.</blockquote><p>…可怕……</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const long long maxn=200005;
+long long n,a[maxn],b[maxn],c[maxn];
+long long ans=0;
+
+int main(){
+    for (;;){
+        scanf(&quot;%lld&quot;,&amp;n);
+        if (n==0) break;
+        ans=0;
+
+        for (long long i=1;i&lt;=n;i++){
+            long long x,y,z;
+            scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+            a[i]=x-y,b[i]=y-z,c[i]=z-x;
+        }
+        sort(a+1,a+1+n);sort(b+1,b+1+n);sort(c+1,c+1+n);
+
+        long long sum_a=0,sum_b=0,sum_c=0;
+        for (long long i=1;i&lt;=n;i++){
+            ans+=a[i]*(i-1)-sum_a;
+            ans+=b[i]*(i-1)-sum_b;
+            ans+=c[i]*(i-1)-sum_c;
+            sum_a+=a[i];sum_b+=b[i];sum_c+=c[i];
+        }
+        printf(&quot;%lld\n&quot;,ans/2);
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/poj3244" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

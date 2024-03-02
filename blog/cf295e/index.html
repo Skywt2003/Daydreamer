@@ -1,0 +1,171 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 295E - Yaroslav and Points 题解：又是线段树！</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 295E - Yaroslav and Points 题解：又是线段树！</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 295E - Yaroslav and Points 题解：又是线段树！</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 295E - Yaroslav and Points 题解：又是线段树！</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 01 月 30 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf295e" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <h2>Description</h2><p>Yaroslav has n points that lie on the $Ox$ axis. The coordinate of the first point is $x_1$, the coordinate of the second point is $x_2$, ..., the coordinate of the n-th point is — $x_n$. Now Yaroslav wants to execute $m$ queries, each of them is of one of the two following types:</p><!--more--><p>Move the $p_j$-th point from position $x_{p_j}$ to position $x_{p_j} + d_j$. At that, it is guaranteed that after executing such query all coordinates of the points will be distinct.<br>Count the sum of distances between all pairs of points that lie on the segment $[l_j, r_j] (l_j ≤ r_j)$. In other words, you should count the sum of: $\displaystyle \sum_{l_j\leq x_p\leq x_q\leq r_j} (x_q-x_p)$</p><p>Help Yaroslav.</p><p><a href="https://codeforces.com/problemset/problem/295/E" title="Link">Link</a></p><ul><li>time limit per test: 5 seconds</li><li>memory limit per test: 256 megabytes</li><li>input: standard input</li><li>output: standard output</li></ul><h2>Input</h2><p>The first line contains integer $n$ — the number of points ($1 ≤ n ≤ 10^5$). The second line contains distinct integers $x_1, x_2, \dots , x_n$ — the coordinates of points ($|x_i| ≤ 10^9$).</p><p>The third line contains integer $m$ — the number of queries ($1 ≤ m ≤ 10^5$). The next $m$ lines contain the queries. The $j$-th line first contains integer $t_j$ ($1 ≤ t_j ≤ 2$) — the query type. If $t_j = 1$, then it is followed by two integers $p_j$ and $d_j$ ($1 ≤ p_j ≤ n, |d_j| ≤ 1000$). If $t_j = 2$, then it is followed by two integers $l_j$ and $r_j$ ($- 10^9 ≤ l_j ≤ r_j ≤ 10^9$).</p><p>It is guaranteed that at any moment all the points have distinct coordinates.</p><h2>Output</h2><p>For each type 2 query print the answer on a single line. Print the answers in the order, in which the queries follow in the input.</p><p>Please, do not use the %lld specifier to read or write 64-bit integers in C++. It is preferred to use the cin, cout streams of the %I64d specifier.</p><h2>Examples</h2><p><strong>Input</strong></p><pre><code>8
+36 50 28 -75 40 -60 -95 -48
+20
+2 -61 29
+1 5 -53
+1 1 429
+1 5 130
+2 -101 -71
+2 -69 53
+1 1 404
+1 5 518
+2 -101 53
+2 50 872
+1 1 -207
+2 -99 -40
+1 7 -389
+1 6 -171
+1 2 464
+1 7 -707
+1 1 -730
+1 1 560
+2 635 644
+1 7 -677
+</code></pre><p><strong>Output</strong></p><pre><code>176
+20
+406
+1046
+1638
+156
+0
+</code></pre><h2>Translation</h2><p>题意：一维数轴上有 $n$ 个点，每个点有坐标 $x_i$，现在对这个数轴上的点有两种操作：</p><ul><li>改变某个坐标 $x_i$，将其增加 $d$（每次操作 d 不同）：</li><li>查询 $[L_i,R_i]$ 区间内的 $\sum_{x_i&gt;x_j} x_i-x_j$，也就是两两点对距离之和。</li></ul><h2>Analysis</h2><p>又双叒叕是线段树。<br>可以写个单点修改区间查询的线段树。首先由于数据规模过大，需要离散化，把操作离线下来，把所有可能出现的值（包括初始、修改和查询）全都离散。现在我们可以对于这个一维数轴建一棵线段树，对于每个点如果有则值为 1，否则为 0。那么对于每个区间（线段树的每个节点），需要存储以下三个信息：</p><ul><li>$sum_p$：这个区间中所有点坐标之和；</li><li>$tree_p$：这个区间中的 $\sum_{x_i&gt;x_j} x_i-x_j$；</li><li>$num_p$：这个区间中点的数量。<br>接下来需要考虑如何合并。对于 $sum_p$ 和 $num_p$ 都可以子树对应直接相加，只有 $tree_p$ 比较麻烦：</li></ul><p>$$tree_p=\sum_{x_i&gt;x_j} x_i-x_j = \sum_{i=1}^n \sum_{j=1}^n x_i - \sum_{i=1}^n \sum_{j=1}^n x_j$$</p><p>所以合并的时候（假设 ls 是左儿子，rs 是右儿子）：</p><p>$$tree_p=tree_{ls}+tree_{rs}+num_{ls}\ast sum_{rs}+num_{rs}\ast sum_{ls}$$</p><h2>Code</h2><p>具体写起来要考虑一(很)点(多)细节 :new_moon_with_face: 。</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;map&gt;
+
+using namespace std;
+#define int long long
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int maxn=2e5+5;
+const pair&lt;int,int&gt; zero_pair=make_pair(0,0);
+int n,m,N;
+map&lt;int,int&gt; to;
+int numto[maxn*2],sx[maxn];
+
+#define ls ((p&lt;&lt;1))
+#define rs ((p&lt;&lt;1)+1)
+#define mid (((tr-tl)&gt;&gt;1)+tl)
+
+struct sts{
+    int x,y,z;
+}zero_sts=(sts){0,0,0};
+
+namespace SegmentTree{
+    int tree[maxn*4],sum[maxn*4],num[maxn*4];
+
+    inline void change(int x,int delta,int tl,int tr,int p){
+        if (x==tl &amp;&amp; tl==tr){
+            sum[p]+=delta*numto[x];
+            num[p]+=delta;
+            return;
+        }
+        if (x&lt;=mid  ) change(x,delta,tl,mid,ls);
+        if (mid+1&lt;=x) change(x,delta,mid+1,tr,rs);
+        num[p]=num[ls]+num[rs];
+        tree[p]=tree[ls]+tree[rs]+num[ls]*sum[rs]-num[rs]*sum[ls];
+        sum[p]=sum[rs]+sum[ls];
+        // printf(&quot;[%lld,%lld]: sum=%lld tree=%lld num=%lld\n&quot;,tl,tr,sum[p],tree[p],num[p]);
+    }
+
+    inline sts query(int sl,int sr,int tl,int tr,int p){
+        if (sl&lt;=tl &amp;&amp; tr&lt;=sr){
+            // printf(&quot;tl=%lld tr=%lld sum=%lld tree=%lld num=%lld\n&quot;,tl,tr,sum[p],tree[p],num[p]);
+            return (sts){sum[p],tree[p],num[p]};
+        }
+        sts ret1=zero_sts,ret2=zero_sts;
+        if (sl&lt;=mid  ) ret1=query(sl,sr,tl,mid,ls);
+        if (mid+1&lt;=sr) ret2=query(sl,sr,mid+1,tr,rs);
+        sts ret=(sts){ret1.x+ret2.x,  ret1.y+ret2.y+ret1.z*ret2.x-ret2.z*ret1.x,  ret1.z+ret2.z};
+        // printf(&quot;query (%lld %lld %lld %lld) : sum=%lld tree=%lld num=%lld\n&quot;,sl,sr,tl,tr,ret.x,ret.y,ret.z);;
+        return ret;
+    }
+}
+
+struct opt{
+    int x,y,z;
+}opts[maxn];
+
+signed main(){
+    n=read();
+    vector&lt;int&gt; vec;vec.clear();
+    for (int i=1;i&lt;=n;i++) numto[i]=sx[i]=read(),vec.push_back(numto[i]);
+    m=read();
+    for (int i=1;i&lt;=m;i++){
+        opts[i].x=read(),opts[i].y=read(),opts[i].z=read();
+        if (opts[i].x==1) numto[opts[i].y]+=opts[i].z,vec.push_back(numto[opts[i].y]);
+        else vec.push_back(opts[i].y),vec.push_back(opts[i].z);
+    }
+    sort(vec.begin(),vec.end());unique(vec.begin(),vec.end()); N=vec.size();
+    for (int i=1;i&lt;=N;i++) numto[i]=vec[i-1],to[numto[i]]=i;//,cout&lt;&lt;i&lt;&lt;&quot; --&gt; &quot;&lt;&lt;vec[i-1]&lt;&lt;endl;
+    
+    for (int i=1;i&lt;=n;i++) SegmentTree::change(to[sx[i]],1,1,N,1);
+    for (int i=1;i&lt;=m;i++){
+        if (opts[i].x==1){
+            SegmentTree::change(to[sx[opts[i].y]],-1,1,N,1);
+            sx[opts[i].y]+=opts[i].z;
+            SegmentTree::change(to[sx[opts[i].y]],1,1,N,1);
+        } else {
+            sts ans=SegmentTree::query(to[opts[i].y],to[opts[i].z],1,N,1);
+            printf(&quot;%lld\n&quot;,ans.y);
+            // printf(&quot; - %lld %lld %lld\n&quot;,ans.x,ans.y,ans.z);
+        }
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf295e" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 295E - Yaroslav and Points 题解：又是线段树！</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

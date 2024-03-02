@@ -1,0 +1,104 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 28 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-638-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 638 Div2 T3 CandleTimerEasy 题解<br><del>每天被 XY 题困扰的我们怎么会去做 Topcoder 呢</del></p><!--more--><hr><h2>Translation</h2><p>你有很多蜡烛，每条蜡烛看成一条边，则构成了一棵树。现在你要点燃所有蜡烛，有两个条件：</p><ul><li>只能从树的叶节点开始点燃；</li><li>长度为 len[i] 的蜡烛完全燃烧需要 len[i] 的时间。如果从它的两边同时点燃，则只需要 len[i]/2 的时间。</li></ul><p>问你以不同方式从叶节点点燃蜡烛，最后所有蜡烛燃烧完需要消耗的时间有多少种。</p><p>给出数据的方式是给你三个 vector<int>：A、B 和 len，对于 i，节点 A[i] 与 B[i] 之间有一条长度为 len[i] 的蜡烛。<br>数据范围：$1 \leqslant e \leqslant 19$。</p><blockquote><ul><li>A will contain <strong>between 1 and 19 elements</strong>, inclusive.</li><li>A, B and len will contain same number of elements.</li><li>Each element in A will be between 0 and |A|, inclusive.</li><li>Each element in B will be between 0 and |A|, inclusive.</li><li>Each element in len will be between 1 and 1000, inclusive.</li><li>A, B and len will describe a tree.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li></ul></blockquote><hr><h2>Examples</h2><p>样例零：</p><pre><code>{0,1}
+{1,2}
+{10,1}</code></pre><p>Returns: <code>2</code></p><p>这是一条链，可以看成一条长度为 11 的长蜡烛，从头、尾单独点燃时间 11，同时点燃时间 5.5，一共 2 种。</p><blockquote>This tree looks the same as a single candle of length 11. If we light it on one end, we will measure the time 11. If we light it on both ends, we will measure the time 5.5.</blockquote><p>样例一：</p><pre><code>{0,0,0}
+{1,2,3}
+{1,1,1}</code></pre><p>Returns: <code>2</code></p><p>这次有 3 个地方可以点燃。如果全部同时点燃，需要消耗 1 的时间，否则消耗 2。</p><blockquote>This time we have 3 ends. If we ignite all of them the time is 1, otherwise the time is 2.</blockquote><p>样例二：</p><pre><code>{0,0,0}
+{1,2,3}
+{1,2,3}</code></pre><p>Returns: 4</p><blockquote>We can get 4 different outcomes: 2.5, 3, 4, 5.</blockquote><hr><h2>Original</h2><blockquote>You have a lot of candles. The candles burn at a uniform rate: if you ignite a candle of length L, it will burn completely in L units of time. You can also ignite a candle at both ends, which makes it burn twice as fast.   You have arranged some candles into the shape of a tree. You want to use the tree to measure time. At the beginning, you will ingite some leaves of the tree (all at the same time). Then you will just wait and watch the flames spread across the entire tree. (Whenever a flame reaches an inner node of the tree, it spreads to all branches that meet at that node.) Note that you are not allowed to light new flames during the process. The time you will measure is the time between the moment when you lighted the fire(s) and the moment when the last part of the tree finished burning.   You are given a description of the tree as three vector <int>s: a, b, and len, with N elements each. The nodes of the tree are numbered 0 through N, inclusive. For each valid i, there is a candle between the nodes a[i] and b[i] with length len[i].   Compute and return the number of different times you can measure when following the above procedure.</blockquote><hr><p>因为数据非常非常非常小，可以考虑暴枚。暴力枚举每个叶节点点燃或不点燃，则复杂度是 $\Theta (2^{f})$（f 代表叶节点数量）。接下来考虑的就是根据某个叶节点的点集来算出燃烧时间。</p><p>因为数据非常非常非常小，可以先直接来一趟 Floyd 算出两两叶节点之间蜡烛长度。假设 <code>t[i]</code> 表示烧到第 i 个节点的最早时间，那么接下来：对所有非点燃处，寻找离它最近的点燃处，两者之间距离即是烧到这个点的最早时间；对所有点燃处，<code>t[i]=0</code>。<br>但是这不够。你以为处理所有“点燃处”时间的最大值 <code>max(t[i])</code> 就是当前答案吗？其实即使考虑完所有的点，<strong>仍然会有些边没有被考虑到</strong>。我们要再枚举所有的边，这时候每条边两个端点的最早烧到的时间都已经得出，我们只需要考虑根据这个算出<strong>这条边烧完的时间</strong>。<br>如何根据这条边两个端点 $A_i$ 和 $B_i$ 最早被烧到的时间，算出这条边被烧完的时间？两个端点的最早烧到时间可以看成有先后顺序的，那么分为两种情况：</p><ul><li>两端点中先烧到的一个，直接把整根蜡烛烧掉了，另一端的小火苗根本没有机会，则时间是：$min(t_{A_i},t_{B_i})+len_i$；</li><li>两端点中一个先开始烧这根蜡烛，烧了一会儿另外一端开始烧。那么较晚的一端开始烧的时候，剩下蜡烛长度是：$len_i-|t_{A_i}-t_{B_i}|$，这段只需要一半的时间；其余的一段则是需要完整的时间。烧完这根蜡烛总时间就是：<code>max(t[A[i]],t[B[i]])+(len[i]-Abs(t[A[i]]-t[B[i]]))/2.0)</code>。</li></ul><p>因为数据非常非常非常小，而且时限 2s，即使上述方法 $\Theta (f^2\ast 2^f)$ 完成，也不会超时……</p><hr><h2>Codes</h2><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define CLEAR(x) memset(x,0,sizeof(x))
+#define CLEAR_MAX(x) memset(x,63,sizeof(x))
+using namespace std;
+const int maxn=25,INF=1e8;
+int n,s,ind[maxn];
+int dst[maxn][maxn];
+double t[maxn];
+vector &lt;double&gt; vec;
+
+class CandleTimerEasy {
+public:
+    int differentTime( vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; len );
+};
+inline void init(){
+    vec.clear();CLEAR(ind);CLEAR_MAX(dst);
+}
+inline void Floyd(){
+    for (int i=0;i&lt;n;i++) dst[i][i]=0;
+    for (int k=0;k&lt;n;k++)
+    for (int i=0;i&lt;n;i++) if (i!=k)
+    for (int j=0;j&lt;n;j++) if ((j!=k)&amp;&amp;(j!=i))
+        dst[i][j]=dst[j][i]=min(dst[i][j],dst[i][k]+dst[k][j]);
+}
+inline double Abs(double x) {return x&lt;0?-x:x;}
+inline double Get(int x,vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; len){
+    double ret=0.0;
+    for (int i=0;i&lt;n;i++) if ((ind[i]==1)&amp;&amp;(x&amp;(1&lt;&lt;i))) t[i]=0; else {
+        t[i]=(double)INF;
+        for (int j=0;j&lt;n;j++) if ((ind[j]==1)&amp;&amp;(x&amp;(1&lt;&lt;j))&amp;&amp;(i!=j)) t[i]=min(t[i],(double)dst[i][j]);
+        ret=max(ret,t[i]);
+    }
+    for (int i=0;i&lt;n-1;i++) ret=max(ret,min(min(t[A[i]],t[B[i]])+len[i],max(t[A[i]],t[B[i]])+(len[i]-Abs(t[A[i]]-t[B[i]]))/2.0));
+    return ret;
+}
+int CandleTimerEasy::differentTime(vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; len) {
+    init();
+    n=A.size()+1;s=1&lt;&lt;n;
+    for (int i=0;i&lt;n-1;i++){
+        dst[A[i]][B[i]]=dst[B[i]][A[i]]=len[i];
+        ind[A[i]]++;ind[B[i]]++;
+    }
+    Floyd();
+    for (int i=1;i&lt;s;i++) vec.push_back(Get(i,A,B,len));
+    sort(vec.begin(),vec.end());
+    int ans=0;
+    // for (int i=0;i&lt;vec.size();i++) printf(&quot;ANS: %.3lf\n&quot;,vec[i]);
+    for (int i=0;i&lt;vec.size();i++) if (((i==0)||(vec[i]!=vec[i-1]))&amp;&amp;(vec[i]&gt;0)&amp;&amp;(vec[i]&lt;INF)) ans++;//,printf(&quot;%.2f\n&quot;,vec[i]);
+    return ans;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-638-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

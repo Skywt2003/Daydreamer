@@ -1,0 +1,147 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>斜率优化小结</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 斜率优化小结</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 斜率优化小结</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>斜率优化小结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 06 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/slope" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>在一维线性动态规划里，我们经常见到形如 $f(i)=min/max(f(j)+c_i)$（其实可以看成 $f(i)=min/max(a_i+b_j)$ ）这样形式的转移方程。朴素做法是 $\Theta (N^2)$。显然这样的形式可以用单调队列维护，优化到 $\Theta (N)$。但是如果遇到 $f(i)=min/max(a_i\ast b_j+c_i+d_j)$ 这样的，似乎用单调队列就难以维护了……因为 $a_i\ast b_j$ 既与 $i$ 有关，又与 $j$ 有关。这时候就要用到另一种优化方式：斜率优化。</p><!--more--><p>[notice]本文含有大量 KaTeX 公式，请确保浏览器资磁。<br>可能是我所有博客里公式最多的一篇，在编辑本文的时候，编辑器已经卡得不成样子了……[/notice]</p><h2>概述</h2><p>下面我们以 $f(i)=a_i\ast b_j+c_i+d_j$ 这个状态转移方程为例讲讲通用做法（如果不想看可以直接看例题）。</p><p>$f(i)=a_i\ast b_j+c_i+d_j$ 这个状态转移方程，既和 $i$ 有关又和 $j$ 有关。简单来说，这个方程通过适当的转换可以看成一条直线，一般方法是令 $x=b_j,y=d_j$，通过变形就可以得到：</p><pre><code class="lang-math">y=-a_i x+(f(i)-c_i)</code></pre><p>可以看到这就是 $y=kx+b$ 的形式，也就是说这个等式表示的是一条斜率为 $-a_i$ 并且截距为 $f(i)-c$ 的直线。既然要 $f(i)$ 尽量小，自然要使这条直线截距尽量小。现在斜率确定了，那么我们要找之前的可以使截距最小的 $(b_j,d_j)$。通过一个单调队列维护下凸壳，我们可以在 $\Theta (1)$ 时间内做到这一点。具体方法下面会讲。</p><h2>例题</h2><h3>HNOI2008 玩具装箱TOY</h3><p>洛谷题目链接：<a href="https://www.luogu.org/problemnew/show/P3195" title="HNOI2008 玩具装箱TOY">HNOI2008 玩具装箱TOY</a></p><h4>题目描述</h4><p>P教授要去看奥运，但是他舍不下他的玩具，于是他决定把所有的玩具运到北京。他使用自己的压缩器进行压缩，其可以将任意物品变成一堆，再放到一种特殊的一维容器中。P教授有编号为 $1\cdots N$ 的 $N$ 件玩具，第 $i$ 件玩具经过压缩后变成一维长度为 $C_i$ .为了方便整理，P教授要求在一个一维容器中的玩具编号是连续的。同时如果一个一维容器中有多个玩具，那么两件玩具之间要加入一个单位长度的填充物，形式地说如果将第 $i$ 件玩具到第 $j$ 个玩具放到一个容器中，那么容器的长度将为 $x=j-i+\sum\limits_{k=i}^{j}C_k$ 制作容器的费用与容器的长度有关，根据教授研究，如果容器长度为 $x$ ,其制作费用为 $(X-L)^2$ .其中 $L$ 是一个常量。P教授不关心容器的数目，他可以制作出任意长度的容器，甚至超过 $L$ 。但他希望费用最小.。</p><p>数据范围：$1\leqslant N\leqslant 50000,1\leqslant L,C_i\leqslant 10^7$。</p><h4>分析</h4><p>这是一道斜率优化的入门题，非常典型。</p><p>首先根据题目可以推出一维动态规划的状态转移：</p><pre><code class="lang-math">f(i)=f(j)+(i-j+\sum_{k=j}^{i}(C_k)-L-1)^2</code></pre><p>到这里可以 $\Theta(N^2)$ 做。接下来前缀和累计一下，得到：</p><pre><code class="lang-math">f(i)=f(j)+(i+sum_i-j-sum_{j-1}-L-1)^2</code></pre><p>方便起见，令 $A_i=i+sum_i,B_i=i+sum_{i-1}+L+1$，原式又变成：</p><pre><code class="lang-math">f(i)=f(j)+(A_i-B_j)^2=f(j)+2A_iB_j+A_i^2+B_j^2 \\
+2A_iB_j+A_i^2+f(i)=f(j)+B_j^2</code></pre><p>现在我们令 $x=B_j,y=f(j)+B_j^2$，那么得到：</p><pre><code class="lang-math">y=2A_ix+(f(i)+A_i^2)</code></pre><p>可以看到这就是 $y=kx+b$ 的直线表达式形式。我们可以把它看做一条经过点 $(B_j,f(j)+B_j^2)$ 并且斜率为 $2A_i$ 的直线。那么现在我们要让 $f(i)$ 尽量小，也就是这条直线在 $y$ 轴上的截距尽量小。<br>想象在平面直角坐标系里这样斜率固定的这样一条直线，我们只需要一直平移平移平移，第一个与这条直线相交的 $(B_j,f(j)+B_j^2)$ 的点就是满足截距最小的点。</p><p><img src="https://skywt.cn/wp-content/uploads/xielv1.png" alt="" title=""></p><p>在上图中，A 点既是当前最合适的点。但是怎么才能 $\Theta (1)$ 找到这个点呢？<br>其实可以用单调队列维护一个下凸壳，如下图：</p><p><img src="https://skywt.cn/wp-content/uploads/xielv2.png" alt="" title=""></p><p>我们只对这个凸壳上的点感兴趣。那么具体怎么维护这样一个凸壳呢？我们维护一个单调队列，对于当前的 $i$，我们先把 head 开始不符合的点都删掉，删到 head 为最优为止，然后通过 head 算出当前答案；然后把不符合条件的 tail 都搞掉，再加入当前的点。很类似计算几何里求凸包。<br>具体实现，假设 $slope(i,j)$ 代表 $i,j$ 点连边的斜率：</p><p>删除头部的过程中，如果 $slope(que_{head},que_{head+1})&lt;2\ast A_i$ 则舍弃头，$head$++；<br>如果不能推头了，用当前 $head$ 修正 $f(i)$；<br>删尾部，如果 $slope(que_{tail-1},que_{tail}&lt; slope(que_{tail-1},i))$ 就说明尾部没有当前这个点优秀，删尾部，删到不能删为止。</p><p>OK 了。复杂度从 $\Theta (N^2)$ 降到了 $\Theta (N)$。</p><h4>代码</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#define CLEAR(_) memset(_,0,sizeof(_))
+#define sqr(_) ((_)*(_))
+using namespace std;
+
+const int maxn=50005;
+int n;
+long long f[maxn],sum[maxn],a[maxn],b[maxn],L;
+
+struct Point{
+    double x,y;
+    int id;
+};
+
+int head=0,tail=0;
+Point que[maxn];
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+inline double GetK(Point p1,Point p2){
+    return (double)(p1.y-p2.y)/(p1.x-p2.x);
+}
+
+int main(){
+    n=read();L=read();
+    b[0]=L+1;
+    for (int i=1;i&lt;=n;i++){
+        int x=read();
+        sum[i]=sum[i-1]+(long long)x;
+        a[i]=sum[i]+i;
+        b[i]=sum[i]+i+(long long)L+1.0;
+    }
+    head=tail=1;que[1]=(Point){b[0],sqr(b[0]),0};
+    for (int i=1;i&lt;=n;i++){
+        while ((head&lt;tail)&amp;&amp;(GetK(que[head],que[head+1])&lt;2.0*(double)a[i])) head++;
+        int j=que[head].id;
+        f[i]=f[j]+sqr(a[i]-b[j]);
+        Point now=(Point){(double)b[i],(double)f[i]+sqr(b[i]),i};
+        while ((head&lt;tail)&amp;&amp;(GetK(now,que[tail-1])&lt;GetK(que[tail-1],que[tail]))) tail--;
+        que[++tail]=now;
+    }
+    printf(&quot;%lld\n&quot;,f[n]);
+    return 0;
+}</code></pre><h3>ZJOI2007 仓库建设</h3><p>洛谷题目链接：<a href="https://www.luogu.org/problemnew/show/P2120" title="ZJOI2007 仓库建设">ZJOI2007 仓库建设</a></p><p>L公司有N个工厂，由高到底分布在一座山上。</p><p>工厂1在山顶，工厂N在山脚。 由于这座山处于高原内陆地区（干燥少雨），L公司一般把产品直接堆放在露天，以节省费用。</p><p>突然有一天，L公司的总裁L先生接到气象部门的电话，被告知三天之后将有一场暴雨，于是L先生决定紧急在某些工厂建立一些仓库以免产品被淋坏。</p><p>由于地形的不同，在不同工厂建立仓库的费用可能是不同的。第i个工厂目前已有成品Pi件，在第i个工厂位置建立仓库的费用是Ci。</p><p>对于没有建立仓库的工厂，其产品应被运往其他的仓库进行储藏，而由于L公司产品的对外销售处设置在山脚的工厂N，故产品只能往山下运（即只能运往编号更大的工厂的仓库），当然运送产品也是需要费用的，假设一件产品运送1个单位距离的费用是1。</p><p>假设建立的仓库容量都都是足够大的，可以容下所有的产品。你将得到以下数据：</p><ul><li>工厂i距离工厂1的距离Xi（其中X1=0）;</li><li>工厂i目前已有成品数量Pi;</li><li>在工厂i建立仓库的费用Ci;</li></ul><p>请你帮助L公司寻找一个仓库建设的方案，使得总的费用（建造费用+运输费用）最小。</p><h4>分析</h4><p>显然是动态规划的思想，根据题意不难推出这个转移方程：</p><pre><code class="lang-math">f(i)=f(j)+c_i+\sum_{k=j+1}^{i} P_k\ast dist(k,i)</code></pre><p>一样的套路。<br>我们先定义几个量：</p><ul><li>$d_i$：$x_i$ 的前缀和；</li><li>$sump_i$：$P_i$ 的前缀和；</li><li>$summ_i$：$P_i\ast d_{i-1}$ 的前缀和（YYK 说这是“前缀积”，我认为是不合适的！！！）。</li></ul><p>因为 $dist(k,i)=d_i-d_{k-1}$，我们得到：</p><pre><code class="lang-math">\sum_{k=j+1}^{i} P_k\ast dist(k,i)=\sum_{k=j+1}^{i} P_k(d_i-d_{k-1})=\sum_{k=j+1}^{i} P_kd_i-P_kd_{k-1}</code></pre><p>展开得到：</p><pre><code class="lang-math">d_i(P_{j+1}P_{j+2}\dots P_{i})-(P_{j+1}d_j+P_{j+2}d_{j+1}+\dots+P_i d_{i-1})</code></pre><p>前缀和派上用场了，原式可以变形为：</p><pre><code class="lang-math">f(i)=f(j)+c_i+d_i(sump_i-sump_j)-(summ_i-summ_j)</code></pre><p>整理得到：</p><pre><code class="lang-math">f(i)=c_i+d_i sump_i-summ_i-d_i sump_j+summ_j+f(j)</code></pre><p>为了方便表述，我们令 $A_i=c_i+d_i sump_i-summ_i,B_i=summ_i+f(i)$：</p><pre><code class="lang-math">f(i)=A_i+B_j-d_i sump_j</code></pre><p>然后令 $x=sump_j,y=B_j$ 那么原式化为：</p><pre><code class="lang-math">f(i)=A_i+y-d_ix \iff y=d_ix+f(i)-A_i</code></pre><p>大功告成了！又是和上面那题一样的题目了。</p><h4>代码</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+using namespace std;
+const int maxn=1000005;
+
+int n;
+long long d[maxn],c[maxn],p[maxn];
+long long f[maxn],sump[maxn],summ[maxn];
+long long a[maxn],b[maxn];
+int head=0,tail=0,que[maxn];
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+inline double X(int i){return (double)sump[i];}
+inline double Y(int i){return (double)b[i];}
+
+inline double slope(int i,int j){
+    return (double)(Y(i)-Y(j))/(X(i)-X(j));
+}
+
+int main(){
+    n=read();
+    for (int i=1;i&lt;=n;i++){
+        d[i]=read();p[i]=read();c[i]=read();
+        sump[i]=sump[i-1]+p[i];
+        summ[i]=summ[i-1]+p[i]*d[i];
+    }
+    for (int i=1;i&lt;=n;i++) a[i]=c[i]+d[i]*sump[i]-summ[i],f[i]=c[i]+d[i]*sump[i]-summ[i];
+    head=tail=1;
+    for (int i=1;i&lt;=n;i++){
+        while ((head&lt;tail)&amp;&amp;(slope(que[head],que[head+1])&lt;d[i])) head++;
+        f[i]=min(f[i],a[i]+b[que[head]]-d[i]*sump[que[head]]);
+        b[i]=summ[i]+f[i];
+        while ((head&lt;tail)&amp;&amp;(slope(que[tail-1],que[tail])&gt;slope(que[tail-1],i))) tail--;
+        que[++tail]=i;
+    }
+    printf(&quot;%lld\n&quot;,f[n]);
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/slope" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 斜率优化小结</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

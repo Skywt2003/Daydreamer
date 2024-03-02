@@ -1,0 +1,381 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CSAPP 2e Datalab 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CSAPP 2e Datalab 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CSAPP 2e Datalab 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CSAPP 2e Datalab 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 03 月 20 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 4 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/csapp-2e-datalab" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>CSAPP 是 CMU 享誉全球的课程，尤其以其 lab 难度之高著称。这是课程的第一个 lab：datalab，为了让我们熟练掌握计算机中的数据存储而设计。</p><!--more--><h2>前言：什么是 cheating</h2><p>之前在 B 站上 CSAPP 第一节课，教授就说了在 CMU，作弊的定义是什么，说实话有点 shocked：</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/03/708355136.png" alt="Cheating: Description" title="Cheating: Description"></p><p><img src="https://blog.skywt.cn/usr/uploads/2023/03/3491785294.png" alt="Cheating: Consequence" title="Cheating: Consequence"></p><p>CMU CSAPP 的规定是，完成 lab 的时候不可以上网查资料，只要上网搜索了，不管有没有找结果，搜索的这个过程就算作 cheating（这只是课程实验！）。<br>一个学期有 25 人因为 cheating 受到惩罚，而且后果十分严重。看看我们的 HNU，至今没听说过有谁因为作弊而受到处分……</p><p>按照这个要求，lab 做得真的非常痛苦。有些题目要想很久还想不出来。而且说实话还是有一两个题目不会做，去网上看了别人的 solution。但是这样做完的 datalab，相比直接上网一通搜索抄来的代码，确实更加有成就感，也对自己的「二进制思维」能力有更大的锻炼。这也正是这几个 lab 的意义所在吧。</p><p>所以，如果你在做 datalab 而上网搜索看到了这里，在继续看下去之前，不妨再继续独立思考一下吧。</p><h2>本实验的一些坑</h2><ul><li><code>dlc</code> 这个语法检查器按照 C89/C90（ANSI C）的标准，这个标准规定<strong>所有局部变量都要在代码块的开头定义</strong>。所以如果在函数中途定义一个局部变量，虽然用 <code>make</code> 可以正常编译（现在的编译器很少还用 ANSI C 标准），但是用 <code>dlc</code> 检查则会提示 <code>parse error</code> 的错误。</li><li>实验环境必须是旧版本的 Linux 环境（如 Ubuntu 12.04 LTS）。使用较新的发行版可能会导致无法通过 fitsBits 这一关。（目前暂不清楚是编译器还是内核等的问题，据说是本 lab 本身的一个 bug）</li></ul><h2>用 docker 创建运行环境</h2><p>在 x86 的主机上使用 docker 创建 Ubuntu 12.04 LTS 的容器，指定将容器内 <code>/home</code> 目录映射到容器外的目录，然后进入容器，安装相关软件：</p><pre><code class="lang-bash"># 将容器内 /home 映射到容器外 /root/Lab/HNU-CSAPP/ex2/docker-env/home，这两个目录也可以自己指定
+docker run -itd --name datalab -v /root/Lab/HNU-CSAPP/ex2/docker-env/home:/home ubuntu:12.04
+# 进入容器内的 shell
+docker exec -it datalab /bin/bash
+# 12.04 年代久远，需要将 sources 里 archive.ubuntu.com 改为 old-reloease.ubuntu.com 才能 apt-get update
+sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+# 获取软件包列表
+apt-get update
+# 安装本实验必要的软件包
+apt-get install gcc make gcc-multilib</code></pre><p>回到容器外，将文件移进指定的目录（<code>/root/Lab/HNU-CSAPP/ex2/docker-env/home</code>），编辑好后再进入容器测试。<br>可以用 tmux 半屏开 vim 写代码，半屏进容器终端测试。</p><p>注意如果在容器外测试过了，进入容器要 <code>make clean</code> 再重新 <code>make</code>，因为不同环境编译生成的二进制可执行文件可能不兼容。</p><h2>bitAnd</h2><p>用或和非实现与，用直接取反的方法即可：x and y = not ((not x) or (not y))。</p><h2>getByte</h2><p>很显然答案是 <code>(x &gt;&gt; n*8) &amp; 0xFF</code>。但是不允许使用乘法，如何获得 <code>n*8</code> 呢？<br>答案是直接用加法。8 个 n 相加会超过 ops 数量限制，我们可以先加出 2n、4n。</p><h2>logicalShift</h2><p>要求实现 logical shift，因为默认的 shift 是 arithmetic shift。本质的区别在于负数的 shr，前者左边出来的是 0 而右者出来的是 1。</p><p>很容易想到可以 and 上一个 keeper，这个 keeper 的值是 <code>0000111...11</code>，右边的 1 就是要保留的那些位。这样可以去掉左边产生的 1。<br>如何得到这个 keeper？显然 keeper = <code>0x7FFFFFFF</code> &gt;&gt; (n-1)。</p><p>有两个问题。首先是如何产生 <code>0x7FFFFFFF</code> 这个数字呢？因为游戏规则规定立即数赋值不能超过 2 Byte。答案是 <code>~(1 &lt;&lt; 31)</code>。</p><p>接下来是如何处理 n = 0 的情况。好在这关允许我们用 <code>!</code> 运算符，可以实现类似选择赋值的语句。<br>具体来说，我们需要这样一个 flag 变量，当 n 为 0 时它是 <code>0x00000000</code>，当 n 非 0 时它是 <code>0xFFFFFFFF</code>。<br>试试用 <code>!</code> 运算符，直接对 n 取逻辑非 notn，这样 n 为 0 时我们得到 1，n 非 0 时我们得到 0。<br>很显然，flag = notn - 1。<br>现在我们分别计算出 n 为 0 和不为 0 的两种情况 result1 和 result2，则最后只需要返回 <code>((!flag) &amp; result1) | (flag &amp; result2)</code>。是不是有点像数电里的「多路复用」呢。<br><strong>这种对 n = 0 特判的方法，在后面的关卡中会多次遇到。</strong></p><p>最后，这关不能用 <code>-</code> 减法，如何实现 -1 呢？直接用加上 <code>0xFFFFFFFF</code> 就行啦。</p><h2>bitCount</h2><p>（这题有点难想 😨）</p><p>要求统计二进制中 1 的个数（就是 popcount）。其实对于每一位是 0 是 1 我们都可以通过 and 得知，最难的就是如何累加。<br>累加的部分可以考虑分治，要累加 32 位的结果，我们假设得到了两个 16 位的结果，只考虑这两个如何相加；要计算 16 位的结果只考虑两个 8 位的结果如何相加，以此类推。<br>那么两个 16 位的结果如何相加呢？我们假设两个结果分别存储在 32 位 int 的高 16 位和低 16 位，只要把两个部分取出来，前者右移 16 位相加即可。下面的也类似。</p><p>除此之外，题目要求使用的立即数大小不超过 0xFF，需要用一些 tricky 的手段获得我们要的立即数，以免超出符号数量限制。可以参阅代码。</p><h2>bang</h2><p>要求计算逻辑反，也就是我们要返回这样一个值，当 x 为全 0 时其为 1，x 任何一位为 1 时其为 0。<br>理所当然地可以想到应该把 x 每一位 or 起来（或者把 ~x 每一位 and 起来），结果放在最低位，得到 1 或 0。<br>然而如果真的取出 32 位每一位进行 or，ops 会超过限制。可以用分治的方法，先将 [0,15] 和 [16,31] 这两段按位处理放入低的一段，再处理 [0,7] 和 [8,15]，以此类推，可以在 ops 数量限制内完成。</p><h2>tmin</h2><p>返回最小的 int，就是 1 &lt;&lt; 31。</p><h2>fitsBits</h2><p>第一种方法是一开始想的奇怪方法，至少需要用到 19 个 ops，超过题目限制，其实不能通过。</p><p>要我们返回 0 或 1 表示 x 是否能被 n 位补码表示，实际上就是返回是否 $-2^{n-1} \le x \le 2^{n-1}-1$。<br>也就是 $-2^{n-1} \le x \lt 0$ 或 $0 \le x \le 2^{n-1}-1$。<br>再变换一下，就是：$0 \le x+2^{n-1} &lt; 2^{n-1}$ 或 $-2^{n-1} \le x-2^{n-1} \le -1$。<br>也就是如果 $x &lt; 0$ 则要满足 $x+2^{n-1} \ge 0$；如果 $x \ge 0$ 则要满足 $x-2^{n-1} \le -1$。依然根据 x 的符号位选择一个结果返回。</p><p>第二种方法则是可以通过的正解：</p><p>根据算数移位的性质。假设给我们一个 n 位补码表示的数，我们直接将其左移至与 32 位 int 符号位对齐，然后再移回去，得到的结果应该是和原来一样的。据此即可判断。</p><p><strong>⚠️ 这题使用较新版本的环境测试是无法通过的</strong>，目前暂不清楚与什么因素有关。在 Ubuntu 12.04 LTS x86_64 中测试可以通过。详见开头「用 docker 创建运行环境」。</p><h2>divpwr2</h2><p>要求返回 $\frac{x}{2^n}$，向 0 取整。<br>对于正数当然就是 &gt;&gt; n 即可，对于负数就有些复杂，因为 &gt;&gt; 运算默认向下取整，需要进行修正。<br>对于负数，列表可以发现，每个数字在计算之前要加上 $2^n-1$ 的偏移才能得到正确答案。<br>因为出现了 n - 1，所以还要特别考虑 n = 0 的情况。使用 logicalShift 一样的「多路复用」方法即可。</p><h2>negate</h2><p>取负数，就是 (~x)+1，很简单。</p><h2>isPositive</h2><p>根据符号位，可以轻易判断出这个数是否 &gt;= 0。既然本题要求判断 &gt; 0，也就是 0 是特殊情况，依然可以根据前面的方法特殊判断。</p><h2>isLessOrEqual</h2><p>判断 $x \le y$，不能直接判断 $y-x \ge 0$，因为会 overflow。<br>可以发现如果 x 和 y 同号，肯定不会 overflow。所以只需要对异号的情况进行判断。<br>为了更加清晰，列出一个真值表：</p><table><thead><tr><th>x 符号位</th><th>y 符号位</th><th>返回值</th></tr></thead><tbody><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>y-x 的符号位取反</td></tr><tr><td>1</td><td>1</td><td>y-x 的符号位取反</td></tr></tbody></table><p>依然是个分类讨论（「多路复用」）的思路，根据 x xor y 的值返回答案，如果为 1 答案是 x 的符号位，如果为 0 答案为 y-x 的符号位取反。</p><h2>ilog2</h2><p>要求返回 log2(x) 向下取整。很显然答案就是 x 的二进制中最左边的 1（最高位）在从右往左第几位。<br>首先通过将 x 按位或 x &gt;&gt; k 的手段（k 分别等于 1、2、4……），可以将 x = 0001xxxxx 变为 x = 000111111，也就是最高位之后全都变成 1。然后可以做一遍之前的 bitCount，将结果减去 1 即可。</p><h2>float_neg</h2><p>这部分终于可以用 if 了。只要判断 NaN 的情况原封不动返回，否则修改符号位返回就行。<br>对符号位取反可以对 <code>1&lt;&lt;31</code> 取异或。<br>可以构造两个变量 get_exp 和 get_frac 分别用于和一个数按位与，从而取出这个数中的 exp 或 frac 片段。exp 就是 <code>0xFF</code> &lt;&lt; 23，frac 则是 ~exp 再对符号位取反。</p><h2>float_i2f</h2><p>要将提供的 int 值 x 转换为 float。<br>int 和 float 关于负数的概念是截然不同的，所以我们必须对 int 的绝对值进行处理。所以首先要对于 x &lt; 0 的情况设置符号位后直接取相反数。（此时注意特判 tmin 的情况！它没有能由 int 表示的相反数）设置好 sign 后，只要处理 exp 和 frac 即可。<br>假设 x 是个 n 位的二进制数，exp 就等于 n - 1 + bias。<br>frac 就是右边的 n - 1 位（左对齐）。要考虑进位问题。将 frac 被截掉的部分拿出来（最多有 8 位），如果「大于 0x80」或者「等于 0x80 且frac 末位为 1」（round to even 的情况）则要进一位，frac 连续进位。注意到 frac 有可能进位进到 exp 里，但是我们的代码里不用判断，因为 frac 最高位之前就是 exp 最低位。（在这里是不是再次感到了 IEEE 浮点数设计的精妙？）<br>最后注意这题 0 也要特判，因为 0 属于 denomilized。</p><p>这题写起来很容易超过 ops 数量限制。需要省着点用。</p><h2>float_twice</h2><p>将给出的 float 翻两倍，要分别考虑 nomalized、denomolized 和 special 的情况。<br>nomolized 很简单，直接修改 exp 部分即可。注意可能有 nomolized 进入 infinity 的情况。<br>denomolized 只需要修改 frac 即可。注意可能有从 denomolized 进入 nomolized 的情况，要修改 exp。<br>最后 infinity、NaN 这两种值都原样返回，需要特判。</p><h2>完整代码参考</h2><pre><code class="lang-cpp">/* 
+ * bitAnd - x&amp;y using only ~ and | 
+ *   Example: bitAnd(6, 5) = 4
+ *   Legal ops: ~ |
+ *   Max ops: 8
+ *   Rating: 1
+ */
+int bitAnd(int x, int y) {
+  return ~((~x) | (~y));
+}
+/* 
+ * getByte - Extract byte n from word x
+ *   Bytes numbered from 0 (LSB) to 3 (MSB)
+ *   Examples: getByte(0x12345678,1) = 0x56
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 6
+ *   Rating: 2
+ */
+int getByte(int x, int n) {
+  int n2 = n + n;
+  int n4 = n2 + n2;
+  int n8 = n4 + n4;
+  return (x &gt;&gt; n8) &amp; 0xFF;
+}
+/* 
+ * logicalShift - shift x to the right by n, using a logical shift
+ *   Can assume that 0 &lt;= n &lt;= 31
+ *   Examples: logicalShift(0x87654321,4) = 0x08765432
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 20
+ *   Rating: 3 
+ */
+int logicalShift(int x, int n) {
+  int sub1 = ~0;
+  int keeper = ~(1 &lt;&lt; 31);
+  int result = (x &gt;&gt; n) &amp; (keeper &gt;&gt; (n + sub1));
+  int notn = !n;
+  int flag = notn + sub1;
+ return ((~flag) &amp; x) | (flag &amp; result);
+}
+/*
+ * bitCount - returns count of number of 1's in word
+ *   Examples: bitCount(5) = 2, bitCount(7) = 3
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 40
+ *   Rating: 4
+ */
+int bitCount(int x) {
+  int ret = x;
+  int mask = 0;
+  // 0x55555555
+  mask = 0x55 + (0x55 &lt;&lt; 8);
+  mask = mask + (mask &lt;&lt; 16);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;1) &amp; mask);
+  // 0x33333333
+  mask = 0x33 + (0x33 &lt;&lt; 8);
+  mask = mask + (mask &lt;&lt; 16);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;2) &amp; mask);
+  // 0x0f0f0f0f
+  mask = 0x0f + (0x0f &lt;&lt; 8) + (0x0f &lt;&lt; 16) + (0x0f &lt;&lt; 24);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;4) &amp; mask);
+  // 0x00ff00ff
+  mask = 0xff + (0xff &lt;&lt; 16);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;8) &amp; mask);
+  // 0x0000ffff
+  mask = 0xff + (0xff &lt;&lt; 8);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;16) &amp; mask);
+  return ret;
+}
+/* 
+ * bang - Compute !x without using !
+ *   Examples: bang(3) = 0, bang(0) = 1
+ *   Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 12
+ *   Rating: 4 
+ */
+int bang(int x) {
+  int ret = ~x;
+  ret = ret &amp; (ret &gt;&gt; 16);
+  ret = ret &amp; (ret &gt;&gt; 8);
+  ret = ret &amp; (ret &gt;&gt; 4);
+  ret = ret &amp; (ret &gt;&gt; 2);
+  ret = ret &amp; (ret &gt;&gt; 1);
+  return ret&amp;1;
+}
+/* 
+ * tmin - return minimum two's complement integer 
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 4
+ *   Rating: 1
+ */
+int tmin(void) {
+  return 1 &lt;&lt; 31;
+}
+/* 
+ * fitsBits - return 1 if x can be represented as an 
+ *  n-bit, two's complement integer.
+ *   1 &lt;= n &lt;= 32
+ *   Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 15
+ *   Rating: 2
+ */
+int fitsBits(int x, int n) {
+//  int sub1 = ~0;
+//  int get_sign = 1&lt;&lt;31;
+//  int sign = x &amp; get_sign;
+//  int not_sign = !sign;
+//  int power = 1 &lt;&lt; (n + sub1);
+//  int sub_power = (~power) + 1;
+//  int result1 = !(((x + power) &amp; get_sign) &gt;&gt; 31);
+//  int result2 = ((x + sub_power) &amp; get_sign) &gt;&gt; 31;
+//  sign = !not_sign;
+//  return (sign &amp; result1) | (not_sign &amp; result2);
+  int subn = (~n) + 1;
+  int to_shl = 32 + subn;
+  int x_fix = (x &lt;&lt; to_shl) &gt;&gt; to_shl;
+  int not_ans = x ^ x_fix;
+  return !not_ans;
+}
+/* 
+ * divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30
+ *  Round toward zero
+ *   Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 15
+ *   Rating: 2
+ */
+int divpwr2(int x, int n) {
+    // Round to zero is the difficult part
+    int sub1 = ~0;
+    int super2sub1 = (1&lt;&lt;n) + sub1;
+    int notn = !n;
+    int flag = notn + sub1;
+    int result = (x + ((x &gt;&gt; 31) &amp; super2sub1)) &gt;&gt; n;
+    return ((~flag) &amp; x) | (flag &amp; result);
+}
+/* 
+ * negate - return -x 
+ *   Example: negate(1) = -1.
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 5
+ *   Rating: 2
+ */
+int negate(int x) {
+  return (~x) + 1;
+}
+/* 
+ * isPositive - return 1 if x &gt; 0, return 0 otherwise 
+ *   Example: isPositive(-1) = 0.
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 8
+ *   Rating: 3
+ */
+int isPositive(int x) {
+  int sub1 = ~0;
+  int notx = !x;
+  int flag = notx + sub1;
+  int result = !(x &gt;&gt; 31);
+  return flag &amp; result;
+  // return ((~flag) &amp; 0) | (flag &amp; result);
+  // the first part isn't necessary
+}
+/* 
+ * isLessOrEqual - if x &lt;= y  then return 1, else return 0 
+ *   Example: isLessOrEqual(4,5) = 1.
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 24
+ *   Rating: 3
+ */
+int isLessOrEqual(int x, int y) {
+  int xxory = (x &gt;&gt; 31) ^ (y &gt;&gt; 31);
+  int subx = (~x) + 1;
+  int ysubx = y + subx;
+  int result_1 = (x &gt;&gt; 31) &amp; 1;
+  int result_2 = !(ysubx &gt;&gt; 31);
+  return (xxory &amp; result_1) | ((~xxory) &amp; result_2);
+}
+/*
+ * ilog2 - return floor(log base 2 of x), where x &gt; 0
+ *   Example: ilog2(16) = 4
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 90
+ *   Rating: 4
+ */
+int ilog2(int x) {
+  int sub1 = ~0;
+  int x_fill = x;
+  int ret, mask;
+  x_fill |= x_fill &gt;&gt; 1;
+  x_fill |= x_fill &gt;&gt; 2;
+  x_fill |= x_fill &gt;&gt; 4;
+  x_fill |= x_fill &gt;&gt; 8;
+  x_fill |= x_fill &gt;&gt; 16;
+
+  // perform bitCount
+  ret = x_fill;
+  mask = 0;
+  // 0x55555555
+  mask = 0x55 + (0x55 &lt;&lt; 8);
+  mask = mask + (mask &lt;&lt; 16);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;1) &amp; mask);
+  // 0x33333333
+  mask = 0x33 + (0x33 &lt;&lt; 8);
+  mask = mask + (mask &lt;&lt; 16);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;2) &amp; mask);
+  // 0x0f0f0f0f
+  mask = 0x0f + (0x0f &lt;&lt; 8) + (0x0f &lt;&lt; 16) + (0x0f &lt;&lt; 24);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;4) &amp; mask);
+  // 0x00ff00ff
+  mask = 0xff + (0xff &lt;&lt; 16);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;8) &amp; mask);
+  // 0x0000ffff
+  mask = 0xff + (0xff &lt;&lt; 8);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;16) &amp; mask);
+  return ret + sub1;
+}
+/* 
+ * float_neg - Return bit-level equivalent of expression -f for
+ *   floating point argument f.
+ *   Both the argument and result are passed as unsigned int's, but
+ *   they are to be interpreted as the bit-level representations of
+ *   single-precision floating point values.
+ *   When argument is NaN, return argument.
+ *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+ *   Max ops: 10
+ *   Rating: 2
+ */
+unsigned float_neg(unsigned uf) {
+  unsigned change_sign = 1 &lt;&lt; 31;
+  unsigned get_exp = 0xFF &lt;&lt; 23;
+  unsigned get_frac = (~get_exp) ^ change_sign;
+  if ((uf &amp; get_exp) == get_exp &amp;&amp; (uf &amp; get_frac) != 0) return uf;
+  return uf ^ change_sign;
+}
+/* 
+ * float_i2f - Return bit-level equivalent of expression (float) x
+ *   Result is returned as unsigned int, but
+ *   it is to be interpreted as the bit-level representation of a
+ *   single-precision floating point values.
+ *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+ *   Max ops: 30
+ *   Rating: 4
+ */
+unsigned float_i2f(int x) {
+  int bias = 127;
+  unsigned get_frac = 0x007fffff;
+  unsigned get_frac_cut = 0x000000ff;
+  unsigned tminf = 0xcf000000;
+  int fix_x, n, nsub1, temp;
+  unsigned sign, exp, frac, frac_cut;
+
+  // special cases
+  if (x == 0x80000000) return tminf;
+  if (x == 0) return 0;
+
+  // get abs / get sign
+  fix_x = x;
+  sign = 0;
+  if (fix_x &lt; 0) fix_x = -fix_x, sign = 0x80000000;
+
+  // get count
+  n = 0;
+  temp = fix_x;
+  while (temp) n++, temp&gt;&gt;=1;
+  nsub1 = n - 1;
+  //printf(&quot;count=%d\n&quot;,count);
+
+  // get exp
+  exp = ((nsub1 + bias) &lt;&lt; 23);
+
+  // get frac
+  if (nsub1 &lt;= 23){
+    frac = (fix_x &lt;&lt; (23 - nsub1)) &amp; get_frac;
+  } else {
+    frac = (fix_x &gt;&gt; (nsub1 - 23)) &amp; get_frac;
+    frac_cut = (fix_x &lt;&lt; (31 - nsub1)) &amp; get_frac_cut;
+    if ((frac_cut &gt; 0x80) || (frac_cut == 0x80 &amp;&amp; (frac &amp; 1))) frac++; // carry
+  }
+
+  return sign + exp + frac;
+}
+/* 
+ * float_twice - Return bit-level equivalent of expression 2*f for
+ *   floating point argument f.
+ *   Both the argument and result are passed as unsigned int's, but
+ *   they are to be interpreted as the bit-level representation of
+ *   single-precision floating point values.
+ *   When argument is NaN, return argument
+ *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+ *   Max ops: 30
+ *   Rating: 4
+ */
+unsigned float_twice(unsigned uf) {
+  unsigned neg_inf = 0xff800000;
+  unsigned pos_inf = 0x7f800000;
+  unsigned get_exp = 0x7f800000;
+  unsigned get_frac = 0x007fffff;
+  unsigned exp = (uf &amp; get_exp) &gt;&gt; 23;
+  unsigned frac = uf &amp; get_frac;
+  unsigned ret = uf;
+  if (exp == 0xff) return uf;
+  if (exp == 0){ // denomolized
+    if (frac &amp; (1&lt;&lt;23)){ // de -&gt; no
+      ret = ret | (1 &lt;&lt; 23);
+      return ret;
+    } else {
+      ret = ret - frac;
+      frac = frac &lt;&lt; 1;
+      ret = ret + frac;
+      return ret;
+    }
+  } else { // nomolized
+    ret = ret - (exp &lt;&lt; 23);
+    exp++;
+    if (exp &gt; 0xff) { // no -&gt; inf
+      if (uf &amp; (1&lt;&lt;31)) return neg_inf;
+      else return pos_inf;
+    }
+    ret = ret + (exp &lt;&lt; 23);
+    return ret;
+  }
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 4 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/25d926e7045143c14996616a95d2e5ee" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://angine.tech" class="link" target="_blank"> <h4>Angine</h4> </a> <p class="mt-1">2023 年 3 月 25 日 4:3</p> </div> </div> <p class="mt-2">我去年某一门课的作业就是这个……
+实话说，如果不上网查的话，我单靠自己肯定有至少一半是做不出来的</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2023 年 3 月 25 日 5:51</p> </div> </div> <p class="mt-2">确实好难 😵‍💫</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/1296dd31c508901f9222574b259f349e" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://angine.tech" class="link" target="_blank"> <h4>Angine</h4> </a> <p class="mt-1">2023 年 3 月 26 日 8:36</p> </div> </div> <p class="mt-2">CMU设定如此严苛的cheating标准，想必也是仰仗其比较豪华的TA阵容。因为TA人数多，学生不会做的时候可以随时问TA。而我们学校两三百人的一门课只有那么两三个TA，为了防止把TA累死，恐怕只能采取上网搜索这种cheating行为了</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2023 年 3 月 26 日 10:16</p> </div> </div> <p class="mt-2">确实如此，我们学校有些研究生水平之差可能也不足以撑起这门课……所以上网搜也是迫不得已的选择吧……</p> <div class="ml-8">  </div> </div> </div> </div> </div> </div> </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/csapp-2e-datalab" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CSAPP 2e Datalab 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

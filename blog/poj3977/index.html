@@ -1,0 +1,122 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>POJ 3977 Subset 题解：折半搜索+二分查找</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ 3977 Subset 题解：折半搜索+二分查找</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ 3977 Subset 题解：折半搜索+二分查找</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>POJ 3977 Subset 题解：折半搜索+二分查找</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 11 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj3977" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>这题思路很简单，但是调试花了我一个下午……最后发现是一种情况没取 abs……（吐血）</p><p>题目链接：<a href="http://poj.org/problem?id=3977" title="POJ 3977 Subset">POJ 3977 Subset</a></p><!--more--><h2>Description</h2><p>Given a list of $N$ integers with absolute values no larger than $10^{15}$, find a non empty subset of these numbers which minimizes the absolute value of the sum of its elements. In case there are multiple subsets, choose the one with fewer elements.</p><p>Time Limit: 30000MS<br>Memory Limit: 65536K</p><h2>Input</h2><p>The input contains multiple data sets, the first line of each data set contains $N \leqslant 35$, the number of elements, the next line contains $N$ numbers no larger than $10^{15}$ in absolute value and separated by a single space. The input is terminated with $N = 0$.</p><h2>Output</h2><p>For each data set in the input print two integers, the minimum absolute sum and the number of elements in the optimal subset.</p><h2>Sample Input</h2><pre><code>1
+10
+3
+20 100 -100
+0</code></pre><h2>Sample Output</h2><pre><code>10 1
+0 2</code></pre><h2>Analysis</h2><p>看到这题的数据范围：$N \leqslant 35$……在我知道折半搜索这个玩意儿之前，我对这种大不大小不小的 Topcoder 式数据范围是手足无措的，因为如果直接状压暴力枚举是 $2^{35}$，显然不能承受；但是 35 这个数字对于其他做法来说又太小了……<br>如果我们能把 35 折半该多好！那 N 就是 16 或者 17，直接状压构造就可以承受了。<br>所以这就有了：<strong>折半搜索</strong>。</p><p>我们可以把这个数列分成两半，先暴力构造右边所有数字组合的加和并保存、排序，然后暴力构造左边，对于左边每个组合加和只要去右边二分查找一下就可以了。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+const long long maxn=40,maxs=400005,INF=(long long)1e15+100;
+long long n,sl,sr,m;
+long long a[maxn];
+
+struct Element{
+    long long num,count;
+};
+Element s[maxs],ans;
+
+inline long long Abs(long long x){
+    return x&lt;0?-x:x;
+}
+
+inline bool compare(Element aa,Element bb){
+    return (aa.num&lt;bb.num)||((aa.num==bb.num)&amp;&amp;(aa.count&lt;bb.count));
+}
+
+inline Element find(long long x){
+    long long L=1,R=m;
+    Element ret;
+    ret.num=INF;ret.count=0;
+    while (L&lt;=R){
+        long long mid=((R-L)&gt;&gt;1)+L;
+        if ((Abs(s[mid].num+x)&lt;ret.num)||(Abs(s[mid].num+x)==ret.num&amp;&amp;s[mid].count&lt;ret.count)) ret=(Element){Abs(s[mid].num+x),s[mid].count};
+        if (s[mid].num&lt;-x) L=mid+1; else R=mid-1;
+    }
+    return ret;
+}
+
+inline void make_right(){
+    m=0;
+    for (long long i=1;i&lt;sr;i++){
+        long long now_sum=0,now_cnt=0;
+        for (long long j=0;j&lt;n/2;j++) if (i&amp;(1&lt;&lt;j)) now_sum+=a[n-j],now_cnt++;
+        s[++m]=(Element){now_sum,now_cnt};
+    }
+}
+
+inline void make_left(){
+    sort(s+1,s+1+m,compare);
+    ans.num=INF;ans.count=0;
+    for (long long i=0;i&lt;sl;i++){
+        long long now_sum=0,now_cnt=0;
+        for (long long j=0;j&lt;n-(n/2);j++) if (i&amp;(1&lt;&lt;j)) now_sum+=a[j+1],now_cnt++;
+        Element f=find(now_sum);
+        if ((f.num&lt;ans.num)||((f.num==ans.num)&amp;&amp;(f.count+now_cnt&lt;ans.count))) ans=(Element){f.num,f.count+now_cnt};
+        if (now_cnt==0) continue;
+        if ((Abs(now_sum)&lt;ans.num)||((Abs(now_sum)==ans.num)&amp;&amp;(now_cnt&lt;ans.count))) ans=(Element){Abs(now_sum),now_cnt};
+    }
+}
+
+int main(){
+    while (~scanf(&quot;%lld&quot;,&amp;n)){
+        if (n==0) break;
+        for (long long i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;a[i]);
+        sr=(long long)1&lt;&lt;(n/2);
+        sl=(long long)1&lt;&lt;(n-(n/2));
+        make_right();
+        make_left();
+        printf(&quot;%lld %lld\n&quot;,ans.num,ans.count);
+    }
+    return 0;
+}</code></pre><p>警告 <a href="https://feluamn.xyz/" title="@Feluamn">@Feluamn</a>，以后遇到 WordPress 以及各种网站问题不要来找我！！不然我的时间就会被一下午一下午地续掉……<del>除非你请我喝星巴克</del></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/poj3977" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / POJ 3977 Subset 题解：折半搜索+二分查找</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

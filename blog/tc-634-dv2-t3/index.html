@@ -1,0 +1,96 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 634 Div2 T3 SpecialStrings 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 634 Div2 T3 SpecialStrings 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 634 Div2 T3 SpecialStrings 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 634 Div2 T3 SpecialStrings 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 02 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-634-dv2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 634 Div 2 T3 SpecialStrings 题解</p><!--more--><hr><h2>Translation</h2><p>如果一个字符串 S 满足以下条件，则我们说这个字符串是“特殊的”：</p><ul><li>每个字符都是 0 或 1；</li><li>对于所有 S = UV，U 和 V 都是非空字符串，U 都按字典序严格小于 V。</li></ul><p>例如，字符串 S = <code>00101</code> 是“特殊的”，因为我们知道 <code>0 &lt; 0101</code>，<code>00 &lt; 101</code>，<code>001 &lt; 01</code>，且 <code>0010 &lt; 1</code>。<br>现在给你一个字符串 <code>current</code>，保证这一定是个特殊的字符串。假设 N 是 <code>current</code> 的位数。考虑列出所有长度为 N 的特殊字符串的表，计算并返回第一个 <code>current</code> 后面的字符串。如果 <code>current</code> 已经是最后一个则返回一个空串。</p><p>数据范围：$1 \leqslant N \leqslant 50$。</p><blockquote><ul><li><strong>current</strong> will contain between 1 and 50 characters, inclusive.</li><li><strong>current</strong> will be a special string.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li></ul></blockquote><h2>Examples</h2><p>样例零：</p><pre><code>&quot;01&quot;</code></pre><p>Returns: <code>&quot;&quot;</code></p><p>"01" 是唯一的长度为 2 的特殊串。</p><blockquote>"01" is the only special string of length 2.</blockquote><p>样例一：</p><pre><code>&quot;00101&quot;</code></pre><p>Returns: <code>&quot;00111&quot;</code></p><p>长度为 5 的特殊串有：<code>&quot;00001&quot;</code>，<code>&quot;00011&quot;</code>，<code>&quot;00101&quot;</code>，<code>&quot;00111&quot;</code>，<code>&quot;01011&quot;</code>，<code>&quot;01111&quot;</code>。</p><blockquote>The special strings of length 5 are "00001", "00011", "00101", "00111", "01011", "01111".</blockquote><p>样例三：</p><pre><code>&quot;0010111&quot;</code></pre><p>Returns: <code>&quot;0011011&quot;</code></p><h2>Original</h2><blockquote><p>A string S is called special if it satisfies the following two properties:</p><ul><li>Each character in S is either '0' or '1'.</li><li>Whenever S = UV where both U and V are nonempty strings, U is strictly smaller than V in lexicographic order.</li></ul><p>For example, the string S = "00101" is special because we have "0" &lt; "0101", "00" &lt; "101", "001" &lt; "01", and "0010" &lt; "1".<br>You are given a string <strong>current</strong> that is guaranteed to be special. Let N be the length of <strong>current</strong>. Consider the lexicographically sorted list of all special strings of length N. Compute and return the string that comes immediatelly after <strong>current</strong> in this list. If <strong>current</strong> happens to be the last string in the list, return an empty string instead.</p></blockquote><h2>Analysis</h2><p>（一开始我居然想到了容斥/二项式反演…… :new_moon_with_face: ）</p><blockquote>这种题目肯定是构造。—— Captain Slow</blockquote><p>首先暴力的解法肯定要超时，$1 \leqslant N \leqslant 50$，$2^{50}$ 已经是一个天文数字了，更何况要加上 check special string……</p><p>先观察样例里的 special string，可以发现规律：</p><ul><li>所有 special string 都以 1 结尾；</li><li>所有 special string 的前导 0 数量一定比后面<strong>连续的 0 最大数量</strong>大。</li></ul><p>嗯，知道了这个，我们就可以知道：从字符串的右边往左边开始不断把 0 改为 1，这样最后总会得到一个 special string（大不了除了前导零全都改成 1）（如果得不到就返回空串呗）。<br>但是这样得到的一个 special string 并不能保证<strong>是 current 之后的第一个</strong>。我们要从左到右重新修正一番。具体方法是：从左到右，逢 1 就改成 0 试试，保证满足：它仍然是 special string，并且字典序严格大于 current。因为我们优先从左边把 1 改成 0，保证了字典序最小。</p><p>于是算法分为两个步骤：从右往左把 0 变成 1，从左往右把 1 变成 0。时间复杂度 $\Theta (N^2)$。</p><p>一开始这个神奇的想法我也没想到，还在想二项式反演 $QwQ$，直到<del>去 he 了<a href="https://github.com/k-ori/topcoder/blob/master/SpecialStrings/SpecialStrings.cpp" title="根本做不出来 QwQ">某个大佬的 solution</a></del>……话说这种想法真的很难想到啊……</p><h2>Code</h2><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=55;
+int n;
+long long num;
+string a,ans;
+
+class SpecialStrings {
+public:
+    string findNext( string current ) ;
+};
+inline void write(long long x){
+    string tmp;
+    for (int i=n-1;i&gt;=0;i--) tmp+=(x&amp;((long long)1&lt;&lt;i))?'1':'0';
+    cout&lt;&lt;tmp&lt;&lt;endl;
+}
+inline bool check(long long x){
+    for (int i=1;i&lt;n;i++){
+        string aa=&quot;&quot;,bb=&quot;&quot;;
+        for (int j=n-1;j&gt;=i;j--) aa+=(x&amp;((long long)1&lt;&lt;j))?'1':'0';
+        for (int j=i-1;j&gt;=0;j--) bb+=(x&amp;((long long)1&lt;&lt;j))?'1':'0';
+        if (!(aa&lt;bb)) return false;
+    }
+    return true;
+}
+string SpecialStrings::findNext(string current) {
+    n=current.length();a=current;
+    num=0;
+    for (int i=0;i&lt;n;i++) num=num*2+(current[i]-'0');
+    long long snum=num;
+    for (int i=0;i&lt;n;i++) if (!(num&amp;((long long)1&lt;&lt;i))){
+        a[n-i-1]='1';num+=(long long)1&lt;&lt;i;
+        if (check(num)) break;
+    }
+    if (!check(num)) return &quot;&quot;;
+    for (int i=n-1;i&gt;=0;i--) if (num&amp;((long long)1&lt;&lt;i)){
+        long long nxtnum=num;
+        nxtnum-=(long long)1&lt;&lt;i;
+        if (nxtnum&lt;=snum) continue;
+        if (check(nxtnum)) num=nxtnum;
+    }
+    if (num&lt;=snum) return &quot;&quot;;
+    char tmp[maxn];
+    for (int i=n-1;i&gt;=0;i--) tmp[i]=(num&amp;1)?'1':'0',num&gt;&gt;=1;
+    ans=&quot;&quot;;
+    for (int i=0;i&lt;n;i++) ans+=tmp[i];
+    return ans;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-634-dv2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 634 Div2 T3 SpecialStrings 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

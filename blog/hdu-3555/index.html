@@ -1,0 +1,175 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>数位 DP 入门：HDU 3555 Bomb</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 数位 DP 入门：HDU 3555 Bomb</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 数位 DP 入门：HDU 3555 Bomb</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>数位 DP 入门：HDU 3555 Bomb</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 27 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hdu-3555" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>简单来说，数位 DP 大概就是把一个数字拆开按位进行 DP 的一种思想。</p><h2>HDU 3555 Bomb</h2><blockquote>The counter-terrorists found a time bomb in the dust. But this time the terrorists improve on the time bomb. The number sequence of the time bomb counts from 1 to N. If the current number sequence includes the sub-sequence "49", the power of the blast would add one point.<br>Now the counter-terrorist knows the number N. They want to know the final points of the power. Can you help them?</blockquote><!--more--><h3>Hint</h3><p>数位 DP 的典型入门题，解法很多。</p><h3>Analysis #1</h3><p>这题“包含 49 的数字数量”比较难构造，所以我们决定构造“不包含 49 的数字数量”。</p><h4>DP 构造</h4><p><code>F[i][j]</code>：最高位为 j 的 i 位数字中不包含 49 的数字数量。</p><p>$$F(i,j) = \sum_{k\in [0,9]}^{k \not = 9 \text{或} j \not = 4} F(i-1,k)$$</p><pre><code class="lang-cpp">inline void make_dp(){
+    for (int i=0;i&lt;=9;i++) f[1][i]=1;
+    for (int i=2;i&lt;=22;i++)
+    for (int j=0;j&lt;=9;j++)
+    for (int k=0;k&lt;=9;k++){
+        if (j==4&amp;&amp;k==9) continue;
+        f[i][j]+=f[i-1][k];
+    }
+}</code></pre><h4>答案累计</h4><p>首先将数字按位分离，然后按位统计。</p><p>对于从高到低第 $i$ 位数字 $A_i$，首先肯定要累计上 $\sum_{j=0}^{j &lt; A_i} F(i,j)$，也就是这一位小于 $A_i$ 的数字数量。至于这一位等于 $A_i$ 的情况，就是之后处理的了。所以需要判断一下：如果出现了 49 这个数字就退出。</p><pre><code class="lang-cpp">inline int calculate(int x){
+    int ret=0;
+    spread_number(x);
+    for (int i=a[0];i&gt;=1;i--){
+        for (int j=0;j&lt;a[i];j++) ret+=f[i][j];
+        if (a[i]==9&amp;&amp;a[i+1]==4) break;
+    }
+    return ret;
+}</code></pre><h4>代码</h4><pre><code class="lang-cpp">/*
+ * Vjudge CONTEST257056 数位DP专题练习
+ * B - Bomb
+ * 180927 By SkyWT
+ */
+
+#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+#include&lt;map&gt;
+
+using namespace std;
+
+#define memset_clear(_) memset(_,0,sizeof(_))
+#define memset_clear_tre(_) memset(_,1,sizeof(_))
+#define memset_clear_reg(_) memset(_,-1,sizeof(_))
+#define memset_clear_max(_) memset(_,0x3f,sizeof(_))
+#define memset_clear_min(_) memset(_,0x80,sizeof(_))
+#define sqr(_) ((_)*(_))
+
+#define write(_) cout&lt;&lt;#_&lt;&lt;&quot; = &quot;&lt;&lt;_&lt;&lt;endl
+#define write_2(_,__) cout&lt;&lt;#_&lt;&lt;&quot; = &quot;&lt;&lt;_&lt;&lt;&quot; , &quot;&lt;&lt;#__&lt;&lt;&quot; = &quot;&lt;&lt;__&lt;&lt;endl
+#define write_3(_,__,___) cout&lt;&lt;#_&lt;&lt;&quot; = &quot;&lt;&lt;_&lt;&lt;&quot; , &quot;&lt;&lt;#__&lt;&lt;&quot; = &quot;&lt;&lt;__&lt;&lt;&quot; , &quot;&lt;&lt;#___&lt;&lt;&quot; = &quot;&lt;&lt;___&lt;&lt;endl
+
+#define int long long
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+int T,n;
+int f[25][11],a[25];
+
+inline void make_dp(){
+    for (int i=0;i&lt;=9;i++) f[1][i]=1;
+    for (int i=2;i&lt;=22;i++)
+    for (int j=0;j&lt;=9;j++)
+    for (int k=0;k&lt;=9;k++){
+        if (j==4&amp;&amp;k==9) continue;
+        f[i][j]+=f[i-1][k];
+    }
+}
+
+inline void spread_number(int x){
+    memset_clear(a);
+    while (x) a[++a[0]]=x%10,x/=10;
+}
+
+inline int calculate(int x){
+    int ret=0;
+    spread_number(x);
+    for (int i=a[0];i&gt;=1;i--){
+        for (int j=0;j&lt;a[i];j++) ret+=f[i][j];
+        if (a[i]==9&amp;&amp;a[i+1]==4) break;
+    }
+    return ret;
+}
+
+signed main(){
+    make_dp();
+    T=read();
+    while (T--){
+        n=read();
+        printf(&quot;%lld\n&quot;,n+1-calculate(n+1));
+    }
+    return 0;
+}</code></pre><h3>Analysis #2</h3><p>这种方法相较上一种，空间和时间上只达到了常数的优化。不过还是值得研究下～</p><h4>DP 构造</h4><p>这个 DP 的定义比刚才的要简单一点：</p><ul><li><code>F[i][0]</code>：数字长度为 i，首位为任意数字，不包含 49 的数字数量</li><li><code>F[i][1]</code>：数字长度为 i，首位为 9，不包含 49 的数字数量</li><li><code>F[i][2]</code>：数字长度为 i，包含 49 的数量</li></ul><p>转移方程如下：</p><p>$$F(i,0)=F(i-1,0)\ast 10-F(i-1,1)$$</p><p>（很好理解，要减去出现了 49  的情况）</p><p>$$F(i,1)=F(i-1,0)$$</p><p>$$F(i,2)=F(i-1,2)\ast 10+F(i-1,1)$$</p><p>（要加上这位为 4、后一位为 9 的情况）</p><h4>答案累计</h4><p>答案的累计和上面解法差不多。</p><h3>Analysis #3</h3><p>这题其实还可以用记忆化搜索。数位 DP 用记忆化搜索解决会很方便～</p><h4>代码</h4><p>以下是 HEXU 大佬的代码……</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+#define ll long long
+const int N = 100 + 5;
+
+ll f[N][N];
+int digit[N];
+
+ll dfs(int pos, int flag, int limit) {
+    if (pos &lt;= 0) return 1;
+    if (! limit &amp;&amp; f[pos][flag] != -1) return f[pos][flag];
+    int up = limit ? digit[pos] : 9; ll cur = 0;
+    
+    for (int i = 0; i &lt;= up; ++ i) {
+        if (flag == 1 &amp;&amp; i == 9) continue;
+        cur += dfs(pos - 1, i == 4, limit &amp;&amp; i == up);
+    }
+    return limit ? cur : f[pos][flag] = cur;
+}
+
+ll Solve(ll x) {
+    memset(digit, 0, sizeof(digit)); int len = 0;
+    for (; x; x /= 10) digit[++ len] = x % 10;
+    return dfs(len, 0, 1);
+}
+
+int main(void) {
+    memset(f, -1, sizeof(f));
+    int T; scanf(&quot;%d&quot;, &amp;T);
+    while (T --) {
+        ll r; scanf(&quot;%lld&quot;, &amp;r);
+        printf(&quot;%lld\n&quot;, r + 1 - Solve(r));
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/hdu-3555" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 数位 DP 入门：HDU 3555 Bomb</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>部署 Memos 接入 QQ 机器人</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 部署 Memos 接入 QQ 机器人</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 部署 Memos 接入 QQ 机器人</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>部署 Memos 接入 QQ 机器人</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 01 月 07 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 6 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/deploy-memos-to-qq-robot" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>前几天部署了开源的浮墨笔记（flomo）替代品：<a href="https://github.com/usememos/memos">Memos</a>。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。</p><!--more--><h2>前置准备</h2><ul><li>服务器，最好是境内的。</li><li>搭建好的 Memos 实例（我的实例：<a href="https://memos.skywt.cn/">memos.skywt.cn</a>）。</li><li>一个可登录的闲置 QQ 账号。</li></ul><h2>运行 go-cqhttp</h2><p>我们的机器人在服务端分为两个组件，这两个组件都要部署在我们的服务器上。</p><ul><li><strong>go-cqhttp</strong> 负责与腾讯 QQ 服务器通信，管理我们的账号登录、消息收发等过程；</li><li><strong>NoneBot</strong> 负责将 go-cqhttp 收到的消息进行处理，控制发送消息的内容，运行我们想要的业务逻辑。</li></ul><p>首先部署 go-cqhttp。前往 GitHub 上的 <a href="https://github.com/Mrs4s/go-cqhttp/releases">release</a> 下载最新适合服务器架构的版本，下载解压之后是一个单文件程序。第一次运行，在提示选择通信方式时，选择「反向 Websocket 通信」，之后程序就会在相同目录下生成配置文件。</p><p>编辑配置文件，根据提示将 uin 和 password 字段分别改为自己的 QQ 和密码。虽然配置文件中说「密码为空时可以使用扫码登录」，但是经过实测只有在同一网络环境下 QQ 才会允许扫码登录。部署在服务器上扫码是无法登录的，只能使用密码。<br>除此之外，修改文件底部 servers 部分 ws-reverse 中 universal 的地址。我设定的是 <code>ws://127.0.0.1:8989/ws/</code>。这个地址告诉 go-cqhttp，该从哪里与后端的 NoneBot 通信。</p><p>修改完毕后，再次启动 go-cqhttp，可能会提示需要扫码、滑块验证、手机验证之类，跟着程序的提示进行即可。<br>程序会提示，对于腾讯云的服务器需要修改 DNS 为 <code>114.114.114.114</code>。编辑 <code>/etc/resolv.conf</code> 并修改就行。<br>出现以下消息就表明登录成功：</p><pre><code class="lang-bash">[INFO]: 登录成功 欢迎使用: SkyWT</code></pre><p>此时可能会出现大量的「Connection Refused」消息，这是因为我们还没启动后端的 NoneBot。忽略他们即可。</p><pre><code>[WARNING]: 连接到反向 WebSocket Universal 服务器 ws://127.0.0.1:8989/ws/ 时出现错误: dial tcp 127.0.0.1:8989: connect: connection refused</code></pre><p>接下来，要将 go-cqhttp 放到后台运行，开始编写 NoneBot 的主程序。</p><h2>编写运行 NoneBot</h2><p>参阅 NoneBot 的<a href="https://docs.nonebot.dev/guide/getting-started.html">官方指南</a>编写主要的代码，包括 <code>bot.py</code> 和 <code>config.py</code>。在后者中要指定与 go-cqhttp 的 <code>config.yml</code> 中配置一致的 HOST 和 PORT。我的配置分别是 <code>127.0.0.1</code> 和 <code>8989</code>。</p><p>接下来，我们可以通过编写插件的方式使 QQ 机器人实现 Memo 备忘录的功能。<br>其实直接根据文档里的插件修改一下就可以了：</p><pre><code class="lang-python">from nonebot import on_command, CommandSession
+import requests
+import json
+
+__plugin_name__ = 'Memos'
+__plugin_usage__ = r&quot;&quot;&quot;
+memo [需要添加的 Memo 内容]
+&quot;&quot;&quot;
+MEMOS_API = 'https://memos.skywt.cn/api/memo?openId=************'
+
+@on_command('memo', aliases=('note'))
+async def memo(session: CommandSession):
+    memo_text = session.current_arg_text.strip()
+    if not memo_text:
+        await session.send('Memo 内容不能为空！')
+        return
+    ret = await send_memo(memo_text)
+    await session.send(ret)
+
+async def send_memo(memo_text: str) -&gt; str:
+    data_to_send = {'content': memo_text}
+    r = requests.post(MEMOS_API, data=json.dumps(data_to_send))
+    if r.status_code == 200:
+        return '添加成功'
+    else:
+        return '添加失败，请查阅日志'</code></pre><p>回到 NoneBot 的主目录启动 bot.py 并放在后台，发送消息 <code>memo 这是一条测试笔记</code>，可以看到正确的输出。<br>进入 Memos 可以看到成功添加了一条 memo。</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" alt="聊天界面，机器人回复添加成功" title="聊天界面，机器人回复添加成功"></p><h2>参考资料</h2><ul><li><a href="https://docs.go-cqhttp.org/guide">go-cqhttp 使用指南</a></li><li><a href="https://docs.nonebot.dev/guide">NoneBot 使用指南</a>：文档通俗易懂，强烈推荐</li></ul> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 6 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/90e87193c8eb69fcae9ddf76be37d8e3" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://storeweb.cn/" class="link" target="_blank"> <h4>小彦</h4> </a> <p class="mt-1">2023 年 1 月 16 日 16:0</p> </div> </div> <p class="mt-2">厉害，请教下，原理是什么？是腾讯QQ服务器有开放的接口可以调用么？</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/e53fa73039fa60c5862480ae2192d215" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.zqcnc.cn/" class="link" target="_blank"> <h4>FGHWETT</h4> </a> <p class="mt-1">2023 年 1 月 15 日 10:20</p> </div> </div> <p class="mt-2">学到了 回头试一下
+</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/122e32931a360825d1ca2a912bf0b681" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.saphead.cn/" class="link" target="_blank"> <h4>小熊</h4> </a> <p class="mt-1">2023 年 1 月 7 日 10:13</p> </div> </div> <p class="mt-2">这个可以用来推送博客评论和回复博客评论吗？再或者说可以发文章不？晚上好，大佬</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/ff74614925ec5450c71d5a1a57d19fa7" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.magichouse.ltd/" class="link" target="_blank"> <h4>魔法修狗</h4> </a> <p class="mt-1">2023 年 1 月 7 日 12:20</p> </div> </div> <p class="mt-2">当然可以，ty很多主题都有这个功能！</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2023 年 1 月 7 日 10:38</p> </div> </div> <p class="mt-2">可以啊，只要有对应的 API，啥都可以做</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/122e32931a360825d1ca2a912bf0b681" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.saphead.cn/" class="link" target="_blank"> <h4>小熊</h4> </a> <p class="mt-1">2023 年 1 月 7 日 11:36</p> </div> </div> <p class="mt-2">原来是这样</p> <div class="ml-8">  </div> </div> </div> </div> </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/deploy-memos-to-qq-robot" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 部署 Memos 接入 QQ 机器人</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

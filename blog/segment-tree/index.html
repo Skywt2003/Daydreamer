@@ -1,0 +1,141 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>线段树（懒标记）总结</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 线段树（懒标记）总结</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 线段树（懒标记）总结</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>线段树（懒标记）总结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 04 月 11 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/segment-tree" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>线段树是非常基础的算法了……</p><p>线段树是一种二叉树，可视为树状数组的变种，最早出现在2001年，由程序竞赛选手发明。我们ZS老师说过：“所有可以用树状数组解决的题目都可以用线段树解决，但是部分线段数可以解决的题目却无法用树状数组解决。”由此可见线段树十分强大……</p><!--more--><blockquote>此资料结构实际应用用途不大，但由于其程式易于实作而被广泛应用于程式竞赛当中。其用途是在$O(\log N)$查询一个指定区间内的资讯，并可在同样的时间复杂度支援更新等操作。<br>——维基百科</blockquote><h2>例题</h2><p>先来看看洛谷上的线段树模版题：<a href="https://www.luogu.org/problemnew/show/P3372" title="【模板】线段树 1">【模板】线段树 1</a></p><h3>题目描述</h3><p>如题，已知一个数列，你需要进行下面两种操作：<br>1.将某区间每一个数加上x<br>2.求出某区间每一个数的和</p><h3>输入输出格式</h3><p>输入格式：<br>第一行包含两个整数N、M，分别表示该数列数字的个数和操作的总个数。<br>第二行包含N个用空格分隔的整数，其中第i个数字表示数列第i项的初始值。<br>接下来M行每行包含3或4个整数，表示一个操作，具体如下：<br>操作1： 格式：1 x y k 含义：将区间[x,y]内每个数加上k<br>操作2： 格式：2 x y 含义：输出区间[x,y]内每个数的和</p><p>输出格式：<br>输出包含若干行整数，即为所有操作2的结果。</p><h3>输入输出样例</h3><p>输入样例</p><pre><code>5 5
+1 5 4 2 3
+2 2 4
+1 2 3 2
+2 3 4
+1 1 5 1
+2 1 4
+</code></pre><p>输出样例</p><pre><code>11
+8
+20
+</code></pre><h3>说明</h3><p>时空限制：1000ms,128M<br>数据规模：<br>对于30%的数据：N&lt;=8，M&lt;=10<br>对于70%的数据：N&lt;=1000，M&lt;=10000<br>对于100%的数据：N&lt;=100000，M&lt;=100000<br>（数据已经过加强^_^，保证在int64/long long数据范围内）<br>样例说明：<br><img src="https://cdn.luogu.org/upload/pic/2251.png" alt=" title="样例说明"" title=" title="样例说明""></p><h2>线段树的定义和构造</h2><p>线段树（Segment Tree）是一个平衡的二叉树，所有叶子到根的距离最多只差1。令整个区间的长度为N，则其有N个叶节点，每个叶节点代表一个单位区间，每个内部结点代表的区间为其两个儿子代表区间的联集。</p><p>翻译成人话就是：线段树是个二叉树，每个节点表示一个区间（或许应该叫区间树……），叶节点代表的区间大小是1（即单位区间）。（以上面的例题为例）很容易理解，根据叶节点我们可以向上累计，对于每个非叶节点，很容易构造出<strong>其代表的区间内所有数字加和</strong>（以下称为“管辖区间和”（我自己起的名字……因为我觉得“管辖”这个词很高端……），用tree[x]表示x节点管辖区间和）（即每个点左右儿子代表区间和的加和）。这样向上构造，我们就可以造出一颗<strong>线段树</strong>。这就是build函数构造线段树的过程：</p><pre><code class="lang-cpp">inline void build(int p,int tl,int tr){
+    tag[p]=0;
+    if (tl==tr) {tree[p]=a[tl];return;}
+    int mid=((tr-tl)&gt;&gt;1)+tl;
+    build((p&lt;&lt;1)  ,tl,mid  );
+    build((p&lt;&lt;1)+1,mid+1,tr);
+    tree[p]=tree[p&lt;&lt;1]+tree[(p&lt;&lt;1)+1];
+}</code></pre><h2>区间更新与懒标记</h2><p>如果没有区间更新，我们就用不到懒标记了，因为对于单点更新，直接向上推，$O(\log_2 N)$的时间内就可以得出结果。但是区间更新就十分麻烦：如果一个个单点进行更新，最高需要$O(N* \log_2 N)$！显然很容易超时。懒标记（Lazy Tag）其实是对朴素的线段树的一个优化，可以让区间更新也达到$O(\log_2 N)$级别。所以首先我们来认识一下懒标记：</p><h3>懒标记</h3><p>懒标记（Lazy Tag），也有的地方翻译成“延迟标记”（听起来高端……），就是指在更新一部分区间的时候，不更新这个区间里面的每个点，而是（懒惰地）把这个区间分割成很多个能用线段树上的点表示的区间（当然是分的区间越少越好，也就是说每个区间越大越好），只修正代表这个区间的点，再把这些区间标记下，下次如果要查询的区间与这个区间有交集并且没有包含这个区间，就说明需要“分割”这个区间，再将这个区间向下修正。这样时间复杂度就可以优化很多。</p><h3>如何进行区间更新</h3><p>刚才已经提到，如果要把区间[L,R]中所有元素加上delta，则只需要从线段树的根节点开始向下寻找，找到第一个被[L,R]包含的区间，就修正这个区间（注意“修正这个区间”只是增加这个区间和的标记和懒标记，不是把这个区间向下修正），然后继续向下找，直到找出来的一段段区间把[L,R]都覆盖了。</p><h2>区间查询</h2><p>区间查询和区间更新有点类似，假设要查询[L,R]，同样从根节点开始乡向下“分割”，不同之处在于：可能需要将刚才的懒标记用于向下修正。（具体见代码～）</p><h2>完整代码（注释版）</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=2000005;
+int n,m;
+long long a[maxn],tree[maxn],tag[maxn];
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline long long llread(){
+    long long ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=(long long)-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*(long long)10+(long long)(ch-'0'),ch=getchar();
+    return (long long)ret*f;
+}
+inline void build(int p,int tl,int tr){  //构造Segment Tree 
+    tag[p]=0;
+    if (tl==tr) {tree[p]=a[tl];return;}
+    int mid=((tr-tl)&gt;&gt;1)+tl;
+    build((p&lt;&lt;1)  ,tl,mid  );
+    build((p&lt;&lt;1)+1,mid+1,tr);
+    tree[p]=tree[p&lt;&lt;1]+tree[(p&lt;&lt;1)+1];
+}
+inline void push_down(int tl,int tr,int p){  //push_down函数负责向下传递，将存储的tag数组用于修正 
+    int mid=((tr-tl)&gt;&gt;1)+tl;
+    tree[p&lt;&lt;1]+=(long long)tag[p]*(mid-tl+1);  //只需要修正一对左右儿子，不需要一直传递到叶节点 
+    tag[p&lt;&lt;1]+=tag[p];  //因为没有往下修正，所以要把儿子的tag累计上 
+    tree[(p&lt;&lt;1)+1]+=(long long)tag[p]*(tr-mid);
+    tag[(p&lt;&lt;1)+1]+=tag[p];
+    tag[p]=0;
+}
+inline void update(int sl,int sr,int tl,int tr,long long delta,int p){
+    if (sl&lt;=tl&amp;&amp;sr&gt;=tr){  //p管辖的区间在修改范围内 
+        tree[p]+=delta*(long long)(tr-tl+1);
+        tag[p]+=delta;  //tag数组记录剩下的未向下传递的，实现“lazy tag”
+        return;
+    }
+    push_down(tl,tr,p);  //如果没有完全包含p管辖的区间，则说明应该向下“分割”，所以应该用tag数组先修正下面的tree[] 
+    int mid=((tr-tl)&gt;&gt;1)+tl;  //分割[tl,tr]区间 
+    if (sl&lt;=mid) update(sl,sr,tl,mid,delta,p&lt;&lt;1);
+    if (mid&lt;sr)  update(sl,sr,mid+1,tr,delta,(p&lt;&lt;1)+1);
+    tree[p]=tree[p&lt;&lt;1]+tree[(p&lt;&lt;1)+1];  //向上累计 
+}
+inline long long query(int sl,int sr,int tl,int tr,int p){  //查询操作 
+    if (sl&lt;=tl&amp;&amp;sr&gt;=tr) return tree[p];  //如果完全包含p所管辖的区间则直接返回tree[p] 
+    long long ret=0;  //否则就“分割” 
+    push_down(tl,tr,p);  //先要把当前的tag用于修正下面两个儿子，这样才能保证下面query用到的tree[]是正确的 
+    int mid=((tr-tl)&gt;&gt;1)+tl;
+    if (sl&lt;=mid) ret+=(long long)query(sl,sr,tl,mid,p&lt;&lt;1);
+    if (mid&lt;sr)  ret+=(long long)query(sl,sr,mid+1,tr,(p&lt;&lt;1)+1);
+    return ret;
+}
+int main(){
+    freopen(&quot;tree.in&quot;,&quot;r&quot;,stdin);
+    freopen(&quot;tree.out&quot;,&quot;w&quot;,stdout);
+    n=read();m=read();
+    for (int i=1;i&lt;=n;i++) a[i]=llread();
+    build(1,1,n);
+    for (int i=1;i&lt;=m;i++){
+        int c=read();
+        if (c==1){
+            int x=read(),y=read();
+            long long z=llread();
+            update(x,y,1,n,z,1);
+        } else
+        if (c==2){
+            int x=read(),y=read();
+            printf(&quot;%lld\n&quot;,query(x,y,1,n,1));
+        }
+    }
+    return 0;
+}</code></pre><hr><h2>参考</h2><p><a href="https://www.luogu.org/blog/pks-LOVING/senior-data-structure-qian-tan-xian-duan-shu-segment-tree" title="https://www.luogu.org/blog/pks-LOVING/senior-data-structure-qian-tan-xian-duan-shu-segment-tree">https://www.luogu.org/blog/pks-LOVING/senior-data-structure-qian-tan-xian-duan-shu-segment-tree</a><br><a href="https://baike.baidu.com/item/%E7%BA%BF%E6%AE%B5%E6%A0%91/10983506" title="https://baike.baidu.com/item/%E7%BA%BF%E6%AE%B5%E6%A0%91/10983506">https://baike.baidu.com/item/%E7%BA%BF%E6%AE%B5%E6%A0%91/10983506</a><br><a href="https://zh.wikipedia.org/zh/%E7%B7%9A%E6%AE%B5%E6%A8%B9_(%E5%84%B2%E5%AD%98%E5%8D%80%E9%96%93">https://zh.wikipedia.org/zh/%E7%B7%9A%E6%AE%B5%E6%A8%B9_(%E5%84%B2%E5%AD%98%E5%8D%80%E9%96%93)</a> "https://zh.wikipedia.org/zh/%E7%B7%9A%E6%AE%B5%E6%A8%B9_(%E5%84%B2%E5%AD%98%E5%8D%80%E9%96%93)")</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/78e54a4ec2e0cd26e26324c00cbf9324" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://." class="link" target="_blank"> <h4>StungYep</h4> </a> <p class="mt-1">2019 年 10 月 26 日 6:21</p> </div> </div> <p class="mt-2">大佬 能不能分享一下你的博客设置css html 等等啊</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/segment-tree" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 线段树（懒标记）总结</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

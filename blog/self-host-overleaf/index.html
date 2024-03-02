@@ -1,0 +1,115 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>服务器 Overleaf 部署指南</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 服务器 Overleaf 部署指南</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 服务器 Overleaf 部署指南</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器 Overleaf 部署指南</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 12 月 25 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 4 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/self-host-overleaf" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>程设课的大作业是「图书管理系统」，似乎要我们完成一个「实验报告」。看看发下来的这个范例 pdf 总觉得用 Word 来写会惨不忍睹。「天下苦 Microsoft 久矣！」于是决定尝试一下大名鼎鼎的 $\LaTeX$。</p><p>心血来潮去学了 LaTeX 语法，本来打算在本地 vscode 里写，结果发现这个 LaTeX 的编译器五花八门琳琅满目，配置也极其复杂和不统一。于是想去看看有没有在线的 all-in-one 协作平台，发现了 Overleaf 这个网站，这个程序是开源的，可以部署到自己的服务器上。终于可以愉快地写 LaTeX 啦！</p><!--more--><p>Overleaf 在 Github 上的项目地址在<a href="https://github.com/overleaf/overleaf">这里</a>。<br>由于直接提供了 Docker，所以安装过程非常简单。（新买的腾讯云服务器打算完全采用容器化部署。我简直爱上 Docker 了！！）</p><h2>使用 Toolkit？</h2><p>官方提供了一个叫做 Toolkit 的东西，可以直接参照<a href="https://github.com/overleaf/toolkit/blob/master/doc/quick-start-guide.md">这个文档</a>部署。<br>默认可以帮你装好 MongoDB 和 Redis 的 Docker。启动和停止的脚本也都写好了。</p><pre><code class="lang-sh">git clone https://github.com/overleaf/toolkit.git ./overleaf
+cd overleaf
+bin/init
+nano config/overleaf.rc
+bin/up
+bin/start</code></pre><p>然而我的服务器上已经装好了 MongoDB 和 Redis 的 Docker 要给其他很多程序用，虽然说这个 Toolkit 的配置里可以选择不安装这俩镜像，但是总感觉这样还用这个 Toolkit 有些多此一举了……</p><p>于是直接去安装 sharelatex 的镜像。官方的教程在<a href="https://github.com/overleaf/overleaf/wiki/Quick-Start-Guide">这里</a>。</p><h2>配置环境变量</h2><p>可以参考 Toolkit 里的 <code>config/vaiables.env</code> 文件来配置。主要就是 MongoDB 和 Redis 的连接，以及 SMTP 的配置。详细的环境变量的配置在<a href="https://github.com/overleaf/overleaf/wiki/Configuring-Overleaf">这里</a>。</p><p>最终配置文件是这样的：</p><pre><code>SHARELATEX_MONGO_URL=mongodb://yourUserName:yourPassWord@mongo/sharelatex
+MONGO_URL=mongodb://yourUserName:yourPassWord@mongo/sharelatex
+SHARELATEX_REDIS_HOST=redis
+REDIS_HOST=redis
+SHARELATEX_REDIS_PORT=6379
+REDIS_PORT=6379
+
+SHARELATEX_SECURE_COOKIE=true
+SHARELATEX_BEHIND_PROXY=true
+
+SHARELATEX_APP_NAME=SkyLatex
+
+ENABLED_LINKED_FILE_TYPES=project_file,project_output_file
+
+# Enables Thumbnail generation using ImageMagick
+ENABLE_CONVERSIONS=true
+
+# Disables email confirmation requirement
+EMAIL_CONFIRMATION_DISABLED=true
+
+# temporary fix for LuaLaTex compiles
+# see https://github.com/overleaf/overleaf/issues/695
+TEXMFVAR=/var/lib/sharelatex/tmp/texmf-var
+
+SHARELATEX_SITE_URL=https://latex.skywt.cn
+SHARELATEX_NAV_TITLE=SkyLatex
+# SHARELATEX_HEADER_IMAGE_URL=http://somewhere.com/mylogo.png
+SHARELATEX_ADMIN_EMAIL=me@skywt.cn
+
+SHARELATEX_LEFT_FOOTER=[{&quot;text&quot;:&quot;Powered by &lt;a href=\&quot;https://overleaf.com/\&quot;&gt;Overleaf&lt;/a&gt;&quot;}, {&quot;text&quot;:&quot;Hosted on &lt;a href=\&quot;https://skywt.cn/\&quot;&gt;SkyWT.cn&lt;/a&gt;&quot;}]
+SHARELATEX_RIGHT_FOOTER=[{&quot;text&quot;:&quot;&lt;a href=\&quot;https://www.overleaf.com/learn\&quot;&gt;Help&lt;/a&gt;&quot;}]
+
+SHARELATEX_EMAIL_FROM_ADDRESS=notice@skywt.cn
+
+SHARELATEX_EMAIL_SMTP_HOST=smtp.exmail.qq.com
+SHARELATEX_EMAIL_SMTP_PORT=465
+SHARELATEX_EMAIL_SMTP_SECURE=true
+SHARELATEX_EMAIL_SMTP_USER=notice@skywt.cn
+SHARELATEX_EMAIL_SMTP_PASS=EFg3svYe6Pff24Yr
+# SHARELATEX_EMAIL_SMTP_NAME=
+SHARELATEX_EMAIL_SMTP_LOGGER=false
+SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH=true
+SHARELATEX_EMAIL_SMTP_IGNORE_TLS=false
+SHARELATEX_CUSTOM_EMAIL_FOOTER=&quot;&lt;a href='https://latex.skywt.cn/'&gt;SkyLatex&lt;/a&gt; hosted on &lt;a href='https://skywt.cn/'&gt;SkyWT.cn&lt;/a&gt;.&quot;
+
+TEX_LIVE_DOCKER_IMAGE=quay.io/sharelatex/texlive-full:2020.1
+ALL_TEX_LIVE_DOCKER_IMAGES=quay.io/sharelatex/texlive-full:2020.1,quay.io/sharelatex/texlive-full:2019.1</code></pre><h2>启动容器</h2><p>创建一个 Docker 网络 sharelatex，把 Redis 和 MongoDB 的容器都提前加进来，然后启动容器，指定加入 sharelatex 网络，开放端口，文档资源挂载到外部，并且引入环境变量文件 variables.env。</p><pre><code class="lang-sh">docker run -d \
+  --name sharelatex \
+  --network sharelatex \
+  -p 28080:80 \
+  -v /data/sharelatex:/var/lib/sharelatex \
+  --env-file ~/overleaf/variables.env \
+  sharelatex/sharelatex:latest</code></pre><h2>完整安装 TeX Live</h2><p>默认自带的 TeX Live 是精简版本，实测比如 XeLaTeX 就是用不了的。需要自行安装完整版。进入容器，使用国内的源升级 tlmgr 并完整安装 TeX Live：</p><pre><code class="lang-sh">docker exec -it sharelatex /bin/bash
+tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+tlmgr update --self
+tlmgr install scheme-full</code></pre><p>这里我用的是中科大的源，也可以用清华源 <code>https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/</code>。不过就这个下载而言，中科大源比清华源快很多。可能是因为服务器地域问题。</p><p>一共有四千多个包……要装挺久的。</p><h2>代码高亮 minted 包</h2><p>Overleaf 的官方<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted">这个文档</a>里有个说明：</p><blockquote>Note: For minted to work with your local LaTeX distribution, an additional program called Pygments must be installed. Overleaf can save you the trouble of installing it and having to run special commands to compile your document—on Overleaf, documents that use minted will work "out of the box".</blockquote><p>进入容器里安装 pygments 就好了。</p><pre><code class="lang-sh">docker exec -it sharelatex /bin/bash
+apt-get update
+apt-get install pygments</code></pre><p>minted 包还需要启用 <code>shell_escape</code>。编辑 <code>/usr/local/texlive/2021/texmf.cnf</code>，加上一行：</p><pre><code>shell_escape = t</code></pre><p>重启容器就可以使用 minted 包了。</p><h2>安装字体</h2><p>这个容器里默认是没有 Times New Roman 之类的字体的，如果 LaTeX 模板用了某个不存在的字体就会报错（然而我这里是会一直显示正在编译而没有任何错误提示……十分玄学）。<br>先换 apt 的源，然后在容器里安装字体并刷新缓存：</p><pre><code>apt-get install ttf-mscorefonts-installer
+fc-cache</code></pre><p>这个 mscorefonts 包包含了 Arial、Georgia、Times Roman 等热门的 Microsoft’s Truetype fonts。</p><h2>使用中文</h2><p>Menu 里编译器选择 XeLaTeX，并且</p><pre><code>\usepackage{ctex}</code></pre><p>其他编译器都不支持中文。</p><h2>使用效果</h2><p><img src="https://skywt.cn/usr/uploads/2021/12/2795676573.png" alt="pic1" title="pic1"></p><p><img src="https://skywt.cn/usr/uploads/2021/12/2023490616.png" alt="pic2" title="pic2"></p><p>嗯，有内味了。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 4 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/85f8aceca0e0820908c0ef67ca9de1a0" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>starLightXYY</h4> <p class="mt-1">2022 年 7 月 1 日 12:29</p> </div> </div> <p class="mt-2">太全了！跟着做就能避开所有坑
+
+btw夸夸博主的博客主题，简单好看</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/f8696cc9f87f21bf585ddcb27258e374" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://cyp0633.icu" class="link" target="_blank"> <h4>cyp0633</h4> </a> <p class="mt-1">2022 年 1 月 7 日 15:53</p> </div> </div> <p class="mt-2">想认真写报告的时候，Overleaf效果真心赞，我模型机的报告就是它写的，但想水的时候还是MS Word更方便，光查语法的时间就能省去不少。
+之前我也看到了自己部署的方案，奈何小鸡实在太弱，硬盘也不大，索性就用公有的了……</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2022 年 1 月 8 日 8:12</p> </div> </div> <p class="mt-2">这玩意确实又大又吃内存 =_=</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/d5c2d2ee67025bc54d7f9c033007ebaf" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>pinkex</h4> <p class="mt-1">2021 年 12 月 27 日 8:44</p> </div> </div> <p class="mt-2">嘿嘿 我也用过overleaf 确实很赞(￣▽￣)</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/self-host-overleaf" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 服务器 Overleaf 部署指南</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

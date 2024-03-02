@@ -1,0 +1,250 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces Round #488 Div2 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces Round #488 Div2 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces Round #488 Div2 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces Round #488 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 03 月 19 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf994" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>这是我的博客发布的第 100 篇文章！:tada:</p><h2>D - Open Communication</h2><h3>Description</h3><p>有两个玩家，给出分别 n 和 m 个数对，$1\leq n,m\leq 12$，所有数字都 $\in [0,9]$，并且一个数对里的数字不相同，不会有重复的数对。现在有一个“共享数字”，这个数字在 A 玩家的数对里和 B 玩家的数对里都至少出现一次。如果你可以推断出这个数字，输出这个数字；如果你无法推断出这个数字，但是你确信两个玩家都知道这个数字，输出 0；如果连玩家也不知道，输出 -1。</p><!--more--><p>（题意难以解释，建议参考原题样例：<a href="https://codeforces.com/problemset/problem/994/D">Link</a>）</p><h3>Tags</h3><p><code>卡题意</code></p><h3>Analysis</h3><p>其实是个非常简单的题，两两枚举数对，如果发现 A 中某一个数对与 B 中多个数对都有恰好一个相同的数字就是 -1，如果每次枚举到 A 中一个数对，B 中与其有相同数字的都只有一个，则可以确定双方知道，输出 0；如果总是同一个数字，则确定这个数字。</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+
+using namespace std;
+
+const int maxn=20;
+int n,m,ans=1;
+pair &lt;int,int&gt; a[maxn],b[maxn];
+bool is[15];
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+inline int have_same(pair&lt;int,int&gt; aa, pair&lt;int,int&gt; bb){
+    // cout&lt;&lt;aa.first&lt;&lt;&quot;,&quot;&lt;&lt;aa.second&lt;&lt;&quot;  &quot;&lt;&lt;bb.first&lt;&lt;&quot;,&quot;&lt;&lt;bb.second&lt;&lt;endl;
+    if (aa.first==bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second!=bb.second) return aa.first;
+    if (aa.first!=bb.first &amp;&amp; aa.first==bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second!=bb.second) return aa.first;
+    if (aa.first!=bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second==bb.first &amp;&amp; aa.second!=bb.second) return aa.second;
+    if (aa.first!=bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second==bb.second) return aa.second;
+    // cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    return -1;
+}
+
+signed main(){
+    n=read();m=read();
+    for (int i=1;i&lt;=n;i++){
+        int x=read(),y=read();
+        a[i]=make_pair(x,y);
+    }
+    for (int i=1;i&lt;=m;i++){
+        int x=read(),y=read();
+        b[i]=make_pair(x,y);
+    }
+
+    bool tmp[15];
+    for (int i=1;i&lt;=n;i++){
+        int cnt=0;
+        memset(tmp,0,sizeof(tmp));
+        for (int j=1;j&lt;=m;j++){
+            int now=have_same(a[i],b[j]);
+            is[now]=true;tmp[now]=true;
+        }
+        for (int j=1;j&lt;=9;j++) cnt+=tmp[j];
+        if (cnt&gt;1){
+            cout&lt;&lt;-1&lt;&lt;endl;
+            return 0;
+        }
+    }
+
+    for (int i=1;i&lt;=m;i++){
+        int cnt=0;
+        memset(tmp,0,sizeof(tmp));
+        for (int j=1;j&lt;=n;j++){
+            int now=have_same(a[j],b[i]);
+            tmp[now]=true;
+        }
+        for (int j=1;j&lt;=9;j++) cnt+=tmp[j];
+        if (cnt&gt;1){
+            cout&lt;&lt;-1&lt;&lt;endl;
+            return 0;
+        }
+    }
+
+    int all_cnt=0;
+    for (int i=1;i&lt;=9;i++) {all_cnt+=is[i];if (is[i]) ans=i;}
+    if (all_cnt&gt;1) cout&lt;&lt;0&lt;&lt;endl; else cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre><h2>E - Careful Maneuvering</h2><h3>Description</h3><p>一个平面上有 n 艘飞船位于 $(-100,y_{1,i})$，另外有 m 艘飞船位于 $(100,y_{2,i})$，现在需要让你确定两个点 $(0,y_1)$ 和 $(0,y_2)$，每艘宇宙飞船同时向两个点发射激光，射中其他飞船即摧毁，需要使得最后能摧毁的宇宙飞船数量尽量多。输出最多被摧毁的飞船数量。$1\leq n,m\leq 60, |y_{1,i}|,|y_{2,i}| \leq 10000$。</p><h3>Tags</h3><p><code>贪心</code> <code>暴力</code> <code>压位存储</code></p><h3>Analysis</h3><p>注意到 n 和 m 最大 60，那么完全可以对于左边和右边能被炸掉的小飞机压位存储一下。直接暴力枚举，对于左右一对小飞机，累计于把它们一次性轰掉的点放置位置，这样会形成 n×m 个点，那么最后再 $\Theta(n^2)$ 枚举点即可。<br>需要注意的坑：有飞船坐标重复情况，压位的时候需要判断某一位为 0 再累计！否则很容易爆出去……</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+#define int long long
+
+const int maxn=65;
+const int maxx=40005,zero=20001;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+int n,m,INF;
+int x[maxn],y[maxn];
+int ans=0;
+
+pair&lt;int,int&gt; s[maxx]; // mid 扩展两倍
+int nxt[maxx];
+
+int pop_count(int x){
+    int ret=0;
+    while (x) ret+=x&amp;1,x&gt;&gt;=1;
+    return ret;
+}
+
+signed main(){
+    n=read();m=read();
+    for (int i=0;i&lt;n;i++) x[i]=read();
+    for (int i=0;i&lt;m;i++) y[i]=read();
+    sort(x,x+n);sort(y,y+m);
+    // for (int i=0;i&lt;n;i++) printf(&quot;%lld &quot;,x[i]);printf(&quot;\n&quot;);
+    // for (int i=0;i&lt;m;i++) printf(&quot;%lld &quot;,y[i]);printf(&quot;\n&quot;);
+    for (int i=0;i&lt;n;i++){
+        for (int j=0;j&lt;m;j++){
+            int mid=(x[i]+y[j])+zero;
+            if ((s[mid].first&amp;(1LL&lt;&lt;i))==0)  s[mid].first +=1LL&lt;&lt;i;
+            if ((s[mid].second&amp;(1LL&lt;&lt;j))==0) s[mid].second+=1LL&lt;&lt;j;
+        }
+    }
+    memset(nxt,63,sizeof(nxt));
+    INF=nxt[0];
+    int st=INF,lst=INF;
+    for (int i=-20000;i&lt;=20000;i++) if (s[i+zero].first!=0){
+        if (st==INF) st=i+zero,lst=i; else nxt[lst+zero]=i+zero,lst=i;
+    }
+    for (int i=st;i!=INF;i=nxt[i]){
+        for (int j=st;j!=INF;j=nxt[j]){
+            int num1=s[i].first  | s[j].first;
+            int num2=s[i].second | s[j].second;
+            // ans=max(ans,(int)__builtin_popcountll(num1)+__builtin_popcountll(num2));
+            ans=max(ans,(int)pop_count(num1)+(int)pop_count(num2));
+        }
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre><h2>F - Compute Power</h2><h3>Description</h3><p>有 n 个任务，每个任务需要计算机 $a_i$ 的功率，并且要启用 $b_i$ 个处理器。你有足够的无限处理器计算机，每台计算机可以执行 1 个或 2 个任务，但是第二个任务的功率不能超过第一个任务。你需要安排一下，使得最后所有计算机的第一个任务<strong>平均功率</strong>最小。“平均功率”定义为：功率总和除以处理器总和。输出平均功率乘以 1000 <strong>向上取整</strong>。$1\leq n\leq 50, 1\leq a_i\leq 10^8, 1\leq b_i\leq 100$。</p><h3>Tags</h3><p><code>DP</code> <code>二分</code></p><h3>Analysis</h3><p>这题就是 0/1 分数规划的变形题，同样是选出 m 个物品使得 $\frac {\sum a_i} {\sum b_i}$ 尽量小。不同之处在于需要考虑第二个任务，这个直接排序即可解决：$a_i$ 先从小到大排序，可以定义 <code>F[i][j]</code> 表示前 i 个任务剩余 j 个未处理（这 j 个任务可以被接下来的计算机“认领”为第二个任务，既然 $a_i$ 为升序）。<br>但是又会出现一个问题：有很多 $a_i$ 是相同的。第一个任务功率必须严格大于第二个，不能相同。可以改一下这个 DP 定义：<code>F[i][j][k]</code> 表示前 i 个任务，剩余 j 个和 $a_i$ 不一样的和 k 个和 $a_i$ 一样的。状态转移很容易得到。<br>注意向上取整（C++ 函数是 <code>ceil()</code>）……</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;cmath&gt;
+
+#define int long long
+using namespace std;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int maxn=55;
+const double eps=1e-5,INF=1.0e9;
+int n;
+double ans=-1.0;
+double f[maxn][maxn][maxn];
+
+//f[i][j][k]: 前 i 个任务，剩余 j 个和 a[i] 不一样的和 k 个和 a[i] 一样的
+
+pair&lt;int,int&gt; tasks[maxn];
+
+bool check(double now){
+    for (int i=0;i&lt;=n;i++) for (int j=0;j&lt;=n;j++) for (int k=0;k&lt;=n;k++) f[i][j][k]=INF;
+    f[0][0][0]=0.0;
+    for (int i=1;i&lt;=n;i++)
+    for (int j=0;j&lt;=i;j++)
+    for (int k=0;k&lt;=i;k++) if (f[i-1][j][k]!=INF){
+        double delta=(double)tasks[i].first-now*(double)tasks[i].second;
+        if (tasks[i-1].first==tasks[i].first || i==1){
+            f[i][j][k]=min(f[i][j][k],f[i-1][j][k]+delta);
+            if (j-1&gt;=0) f[i][j-1][k]=min(f[i][j-1][k],f[i-1][j][k]+delta);
+            f[i][j][k+1]=min(f[i][j][k+1],f[i-1][j][k]);
+        } else {
+            if (j+k&lt;=n) f[i][j+k][0]=min(f[i][j+k][0],f[i-1][j][k]+delta);
+            if (j+k-1&gt;=0 &amp;&amp; j+k-1&lt;=n) f[i][j+k-1][0]=min(f[i][j+k-1][0],f[i-1][j][k]+delta);
+            if (j+k&lt;=n) f[i][j+k][1]=min(f[i][j+k][1],f[i-1][j][k]);
+        }
+    }
+    return f[n][0][0]&lt;0.0;
+}
+
+bool cmp(pair&lt;int,int&gt; aa,pair&lt;int,int&gt; bb){
+    return aa.first&lt;bb.first;
+}
+
+signed main(){
+    n=read();
+    for (int i=1;i&lt;=n;i++) tasks[i].first=read();
+    for (int i=1;i&lt;=n;i++) tasks[i].second=read();
+    sort(tasks+1,tasks+1+n,cmp);
+    double L=0.0001,R=1.0e8;
+    while (L&lt;=R){
+        double mid=(L+R)/2.0;
+        if (check(mid)) R=mid-eps; else ans=mid,L=mid+eps;
+    }
+    // printf(&quot;%.16f\n&quot;,ans);
+    printf(&quot;%lld\n&quot;,(int)ceil(ans*1000.0));
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf994" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces Round #488 Div2 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

@@ -1,0 +1,132 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>康托展开（Cantor Expansion）例题 + 略解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 康托展开（Cantor Expansion）例题 + 略解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 康托展开（Cantor Expansion）例题 + 略解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>康托展开（Cantor Expansion）例题 + 略解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 06 月 01 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cantor-expansion" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>现在有N个数，分别为1到N，如果要问你这些数的所有排列中，从小到大数的第N个是多少，如何求解？</p><p>显然当N很小时直接写个模拟就可以了。但是这样写的时间复杂度至少是$A_N^N$，也就是$N!$，很容易超时。想想$13!$已经是6227020800了……有没有更快的方法呢？</p><!--more--><h3>题外话</h3><p>这又让我回想起在 ZS 那里上课的日子……当时做过一道题叫做“Jam的计数法”（洛谷传送门：<a href="https://www.luogu.org/problemnew/show/P1061" title="Jam的计数法">Jam的计数法</a>），当时ZS并没有介绍康托展开这种高级的方法，只是告诉我们：知道了一个1~N的排列，如何求第一个比它大的排列。想法很简单：从这个排列的最后（即第N个数字）向前寻找，直到找到一个下降的地方，把下降的数字替换掉（当然这有很多方法）。用这种想法可以写暴力，对于洛谷上这题可以拿40分。</p><h2>康托展开的定义&公式</h2><blockquote>康托展开是一个全排列到一个自然数的双射，常用于构建哈希表时的空间压缩。 康托展开的实质是计算当前排列在所有由小到大全排列中的顺序，因此是可逆的。<br>——维基百科</blockquote><p>不多说了，直接放公式：</p><p>$$\displaystyle X = A_n * (n-1)! + A_{n-1} * (n-2)! + \dots + A_i * (i-1)! + \dots + A_2 * 1! + A_1 * 0!$$</p><p>其中 $A_i$ 表示这个排列里（从左到右）第 $i$ 个数字之后有多少比这个数字小的数字（看看下面的例子就明白了～）。</p><p>这个公式可以求出某个具体的 $1～N$ 排列在所有 $1～N$ 排列中排第几个。举个例子：1～5的排列，1 3 2 5 4 排在第几个呢？首先看看：第一个数字 1 之后没有比 1 小的数字，所以 $A_n = 0$ ；在3之后有一个比它小的（2），所以 $A_{n-1} = 1$ 。依此类推：</p><p>$$ \displaystyle 0 * (5-1)! + 1 * (4-1)! + 0 * (3-1)! + 1 * (2-1)! + 0 * (1-1)! = 7 $$</p><p>比这个排列还要小的排列有 7 个，所以它排在第 8 个。下面我们枚举验证：</p><pre><code>1 2 3 4 5
+1 2 3 5 4
+1 2 4 3 5
+1 2 4 5 3
+1 2 5 3 4
+1 2 5 4 3
+1 3 2 4 5
+1 3 2 5 4
+</code></pre><p>的确是～</p><p>话说康托尔（Cantor）这位数学家似乎也是个大佬，原来我们还做过一道题叫做“Cantor表”，就是他的杰作（虽然那题很简单）。就是下面这位大佬！</p><p><img width="100" height="120" src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=0aae813a043b5bb5bed727f80ee8b204/b7fd5266d01609248982228ad30735fae7cd34ff.jpg"> 数学家的凝视</img></p><h2>康托展开的逆</h2><p>现在我们可以求一个 1~N 的排列在所有 1~N 的排列里从小到大是第几个了，那么如果我们知道一个数字 k，想知道 1~N 的排列里第 k 个排列是什么，怎么办呢？</p><p>当然可以用二分，时间复杂度大概 $log_2 (N!)$。但是既然前面说了“康托展开是一个全排列到一个自然数的双射”，“是可逆的”，所以我们不妨试试求康托展开的逆，可以做到 $O(N)$ ~</p><p>康托展开的逆并不复杂，相当于把刚刚的那个等式倒过来做。比如我们要求 $1~N$ 的排列里第 $k$ 大的，步骤如下：</p><ol><li>将 $k$ 减去 1，此时 $k$ 就代表了比我们要求的排列小的排列有几个（参考前面，我们最后把求出的答案+1了）；</li><li>$k$ 除以 $(N-1)!$，得到 $A_n$</li><li>$k$ 除以 $(N-2)!$，得到 $A_{n-1}$</li><li>...</li></ol><p>以此类推，最终可以求出整个 $A$ 数组，从而推出这个排列。</p><h2>例题</h2><p>[洛谷 P3014 [USACO11FEB]牛线 Cow Line](<a href="https://www.luogu.org/problemnew/show/P3014">https://www.luogu.org/problemnew/show/P3014</a> "洛谷 P3014 [USACO11FEB]牛线 Cow Line")</p><h3>题目描述</h3><p>The N (1 &lt;= N &lt;= 20) cows conveniently numbered 1...N are playing yet another one of their crazy games with Farmer John. The cows will arrange themselves in a line and ask Farmer John what their line number is. In return, Farmer John can give them a line number and the cows must rearrange themselves into that line.</p><p>A line number is assigned by numbering all the permutations of the line in lexicographic order.</p><p>Consider this example:</p><p>Farmer John has 5 cows and gives them the line number of 3.</p><p>The permutations of the line in ascending lexicographic order: 1st: 1 2 3 4 5</p><p>2nd: 1 2 3 5 4</p><p>3rd: 1 2 4 3 5</p><p>Therefore, the cows will line themselves in the cow line 1 2 4 3 5.</p><p>The cows, in return, line themselves in the configuration '1 2 5 3 4' and ask Farmer John what their line number is.</p><p>Continuing with the list:</p><p>4th : 1 2 4 5 3</p><p>5th : 1 2 5 3 4</p><p>Farmer John can see the answer here is 5</p><p>Farmer John and the cows would like your help to play their game. They have K (1 &lt;= K &lt;= 10,000) queries that they need help with. Query i has two parts: C_i will be the command, which is either 'P' or 'Q'.</p><p>If C_i is 'P', then the second part of the query will be one integer A_i (1 &lt;= A_i &lt;= N!), which is a line number. This is Farmer John challenging the cows to line up in the correct cow line.</p><p>If C_i is 'Q', then the second part of the query will be N distinct integers B_ij (1 &lt;= B_ij &lt;= N). This will denote a cow line. These are the cows challenging Farmer John to find their line number.</p><h3>输入输出格式</h3><p><strong>输入格式：</strong></p><ul><li>Line 1: Two space-separated integers: N and K</li><li>Lines 2..2<em>K+1: Line 2</em>i and 2*i+1 will contain a single query.</li></ul><p>Line 2*i will contain just one character: 'Q' if the cows are lining up and asking Farmer John for their line number or 'P' if Farmer John gives the cows a line number.</p><p>If the line 2&#42;i is 'Q', then line 2&#42;i+1 will contain N space-separated integers B_ij which represent the cow line. If the line 2&#42;i is 'P', then line 2*i+1 will contain a single integer A_i which is the line number to solve for.</p><p><strong>输出格式：</strong></p><ul><li>Lines 1..K: Line i will contain the answer to query i.</li></ul><p>If line 2&#42;i of the input was 'Q', then this line will contain a single integer, which is the line number of the cow line in line 2*i+1.</p><p>If line 2&#42;i of the input was 'P', then this line will contain N space separated integers giving the cow line of the number in line 2*i+1.</p><h3>输入输出样例</h3><p><strong>输入样例#1：</strong></p><pre><code>5 2 
+P 
+3 
+Q 
+1 2 5 3 4 
+
+</code></pre><p><strong>输出样例#1：</strong></p><pre><code>1 2 4 3 5 
+5 
+
+</code></pre><h2>参考代码</h2><p>这里贴的就是刚刚那题AC的代码。</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=25;
+int n,m,a[maxn],b[maxn];
+bool vis[maxn];
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline long long llread(){
+    long long ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*(long long)10+(long long)(ch-'0'),ch=getchar();
+    return (long long)ret*f;
+}
+inline char read_ch(){
+    char ch=getchar();
+    while (ch!='P'&amp;&amp;ch!='Q') ch=getchar();
+    return ch;
+}
+inline bool check(int L,int R){
+    for (int i=L;i&lt;=R;i++) if (vis[i]) return 1;
+    return false;
+}
+int main(){
+    n=read();m=read();
+    for (int k=1;k&lt;=m;k++){
+        char ch=read_ch();
+        if (ch=='Q'){
+            long long fac=1;
+            for (int i=1;i&lt;=n;i++) a[i]=read(),fac=fac*(long long)i;
+            fac=(long long)fac/(long long)n;
+            long long x=0;int cnt=n-1;
+            for (int i=1;i&lt;=n;i++){
+                int now=0; //now表示这个排列里（从左到右）第i个数字之后有多少比这个数字小的数字
+                for (int j=i+1;j&lt;=n;j++) if (a[i]&gt;a[j]) now++;
+                x=(long long)x+(long long)now*(long long)fac;
+                if (cnt) fac=(long long)fac/(long long)cnt--;
+            }
+            printf(&quot;%lld\n&quot;,++x);
+        } else if (ch=='P'){
+            long long x=llread();x--;long long fac=1;
+            for (int i=2;i&lt;n;i++) fac=fac*(long long)i;
+            for (int i=n;i&gt;=1;i--){
+                a[n-i+1]=(long long)x/fac;
+                x%=fac;
+                if (i-1) fac=fac/(long long)(i-1); else fac=1;
+            }
+            memset(vis,0,sizeof(vis));
+            for (int i=1;i&lt;=n;i++){ //B[i]即i位上的数字 
+                int cnt=0;b[i]=-1;
+                for (int j=0;j&lt;=n;j++){
+                    if (vis[j]) cnt++;
+                    if ((!vis[cnt+a[i]+1])&amp;&amp;(!check(j+1,cnt+a[i]))){
+                        vis[cnt+a[i]+1]=1;b[i]=cnt+a[i]+1;break;
+                    }
+                }
+            }
+            for (int i=1;i&lt;n;i++) printf(&quot;%d &quot;,b[i]);printf(&quot;%d\n&quot;,b[n]);
+        }
+    }
+    return 0;
+}</code></pre><hr><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80" title="康托展开 - 维基百科，自由的百科全书">康托展开 - 维基百科，自由的百科全书</a></p><p><a href="https://baike.baidu.com/item/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80" title="康托展开_百度百科">康托展开_百度百科</a></p><p><a href="https://comzyh.com/blog/archives/92/" title="康托展开详解 | Comzyh的博客">康托展开详解 | Comzyh的博客</a></p><p>[题解 P3014 【[USACO11FEB]牛线Cow Line】 - YoungNeal的Blog - 洛谷博客](<a href="https://www.luogu.org/blog/YoungNeal/solution-p3014">https://www.luogu.org/blog/YoungNeal/solution-p3014</a> "题解 P3014 【[USACO11FEB]牛线Cow Line】 - YoungNeal的Blog - 洛谷博客")</p><p>想不到吧，隔了这么长时间我居然更新博客了~</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4f3a60a87052f17f33989f2f25de8a65" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://zigzagk.top" class="link" target="_blank"> <h4>ZigZagK</h4> </a> <p class="mt-1">2018 年 6 月 5 日 11:39</p> </div> </div> <p class="mt-2">Dalao更新Blog了好稳啊Orz</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cantor-expansion" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 康托展开（Cantor Expansion）例题 + 略解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

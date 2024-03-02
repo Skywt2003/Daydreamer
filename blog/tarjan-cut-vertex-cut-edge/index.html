@@ -1,0 +1,201 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Tarjan 算法求解无向图的割点与割边</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Tarjan 算法求解无向图的割点与割边</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Tarjan 算法求解无向图的割点与割边</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Tarjan 算法求解无向图的割点与割边</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 05 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tarjan-cut-vertex-cut-edge" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>在一幅无向图中，如果删除了一个点，导致图分成了两个或多个联通块（强连通分量），那么这个点就是割点。怎么求这样的点呢？最原始暴力的方法就是每次枚举一个点，删除，跑一遍最短路。今天我们可以用更高级的 Tarjan 算法 $ \displaystyle \Theta (N)$ 求解。</p><!--more--><h2>割点与割边</h2><h3>割点的定义</h3><blockquote>在一个无向图中，如果有一个顶点集合，删除这个顶点集合以及这个集合中所有顶点相关联的边以后，图的连通分量增多，就称这个点集为割点集合。</blockquote><p>也就是前文所述：如果删除了一个点，导致图分成了两个或多个联通块（强连通分量），那么这个点就是割点（也叫作割顶）。说得再通俗点，去掉割点，图会不连通。</p><h3>割边的定义</h3><p>与割点类似：</p><blockquote>假设有连通图 G，e 是其中一条边，如果 G-e 是不连通的，则边 e 是图 G 的一条割边。</blockquote><p>就是说如果把这条边删除，图分为两个强连通分量，这条边就称为割边（也称为桥）。</p><h3>暴力求解</h3><p>以割点为例：前面也提到了，最原始的暴力方法：就是每次枚举一个点，删除，跑一遍最短路，看看结点 1 是否还可以到达除了删除点之外的所有点，如果不能则说明删除点是割点。如果跑最稳的 Dijkstra+Heap，复杂度也要 $\Theta (N\ast M \ast log_2(M))$……</p><h2>Tarjan 算法</h2><p>求解割点和割边，用 Tarjan 算法会十分优秀。在此之前我们要先学习下什么是 DFS 树。</p><h3>DFS 树</h3><p>所谓 DFS 树，就是对一幅图进行 DFS 按照 DFS 顺序得到的一棵生成树。可以从任意点开始 DFS（一般从 1 开始），并不影响答案。在这幅图中，在 DFS 树中的边称为树边，不在 DFS 树中的边称为非树边。</p><h4>返祖边</h4><p>这里我们只研究无向图。在无向图中，非树边只会以返祖边的形式存在。也就是说非树边会从当前点指向某个祖先。例如下图中，D 指向 A 的边就是返祖边。（这张图其实是无向图，为了便于理解，按照 DFS 的顺序标出方向）</p><pre><code class="lang-mermaid">graph TB
+    A((A))--&gt;B((B))
+    B((B))--&gt;C((C))
+    B((B))--&gt;D((D))
+    D((D))--&gt;A</code></pre><h3>算法原理</h3><h4>割点的求解</h4><p>可以把割点分为两种情况：</p><ol><li>根节点在 DFS 树中有多于一个子节点，那么根节点就是割点；</li><li>对于非根节点 u，它至少有一棵子树没有返祖边可以到达 u 的祖先。</li></ol><p>第一种情况很好理解；对于第二种情况，如果 u 有一个子树中有一个结点 x 有返祖边可以到达 u 的祖先，那么把 u 删除后，由于原来的树是联通的，那么我们找出的 x 仍然有边可以到达 u 以上的所有点，又因为那个点在 u 的一棵子树里，那么这棵子树就可以到达 u 以上的所有点！</p><h4>割边的求解</h4><p>割边甚至更加简单，忽略第一种情况，如果一条边是割边，当且仅当其子树均没有跨过这条边。</p><h4>具体实现</h4><p>以求割点为例，每个节点维护几个信息：</p><ul><li>$dfn(x)$ 表示点 x 的标号，即<strong>它是第几个被遍历到的点</strong>。维护这一信息十分有用，因为如果点 a 是点 b 的祖先，那么 $dfn(a) \lt dfn(b)$ 。</li><li>$low(x)$ 表示 x 点不经过其的父节点，能通过返祖边到达的 $dfn$ 最小的祖先的 $dfn$ 值。初始值为 $dfn(x)$ 。</li><li>$fa(x)$ 表示 x 的父节点。在求割边时，我们记录的 $fa(x)$ 表示 x 与其祖先之间的边的标号。</li></ul><p>在 DFS 的同时可以维护这几个信息，回溯时判断如果 $low(v)&gt;dfn(x)$ （v 是 x 的儿子）说明 x 是割点。</p><p>核心代码如下：</p><pre><code class="lang-cpp">inline void DFS(int x){
+    vis[x]=1;dfn[x]=low[x]=++acnt;
+    int nowson=0;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        nowson++;
+        fa[son[i]]=x;
+        DFS(son[i]);
+        low[x]=min(low[x],low[son[i]]);
+        if (x!=1&amp;&amp;low[son[i]]&gt;dfn[x]) ans[x]=true;
+        if (x==1&amp;&amp;nowson&gt;=2) ans[x]=true;
+    } else if (son[i]!=fa[x]) low[x]=min(dfn[son[i]],low[x]);
+}</code></pre><h2>例题</h2><h3>割点模板题</h3><p><a href="http://poj.org/problem?id=1144" title="POJ1144 Network">POJ1144 Network</a></p><h3>割边模板题</h3><p><a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2588" title="ZOJ2588 Burning Bridges">ZOJ2588 Burning Bridges</a></p><h3>参考代码</h3><p>割点（POJ1144）</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=105,maxe=1000005;
+int n,fa[maxn];
+int tot=0,acnt=0,dfn[maxn],low[maxn];
+int lnk[maxn],nxt[maxe],son[maxe];
+bool vis[maxn],ans[maxn];
+inline void add(int x,int y){
+    tot++;son[tot]=y;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline void Init(){
+    tot=0;acnt=0;
+    memset(fa,0,sizeof(fa));
+    memset(lnk,0,sizeof(lnk));
+    memset(nxt,0,sizeof(nxt));
+    memset(son,0,sizeof(son));
+    memset(vis,0,sizeof(vis));
+    memset(dfn,0,sizeof(dfn));
+    memset(ans,0,sizeof(ans));
+}
+inline void DFS(int x){
+    vis[x]=1;dfn[x]=low[x]=++acnt;
+    int nowson=0;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        nowson++;
+        fa[son[i]]=x;
+        DFS(son[i]);
+        low[x]=min(low[x],low[son[i]]);
+        if (x!=1&amp;&amp;low[son[i]]&gt;=dfn[x]) ans[x]=true;
+        if (x==1&amp;&amp;nowson&gt;=2) ans[x]=true;
+    } else if (son[i]!=fa[x]) low[x]=min(dfn[son[i]],low[x]);
+}
+int main(){
+    for (;;){
+        scanf(&quot;%d&quot;,&amp;n);if (n==0) break;
+        Init();int ans_cnt=0;
+        int x;scanf(&quot;%d&quot;,&amp;x);
+        while (x!=0){
+            int now=0;char ch=getchar();
+            while (ch!=10&amp;&amp;ch!=13){
+                while ((ch&lt;'0'||ch&gt;'9')&amp;&amp;ch!=10&amp;&amp;ch!=13) ch=getchar();
+                if (ch==10||ch==13) break;
+                while (ch&gt;='0'&amp;&amp;ch&lt;='9') now=now*10+ch-'0',ch=getchar();
+                add(x,now);add(now,x);
+                now=0;
+            }
+            scanf(&quot;%d&quot;,&amp;x);
+        }
+        DFS(1);
+        for (int i=1;i&lt;=n;i++) ans_cnt+=ans[i];
+        printf(&quot;%d\n&quot;,ans_cnt);
+    }
+    return 0;
+}</code></pre><p>割边（ZOJ2588）</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+const int maxn=10005,maxe=200005;
+int T,n,m,fa[maxn];
+int tot=0,acnt=0,dfn[maxn],low[maxn];
+int lnk[maxn],nxt[maxe],son[maxe],id[maxe];
+bool vise[maxe],ans[maxe],vis[maxn];
+vector&lt;int&gt; que_ans;
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;id[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline void Init(){
+    tot=0;acnt=0;que_ans.clear();
+    memset(fa,0,sizeof(fa));
+    memset(id,0,sizeof(id));
+    memset(lnk,0,sizeof(lnk));
+    memset(nxt,0,sizeof(nxt));
+    memset(son,0,sizeof(son));
+    memset(dfn,0,sizeof(dfn));
+    memset(low,0,sizeof(low));
+    memset(ans,1,sizeof(ans));
+    memset(vis,0,sizeof(vis));
+}
+inline void DFS(int x){
+    dfn[x]=low[x]=++acnt;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+        fa[son[i]]=id[i];vis[son[i]]=true;
+        DFS(son[i]);
+        if (low[son[i]]&lt;=dfn[x]) ans[id[i]]=false;
+        low[x]=min(low[x],low[son[i]]);
+    } else if (id[i]!=fa[x]) low[x]=min(dfn[son[i]],low[x]),ans[id[i]]=false;
+}
+int main(){
+    scanf(&quot;%d&quot;,&amp;T);
+    while (T--){
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        Init();
+        for (int i=1;i&lt;=m;i++){
+            int x,y;scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+            add(x,y,i);add(y,x,i);
+        }
+        vis[1]=true;DFS(1);
+        
+        for (int i=1;i&lt;=m;i++) if (ans[i]) que_ans.push_back(i);
+        int nn=que_ans.size();printf(&quot;%d\n&quot;,nn);
+        for (int i=0;i&lt;nn-1;i++) printf(&quot;%d &quot;,que_ans[i]);
+        if (nn!=0) printf(&quot;%d\n&quot;,que_ans[nn-1]);
+        // printf(&quot;LOW: &quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,low[i]);printf(&quot;\n&quot;);
+        // printf(&quot;DFN: &quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,dfn[i]);printf(&quot;\n&quot;);
+        if (T&gt;0) printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre><h2>参考</h2><p><a href="https://baike.baidu.com/item/%E5%89%B2%E7%82%B9" title="割点_百度百科">割点_百度百科</a><br><a href="https://baike.baidu.com/item/%E5%89%B2%E8%BE%B9" title="割边_百度百科">割边_百度百科</a></p><p>吐槽一下，POJ1144 调代码一直调不对，然后去 discuss 区搞了组数据，用 Mermaid 生成图，我以为会很清晰，结果是这样的……</p><pre><code class="lang-mermaid">graph TB;
+17---4
+17---18
+1---11
+7---5
+13---1
+3---1
+14---5
+15---20
+9---12
+6---8
+16---14
+18---8
+8---4
+20---18
+20---10
+2---3
+12---5
+5---9
+5---20
+19---20
+19---9
+19---11
+19---2
+11---3
+4---15
+10---3
+21---3</code></pre><p>吐血……</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tarjan-cut-vertex-cut-edge" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Tarjan 算法求解无向图的割点与割边</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

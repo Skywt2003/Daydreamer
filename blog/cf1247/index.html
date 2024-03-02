@@ -1,0 +1,238 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Codeforces Round #596 Div2 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Codeforces Round #596 Div2 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Codeforces Round #596 Div2 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Codeforces Round #596 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 10 月 28 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf1247" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Link: <a href="https://codeforces.com/contest/1247">Codeforces Round #596 (Div. 2, based on Technocup 2020 Elimination Round 2)</a></p><h1>D - Power Products</h1><h2>Description</h2><p>给出一个长度为 $n$ 的序列和一不小于 2 的整数 $k$，要求找出数字对 $(i,j)$ 的数量，满足 $i\lt j$ 并且存在一个整数 $x$ 使得 $a_i\ast a_j = x^k$。</p><!--more--><h2>Solution</h2><p>对于每个数字进行质因数分解，分解成 $x=p_1^{k_1}+p_2^{k_2}+\dots+p_m^{k_m}$，我们用一个 <code>std::vector</code> 存储若干个二元组 $(p_i,k_i)$，表示这个数字有 $k_i$ 个 $p_i$ 这个质因子，显然存储的时候这个 $k_i$ 次数可以对题中所给的 $K$ 取模。如果存在两个数字满足 $p_i$ 集合相同，并且对于所有 $p_i$，$k_1i + k_2i = K$，则说明这两个数字相乘能得到 $x^K$。<br>用 <code>std::map</code> 维护即可。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+
+#define int long long
+
+#define pii pair&lt;int,int&gt;
+
+using namespace std;
+
+const int maxn=1e5+5;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int N=1e5;
+
+int n,k;
+int a[maxn];
+
+int prime[maxn];
+bool flag[maxn];
+
+map&lt;vector&lt;pii&gt;,int&gt; hsh;
+
+void build_prime(){
+    memset(flag,true,sizeof(flag));
+    flag[1]=false;
+    for (int i=2;i&lt;=N;i++){
+        if (flag[i]) prime[++prime[0]]=i;
+        for (int j=1;j&lt;=prime[0];j++){
+            if (i*prime[j] &gt; N) break;
+            flag[i*prime[j]]=false;
+            if (i%prime[j]==0) break;
+        }
+    }
+}
+
+vector&lt;pii&gt; break_down(int x){
+    vector&lt;pii&gt; ret; ret.clear();
+    for (int i=1;i&lt;=prime[0];i++) if (x%prime[i]==0){
+        int cnt=0;
+        while (x%prime[i]==0) cnt++,x/=prime[i];
+        if (cnt%k) ret.push_back(make_pair(prime[i],cnt%k));
+    } else if (x==1) break;
+    return ret;
+}
+
+vector&lt;pii&gt; get_comp(vector&lt;pii&gt; &amp;vec){
+    vector&lt;pii&gt; ret=vec;
+    for (int i=0;i&lt;ret.size();i++) ret[i].second=k-ret[i].second;
+    return ret;
+}
+
+int ans=0;
+
+signed main(){
+    n=read(); k=read();
+    for (int i=1;i&lt;=n;i++) a[i]=read();
+
+    build_prime();
+
+    for (int i=1;i&lt;=n;i++){
+        vector&lt;pii&gt; now=break_down(a[i]);
+        vector&lt;pii&gt; com=get_comp(now);
+        ans+=hsh[com]; hsh[now]++;
+    }
+
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}</code></pre><h1>E - Rock Is Push</h1><h2>Description</h2><p>你在一个 $n\ast m$ 的迷宫左上角 $1,1$ 位置，你要到达右下角 $n,m$ 的位置。每次你只能向右或者向下移动。<br>迷宫的一些格子里有石头。当你移动到有石头的格子时，石头就会按你移动的方向被推到下一个格子。如果下一个格子里有石头，它就会被推得更远，以此类推。迷宫被不可穿透的墙壁所包围，因此任何将你或任何石头移出迷宫的行为都是非法的。<br>求出起点到终点路径数量，对 $10^9+7$ 取模。<br>$n\le 2000$。</p><p>一些很有趣的动图（样例解释）：</p><p><img src="https://assets.codeforces.com/rounds/1225/1.gif" alt="pic1" title="pic1"></p><p><img src="https://assets.codeforces.com/rounds/1225/2.gif" alt="pic2" title="pic2"></p><p><img src="https://assets.codeforces.com/rounds/1225/3.gif" alt="pic3" title="pic3"></p><p><img src="https://assets.codeforces.com/rounds/1225/4.gif" alt="pic4" title="pic4"></p><h2>Solution</h2><p>定义 $R(i,j)$ 和 $D(i,j)$，表示走到 $i,j$ ，下一次分别要向右/向下走，上一次和下一次走的方向不一样，走到终点的方案数。<br>则 $R(n,m)=D(n,m)=1$。</p><p>考虑到以这种定义走到 $i,j$ 的时候，右下角能到达的石头位置都没有改变过；所以 $i,j$ 的状态可以独立考虑，和经过的路径无关。</p><p>假设 $i,j$ 右边或者下面有 $k$ 个石头，则</p><p>$$R(i,j)=\sum_{t=1}^{m-k-j} D(i,j+t)\\ D(i,j)=\sum_{t=1}^{n-k-i} R(i+t,j)$$</p><p>然后前缀和优化即可。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+
+#define int long long
+
+using namespace std;
+
+const int maxn=2005;
+const int tt=1e9+7;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+int n,m;
+char a[maxn][maxn];
+int rock[maxn][maxn];
+int sum_r[maxn][maxn],sum_d[maxn][maxn];
+int d[maxn][maxn],r[maxn][maxn];
+
+int sd[maxn][maxn],sr[maxn][maxn]; // DP prefix sum
+
+signed main(){
+    n=read(); m=read();
+    for (int i=1;i&lt;=n;i++) scanf(&quot;%s&quot;,a[i]+1);
+
+    for (int i=1;i&lt;=n;i++)
+        for (int j=1;j&lt;=m;j++)
+            rock[i][j]=a[i][j]=='R';
+
+    if (n==1 &amp;&amp; m==1){printf(&quot;%lld\n&quot;,1-rock[1][1]);return 0;}
+
+    for (int i=1;i&lt;=n;i++)
+        for (int j=m;j&gt;=1;j--)
+            sum_r[i][j]=sum_r[i][j+1]+rock[i][j];
+    for (int j=1;j&lt;=m;j++)
+        for (int i=n;i&gt;=1;i--)
+            sum_d[i][j]=sum_d[i+1][j]+rock[i][j];
+
+    for (int i=n;i&gt;=1;i--){
+        for (int j=m;j&gt;=1;j--){
+            // for (int t=1;t&lt;=n-sum_d[i+1][j]-i;t++) d[i][j]=(d[i][j]+r[i+t][j])%tt;
+            // for (int t=1;t&lt;=m-sum_r[i][j+1]-j;t++) r[i][j]=(r[i][j]+d[i][j+t])%tt;
+            d[i][j] = (sr[i+1][j] - sr[i+ (n-sum_d[i+1][j]-i) +1][j] + tt)%tt;
+            r[i][j] = (sd[i][j+1] - sd[i][j+ (m-sum_r[i][j+1]-j) +1] + tt)%tt;
+            if (i==n &amp;&amp; j==m) d[i][j]=r[i][j]=1-rock[i][j]; else
+            if (i==n){d[i][j]=0; if (sum_r[i][j+1]) r[i][j]=0;} else 
+            if (j==m){r[i][j]=0; if (sum_d[i+1][j]) d[i][j]=0;}
+
+            sr[i][j]=(sr[i+1][j]+r[i][j])%tt;
+            sd[i][j]=(sd[i][j+1]+d[i][j])%tt;
+        }
+    }
+
+    printf(&quot;%lld\n&quot;,(d[1][1]+r[1][1])%tt);
+    return 0;
+}</code></pre><h1>F - Tree Factory</h1><h2>Description</h2><p>给出一棵树，节点编号为 $[0,n-1]$，0 为树根，节点 $x$ 父亲的标号 $p(x)$ 小于 $x$。<br>你需要构造一条链，赋予链上每个点 $[0,n-1]$ 的标号，并且在对这个链进行 $k$ 次操作后，其形态和给出的树完全相同。<br>所谓的“操作”如下：选定一个点 $x$，满足 $x$ 不是树根并且其父亲 $p(x)$ 不是树根，把 $x$ 的父亲设置为 $p(p(x))$。其它所有点的父亲不变。<br>输出一种链上点的标号方案，然后输出操作次数和一种操作方案。操作次数不能大于 $10^6$ 的。保证有解。</p><p>$2\le n\le 10^5$。</p><h2>Solution</h2><p>考虑反着做，把给定的树变成一条链。如果每次操作都能使树的深度增加 1，那么我们最多只需要做 $n-1$ 次，满足答案的限制。那么考虑如何让每次操作都使深度加 1。<br>首先贪心地想，肯定选取树中从根节点出发的最长的一条路径作为链的基础，其他操作在剩余的点上完成。如果这条路径上所有节点都没有大于一个儿子，则已经做完了；否则找出一个有至少两个儿子的点 $x$，假设其一个在路径上的点是 $u$，另一个不在路径上的点是 $v$，我们另 $u$ 的父亲变成 $v$，就实现了深度增加。</p><p>具体实现，对最深的分叉点，把这个节点的所有儿子一个个合并。</p><p>参考 <a href="https://codeforces.com/contest/1246/submission/63460604">wxhtxdy 的代码</a>……</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+
+#define int long long
+
+using namespace std;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int maxn=1e5+5;
+
+int n,fa[maxn],deep[maxn];
+int tot=0,lnk[maxn],nxt[maxn],to[maxn],son[maxn];
+
+int opt[maxn],ans[maxn];
+
+int heavy_son[maxn];
+
+void add_edge(int x,int y){
+    tot++; to[tot]=y; son[x]++;
+    nxt[tot]=lnk[x]; lnk[x]=tot;
+}
+
+int cnt=0;
+
+void DFS(int x){
+    ans[++ans[0]]=x;
+    for (int i=1;i&lt;=cnt;i++) opt[++opt[0]]=x;
+    cnt=0;
+    for (int i=lnk[x];i;i=nxt[i]) if (to[i]!=heavy_son[x]) DFS(to[i]);
+    if (heavy_son[x]) DFS(heavy_son[x]);
+    cnt++;
+}
+
+signed main(){
+    n=read();
+
+    fa[0]=-1; deep[0]=1;
+    for (int i=1;i&lt;n;i++) fa[i]=read(),add_edge(fa[i],i),deep[i]=deep[fa[i]]+1;
+
+    int max_deep=0,k=-1;
+    for (int i=0;i&lt;n;i++) if (deep[i]&gt;max_deep) max_deep=deep[i],k=i;
+    while (k!=-1){
+        if (fa[k]!=-1) heavy_son[fa[k]]=k;
+        k=fa[k];
+    }
+
+    DFS(0);
+
+    for (int i=1;i&lt;=ans[0];i++) printf(&quot;%lld &quot;,ans[i]); printf(&quot;\n&quot;);
+
+    printf(&quot;%lld\n&quot;,opt[0]);
+    for (int i=1;i&lt;=opt[0];i++) printf(&quot;%lld &quot;,opt[i]);
+    printf(&quot;\n&quot;);
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf1247" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Codeforces Round #596 Div2 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

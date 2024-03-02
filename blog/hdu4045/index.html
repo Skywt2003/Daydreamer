@@ -1,0 +1,81 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>HDU 4045 Machine scheduling 题解：组合数+斯特林数</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / HDU 4045 Machine scheduling 题解：组合数+斯特林数</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / HDU 4045 Machine scheduling 题解：组合数+斯特林数</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>HDU 4045 Machine scheduling 题解：组合数+斯特林数</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 29 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hdu4045" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>HDU 4045 Machine scheduling：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4045" title="题目链接">题目链接</a></p><!--more--><p>Time Limit: 5000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)</p><h2>Problem Description</h2><p>A Baidu’s engineer needs to analyze and process large amount of data on machines every day. The machines are labeled from 1 to n. On each day, the engineer chooses r machines to process data. He allocates the r machines to no more than m groups ,and if the difference of 2 machines' labels are less than k,they can not work in the same day. Otherwise the two machines will not work properly. That is to say, the machines labeled with 1 and k+1 can work in the same day while those labeled with 1 and k should not work in the same day. Due to some unknown reasons, the engineer should not choose the allocation scheme the same as that on some previous day. otherwise all the machines need to be initialized again. As you know, the initialization will take a long time and a lot of efforts. Can you tell the engineer the maximum days that he can use these machines continuously without re-initialization.</p><h2>Input</h2><p>Input end with EOF.<br>Input will be four integers n,r,k,m.We assume that they are all between 1 and 1000.</p><h2>Output</h2><p>Output the maxmium days modulo 1000000007.</p><h2>Sample Input</h2><pre><code>5 2 3 2
+</code></pre><h2>Sample Output</h2><pre><code>6
+</code></pre><h3>Hint</h3><p>Sample input means you can choose 1 and 4,1 and 5,2 and 5 in the same day.<br>And you can make the machines in the same group or in the different group.<br>So you got 6 schemes.<br>1 and 4 in same group,1 and 4 in different groups.<br>1 and 5 in same group,1 and 5 in different groups.<br>2 and 5 in same group,2 and 5 in different groups.<br>We assume 1 in a group and 4 in b group is the same as 1 in b group and 4 in a group.</p><h2>Translation</h2><p>有 n 台机器，你要选择其中的 r 台处理数据，使得其中相邻两台下标的距离不小于 k，并且需要你把选出的 k 台分成<strong>不超过 m 组</strong>。问你有多少种方案。</p><h2>Solution</h2><p>分解问题，先选出相邻两台下标距离均不小于 k 的 r 台机器，然后再考虑分成不超过 m 组。</p><p>对于第二问，裸的<a href="https://skywt.cn/posts/stirling/" title="第二类斯特林数">第二类斯特林数</a>。</p><p>接下来考虑第一问。假设我们从第一台机器开始每隔 k-1 台机器就选一台，选到最后（ r 台）会发现还剩余一些位置。我们可以考虑把这些位置插入前面的 r+1 个空隙里。显然最后剩余的位置是：$n-((r-1)\ast k+1)$。接下来我们就是要把 $n-((r-1)\ast k+1)$ 个元素分成 $r+1$ 个集合，集合可以为空。放球问题的一种：球不同，盒相同，可以为空。<br>做法是：把盒子为空转换成盒子不能为空的做法，让每个盒子里都要有球，则要多放 $r+1$ 个球。现在我们就解决球不同、盒相同、不能为空的放球问题，显然可以用隔板法来做，最后答案：</p><pre><code class="lang-math">C_{n-((r-1)]\ast k+1+r+1-1)}^{r} \ast \sum_{i=1}^{min(r,m)}S(r,i)</code></pre><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=1005,tt=1e9+7;
+int n,r,k,m,c[maxn*2][maxn*2],s[maxn][maxn],lst[maxn];
+inline void Build(){
+    for (int i=0;i&lt;=1000;i++) s[i][i]=1;
+    for (int i=1;i&lt;=1000;i++)
+        for (int j=1;j&lt;i;j++)
+            s[i][j]=(s[i-1][j-1]+(long long)s[i-1][j]*j%tt)%tt;
+    c[0][0]=1;
+    for (int i=1;i&lt;=1000;i++){
+        c[i][0]=c[i][i]=1;
+        for (int j=1;j&lt;i;j++) c[i][j]=(c[i-1][j]+c[i-1][j-1])%tt;
+    }
+}
+inline int C(int x,int y){
+    return c[x][y];
+}
+int main(){
+    Build();
+    while (scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;r,&amp;k,&amp;m)!=-1){
+        if (n-((r-1)*k+1)+r&lt;0) {printf(&quot;0\n&quot;);continue;}
+        int sum=0;
+        for (int i=1;i&lt;=min(r,m);i++) sum=(sum+s[r][i])%tt;
+        printf(&quot;%d\n&quot;,(long long)C(n-((r-1)*k+1)+r,r)*sum%tt);
+    }
+    return 0;
+}
+</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/hdu4045" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / HDU 4045 Machine scheduling 题解：组合数+斯特林数</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

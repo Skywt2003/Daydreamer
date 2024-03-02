@@ -1,0 +1,163 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>服务器自动化异地容灾备份方案（白嫖版）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 服务器自动化异地容灾备份方案（白嫖版）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 服务器自动化异地容灾备份方案（白嫖版）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器自动化异地容灾备份方案（白嫖版）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 06 月 20 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/automatic-remote-dr-solution-for-servers-free" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>随着自己 Self-host 的服务越来越多，服务器上的数据也越来越重要。虽然服务器很少有完全 crash 掉的可能性，但是如果某天真的有什么不可抗力，后果是不堪设想的……所以一个自动化且白嫖的「容灾备份」方案就十分重要。</p><!--more--><p>真正提醒我异地「容灾备份」的重要性的是某天看到的一个 meme……</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/06/1744578141.jpg" alt="Server has crashed..." title="Server has crashed..."></p><p>把自己服务器的备份放在自己的服务器上，就是相当于没有备份 =_=</p><p>于是我找到了 Storj、Google Drive 两个白嫖的备份去处，记录一下遇到的一些坑。</p><h2>Restic + Rclone</h2><p>我选择了 <a href="https://restic.net/">Restic</a> 作为备份的软件。Restic 是一个开源的轻量级备份工具，使用起来非常方便。</p><p>为了实现远程的存储，我使用 <a href="https://rclone.org/">Rclone</a> 作为 Restic 的后端。Rclone 是一个用于管理云存储文件的命令行程序，支持非常多的云服务。</p><p>Restic、Rclone 的基本用法可以参阅官网，这里不赘述。</p><h2>Storj</h2><p>Storj 是一家云存储厂商，免费计划提供 150G 的云存储可以白嫖，拿来存放备份绰绰有余。Rclone 也支持 Storj。</p><p>目前 Storj 没有被墙，即使服务器在国内也可以正常使用。</p><h3>Rclone 挂载</h3><p>Storj 有个概念叫做 Access Grant，一开始我也有点迷糊。</p><p>原始的 API key + passphrase 的认证方式是在被逐步弃用的。所谓 Access Grant 是一个长长的字符串，作用相当于 API key 但是无需其他验证，通过这个可以直接证明对自己指定 Bucket 的访问权限。在 Storj 后台可以生成 Access Grants。</p><p>所以在 <code>rclone config</code> 到这一步的时候：</p><pre><code class="lang-plaintext">Option provider.
+Choose an authentication method.
+Choose a number from below, or type in your own string value.
+Press Enter for the default (existing).
+ 1 / Use an existing access grant.
+   \ (existing)
+ 2 / Create a new access grant from satellite address, API key, and passphrase.
+   \ (new)</code></pre><p>应该选择 1，然后粘贴后台生成的 Access Grant。</p><h3>Restic with Rclone</h3><p>初始化 Restic 存储库，记得设置一个随机的猜不到的密码：</p><pre><code class="lang-bash">restic -r rclone:storj:server-dr/backup init</code></pre><p>其中 <code>storj</code> 是 <code>rclone config</code> 时设置的 remote 名称，<code>server-dr</code> 是 Storj 上的 Bucket 名称，<code>/backup</code> 才是自己指定的目录。</p><p>这一步完成后，浏览器进入 Storj 的后台文件管理，就可以看见 <code>server-dr</code> 这个 Bucket 中多了一个 <code>backup</code> 文件夹，其中就是初始化的 Restic 备份仓库。</p><p>进行备份：</p><pre><code class="lang-bash">restic backup /data -r rclone:storj:server-dr/backup --verbose</code></pre><p>删除过期快照，只保留最近三天的备份：</p><pre><code class="lang-bash">restic forget --keep-daily 3 --prune -r rclone:storj:server-dr/backup</code></pre><p>第一次备份会比较慢，共 3G 左右的内容，我的第一次备份用了三个多小时……之后的备份就都会是增量备份，会很快。</p><h2>Google Drive</h2><p>Rclone 也支持 Google Drive，免费空间 15G，也是一种绝佳的白嫖方案。只不过如果是国内的服务器的话要开代理。</p><p>类似的选择还有 Onedrive（空间小，免费计划只有 5G）、Dropbox（也要开代理），Rclone 也都支持，可以尝试。</p><p>使用和上述 Storj 类似，<code>rclone config</code> 之后；</p><pre><code class="lang-bash">restic -r rclone:gdrive:/backup init
+
+restic backup /data -r rclone:gdrive:/backup --verbose --password-file /root/backup/password_gdrive &gt; /root/backup/backup_gdrive.log
+restic forget --keep-daily 3 --prune -r rclone:gdrive:/backup</code></pre><h3>自己的 client-id</h3><p>在创建 Google Drive 的 remote 时，rclone 推荐你去申请自己的 client id，参照<a href="https://rclone.org/drive/#making-your-own-client-id">这个文档</a>。</p><p>有一个小坑点，根据这个文档申请成功之后，回到 Rclone 的登录步骤时，由于我的服务器是 headless 的，我就用本地的 rclone 进行登录操作，这时候终端 rclone 也要开启代理，否则即使登录成功了 get code 操作也是拿不到 code 的（也就是显示 got code 但是却没有输出 code，困惑了我好久）。</p><h2>另一台服务器（SFTP）</h2><p>如果要备份到另一台服务器，无需 Rclone，Restic 自带了 SFTP 协议连接，只要目标主机开启了 SSH 就行。</p><pre><code class="lang-bash">restic -r sftp:user@host:/srv/restic-repo init</code></pre><p>如果自己搭建了 NAS，也可以用 SFTP 备份。</p><h2>软备份数据库</h2><p>对于 MySQL 数据库，采用「硬备份」或称为「物理备份」的方式（即直接备份整个 MySQL 数据存放的文件夹）是有一定的风险的，可能导致数据损坏。</p><p>为了安全性，我们再增加一个「软备份」，用 <code>mysqldump</code> 导出 MySQL 的数据到一个 <code>.sql</code> 文件里，再备份这个文件。</p><pre><code class="lang-bash"># 备份指定数据库
+mysqldump -u username -p db_name &gt; mydb.sql
+# 备份所有数据库
+mysqldump -u username -p --all-databases &gt; alldb.sql
+# 备份 Docker 容器中的数据库
+bash -c &quot;docker exec mariadb mysqldump -u username --password=password --all-databases&quot; &gt; mysql_all.sql</code></pre><h2>自动化脚本</h2><p>可以把以上操作写到一个 <code>backup.sh</code> 脚本里，设置以下 Crontab 规则每天凌晨 3:00 定时执行备份：</p><pre><code>0 3 * * * /root/backup/backup.sh &gt; /root/backup/backup.log</code></pre><p>我写的脚本如下：</p><pre><code class="lang-bash">#!/bin/bash
+# Author: SkyWT
+
+# 已经初始化的 RESTIC 仓库
+RESTIC_REPO=(
+  &quot;rclone:storj:server-dr/backup&quot;
+  &quot;rclone:gdrive:/backup&quot;
+#  &quot;sftp://root@localhost:7051//data/tc_backup&quot;
+)
+# 各个仓库是否需要代理
+RESTIC_PROXY_NEEDED=(
+  &quot;false&quot;
+  &quot;true&quot;
+)
+# 各个仓库的密码
+RESTIC_PASS=(
+  &quot;YourPassWord&quot;
+  &quot;YourPassWord&quot;
+)
+
+# 设置网络代理的地址
+BACKUP_PROXY=&quot;http://127.0.0.1:10800&quot;
+
+# 备份 MySQL 的相关配置
+BACKUP_MYSQL=true
+MYSQL_CONTAINER_NAME=mariadb
+MYSQL_ROOT_NAME=root
+MYSQL_ROOT_PASS=YourPassWord
+
+# 备份文件的相关配置
+BACKUP_FILES=true
+# 需要备份的文件/文件夹
+FILES_TARGET=(
+  &quot;/data&quot;
+)
+
+# 清理旧快照的相关配置
+BACKUP_FORGET=true
+# 快照的保留策略，可参阅 Restic 文档
+FORGET_POLICY_ARG=&quot;--keep-daily 3&quot;
+
+# ----- END OF CONFIG -----
+
+set_proxy(){
+    export http_proxy=$BACKUP_PROXY
+    export https_proxy=$BACKUP_PROXY
+}
+
+unset_proxy(){
+    unset http_proxy
+    unset https_proxy
+}
+
+backup_mysql(){
+    echo -e &quot;\e[32m --- Backup MySQL Start. --- \e[0m&quot;
+    repo=$1
+    bash -c &quot;docker exec $MYSQL_CONTAINER_NAME mysqldump -u $MYSQL_ROOT_NAME --password=$MYSQL_ROOT_PASS --all-databases&quot; &gt; mysql_all.sql
+    restic -r $repo --verbose backup mysql_all.sql --password-file /tmp/.tmp_restic_pass
+    echo -e &quot;\e[32m --- Backup MySQL OK. --- \e[0m&quot;
+}
+
+backup_files(){
+    echo -e &quot;\e[32m --- Backup files Start. --- \e[0m&quot;
+    repo=$1
+    for target in ${FILES_TARGET[@]}
+    do
+        restic -r $repo --verbose backup $target --password-file /tmp/.tmp_restic_pass
+    done
+    echo -e &quot;\e[32m --- Backup files OK. --- \e[0m&quot;
+}
+
+backup_forget(){
+    echo -e &quot;\e[32m --- Forget Start. --- \e[0m&quot;
+    repo=$1
+    bash -c &quot;restic -r $repo forget $FORGET_POLICY_ARG --password-file /tmp/.tmp_restic_pass --prune&quot;
+    echo -e &quot;\e[32m --- Forget OK. --- \e[0m&quot;
+}
+
+start_time=$(date +%s)
+for ((i=0; i&lt;${#RESTIC_REPO[@]}; i++));
+do
+    echo -e &quot;\e[32m --- Starting a repo. --- \e[0m&quot;
+    repo=${RESTIC_REPO[$i]}
+    echo ${RESTIC_PASS[$i]} &gt; /tmp/.tmp_restic_pass
+    if ${RESTIC_PROXY_NEEDED[$i]}; then set_proxy; fi
+
+    if $BACKUP_MYSQL; then backup_mysql $repo; fi
+    if $BACKUP_FILES; then backup_files $repo; fi
+    if $BACKUP_FORGET; then backup_forget $repo; fi
+
+    if ${RESTIC_PROXY_NEEDED[$i]}; then unset_proxy; fi
+    rm -rf /tmp/.tmp_restic_pass
+    echo -e &quot;\e[32m --- Ending a repo. --- \e[0m&quot;
+done
+end_time=$(date +%s)
+cost_time=$[ $end_time-$start_time ]
+
+echo -e &quot;\e[32m Done in $cost_time s.  \e[0m&quot;</code></pre><h2>结语</h2><p>对于 Self-hosted 玩家来说，没有什么比数据更宝贵了。虽然折腾起来有点麻烦，但是如果没有合适的备份方案，等服务器 crash 的时候真的会追悔莫及。</p><p>虽然我没有经历过，但是我说实话没办法保证服务器在下一秒会不会因为什么不可抗力而 crash，导致数据丢失。有太多东西是我们无法控制的。我们只能做好我们能控制的一切。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 3 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/04cbc6f1f5ee0e2475e07cb81cc2f7ab" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://gxzv.com" class="link" target="_blank"> <h4>Ganxiaozhe</h4> </a> <p class="mt-1">2022 年 6 月 21 日 16:58</p> </div> </div> <p class="mt-2">az，拖延一直使我懒得去折腾容灾备份，之前想的就只是写个脚本每天定时运行一次：打包目录下变动的文件和 SQL 数据传给 NAS，NAS 后端接收后分类保存。
+头一次知道 Restic 和 Rclone，晃了眼 doc 好像蛮香，先 mark 一下 &lt;3</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2022 年 6 月 22 日 4:14</p> </div> </div> <p class="mt-2">其实我自己也拖了很久 OvO
+我主要是大学寝室里没条件搭 NAS，所以才去白嫖云存储……不然肯定放在自己的 NAS 里更安全……</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/d38dbe020d4183f7f70fde5c1d0ac1a2" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>汤圆</h4> <p class="mt-1">2022 年 6 月 21 日 12:3</p> </div> </div> <p class="mt-2">打卡😋</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/automatic-remote-dr-solution-for-servers-free" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 服务器自动化异地容灾备份方案（白嫖版）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

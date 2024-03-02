@@ -1,0 +1,122 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>POJ 3465 Battle 题解：可“反悔”的贪心</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ 3465 Battle 题解：可“反悔”的贪心</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / POJ 3465 Battle 题解：可“反悔”的贪心</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>POJ 3465 Battle 题解：可“反悔”的贪心</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 14 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj3465" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>很多题目的贪心想法都是一个简单粗暴的贪心加上可“反悔”的操作。这样可以确保答案的正确性。</p><h2>Description</h2><p>You're Zhu Rengong, a formidable hero. After a number of challenging missions, you are finally facing the final Boss – a black dragon called Heilong. Due to his overwhelming power, you have to plan your actions carefully.</p><!--more--><p>You have $H_1$ hit points (HP) at the beginning of the battle, and Heilong has $H_2$. Heilong attacks you each time you do an action, and deal $A_i$ points of damage in the $i$-th round. You have three kinds of actions.</p><ul><li><strong>Attack.</strong> You attack Heilong, and do x points of damage.</li><li><strong>Defend.</strong> You focus on avoiding the attack of Heilong. This action nullifies Heilong's attack in this round.</li><li><strong>Heal.</strong> You heal yourself, adding y hit points to yourself. There is no upper bound on your HP.</li></ul><p>If anyone's HP drop below or equal to 0, he dies. If you can't kill the dragon within N rounds, you will also die. So you need to know how many rounds you need to kill the black dragon. If you cannot kill him, you will have to calculate the maximal damage you can do on Heilong.</p><p>Link：<a href="http://poj.org/problem?id=3465" title="POJ 3465 Battle">POJ 3465 Battle</a></p><h2>Input</h2><p>The first line contains five integers, $N, x, y, H_1, H_2. 1 \leqslant N \leqslant 10^5, 1 \leqslant x,y \leqslant 10^4, 1 \leqslant H_1,H_2 \leqslant 10^9$. Then follow $N$ lines, the $i$-th line contains one integer $A_{i-1}$. $1 \leqslant A_{i-1} \leqslant 10^4$.</p><h2>Output</h2><p>If you can kill Heilong, the first line of your output should be "Win". Otherwise "Lose".<br>The second line contains the number of rounds you need to kill Heilong if the first line is "Win", or the maximal damage you can do if the first line is "Lose".</p><h2>Sample Input</h2><p><strong>Sample Input 1</strong></p><pre><code>4 1 1 3 3
+1
+10
+1
+10</code></pre><p><strong>Sample Input 2</strong></p><pre><code>4 1 1000 1 4
+1
+10
+1
+1</code></pre><h2>Sample Output</h2><p><strong>Sample Output 1</strong></p><pre><code>Win
+4</code></pre><p><strong>Sample Output 2</strong></p><pre><code>Lose
+3</code></pre><h2>Hint</h2><p>In Sample 1, you have to defend in the 2nd round, othewise you will die. <br>In Sample 2, you heal yourself in the first round, and keep attacking until N rounds expires.</p><h2>Translation</h2><p>你是主人公（Zhu Rengong？？？），你要和一条名叫黑龙的黑龙战斗（？？？），每轮你先施展操作，然后轮到它。你有三种操作：</p><ul><li><strong>攻击：</strong>让黑龙血量减去 $x$；</li><li><strong>防御：</strong>抵御这一轮黑龙的攻击；</li><li><strong>回血：</strong>回复 $y$ 点生命值。</li></ul><p>而黑龙每一轮的操作只会攻击你。第 $i$ 轮会对你造成 $A_i$ 的伤害。</p><p>你的初始血量是 $H_1$，黑龙是 $H_2$，谁的血量小于等于 0 了就挂了。如果你不能在 $n$ 轮之内打败它，你也会自动死亡。<br>问你：如果你可以打败它，最少几轮可以打败；如果不能，最多对黑龙造成多少伤害。</p><hr><h2>Analysis</h2><p>不得不说吴老师精选的题目不仅难度适中而且还比较有意思，<del>简直比 XY 题不知道高到哪里去了</del>（逃……</p><p>首先这种题目可能想到是动态规划，但是发现这个定义完全无从下手……</p><p>所以我们可以考虑一下贪心。<br>观察题目，可以发现防御和治疗是一样的，防御就是治疗 $A_i$ 的血量，而治疗就是治疗 $y$ 的血量（这一点为之后模拟提供了方便）。</p><p>首先，我们尝试不防御、不回血，只攻击，如果直接能把黑龙打死，就直接输出答案了。如果 $n$ 轮之内没有人死，你肯定输了。<br>接下来考虑：但是如果不能把黑龙打死，如何处理呢？<br>我们自然想到：前面不该全部都用来攻击啊！<strong>应该抵御一下黑龙的攻击，才能让自己剩余血量更多</strong>，活得更久，伤害黑龙更多，杀死黑龙机会更大，那么显然我们想要在前面挑一轮，把这轮对黑龙的攻击改为防御（或者治疗，以下统称“抵御”），这样才可以使得自己“活得更久”。<br>那么要让自己“活得更久”，自然要让自己剩余 HP 越大越好，所以这次抵御的攻击 $A_i$ 也要尽量大。所以我们可以用一个优先队列维护：</p><p>把每次玩家攻击、黑龙也攻击的轮（默认情况）都放到优先队列里，一旦在 $n$ 轮之内死了，就找到之前黑龙对玩家造成伤害最大的一轮，把那一轮的攻击改为抵御。这样可以保证剩余的 HP 最大，确保了解最优。<br>其实这就相当于<strong>贪心加上了反悔的操作</strong>，是一种常用的贪心思想。</p><p>时间复杂度 $\Theta (N\log_2 N)$。</p><h2>Code</h2><p>沉迷快读，无法自拔</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+const int maxn=100005;
+int n,x,y,h1,h2,ans=0,a[maxn];
+struct Element{
+    int x,id;
+    bool operator &lt;(Element b)const{
+        return x&lt;b.x;
+    }
+};
+priority_queue &lt;Element&gt; heap;
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+int main(){
+    n=read();x=read();y=read();h1=read();h2=read();
+    for (int i=1;i&lt;=n;i++) a[i]=read();
+    int now1=h1,now2=h2,lst=0;
+    for (int i=1;i&lt;=n;i++){
+        now2-=x;
+        if (now2&lt;=0){
+            printf(&quot;Win\n%d\n&quot;,i);
+            return 0;
+        }
+        now1-=a[i];heap.push((Element){a[i],i});
+        if (now1&lt;=0){
+            ans=h2-now2;lst=i;
+            break;
+        }
+    }
+    if (now1&gt;0) {printf(&quot;Lose\n%d\n&quot;,ans);return 0;}
+    while (!heap.empty()){
+        Element now=heap.top();heap.pop();
+        now1+=max(y,now.x);
+        now2+=x;
+        for (int i=lst+1;i&lt;=n;i++){
+            now2-=x;
+            if (now2&lt;=0){
+                printf(&quot;Win\n%d\n&quot;,i);
+                return 0;
+            }
+            now1-=a[i];heap.push((Element){a[i],i});
+            if (now1&lt;=0){
+                ans=max(ans,h2-now2);lst=i;
+                break;
+            }
+            if (i==n) ans=max(ans,h2-now2),lst=n;
+        }
+        if (lst&gt;=n) break;
+    }
+    printf(&quot;Lose\n%d\n&quot;,ans);
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/poj3465" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / POJ 3465 Battle 题解：可“反悔”的贪心</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

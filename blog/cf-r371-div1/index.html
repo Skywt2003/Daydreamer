@@ -1,0 +1,206 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Codeforces Round #371 Div1 ABC 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Codeforces Round #371 Div1 ABC 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Codeforces Round #371 Div1 ABC 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Codeforces Round #371 Div1 ABC 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 11 月 11 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf-r371-div1" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>我回来啦！！希望尽早康复 QwQ</p><p>好像是第一次打 div1？</p><!--more--><p><a href="https://codeforces.com/contest/713">Link</a></p><h2>A. Sonya and Queries</h2><p>二叉树记录。</p><h2>B. Searching Rectangles</h2><h3>Description</h3><p>这是一道交互题。</p><p>给出 $n*n$ 的网格，其中有两个标记的长方形区域，保证无重叠。每次可以查询一个长方形区域内包含了几个标记的长方形（完全包含才算包含），返回的答案是 0、1 或者 2。询问次数不超过 200 次。</p><p>输出两个长方形区域的位置。</p><p>$n\le 2^{16}$。</p><h3>Thoughs</h3><p>题目的这个 $n\le 2^{16}$ 强暗示要二分。</p><p>一开始的想法是通过二分可以分别定位两个矩形的各个边界（即延长两个矩形的各条边形成「大矩形」的边界），然后直接验证，如果不正确则交换两个矩形的左边界、右边界。</p><p>但是 Test#4 的这组数据把这个想法 hack 了：</p><pre><code>10
+1 1 10 1
+5 5 5 10</code></pre><p>现在看来，这种明显没有想清楚也没有证明的做法我是怎么有胆交 6 发的……</p><h3>Analysis</h3><p>其实考虑如果只有一个长方形，问题就非常简单，直接用二分法可做。</p><p>现在有两个长方形，但是给出了一个保证：一定没有重叠。那么一定可以找到一条平行于 $x$ 轴或者 $y$ 轴的分界线，使得这条分界线把 $n*n$ 的网格分为两部分，每个部分各自独立包含一个完整的长方形。（这个是非常重要但是没有想到的性质 TAT）</p><p>首先可以二分枚举这个分界线，然后对于分出的两块，每块里只有一个矩形，二分可做。</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+
+int n;
+
+int queryy(int x1,int y1,int x2,int y2){
+    printf(&quot;? %d %d %d %d\n&quot;,x1,y1,x2,y2);
+    fflush(stdout);
+    int x; scanf(&quot;%d&quot;,&amp;x);
+    return x;
+}
+
+int divn=-1; // where it broke
+bool divx=false; // -------
+
+vector&lt;int&gt; vec;
+
+void make_answer(int x1,int y1,int x2,int y2){
+    int top=-1,left=-1,bot=-1,right=-1;
+
+    // Find top
+    int l=x1,r=x2;
+    while (l&lt;=r){
+        int mid=((r-l)&gt;&gt;1)+l,now=queryy(x1,y1,mid,y2);
+        if (now==1) top=mid,r=mid-1; else l=mid+1;
+    }
+    // Find bot
+    l=x1,r=x2;
+    while (l&lt;=r){
+        int mid=((r-l)&gt;&gt;1)+l,now=queryy(mid,y1,x2,y2);
+        if (now==1) bot=mid,l=mid+1; else r=mid-1;
+    }
+    // Find left
+    l=y1,r=y2;
+    while (l&lt;=r){
+        int mid=((r-l)&gt;&gt;1)+l,now=queryy(x1,mid,x2,y2);
+        if (now==1) left=mid,l=mid+1; else r=mid-1;
+    }
+    // Find right
+    l=y1,r=y2;
+    while (l&lt;=r){
+        int mid=((r-l)&gt;&gt;1)+l,now=queryy(x1,y1,x2,mid);
+        if (now==1) right=mid,r=mid-1; else l=mid+1;
+    }
+
+    vec.push_back(bot);
+    vec.push_back(left);
+    vec.push_back(top);
+    vec.push_back(right);
+
+}
+
+signed main(){
+    scanf(&quot;%d&quot;,&amp;n);
+
+    int l=1,r=n-1;
+    while (l&lt;=r){
+        int mid=((r-l)&gt;&gt;1)+l;
+        int x=queryy(1,1,mid,n),y=queryy(mid+1,1,n,n);
+        if (x==1 &amp;&amp; y==1){ divn=mid;divx=true;break; } else
+        if (x==0 &amp;&amp; y==0){ divx=false; break; } else
+        if (x&gt;y) r=mid-1; else l=mid+1;
+    }
+    if (!divx){
+        l=1,r=n-1;
+        while (l&lt;=r){
+            int mid=((r-l)&gt;&gt;1)+l;
+            int x=queryy(1,1,n,mid),y=queryy(1,mid+1,n,n);
+            if (x==1 &amp;&amp; y==1){ divn=mid; break; } else
+            // if (x==0 &amp;&amp; y==0){ printf(&quot;ERROR!!!\n&quot;); } else
+            if (x&gt;y) r=mid-1; else l=mid+1;
+        }
+        make_answer(1,1,n,divn);
+        make_answer(1,divn+1,n,n);
+    } else {
+        make_answer(1,1,divn,n);
+        make_answer(divn+1,1,n,n);
+    }
+    printf(&quot;! &quot;); for (int i=0;i&lt;8;i++) printf(&quot;%d &quot;,vec[i]);
+    printf(&quot;\n&quot;);
+    fflush(stdout);
+    return 0;
+}</code></pre><h2>C. Sonya and Problem Wihtout a Legend</h2><h3>Description</h3><p>给出一个数列，每次操作你可以对其中任意一个元素 +1 或者 -1。要求最终将其变为严格单调递增数列。求最少需要的操作数。</p><p>$1\le n\le 3000$，$1\le a_i\le 10^9$。</p><h3>Analysis</h3><ul><li><p>先考虑这个问题的简化版：给出数列 $a_i$，如何用最少操作使得每个元素相等？其实就是如何确定一个 $x$ 使得 $\Sigma |a_i-x|$ 最小。</p><p>答案是，使每个元素等于数列的中位数，即取 $x$ 为中位数。初中奥数「收费站」问题。</p><ul><li><p>如何动态维护一个前缀的这个答案？</p><p>答案是，用两个堆维护中位数，一个大根堆，一个小根堆。使两个堆元素数量相等，则可以得到中位数。分别维护两个堆的和，可以得到操作数答案。</p></li></ul></li><li><p>考虑简化问题的加强版：给出数列 $a_i$，如何用最少操作使得数列满足相差 $1$ 递增（即 $a_{i+1}=a_i+1$）？</p><p>答案是，直接对一开始的 $a_i$ 操作，对 $a_i$ 减去 $i$，再按照第一个问题做。可以看成调整所有数字相等之后再把 $i$ 加回 $a_i'$。</p></li><li><p>回到这个问题。可以发现对于一对 $a_i &gt; a_j$，我们的最优调整方式肯定是调整为一个由 $a_i$ 开始差 $1$ 递增的序列。所以可以预见，最后的最优调整方案（之一）可以是若干段差 $1$ 递增序列组成的。既然我们在上面可以预处理出任意区间修正为差 $1$ 序列的代价，则可以考虑线性 DP。</p><ul><li>$F(i)$ 表示前 $i$ 个元素的答案，同时需要记录前 $i$ 个元素修改之后最后一个元素的最小值 $last_i$（因为最后一个值最小肯定保证之后最优，所以是唯一的，不需要纳入状态考虑）。</li><li>对于 $F(i)$，枚举 $j$，考虑用 $F(i)$ 修正 $F(j)$，具体是假设 $[i+1,j]$ 这一段都相差 $1$ 递增（根据上面的思路预处理出 $delta(i,j)$）。</li><li>能修正的条件是，调整之后 $a_{i+1}' &gt; last_i$。事实上我们可以得到 $a_{i+1}'$，因为上面调整相差 $1$ 递增时，调整完毕后最小的数字（也就是排在第一个的 $a_{i+1}$）肯定是中位数+1（此处中位数指的是 $a_i-i$ 之后算的中位数）。构造 $delta(i,j)$ 时我们也可以存储中位数 $mid(i,j)$，满足 $mid(i+1,j)+1 &gt; last_i$ 时则可以修正。</li></ul></li></ul><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;queue&gt;
+
+using namespace std;
+
+#define int long long
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; heap1; // min root
+priority_queue&lt;int&gt; heap2; // max root
+int sum1=0,sum2=0;
+
+const int maxn=3005;
+// const int INF=1LL&lt;&lt;60;
+const int INF=0x3f3f3f3f3f3f3f3f;
+
+int n;
+int a[maxn];
+int delta[maxn][maxn];
+int mid[maxn][maxn];
+int f[maxn],last[maxn];
+
+signed main(){
+    n=read();
+    for (int i=1;i&lt;=n;i++) a[i]=read();
+    
+    for (int i=1;i&lt;=n;i++){
+        while (!heap1.empty()) heap1.pop();
+        while (!heap2.empty()) heap2.pop();
+        sum1=sum2=0;
+        for (int j=i;j&lt;=n;j++){
+            int now=a[j]-(j-i+1);
+            if (heap1.empty()) heap1.push(now),sum1+=now; else
+            if (heap1.size()==heap2.size()){
+                if (now&lt;heap2.top())
+                    heap1.push(heap2.top()),sum1+=heap2.top(),
+                    sum2-=heap2.top(),heap2.pop(),
+                    heap2.push(now),sum2+=now;
+                else heap1.push(now),sum1+=now;
+            } else {
+                if (now&gt;heap1.top())
+                    heap2.push(heap1.top()),sum2+=heap1.top(),
+                    sum1-=heap1.top(),heap1.pop(),
+                    heap1.push(now),sum1+=now;
+                else heap2.push(now),sum2+=now;
+            }
+            mid[i][j]=heap1.top();
+            delta[i][j]=(sum1-mid[i][j]*heap1.size()) + (mid[i][j]*heap2.size() - sum2);
+            // printf(&quot;mid,delta[%lld,%lld] = %lld %lld\n&quot;,i,j,mid[i][j],delta[i][j]);
+        }
+    }
+
+    memset(f,0x3f,sizeof(f));
+    last[0]=-INF; f[0]=0;
+    for (int i=0;i&lt;=n;i++){
+        for (int j=i+1;j&lt;=n;j++) if (mid[i+1][j]+1 &gt; last[i]){
+            if (f[j] &gt; f[i]+delta[i+1][j]) f[j]=f[i]+delta[i+1][j],last[j]=mid[i+1][j]+(j-i+1);
+        }
+    }
+    printf(&quot;%lld\n&quot;,f[n]);
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/d5c2d2ee67025bc54d7f9c033007ebaf" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>pinkex</h4> <p class="mt-1">2021 年 11 月 15 日 7:19</p> </div> </div> <p class="mt-2">这是什么神仙场 题目怎么看上去都这么难 qaq</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf-r371-div1" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Codeforces Round #371 Div1 ABC 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

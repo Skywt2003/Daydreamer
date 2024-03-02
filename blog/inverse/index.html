@@ -1,0 +1,63 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>乘法逆元三种求法总结</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 乘法逆元三种求法总结</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 乘法逆元三种求法总结</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>乘法逆元三种求法总结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 02 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/inverse" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>当我们取模的时候，被模数很大，无法直接计算其值，我们就会用取模运算的下面两个性质：</p><p>$$
+(a+b) \bmod x=((a \bmod x)+(b \bmod x))\bmod x \\
+(a\ast b) \bmod x=((a \bmod x)\ast (b \bmod x))\bmod x
+$$</p><p>那么对于除法，是否也满足这个式子呢？</p><p>$$(a \div b) \bmod x=((a \bmod x)\div (b \bmod x))\bmod x$$</p><!--more--><p>很显然也很遗憾，不满足。很容易找到反例：</p><p>$$(15 \div 5)\bmod 3=0 \not = ((15 \bmod 3)\div(5 \bmod 3))$$</p><p>那么当除数很大的时候怎么算呢？这就要用到<strong>乘法逆元</strong>了。</p><p>温馨提示：<br>在阅读本文之前建议先阅读：<a href="https://skywt.cn/posts/euclidean-algorithm/" title="欧几里德算法与拓展欧几里德算法详解">欧几里德算法与拓展欧几里德算法详解</a> 与 <a href="https://skywt.cn/posts/euler-and-fermat/" title="欧拉函数、费马小定理与欧拉定理详解">欧拉函数、费马小定理与欧拉定理详解</a>。<br>本文中有大量 KaTeX 公式，请确保浏览器支持，否则卡到超乎你想象。<br>Windows 可以在控制面板-程序-卸载程序-卸载\更新 Windows 组件中卸载IE浏览器。<br>本文中 (a,b) 或者 gcd(a,b) 表示a、b的最大公因数。</p><p>本文隶属&lceil; <a href="https://skywt.cn/posts/category/oi/number-theory/" title="数论学习系列">数论学习系列</a> &rfloor;。</p><h2>乘法逆元的定义</h2><p>设 $a,p \in Z$，满足 $(a,p)=1$，并且</p><p>$$
+ax \equiv 1 \pmod p
+$$</p><p>那么就称 x 是 a 模 p 的逆元。很像倒数，就是模了个 p。（维基百科搜索“乘法逆元”直接重定向到“倒数”……）</p><p>其实有另一种表示方式称 x 是 a 模 p 的阶，记作 $ord_p a$ .</p><h2>乘法逆元的作用和证明</h2><p>前面已经说了，乘法逆元可以在进行除法时让等式满足“分配律”。下面给出证明：</p><p>$$bx \equiv 1 \pmod p \iff bx = kp+1 \iff x=\frac {kp+1} b$$</p><p>代入 $ax \bmod p$，得到</p><p>$$\frac {a \cdot (kp+1)} b \bmod p = (\frac {kp+1} b + \frac a b )\bmod p = (a \div b) \bmod p$$</p><p>也就是说我们先求出 b 模 p 的逆元 x，这时 $ax \bmod p$ 就是 $(a \div b) \bmod p$ 的值。</p><h2>乘法逆元的求法</h2><h3>线性求逆元</h3><p>从简单而暴力的方法开始~ 当 p 很小的时候，我们可以枚举 1 到 p-1，判断这个式子是否成立：</p><p>$$ax \equiv 1 \pmod p$$</p><p>可以证明如果存在逆元，那么 $&amp;#91;1,p-1 &amp;#93;$ 的范围内一定存在逆元。<strong>证明如下：</strong></p><p>显然，任何大于 $p$ 的逆元都可以写成：$kp+x \bmod p$</p><p>$$ax \equiv akp+a \cdot (x \bmod p) \equiv a \cdot (x \bmod p) \equiv 1 \pmod p$$</p><p>综上，如果存在大于 $p$ 的逆元 $x$，则必定存在 $x \bmod p$ 也为其逆元。</p><p>（在这里我要把 DYT 同学批判一番，在他的博客 <a href="https://blog.csdn.net/dyt_b/article/details/80759252" title="数论初步：乘法逆元与几种求法 - CSDN博客">数论初步：乘法逆元与几种求法 - CSDN博客</a> 里居然写道：“对于给定的 a 和 p，有且仅有一个数是它的逆元”这一显然错误的结论……）</p><h3>扩展欧几里德求逆元</h3><p>关于扩展欧几里德欧几里德的介绍参见：<a href="https://skywt.cn/posts/euclidean-algorithm/" title="欧几里德算法与拓展欧几里德算法详解">欧几里德算法与拓展欧几里德算法详解</a>。</p><p>对于刚才的同余方程，可以变形为以下这个“裴蜀等式”：</p><p>$$ax+py=1$$</p><p>接下来就可以用扩展欧几里德解了。具体解法在<a href="https://skywt.cn/posts/euclidean-algorithm/" title="欧几里德算法与拓展欧几里德算法详解">欧几里德算法与拓展欧几里德算法详解</a>这篇文章中已经详细介绍，这里不赘述。贴代码：</p><pre><code class="lang-cpp">int exgcd(int a,int b,int &amp;x,int &amp;y){ //x、y变量用来传递求得的特殊解
+    if(b==0){ //判断递归边界，b=0说明到底了
+        x=1;y=0;
+        return a;
+    }
+    int r=exgcd(b,a%b,x,y),t=x; //先递归把之前的都做完
+    x=y;y=t-a/b*y;
+    return r;
+}
+</code></pre><h3>费马小定理/欧拉定理求逆元</h3><p>费马小定理和欧拉定理在 <a href="https://skywt.cn/posts/euler-and-fermat/" title="欧拉函数、费马小定理与欧拉定理详解">欧拉函数、费马小定理与欧拉定理详解</a> 这一篇里已经有详细的介绍。由于费马小定理是欧拉定理的一般情况，我们下面就只介绍欧拉定理求逆元。</p><p>当 $(a,n)=1$ 时，根据欧拉定理有</p><p>$$a^{\varphi(n)} \equiv 1 \pmod n$$</p><p>可以化成：</p><p>$$a \ast a^{\varphi(n)-1} \equiv 1 \pmod n$$</p><p>显然，这时候 $a^{\varphi(n)-1}$ 就是 $x$ 模 $p$ 的逆元。</p><p>可以根据欧拉函数公式求 $\varphi (n)$：</p><p>$$\varphi (n)=n\prod_{i=1}^r (1-\frac 1 {P_i})$$</p><p>值得一提的是当 $n$ 位质数时，$\varphi (n)=n-1$。这时候用欧拉函数求逆元就格外方便。</p><h2>补充</h2><p><a href="https://skywt.cn/posts/o-n-inverse/" title="以 O(N">以 O(N) 线性时间复杂度递推逆元的方法</a> 线性时间复杂度递推逆元的方法")</p><hr><h2>参考</h2><p>拖延症又犯了……这篇文章写了N天……<br><a href="https://blog.csdn.net/u010138758/article/details/74909756" title="乘法逆元、扩展欧几里得算法、二元一次方程、a的n次方取余 - CSDN博客">乘法逆元、扩展欧几里得算法、二元一次方程、a的n次方取余 - CSDN博客</a><br><a href="https://blog.csdn.net/AcmHonor/article/details/47379323" title="乘法逆元(除法取模">乘法逆元(除法取模) - CSDN博客</a> - CSDN博客")<br><a href="https://blog.csdn.net/qq_41357771/article/details/78823967" title="逆元相关知识 - CSDN博客">逆元相关知识 - CSDN博客</a><br><a href="https://blog.csdn.net/dyt_b/article/details/80759252" title="数论初步：乘法逆元与几种求法 - CSDN博客">数论初步：乘法逆元与几种求法 - CSDN博客</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4d86d356880b809104853932ad2361c8" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://evan.tk" class="link" target="_blank"> <h4>Evan</h4> </a> <p class="mt-1">2018 年 10 月 23 日 6:31</p> </div> </div> <p class="mt-2">简单易懂，讲得深入浅出，%%%</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/inverse" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 乘法逆元三种求法总结</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

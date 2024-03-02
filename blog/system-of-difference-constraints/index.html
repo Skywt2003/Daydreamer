@@ -1,0 +1,162 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>差分约束系统的应用</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 差分约束系统的应用</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 差分约束系统的应用</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>差分约束系统的应用</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 06 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/system-of-difference-constraints" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>如果告诉你在一个三角形中，$B-A \leqslant c, C-B \leqslant a, C-A \leqslant b$，怎么求 $C-A$ 的最大值呢？通过<del>yy</del>观察可以发现，$C-A$ 的最大值是 $min(a+c,b)$。这个答案如何得出？将这个三角形内的约束条件推广到更多约束条件呢？</p><!--more--><blockquote>差分约束系统（System of Difference Constraints），是求解关于一组变数的特殊不等式组之方法。</blockquote><h2>概念与定义</h2><p>一个系统由 $n$ 个变量和 $m$ 个约束条件组成（就如同上面三角形里的例子），每个约束条件形如：$x_j-x_i \leqslant b_i$，那么这个系统就是一个<strong>差分约束系统（System of Difference Constraints）</strong>。这个定义很直观：用一系列不等式约束差分的域。</p><h2>解法</h2><p>仔细观察这个不等式：</p><pre><code class="lang-math">x_j-x_i \leqslant b_i</code></pre><p>可以发现它可以变形成：$x_j\leqslant x_i+b_i$。 是不是有点像 SPFA/Dijkstra 里修正最短路的判断方程（三角不等式）？！</p><pre><code class="lang-math">dist(x)+w(i) &lt; dst(son(i))</code></pre><p>所以我们就可以想到一个奇妙的做法：从 $i$ 到 $j$ 建边，边权为 $b_k$，最后增加一个源点 $s$，跑一遍最短路就可以了！对于大于等于的情况也是一样的。</p><p>在求解差分约束系统的时候一般我们用 SPFA（Bellman-ford）算法求最短路而不用 Dijkstra，因为 SPFA 可以判断负环，即无解情况。但是在题目告诉我们一定有解时还是尽量用 Dijkstra+Heap，不然容易被卡（在洛谷上看见一句话：不卡你是情分，卡你是本分……）。</p><p>回到前面说的一个三角形里的情况：$B-A \leqslant c, C-B \leqslant a, C-A \leqslant b$，则 $C-A$ 的最大值是 $min(a+c,b)$。画出来的图就是：</p><pre><code class="lang-mermaid">graph LR;
+A((A)) --c--&gt; B((B));
+B((B)) --a--&gt; C((C));
+A --b--&gt; C</code></pre><p>（我不知道为什么 Mermaid 画的图这么丑……）</p><h2>例题与题解</h2><h3>POJ 1201 Intervals</h3><p><a href="http://poj.org/problem?id=1201" title="POJ 1201 Intervals">POJ 1201 Intervals</a></p><p>题目大意是给你 n 个闭区间，每个闭区间 $[L_i,R_i]$ 里要求至少选择 $c_i$ 个数字。问你一共最少选多少数字。</p><p>如果用 $sum(i)$ 表示小于等于 $i$ 的数字中一共选了多少（其实就是前缀和），那么很显然根据题目中所给信息可以列出：</p><pre><code class="lang-math">sum(R_1)-sum(L_1-1) \geqslant c_1 \\
+sum(R_2)-sum(L_2-1) \geqslant c_2 \\
+\dots \\
+sum(R_n)-sum(L_n-1) \geqslant c_n</code></pre><p>很显然是差分约束。建边求最长路即可。</p><h4>代码</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=50005,maxe=150005,INF=1e9;
+int n,s,t,dst[maxn];
+int tot=0,lnk[maxn],nxt[maxe],son[maxe],w[maxe];
+bool vis[maxn];
+queue&lt;int&gt; que;
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline void Init(){
+    tot=0;
+    s=INF;t=-INF;
+    memset(lnk,-1,sizeof(lnk));
+    memset(nxt,-1,sizeof(nxt));
+    memset(son,-1,sizeof(son));
+    memset(w,0,sizeof(w));
+    memset(vis,0,sizeof(vis));
+    memset(dst,0x80,sizeof(dst));
+}
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+    s=min(s,min(x,y));t=max(t,max(x,y));
+}
+inline void SPFA(){
+    que.push(s);vis[s]=true;dst[s]=0;
+    while (!que.empty()){
+        int x=que.front();que.pop();vis[x]=false;
+        for (int i=lnk[x];i!=-1;i=nxt[i]) if (dst[x]+w[i]&gt;dst[son[i]]){
+            dst[son[i]]=dst[x]+w[i];
+            if (!vis[son[i]]) vis[son[i]]=true,que.push(son[i]);
+        }
+    }
+}
+int main(){
+    while (scanf(&quot;%d&quot;,&amp;n)!=-1){
+        Init();
+        for (int i=0;i&lt;n;i++){
+            int a=read(),b=read(),c=read();
+            add(a-1,b,c);
+        }
+        for (int i=s+1;i&lt;=t;i++) add(i,i-1,-1),add(i-1,i,0);
+        SPFA();
+        printf(&quot;%d\n&quot;,dst[t]);
+    }
+    return 0;
+}</code></pre><h3>POJ 3159 Candies</h3><p><a href="http://poj.org/problem?id=3159" title="POJ 3159 Candies">POJ 3159 Candies</a></p><p>题目大意：有 n 个孩子分糖果，第 $a_i$ 个孩子认为第 $b_i$ 个孩子不应该分到比他分到糖果数多 $c_i$ 的糖果。问你分到最多糖果的孩子与分到最少糖果的孩子的糖果数量之差最大是多少。</p><p>更裸的差分约束，按题目描述建边，也就是 $d(b_i)-d(a_i) \leqslant c_i$。求最短路即可。</p><p>注意这题必须写 Dijkstra+Heap，写 SPFA 会被卡（据说可以用栈优化？）。</p><h4>代码</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=30005,maxe=150005;
+int n,m,dst[maxn];
+int tot=0,lnk[maxn],nxt[maxe],son[maxe],w[maxe];
+bool vis[maxn];
+struct HeapElementInfo{
+    int dst,id;
+    bool operator &lt;(const HeapElementInfo bb)const{
+        return dst&gt;bb.dst;
+    }
+};
+priority_queue&lt;HeapElementInfo&gt; heap;
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline void init(){
+    memset(dst,0x3f,sizeof(dst));
+}
+inline void Dijkstra(){
+    dst[1]=0;vis[1]=true;
+    for (int i=lnk[1];i;i=nxt[i]) heap.push((HeapElementInfo){w[i],son[i]}),dst[son[i]]=w[i];
+    for (int t=1;t&lt;n&amp;&amp;!heap.empty();t++){
+        HeapElementInfo now;
+        for (;;){
+            if (heap.size()==0) {printf(&quot;ERROR!\n&quot;);return;}
+            now.id=heap.top().id;now.dst=heap.top().dst;heap.pop();
+            if (now.dst==dst[now.id]&amp;&amp;!vis[now.id]) break;
+        }
+        vis[now.id]=true;
+        for (int i=lnk[now.id];i;i=nxt[i]) if (!vis[son[i]]&amp;&amp;dst[now.id]+w[i]&lt;dst[son[i]]){
+            dst[son[i]]=dst[now.id]+w[i];
+            heap.push((HeapElementInfo){dst[son[i]],son[i]});
+        }
+    }
+}
+int main(){
+    n=read();m=read();
+    init();
+    for (int i=0;i&lt;m;i++){
+        int x=read(),y=read(),z=read(); // dst[y]-dst[x]&lt;=z ==&gt; dst[y]&lt;=dst[x]+z
+        add(x,y,z);
+    }
+    Dijkstra();
+    printf(&quot;%d\n&quot;,dst[n]);
+    return 0;
+}</code></pre><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F" title="差分约束系统 - 维基百科，自由的百科全书">差分约束系统 - 维基百科，自由的百科全书</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/system-of-difference-constraints" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 差分约束系统的应用</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

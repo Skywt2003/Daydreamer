@@ -1,0 +1,130 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 637 Div2 T3 ConnectingGameDiv2 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 637 Div2 T3 ConnectingGameDiv2 题解</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / Topcoder SRM 637 Div2 T3 ConnectingGameDiv2 题解</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 637 Div2 T3 ConnectingGameDiv2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 29 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-637-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder SIngle Round Match 637 Div 2 T3 ConnectingGameDiv2 题解</p><!--more--><hr><h2>Translation</h2><p>给你一个 N×M 的字符矩阵，每个字符可能是大写字母、小写字母或者数字。<strong>相同字符的一块联通块称为一个“区域”</strong>。现在要选取这个矩阵里的几个区域染成红色，使得从矩阵的第一行到最后一行<strong>没有一条没有颜色的通路</strong>。换句话说，染成红色的点就不能走了，要使得第一行到最后一行没有通路。<br>你的任务是使得染色的 cells 个数最少。注意：只能一次染<strong>一个区域</strong>。<br>字符矩阵以 <strong>vector <string> board</strong> 给出。数据范围：$1 \leqslant n,m \leqslant 50$。</p><blockquote><ul><li>board will contain between 1 and 50 elements, inclusive.</li><li>Each element in board will contain between 1 and 50 characters, inclusive.</li><li>All elements in board will have the same length.</li><li>Each character in board will be a letter or a digit (’a'-'z', 'A'-'Z', or '0'-'9').</li><li>Each of the regions in board will be 4-connected.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li></ul></blockquote><hr><h2>Examples</h2><p>样例零：</p><pre><code>{&quot;AA&quot;
+,&quot;BC&quot;}</code></pre><p>Returns: <code>2</code></p><p>染两个 A 或者 B 和 C 均可。</p><blockquote>If Snuke colors 0 or 1 cells red, he will lose the game. He can win the game by coloring 2 cells red. One possibility is to color the two 'A' cells red.</blockquote><p>样例一：</p><pre><code>{&quot;AAB&quot;
+,&quot;ACD&quot;
+,&quot;CCD&quot;}</code></pre><p>Returns: <code>4</code></p><p>方案之一是染 B 和 C，一共 4 个 cells。</p><blockquote>Here, one optimal solution is to color the regions 'B' and 'C' red. There will be 1 + 3 = 4 red cells.</blockquote><p>样例二：</p><pre><code>{&quot;iii&quot;
+,&quot;iwi&quot;
+,&quot;iii&quot;}</code></pre><p>Returns: <code>8</code></p><p>唯一的方案是把一圈 i 都染了。</p><hr><h2>Original</h2><blockquote>Cat Snuke and wolf Sothe are playing the Connecting Game.<br>The Connecting Game is played on a rectangular grid that is divided into unit square cells. The grid is divided into some regions. Each cell belongs into exactly one of those regions. Each region is 4-connected (see Notes for a formal definition).<br>You are given a vector <string> board that describes the division of the grid into regions. Each character in board represents one of the cells. Cells that are represented by the same character belong into the same region.<br>Initially, the entire grid is colorless. The game consists of two steps. In the first step, Snuke colors some of the regions red. In the second step, Sothe colors all remaining regions blue. (Within each region, all cells must have the same color.) Sothe wins if there is a path (see Notes for a formal definition) of blue cells from the top row to the bottom row. Otherwise, Snuke wins.<br>You are given the vector <string> board. Compute and return the smallest number of cells Snuke can color red in order to win the game.<br>(Note that Snuke cannot simply color individual cells, he must color entire regions. Also note that we are interested in minimizing the total number of cells, not the number of regions Snuke colors.)</blockquote><hr><h2>Analysis</h2><p>据说这题可以用最大流做，是最大流最小割问题，但是我和 DYT 研究讨论了一晚上没想到好的解决方案……不过我们想到一种更加简单的想法……</p><p>既然题目里要我们“使得第一行到最后一行没有通路”，自然就可以想到我们可以去“阻断”从上到下的路。问题可以变成：要从最左边一列到最右边一列画一条弯曲的线，即只要染了这条“线”上的 cells 就可以“阻断通路”。其所经之处的区域的所有 cells 都要被染色，即加上区域所含 cells 的个数。我们要找到所经区域 cells 个数之和最小的一条“线”。<br>很明显就是一个变形的最短路。可以用 SPFA（Bellman-Ford）算法解决。需要注意要考虑八个方向（即八联通），形如这样的围法（斜连接）也可以阻断道路：</p><pre><code class="lang-math">OOX \\
+XXO \\
+OOO</code></pre><p>关于最小割最大流（min-cut max flow）的解法，我们看了<a href="https://github.com/k-ori/topcoder/blob/master/ConnectingGameDiv2/ConnectingGameDiv2.cpp" title="一位外国大佬的解法">一位外国大佬的解法</a>，和几篇日本选手的题解（<a href="http://torus711.hatenablog.com/entry/20141024/1414159692" title="第一篇">第一篇</a>和<a href="http://kmjp.hatenablog.jp/entry/2014/10/26/1030" title="第二篇">第二篇</a>），但是都没看懂……<br>（Google 翻译日语翻译过来根本看不懂啊……）</p><hr><h2>Code</h2><p>TC 的编译器似乎 <code>move</code> 变量不能开……</p><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+#define CLEAR(x) memset(x,0,sizeof(x))
+#define CLEAR_NEG(x) memset(x,255,sizeof(x))
+#define CLEAR_MAX(x) memset(x,0x3f,sizeof(x))
+#define CLEAR_MIN(x) memset(x,0x80,sizeof(x))
+using namespace std;
+
+const int maxn=2510,maxnn=55,INF=5e8;
+const int mve[4][2]={{-1,0},{0,1},{1,0},{0,-1}};
+const int move_eight[8][2]={{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
+int n,nn,mm,ans=0;
+int num[maxnn][maxnn],sum[maxn],dst[maxnn][maxnn];
+bool vis[maxnn][maxnn];
+vector &lt;string&gt; a;
+struct WT{
+    int x,y;
+};
+queue &lt;WT&gt; que;
+
+class ConnectingGameDiv2 {
+public:
+    int getmin( vector &lt;string&gt; board );
+};
+inline void init(){
+    CLEAR(sum);CLEAR(vis);
+    CLEAR_NEG(num);
+    n=0;ans=INF;
+}
+inline bool CheckMove(int x,int y){
+    if (x&lt;0||y&lt;0||x&gt;nn-1||y&gt;mm-1) return false;
+    return true;
+}
+inline void MakeRegion(int x,int y,int id){
+    num[x][y]=id;sum[id]++;
+    for (int i=0;i&lt;4;i++)
+        if (CheckMove(x+mve[i][0],y+mve[i][1])&amp;&amp;(num[x+mve[i][0]][y+mve[i][1]]==-1)&amp;&amp;(a[x+mve[i][0]][y+mve[i][1]]==a[x][y]))
+            MakeRegion(x+mve[i][0],y+mve[i][1],id);
+}
+inline void BuildSum(){
+    for (int i=0;i&lt;nn;i++)
+    for (int j=0;j&lt;mm;j++)
+        if (num[i][j]==-1) MakeRegion(i,j,++n);
+    // for (int i=0;i&lt;nn;i++){
+    //     for (int j=0;j&lt;mm;j++) printf(&quot;%d &quot;,num[i][j]);
+    //     printf(&quot;\n&quot;);
+    // }
+    // printf(&quot;sum:&quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,sum[i]);printf(&quot;\n&quot;);
+}
+inline int SPFA(int sx,int sy){
+    CLEAR_MAX(dst);
+    vis[sx][sy]=true;dst[sx][sy]=sum[num[sx][sy]];
+    que.push((WT){sx,sy});
+    while (!que.empty()){
+        WT head=que.front();que.pop();
+        vis[head.x][head.y]=false;
+        for (int i=0;i&lt;8;i++) if (CheckMove(head.x+move_eight[i][0],head.y+move_eight[i][1])){
+            int xx=head.x+move_eight[i][0],yy=head.y+move_eight[i][1];
+            if (dst[head.x][head.y]+sum[num[xx][yy]]*(bool)(num[xx][yy]!=num[head.x][head.y])&lt;dst[xx][yy]){
+                dst[xx][yy]=dst[head.x][head.y]+sum[num[xx][yy]]*(bool)(num[xx][yy]!=num[head.x][head.y]);
+                if (!vis[xx][yy]) vis[xx][yy]=true,que.push((WT){xx,yy});
+            }
+        }
+    }
+    int ret=INF;
+    for (int i=0;i&lt;nn;i++) ret=min(ret,dst[i][mm-1]);
+    return ret;
+}
+int ConnectingGameDiv2::getmin(vector &lt;string&gt; board) {
+    init();
+    nn=board.size();mm=board[0].length();
+    a=board;
+    BuildSum();
+    for (int i=0;i&lt;nn;i++) ans=min(ans,SPFA(i,0));
+    return ans;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-637-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / Topcoder SRM 637 Div2 T3 ConnectingGameDiv2 题解</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

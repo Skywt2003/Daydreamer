@@ -1,0 +1,95 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>最长公共上升子序列（LICS）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 最长公共上升子序列（LICS）</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 最长公共上升子序列（LICS）</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>最长公共上升子序列（LICS）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 02 月 08 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/lics" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>我们学过<a href="http://skywt.cn/lis/" title="最长升序列（Longest Increasing Subsequence，简称LIS）">最长升序列（Longest Increasing Subsequence，简称LIS）</a>和<a href="http://skywt.cn/lcs/" title="最长公共子序列（Longest Common Subsequence，简称LCS）">最长公共子序列（Longest Common Subsequence，简称LCS）</a>（没错之前两篇博客就是为这篇准备的……），那么如果我们要求<strong>最长公共上升子序列（Longest Increasing Common Subsequence，简称LICS或者LCIS）</strong>呢？</p><!--more--><p>（建议阅读本文之前先看看LCS。）</p><p>例题：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1423" title="Greatest Common Increasing Subsequence">Greatest Common Increasing Subsequence</a> （HDU）</p><h2>O（N³）的动态规划</h2><p>一开始想到的肯定是结合LIS和LCS，如何结合？回忆一下LCS的定义：Fi表示A的第i位及之前 的子序列与 B的第j位及之前 的子序列，这两段序列的LCS长度。注意，A中1到i段与B中1到j段LCS不一定取了i或j。这就很麻烦了：如何判断下一个取的元素大于LCS的最后一个元素，也就是如何判断取下一个元素后序列是不是升的呢？这时候不得不重新考虑DP的定义了。</p><p>由于要标记LCS的最后一个元素，不妨像LIS一样，定义Fi表示A的第i位及之前 的子序列与 B的第j位及之前 的子序列，这两段序列的LCS长度，<strong>其中B[j]是LCS的最后一个元素。</strong>与LCS一样枚举i、j，讨论几种情况：</p><ol><li>A[i]&gt;B[j]：既然这位上可以取，因为第一维定义时没有规定A[i]必取，所以之前的LICS长度第一维必然是i-1；然而第二维规定了B[j]必取，所以LICS长度第二维不一定是j-1，因为如果取Fi-1意味着j-1必取了。所以应该枚举一个k∈[1,j-1]，在Fi-1中取最大值+1就是Fi了。</li><li>A[i]&lt;B[j]：由于B[j]是最后一个，所以不能直接像LCS一样Fi=max(Fi-1,Fi)；应该是Fi=Fi-1，因为这时求得的LCS根本没变，B[j]一定与A[1...i-1]中一个元素相等，不考虑A[i]照样能得出最优解。<br>所以得出转移方程：</li></ol><pre class="prism-highlight line-numbers" data-start="1"><code class="language-null">F[i][j]=F[i-1][j];        (a[i]≤b[j])
+F[i][j]=max(F[i-1][k])+1; (b[k]<b[j] && 1≤k≤j-1)
+</code></pre><p>这样写的时间复杂度是O（N³），（在上面那道例题中）似乎并不能达到满分。能不能优化呢？</p><h2>如何优化成O（N²）？</h2><p>仔细观察，这个DP慢就慢在k这层循环。如果我们把k这层循环拿掉该多好！（因为N²个子问题是不可避免的，所以只能优化这层循环……）观察转移方程，如果我们能把<code>max(Fi-1)+1</code>提前处理出来就好了！但是有个重要的条件：b[k]&lt;b[j]。k在不断变化，j也在不断变化，有这个条件的限制就难以构造了……</p><p>看看前面，a[i]=b[j]！所以这个条件就变成b[k]&lt;a[i]！<br>我们在外层循环枚举i，在里面一层循环求答案只与i-1有关，i就相当于是不再变化的！这样就可以构造个lst数组（last的缩写），存储max(Fi-1)，也可以判断这个条件了！</p><pre class="prism-highlight line-numbers" data-start="1"><code class="language-null">lst[j-1]=max(lst[j-2],f[i][j-1]); (b[j-1]&lt;a[i+1])
+lst[j-1]=lst[j-2];                (b[j-1]≥a[i+1])
+</code></pre><p>加上这个优化，这题就能AC了~贴上代码：</p><pre class="line-numbers prism-highlight" data-start="1"><code class="language-cpp">#include<cstdio>
+#include<iostream>
+#include<cstring>
+using namespace std;
+const int maxn=505;
+int t,n,m,a[maxn],b[maxn],f[maxn][maxn],lst[maxn];
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch<'0'||ch>'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch>='0'&&ch<='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline int max(int x,int y){
+    if (x>y) return x; else return y;
+}
+int main(){
+    freopen("lics.in","r",stdin);
+    freopen("lics.out","w",stdout);
+    t=read();
+    while (t--){
+        n=read();
+        for (int i=1;i<=n;i++) a[i]=read();
+        m=read();
+        for (int i=1;i<=m;i++) b[i]=read();
+        int ans=0;
+        memset(f,0,sizeof(f));memset(lst,0,sizeof(lst));
+        for (int i=1;i<=n;i++){
+            for (int j=1;j<=m;j++){
+                if (a[i]==b[j]) f[i][j]=lst[j-1]+1; else f[i][j]=f[i-1][j];
+                if (j!=1){
+                    if (b[j-1]<a[i+1]) lst[j-1]=max(lst[j-2],f[i][j-1]);
+                    else lst[j-1]=lst[j-2];
+                }
+                if (f[i][j]>ans) ans=f[i][j];
+            }
+            if (b[m]<a[i+1]) lst[m]=max(lst[m-1],f[i][m]); else lst[m]=lst[m-1];
+        }
+        printf("%d\n",ans);
+        if (t) printf("\n"); 
+    }
+    return 0;
+}
+</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/lics" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 最长公共上升子序列（LICS）</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

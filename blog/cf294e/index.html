@@ -1,0 +1,184 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 03 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf294e" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>题目链接：<a href="http://codeforces.com/problemset/problem/294/E" title="CodeForces 294E Shaass the Great">CodeForces 294E Shaass the Great</a><br>这题真的太麻烦了……</p><!--more--><h2>Problem</h2><p>The great Shaass is the new king of the Drakht empire. The empire has $n$ cities which are connected by $n - 1$ bidirectional roads. Each road has an specific length and connects a pair of cities. There's a unique simple path connecting each pair of cities.</p><p>His majesty the great Shaass has decided to tear down one of the roads and build another road with the same length between some pair of cities. He should build such road that it's still possible to travel from each city to any other city. He might build the same road again.</p><p>You as his advisor should help him to find a way to make the described action. You should find the way that minimize the total sum of pairwise distances between cities after the action. So calculate the minimum sum.</p><h2>Input</h2><p>The first line of the input contains an integer $n$ denoting the number of cities in the empire, $(2 ≤ n ≤ 5000)$. The next $n - 1$ lines each contains three integers $a_i, b_i$ and $w_i$ showing that two cities $a_i$ and $b_i$ are connected using a road of length $w_i$, $(1 ≤ a_i, b_i ≤ n, a_i ≠ b_i, 1 ≤ w_i ≤ 10^6)$.</p><h2>Output</h2><p>On the only line of the output print the minimum pairwise sum of distances between the cities.</p><p>Please do not use the %lld specificator to read or write 64-bit integers in C++. It is preferred to use the cin, cout streams or the %I64d specificator.</p><h2>Examples</h2><h3>Input #1</h3><pre><code>3
+1 2 2
+1 3 4
+
+</code></pre><h3>Output #1</h3><pre><code>12
+
+</code></pre><h3>Input #2</h3><pre><code>6
+1 2 1
+2 3 1
+3 4 1
+4 5 1
+5 6 1
+
+</code></pre><h3>Output #2</h3><pre><code>29
+
+</code></pre><h3>Input #3</h3><pre><code>6
+1 3 1
+2 3 1
+3 4 100
+4 5 2
+4 6 1
+
+</code></pre><h3>Output #3</h3><pre><code>825
+
+</code></pre><h2>Translation</h2><p>给你一颗树，现在你要移除其中一条边，选两个点，在其之间加上一条边权相等的边，并且不能成环，使得新的树中两两点之间距离之和最小。（也就是 $\displaystyle \frac {\sum_{i=1,j=1}^{i=n,j=n,i \not = j} dist(i,j)} 2$ 最小）</p><h2>Analysis</h2><p>这题规定了数据范围：$(2 ≤ n ≤ 5000)$……说明必须 $N^2$ 搞出来，不能乱搞了。首先我们要枚举删除的边，假设枚举到的删除的边是 $e_k$，那么删除这条边以后形成了两棵树，如何建立新的边（与原来边权相等）连接这两棵树，使得连接后两两点之间距离最小呢？</p><p>仔细思考可以发现，对于两棵分开的树中任意一棵，我们要找到点 $p_i$ 使得树上所有点到这个点的距离之和最小。显然，$p_i$ 是重心！<strong>说明只要连接两棵树的重心就可以了！</strong></p><p>接下来我们需要计算出两棵树里两两点对距离之和，可以用 DFS，十分麻烦，相当于一个树形 DP 去维护……（详见代码）假设算出的两树结果是 $total \\_ sum \\_ left$ 与 $total\\_ sum\\_ right$ ；<br>我们还要得到这两棵树结点数量（不然重心没法求），设为：$num\\_ left$ 与 $num\\_ right$；两棵树重心设为 $cen\\_ left$ 与 $cen\\_ right$，现在删除的边长度是 $len$；<br>我们最后要求出左边的树上所有点到重心距离之和，右边树上所有点到重心距离之和，记为：$sum\\_ left$ 与 $sum\\_ right$<br>左边的树记为 $Tree_{left}$，右边的树记为 $Tree_{right}$；</p><p>重头戏来了，那么当前答案怎么求呢？首先左边所有点要经过我们新加上的两重心之间的边到达右边的点，右边的所有点亦然；不难得出答案：</p><p>$$\sum_{i\in Tree_{left}}^{} (\sum_{j\in Tree_{right}} dist(i,cen\_ left)+len+dist(cen\_right,j))$$</p><p>化简得到：</p><p>$$num\_left\ast sum\_right + num\_right \ast sum\_left+num\_left \ast num\_right \ast len + total\_ sum\_left + total\_sum\_right$$</p><p>最后挑出最小值就是答案了！</p><h2>Code</h2><p>猜猜这题我改了多久？&#95;(´ཀ`」 ∠)&#95;</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=5005,maxe=10005;
+int n,sum_son[maxn],max_sub[maxn],c[2],tmp[2],flag[maxn],num[2],sum_dfs=0;
+long long ans=(long long)1&lt;&lt;60,total_sum[2],lst[maxn],lstw[maxn];
+int tot=0,lnk[maxn],nxt[maxe],son[maxe],w[maxe],dst[2][maxn];
+bool can_use[maxe],vis[maxn];
+struct EdgeData{
+    int x,y,w;
+}e[maxn];
+inline void add(int x,int y,int z){
+    tot++;son[tot]=y;w[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
+}
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9'){if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+inline int BuildNumber(int x){ // 先要求出两个联通块点的个数，不然后面求重心没法做……
+    // 我是拒绝的 qwq
+    vis[x]=true;
+    int ret=1;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]&amp;&amp;can_use[i]) ret+=BuildNumber(son[i]);
+    return ret;
+}
+inline void Build(int x,int k){ // 求重心……
+    flag[x]=k;
+    vis[x]=true;
+    max_sub[x]=0;sum_son[x]=0;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]&amp;&amp;can_use[i]){
+        Build(son[i],k);
+        max_sub[x]=max(max_sub[x],max(max_sub[son[i]],sum_son[son[i]]+1));
+        sum_son[x]+=sum_son[son[i]]+1;
+    }
+    if (max(num[k]-sum_son[x],max_sub[x])&lt;tmp[k]) tmp[k]=max(num[k]-sum_son[x],max_sub[x]),c[k]=x;
+}
+inline void GetDist(int x,int k){
+    vis[x]=true; 
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]&amp;&amp;flag[son[i]]==k){
+        dst[k][son[i]]=dst[k][x]+w[i];
+        GetDist(son[i],k);
+    }
+}
+inline int GetSum(int x,int k){ // 还要写个构造联通块内两两节点距离之和的函数 (吐血)
+    sum_dfs++;
+    vis[x]=1;
+    total_sum[k]+=lst[x];
+    int van=0;
+    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]&amp;&amp;can_use[i]){
+        lst[son[i]]=lst[x]+(long long)sum_dfs*w[i];
+        int nowvan=GetSum(son[i],k);
+        lst[x]+=lstw[son[i]]+(long long)(nowvan)*w[i];     // !!!!!!!!!!
+        lstw[x]+=lstw[son[i]]+(long long)(nowvan)*w[i];
+        van+=nowvan;
+    }
+    van++;
+    return van;
+}
+int main(){
+    n=read();
+    for (int i=1;i&lt;n;i++){
+        int x=read(),y=read(),z=read();
+        add(x,y,z);add(y,x,z);
+        e[i].x=x;e[i].y=y;e[i].w=z;
+    }
+    memset(can_use,true,sizeof(can_use));
+    for (int i=1;i&lt;n;i++){
+        memset(c,0,sizeof(c));
+        memset(tmp,63,sizeof(tmp));
+        memset(dst,0,sizeof(dst));
+        memset(flag,255,sizeof(flag));
+        memset(sum_son,0,sizeof(sum_son));
+        memset(max_sub,0,sizeof(max_sub));
+        
+        long long cen_left=0,cen_right=0,sum_left=0,sum_right=0,num_left=0,num_right=0;
+        can_use[i*2]=can_use[i*2-1]=false;
+
+        memset(vis,0,sizeof(vis));
+        num_left=num[0]=BuildNumber(e[i].x);num_right=num[1]=BuildNumber(e[i].y);
+        memset(vis,0,sizeof(vis));
+        Build(e[i].x,0);
+        Build(e[i].y,1);
+        cen_left=c[0];cen_right=c[1];
+        //printf(&quot;Cen_Left: %d  Cen_Right: %d  Num_Left: %d  Num_Right: %d\n&quot;,cen_left,cen_right,num_left,num_right);
+
+        memset(vis,0,sizeof(vis));
+        GetDist(cen_left,0);
+        GetDist(cen_right,1);
+        for (int j=1;j&lt;=n;j++){
+            if (flag[j]==0) sum_left +=dst[0][j]; else
+            if (flag[j]==1) sum_right+=dst[1][j];
+        }
+
+        memset(total_sum,0,sizeof(total_sum));
+        memset(vis,0,sizeof(vis));
+        memset(lst,0,sizeof(lst));
+        memset(lstw,0,sizeof(lstw));
+        sum_dfs=0;GetSum(e[i].x,0);
+        sum_dfs=0;GetSum(e[i].y,1);
+        //printf(&quot;TOTSUM0: %d  TOTSUM1: %d\n&quot;,total_sum[0],total_sum[1]);
+        long long now=(long long)num_right*sum_left+(long long)num_left*sum_right+(long long)num_left*num_right*e[i].w+total_sum[0]+total_sum[1];
+        //printf(&quot;Result: %d\n&quot;,now);
+        if (now&lt;ans) ans=now;
+        can_use[i*2]=can_use[i*2-1]=true;
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf294e" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 294E Shaass the Great：极其变态的树形 DP 与思维题</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

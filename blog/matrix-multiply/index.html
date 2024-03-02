@@ -1,0 +1,209 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>矩阵乘法与矩阵快速幂 求斐波那契数列第 n 项</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 矩阵乘法与矩阵快速幂 求斐波那契数列第 n 项</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 矩阵乘法与矩阵快速幂 求斐波那契数列第 n 项</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>矩阵乘法与矩阵快速幂 求斐波那契数列第 n 项</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 16 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/matrix-multiply" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>斐波那契（Fibonacci）数列的递推式是：$F_{i}=F_{i-1}+F_{i-2}$ 。根据这个递推式，我们可以在 $\Theta (n)$ 复杂度内求出第 n 项，但是当 n 很大时，这种方法就显得很慢。其实利用矩阵快速幂，我们可以在 $\Theta (\log_2 n)$ 内求出第 n 项。</p><!--more--><h2>矩阵</h2><h3>定义</h3><p>一个 m×n 的<strong>矩阵</strong>（matrix）是一个由 m 行（row）n 列（column）元素排列成的矩形阵列。矩阵里的元素可以是数字、符号或数学式。例如，以下就是一个 2×3 的矩阵：</p><pre><code class="lang-math">\begin{bmatrix}
+   1 &amp; 2 &amp; 3 \\\\
+   4 &amp; 6 &amp;5
+\end{bmatrix}</code></pre><p>矩阵是线性代数的知识，更多这里就不介绍了。</p><h3>矩阵的加减法</h3><p>矩阵的加法减法很简单：</p><pre><code class="lang-math">\begin{bmatrix}
+   1 &amp; 2 &amp; 3 \\\\
+   4 &amp; 6 &amp; 5
+\end{bmatrix} +
+\begin{bmatrix}
+   2 &amp; 1 &amp; 0 \\\\
+   2 &amp; 0 &amp; 1
+\end{bmatrix} =
+\begin{bmatrix}
+   3 &amp; 3 &amp; 3 \\\\
+   6 &amp; 6 &amp; 6
+\end{bmatrix}</code></pre><p>减法也同理。</p><h3>矩阵乘以矩阵</h3><p>矩阵之间的相乘就比较复 (bian) 杂 (tai) 了，根据 <a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95#%E7%94%B1%E5%AE%9A%E7%BE%A9%E7%9B%B4%E6%8E%A5%E8%A8%88%E7%AE%97" title="Wikipedia">Wikipedia</a>：</p><p>矩阵相乘最重要的方法是一般矩阵乘积。它只有在第一个矩阵的列数（column）和第二个矩阵的行数（row）相同时才有定义。一般单指矩阵乘积时，指的便是一般矩阵乘积。若 $A$ 为 $ m\times n $ 矩阵，$B$ 为 $n\times p$ 矩阵，则他们的乘积 $AB$ (有时记做 $A \cdot B$）会是一个 $m\times p$ 矩阵。其乘积矩阵的元素如下面式子得出：</p><pre><code class="lang-math">\displaystyle AB_{ij} = \sum_{r=1}^{n}a_{ir}b_{rj}= a_{i1}b_{1j}+a_{i2}b_{2j}+\dots+a_{in}b_{nj}</code></pre><p>看个例子就懂了：</p><pre><code class="lang-math">\begin{bmatrix}
+   1 &amp; 2 \\\\
+   4 &amp; 3
+\end{bmatrix} +
+\begin{bmatrix}
+   2 &amp; 1 \\\\
+   2 &amp; 0
+\end{bmatrix} =
+\begin{bmatrix}
+   3 &amp; 3 \\\\
+   6 &amp; 6
+\end{bmatrix}</code></pre><p>第一个矩阵第一行的每个数字（1 和 2）各自乘以第二个矩阵第一列对应位置的数字（2 和 2），然后将乘积相加（ 1 x 2 + 2 x 2），得到结果矩阵左上角的值 6。同理，其他的几个值也是这么算的。维基百科上有一张形象的图：</p><p><img src="https://skywt.cn/wp-content/uploads/Matrix_multiplication_diagram.png" alt=" title="矩阵相乘示意"" title=" title="矩阵相乘示意""></p><h2>矩阵快速幂求斐波那契数列</h2><p>其实 <a href="http://poj.org/problem?id=3070" title="POJ上这道模板题">POJ上这道模板题</a> 已经告诉你怎么做了：</p><pre><code class="lang-math">\displaystyle
+\begin{bmatrix}
+   F_{n+1} &amp; F_n \\\\
+   F_n &amp; F_{n-1}
+\end{bmatrix} =
+\begin{bmatrix}
+   1 &amp; 1 \\\\
+   1 &amp; 0
+\end{bmatrix}^n =
+\underbrace{
+\begin{bmatrix}
+   1 &amp; 1 \\\\
+   1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+   1 &amp; 1 \\\\
+   1 &amp; 0
+\end{bmatrix}\cdots
+\begin{bmatrix}
+   1 &amp; 1 \\\\
+   1 &amp; 0
+\end{bmatrix}
+}_ {\text{n times}}</code></pre><p>也就是说矩阵$<br>\begin{bmatrix}<br>   1 & 1 \\<br>   1 & 0<br>\end{bmatrix} $ 的 n 次幂里面四个数就分别是 $F_{n+1}$、$F_n$、$F_n$、$F_{n-1}$ 。</p><h2>例题</h2><h3>模板题</h3><p><a href="https://www.luogu.org/problemnew/show/P3390" title="洛谷 3390 【模板】矩阵快速幂">洛谷 3390 【模板】矩阵快速幂</a><br><a href="http://poj.org/problem?id=3070" title="POJ3070 - Fibonacci">POJ3070 - Fibonacci</a></p><h3>综合</h3><p><a href="https://codeforces.com/problemset/problem/551/D" title="CodeForces 551D. GukiZ and Binary Operations">CodeForces 551D. GukiZ and Binary Operations</a></p><h2>代码</h2><p>以下是洛谷上的模板题代码：</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=105,tt=1000000007;;
+int n;
+long long m;
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+struct Matrix{
+    int a[maxn][maxn];
+    void ReadMatrix(){
+        memset(a,0,sizeof(a));
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;n;j++) a[i][j]=read();
+    }
+    void Init(){
+        memset(a,0,sizeof(a));
+        for (int i=0;i&lt;n;i++) a[i][i]=1;
+    }
+    void Clear(){
+        memset(a,0,sizeof(a));
+    }
+    Matrix operator *(Matrix b){
+        Matrix c; c.Clear();
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;n;j++)
+        for (int k=0;k&lt;n;k++)
+            c.a[i][j]=((long long)c.a[i][j]+(long long)a[i][k]*b.a[k][j])%tt;
+        return c;
+    }
+    Matrix operator ^(long long b){
+        Matrix ret; ret.Init();
+        Matrix w;   w.Clear();
+        for (int i=0;i&lt;n;i++)
+        for (int j=0;j&lt;n;j++) w.a[i][j]=a[i][j];
+        while (b){
+            if (b%2) ret=ret*w;
+            b=b/2;w=w*w;
+        }
+        return ret;
+    }
+    void Write(){
+        for (int i=0;i&lt;n;i++){
+            for (int j=0;j&lt;n;j++) printf(&quot;%d &quot;,a[i][j]);
+            printf(&quot;\n&quot;);
+        }
+    }
+};
+int main(){
+    n=read();scanf(&quot;%lld&quot;,&amp;m);
+    Matrix a; a.ReadMatrix();
+    // printf(&quot;Read part finished.\n&quot;);
+    a=a^m;
+    a.Write();
+    return 0;
+}</code></pre><p>下面是 POJ 上模板题代码：</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int tt=10000;
+int n;
+struct Matrix{
+    int a[3][3];
+    void Init(){
+        memset(a,0,sizeof(a));
+        a[0][0]=a[1][0]=a[0][1]=1;
+        a[1][1]=0;
+    }
+    void Clear(){
+        memset(a,0,sizeof(a));
+    }
+    Matrix operator *(Matrix b){
+        Matrix c; c.Clear();
+        for (int i=0;i&lt;2;i++)
+        for (int j=0;j&lt;2;j++)
+        for (int k=0;k&lt;2;k++)
+            c.a[i][j]=((long long)c.a[i][j]+(long long)a[i][k]*b.a[k][j])%tt;
+        return c;
+    }
+    Matrix operator ^(long long b){
+        Matrix ret; ret.Init();
+        Matrix w;   w.Clear();
+        for (int i=0;i&lt;2;i++)
+        for (int j=0;j&lt;2;j++) w.a[i][j]=a[i][j];
+        while (b){
+            if (b%2) ret=ret*w;
+            b=b/2;w=w*w;
+        }
+        return ret;
+    }
+    void Write(){
+        for (int i=0;i&lt;2;i++){
+            for (int j=0;j&lt;2;j++) printf(&quot;%d &quot;,a[i][j]);
+            printf(&quot;\n&quot;);
+        }
+    }
+};
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);n--;
+    while (n!=-2){
+        if (n==-1) printf(&quot;0\n&quot;); else{
+            Matrix a; a.Init();
+            a=a^n;
+            printf(&quot;%d\n&quot;,a.a[1][0]);
+        }
+        scanf(&quot;%d&quot;,&amp;n);n--;
+    }
+    return 0;
+}</code></pre><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5#%E7%9F%A9%E9%98%B5%E7%9A%84%E8%AE%A1%E7%AE%97" title="矩阵 - 维基百科，自由的百科全书">矩阵 - 维基百科，自由的百科全书</a><br><a href="https://zh.wikipedia.org/wiki/File:Matrix_multiplication_diagram.PNG" title="矩阵乘法 - 维基百科，自由的百科全书">矩阵乘法 - 维基百科，自由的百科全书</a><br><a href="http://www.ruanyifeng.com/blog/2015/09/matrix-multiplication.html" title="理解矩阵乘法 - 阮一峰的网络日志">理解矩阵乘法 - 阮一峰的网络日志</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/matrix-multiply" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 矩阵乘法与矩阵快速幂 求斐波那契数列第 n 项</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

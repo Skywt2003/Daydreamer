@@ -1,0 +1,142 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces 614E - Necklace 题解：构造</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 614E - Necklace 题解：构造</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / CodeForces 614E - Necklace 题解：构造</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 614E - Necklace 题解：构造</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 01 月 31 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf614e" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <h2>Description</h2><p><a href="https://codeforces.com/problemset/problem/614/E" title="Link">Link</a></p><p>Ivan wants to make a necklace as a present to his beloved girl. A necklace is a cyclic sequence of beads of different colors. Ivan says that necklace is beautiful relative to the cut point between two adjacent beads, if the chain of beads remaining after this cut is a palindrome (reads the same forward and backward).</p><!--more--><p><center><br><img src="https://codeforces.com/predownloaded/da/6f/da6fed59f8eea2827537ef381fb7c2aa0edbac61.png" width=226px hight=226px><br></center></p><p>Ivan has beads of n colors. He wants to make a necklace, such that it's beautiful relative to as many cuts as possible. He certainly wants to use all the beads. Help him to make the most beautiful necklace.</p><ul><li>time limit per test: 2 seconds</li><li>memory limit per test: 256 megabytes</li><li>input: standard input</li><li>output: standard output</li></ul><h2>Input</h2><p>The first line of the input contains a single number $n (1 ≤ n ≤ 26)$ — the number of colors of beads. The second line contains after n positive integers $a_i$   — the quantity of beads of $i$-th color. It is guaranteed that the sum of $a_i$ is at least 2 and does not exceed 100 000.</p><h2>Output</h2><p>In the first line print a single number — the maximum number of beautiful cuts that a necklace composed from given beads may have. In the second line print any example of such necklace.</p><p>Each color of the beads should be represented by the corresponding lowercase English letter (starting with a). As the necklace is cyclic, print it starting from any point.</p><h2>Examples</h2><p><strong>Input #1</strong></p><pre><code>3
+4 2 1
+</code></pre><p><strong>Output #1</strong></p><pre><code>1
+abacaba
+</code></pre><p><strong>Input #2</strong></p><pre><code>1
+4
+</code></pre><p><strong>Output #2</strong></p><pre><code>4
+aaaa
+</code></pre><p><strong>Input #3</strong></p><pre><code>2
+1 1
+</code></pre><p><strong>Output #3</strong></p><pre><code>0
+ab
+</code></pre><h2>Note</h2><p>In the first sample a necklace can have at most one beautiful cut. The example of such a necklace is shown on the picture.</p><p>In the second sample there is only one way to compose a necklace.</p><h2>Translation</h2><p>题意：给你 n 种字符，请你确定一个排列顺序，把它们排成一个环。如果在这个环上某位置切一刀形成的一个字符串是回文串，则说这个切割是 beautiful cut，现在需要你排成的环能切出最多的 beautiful cut，并且要求输出这个环。</p><h2>Analysis</h2><p>直接考虑最后形成的一个环，如果我们在 a 位置切一刀可以形成一个回文串，在 b 位置也可以，那么在 a 关于 b 对称的位置也一定可以，在 b 关于 a 对称的位置也一定可以……这样整个环会被分为几等分。不难发现，每一份的长度就是所有种类字符数量的 gcd。</p><p>接下来需要考虑每段如何构造。为了关于切割点对称，每段必须呈 abc-cba-abc-cba-... 排列，最后回到 abc。<br>但是！如果有奇数段，最后就不能回到 abc（最后到 abc 位置轮到的是 cba）。这时候就要求每一段也是回文串，这样才能保证 abc 和 cba 相同。<br>不难发现，只允许有一个 $a_i$ 为奇数，如果有两个就为 0 了。分有无奇数考虑：</p><ul><li>有一个奇数：每段都是回文的，这个奇数的字母必然放在每段中间；</li><li>全偶数：每段任意，只要关于切割点对称即可。</li></ul><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+
+using namespace std;
+#define int long long
+
+inline int read(){
+    int ret=0,f=1;char ch=getchar();
+    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
+    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
+    return ret*f;
+}
+
+const int maxn=30;
+
+int n;
+int a[maxn];
+
+inline void imp(){
+    printf(&quot;0\n&quot;);
+    for (int i=1;i&lt;=n;i++){
+        for (int j=1;j&lt;=a[i];j++) putchar(i+'a'-1);
+    }
+    printf(&quot;\n&quot;);
+}
+
+inline int gcd(int x,int y){
+    return y?gcd(y,x%y):x;
+}
+
+signed main(){
+    n=read();bool flg=false,no=false;
+    for (int i=1;i&lt;=n;i++){
+        a[i]=read();
+        if ((a[i]&amp;1) &amp;&amp; flg) no=true;
+        if (a[i]&amp;1) flg=true;
+    }
+    if (no){
+        imp();
+        return 0;
+    }
+    if (n==1){
+        printf(&quot;%lld\n&quot;,a[1]);
+        for (int i=1;i&lt;=a[1];i++) putchar('a');
+        printf(&quot;\n&quot;);
+        return 0;
+    }
+    
+    int g;
+    g=a[1];
+    for (int i=2;i&lt;=n;i++) g=gcd(g,a[i]);
+    if (!flg){
+        printf(&quot;%lld\n&quot;,g);
+        string otp1=&quot;&quot;,opt2=&quot;&quot;;
+        for (int i=1;i&lt;=n;i++){
+            for (int j=1;j&lt;=a[i]/g;j++) otp1+=(char)(i+'a'-1);
+        }
+        for (int i=n;i&gt;=1;i--){
+            for (int j=1;j&lt;=a[i]/g;j++) opt2+=(char)(i+'a'-1);
+        }
+        for (int i=1;i&lt;=g;i++) if (i&amp;1) cout&lt;&lt;otp1; else cout&lt;&lt;opt2;
+        printf(&quot;\n&quot;);
+    } else {
+        printf(&quot;%lld\n&quot;,g);
+        string opt=&quot;&quot;;int mid;
+        for (int i=1;i&lt;=n;i++) if (a[i]&amp;1) {mid=i;break;}
+        for (int i=1;i&lt;=n;i++) if (i!=mid){
+            for (int j=1;j&lt;=a[i]/g/2;j++) opt+=(char)(i+'a'-1);
+        }
+        for (int i=1;i&lt;=a[mid]/g;i++) opt+=(char)(mid+'a'-1);
+        for (int i=n;i&gt;=1;i--) if (i!=mid){
+            for (int j=1;j&lt;=a[i]/g/2;j++) opt+=(char)(i+'a'-1);
+        }
+        for (int i=1;i&lt;=g;i++) cout&lt;&lt;opt;
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/3b52e6fb3e2ec8186731af5a406b7a67" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>nazo</h4> <p class="mt-1">2019 年 2 月 1 日 11:54</p> </div> </div> <p class="mt-2">这就是。。。差距吗</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf614e" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / CodeForces 614E - Necklace 题解：构造</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 

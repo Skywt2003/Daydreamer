@@ -1,0 +1,152 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>七大私有化部署笔记&amp;amp;知识库系统横评</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
+      var _paq = (window._paq = window._paq || []);
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//analytics.skywt.cn/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.4DFoe-cT.css" />
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style>
+<link rel="stylesheet" href="/_astro/friends.CELmKF_Q.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2>
+SkyWT
+<span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 七大私有化部署笔记&amp;amp;知识库系统横评</span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link" data-astro-cid-3ef6ksr2>SkyWT</a> <span data-astro-cid-3ef6ksr2> / 博客</span><span data-astro-cid-3ef6ksr2> / 七大私有化部署笔记&amp;amp;知识库系统横评</span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  const headerEl = document.querySelector("#navbar-wrapper");
+  const sentinalEl = document.querySelector("header");
+  const handler = (entries) => {
+    if (!entries[0].isIntersecting) {
+      headerEl.classList.add("sticked");
+    } else {
+      headerEl.classList.remove("sticked");
+    }
+  };
+  const observer = new window.IntersectionObserver(handler);
+  observer.observe(sentinalEl);
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>七大私有化部署笔记&amp;amp;知识库系统横评</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 01 月 15 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 18 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/seven-notes-and-wiki-systems-evaluation" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
+</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>故事的起源是一个由于线性代数期末考几道计算题卡住算不出来折腾半天而考后看某课代表提前交卷又感觉人均 AK 了以致十分 emo 想要暂时逃避学习的下午。</p><!--more--><h2>TL;DR</h2><p>思源笔记最好。快去用。</p><h2>传统方案</h2><p>一直以来我记笔记的方案都是本地 Typora + Git 用 Markdown 写各种笔记，然后服务器上部署 Docsify 用 Crontab 设置每天定时 <code>git pull</code> 一次，展示在 <a href="https://wiki.skywt.cn">wiki.skywt.cn</a>。不过长此以往，渐渐觉得这种方案难以满足我的需求：</p><ul><li><p><strong>Git 与笔记的需求不相适应。</strong>Git 本质上是一个「版本管理工具」，而我们<del>为了白嫖 Github 而</del>纯粹把它作为一个文件上传工具来使用。</p><ul><li>表现之一就是经常看以前的笔记的时候改了某处的标点符号，这个小改动单独 commit 一下吧，感觉没必要；和其他改动一起 commit 吧，又会导致整个 commit 逻辑的混乱。以至于到最后干脆自暴自弃，一大堆一起 commit 了。可以说 commit 这种方式和记笔记的应用场景非常不适应。</li><li>表现之二是，<del>历经这么多思想斗争</del>搞成的版本管理，实际上一次都没有发挥过作用。在自己的笔记上我从来没有回滚过版本。</li></ul></li><li><strong>纯文本的 Markdown 功能不足。</strong>观摩了 Obsidian 开创性的双链功能，才感觉这种近乎纯文本的记笔记方式可能的确不能更好地组织知识网络。并且文档树完全是以文件名排序的，也不利于自己的整理。</li></ul><h2>从 Notion 而来的需求</h2><p><img src="https://skywt.cn/usr/uploads/2022/01/3923025903.png" alt="Notion 界面" title="Notion 界面"></p><p>Notion 可以是非常优秀的知识库软件，界面美观、功能强大、理念先进，但是存在一些问题：</p><ul><li><p><strong>无法私有化部署。</strong>数据只能存储在 Notion 的服务器上。这就导致：</p><ul><li><strong>特殊时期网络环境问题。</strong>由于 Notion 并没有在国内开设子公司，服务器也在境外，在某些特殊时期（比如即将到来的 20big）很容易无端被 ban。</li><li><strong>数据安全性问题。</strong>数据导出不便。</li><li><strong>数据私密性问题。</strong></li><li><strong>商业公司的不确定性。</strong>参考 Notability，要是没有 AppStore 的管制，某天突然宣布改变商业策略，数据又不在我们自己手里，想导出都找不着门。百度云盘某种程度上也是一例。</li></ul></li><li><strong>必须联网使用。</strong></li></ul><p>于是我的需求大概是：</p><ul><li><p><strong>私有化部署。</strong>必须能够完全掌控数据。</p><ul><li><strong>部署方便。</strong>加分项，不过至少要能自己部署（Outline 即为反例）。</li></ul></li><li><strong>文件格式开放。</strong>不能是各种不可读的私有格式。或是可读格式（如 json）存储，或是将文件转换工具开源（点名表扬思源笔记），以便于这个软件由于不可抗力因素无法使用后数据不会丢失。</li><li><strong>Markdown 友好。</strong>Markdown 或者半兼容 Markdown 语法，至少要支持数学公式。</li><li><strong>功能强大。</strong>希望支持 Mermaid，同时有类似 Obisidian 的双链、关系图等等功能。</li><li><strong>界面美观。</strong>尝试了 Trilium 你就会知道颜值观感对一个应用的印象影响多大了 =_=</li><li><strong>学习成本低。</strong>至少设计上要符合人类的逻辑，学习成本要低于带来的使用效率收益。</li></ul><h2>概览</h2><p>是的，在这个无聊的下午，我找到了六款 Notion 的 Alternative，逐一安装尝试了一番。</p><p>以下简单列出了我的一些体验感受。加粗的是直接劝退条件。</p><ul><li><strong>Notion</strong>：功能完美 · 颜值完美 · <strong>无法私有化部署</strong> · 网络环境有时不佳 · 半 Markdown · <strong>数据难导出</strong></li><li><strong>Outline</strong>：颜值高 · <strong>部署异常困难</strong></li><li><strong>Trilium</strong>：功能强大繁多 · 偏 Geek · <strong>太丑</strong> · 部署方便 · 半 Markdown · 数据可导出</li><li><strong>AppFlowy</strong>：功能不完善 · 颜值高 · <strong>不完善</strong> · <strong>只支持本地</strong></li><li><strong>为知笔记</strong>：<strong>功能简陋</strong> · 颜值高 · 支持 Docker 私有化部署 · 不开源 · <strong>私有格式不支持且不兼容 Markdown</strong></li><li><strong>AnyType</strong>：功能强大 · 颜值高 · 理念先进 · <strong>还没发布</strong></li><li><strong>思源笔记</strong>：功能强大 · 颜值高 · 私有部署不支持多用户 · json 格式数据可导出</li></ul><p>注意：本文仅针对建立「学习笔记&知识库系统」这一方面对这些应用测评，很多应用（如 Notion）除此之外还有团队协作、项目规划以至于建立 GTD 系统等等用途，而其他应用（如思源笔记）则没有，不代表各个方面某应用绝对的优胜性。</p><h2>Outline：这是想给人部署的吗？？</h2><p>Outline 的定位是「团队知识库」，我正是被这优雅的界面设计打动的。</p><p><img src="https://skywt.cn/usr/uploads/2022/01/2662116183.png" alt="Outline 官方 demo 截图" title="Outline 官方 demo 截图"></p><p>和大多数开源软件的商业模式一样，Outline 提供了收费的在线版（30 天免费体验，而且不支持个人用户）和可以自己部署的开源版本。自己部署就是「折腾而白嫖」的一种方式，说得好听点就叫做「技术变现」吧……</p><p>然而这个软件好像设计之初就根本没有考虑个人私有化部署，吐血。</p><ul><li>文件存储只支持 AWS S3 标准，而不支持直接本地文件存储；而 Amazon 在中国不支持个人用户注册。为此，我们要用 MinIO 自己搭建一个兼容 S3 标准的服务器；</li><li>用户登录不支持直接的验证，只支持第三方的 SSO，我们要么配置 Google/Microsoft/Slack 的 SSO，要么自己搭一个 OIDC 服务器；</li><li>不支持直接的附件上传，为此我们要自己搭一个附件上传的程序，例如 Linx；</li><li>只支持 PostgreSQL 数据库，还有 Redis，所以……</li></ul><p>算下来，除了 outline 的容器，还得整上 minio，linx-server，postgres，redis，和一个 SSO 服务器。主要是我根本没接触过 AWS S3，也没接触过 SSO，这俩玩意足够折腾死我了。</p><p>逛了一圈，有大佬提供了 <a href="https://soulteary.com/2021/09/05/opensource-documentation-wiki-software-outline-part-1.html">docker-compose 的版本</a>，但是没搞清楚这些问题之前感觉整个程序就是一个黑箱，出了问题都不知道咋办，不太舒服。</p><p>220203 Upd：终于成功部署了 Outline。总体感觉是：这个软件更加适合服务于「团队协作」或者用来写「产品文档」，而用来作为「笔记」或者「个人知识库」则不是那么完美</p><ul><li>不支持双链。</li><li>不支持 LaTeX 数学公式。</li><li>支持很多富文本的嵌入块，但大多都是国内用不了的 404 服务……</li><li>并没有插件之类的平台，很难实现功能的拓展。</li></ul><p>不过这个多人协作的确非常酷，UI 也非常简洁漂亮……总之，作为「知识库」，这个软件不是最佳选择。</p><h2>Trilium：<del>直男</del> Geek 的最爱</h2><p><strong>总评：★★★★☆</strong></p><p>说实话，一开始 Trilium 给了我惊喜。</p><p>没有什么依赖的服务，直接 <code>docker run</code> 一下就可以跑起来：</p><pre><code class="lang-sh">docker run -d \
+  --name trilium \
+  -p 8081:8080 \
+  -v /data/trilium:/home/node/trilium-data \
+  zadam/trilium:0.48-latest</code></pre><p>逻辑和 Notion 类似，功能非常强大，对于每个文档可以自定义若干属性（一些归属于文档的键值对），也有不同的文档类型（文本、关系图、Mermaid 图、代码等），可以定义特殊的文档存放一些 js 脚本，通过属性可以调用这些脚本实现特定的功能。</p><p>例如，按下左边的 Today 按钮可以立即在 root &gt; Journal &gt; 年份 &gt; 月份 文件夹下用每日模板创建一个页面并自动填好日期，而这一切都是在一个叫做 Today 的文档中的脚本实现的，由于这个文档设置了书签而会显示在左边侧栏。</p><p>所谓的「插件」统统可以通过文档内 js 实现。例如这个字数统计插件：</p><p><img src="https://skywt.cn/usr/uploads/2022/01/1372974204.png" alt="Trilium 的字数统计插件" title="Trilium 的字数统计插件"></p><p>有了这个文档，只要在文章属性中加上 <code>#wordCount</code> 标签，就会执行这里面的脚本显示文章的字数统计。</p><p>官方样例还给出了各种脚本建立 Todo List、可视化体重追踪程序等等一系列强大的用途。</p><p>只是，这个 UI……</p><p><img src="https://skywt.cn/usr/uploads/2022/01/76241332.png" alt="Trilium 的默认主题界面" title="Trilium 的默认主题界面"></p><p>太丑了……（吐血）</p><p>这诡异的字体，这生硬的交互，这令人窒息的圆角矩形……这就叫做「直男审美」吧……<br>真的，开发者难道没有用过 Notion 吗？就不能学学吗？？？</p><p>好在 Trilium 支持自定义主题，只要建立一个文档，设置属性 <code>#appTheme=themeName</code> 就可以在 config 里看到名为 themeName 的主题了。</p><p>搞来 Notion 的配色，尝试调整了一下默认的主题：</p><p><img src="https://skywt.cn/usr/uploads/2022/01/3885939585.png" alt="Trilium 自定义主题后的界面" title="Trilium 自定义主题后的界面"></p><pre><code class="lang-css">:root {
+    --main-font-family: serif !important;
+    --tree-font-family: serif !important;
+    --detail-font-family: serif !important;
+    --detail-font-size: 1.1rem !important;
+    --detail-text-font-family: serif !important;
+    --monospace-font-family: monospace !important;
+}
+
+.note-tab-wrapper {
+    border-radius: 0 !important;
+    background-color: inherit !important;
+    border-bottom: 1px rgba(55, 53, 47, 0.4) solid;
+}
+
+span.fancytree-node:hover{
+    background-color: rgba(55, 53, 47, 0.16) !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+span.fancytree-active, span.fancytree-active.fancytree-selected{
+    background-color: rgba(55, 53, 47, 0.08) !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.fancytree-node:hover .bx.tree-item-button {
+    position: absolute;
+    right: 15px;
+}
+
+#left-pane , #launcher-pane{
+    background-color: rgb(247, 246, 243) !important;
+}
+
+.gutter {
+    background: inherit !important;
+    width: 4px !important;
+    transition: 0.3s;
+}
+.gutter:hover {
+    background: rgba(25, 23, 17, 0.6) !important;
+}
+
+.note-title-widget input.note-title {
+    outline: none;
+}
+
+.include-note, .note-book-card {
+    border-radius: 0 !important;
+}
+
+.note-split {
+    max-width: 1000px;
+}</code></pre><p>然而最后我还是放弃了 Trilium。</p><ul><li>关于「属性」的功能属实是比较冗余，很难找到使用场景。毕竟作为一个笔记&知识库系统，不需要这么多自动化的流程吧。</li><li>这个 UI 真的没救了，改 CSS 也改不了整体的布局，和 Notion 相比就有一种莫名压抑感。</li><li>半 Markdown 支持，就是实际上不是 Markdown 文件，只是输入 <code>##</code> 会自动变成二级标题，输入 <code>$</code> 会自动进入数学公式输入。</li><li>对于导入文件的转化不是特别好，导入的 codeforces 题解里的数学公式全都没法转化。</li><li>居然不支持代码块高亮。</li></ul><p>总之，虽然不是特别适合我自己，Trilium 还是值得尝试的。</p><h2>AppFlowy：为取代 Notion 而生的新秀</h2><p>AppFlowy 似乎就是为了取代 Notion 而生的。</p><p><img src="https://skywt.cn/usr/uploads/2022/01/785568134.png" alt="AppFlowy 官方 demo 截图" title="AppFlowy 官方 demo 截图"></p><p>试用了一下，还是放弃了。</p><ul><li>不支持网页端，只有本地客户端。</li><li>只是个本地的编辑器。不支持服务器同步。</li><li>功能不完善，还在开发初期。目前还是 0.0.2 版本。</li></ul><p>目前看来完全无法达到取代 Notion 的标准。可能未来会比较有潜力，不过目前还是不考虑了。</p><h2>为知笔记：简陋到不够用</h2><p>虽然为知笔记本身不是开源的，但是其提供了<a href="https://www.wiz.cn/zh-cn/docker">可以自托管的 Docker 镜像</a>。</p><pre><code class="lang-sh"> docker run -itd \
+   --name wiz \
+   --restart=always \
+   -v /data/wiz:/wiz/storage \
+   -v /etc/localtime:/etc/localtime \
+   -p 8085:80 \
+   -p 9269:9269/udp \
+   wiznote/wizserver</code></pre><ul><li>非常简陋！！！和官网注册登录使用的不是一个版本。功能很少。没有双链。数学公式都没有。</li><li>笔记的排列逻辑很迷，不是树状图的逻辑，而是一种二级菜单，不太适合建立知识库。</li><li>完全不兼容 Markdown。从类 Word 的文本编辑就可以看出。文档导出甚至只支持导出 .docx 格式。</li><li>严重依赖官方服务器。即使自己部署，很多功能都需要官方服务器。</li></ul><h2>AnyType：值得期待的颠覆</h2><p>虽然这玩意还没发布，但是去看了下<a href="https://anytype.io/">官网</a>，感觉这个官网的设计就挺有意思的。</p><p>AnyType 提出了「对象」的概念，文档中每个页面或者段落、块都可以看成「对象」，在对象之间可以建立连接，贴近人的思维模式。这个理念比较有开创性。</p><p>不过第一个正式的版本还没发布。可以留个邮箱成为内测用户。我还是懒得折腾了。</p><h2>思源笔记：最终的归宿</h2><p>最后找到了「思源笔记」，在我看来是比较完美的解决方案了。</p><pre><code class="lang-sh"> docker run -itd \
+   --name siyuan \
+   -v /data/siyuan:/siyuan/workspace \
+   -p 6806:6806 \
+   -u 1000:1000 \
+   b3log/siyuan \
+   --workspace=/siyuan/workspace \
+   --servePath=docs.skywt.cn \
+   --ssl=true</code></pre><p>注意如果用 Nginx/Caddy 反代走 https 则需要加上后面的 <code>--servePath=docs.skywt.cn --ssl=true</code>，否则不需要。</p><p><img src="https://skywt.cn/usr/uploads/2022/01/1016182864.png" alt="思源笔记界面" title="思源笔记界面"></p><p>其实看得出来基本上这个软件的很多功能甚至有些 UI 都是仿 Obsidian 的。不过在某些方面比 Obsidian 更加优秀。<br>总体来说这个体验还是比较完美的。</p><ul><li><strong>私有化部署。</strong>部署还比较方便。</li><li><strong>文件格式开放。</strong>数据都会以 json 格式明文存储在本地指定的文件夹下，还开源了数据转换的工具。</li><li><strong>Markdown 友好。</strong>半兼容 Markdown 语法，支持 Markdown 导出。导入我原来的 Markdown 也非常完美。而且和 Notion 一样有「内容块」的概念，「内容块」和「文章块」是同级的，这个逻辑我还是比较喜欢的。</li><li><strong>功能强大。</strong>支持双链、Mermaid、关系图等等。甚至支持 SQL 语句查询！</li><li><strong>界面美观。</strong>自定义也很方便，甚至可以找到高仿 Notion 的主题……</li><li><strong>入门成本低。</strong>不过如果要进阶使用还是有一定成本的。</li></ul><p>缺点也不是没有：</p><ul><li><strong>Docker 服务器版不支持多用户。</strong>实际上没有用户管理机制，只有一个密码鉴权。</li><li><strong>不能很好地兼容 Firefox。</strong>由于本身是针对 Electron 开发的，好像只能在 Chromium 内核下得到完美体验。Firefox 使用问题就是在光标只能被限定在一个块里，必须配合鼠标。非常不爽！</li></ul><h2>总结</h2><p>「工欲善其事，必先利其器」，虽然笔记软件只是工具，但是从纯文本到 Markdown，到块级双链的知识库系统，善用笔记软件有机会颠覆我们的思考方式和学习效率。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 18 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/86e173b866808c480141c7c17a9855a5" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>chancat</h4> <p class="mt-1">2024 年 1 月 15 日 8:2</p> </div> </div> <p class="mt-2">我想找个可以当博客写的笔记软件。。能有评论功能最好</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/ab62ff29474ce7e7598ede0a0f90b497" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>fergus</h4> <p class="mt-1">2024 年 2 月 22 日 9:39</p> </div> </div> <p class="mt-2">可以直接用wiki系统呀，dokuwiki或者tiddlywiki都行</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/9281dae4bdafd6e0d5fbbbe50ed92958" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>Cjun</h4> <p class="mt-1">2023 年 12 月 13 日 6:50</p> </div> </div> <p class="mt-2">推荐Joplin
+https://github.com/laurent22/joplin
+
+离线阅读
+笔记有历史版本
+Markdown
+可剪辑网页收藏
+多平台同步
+</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/a4f2aff738cb03cfb238178bed2d657c" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>jamesbond</h4> <p class="mt-1">2023 年 12 月 14 日 2:59</p> </div> </div> <p class="mt-2">joplin最大的问题是不能所见即所得，编辑起来有点痛苦。</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/978565a572522adc3ff0a8d88a0ab216" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>sora</h4> <p class="mt-1">2023 年 12 月 8 日 9:59</p> </div> </div> <p class="mt-2">我目前也主要使用思源笔记，在我看来它的问题远不止博主提到的这些，而且在可预见的未来大概是不会改的。
+它的收费逻辑跟当下多数国产软件类似：允许用户免费使用，但一定会设下各种坑去恶心免费用户，逼着用户付费。
+比如它的私有部署版不支持同步，仅仅是一个web客户端；且相比于桌面版，被阉割了大量功能，同时跟桌面版的插件不兼容，很多精力不足的开发者往往会放弃web版的维护；它也不支持直接通过第三方同步数据目录，而官方提供的所有同步方式都要收费；即便愿意付费，webdav同步的体验也极差，我试着跟通过本地的alist同步，120M的数据花了大概四分钟，如果服务器在墙外，那基本不可能同步成功。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/330e90648be115aab5ee9128661aaf19" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://xiaoxinblog.xyz" class="link" target="_blank"> <h4>小新</h4> </a> <p class="mt-1">2023 年 9 月 16 日 4:38</p> </div> </div> <p class="mt-2">试试看Joplin</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/f0a8de241433e9d913113ae6e78b0e04" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>Dorn</h4> <p class="mt-1">2023 年 5 月 29 日 14:4</p> </div> </div> <p class="mt-2">感谢作者，我从eDiary换成OneNote，还有有道云笔记。一直念念不忘eDiary，我看中他有一种自定义排序和极其轻量级的客户端，而且导出等功能。但是目前只能WINDOWS客户端。
+目前没找到一个好的替代品，一直忍受着OneNote的BUG。看完评论等，回头在NAS部署一套思源笔记看看效果</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/83066cd1abb1dad97beb7b11bc526c66" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>Jfvxddc</h4> <p class="mt-1">2022 年 10 月 24 日 5:41</p> </div> </div> <p class="mt-2">为啥不用Obsidian呢？</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/1f585cace6a0131f37e43ee2b8f23e9c" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>her0</h4> <p class="mt-1">2022 年 10 月 19 日 5:30</p> </div> </div> <p class="mt-2">挨个看了，我选anytype 其他都是奔钱去的项目，只有这个是奔理想去的不会死。只会越来越好。不会浪费学习成本。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4915c83b4a4757d50dd01ef4c4f41e33" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://rustlang.org" class="link" target="_blank"> <h4>彭亚伦</h4> </a> <p class="mt-1">2022 年 9 月 25 日 9:22</p> </div> </div> <p class="mt-2">赞同!
+
+我有思源笔记终身账户, 确实是最佳个人笔记软件. 
+
+但是团队的话, 还是推荐Outline. 我们部署了一个, 使用下来感觉不算是Notion替代, 因为没有看板/数据库功能, 任务管理功能也是非常基础的那种.  Outline感觉更像是石墨文档, 但是比石墨体验更好, 协同编辑体验更是完爆石墨文档 
+
+部署困难是实话,  不过话说都团队了, 部署一个nodejs应用应该不是太大问题吧. 何况这个应用对系统要求并不高, 还有一大把免费的node应用部署服务可以白嫖.
+
+ 登陆配置确实麻烦点, 不过如果你用类似dex或者Authorizer做OIDC, 或者直接用Gitlab的OIDC服务的话, 基本就解决了; 同样类似的免费OIDC还很多, 比如大名鼎鼎的Auth0. 
+
+至于S3储存的问题, 这个就真看需求了, 不过我个人是比较喜欢都存在S3上的,  服务器万一出点问题, 文件就丢失了, 而类似S3之类的服务则不会.
+
+国内用户的话, 七牛云/腾讯对象存储等都是兼容S3协议的, Outline应该都可以, 唯有阿里云OSS虽然兼容但是做了修改, 所以Outline用不了.
+
+总体来说, 个人用思源, 团队用Outline, 完全没错.</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/f8cb6a72dd4ff719e7494ed590967d02" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://zwt.one" class="link" target="_blank"> <h4>James Tsang</h4> </a> <p class="mt-1">2022 年 6 月 19 日 6:13</p> </div> </div> <p class="mt-2">最终和楼主的选择一样，部署了思源笔记，确实非常棒，还做了一下捐赠</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/a9db573797b4275502fdc9812d586211" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://imhan.cn/" class="link" target="_blank"> <h4>子舒</h4> </a> <p class="mt-1">2022 年 5 月 3 日 6:3</p> </div> </div> <p class="mt-2">看完之后，还是没有一个喜欢的程序，如果什么时候notion能够开源私有部署就完美了。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/1128979b5789fc055b1c4ef91920d31e" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>zh</h4> <p class="mt-1">2022 年 4 月 7 日 3:10</p> </div> </div> <p class="mt-2">所以博主在部署 Outline 成功后还推荐 思源 吗？
+以及 Outline 和 思源 部署大致的资源要求如何？Outline 的维护成本高吗？</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2022 年 4 月 7 日 6:18</p> </div> </div> <p class="mt-2">Outline 其实更适合用作团队协作和产品文档。对我而言最大的缺陷就是**不支持 LaTeX 数学公式**。不过这个多人实时协作编辑还是很酷的。
+个人感觉用于笔记和知识库的话，还是思源笔记更加适合。
+资源占用的话，其实两者都不大～只是 Outline 要麻烦一点。</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/1128979b5789fc055b1c4ef91920d31e" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>zh</h4> <p class="mt-1">2022 年 4 月 7 日 11:55</p> </div> </div> <p class="mt-2">感谢分享~</p> <div class="ml-8">  </div> </div> </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/6f0db2aed79779d2b7c4baaa732793f3" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>HMaster</h4> <p class="mt-1">2022 年 3 月 31 日 3:27</p> </div> </div> <p class="mt-2">思源主要是部署后无法支持全平台，手机这些没有APP，这个很蛋疼，为知笔记么不支持网页剪切和微信分享这类的功能，购买功能600块有点肉痛哈哈哈。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/e324426cfb858632ee4aa4010b41b88a" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.gmcllp.cn" class="link" target="_blank"> <h4>Gmc</h4> </a> <p class="mt-1">2022 年 3 月 30 日 8:49</p> </div> </div> <p class="mt-2">也是一直在找合适的笔记软件，找来找去也只发现了为知笔记，但如同你所说的，确实不好用！
+等会再去试试这个思源笔记:p</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/f8696cc9f87f21bf585ddcb27258e374" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://cyp0633.icu" class="link" target="_blank"> <h4>cyp0633</h4> </a> <p class="mt-1">2022 年 3 月 28 日 11:14</p> </div> </div> <p class="mt-2">感谢，看完文章，7 个 App 全给我劝退了，决定先用着 Notion。</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+发表评论
+</h2> <p class="primary-color card my-4 p-2">
+🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/seven-notes-and-wiki-systems-evaluation" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
+</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="m-2 flex justify-between flex-wrap"> <div class="m-2"> <a class="link" href="/"> SkyWT</a> <span> / 博客</span><span> / 七大私有化部署笔记&amp;amp;知识库系统横评</span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr> <div class="m-2 flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备33080202000472号</a> /
+<a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙ICP备2021019606号-1
+</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> </div> </footer> </body></html> 
