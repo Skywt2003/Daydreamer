@@ -51,7 +51,11 @@ html {
 }
 
 .wide-container {
-  @apply mx-auto w-11/12 sm:w-10/12;
+  @apply mx-auto px-4;
+  @apply w-full;
+  @screen sm {
+    @apply w-10/12;
+  }
 }
 
 .primary-color {

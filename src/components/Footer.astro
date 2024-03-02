@@ -13,7 +13,7 @@ const { path } = Astro.props;
 
 <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900">
   <div class="wide-container secondary-color text-sm">
-    <div class="m-2 flex justify-between flex-wrap">
+    <div class="flex justify-between flex-wrap">
       <div class="m-2">
         <Path path={path} />
       </div>
@@ -21,20 +21,20 @@ const { path } = Astro.props;
         <Menu showIcon={false} />
       </div>
     </div>
-    <hr />
-    <div class="m-2 flex justify-between flex-wrap">
+    <hr class="my-4" />
+    <div class="flex justify-between flex-wrap">
       <p class="m-2">
-        &#169; 2017-2024 <a href="https://skywt.cn/" class="link">SkyWT</a> /
-        <a
-          href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
-          target="_blank"
-          class="link before:content-[url('/mps.png')] before:align-middle"
-        >
-          浙公网安备33080202000472号</a
-        > /
-        <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
-          浙ICP备2021019606号-1
-        </a>
+        &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
+        |
+        <a href="/sitemap.xml" class="link">站点地图</a>
+        |
+        <a href="/friends" class="link">友情链接</a>
+        |
+        <a href="https://foreverblog.cn/go.html" class="link">虫洞</a>
+        <!-- |
+        <a href="https://github.com/Skywt2003/Daydreamer" class="link"
+          >Daydreamer</a
+        > -->
       </p>
       <div class="m-2">
         <CC by={true} nc={true} />
@@ -51,6 +51,31 @@ const { path } = Astro.props;
           />
         </a>
       </div>
+    </div>
+    <div class="flex justify-between flex-wrap">
+      <p class="m-2">
+        <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+          浙 ICP 备 2021019606 号 - 1</a
+        >
+        |
+        <a
+          href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
+          target="_blank"
+          class="link before:content-[url('/mps.png')] before:align-middle"
+        >
+          浙公网安备 33080202000472 号</a
+        >
+      </p>
+      <p class="m-2">
+        <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span>
+      </p>
     </div>
   </div>
 </footer>
