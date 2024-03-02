@@ -1,8 +1,9 @@
 ---
 import Menu from "./menu/Menu.astro";
+import Path from "./Path.astro";
 
 interface Props {
-  path?: string[];
+  path: PathItem[];
 }
 
 const { path = [] } = Astro.props;
@@ -10,8 +11,7 @@ const { path = [] } = Astro.props;
 
 <header class="mt-12 wide-container">
   <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center">
-    SkyWT
-    {path.map((pathItem) => <span> / {pathItem}</span>)}
+    <Path path={path} />
   </h5>
 </header>
 
@@ -21,8 +21,7 @@ const { path = [] } = Astro.props;
 >
   <div class="wide-container flex justify-center sm:justify-between flex-wrap">
     <h5 class="m-2 hidden sm:block secondary-color">
-      <a href="/" class="link">SkyWT</a>
-      {path.map((pathItem) => <span> / {pathItem}</span>)}
+      <Path path={path} />
     </h5>
     <div class="m-2 secondary-color">
       <Menu />

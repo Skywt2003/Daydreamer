@@ -2,7 +2,7 @@
 interface Props {
   title: string;
   includeHeader?: boolean;
-  path?: string[];
+  path?: PathItem[];
 }
 
 const { title, includeHeader = true, path = [] } = Astro.props;

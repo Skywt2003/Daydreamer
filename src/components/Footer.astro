@@ -2,9 +2,10 @@
 import CC from "./badges/CC.astro";
 import NotByAI from "./badges/NotByAI.astro";
 import Menu from "./menu/Menu.astro";
+import Path from "./Path.astro";
 
 interface Props {
-  path: string[];
+  path: PathItem[];
 }
 
 const { path } = Astro.props;
@@ -14,8 +15,7 @@ const { path } = Astro.props;
   <div class="wide-container secondary-color text-sm">
     <div class="m-2 flex justify-between flex-wrap">
       <div class="m-2">
-        <a class="link" href="/"> SkyWT</a>
-        {path.map((pathItem) => <span> / {pathItem}</span>)}
+        <Path path={path} />
       </div>
       <div class="m-2">
         <Menu showIcon={false} />

@@ -10,7 +10,7 @@ interface Props {
 const { title, heading, caption } = Astro.props;
 ---
 
-<Layout title={title} path={[title]}>
+<Layout title={title} path={[{ title: title, url: "" }]}>
   <main>
     <section class="mt-8">
       <div class="bg-white dark:bg-neutral-800 h-[30rem]">

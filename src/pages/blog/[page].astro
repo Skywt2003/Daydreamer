@@ -27,7 +27,10 @@ import Subscribe from "../../components/blog/Subscribe.astro";
 
 <Layout
   title={"博客第 " + page.currentPage + " 页"}
-  path={["博客", "第 " + page.currentPage + " 页"]}
+  path={[
+    { title: "博客", url: "/blog" },
+    { title: "第 " + page.currentPage + " 页", url: "" },
+  ]}
 >
   <main>
     <section class="container mt-32">

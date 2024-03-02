@@ -15,7 +15,7 @@ import Passages from "../components/blog/Passages.astro";
 import Subscribe from "../components/blog/Subscribe.astro";
 ---
 
-<Layout title="博客" path={["博客"]}>
+<Layout title="博客" path={[{ title: "博客", url: "" }]}>
   <main>
     <section class="container mt-32">
       <Passages posts={posts} />

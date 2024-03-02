@@ -63,3 +63,8 @@ interface Comment {
   mailHash: string;
   children: Comment[];
 }
+
+interface PathItem {
+  title: string;
+  url: string;
+}

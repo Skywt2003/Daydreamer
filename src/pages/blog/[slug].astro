@@ -44,7 +44,14 @@ import Layout from "../../layouts/Layout.astro";
 import Comments from "../../components/blog/Comments.astro";
 ---
 
-<Layout title={post.title} includeHeader={true} path={["博客", post.title]}>
+<Layout
+  title={post.title}
+  includeHeader={true}
+  path={[
+    { title: "博客", url: "/blog" },
+    { title: post.title, url: "" },
+  ]}
+>
   <main>
     <section class="container mt-32">
       {
