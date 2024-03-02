@@ -18,6 +18,17 @@ import Subscribe from "../components/blog/Subscribe.astro";
 <Layout title="博客" path={[{ title: "博客", url: "" }]}>
   <main>
     <section class="container mt-32">
+      <p class="card p-2 my-16 leading-loose">
+        ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问由 Typecho
+        驱动的<a href="https://blog.skywt.cn/" class="link underline">原博客</a
+        >。
+        <br />📧 现在可以<a
+          href="https://mailchi.mp/97e1f54049cd/subscribe"
+          class="link underline">使用邮箱订阅本博客</a
+        >。欢迎订阅！
+        <br />🗃️ 前往<a href="/blog/archives" class="link underline">文章归档</a
+        >页面可一览全部文章。
+      </p>
       <Passages posts={posts} />
       <div class="primary-color flex">
         <div class="basis-1/3"></div>

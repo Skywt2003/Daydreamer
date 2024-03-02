@@ -1,0 +1,53 @@
+---
+const url = new URL("https://blog.skywt.cn/api/posts");
+url.search = new URLSearchParams({
+  page: "1",
+  pageSize: "10000",
+  showContent: "false",
+}).toString();
+const response = await fetch(url);
+const data = await response.json();
+const posts = data.data.dataSet;
+
+import Layout from "../../layouts/Layout.astro";
+
+function formatTimestamp(timestamp: number) {
+  const date = new Date(timestamp * 1000);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+---
+
+<Layout
+  title="文章归档"
+  path={[
+    { title: "博客", url: "/blog" },
+    { title: "文章归档", url: "" },
+  ]}
+>
+  <main>
+    <section class="container mt-32">
+      <h1 class="primary-color">文章归档</h1>
+      <p class="mt-4 primary-color">共发布 {posts.length} 篇文章。</p>
+      <hr class="my-8" />
+      <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
+        <ul>
+          {
+            posts.map(
+              (post: Post) =>
+                post.title &&
+                post.title != " " && (
+                  <li>
+                    {formatTimestamp(post.created)}
+                    <a href={"/blog/" + post.slug}>{post.title}</a>
+                  </li>
+                ),
+            )
+          }
+        </ul>
+      </article>
+    </section>
+  </main>
+</Layout>
