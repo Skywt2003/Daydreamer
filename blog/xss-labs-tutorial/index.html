@@ -13,7 +13,7 @@
         g.src = u + "matomo.js";
         s.parentNode.insertBefore(g, s);
       })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.42xRgEnE.css" />
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
 <link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
@@ -38,7 +38,7 @@ xss-labs 通关教程 </span> </h5> <div class="m-2 secondary-color" data-astro-
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>xss-labs 通关教程</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 07 月 05 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>xss-labs 通关教程</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 07 月 05 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/xss-labs-tutorial" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p><a href="https://github.com/do0dl3/xss-labs">xss-labs</a> 是一套基于 PHP 的 XSS 靶场，以闯关的形式让我们体验各种 XSS 漏洞利用方式。虽然已经是很多年前的了，但其中基本的 XSS 漏洞依然很有意义。</p><p>一共有 20 关，每一关的目标都是实现弹窗（<code>alert(1)</code>），如果成功就会自动进入下一关。</p><!--more--><h2>环境搭建</h2><p>克隆<a href="https://github.com/do0dl3/xss-labs">这个代码仓库</a>的代码，其中是 xss-labs 的 PHP 源文件。只要放在 PHP 环境下即可，推荐使用 XAMPP 或者 Docker。</p><p>部署完成后，访问 index.php，就可以看到入口了：</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/07/700481588.png" alt="「点击图片开始你的 XSS 之旅吧」提示" title="「点击图片开始你的 XSS 之旅吧」提示"></p><h2>Warm Up</h2><p>前两关是对于 XSS 基本原理的应用，没有任何的防御。</p><h3>Level 1：文本解析为 HTML</h3><p>URL 为 <code>level1.php?name=test</code> 时，传入的参数是 test，显示的是「欢迎用户 test」。显然，这个页面会将我们传入的名字显示出来。</p><p>传入参数 <code>&lt;h1&gt;test&lt;/h1&gt;</code> 作为 <code>name</code>，发现确实显示为了一级标题。看来传入的 name 直接被作为 HTML 显示了。于是尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code> 作为 <code>name</code>，成功弹窗。</p><pre><code>?name=&lt;script&gt;alert(1);&lt;/script&gt;</code></pre><h3>Level 2：input 标签 value 注入</h3><p>这关多了一个文本框。如果依然尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code>，会发现在 h2 元素中符号被转义了（查看网页源代码能看到），比如 <code>&lt;</code> 被转义成了 <code>&amp;lt;</code> 等，所以不会被解析成 HTML。</p><p>然而，可以看到后面的文本框 <code>input</code> 元素，其 value 值并没有被转义。</p><pre><code class="lang-html">&lt;h2 align=center&gt;没有找到和&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;相关的结果.&lt;/h2&gt;&lt;center&gt;
 
@@ -82,4 +82,11 @@ xss-labs 通关教程 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbj
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
-浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <span class="align-middle">由</span> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" class="inline-block align-middle"> <img src="/upyun.png" class="h-6"> </a> <span class="align-middle">提供 CDN 加速、云存储服务</span> </p> </div> </div> </footer> </body></html> 
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 

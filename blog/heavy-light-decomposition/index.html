@@ -13,7 +13,7 @@
         g.src = u + "matomo.js";
         s.parentNode.insertBefore(g, s);
       })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.42xRgEnE.css" />
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
 <link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>树链剖分（Heavy-Light Decomposition）小结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 03 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>树链剖分（Heavy-Light Decomposition）小结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 03 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/heavy-light-decomposition" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>树链剖分，可以把一棵树划分成多条链，对于每条链可以用线段树等数据结构进行维护，将树形结构的问题转化。</p><p>常见的方法是轻重链剖分，即 Heavy-Light Decomposition。</p><!--more--><p>[notice]这是一篇意识流式的总结，如果要入门树链剖分请不要看这篇……[/notice]</p><h2>前置知识</h2><p>LCA、线段树……</p><h2>一些定义</h2><p>需要构造如下数组：</p><ul><li><code>size[x]</code>：以 x 为根的子树的节点总数；</li><li><code>deep[x]</code>：x 的深度；</li><li><code>son[x]</code>：x 通过重链通向的儿子节点；</li><li><code>fa[x]</code>：x 的父节点；</li><li><code>top[x]</code>：x 所在重链的顶端节点；</li><li><code>id[x]</code>：节点 x 在线段树中的下标位置；</li><li><code>v[x]</code>：节点 x 的权值（对于边权，可以把边的权值归属于其下面的点，转化为点权处理）。</li></ul><p>另建一棵线段树存储重链信息。</p><p>如果 v 是 u 的儿子中 size 最大的一个，则 (u,v) 是<strong>重边</strong>，v 是 u 的<strong>重儿子</strong>，u 通向的其他儿子是<strong>轻边</strong>。</p><p>连续的重边形成<strong>重链</strong>。通过 <code>id[]</code> 可以将一条重链映射到线段树上的一条线段。</p><h2>关于复杂度的结论</h2><p><strong>结论一：</strong> 如果 $(u,v)$ 为轻边，则 <code>size[v]</code> 不会大于 <code>size[u]/2</code>。<br><strong>结论二：</strong> 重链和轻边的数量级相当。<br>由此可以得到：<br><strong>结论三：</strong> 从某一个点到根上经过的重链或轻边的总数在 $\log (n)$ 级别。这是树链剖分的核心。</p><p>据此，对于一条链上的操作可以做到 $\log(n)$。对于链上的修改，整条重链可以对应线段树的一个区间，存储 <code>top[]</code> 可以实现直接调到重链顶端，达到优化时间复杂度的目的。</p><h2>实现</h2><p>第一遍 DFS 构造出 <code>size[],son[],fa[],deep[]</code>，第二遍 DFS 造出 <code>top[],id[]</code>。</p><p>对于两点的路径修改，直接求出 LCA 后一直往上跳即可。<br>对于子树修改，直接当成 DFS 序处理。</p><p>对于构造 <code>id[]</code> 的 DFS  需要注意：本质上 <code>id[]</code> 是一个<strong>时间戳</strong>，即 DFS 序。为了使得重边在造出来的序中连续，便于线段树的处理，在遍历的时候要<strong>先遍历重儿子</strong>。涉及子树的操作也会方便很多。</p><h2>代码</h2><p>洛谷模板题 P3384：</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
@@ -281,4 +281,11 @@ signed main(){
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
-浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <span class="align-middle">由</span> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" class="inline-block align-middle"> <img src="/upyun.png" class="h-6"> </a> <span class="align-middle">提供 CDN 加速、云存储服务</span> </p> </div> </div> </footer> </body></html> 
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 

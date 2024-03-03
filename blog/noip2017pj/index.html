@@ -13,7 +13,7 @@
         g.src = u + "matomo.js";
         s.parentNode.insertBefore(g, s);
       })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.42xRgEnE.css" />
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
 <link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
@@ -38,7 +38,7 @@ NOIP2017普及组 解题报告（成绩|图书管理员|棋盘|跳房子） </sp
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>NOIP2017普及组 解题报告（成绩|图书管理员|棋盘|跳房子）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 02 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>NOIP2017普及组 解题报告（成绩|图书管理员|棋盘|跳房子）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 02 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/noip2017pj" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>感觉今年试卷比去年简单，不过数据比去年强（似乎一群dalao因为某题一个小小的失误而350）。</p><p><a href="http://skywt.top/blog/wp-content/uploads/2017/12/NOIP2017-Junior.pdf">NOIP2017 Junior</a></p><!--more--><h2><strong><span class="fontstyle0">T1.</span><span class="fontstyle2">成绩</span></strong><span class="fontstyle0"><strong>(score.cpp/c/pas)</strong></span></h2><p><span class="fontstyle0">大水题，不多说。</span></p><h2><strong> <span class="fontstyle0">T2.</span><span class="fontstyle2">图书管理员</span></strong><span class="fontstyle0"><strong>(librarian.cpp/c/pas)</strong></span></h2><p><span class="fontstyle0">大水题，不多说。</span></p><h2><strong>T3.<span class="fontstyle2">棋盘</span></strong><span class="fontstyle0"><strong>(chess.cpp/c/pas)</strong></span></h2><p>这题不难看出其实就是最短路。那么就很容易想到两种方法：SPFA或者DP。</p><h3>解法一：SPFA</h3><p><a href="http://skywt.top/blog/spfasummary/" target="_blank" rel="noopener">SPFA的算法</a>不难想到，也就是从起点走到终点，判断几种情况：<br>①当前格子是无色的（即上次使用了魔法）：如果下个格子有颜色就走，否则就没法走；<br>②下一格子与这个格子颜色相同：直接走过去，不花费金币；<br>③下个格子颜色不同并且有颜色：金币+1；<br>④下个格子没颜色：直接走过去（因为在处理这个点的时候会判断到）。<br>简单判断下这四种情况就可以了～～</p><h3>解法二：动态规划</h3><p>DP的算法也并不难理解。就是有点类似过河卒。麻烦就在这题上下左右都可以走。过河卒那题只能向右向下，所以直接根据左边、上面推出当前状态就可以，但是这题就需要从四个方向推过来。那么这样DP是有后效性的，所以我们需要刷4趟：从坐上到右下，从右下到左上，从左上到右下，从右下到左上……就行了。</p><h2><strong><span class="fontstyle2">T3.房子</span></strong><span class="fontstyle0"><strong>(jump.cpp/c/pas)</strong></span></h2><p>二分+DP+单调队列优化。</p><p>"现在小 R 希望获得至少 k 分，请问他至少要花多少金币来改造他的机器人。"显然，最大当中求最小，二分。因为题目里g不知道，二分肯定是枚举g（即改造花费的金币，也就是在d的基础上步数允许的变化量），枚举出来g以后很容易想到一个O(N²)的DP：F[i]表示跳到第i个格子获得的最大金币数量。但是数据范围是：1 ≤ n ≤ 500000, O(N²)显然要超时……我们可以发现这个F数组是单调递增的，所以我们可以用单调栈优化：维护一个单调降的队列（这里命名为数组que，存一个DP状态（就是F[x]的值）和位置），每次只要先修正队列头（就是如果队列头指向的格子跳不到当前的，就head++，直到队列头满足或者全删光了），取队列头修正当前状态F[i]，再从队列尾把没有F[i]优秀的全删掉，再把F[i]入队。每次都这么维护下就好了，答案就是Max(F[1~n])。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
@@ -64,4 +64,11 @@ NOIP2017普及组 解题报告（成绩|图书管理员|棋盘|跳房子） </sp
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
-浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <span class="align-middle">由</span> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" class="inline-block align-middle"> <img src="/upyun.png" class="h-6"> </a> <span class="align-middle">提供 CDN 加速、云存储服务</span> </p> </div> </div> </footer> </body></html> 
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 

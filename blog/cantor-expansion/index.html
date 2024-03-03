@@ -13,7 +13,7 @@
         g.src = u + "matomo.js";
         s.parentNode.insertBefore(g, s);
       })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.42xRgEnE.css" />
+    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
 <link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>康托展开（Cantor Expansion）例题 + 略解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 06 月 01 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>康托展开（Cantor Expansion）例题 + 略解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 06 月 01 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cantor-expansion" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>现在有N个数，分别为1到N，如果要问你这些数的所有排列中，从小到大数的第N个是多少，如何求解？</p><p>显然当N很小时直接写个模拟就可以了。但是这样写的时间复杂度至少是$A_N^N$，也就是$N!$，很容易超时。想想$13!$已经是6227020800了……有没有更快的方法呢？</p><!--more--><h3>题外话</h3><p>这又让我回想起在 ZS 那里上课的日子……当时做过一道题叫做“Jam的计数法”（洛谷传送门：<a href="https://www.luogu.org/problemnew/show/P1061" title="Jam的计数法">Jam的计数法</a>），当时ZS并没有介绍康托展开这种高级的方法，只是告诉我们：知道了一个1~N的排列，如何求第一个比它大的排列。想法很简单：从这个排列的最后（即第N个数字）向前寻找，直到找到一个下降的地方，把下降的数字替换掉（当然这有很多方法）。用这种想法可以写暴力，对于洛谷上这题可以拿40分。</p><h2>康托展开的定义&公式</h2><blockquote>康托展开是一个全排列到一个自然数的双射，常用于构建哈希表时的空间压缩。 康托展开的实质是计算当前排列在所有由小到大全排列中的顺序，因此是可逆的。<br>——维基百科</blockquote><p>不多说了，直接放公式：</p><p>$$\displaystyle X = A_n * (n-1)! + A_{n-1} * (n-2)! + \dots + A_i * (i-1)! + \dots + A_2 * 1! + A_1 * 0!$$</p><p>其中 $A_i$ 表示这个排列里（从左到右）第 $i$ 个数字之后有多少比这个数字小的数字（看看下面的例子就明白了～）。</p><p>这个公式可以求出某个具体的 $1～N$ 排列在所有 $1～N$ 排列中排第几个。举个例子：1～5的排列，1 3 2 5 4 排在第几个呢？首先看看：第一个数字 1 之后没有比 1 小的数字，所以 $A_n = 0$ ；在3之后有一个比它小的（2），所以 $A_{n-1} = 1$ 。依此类推：</p><p>$$ \displaystyle 0 * (5-1)! + 1 * (4-1)! + 0 * (3-1)! + 1 * (2-1)! + 0 * (1-1)! = 7 $$</p><p>比这个排列还要小的排列有 7 个，所以它排在第 8 个。下面我们枚举验证：</p><pre><code>1 2 3 4 5
 1 2 3 5 4
@@ -123,7 +123,7 @@ int main(){
         }
     }
     return 0;
-}</code></pre><hr><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80" title="康托展开 - 维基百科，自由的百科全书">康托展开 - 维基百科，自由的百科全书</a></p><p><a href="https://baike.baidu.com/item/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80" title="康托展开_百度百科">康托展开_百度百科</a></p><p><a href="https://comzyh.com/blog/archives/92/" title="康托展开详解 | Comzyh的博客">康托展开详解 | Comzyh的博客</a></p><p>[题解 P3014 【[USACO11FEB]牛线Cow Line】 - YoungNeal的Blog - 洛谷博客](<a href="https://www.luogu.org/blog/YoungNeal/solution-p3014">https://www.luogu.org/blog/YoungNeal/solution-p3014</a> "题解 P3014 【[USACO11FEB]牛线Cow Line】 - YoungNeal的Blog - 洛谷博客")</p><p>想不到吧，隔了这么长时间我居然更新博客了~</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4f3a60a87052f17f33989f2f25de8a65" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://zigzagk.top" class="link" target="_blank"> <h4>ZigZagK</h4> </a> <p class="mt-1">2018 年 6 月 5 日 11:39</p> </div> </div> <p class="mt-2">Dalao更新Blog了好稳啊Orz</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre><hr><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80" title="康托展开 - 维基百科，自由的百科全书">康托展开 - 维基百科，自由的百科全书</a></p><p><a href="https://baike.baidu.com/item/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80" title="康托展开_百度百科">康托展开_百度百科</a></p><p><a href="https://comzyh.com/blog/archives/92/" title="康托展开详解 | Comzyh的博客">康托展开详解 | Comzyh的博客</a></p><p>[题解 P3014 【[USACO11FEB]牛线Cow Line】 - YoungNeal的Blog - 洛谷博客](<a href="https://www.luogu.org/blog/YoungNeal/solution-p3014">https://www.luogu.org/blog/YoungNeal/solution-p3014</a> "题解 P3014 【[USACO11FEB]牛线Cow Line】 - YoungNeal的Blog - 洛谷博客")</p><p>想不到吧，隔了这么长时间我居然更新博客了~</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4f3a60a87052f17f33989f2f25de8a65" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://zigzagk.top" class="link" target="_blank"> <h4>ZigZagK</h4> </a> <p class="mt-1">2018 年 6 月 5 日 11:39</p> </div> </div> <p class="mt-2 break-all">Dalao更新Blog了好稳啊Orz</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cantor-expansion" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
@@ -147,4 +147,11 @@ int main(){
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
-浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <span class="align-middle">由</span> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" class="inline-block align-middle"> <img src="/upyun.png" class="h-6"> </a> <span class="align-middle">提供 CDN 加速、云存储服务</span> </p> </div> </div> </footer> </body></html> 
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
