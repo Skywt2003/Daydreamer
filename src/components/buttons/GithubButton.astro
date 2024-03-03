@@ -5,88 +5,65 @@ interface Props {
 }
 
 const { type, target } = Astro.props;
+const url = new URL("https://api.github.com/repos/" + target + "/stargazers");
+var headers = new Headers();
+headers.append("Accept", "application/vnd.github+json");
+headers.append("X-GitHub-Api-Version", "2022-11-28");
+
+const response = await fetch(url, { headers: headers });
+const data = await response.json();
+const starsCount = data.length ? data.length : "?";
 ---
 
-<github-button data-message={target}>
-  {
-    type == "star" && (
-      <div id="button-wrapper" class="inline-block">
-        <>
-          <a id="btn" href={target} target="_blank">
-            <i class="ri-star-line" />
-            &nbsp;
-            <span>Star</span>
-          </a>
-          {/*<a id="cnt" href="#" target="_blank">
-            0
-          </a>*/}
-        </>
-      </div>
-    )
-  }
-
-  {
-    type == "fork" && (
-      <div id="button-wrapper" class="inline-block">
-        <>
-          <a id="btn" href={target} target="_blank">
-            <i class="ri-git-fork-line" />
-            &nbsp;
-            <span>Fork</span>
-          </a>
-          {/*<a id="cnt" href="#" target="_blank">
-            9
-          </a>*/}
-        </>
-      </div>
-    )
-  }
-
-  {
-    type == "follow" && (
-      <div id="button-wrapper" class="inline-block">
+{
+  type == "star" && (
+    <div id="button-wrapper" class="inline-block">
+      <a id="btn" href={"https://github.com/" + target} target="_blank">
+        <i class="ri-star-line" />
+        &nbsp;
+        <span>Star</span>
+      </a>{}<a
+        id="cnt"
+        href={"https://github.com/" + target + "/stargazers"}
+        target="_blank"
+      >
+        {starsCount}
+      </a>
+    </div>
+  )
+}
+{
+  type == "fork" && (
+    <div id="button-wrapper" class="inline-block">
+      <>
         <a id="btn" href={target} target="_blank">
-          <i class="ri-user-follow-line" />
+          <i class="ri-git-fork-line" />
           &nbsp;
-          <span>Follow</span>
+          <span>Fork</span>
         </a>
         {/*<a id="cnt" href="#" target="_blank">
           9
         </a>*/}
-      </div>
-    )
-  }
-</github-button>
+      </>
+    </div>
+  )
+}
+{
+  type == "follow" && (
+    <div id="button-wrapper" class="inline-block">
+      <a id="btn" href={target} target="_blank">
+        <i class="ri-user-follow-line" />
+        &nbsp;
+        <span>Follow</span>
+      </a>
+      {/*<a id="cnt" href="#" target="_blank">
+        9
+      </a>*/}
+    </div>
+  )
+}
 
-<!-- <script>
-  class GithubButton extends HTMLElement {
-    constructor() {
-      super();
-
-      if (this.dataset.message == "star") {
-        try {
-          // const response = fetch(
-          //   "http://api.github.com/repos/skywt2003/Daydream",
-          // );
-          // const json = response.json();
-          // console.log(json);
-          // console.log(json.stargazers_count);
-
-          const cnt = this.querySelector("#cnt") as HTMLElement;
-          cnt.hidden = false;
-          // cnt.innerText = json.stargazers_count;
-          cnt.innerText = "123";
-        } catch (error) {
-          console.log("ERROR: ", error);
-        }
-      }
-    }
-  }
-
-  customElements.define("github-button", GithubButton);
-</script> -->
-
-<style>
+<style lang="scss">
   #button-wrapper {
     @apply text-xs font-bold;
     @apply select-none;
@@ -94,17 +71,20 @@ const { type, target } = Astro.props;
 
   #btn {
     @apply px-2 py-1 inline-flex align-bottom;
-    @apply border rounded transition-all;
+    @apply border rounded-s;
     @apply text-gray-700 dark:text-neutral-300; /* primary-color */
     @apply bg-gray-100 dark:bg-neutral-800;
     @apply border-gray-300 dark:border-neutral-700;
     @apply hover:bg-gray-200 dark:hover:bg-neutral-700;
+    @apply transition-all;
   }
 
-  /* #cnt {
-    @apply px-2 py-1 inline-flex;
-    @apply bg-white border-y border-r border-gray-300 rounded-e;
+  #cnt {
+    @apply px-2 py-1 inline-flex align-bottom;
+    @apply border-y border-r border-gray-300 rounded-e;
+    @apply text-gray-700 dark:text-neutral-300;
+    @apply bg-white dark:bg-neutral-900;
+    @apply border-gray-300 dark:border-neutral-700;
     @apply hover:text-blue-600 transition-all;
-    @apply align-bottom;
-  } */
+  }
 </style>
