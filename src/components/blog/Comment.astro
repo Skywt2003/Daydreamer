@@ -38,7 +38,7 @@ function formatTimestamp(timestamp: number) {
       <p class="mt-1">{formatTimestamp(commentObj.created)}</p>
     </div>
   </div>
-  <p class="mt-2">{commentObj.text}</p>
+  <p class="mt-2 break-all">{commentObj.text}</p>
   <div class="ml-8">
     {
       commentObj.children.map((child: Comment) => (

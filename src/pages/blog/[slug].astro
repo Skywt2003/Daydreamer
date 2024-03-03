@@ -53,7 +53,7 @@ import Comments from "../../components/blog/Comments.astro";
   ]}
 >
   <main>
-    <section class="container mt-32">
+    <section class="container mt-8 sm:mt-32">
       {
         post.fields.headPic && post.fields.headPic.value && (
           <img src={post.fields.headPic.value} alt={post.title} class="mb-8" />
