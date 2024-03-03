@@ -57,6 +57,11 @@ types:
         slogan: 分享设计与科技生活。
         url: https://blog.zhheo.com/
         avatar: https://zhheo.com/img/icon.webp
+      - name: Kai
+        desc:
+        slogan:
+        url: https://kaiyi.cool
+        avatar: https://kaiyi.cool/_astro/portrait.lBf0EGlL_1llb4H.webp
       - name: idealclover
         desc:
         slogan: Stay simple, stay naive.
@@ -82,7 +87,7 @@ types:
     friends:
       - name: ZigZagK
         desc: HDU ACMer 学长。
-        slogan:
+        slogan: Never give up fighting!
         url: https://zigzagk.top/
         avatar: https://zigzagk.top/usr/uploads/2018/07/176242131.png
       - name: Vexoben

@@ -2,12 +2,12 @@ projects:
   # - name: Daydream
   #   desc: 简洁优雅、功能强大的 Typecho 博客主题。
   #   url: Skywt2003/Daydream
+  - name: Daydreamer
+    desc: 基于 Astro 打造的网站系统，即本网站。
+    url: Skywt2003/Daydreamer
   - name: Writecho
-    desc: 一个纯手写的 Typecho 博客主题。
+    desc: 纯手写的 Typecho 博客主题。
     url: Skywt2003/Writecho
-  - name: vuecho
-    desc: 使用 Vue 实现的 Typecho 博客前端。
-    url: Skywt2003/vuecho
   - name: kindle-zhcn-clippings-to-json
     desc: Kindle 书摘解析器 npm 模块。
     url: Skywt2003/kindle-zhcn-clippings-to-json
@@ -20,3 +20,6 @@ projects:
   - name: WebCV
     desc: 简洁的 Web 简历生成器。
     url: Skywt2003/WebCV
+  - name: vuecho
+    desc: 使用 Vue 实现的 Typecho 博客前端。
+    url: Skywt2003/vuecho
