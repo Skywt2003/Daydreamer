@@ -38,7 +38,7 @@ C++ 手写 Bitset 代码模板 </span> </h5> <div class="m-2 secondary-color" da
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>C++ 手写 Bitset 代码模板</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 10 月 27 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>C++ 手写 Bitset 代码模板</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 10 月 27 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/bitset" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <h2>引言</h2><p>Bitset 是一种利用对布尔数组压位存储的方法，达到优化时间常数、空间常数的目的的黑科技。利用 Bitset，可以方便地对布尔数组进行按位逻辑运算，优化 32 或 64 的常数。在某些<del>素质极差的</del>卡常题中运用会有奇效。</p><!--more--><p>Bitset 可以直接当做布尔数组使用。C++ STL 中也内置了 Bitset，然而由于常数较大，不如手写的 Bitset 优秀。</p><h2>代码模板</h2><p><i class="czs-github-logo"></i> <a href="https://github.com/Skywt2003/codes/blob/master/TEMPLATE/bitset.cpp">Github Link</a></p><p>注意：如果需要改为 64 位 Bitset，需要把 <code>__builtin_popcount()</code> 函数改为 <code>__builtin_popcountll()</code> （或者直接手写～）。</p><pre><code class="lang-cpp">struct bitset{
     static const int maxn=35,maxm=30;
@@ -67,7 +67,7 @@ C++ 手写 Bitset 代码模板 </span> </h5> <div class="m-2 secondary-color" da
         for (int i=0;i&lt;maxn;i++) ret+=__builtin_popcount(set[i]);
         return ret;
     }
-};</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+};</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/bitset" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

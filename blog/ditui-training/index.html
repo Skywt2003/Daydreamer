@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>递推专项训练五题题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 28 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>递推专项训练五题题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 28 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/ditui-training" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>今天的 XY 题居然是递推专题，五道题目全都是递推，30+个人 AK 了……</p><blockquote>递推是按照一定的规律来计算序列中的每个项，通常是通过计算前面的一些项来得出序列中的指定项的值。其思想是把一个复杂的庞大的计算过程转化为简单过程的多次重复，该算法利用了计算机速度快和不知疲倦的机器特点。</blockquote><!--more--><p>"利用了计算机速度快和不知疲倦的机器特点" :no_mouth:</p><p>蛇皮目录</p><h2>问题一</h2><h3>题目描述</h3><p>在所有的 N 位数中，有多少个数中有偶数个数字 3？</p><p>Time Limit: 1000ms<br>Memory Limit: 65536Bit</p><h4>输入输出格式</h4><p>读入一个数 N。</p><p>输出答案。由于结果可能很大，你只需要输出这个答案 mod 12345 的值。</p><h4>样例输入</h4><pre><code>2</code></pre><h4>样例输出</h4><pre><code>73</code></pre><h4>数据范围</h4><p>1&lt;=N&lt;=1000</p><h3>问题分析</h3><p>很明显是递推（或者说 DP）。容易想到定义 $f(i)$ 表示在 $i$ 位数中有多少个数中有偶数个数字 3，但是这样如何进行状态转移呢？很明显，单纯这么定义无法直接状态转移。所以我们再定义 $g(i)$ 表示 $i$ 位数中有多少个数字中有奇数个数字 3。</p><p>考虑状态转移，对于 $f(i)$ 和 $g(i)$，肯定与 $i-1$ 位数字的情况有关。先考虑 $f(i)$：</p><ul><li>如果第 $i$ 位数字（也就是相较于 $i-1$ 位，新增的一位数字）是 3，那么剩下的 $i-1$ 位就应该有奇数个 3，方案数是 $g(i-1)$；</li><li>如果第 $i$ 位数字不是 3，则可以是除了 3 以外的 9 个数字，剩下的 $i-1$ 位应当有偶数个 3，方案数：$f(i-1)\ast 9$</li></ul><p>同理可以得出 $g(i)$ 的状态转移。转移方程：</p><pre><code class="lang-math">f(i)=f(i-1)\ast 9+g(i-1) \\
 g(i)=g(i-1)\ast 9+f(i-1)</code></pre><h3>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
@@ -118,7 +118,7 @@ int main(){
     }
     printf(&quot;%d\n&quot;,(f[n][0]+f[n][1])%tt);
     return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/ditui-training" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

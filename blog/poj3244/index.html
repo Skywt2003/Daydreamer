@@ -38,7 +38,7 @@ POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或�
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 12 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 12 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj3244" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>坠痛苦的是，POJ 的辣鸡 G++ 编译器不支持 <code>long long</code>，害得我调试调了半天……</p><h2>Description</h2><p>For every pair of triplets, $T_a = (I_a, J_a, K_a)$ and $T_b = (I_b, J_b, K_b)$, we define the difference value between $T_a$ and $T_b$ as follows:</p><p>$$ D(T_a, T_b) = \max (I_a − I_b, J_a − J_b, K_a − K_b) − \min (I_a − I_b, J_a − J_b, K_a − K_b) $$</p><p>Now you are given $N$ triplets, could you write a program to calculate the sum of the difference values between every unordered pair of triplets?</p><!--more--><h2>Input</h2><p>The input consists of several test cases. <br>Each test case begins with a line containing an integer $N$, denotes the number of triplets. Assume that we number the triplets as $T_1, T_2, \dots , T_N$. Then, there are following $N$ lines, each line contains three integers, giving the elements of each triplet.<br>A case with $N = 0$ indicates the end of the input.</p><h2>Sample Input</h2><pre><code>2
 1 2 3
@@ -80,7 +80,7 @@ int main(){
         printf(&quot;%lld\n&quot;,ans/2);
     }
     return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/poj3244" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>差分约束系统的应用</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 06 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>差分约束系统的应用</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 06 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/system-of-difference-constraints" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>如果告诉你在一个三角形中，$B-A \leqslant c, C-B \leqslant a, C-A \leqslant b$，怎么求 $C-A$ 的最大值呢？通过<del>yy</del>观察可以发现，$C-A$ 的最大值是 $min(a+c,b)$。这个答案如何得出？将这个三角形内的约束条件推广到更多约束条件呢？</p><!--more--><blockquote>差分约束系统（System of Difference Constraints），是求解关于一组变数的特殊不等式组之方法。</blockquote><h2>概念与定义</h2><p>一个系统由 $n$ 个变量和 $m$ 个约束条件组成（就如同上面三角形里的例子），每个约束条件形如：$x_j-x_i \leqslant b_i$，那么这个系统就是一个<strong>差分约束系统（System of Difference Constraints）</strong>。这个定义很直观：用一系列不等式约束差分的域。</p><h2>解法</h2><p>仔细观察这个不等式：</p><pre><code class="lang-math">x_j-x_i \leqslant b_i</code></pre><p>可以发现它可以变形成：$x_j\leqslant x_i+b_i$。 是不是有点像 SPFA/Dijkstra 里修正最短路的判断方程（三角不等式）？！</p><pre><code class="lang-math">dist(x)+w(i) &lt; dst(son(i))</code></pre><p>所以我们就可以想到一个奇妙的做法：从 $i$ 到 $j$ 建边，边权为 $b_k$，最后增加一个源点 $s$，跑一遍最短路就可以了！对于大于等于的情况也是一样的。</p><p>在求解差分约束系统的时候一般我们用 SPFA（Bellman-ford）算法求最短路而不用 Dijkstra，因为 SPFA 可以判断负环，即无解情况。但是在题目告诉我们一定有解时还是尽量用 Dijkstra+Heap，不然容易被卡（在洛谷上看见一句话：不卡你是情分，卡你是本分……）。</p><p>回到前面说的一个三角形里的情况：$B-A \leqslant c, C-B \leqslant a, C-A \leqslant b$，则 $C-A$ 的最大值是 $min(a+c,b)$。画出来的图就是：</p><pre><code class="lang-mermaid">graph LR;
 A((A)) --c--&gt; B((B));
@@ -153,7 +153,7 @@ int main(){
     Dijkstra();
     printf(&quot;%d\n&quot;,dst[n]);
     return 0;
-}</code></pre><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F" title="差分约束系统 - 维基百科，自由的百科全书">差分约束系统 - 维基百科，自由的百科全书</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre><h2>参考</h2><p><a href="https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9F" title="差分约束系统 - 维基百科，自由的百科全书">差分约束系统 - 维基百科，自由的百科全书</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/system-of-difference-constraints" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

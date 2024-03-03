@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>欧几里德算法与拓展欧几里德算法略解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 06 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>欧几里德算法与拓展欧几里德算法略解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 06 月 21 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/euclidean-algorithm" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>欧几里德算法（Euclidean algorithm）又叫做辗转相除法，用于求最大公约数。这个算法已经十分常见了。扩展欧几里德算法（Extended Euclidean algorithm）是欧几里德算法的扩展（废话……），这个算法在解不定方程的时候十分常见。</p><!--more--><p>本文中 (a,b) 或者 gcd(a,b) 表示 a、b 的最大公约数； a|b 表示 a 整除 b。</p><p>本文隶属⌈ <a href="https://skywt.cn/posts/category/oi/number-theory/" title="数论学习系列">数论学习系列</a> ⌋。</p><h2>欧几里德算法/辗转相除法</h2><blockquote>在数学中，辗转相除法，又称欧几里得算法（英语：Euclidean algorithm），是求最大公约数的算法。辗转相除法首次出现于欧几里得的《几何原本》（第VII卷，命题i和ii）中，而在中国则可以追溯至东汉出现的《九章算术》。、<br>——维基百科</blockquote><h3>代码</h3><p>在我们日常的题目里辗转相除法已经十分常见了，最大公约数（Greatest Common Divisor）缩写为GCD,所以函数名就是gcd（当然扩欧的函数名就是exgcd）。其主要代码段是这样的：</p><pre><code class="lang-cpp">int gcd(int a,int b){
     if (b==0) return a;
@@ -68,7 +68,7 @@ $$</p><p>那么如何“求出方程 $ax+by=(a,b)$ 的一组特殊解”？这�
 &amp;= 154 \ast 619 - 155 \ast (1234 - 619) = 309 \ast \underline {619} - 155 \ast 1234 \\
 &amp;= 309 \ast (4321-3 \ast 1234) -155 \ast 1234 = 309 \ast \underline {4321} -1082 \ast \underline {1234}
 \end{aligned}
-$$</p><p>所以这一组特解就是：$x=-1082, y=309$。按照这样的思路，前面的程序就不难理解了。先递归求 $x$ 和 $y$，再把 $x$ “复原”。</p><p><del>证明不会</del></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+$$</p><p>所以这一组特解就是：$x=-1082, y=309$。按照这样的思路，前面的程序就不难理解了。先递归求 $x$ 和 $y$，再把 $x$ “复原”。</p><p><del>证明不会</del></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/euclidean-algorithm" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

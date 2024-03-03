@@ -38,7 +38,7 @@ CodeForces 1215E Marbles 题解 </span> </h5> <div class="m-2 secondary-color" d
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 1215E Marbles 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 09 月 28 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces 1215E Marbles 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 09 月 28 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf1215e" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <h2>Description</h2><p>给出一个长度为 n 的数列，$2\leq n\leq 4\ast 10^5$，每个数字 $a_i$ 都在 $[1,20]$ 内。  <br>可以对这个数列中相邻的两个数字交换位置，最终要使得相同的数字都在一起。  <br>求最小交换次数。</p><p><a href="https://codeforces.com/contest/1215/">Link</a></p><!--more--><h2>Tags</h2><p><code>状压DP</code></p><h2>Analysis</h2><p>$a_i \in [1,20]$，很明显可以用状压 DP。</p><p>首先可以发现一个重要的性质：如果交换相邻的两数，其他所有数字的相对位置是不变的。根据这个性质，在交换的时候我们就可以分开考虑每一种数字。  <br>数字只有 20 种，则我们可以一种数字一种数字考虑，设 $F(mask)$ 为状态为 $mask$ 的最小交换位置。$mask$ 对应位上的 0 或 1 分别表示某种数字是否已经考虑。  <br>接下来考虑状态转移，设现在状态已经是 $mask$，需要新增的数字是 $j$（$mask$ 中对应位为 0）。则我们可以直接把所有 $j$ 移动到最左边（如果最优解中此时 $j$ 不在最左边怎么办？则其他状态会涵盖这个方案）。  <br>为了快速做到这一点，预处理一个数组 $cnt(i,j)$ 表示把所有 $i$ 数字移动到所有 $j$ 数字左边的最小交换次数。因为累加时交换彼此独立，预处理时可以看成一个队列里只有 $i$ 和 $j$ 两种数字，那么每个 i 需要的交换次数就是这个 i 之前 j 的个数。  <br>则转移方程是：</p><p>$$F(mask+2^j)=F(mask)+\sum_{k\in mask} cnt(j,k)$$</p><p>实际上时间是 $\Theta (2^{20} \ast 20\ast 20)$，估算最多到 $4\ast 10^8$ 的亚子，还好时限是 4s……</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
@@ -86,7 +86,7 @@ signed main(){
     }
     printf(&quot;%lldn&quot;,f[s-1]);
     return 0;
-}</code></pre><p>好像很长时间没写正经博客了来着……</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre><p>好像很长时间没写正经博客了来着……</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf1215e" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

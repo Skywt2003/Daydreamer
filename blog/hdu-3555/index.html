@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>数位 DP 入门：HDU 3555 Bomb</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 27 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>数位 DP 入门：HDU 3555 Bomb</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 27 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hdu-3555" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>简单来说，数位 DP 大概就是把一个数字拆开按位进行 DP 的一种思想。</p><h2>HDU 3555 Bomb</h2><blockquote>The counter-terrorists found a time bomb in the dust. But this time the terrorists improve on the time bomb. The number sequence of the time bomb counts from 1 to N. If the current number sequence includes the sub-sequence "49", the power of the blast would add one point.<br>Now the counter-terrorist knows the number N. They want to know the final points of the power. Can you help them?</blockquote><!--more--><h3>Hint</h3><p>数位 DP 的典型入门题，解法很多。</p><h3>Analysis #1</h3><p>这题“包含 49 的数字数量”比较难构造，所以我们决定构造“不包含 49 的数字数量”。</p><h4>DP 构造</h4><p><code>F[i][j]</code>：最高位为 j 的 i 位数字中不包含 49 的数字数量。</p><p>$$F(i,j) = \sum_{k\in [0,9]}^{k \not = 9 \text{或} j \not = 4} F(i-1,k)$$</p><pre><code class="lang-cpp">inline void make_dp(){
     for (int i=0;i&lt;=9;i++) f[1][i]=1;
@@ -166,7 +166,7 @@ int main(void) {
         printf(&quot;%lld\n&quot;, r + 1 - Solve(r));
     }
     return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/hdu-3555" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

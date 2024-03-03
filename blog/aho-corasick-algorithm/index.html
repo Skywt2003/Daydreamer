@@ -38,7 +38,7 @@ AC 自动机（Aho–Corasick 算法）与字符串匹配问题 </span> </h5> <d
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>AC 自动机（Aho–Corasick 算法）与字符串匹配问题</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 11 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>AC 自动机（Aho–Corasick 算法）与字符串匹配问题</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 11 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/aho-corasick-algorithm" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>据说很多公司都有这样一道面试题：给你几个 G 的字符串，让你想办法快速地找出其中的很多个需要和谐的敏感词。<br>这个问题里，如果“需要和谐的字符串”称为“模式串”，“待被查的字符串”称为文本串。对于这样的问题，如果暴力做，复杂度就是 $\Theta(N \ast M \ast Len)$……用 AC 自动机这种高级的算法，可以在 $\Theta (N)$ 左右复杂度内得出答案。Excited！</p><!--more--><h2>引</h2><p>这个 AC 自动机可不是 Accepted 自动机……其实是<strong>“Aho–Corasick 算法”</strong>，是由 Alfred V. Aho 和 Margaret J.Corasick 发明的字符串搜索算法，</p><p>维基百科上说：</p><blockquote>该算法主要依靠构造一个有限状态机（类似于在一个trie树中添加失配指针）来实现。这些额外的失配指针允许在查找字符串失败时进行回退（例如设Trie树的单词cat匹配失败，但是在Trie树中存在另一个单词cart，失配指针就会指向前缀ca），转向某前缀的其他分支，免于重复匹配前缀，提高算法效率。</blockquote><p>是不是听起来就很高级！</p><h3>AC 自动机与 KMP</h3><p>其实按照 AC 自动机的思想可以发现：这其实就是<strong>树上 KMP</strong>，即 Trie 树与 KMP 算法的结合。网上的几乎各路题解都说：“在学习 AC 自动机前要先掌握 Trie 树与 KMP”……</p><p>但是其实学 AC 自动机不需要掌握 KMP。</p><h3>AC 自动机的实际应用</h3><p>前面已经提到：据说很多公司都有这样一道面试题（据说是美团 2015 面试题？）：给你几个 G 的字符串，让你想办法快速地找出其中的很多个需要和谐的敏感词。这几乎是很多互联网公司要做的事情。这种东西用 AC 自动机来做就会大大提高效率。</p><p>据说，UNIX 系统中的一个命令 fgrep 就是以 AC 自动机算法作为基础实现的。高级！</p><h2>失配指针（Fail 指针）</h2><p>首先我们对于所有的模式串，构造一棵 Trie 树（即字典树）。举个例子，假设文本串是 $shers$，模式串分别是：$sher$，$hers$，$er$，那么构造的 Trie 树是这样的：</p><pre><code class="lang-mermaid">graph TB;
 R((Root))---S1((S))
@@ -149,7 +149,7 @@ int main(){
         printf(&quot;%d\n&quot;,query(q));
     }
     return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/aho-corasick-algorithm" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

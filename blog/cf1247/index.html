@@ -38,7 +38,7 @@ Codeforces Round #596 Div2 题解 </span> </h5> <div class="m-2 secondary-color"
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Codeforces Round #596 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 10 月 28 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Codeforces Round #596 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 10 月 28 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf1247" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Link: <a href="https://codeforces.com/contest/1247">Codeforces Round #596 (Div. 2, based on Technocup 2020 Elimination Round 2)</a></p><h1>D - Power Products</h1><h2>Description</h2><p>给出一个长度为 $n$ 的序列和一不小于 2 的整数 $k$，要求找出数字对 $(i,j)$ 的数量，满足 $i\lt j$ 并且存在一个整数 $x$ 使得 $a_i\ast a_j = x^k$。</p><!--more--><h2>Solution</h2><p>对于每个数字进行质因数分解，分解成 $x=p_1^{k_1}+p_2^{k_2}+\dots+p_m^{k_m}$，我们用一个 <code>std::vector</code> 存储若干个二元组 $(p_i,k_i)$，表示这个数字有 $k_i$ 个 $p_i$ 这个质因子，显然存储的时候这个 $k_i$ 次数可以对题中所给的 $K$ 取模。如果存在两个数字满足 $p_i$ 集合相同，并且对于所有 $p_i$，$k_1i + k_2i = K$，则说明这两个数字相乘能得到 $x^K$。<br>用 <code>std::map</code> 维护即可。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 
@@ -229,7 +229,7 @@ signed main(){
     for (int i=1;i&lt;=opt[0];i++) printf(&quot;%lld &quot;,opt[i]);
     printf(&quot;\n&quot;);
     return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/cf1247" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

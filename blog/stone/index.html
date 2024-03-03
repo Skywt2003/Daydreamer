@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（一）：石子合并</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（一）：石子合并</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 21 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/stone" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>动态规划（Dynamic Programming），简称DP，是用于求解决策过程中的最优化数学方法，不仅用于编程领域，也用于管理学、经济学、生物学（具体这三个地方怎么用就不关我们事了）。作为NOIP竞赛的每年必考题型，动态规划是很重要的！！！</p><!--more--><h2>石子合并（NOI1995）（区间DP）</h2><p>洛谷题目提交网址：<a href="https://www.luogu.org/problemnew/show/1880">石子合并</a></p><ul>
      <li>
@@ -79,7 +79,7 @@ Total：62</pre><pre>正解：3 4 6 5 4 2
 13 11 (+11)
 24 (+24)
 Total：59</pre><p>所以贪心的方法肯定是不行的。再回来看看这题，发现首先决策不是按照一堆一堆来的，也就是说没法刷线性的DP；一个决策可以划分成很多子决策（也就是说所有的合并可以是1~i的合并得分+i+1~n的合并得分），那么不显然是区间DP嘛！</p><p>首先处理环的问题。一般处理环的问题的方法就是：复制一份，放到序列尾，这样就把环变成长度为原来两倍的链了。例如：</p><pre>环：1 2 3 4
-链：1 2 3 4 1 2 3 4</pre><p>接下来，DP正式部分：定义Fi为从i到j一段石子合并的最优解。那么自然会想到在i～j-1之间枚举k（为什么是j-1不是j？看转移方程就知道了），为了方便我们先造出前缀和sum，转移方程：</p><pre>F[i][j]=max/min(F[i][k],F[k+1][j])+sum[j]-sum[i-1];</pre><p>复杂度：O(N³)。</p><p>算是挺简单的一题。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+链：1 2 3 4 1 2 3 4</pre><p>接下来，DP正式部分：定义Fi为从i到j一段石子合并的最优解。那么自然会想到在i～j-1之间枚举k（为什么是j-1不是j？看转移方程就知道了），为了方便我们先造出前缀和sum，转移方程：</p><pre>F[i][j]=max/min(F[i][k],F[k+1][j])+sum[j]-sum[i-1];</pre><p>复杂度：O(N³)。</p><p>算是挺简单的一题。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/stone" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

@@ -38,7 +38,7 @@ Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解 </span> </h5> <div class="m-
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 01 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 635 Div2 T3 LonglongestPathTree 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 01 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-635-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 635 Div2 T3 LonglongestPathTree 题解</p><!--more--><hr><h2>Translation</h2><p>有一棵加权树，你可以从树中删除一条边，并添加一条长度相同的边，并且保证这样的操作过后新的图仍然是一棵树。<br>计算并返回这样操作过后的树的最大直径。</p><p>树以三个 vector <int> A, B 和 L 给出，表示 A[i] 和 B[i] 之间有一条长度为 L[i] 的边，$0 \leqslant i \leqslant n-2$。<br>点从 0 开始编号。<br>数据范围：$2 \leqslant n \leqslant 2000$。<br>（为什么 TC 一遇到正经题目数据范围就这么大？！）</p><blockquote><ul><li>N will be between 2 and 2,000, inclusive.</li><li>Arrays A, B and L will each contain N-1 elements.</li><li>Each element of A and B will be between 0 and N-1, inclusive.</li><li>Each element of L will be between 1 and 1,000,000,000, inclusive.</li><li>A and B will describe a tree.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li><li>Stack limit (MB): 256</li></ul></blockquote><h2>Examples</h2><p>样例零：</p><pre><code>{0,0,0}
 {1,2,3}
@@ -106,7 +106,7 @@ long long LonglongestPathTree::getLength(vector &lt;int&gt; A, vector &lt;int&gt
         ans=max(ans,now);
     }
     return ans;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tc-635-div2-t3" class="link underline">原博客的这篇文章</a>底部评论区发表评论。

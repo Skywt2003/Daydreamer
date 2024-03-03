@@ -38,7 +38,7 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（二）：又上锁妖塔</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 0 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（二）：又上锁妖塔</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 21 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tower" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>又是超级水的一题，一道线性DP。</p><p>这几道DP很简单，分成很多篇文章发可以假装自己的博客写了很多文章～</p><!--more--><h2>又上锁妖塔(tower.pas/c/cpp)</h2><p>洛谷题目提交地址：<a href="https://www.luogu.org/problemnew/show/2800">又上锁妖塔</a></p><h3>题目描述</h3><p>小D在X星买完了想要的东西，在飞往下一个目的地的途中，正无聊的他转头看了看身边的小A，发现小A正在玩《仙剑》。可是小A很奇怪，他一直在锁妖塔的周围转来转去，可是就是不进去。于是小D问他：“你在干什么？怎么不上去？”小A 说：“我在想怎么从锁妖塔外面爬上去。”（倒…）锁妖塔的建造很特别，塔总共有n层，但是高度却不相同，这造成了小A爬过每层的时间也不同。小A会用仙术，每用一次可以让他向上跳一层或两层，但是每次跳跃后小A都将用完灵力，必须爬过至少一层才能再次跳跃（你可以认为小A需要跳两次一层才休息）。小A想用最短的时间爬到塔顶，可是他不能找到时间最短的方案，所以请你帮他找到一个时间最短的方案让他爬到塔顶。小A只关心时间，所以你只要告诉他最短时间是多少就可以了。你可以最后跳到塔外即超过塔高。</p><ul>
      <li>
@@ -70,7 +70,7 @@
 <h3>问题分析</h3>
 </li>
 </ul><p>显然这题是DP，线性DP。直接F[i]定义不行，因为上次的是否用仙术这一决策会影响这一次的决策。那么我们自然想到定义Fi表示到达第i层所用最短时间，0表示上次是飞过来的，1表示上次是爬过来的。那么显然转移方程就是：</p><pre>F[i][0]=min(F[i-1][1],F[i-1][0])+t[i];
-F[i][1]=min(F[i-1][1],F[i-2][1]);</pre><p>时间复杂度O(N)！</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 0 条评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
+F[i][1]=min(F[i-1][1],F[i-2][1]);</pre><p>时间复杂度O(N)！</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
 发表评论
 </h2> <p class="primary-color card my-4 p-2">
 🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/tower" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
