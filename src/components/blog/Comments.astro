@@ -23,7 +23,7 @@ import Comment from "./Comment.astro";
 
 <h2>
   <i class="ri-discuss-line"></i>
-  {commentsNum ? "共 " + commentsNum + " 条评论" : "暂无评论"}
+  {commentsNum > 0 ? "共 " + commentsNum + " 条评论" : "暂无评论"}
 </h2>
 
 {comments.map((comment: Comment) => <Comment commentObj={comment} level={0} />)}
