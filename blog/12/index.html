@@ -40,7 +40,10 @@
   };
   const observer = new window.IntersectionObserver(handler);
   observer.observe(sentinalEl);
-</script>   <main data-astro-cid-j3zk6p6w> <section class="container mt-8 sm:mt-32" data-astro-cid-j3zk6p6w> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-mtynfrjh><a href="/blog/rongchi" class="no-underline link" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>利用容斥原理求解 [a,b] 区间中与 n 互质的数字个数</h1></a><p data-astro-cid-mtynfrjh><p>先看这道<del>丧心病狂的</del>题目：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4135" title="HDU 4135 Co-prime">HDU 4135 Co-prime</a>。题目大意就是，有 $T$ 组询问，每组询问给你三个数：$a, b, c$，问你闭区间 $[a,b]$ 中有多少个数字与 $n$ 互质。数据范围是：$1 \leqslant A \leqslant B \leqslant 10^{15}$，$1 \leqslant N \leqslant 10^5$。</p>
+</script>   <main data-astro-cid-j3zk6p6w> <section class="container mt-8 sm:mt-32" data-astro-cid-j3zk6p6w> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-mtynfrjh><a href="/blog/o-n-inverse" class="no-underline link" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>以 O(N) 线性时间复杂度递推逆元的方法</h1></a><p data-astro-cid-mtynfrjh><p>在之前我们已经知道<a href="https://skywt.cn/posts/inverse/" title="乘法逆元的三种求法">乘法逆元的三种求法</a>，对于一般的题目让你把答案模一个质数，如果要求逆元一般用费马小定理，可以在 $\Theta (Nlog_2(N))$ 时间内构造出 1 到 N 的逆元：$inv(x)=x^{mo-2} \bmod mo$。但是对于 $10^7$ 级别的 $N$，这样的求法就显得有点慢。能不能在 $\Theta (N)$ 时间内递推出 $inv(x)$ 呢？</p>
+</p><a href="/blog/o-n-inverse" class="no-underline link" data-astro-cid-mtynfrjh>
+阅读更多
+</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-mtynfrjh><a href="/blog/rongchi" class="no-underline link" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>利用容斥原理求解 [a,b] 区间中与 n 互质的数字个数</h1></a><p data-astro-cid-mtynfrjh><p>先看这道<del>丧心病狂的</del>题目：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4135" title="HDU 4135 Co-prime">HDU 4135 Co-prime</a>。题目大意就是，有 $T$ 组询问，每组询问给你三个数：$a, b, c$，问你闭区间 $[a,b]$ 中有多少个数字与 $n$ 互质。数据范围是：$1 \leqslant A \leqslant B \leqslant 10^{15}$，$1 \leqslant N \leqslant 10^5$。</p>
 <p>乍一看毫无头绪，仿佛怎么做都会超时……其实用容斥的想法就很容易了～</p>
 </p><a href="/blog/rongchi" class="no-underline link" data-astro-cid-mtynfrjh>
 阅读更多
@@ -70,9 +73,6 @@
 阅读更多
 </a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-mtynfrjh><a href="/blog/put-ball" class="no-underline link" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>八个放球问题方法总结（基础组合问题）</h1></a><p data-astro-cid-mtynfrjh><p>皮一下，N 个求放入 M 个盒子，总问题数量是 $C_2^1 \ast C_2^1 \ast C_2^1=8$ 个～</p>
 </p><a href="/blog/put-ball" class="no-underline link" data-astro-cid-mtynfrjh>
-阅读更多
-</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-mtynfrjh><a href="/blog/hdu4045" class="no-underline link" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>HDU 4045 Machine scheduling 题解：组合数+斯特林数</h1></a><p data-astro-cid-mtynfrjh><p>HDU 4045 Machine scheduling：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4045" title="题目链接">题目链接</a></p>
-</p><a href="/blog/hdu4045" class="no-underline link" data-astro-cid-mtynfrjh>
 阅读更多
 </a></article><hr class="my-8" data-astro-cid-mtynfrjh> <div class="primary-color flex" data-astro-cid-j3zk6p6w> <div class="basis-1/3" data-astro-cid-j3zk6p6w> <a href="/blog/11" class="link" data-astro-cid-j3zk6p6w>
 上一页
