@@ -41,7 +41,7 @@ if (post.fields.linkTo && post.fields.linkTo.value) {
 }
 
 import Layout from "../../layouts/Layout.astro";
-import Comments from "../../components/blog/Comments.astro";
+import Comments from "../../components/blog/Comments.tsx";
 ---
 
 <Layout
@@ -97,7 +97,7 @@ import Comments from "../../components/blog/Comments.astro";
 
       <hr class="my-8" />
 
-      <Comments slug={slug} permalink={post.permalink} />
+      <Comments client:load slug={slug} permalink={post.permalink} />
     </section>
   </main>
 </Layout>
