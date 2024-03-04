@@ -1,22 +1,32 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Nginx 通过反向 DNS 查询判断搜索引擎爬虫</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
-      var _paq = (window._paq = window._paq || []);
-      _paq.push(["trackPageView"]);
-      _paq.push(["enableLinkTracking"]);
-      (function () {
-        var u = "//analytics.skywt.cn/";
-        _paq.push(["setTrackerUrl", u + "matomo.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.async = true;
-        g.src = u + "matomo.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Nginx 通过反向 DNS 查询判断搜索引擎爬虫</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -27,17 +37,26 @@ Nginx 通过反向 DNS 查询判断搜索引擎爬虫 </span> </h5> </header> <n
 Nginx 通过反向 DNS 查询判断搜索引擎爬虫 </span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
-  const headerEl = document.querySelector("#navbar-wrapper");
-  const sentinalEl = document.querySelector("header");
-  const handler = (entries) => {
-    if (!entries[0].isIntersecting) {
-      headerEl.classList.add("sticked");
-    } else {
-      headerEl.classList.remove("sticked");
-    }
-  };
-  const observer = new window.IntersectionObserver(handler);
-  observer.observe(sentinalEl);
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("header");
+    const observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) {
+        headerEl.classList.add("sticked");
+      } else {
+        headerEl.classList.remove("sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Nginx 通过反向 DNS 查询判断搜索引擎爬虫</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 11 月 08 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/nginx-rdns-judge-spiders" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>前景提要：<a href="https://skywt.cn/posts/nginx-friendly-to-spiders/">通过 UA 判断对搜索引擎爬虫不限流</a>的方式非常容易伪造，一般写爬虫的人或者攻击者都是直接用的搜索引擎爬虫的 UA。<br>根据<a href="https://support.google.com/webmasters/answer/80553?hl=en">谷歌官方的建议</a>，最好的方法是通过反向 DNS 解析来判断搜索引擎爬虫。<br>在 Github 上找到了这个 nginx 模块：<a href="https://github.com/flant/nginx-http-rdns">nginx-http-rdns</a></p><!--more--><blockquote>感觉 UA 检测像是自己骗自己<br>——高一某 dalao</blockquote><h2>反向 DNS 解析的若干好处</h2><ul><li>和 UA 判断相比难以伪造（实际上还是不难伪造的……见后问）；</li><li>易于配置，不用维护什么白名单……</li><li>有现成的 Nginx 模块：rDNS；</li><li>谷歌、百度推荐的判断方式。</li></ul><h2>Nginx 安装 rDNS 模块</h2><p>（不完全参考 <a href="https://github.com/flant/nginx-http-rdns/wiki">nginx-http-rdns wiki</a>）</p><p>因为 Nginx 是用 C 写的，安装 Nginx 模块是要重新编译 Nginx 主程序的……</p><p>先在 Github 上克隆<a href="https://github.com/flant/nginx-http-rdns">这个项目</a>，注意不能直接放到 Nginx 的安装目录里，不然安装模块的时候会报错。<br>在 <code>./configure</code> 的时候添加参数：<code>--add-module=/path/to/nginx-http-rdns</code>，然后重新 <code>make &amp; make install</code> 即可。<br>不过我用的是 lnmp1.6，所以只需要在 <code>lnmp.conf</code> 里增加这个参数，然后 <code>upgrade.sh nginx</code> 即可。</p><h2>配置</h2><p>这个模块的文档对用法写得很详细了。<br>首先要设置一个类似 DNS 服务器的东西，既然服务器在阿里云，就用阿里云的 DNS 好了（如果服务器在国外还是推荐 <code>1.1.1.1</code> 或者 <code>8.8.8.8</code> 吧）：</p><pre><code>resolver 223.5.5.5;</code></pre><p>我们的需求是：先判断是否搜索引擎 UA，如果是则 <code>rdns on</code> 进行反向 DNS 查询，如果查询到是 <code>*.googlebot.com</code> 或者 <code>*.baidu.com</code> 或者 <code>*.baidu.jp</code> 就不限流，否则限流。</p><p>配置文件如下（带了 WordPress 的伪静态配置）：</p><pre><code>location /
@@ -66,13 +85,7 @@ Failed requests:        12
    (Connect: 0, Receive: 0, Length: 12, Exceptions: 0)
 Non-2xx responses:      12</code></pre><p>拒绝了 12 次请求。</p><p>更新：由于本站转移到 Typecho，换了个简洁的主题（甚至不加载花里胡哨的 jQuery），网站速度大幅加快，现在直接在任何一个博客页面一直按刷新就可以刷出 503 错误 =_=</p><hr><p>关于这么做的弊端，资源消耗个人觉得没什么，毕竟要判断是搜索引擎的 UA 才会去查询，正常用户访问基本无影响。而且访问网站本来就是要 DNS 查询的。</p><p>但是！！反向 DNS 的伪造比我想象的要容易得多！</p><h2>rDNS 的伪造</h2><p>国内服务器一般都没有设置 PTR 的入口，像国外 BandwagonHost 就提供了设置 PTR 记录（就是反向 DNS 记录）的入口：</p><p><img src="https://skywt.cn/wp-content/uploads/bwh_setptr.png" alt="BWH set PTR" title="BWH set PTR"></p><blockquote>This page allows you to change the PTR record (Reverse DNS record) for an IP address.<br>PTR records are primarily needed for mail to work properly. If you do not know what value to use for a PTR record, then use your server hostname.</blockquote><p>连正向 DNS 验证之类的操作都不需要？？？</p><p>我尝试把我另一台 bwh 上的服务器 PTR 设置成 <code>googlebot.com</code>，然后就成功了……成功了……</p><p>通过 <code>host</code> 命令查询 IP，得到结果：</p><pre><code>$ host 65.***.***.***
 ***.***.***.65.in-addr.arpa domain name pointer googlebot.com.</code></pre><p>在那台服务器上对网站压力测试，得到结果是</p><pre><code>Complete requests:      30
-Failed requests:        0</code></pre><p>果然没有拒绝请求……（吐血）</p><h2>再次正向验证</h2><p>谷歌的建议里还有一步，就是再查询反向 DNS 得到的域名，检查解析出的 IP 是否与 IP 符合。这样正向也需要解析，如果没有域名的所有权是做不到的。</p><p>但是，百度并没有提供正向解析的保证！<br>对百度示例的爬虫 IP <code>123.125.66.120</code> 反查得到 <code>baiduspider-123-125-66-120.crawl.baidu.com</code>，再次正向查询：</p><pre><code>Host baiduspider-123-125-66-120.crawl.baidu.com not found: 3(NXDOMAIN)</code></pre><p>根本没有……所以百度的蜘蛛没法这么判断……</p><h2>后记</h2><p><del>果然维护 IPlist 是最靠谱的方式吗……</del></p><p><del>内心 OS：管你呢，谁 tm 用辣鸡百度。</del></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 共 1 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/693693b00e815077bc837b8b230f7c9a" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.yerenwz.com" class="link" target="_blank"> <h4>野人</h4> </a> <p class="mt-1">2022 年 8 月 26 日 16:10</p> </div> </div> <p class="mt-2 break-all">写的很详细，确实目前rDNS伪造还是挺方便，不过我看了下目前国内的服务器厂家虽然说是支持的，但是查询出来的记录会不一样（我测试的是华为云），比如我设置了xx，但是返回都是一个ip + .in-addr.arpa，啥意思我也不知道
-
-再次正向验证其实百度的蜘蛛ip有些IP段是可以的（116.179.37.0/24），有些是不行，蜜汁操作，附上一篇百度打脸的文章：https://ziyuan.baidu.com/college/articleinfo?id=1002</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
-发表评论
-</h2> <p class="primary-color card my-4 p-2">
-🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/nginx-rdns-judge-spiders" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
-</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+Failed requests:        0</code></pre><p>果然没有拒绝请求……（吐血）</p><h2>再次正向验证</h2><p>谷歌的建议里还有一步，就是再查询反向 DNS 得到的域名，检查解析出的 IP 是否与 IP 符合。这样正向也需要解析，如果没有域名的所有权是做不到的。</p><p>但是，百度并没有提供正向解析的保证！<br>对百度示例的爬虫 IP <code>123.125.66.120</code> 反查得到 <code>baiduspider-123-125-66-120.crawl.baidu.com</code>，再次正向查询：</p><pre><code>Host baiduspider-123-125-66-120.crawl.baidu.com not found: 3(NXDOMAIN)</code></pre><p>根本没有……所以百度的蜘蛛没法这么判断……</p><h2>后记</h2><p><del>果然维护 IPlist 是最靠谱的方式吗……</del></p><p><del>内心 OS：管你呢，谁 tm 用辣鸡百度。</del></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZsYFXP" component-url="/_astro/Comments.nA8khF3T.js" component-export="default" renderer-url="/_astro/client.d8bzWiGl.js" props="{&quot;slug&quot;:[0,&quot;nginx-rdns-judge-spiders&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/nginx-rdns-judge-spiders&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表评论</h2><p class="primary-color card my-4 p-2">🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/nginx-rdns-judge-spiders" class="link underline">原博客的这篇文章</a>底部评论区发表评论。</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /

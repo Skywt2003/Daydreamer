@@ -1,37 +1,56 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>关于</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
-      var _paq = (window._paq = window._paq || []);
-      _paq.push(["trackPageView"]);
-      _paq.push(["enableLinkTracking"]);
-      (function () {
-        var u = "//analytics.skywt.cn/";
-        _paq.push(["setTrackerUrl", u + "matomo.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.async = true;
-        g.src = u + "matomo.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
-<link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>关于</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 关于 </span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 关于 </span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
-  const headerEl = document.querySelector("#navbar-wrapper");
-  const sentinalEl = document.querySelector("header");
-  const handler = (entries) => {
-    if (!entries[0].isIntersecting) {
-      headerEl.classList.add("sticked");
-    } else {
-      headerEl.classList.remove("sticked");
-    }
-  };
-  const observer = new window.IntersectionObserver(handler);
-  observer.observe(sentinalEl);
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("header");
+    const observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) {
+        headerEl.classList.add("sticked");
+      } else {
+        headerEl.classList.remove("sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
 </script>   <main> <section class="container mt-8 sm:mt-32"> <h1 class="primary-color">关于</h1> <hr class="my-8"> <article class="prose dark:prose-neutral dark:prose-invert max-w-none"> <h2 id="关于我">关于我</h2>
 <p>你好 👋，我是 SkyWT。</p>
 <ul>
@@ -123,19 +142,7 @@ setInterval("createtime()", 250);
 <li>Twitter：<a href="https://twitter.com/skywt2003">@skywt2003</a></li>
 <li>Telegram：<a href="http://t.me/Skywt2003">@Skywt2003</a></li>
 <li>QQ：请查询 <code>qq.skywt.cn</code> 的 TXT 记录。</li>
-</ul> </article>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i> 共 35 条评论 </h2> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/fbdb5abd55721cfdf3bc254e99794d31" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://en.icu/" class="link" target="_blank"> <h4>shihan zhang</h4> </a> <p class="mt-1">2024 年 2 月 13 日 0:42</p> </div> </div> <p class="mt-2 break-all">nice website
-What kind of server can host so many services? It’s amazing.
-8c16g？
-很惊艳</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/86c1abdba145273f8853c79190be46ff" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>zt 曾</h4> <p class="mt-1">2023 年 12 月 20 日 8:17</p> </div> </div> <p class="mt-2 break-all">大佬牛逼教教我</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/e598d5edc95bdd0cfff9b324cfcd27cb" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>陌</h4> <p class="mt-1">2023 年 7 月 22 日 16:42</p> </div> </div> <p class="mt-2 break-all">博主我看你的文章为什么可以折叠呀，我抄你的代码就不行</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/23cbe2bddc1f18f4849ecaf213d7aace" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.hanyibo.com" class="link" target="_blank"> <h4>韩艺博</h4> </a> <p class="mt-1">2023 年 7 月 1 日 7:45</p> </div> </div> <p class="mt-2 break-all">主题真漂亮，建议添加个搜索功能</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/b8f7b5a08bcba93c2c3eff7b1c5a7c32" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://fantao.me/" class="link" target="_blank"> <h4>fantao</h4> </a> <p class="mt-1">2023 年 5 月 20 日 7:42</p> </div> </div> <p class="mt-2 break-all">好棒的主题</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/c0724871d6f9469ccba5c817e6b709f2" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://tulvgengenr.github.io/" class="link" target="_blank"> <h4>tulvgengenr</h4> </a> <p class="mt-1">2023 年 4 月 18 日 3:3</p> </div> </div> <p class="mt-2 break-all">吼吼发现学弟了，加油加油</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/f405d80940c9a7bf2f98c660eb4a0382" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://qq.md/" class="link" target="_blank"> <h4>叶开</h4> </a> <p class="mt-1">2023 年 2 月 26 日 6:49</p> </div> </div> <p class="mt-2 break-all">还是当初 “https://github.com/Skywt2003/Writecho”的惊艳到我了。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/122e32931a360825d1ca2a912bf0b681" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.saphead.cn" class="link" target="_blank"> <h4>小熊</h4> </a> <p class="mt-1">2023 年 2 月 24 日 9:34</p> </div> </div> <p class="mt-2 break-all">ctf这是大佬，大佬下午好。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/25d926e7045143c14996616a95d2e5ee" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="http://angine.tech" class="link" target="_blank"> <h4>安擎Angine</h4> </a> <p class="mt-1">2023 年 1 月 29 日 17:40</p> </div> </div> <p class="mt-2 break-all">大佬太牛了……我流下仰慕的泪水
-不知道什么时候才能像大佬一样厉害</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/bad25c92135136dd21113e1361fb9c5d" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.bkcat.cn" class="link" target="_blank"> <h4>monitor</h4> </a> <p class="mt-1">2023 年 1 月 18 日 7:47</p> </div> </div> <p class="mt-2 break-all">天最棒了！</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/ff74614925ec5450c71d5a1a57d19fa7" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.magichouse.ltd/" class="link" target="_blank"> <h4>魔法修狗</h4> </a> <p class="mt-1">2023 年 1 月 7 日 23:52</p> </div> </div> <p class="mt-2 break-all">大佬，我好喜欢你这个首页，我拿走了，不行的话说一下，抱歉</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2023 年 1 月 8 日 4:12</p> </div> </div> <p class="mt-2 break-all">没事，我马上就要写新版的了 hhhhh</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/122e32931a360825d1ca2a912bf0b681" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.saphead.cn/" class="link" target="_blank"> <h4>小熊</h4> </a> <p class="mt-1">2023 年 1 月 7 日 10:34</p> </div> </div> <p class="mt-2 break-all">大佬。晚上好啊</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/ff74614925ec5450c71d5a1a57d19fa7" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.magichouse.ltd/" class="link" target="_blank"> <h4>魔法修狗</h4> </a> <p class="mt-1">2023 年 1 月 2 日 7:49</p> </div> </div> <p class="mt-2 break-all">主题很不错，可以加一个说说吗</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2023 年 1 月 2 日 7:52</p> </div> </div> <p class="mt-2 break-all">其实有隐藏的「说说」功能。只要发布「标题为一个空格的文章」，发出来就是说说 hhhhh</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/c76621621fe5bc0718d1ba4fcc50a0b3" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>hezhexi2002</h4> <p class="mt-1">2022 年 10 月 26 日 3:33</p> </div> </div> <p class="mt-2 break-all">大佬你好哇，感觉和大佬感兴趣的方向有些重合，我也是本科在读，在中北大学学通信工程，不过现在在做深度学习的东西，没想到大佬竟然也是infj，我现在的博客还没搭好，只是买了域名，之前用树莓派搭过一次，但是感觉很不稳定，这个寒假准备还是买云服务器重新搭一次，到时欢迎大佬回访！</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2022 年 10 月 26 日 4:31</p> </div> </div> <p class="mt-2 break-all">你好你好 🤝 欢迎来玩～
-INFJ 好像很稀少呀～</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/8bc29b79829cb997f04f0b018f5da17b" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://acheing.com" class="link" target="_blank"> <h4>FlowerYang</h4> </a> <p class="mt-1">2022 年 9 月 8 日 3:35</p> </div> </div> <p class="mt-2 break-all">也考虑加入Typecho啦~</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/586362df62c40fc319adde46b2bcaacf" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>iYuan</h4> <p class="mt-1">2022 年 8 月 5 日 8:49</p> </div> </div> <p class="mt-2 break-all">博主的 Daydream 主题好看的！</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/b5f28636018743fe41e0af17b6237e2e" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://wind.ink" class="link" target="_blank"> <h4>风清</h4> </a> <p class="mt-1">2022 年 6 月 19 日 16:3</p> </div> </div> <p class="mt-2 break-all">哟吼</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/d9a6cf07b7bc079df81567bf836b5c15" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://www.agrass.cn" class="link" target="_blank"> <h4>一草</h4> </a> <p class="mt-1">2022 年 5 月 24 日 12:23</p> </div> </div> <p class="mt-2 break-all">个性商店过来的，留个脚印</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/b5f28636018743fe41e0af17b6237e2e" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://wind.ink" class="link" target="_blank"> <h4>风清</h4> </a> <p class="mt-1">2022 年 2 月 28 日 15:43</p> </div> </div> <p class="mt-2 break-all">哟哟~</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/c9347d9a5bf7195450a0524ddad8fcff" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>秋秋</h4> <p class="mt-1">2022 年 4 月 14 日 11:58</p> </div> </div> <p class="mt-2 break-all">好想要自己的博客</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/80a023e11167a78a35f72ef4dd0a48f4" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://nekodeng.gitee.io/" class="link" target="_blank"> <h4>itsNeko</h4> </a> <p class="mt-1">2021 年 12 月 1 日 13:20</p> </div> </div> <p class="mt-2 break-all">好喜欢手写主题，期待完善，star走一波</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/aee396b32bd70c010b75db0c05472a83" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://nateshao.gitee.io" class="link" target="_blank"> <h4>千羽</h4> </a> <p class="mt-1">2021 年 12 月 1 日 13:10</p> </div> </div> <p class="mt-2 break-all">大佬优秀</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/7f76f3e4f8475f6796742628eb5edaab" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>Anecho</h4> <p class="mt-1">2021 年 11 月 24 日 9:31</p> </div> </div> <p class="mt-2 break-all">博主，你的手写博客老好看了，但是出现这个问题用不了怎么办
-
-Fatal error: Class &#39;Typecho\Widget\Helper\Form\Element\Text&#39; not found in /www/wwwroot/anecho.top/usr/themes/Writecho/functions.php on line 8</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2021 年 11 月 24 日 9:36</p> </div> </div> <p class="mt-2 break-all">应该是 Typecho 或者 php 版本问题……建议 Typecho 去用 github 上的 beta2 的 tag。
-不过现在这个主题还不是很完善噢，改天我要手写一个主题文档（（</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/7f76f3e4f8475f6796742628eb5edaab" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>Anecho</h4> <p class="mt-1">2021 年 11 月 24 日 12:35</p> </div> </div> <p class="mt-2 break-all">更换了php8.0和typecho1.2.0 beta2版本和最新的beta版本，页面没有报错了，但是页面上只有四个图片的css框，图片挂了，字体什么的也都无法显示，看来还是只有等您老人家继续完善了。还有我用的宝塔面板搭建的网站，会不会有什么其他因素在里面。</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2021 年 11 月 25 日 11:15</p> </div> </div> <p class="mt-2 break-all">你理解错了…没有什么字体…文章都是我手写的（上传的图片）不然怎么叫手写主题呢 😂</p> <div class="ml-8">  </div> </div> </div> </div> </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/f3cea2090c185c63587343db6d06304b" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>硫氯</h4> <p class="mt-1">2021 年 11 月 23 日 7:38</p> </div> </div> <p class="mt-2 break-all">大观园一日游！期待手写博客早日开发出评论功能（怎么这么好看！！！）</p> <div class="ml-8"> <div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/d83895fb442aff68abcb94849c5e1cd9" class="rounded-full w-12 mr-2"> <div class="m-2"> <h4>sf225</h4> <p class="mt-1">2023 年 7 月 23 日 18:3</p> </div> </div> <p class="mt-2 break-all">手写博客！(*^_^*)真有意思！想起「虎兔笔记」（旧版 blog and 新版 blog），新版的评论部分确实是通过画板来留言的，类似的产品还有「Sketch Swap」/「tieba涂鸦」/「qq涂鸦」。满满的回忆。</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/5e41558bb32a2583cb14e6940b9b62ed" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://skywt.cn/" class="link" target="_blank"> <h4>SkyWT</h4> </a> <p class="mt-1">2021 年 11 月 23 日 8:8</p> </div> </div> <p class="mt-2 break-all">一直在考虑评论怎么实现…提供一个画图板手写评论吗 😂</p> <div class="ml-8">  </div> </div> </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/920815adaf80a4370487432993337db5" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://tuboxu.com" class="link" target="_blank"> <h4>土拨许</h4> </a> <p class="mt-1">2021 年 10 月 28 日 16:46</p> </div> </div> <p class="mt-2 break-all">一只土拨许到此一游~</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/4dfeda4b5bde0b33e134fb03b24162ac" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://blog.yzncms.com/" class="link" target="_blank"> <h4>御宅男</h4> </a> <p class="mt-1">2021 年 10 月 20 日 6:11</p> </div> </div> <p class="mt-2 break-all">码农路过，留下一个爪印！！！</p> <div class="ml-8">  </div> </div><div class="primary-color my-4"> <div class="flex items-center"> <img src="https://gravatar.com/avatar/828dd77feb4c4a650e43cf622cd74232" class="rounded-full w-12 mr-2"> <div class="m-2"> <a href="https://zigzagk.top" class="link" target="_blank"> <h4>ZigZagK</h4> </a> <p class="mt-1">2021 年 8 月 10 日 16:1</p> </div> </div> <p class="mt-2 break-all">终于能评论了，支持一波</p> <div class="ml-8">  </div> </div> <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
-发表评论
-</h2> <p class="primary-color card my-4 p-2">
-🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/about" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
-</p>  </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+</ul> </article>  <hr class="my-8"> <h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表评论</h2><p class="primary-color card my-4 p-2">🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/about" class="link underline">原博客的这篇文章</a>底部评论区发表评论。</p>  </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 关于 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页

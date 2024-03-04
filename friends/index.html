@@ -1,37 +1,56 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>友人</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
-      var _paq = (window._paq = window._paq || []);
-      _paq.push(["trackPageView"]);
-      _paq.push(["enableLinkTracking"]);
-      (function () {
-        var u = "//analytics.skywt.cn/";
-        _paq.push(["setTrackerUrl", u + "matomo.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.async = true;
-        g.src = u + "matomo.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
-<link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>友人</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 友人 </span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="wide-container flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block secondary-color" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 友人 </span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
-  const headerEl = document.querySelector("#navbar-wrapper");
-  const sentinalEl = document.querySelector("header");
-  const handler = (entries) => {
-    if (!entries[0].isIntersecting) {
-      headerEl.classList.add("sticked");
-    } else {
-      headerEl.classList.remove("sticked");
-    }
-  };
-  const observer = new window.IntersectionObserver(handler);
-  observer.observe(sentinalEl);
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("header");
+    const observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) {
+        headerEl.classList.add("sticked");
+      } else {
+        headerEl.classList.remove("sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
 </script>   <main> <section class="mt-8"> <div class="bg-white dark:bg-neutral-800 h-[30rem]"> <div class="wide-container h-full px-4 flex flex-col justify-center items-center sm:items-start"> <h1 class="mt-4">友谊地久天长。</h1> <h5 class="mt-4 secondary-color">SkyWT 的朋友们。</h5> </div> </div> <div class="wide-container">  <div class="mt-16"><h3>🌍 网上邻居</h3><p class="secondary-color mt-2"><i class="ri-double-quotes-l"></i>天涯若比邻。<i class="ri-double-quotes-r"></i></p><ul class="flex flex-wrap mt-4"><li class="p-2 basis-full sm:basis-1/2 lg:basis-1/3"> <a href="https://www.fzf404.art/"> <div class="card h-full clickable p-2 flex flex-row items-center relative"> <div class="absolute top-1 right-2 text-sm"> <i class="ri-external-link-line"></i> </div>  <img src="https://img.fzf404.art/avatar.webp" class="w-12 m-2 rounded-full" onerror="this.src='/visitor.png'"> <div class="m-2"> <h5 class="primary-color">fzf404</h5> <p class="mt-2 secondary-color font-bold text-sm"> <i class="ri-chat-quote-line"></i>「社会主义接班人。」
 </p>  </div>  </div> </a> </li><li class="p-2 basis-full sm:basis-1/2 lg:basis-1/3"> <a href="https://gxzv.com/"> <div class="card h-full clickable p-2 flex flex-row items-center relative"> <div class="absolute top-1 right-2 text-sm"> <i class="ri-external-link-line"></i> </div>  <img src="https://gxzv.com/lib/img/me/avatar.jpg" class="w-12 m-2 rounded-full" onerror="this.src='/visitor.png'"> <div class="m-2"> <h5 class="primary-color">甘小蔗</h5> <p class="mt-2 secondary-color font-bold text-sm"> <i class="ri-chat-quote-line"></i>「Ganxiaozhe&#39;s Values.」
 </p>  </div>  </div> </a> </li><li class="p-2 basis-full sm:basis-1/2 lg:basis-1/3"> <a href="https://viyi.cc/"> <div class="card h-full clickable p-2 flex flex-row items-center relative"> <div class="absolute top-1 right-2 text-sm"> <i class="ri-external-link-line"></i> </div>  <img src="https://viyi.cc/images/icon.png" class="w-12 m-2 rounded-full" onerror="this.src='/visitor.png'"> <div class="m-2"> <h5 class="primary-color">枝因</h5> <p class="mt-2 secondary-color font-bold text-sm"> <i class="ri-chat-quote-line"></i>「Oh god, these stars.」

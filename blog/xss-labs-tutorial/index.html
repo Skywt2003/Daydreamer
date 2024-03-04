@@ -1,22 +1,32 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>xss-labs 通关教程</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><!-- Matomo --><script>
-      var _paq = (window._paq = window._paq || []);
-      _paq.push(["trackPageView"]);
-      _paq.push(["enableLinkTracking"]);
-      (function () {
-        var u = "//analytics.skywt.cn/";
-        _paq.push(["setTrackerUrl", u + "matomo.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.async = true;
-        g.src = u + "matomo.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script><!-- End Matomo Code --><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>xss-labs 通关教程</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.hRKOKN_Z.css" /></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -27,17 +37,26 @@ xss-labs 通关教程 </span> </h5> </header> <nav class="py-2 font-thin sticky 
 xss-labs 通关教程 </span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
-  const headerEl = document.querySelector("#navbar-wrapper");
-  const sentinalEl = document.querySelector("header");
-  const handler = (entries) => {
-    if (!entries[0].isIntersecting) {
-      headerEl.classList.add("sticked");
-    } else {
-      headerEl.classList.remove("sticked");
-    }
-  };
-  const observer = new window.IntersectionObserver(handler);
-  observer.observe(sentinalEl);
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("header");
+    const observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) {
+        headerEl.classList.add("sticked");
+      } else {
+        headerEl.classList.remove("sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>xss-labs 通关教程</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 07 月 05 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/xss-labs-tutorial" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
 </p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p><a href="https://github.com/do0dl3/xss-labs">xss-labs</a> 是一套基于 PHP 的 XSS 靶场，以闯关的形式让我们体验各种 XSS 漏洞利用方式。虽然已经是很多年前的了，但其中基本的 XSS 漏洞依然很有意义。</p><p>一共有 20 关，每一关的目标都是实现弹窗（<code>alert(1)</code>），如果成功就会自动进入下一关。</p><!--more--><h2>环境搭建</h2><p>克隆<a href="https://github.com/do0dl3/xss-labs">这个代码仓库</a>的代码，其中是 xss-labs 的 PHP 源文件。只要放在 PHP 环境下即可，推荐使用 XAMPP 或者 Docker。</p><p>部署完成后，访问 index.php，就可以看到入口了：</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/07/700481588.png" alt="「点击图片开始你的 XSS 之旅吧」提示" title="「点击图片开始你的 XSS 之旅吧」提示"></p><h2>Warm Up</h2><p>前两关是对于 XSS 基本原理的应用，没有任何的防御。</p><h3>Level 1：文本解析为 HTML</h3><p>URL 为 <code>level1.php?name=test</code> 时，传入的参数是 test，显示的是「欢迎用户 test」。显然，这个页面会将我们传入的名字显示出来。</p><p>传入参数 <code>&lt;h1&gt;test&lt;/h1&gt;</code> 作为 <code>name</code>，发现确实显示为了一级标题。看来传入的 name 直接被作为 HTML 显示了。于是尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code> 作为 <code>name</code>，成功弹窗。</p><pre><code>?name=&lt;script&gt;alert(1);&lt;/script&gt;</code></pre><h3>Level 2：input 标签 value 注入</h3><p>这关多了一个文本框。如果依然尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code>，会发现在 h2 元素中符号被转义了（查看网页源代码能看到），比如 <code>&lt;</code> 被转义成了 <code>&amp;lt;</code> 等，所以不会被解析成 HTML。</p><p>然而，可以看到后面的文本框 <code>input</code> 元素，其 value 值并没有被转义。</p><pre><code class="lang-html">&lt;h2 align=center&gt;没有找到和&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;相关的结果.&lt;/h2&gt;&lt;center&gt;
@@ -58,11 +77,7 @@ xss-labs 通关教程 </span> </h5> <div class="m-2 secondary-color" data-astro-
 &lt;/form&gt;</code></pre><p>只要存在可以自定义的字段，我们就可以注入。一种方法是创建一个文件名为 <code>&quot; onmouseover=javascript:alert(1) type &quot;.html</code> 的 HTML 文件，在其中重定向到 level 11 的页面。<br>更简洁的做法是直接修改请求的 Referer 字段。</p><p>关于 Referer，推荐阅读：[HTTP Referer 教程 - 阮一峰的网络日志<br>](<a href="https://www.ruanyifeng.com/blog/2019/06/http-referer.html">https://www.ruanyifeng.com/blog/2019/06/http-referer.html</a>)。</p><h3>Level 12：UA 注入</h3><p>和前面的类似，查看源码可以看到有一个字段 value 被设置成了浏览器 UA。</p><p>浏览器 UA 是完全可以自定义的，随便下载一个自定义 UA 的浏览器插件，在里面将 UA 设置为 payload，然后直接访问 level 12 即可。</p><pre><code>&quot; onmouseover=javascript:alert(1) type &quot;</code></pre><h3>Level 13：Cookie 注入</h3><p>和 level 12 一样，有一个字段 value 设为了一个 Cookie。</p><p>直接打开浏览器 F12 工具，找到这个对应的名为 <code>user</code> 的 Cookie，设置为 payload，然后刷新网站即可。</p><pre><code>&quot; onmouseover=javascript:alert(1) type &quot;</code></pre><p>Level 14 嵌入了一个网站，这个网站已经打不开了。似乎是个查看图片 exif 信息的网站，猜测可能可以将 payload 写在 exif 信息里进行注入吧。</p><h3>Level 16：空格过滤</h3><p>这题似乎也是过滤，使用了综合的过滤规则。经过一番探究，<code>script</code> 和 <code>/</code> 都会被替换为 <code>&amp;nbsp;</code>，每个空格也都会被换成 <code>&amp;nbsp;</code>，这正是本题最麻烦之处。</p><p>HTML 中，有什么字符可以代替空格呢？答案是换行符（<code>%0A</code>）。</p><pre><code>?keyword=&lt;img%0Asrc=1%0Aonerror=&quot;alert(1)&quot;&gt;</code></pre><h2>Special</h2><h3>Level 15：Angular <code>ng-include</code></h3><p>在 URL 中指定的 src（默认是 1.gif）会被引用进来，使用的是 ng-include。这是一个 Angular 框架的功能，特点是，如果引入的是 HTML 文件，不会执行其中 <code>&lt;script&gt;</code> 标签内的代码。（有一点安全意识，但不多……）</p><p>一种方法是写一个能够弹窗的简单 HTML，然后 include 进来，比如：</p><pre><code class="lang-html">&lt;html&gt;
 &lt;h1&gt;Hacked&lt;/h1&gt;
 &lt;img src=1 onerror=&quot;alert(1)&quot;&gt;&lt;/img&gt;
-&lt;/html&gt;</code></pre><p>假设放在网站根目录，payload 就是：</p><pre><code>?src=&quot;/alert.html&quot;</code></pre><p>Level 17 到 Level 20 都是 Flash 的利用，现在 Flash 已经退出历史舞台了，所以这几关已经失去意义。</p><h2>总结</h2><p>XSS 攻击历久弥新，目前 XSS 漏洞依然广泛存在。其核心在于找到注入点并通过 payload 让浏览器执行 js 代码。</p><p>注入点不仅可以来源于用户提供的文本（请求参数或后端存储的字段），也可以是 Referer、UA、Cookie 等。</p><p>执行 js 代码一般有四种方式，在使用时可以根据条件灵活选择：</p><ul><li>通过 <code>&lt;script&gt;</code> 标签。</li><li>通过元素的 onmouseover 属性。</li><li>通过 <code>&lt;img&gt;</code> 的 onerror 属性，如 <code>&lt;img src=1 onerror=&quot;alert(1)&quot;&gt;</code>。</li><li>通过 URI，如 <code>javascript:alert(1)</code>。</li></ul><p>一般来说，使用 PHP 的 <code>htmlspecialchars()</code> 函数能够防御很大一部分 XSS（注意过滤单引号）。许多字符过滤上的漏洞都是没有使用 <code>htmlspecialchars()</code> 而使用自己编写的字符过滤函数引起。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <h2> <i class="ri-discuss-line"></i> 暂无评论 </h2>  <hr class="my-8"> <h2> <i class="ri-discuss-line"></i>
-发表评论
-</h2> <p class="primary-color card my-4 p-2">
-🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/xss-labs-tutorial" class="link underline">原博客的这篇文章</a>底部评论区发表评论。
-</p> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+&lt;/html&gt;</code></pre><p>假设放在网站根目录，payload 就是：</p><pre><code>?src=&quot;/alert.html&quot;</code></pre><p>Level 17 到 Level 20 都是 Flash 的利用，现在 Flash 已经退出历史舞台了，所以这几关已经失去意义。</p><h2>总结</h2><p>XSS 攻击历久弥新，目前 XSS 漏洞依然广泛存在。其核心在于找到注入点并通过 payload 让浏览器执行 js 代码。</p><p>注入点不仅可以来源于用户提供的文本（请求参数或后端存储的字段），也可以是 Referer、UA、Cookie 等。</p><p>执行 js 代码一般有四种方式，在使用时可以根据条件灵活选择：</p><ul><li>通过 <code>&lt;script&gt;</code> 标签。</li><li>通过元素的 onmouseover 属性。</li><li>通过 <code>&lt;img&gt;</code> 的 onerror 属性，如 <code>&lt;img src=1 onerror=&quot;alert(1)&quot;&gt;</code>。</li><li>通过 URI，如 <code>javascript:alert(1)</code>。</li></ul><p>一般来说，使用 PHP 的 <code>htmlspecialchars()</code> 函数能够防御很大一部分 XSS（注意过滤单引号）。许多字符过滤上的漏洞都是没有使用 <code>htmlspecialchars()</code> 而使用自己编写的字符过滤函数引起。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="RUgTu" component-url="/_astro/Comments.nA8khF3T.js" component-export="default" renderer-url="/_astro/client.d8bzWiGl.js" props="{&quot;slug&quot;:[0,&quot;xss-labs-tutorial&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/xss-labs-tutorial&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表评论</h2><p class="primary-color card my-4 p-2">🚧 新博客系统的评论功能仍在开发中，敬请期待。可以前往<a href="https://blog.skywt.cn/posts/xss-labs-tutorial" class="link underline">原博客的这篇文章</a>底部评论区发表评论。</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
