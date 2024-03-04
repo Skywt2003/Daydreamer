@@ -37,10 +37,14 @@
 欧拉函数的应用：快速求解 1~n 中两两数字的最小公倍数 </span> </h5> <div class="m-2 secondary-color" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
   function addNavObserver() {
     const headerEl = document.querySelector("#navbar-wrapper");
     const sentinalEl = document.querySelector("header");
-    const observer = new window.IntersectionObserver((e) => {
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
       if (!e[0].isIntersecting) {
         headerEl.classList.add("sticked");
       } else {
@@ -50,10 +54,23 @@
     observer.observe(sentinalEl);
   }
 
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
   document.addEventListener(
     "astro:page-load",
     () => {
       addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
     },
     { once: false },
   );

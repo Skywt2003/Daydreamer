@@ -25,11 +25,35 @@
       );
     </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
 <link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" />
-<link rel="stylesheet" href="/_astro/index.j83Mjr3a.css" /><script type="module" src="/_astro/hoisted.os2uKulR.js"></script></head> <body>   <main data-astro-cid-j7pv25f6> <section class="min-h-screen flex flex-col justify-center" data-astro-cid-j7pv25f6> <div class="container" data-astro-cid-j7pv25f6> <h1 class="drop-shadow-xl primary-color fade-in" data-astro-cid-j7pv25f6> <span data-astro-cid-j7pv25f6>✨ Passion <br data-astro-cid-j7pv25f6> Never Fails.</span> </h1> <h4 class="mt-4 font-bold drop-shadow-xl secondary-color fade-in" data-astro-cid-j7pv25f6>
+<link rel="stylesheet" href="/_astro/index.j83Mjr3a.css" /><script type="module" src="/_astro/hoisted.RArx85_T.js"></script></head> <body>   <main data-astro-cid-j7pv25f6> <section class="min-h-screen flex flex-col justify-center" data-astro-cid-j7pv25f6> <div class="container" data-astro-cid-j7pv25f6> <h1 class="drop-shadow-xl primary-color fade-in" data-astro-cid-j7pv25f6> <span data-astro-cid-j7pv25f6>✨ Passion <br data-astro-cid-j7pv25f6> Never Fails.</span> </h1> <h4 class="mt-4 font-bold drop-shadow-xl secondary-color fade-in" data-astro-cid-j7pv25f6>
 热爱与激情永不止息。
 </h4> <div class="mt-12 font-thin tertiary-color fade-in" data-astro-cid-j7pv25f6> <span class="mr-2" data-astro-cid-j7pv25f6>SkyWT</span> <ul data-astro-cid-tfcnbjmv>  <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> <p id="scroll-hint" class="mt-2 font-thin tertiary-color opacity-0" data-astro-cid-j7pv25f6> <i class="ri-mouse-line" data-astro-cid-j7pv25f6></i>
 滚动滚轮或滑动触控板继续浏览
-<i class="ri-arrow-down-line" data-astro-cid-j7pv25f6></i> </p>  <p id="too-small-hint" class="mt-2 primary-color" data-astro-cid-j7pv25f6> <i class="ri-alert-line" data-astro-cid-j7pv25f6></i> 本站针对屏幕宽度不小于 375 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
+<i class="ri-arrow-down-line" data-astro-cid-j7pv25f6></i> </p> <script>
+          var hintTimer = null;
+          document.addEventListener(
+            "astro:page-load",
+            () => {
+              hintTimer = setTimeout(() => {
+                let scrollHintEle = document.querySelector("#scroll-hint");
+                if (scrollHintEle) {
+                  // 这里的写法不太好
+                  scrollHintEle.classList.add("fade-in");
+                  scrollHintEle.classList.remove("opacity-0");
+                }
+              }, 5000);
+            },
+            { once: false },
+          );
+          document.addEventListener(
+            "astro:before-swap",
+            () => {
+              clearTimeout(hintTimer);
+              hintTimer = null;
+            },
+            { once: false },
+          );
+        </script> <p id="too-small-hint" class="mt-2 primary-color" data-astro-cid-j7pv25f6> <i class="ri-alert-line" data-astro-cid-j7pv25f6></i> 本站针对屏幕宽度不小于 375 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
 </p> </div> <!-- <div
         class="absolute top-0 right-0 h-screen -z-10 transform-gpu overflow-hidden w-full blur-3xl"
         aria-hidden="true"
@@ -193,7 +217,38 @@ me@skywt.cn
             playground，之后将会尝试陆续添加各种好玩的功能。
 </p> <p data-astro-cid-j7pv25f6>
 从创建至今，这个网站已运行
-<span id="uptime" data-astro-cid-j7pv25f6></span> <span data-astro-cid-j7pv25f6>。</span> </p> <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> --> <div class="primary-color mt-2" data-astro-cid-utcr2s3b> <div class="align-center" data-astro-cid-utcr2s3b> <span data-astro-cid-utcr2s3b>感觉如何？</span> <div class="inline-flex px-2" data-astro-cid-utcr2s3b> <i id="star-1" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-2" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-3" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-4" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-5" class="star ri-star-line" data-astro-cid-utcr2s3b></i> </div> <span id="submit" class="link" data-astro-cid-utcr2s3b>提交</span> </div> <p id="hint" data-astro-cid-utcr2s3b></p> </div>   </div> </div>  </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a>  </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+<span id="uptime" data-astro-cid-j7pv25f6></span> <span data-astro-cid-j7pv25f6>。</span> </p> <!-- <p class="mt-2">查看设计手记，或者看看 2022 版和 2021 版。</p> --> <div class="primary-color mt-2" data-astro-cid-utcr2s3b> <div class="align-center" data-astro-cid-utcr2s3b> <span data-astro-cid-utcr2s3b>感觉如何？</span> <div class="inline-flex px-2" data-astro-cid-utcr2s3b> <i id="star-1" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-2" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-3" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-4" class="star ri-star-line" data-astro-cid-utcr2s3b></i> <i id="star-5" class="star ri-star-line" data-astro-cid-utcr2s3b></i> </div> <span id="submit" class="link" data-astro-cid-utcr2s3b>提交</span> </div> <p id="hint" data-astro-cid-utcr2s3b></p> </div>   </div> </div> <!-- <script is:inline>
+        const uptime = document.getElementById("uptime");
+        const now = new Date();
+        const grt = new Date("12/11/2017 11:00:00");
+        const getUptime = () => {
+          now.setTime(now.getTime() + 250);
+          const diff = now.getTime() - grt.getTime();
+          const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
+          const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
+          const mnum = Math.floor(
+            diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
+          );
+          const snum = Math.round(
+            diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
+          );
+
+          uptime.innerText =
+            (dnum ? dnum.toString() + " 天 " : "") +
+            (hnum ? hnum.toString() + " 小时 " : "") +
+            (mnum ? mnum.toString() + " 分 " : "") +
+            (snum ? snum.toString() + " 秒" : "");
+        };
+        let timer = setInterval(getUptime, 250);
+
+        document.addEventListener(
+          "astro:before-swap",
+          () => {
+            clearInterval(timer);
+          },
+          { once: false },
+        );
+      </script> --> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a>  </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
