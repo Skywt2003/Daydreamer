@@ -1,11 +1,10 @@
 ---
 interface Props {
   slug: string;
-  commentsNum: number;
   permalink: string;
 }
 
-const { slug, commentsNum, permalink } = Astro.props;
+const { slug, permalink } = Astro.props;
 
 const url = new URL("https://blog.skywt.cn/api/comments");
 url.search = new URLSearchParams({
@@ -19,6 +18,16 @@ const data = await response.json();
 const comments = data.data.dataSet;
 
 import Comment from "./Comment.astro";
+
+function getCount(comments: Comment[]): number {
+  let count = 0;
+  for (const comment of comments) {
+    count++;
+    count += getCount(comment.children);
+  }
+  return count;
+}
+const commentsNum = getCount(comments);
 ---
 
 <h2>

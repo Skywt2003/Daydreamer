@@ -97,11 +97,7 @@ import Comments from "../../components/blog/Comments.astro";
 
       <hr class="my-8" />
 
-      <Comments
-        slug={slug}
-        commentsNum={post.commentsNum}
-        permalink={post.permalink}
-      />
+      <Comments slug={slug} permalink={post.permalink} />
     </section>
   </main>
 </Layout>

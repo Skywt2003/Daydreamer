@@ -3,18 +3,6 @@ const { frontmatter } = Astro.props;
 
 import Layout from "./Layout.astro";
 import Comments from "../components/blog/Comments.astro";
-
-let post: PostDetail | undefined = undefined;
-
-if (frontmatter.typechoSlug) {
-  const url = new URL("https://blog.skywt.cn/api/post");
-  url.search = new URLSearchParams({
-    slug: frontmatter.typechoSlug,
-  }).toString();
-  const response = await fetch(url);
-  const data = await response.json();
-  post = data.data;
-}
 ---
 
 <Layout
@@ -35,7 +23,6 @@ if (frontmatter.typechoSlug) {
             <hr class="my-8" />
             <Comments
               slug={frontmatter.typechoSlug}
-              commentsNum={post ? post.commentsNum : 0}
               permalink={"https://blog.skywt.cn/" + frontmatter.typechoSlug}
             />
           </>
