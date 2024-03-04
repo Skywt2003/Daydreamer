@@ -22,6 +22,7 @@ import Comments from "../components/blog/Comments.tsx";
           <>
             <hr class="my-8" />
             <Comments
+              client:load
               slug={frontmatter.typechoSlug}
               permalink={"https://blog.skywt.cn/" + frontmatter.typechoSlug}
             />

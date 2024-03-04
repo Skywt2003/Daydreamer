@@ -101,7 +101,6 @@ typechoSlug: about
 - 2022.03.26 启用全新设计开发的基于 pico.css 的 Daydream Typecho 主题。
 - 2022.06.21 启用一个 WordPress 博客 [whisper.skywt.cn](https://whisper.skywt.cn/)，主要用来放一些碎碎念。
 - 2022.12.26 现在可以[用邮件订阅博客](https://mailchi.mp/97e1f54049cd/subscribe)啦。由 MailChimp 支持。
-<!-- - 2023.02.19 博客收录至「[寻我](https://seekbetter.me/)」。 -->
 - 2023.02.26 注册备用的免费域名 skywt.eu.org。
 - 2023.06.28 注册备用的域名 skywt.net。
 - 2024.02.06 启用基于 Astro.js 开发的全新个人主页 Daydreamer。

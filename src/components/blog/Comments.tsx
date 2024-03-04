@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import Comment from "./Comment.tsx";
 
 export default function Comments(props: { slug: string; permalink: string }) {
@@ -35,6 +35,7 @@ export default function Comments(props: { slug: string; permalink: string }) {
         setError(true);
       });
   }, []);
+
   return (
     <>
       {error ? (
