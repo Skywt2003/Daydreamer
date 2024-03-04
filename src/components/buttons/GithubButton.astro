@@ -1,18 +1,19 @@
 ---
 interface Props {
-  type: string;
+  type: "star" | "fork";
   target: string;
 }
 
 const { type, target } = Astro.props;
-const url = new URL("https://api.github.com/repos/" + target + "/stargazers");
-var headers = new Headers();
-headers.append("Accept", "application/vnd.github+json");
-headers.append("X-GitHub-Api-Version", "2022-11-28");
-
-const response = await fetch(url, { headers: headers });
+const url = new URL("https://api.github.com/repos/" + target);
+// var headers = new Headers();
+// headers.append("Accept", "application/vnd.github+json");
+// headers.append("X-GitHub-Api-Version", "2022-11-28");
+// const response = await fetch(url, { headers: headers });
+const response = await fetch(url);
 const data = await response.json();
-const starsCount = data.length ? data.length : "?";
+const starsCount = data.stargazers_count ? data.stargazers_count : "?";
+const forksCount = data.forks ? data.forks : "?";
 ---
 
 {
@@ -36,29 +37,18 @@ const starsCount = data.length ? data.length : "?";
   type == "fork" && (
     <div id="button-wrapper" class="inline-block">
       <>
-        <a id="btn" href={target} target="_blank">
+        <a id="btn" href={"https://github.com/" + target + "/fork"} target="_blank">
           <i class="ri-git-fork-line" />
           &nbsp;
           <span>Fork</span>
+        </a>{}<a
+          id="cnt"
+          href={"https://github.com/" + target + "/forks"}
+          target="_blank"
+        >
+          {forksCount}
         </a>
-        {/*<a id="cnt" href="#" target="_blank">
-          9
-        </a>*/}
       </>
-    </div>
-  )
-}
-{
-  type == "follow" && (
-    <div id="button-wrapper" class="inline-block">
-      <a id="btn" href={target} target="_blank">
-        <i class="ri-user-follow-line" />
-        &nbsp;
-        <span>Follow</span>
-      </a>
-      {/*<a id="cnt" href="#" target="_blank">
-        9
-      </a>*/}
     </div>
   )
 }
