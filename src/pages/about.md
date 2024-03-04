@@ -41,26 +41,40 @@ typechoSlug: about
 
 ### 时间轴
 
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+从创建至今，这个网站已运行 <span id="uptime"></span>。
 
-<script>
-var now = new Date();
-function createtime() {
-	var grt = new Date("12/11/2017 11:00:00");
-	now.setTime(now.getTime() + 250);
-	days = (now-grt) / 1000 / 60 / 60 / 24;
-	dnum = Math.floor(days);
-	hours = (now-grt) / 1000 / 60 / 60 - (24*dnum);
-	hnum = Math.floor(hours); if (0<=hnum && hnum<=9) {hnum = "0"+hnum}
-	minutes = (now-grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-	mnum = Math.floor(minutes); if (0<=mnum && mnum<=9) {mnum = "0"+mnum}
-	seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-	snum = Math.round(seconds); if (0<=snum && snum<=9) {snum = "0"+snum}
-	document.getElementById("timeDate").innerHTML = "本站已运行 " + dnum + " 天 ";
-	document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒。"
-}
-setInterval("createtime()", 250);
-</script>
+<!-- <script is:inline>
+  const uptime = document.getElementById("uptime");
+  const now = new Date();
+  const grt = new Date("12/11/2017 11:00:00");
+  const getUptime = () => {
+    now.setTime(now.getTime() + 250);
+    const diff = now.getTime() - grt.getTime();
+    const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
+    const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
+    const mnum = Math.floor(
+      diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
+    );
+    const snum = Math.round(
+      diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
+    );
+
+    uptime.innerText =
+      (dnum ? dnum.toString() + " 天 " : "") +
+      (hnum ? hnum.toString() + " 小时 " : "") +
+      (mnum ? mnum.toString() + " 分 " : "") +
+      (snum ? snum.toString() + " 秒" : "");
+  };
+  let timer = setInterval(getUptime, 250);
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      clearInterval(timer);
+    },
+    { once: false },
+  );
+</script> -->
 
 - 2017.10.29 注册域名 skywt.top（现已注销）。
 - 2017.11.12 网站正式开始运行。由 WordPress 驱动。
@@ -92,6 +106,7 @@ setInterval("createtime()", 250);
 - 2023.06.28 注册备用的域名 skywt.net。
 - 2024.02.06 启用基于 Astro.js 开发的全新个人主页 Daydreamer。
 - 2024.03.02 个人主页集成 Typecho 博客，逐步从 blog.skywt.cn 迁移。
+- 2024.03.03 开始使用多吉云 CDN 加速。
 - ……
 
 ## 联系

@@ -28,15 +28,30 @@ import Rating from "../components/Rating.astro";
           滚动滚轮或滑动触控板继续浏览
           <i class="ri-arrow-down-line"></i>
         </p>
-        <script>
-          const showScrollHint = () => {
-            let scrollHintEle = document.querySelector(
-              "#scroll-hint",
-            ) as HTMLElement;
-            scrollHintEle.classList.add("fade-in");
-            scrollHintEle.classList.remove("opacity-0");
-          };
-          setTimeout(showScrollHint, 5000);
+        <script is:inline>
+          var hintTimer = null;
+          document.addEventListener(
+            "astro:page-load",
+            () => {
+              hintTimer = setTimeout(() => {
+                let scrollHintEle = document.querySelector("#scroll-hint");
+                if (scrollHintEle) {
+                  // 这里的写法不太好
+                  scrollHintEle.classList.add("fade-in");
+                  scrollHintEle.classList.remove("opacity-0");
+                }
+              }, 5000);
+            },
+            { once: false },
+          );
+          document.addEventListener(
+            "astro:before-swap",
+            () => {
+              clearTimeout(hintTimer);
+              hintTimer = null;
+            },
+            { once: false },
+          );
         </script>
         <p id="too-small-hint" class="mt-2 primary-color">
           <i class="ri-alert-line"></i> 本站针对屏幕宽度不小于 375 像素的设备设计。您的屏幕太小，页面可能无法正常显示。
@@ -159,11 +174,11 @@ import Rating from "../components/Rating.astro";
         </div>
       </div>
 
-      <script>
-        const uptime = document.getElementById("uptime") as HTMLElement;
+      <!-- <script is:inline>
+        const uptime = document.getElementById("uptime");
         const now = new Date();
         const grt = new Date("12/11/2017 11:00:00");
-        const getUptime: () => void = () => {
+        const getUptime = () => {
           now.setTime(now.getTime() + 250);
           const diff = now.getTime() - grt.getTime();
           const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
@@ -181,8 +196,16 @@ import Rating from "../components/Rating.astro";
             (mnum ? mnum.toString() + " 分 " : "") +
             (snum ? snum.toString() + " 秒" : "");
         };
-        setInterval(getUptime, 250);
-      </script>
+        let timer = setInterval(getUptime, 250);
+
+        document.addEventListener(
+          "astro:before-swap",
+          () => {
+            clearInterval(timer);
+          },
+          { once: false },
+        );
+      </script> -->
     </section>
   </main>
 </Layout>
