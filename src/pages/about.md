@@ -41,7 +41,7 @@ typechoSlug: about
 
 ### 时间轴
 
-从创建至今，这个网站已运行 <span id="uptime"></span>。
+<!-- 从创建至今，这个网站已运行 <span id="uptime"></span>。 -->
 
 <!-- <script is:inline>
   const uptime = document.getElementById("uptime");
