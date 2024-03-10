@@ -68,3 +68,16 @@ interface PathItem {
   title: string;
   url: string;
 }
+
+interface ServiceType {
+  name: string;
+  services: Service[];
+}
+
+interface Service {
+  name: string;
+  app: string;
+  url: string;
+  method: string;
+  status?: string;
+}

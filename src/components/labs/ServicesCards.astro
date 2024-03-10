@@ -2,19 +2,6 @@
 import ServiceCard from "./ServiceCard.astro";
 
 import yml from "./config.yml";
-
-interface ServiceType {
-  name: string;
-  services: Service[];
-}
-
-interface Service {
-  name: string;
-  app: string;
-  url: string;
-  method: string;
-  status?: string;
-}
 ---
 
 {

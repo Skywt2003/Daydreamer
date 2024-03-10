@@ -2,6 +2,31 @@
 import ServicesCards from "../components/labs/ServicesCards.astro";
 
 import Page from "../layouts/Page.astro";
+
+import yml from "../components/labs/config.yml";
+
+let running = 0,
+  stopped = 0,
+  error = 0;
+
+yml.types.map((type: ServiceType) => {
+  type.services.map((service: Service) => {
+    switch (service.status) {
+      case "running":
+        running++;
+        break;
+      case "stopped":
+        stopped++;
+        break;
+      case "error":
+        error++;
+        break;
+      default:
+        running++;
+        break;
+    }
+  });
+});
 ---
 
 <Page
@@ -13,17 +38,17 @@ import Page from "../layouts/Page.astro";
     <span class="mr-4">
       <span class="bg-green-500 rounded-full w-2 h-2 inline-block align-middle"
       ></span>
-      29 运行中
+      {running} 运行中
     </span>
     <span class="mr-4">
       <span class="bg-yellow-500 rounded-full w-2 h-2 inline-block align-middle"
       ></span>
-      2 暂时关闭
+      {stopped} 暂时关闭
     </span>
     <span>
       <span class="bg-red-500 rounded-full w-2 h-2 inline-block align-middle"
       ></span>
-      0 故障
+      {error} 故障
     </span>
   </p>
   <ServicesCards />

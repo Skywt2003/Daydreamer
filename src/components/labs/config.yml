@@ -63,6 +63,10 @@ types:
         app: RSSHub
         url: https://rsshub.skywt.cn
         method: Docker
+      - name: WeRSS
+        app: WeWe RSS
+        url: https://werss.skywt.cn
+        method: Docker
       - name: Reading List
         app: Wallabag
         url: https://mark.skywt.cn
@@ -74,6 +78,10 @@ types:
       - name: Analytics
         app: Matomo
         url: https://analytics.skywt.cn
+        method: Docker
+      - name: Subscriptions
+        app: Wallos
+        url: https://subs.skywt.cn
         method: Docker
       - name: Auth
         app: Keycloak
