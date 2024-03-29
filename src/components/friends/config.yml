@@ -52,7 +52,7 @@ types:
         slogan: THIS IS MY STORY.
         url: https://www.isolitude.cn/
         avatar: https://pic.isolitude.cn/2022/01/28/683727a137bb0.png
-      - name: 张哄 Heo
+      - name: 张洪 Heo
         desc: 极具设计感的网站。
         slogan: 分享设计与科技生活。
         url: https://blog.zhheo.com/
@@ -82,6 +82,11 @@ types:
         slogan: 一蓑烟雨任平生。
         url: https://easyf12.top/
         avatar: https://bu.dusays.com/2023/12/24/6587c7764111a.webp
+      - name: 斯文孙
+        desc:
+        slogan:
+        url: https://www.vhrise.com
+        avatar: https://thirdqq.qlogo.cn/g?k=EaL0QicATH5MUdhX9NmzuVQ&b=oidb&s=0&rand=16724791560
   - name: 🌟 旧友们
     desc: 我们曾经终日游荡，在故乡的青山上。
     friends:
