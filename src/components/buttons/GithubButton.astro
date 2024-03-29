@@ -6,14 +6,17 @@ interface Props {
 
 const { type, target } = Astro.props;
 const url = new URL("https://api.github.com/repos/" + target);
-// var headers = new Headers();
-// headers.append("Accept", "application/vnd.github+json");
-// headers.append("X-GitHub-Api-Version", "2022-11-28");
-// const response = await fetch(url, { headers: headers });
-const response = await fetch(url);
-const data = await response.json();
-const starsCount = data.stargazers_count ? data.stargazers_count : "?";
-const forksCount = data.forks ? data.forks : "?";
+let starsCount, forksCount;
+try {
+  const response = await fetch(url);
+  const data = await response.json();
+  starsCount = data.stargazers_count ? data.stargazers_count : "?";
+  forksCount = data.forks ? data.forks : "?";
+} catch(e) {
+  console.log(e);
+  starsCount = "?";
+  forksCount = "?";
+}
 ---
 
 {
