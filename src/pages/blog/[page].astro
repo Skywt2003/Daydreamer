@@ -39,7 +39,10 @@ import Subscribe from "../../components/blog/Subscribe.astro";
         <div class="basis-1/3">
           {
             page.url.prev && (
-              <a href={page.url.prev} class="link">
+              <a
+                href={page.currentPage === 2 ? "/blog" : page.url.prev}
+                class="link"
+              >
                 上一页
               </a>
             )
