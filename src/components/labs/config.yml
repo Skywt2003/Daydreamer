@@ -2,53 +2,57 @@ types:
   - name: 🌟 公共服务
     services:
       - name: Blog
-        app: Typecho
+        app: Typecho 旧博客
         url: https://blog.skywt.cn
         method: Docker, Upyun
-      - name: Whisper
-        app: WordPress
-        url: https://whisper.skywt.cn
-        method: Docker 🚧
+      # - name: Whisper
+      #   app: WordPress 子博客
+      #   url: https://whisper.skywt.cn
+      #   method: Docker 🚧
       - name: Write
-        app: Typecho
+        app: Typecho 手写博客
         url: https://write.skywt.cn
         method: Docker, Upyun
       - name: Books
-        app: Calibre-web
+        app: Calibre-web 电子书管理
         url: https://books.skywt.cn
         method: Docker
       - name: Drop
-        app: Snapdrop
+        app: Snapdrop 文件传输
         url: https://drop.skywt.cn
         method: Docker
       - name: CV
-        app: WebCV
+        app: WebCV 在线简历
         url: https://cv.skywt.cn
         method: Vercel
   - name: 👨‍💻 开发与工具
     services:
       - name: Git
-        app: Gitea
+        app: Gitea 代码仓库
         url: https://git.skywt.cn
         method: Docker
       - name: Code
-        app: Code-server
+        app: Code-server 编辑器
         url: https://code.skywt.cn
         method: Docker
       - name: Password
-        app: VaultWarden
+        app: VaultWarden 密码管理
         url: https://pass.skywt.cn
         method: Docker
       - name: Memos
-        app: memos
+        app: memos 卡片笔记
         url: https://memos.skywt.cn
         method: Docker
-      - name: ChatGPT
-        app: Better ChatGPT
+      - name: Chat
+        app: NextChat GPT 客户端
         url: https://chat.skywt.cn
         method: Vercel
+      - name: ChatGPT
+        app: Better ChatGPT 客户端
+        url: https://chatgpt.skywt.cn
+        method: Vercel
       - name: Docs
-        app: Outline
+        app: Outline 在线文档
         url: https://docs.skywt.cn
         method: Docker
       # - name: Papers
@@ -56,7 +60,7 @@ types:
       #   url: https://paper.skywt.cn
       #   method: Docker
       - name: RSS
-        app: FreshRSS
+        app: FreshRSS 在线阅读器
         url: https://rss.skywt.cn
         method: Docker
       - name: RSSHub
@@ -68,46 +72,46 @@ types:
         url: https://werss.skywt.cn
         method: Docker
       - name: Reading List
-        app: Wallabag
+        app: Wallabag 文章收藏
         url: https://mark.skywt.cn
         method: Docker
       - name: Archive
-        app: ArchiveBox
+        app: ArchiveBox 网页存档
         url: https://archive.skywt.cn
         method: Docker
       - name: Analytics
-        app: Matomo
+        app: Matomo 访客统计
         url: https://analytics.skywt.cn
         method: Docker
       - name: Subscriptions
-        app: Wallos
+        app: Wallos 订阅管理
         url: https://subs.skywt.cn
         method: Docker
       - name: Auth
-        app: Keycloak
+        app: Keycloak 单点登录平台
         url: https://auth.skywt.cn
         method: Docker
       - name: Frp
-        app: Frp
+        app: Frp 内网穿透
         url: https://frp.skywt.cn
         method: Docker
       - name: VPN
-        app: Headscale
+        app: Headscale 虚拟专用网络
         url: https://vpn.skywt.cn
         method: Docker
       - name: Minecraft
-        app: Minecraft Server
+        app: Minecraft 服务器
         url:
         method: Docker 💤
         status: stopped
   - name: 🗃️ 文件存储
     services:
       - name: Cloud
-        app: Nextcloud
+        app: Nextcloud 云套件
         url: https://cloud.skywt.cn
         method: Docker
       - name: Drive
-        app: Cloudreve
+        app: Cloudreve 云盘
         url: https://drive.skywt.cn
         method: Docker
       - name: WebDAV
@@ -115,13 +119,13 @@ types:
         url: https://webdav.skywt.cn
         method: Docker
       - name: Object Storage
-        app: MinIO
+        app: MinIO 对象存储
         url: https://os.skywt.cn
         method: Docker
   - name: ⚙️ 管理工具
     services:
       - name: Console
-        app: Cockpit
+        app: Cockpit 控制面板
         url: https://console.skywt.cn
         method: Systemd
       - name: pgAdmin
@@ -134,14 +138,14 @@ types:
         url: https://phpmyadmin.skywt.cn
         method: Docker
       - name: Uptime
-        app: Upptime
+        app: Upptime 服务器监控
         url: https://uptime.skywt.cn
         method: GitHub Actions
       - name: Status
-        app: Netdata
+        app: Netdata 服务器监控
         url: https://status.skywt.cn
         method: Systemd
       - name: Dashboard
-        app: Grafana
+        app: Grafana 数据面板
         url: https://dash.skywt.cn
         method: Docker
