@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器 Overleaf 部署指南</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 12 月 25 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 4 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/self-host-overleaf" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>程设课的大作业是「图书管理系统」，似乎要我们完成一个「实验报告」。看看发下来的这个范例 pdf 总觉得用 Word 来写会惨不忍睹。「天下苦 Microsoft 久矣！」于是决定尝试一下大名鼎鼎的 $\LaTeX$。</p><p>心血来潮去学了 LaTeX 语法，本来打算在本地 vscode 里写，结果发现这个 LaTeX 的编译器五花八门琳琅满目，配置也极其复杂和不统一。于是想去看看有没有在线的 all-in-one 协作平台，发现了 Overleaf 这个网站，这个程序是开源的，可以部署到自己的服务器上。终于可以愉快地写 LaTeX 啦！</p><!--more--><p>Overleaf 在 Github 上的项目地址在<a href="https://github.com/overleaf/overleaf">这里</a>。<br>由于直接提供了 Docker，所以安装过程非常简单。（新买的腾讯云服务器打算完全采用容器化部署。我简直爱上 Docker 了！！）</p><h2>使用 Toolkit？</h2><p>官方提供了一个叫做 Toolkit 的东西，可以直接参照<a href="https://github.com/overleaf/toolkit/blob/master/doc/quick-start-guide.md">这个文档</a>部署。<br>默认可以帮你装好 MongoDB 和 Redis 的 Docker。启动和停止的脚本也都写好了。</p><pre><code class="lang-sh">git clone https://github.com/overleaf/toolkit.git ./overleaf
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>程设课的大作业是「图书管理系统」，似乎要我们完成一个「实验报告」。看看发下来的这个范例 pdf 总觉得用 Word 来写会惨不忍睹。「天下苦 Microsoft 久矣！」于是决定尝试一下大名鼎鼎的 $\LaTeX$。</p><p>心血来潮去学了 LaTeX 语法，本来打算在本地 vscode 里写，结果发现这个 LaTeX 的编译器五花八门琳琅满目，配置也极其复杂和不统一。于是想去看看有没有在线的 all-in-one 协作平台，发现了 Overleaf 这个网站，这个程序是开源的，可以部署到自己的服务器上。终于可以愉快地写 LaTeX 啦！</p><!--more--><p>Overleaf 在 Github 上的项目地址在<a href="https://github.com/overleaf/overleaf">这里</a>。<br>由于直接提供了 Docker，所以安装过程非常简单。（新买的腾讯云服务器打算完全采用容器化部署。我简直爱上 Docker 了！！）</p><h2>使用 Toolkit？</h2><p>官方提供了一个叫做 Toolkit 的东西，可以直接参照<a href="https://github.com/overleaf/toolkit/blob/master/doc/quick-start-guide.md">这个文档</a>部署。<br>默认可以帮你装好 MongoDB 和 Redis 的 Docker。启动和停止的脚本也都写好了。</p><pre><code class="lang-sh">git clone https://github.com/overleaf/toolkit.git ./overleaf
 cd overleaf
 bin/init
 nano config/overleaf.rc

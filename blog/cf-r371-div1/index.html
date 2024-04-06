@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@ Codeforces Round #371 Div1 ABC 题解 </span> </h5> <div class="m-2 secondary-co
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Codeforces Round #371 Div1 ABC 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 11 月 11 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf-r371-div1" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>我回来啦！！希望尽早康复 QwQ</p><p>好像是第一次打 div1？</p><!--more--><p><a href="https://codeforces.com/contest/713">Link</a></p><h2>A. Sonya and Queries</h2><p>二叉树记录。</p><h2>B. Searching Rectangles</h2><h3>Description</h3><p>这是一道交互题。</p><p>给出 $n*n$ 的网格，其中有两个标记的长方形区域，保证无重叠。每次可以查询一个长方形区域内包含了几个标记的长方形（完全包含才算包含），返回的答案是 0、1 或者 2。询问次数不超过 200 次。</p><p>输出两个长方形区域的位置。</p><p>$n\le 2^{16}$。</p><h3>Thoughs</h3><p>题目的这个 $n\le 2^{16}$ 强暗示要二分。</p><p>一开始的想法是通过二分可以分别定位两个矩形的各个边界（即延长两个矩形的各条边形成「大矩形」的边界），然后直接验证，如果不正确则交换两个矩形的左边界、右边界。</p><p>但是 Test#4 的这组数据把这个想法 hack 了：</p><pre><code>10
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>我回来啦！！希望尽早康复 QwQ</p><p>好像是第一次打 div1？</p><!--more--><p><a href="https://codeforces.com/contest/713">Link</a></p><h2>A. Sonya and Queries</h2><p>二叉树记录。</p><h2>B. Searching Rectangles</h2><h3>Description</h3><p>这是一道交互题。</p><p>给出 $n*n$ 的网格，其中有两个标记的长方形区域，保证无重叠。每次可以查询一个长方形区域内包含了几个标记的长方形（完全包含才算包含），返回的答案是 0、1 或者 2。询问次数不超过 200 次。</p><p>输出两个长方形区域的位置。</p><p>$n\le 2^{16}$。</p><h3>Thoughs</h3><p>题目的这个 $n\le 2^{16}$ 强暗示要二分。</p><p>一开始的想法是通过二分可以分别定位两个矩形的各个边界（即延长两个矩形的各条边形成「大矩形」的边界），然后直接验证，如果不正确则交换两个矩形的左边界、右边界。</p><p>但是 Test#4 的这组数据把这个想法 hack 了：</p><pre><code>10
 1 1 10 1
 5 5 5 10</code></pre><p>现在看来，这种明显没有想清楚也没有证明的做法我是怎么有胆交 6 发的……</p><h3>Analysis</h3><p>其实考虑如果只有一个长方形，问题就非常简单，直接用二分法可做。</p><p>现在有两个长方形，但是给出了一个保证：一定没有重叠。那么一定可以找到一条平行于 $x$ 轴或者 $y$ 轴的分界线，使得这条分界线把 $n*n$ 的网格分为两部分，每个部分各自独立包含一个完整的长方形。（这个是非常重要但是没有想到的性质 TAT）</p><p>首先可以二分枚举这个分界线，然后对于分出的两块，每块里只有一个矩形，二分可做。</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;

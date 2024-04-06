@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>乘法逆元三种求法总结</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 02 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/inverse" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>当我们取模的时候，被模数很大，无法直接计算其值，我们就会用取模运算的下面两个性质：</p><p>$$
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>当我们取模的时候，被模数很大，无法直接计算其值，我们就会用取模运算的下面两个性质：</p><p>$$
 (a+b) \bmod x=((a \bmod x)+(b \bmod x))\bmod x \\
 (a\ast b) \bmod x=((a \bmod x)\ast (b \bmod x))\bmod x
 $$</p><p>那么对于除法，是否也满足这个式子呢？</p><p>$$(a \div b) \bmod x=((a \bmod x)\div (b \bmod x))\bmod x$$</p><!--more--><p>很显然也很遗憾，不满足。很容易找到反例：</p><p>$$(15 \div 5)\bmod 3=0 \not = ((15 \bmod 3)\div(5 \bmod 3))$$</p><p>那么当除数很大的时候怎么算呢？这就要用到<strong>乘法逆元</strong>了。</p><p>温馨提示：<br>在阅读本文之前建议先阅读：<a href="https://skywt.cn/posts/euclidean-algorithm/" title="欧几里德算法与拓展欧几里德算法详解">欧几里德算法与拓展欧几里德算法详解</a> 与 <a href="https://skywt.cn/posts/euler-and-fermat/" title="欧拉函数、费马小定理与欧拉定理详解">欧拉函数、费马小定理与欧拉定理详解</a>。<br>本文中有大量 KaTeX 公式，请确保浏览器支持，否则卡到超乎你想象。<br>Windows 可以在控制面板-程序-卸载程序-卸载\更新 Windows 组件中卸载IE浏览器。<br>本文中 (a,b) 或者 gcd(a,b) 表示a、b的最大公因数。</p><p>本文隶属&lceil; <a href="https://skywt.cn/posts/category/oi/number-theory/" title="数论学习系列">数论学习系列</a> &rfloor;。</p><h2>乘法逆元的定义</h2><p>设 $a,p \in Z$，满足 $(a,p)=1$，并且</p><p>$$

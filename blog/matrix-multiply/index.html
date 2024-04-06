@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>矩阵乘法与矩阵快速幂 求斐波那契数列第 n 项</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 16 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/matrix-multiply" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>斐波那契（Fibonacci）数列的递推式是：$F_{i}=F_{i-1}+F_{i-2}$ 。根据这个递推式，我们可以在 $\Theta (n)$ 复杂度内求出第 n 项，但是当 n 很大时，这种方法就显得很慢。其实利用矩阵快速幂，我们可以在 $\Theta (\log_2 n)$ 内求出第 n 项。</p><!--more--><h2>矩阵</h2><h3>定义</h3><p>一个 m×n 的<strong>矩阵</strong>（matrix）是一个由 m 行（row）n 列（column）元素排列成的矩形阵列。矩阵里的元素可以是数字、符号或数学式。例如，以下就是一个 2×3 的矩阵：</p><pre><code class="lang-math">\begin{bmatrix}
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>斐波那契（Fibonacci）数列的递推式是：$F_{i}=F_{i-1}+F_{i-2}$ 。根据这个递推式，我们可以在 $\Theta (n)$ 复杂度内求出第 n 项，但是当 n 很大时，这种方法就显得很慢。其实利用矩阵快速幂，我们可以在 $\Theta (\log_2 n)$ 内求出第 n 项。</p><!--more--><h2>矩阵</h2><h3>定义</h3><p>一个 m×n 的<strong>矩阵</strong>（matrix）是一个由 m 行（row）n 列（column）元素排列成的矩形阵列。矩阵里的元素可以是数字、符号或数学式。例如，以下就是一个 2×3 的矩阵：</p><pre><code class="lang-math">\begin{bmatrix}
    1 &amp; 2 &amp; 3 \\\\
    4 &amp; 6 &amp;5
 \end{bmatrix}</code></pre><p>矩阵是线性代数的知识，更多这里就不介绍了。</p><h3>矩阵的加减法</h3><p>矩阵的加法减法很简单：</p><pre><code class="lang-math">\begin{bmatrix}

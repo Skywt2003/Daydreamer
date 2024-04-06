@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>记一次服务器 MySQL 服务崩坏经历…</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 07 月 22 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/beng" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>今天打开我博客突然再次出现了 database error 的信息……显然 MySQL 服务再次崩坏了。上次崩坏已经尝试过跳大系统栈的方法，这次的崩坏仿佛是另一种错误（吐血……）。</p><!--more--><h2>调整系统栈大小</h2><p>之前服务器的崩坏也是 MySQL 服务停止运行，打开 <code>/var/log/mysqld.log</code>，发现下面一行错误信息：</p><pre><code>InnoDB: Error: pthread_create returned 11
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>今天打开我博客突然再次出现了 database error 的信息……显然 MySQL 服务再次崩坏了。上次崩坏已经尝试过跳大系统栈的方法，这次的崩坏仿佛是另一种错误（吐血……）。</p><!--more--><h2>调整系统栈大小</h2><p>之前服务器的崩坏也是 MySQL 服务停止运行，打开 <code>/var/log/mysqld.log</code>，发现下面一行错误信息：</p><pre><code>InnoDB: Error: pthread_create returned 11
 </code></pre><p>去 Google 了一番，看到大部分人都说大概是系统栈大小的问题。（这里有个坑，网上很多人说的执行 <code>ulimit -s unlimited</code> 命令<strong>是没有用的</strong>！因为 ulimit 这个命令只在当前 shell 会话有效，也就是说当你关闭 SSH 连接的终端，它就会改回去……（不信可以试试））</p><p>最后的解决办法是：修改 <code>/etc/security/limits.conf</code> 这个文件。在里面（根据文件内的指导）加上：</p><pre><code class="lang-bash">*                soft    stack           28000
 *                hard    stack           32768</code></pre><p>这样就能成功、永久调整系统栈大小了～</p><h2>调整 InnoDB 引擎的缓冲区大小</h2><p>今天的船新崩坏发生在 2:30 左右（当时我可能还在外面浪……），回来一看博客上不了了。马上去看 MySQL 日志（<code>/var/log/mysqld.log</code>），但是并没有看到明显的 Error 信息，只看到一行行 Note 信息，然后就莫名其妙停住了……</p><p>仔细看发现这样一行信息：</p><pre><code>2018-07-22 14:35:27 11124 [Note] InnoDB: The log sequence numbers 146002231 and 146002231 in ibdata files do not match the log sequence number 246597872 in the ib_logfiles!
 2018-07-22 14:35:27 11124 [Note] InnoDB: Database was not shutdown normally!

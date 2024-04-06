@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>湖大个人门户登录浅析与实现</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 05 月 13 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hnu-portal-login-analysis-implementation" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>最初目的只是想看看个人门户查询图书馆借阅书籍的接口，写个还书提醒的程序（因为借的书总是忘记还，过期了图书馆不仅不会提醒还不能直接续借，得付滞纳金……），结果就一发不可收拾，研究了一下 HNU 的个人门户登录逻辑并用 Python 浅浅实现了一下。</p><!--more--><p><strong>⚠️ 警告：本文介绍的研究试验仅供学习交流，请勿用于任何非法用途。</strong></p><p>提示：为了保证账号安全性，本文中所有的示例字符串都进行了一些字符的修改。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="湖南大学「统一身份认证」截图"></p><p>研究地址：<a href="http://cas.hnu.edu.cn/cas/login">http://cas.hnu.edu.cn/cas/login</a>，其实是「统一身份认证」，应该是想做一个类似 SSO 的东西。非常神奇的是这个网站直接用 https 访问会出错，但是登录之后又会跳转 https。</p><h2>按下「登录」之后</h2><p>审查元素可以看到整个表单的 HTML 代码是这样的：</p><pre><code class="lang-html">&lt;form id=&quot;fm1&quot; action=&quot;/cas/login&quot; method=&quot;post&quot; data-bitwarden-watching=&quot;1&quot;&gt;
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>最初目的只是想看看个人门户查询图书馆借阅书籍的接口，写个还书提醒的程序（因为借的书总是忘记还，过期了图书馆不仅不会提醒还不能直接续借，得付滞纳金……），结果就一发不可收拾，研究了一下 HNU 的个人门户登录逻辑并用 Python 浅浅实现了一下。</p><!--more--><p><strong>⚠️ 警告：本文介绍的研究试验仅供学习交流，请勿用于任何非法用途。</strong></p><p>提示：为了保证账号安全性，本文中所有的示例字符串都进行了一些字符的修改。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="湖南大学「统一身份认证」截图"></p><p>研究地址：<a href="http://cas.hnu.edu.cn/cas/login">http://cas.hnu.edu.cn/cas/login</a>，其实是「统一身份认证」，应该是想做一个类似 SSO 的东西。非常神奇的是这个网站直接用 https 访问会出错，但是登录之后又会跳转 https。</p><h2>按下「登录」之后</h2><p>审查元素可以看到整个表单的 HTML 代码是这样的：</p><pre><code class="lang-html">&lt;form id=&quot;fm1&quot; action=&quot;/cas/login&quot; method=&quot;post&quot; data-bitwarden-watching=&quot;1&quot;&gt;
     &lt;div class=&quot;form-group&quot;&gt;
         &lt;p class=&quot;error text-left&quot; id=&quot;errormsg&quot;&gt;&lt;/p&gt;
         &lt;div class=&quot;input-group&quot;&gt;

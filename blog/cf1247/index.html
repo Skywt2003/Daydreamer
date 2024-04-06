@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@ Codeforces Round #596 Div2 题解 </span> </h5> <div class="m-2 secondary-color"
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Codeforces Round #596 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 10 月 28 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf1247" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>Link: <a href="https://codeforces.com/contest/1247">Codeforces Round #596 (Div. 2, based on Technocup 2020 Elimination Round 2)</a></p><h1>D - Power Products</h1><h2>Description</h2><p>给出一个长度为 $n$ 的序列和一不小于 2 的整数 $k$，要求找出数字对 $(i,j)$ 的数量，满足 $i\lt j$ 并且存在一个整数 $x$ 使得 $a_i\ast a_j = x^k$。</p><!--more--><h2>Solution</h2><p>对于每个数字进行质因数分解，分解成 $x=p_1^{k_1}+p_2^{k_2}+\dots+p_m^{k_m}$，我们用一个 <code>std::vector</code> 存储若干个二元组 $(p_i,k_i)$，表示这个数字有 $k_i$ 个 $p_i$ 这个质因子，显然存储的时候这个 $k_i$ 次数可以对题中所给的 $K$ 取模。如果存在两个数字满足 $p_i$ 集合相同，并且对于所有 $p_i$，$k_1i + k_2i = K$，则说明这两个数字相乘能得到 $x^K$。<br>用 <code>std::map</code> 维护即可。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>Link: <a href="https://codeforces.com/contest/1247">Codeforces Round #596 (Div. 2, based on Technocup 2020 Elimination Round 2)</a></p><h1>D - Power Products</h1><h2>Description</h2><p>给出一个长度为 $n$ 的序列和一不小于 2 的整数 $k$，要求找出数字对 $(i,j)$ 的数量，满足 $i\lt j$ 并且存在一个整数 $x$ 使得 $a_i\ast a_j = x^k$。</p><!--more--><h2>Solution</h2><p>对于每个数字进行质因数分解，分解成 $x=p_1^{k_1}+p_2^{k_2}+\dots+p_m^{k_m}$，我们用一个 <code>std::vector</code> 存储若干个二元组 $(p_i,k_i)$，表示这个数字有 $k_i$ 个 $p_i$ 这个质因子，显然存储的时候这个 $k_i$ 次数可以对题中所给的 $K$ 取模。如果存在两个数字满足 $p_i$ 集合相同，并且对于所有 $p_i$，$k_1i + k_2i = K$，则说明这两个数字相乘能得到 $x^K$。<br>用 <code>std::map</code> 维护即可。</p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 
 #define int long long
 

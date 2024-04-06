@@ -23,10 +23,10 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.FA4QTjbH.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.7BsCWRhj.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
 </style>
-<link rel="stylesheet" href="/_astro/friends.iCtw_auv.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+<link rel="stylesheet" href="/_astro/friends.S8xh7Zkr.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -76,7 +76,7 @@
   );
 </script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>使用 Wireshark 进行嗅探实验</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 03 月 26 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 2 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
 ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/wireshark-sniff" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="prose dark:prose-neutral dark:prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>（这是 HNU 肖晟老师的《计算机网络》第一次实验）</p><!--more--><h2>实验环境</h2><p>手机（iPhone）开启热点作为 gateway，让电脑（MacBook）连接热点作为<strong>攻击者</strong>，平板（iPad）也连接热点作为 <strong>victim</strong>。让我们来看看，当 victim 上网时，攻击者能看到什么。</p><h2>混杂模式</h2><p>大多数的网卡都支持开启混杂模式（promiscuous mode），只是一般工作在非混杂模式下。<br>在混杂模式下，网卡可以接收所有经过它的数据流，不论目的地是否是它。</p><p>在一般 Linux 发行版中需要手动开启混杂模式：</p><pre><code class="lang-shell">ip link set eth0 promisc on</code></pre><p>开启之后，网卡应该就可以支持混杂模式了。</p><p>在终端使用 <code>ifconfig</code> 查看网卡接口信息，接口的 flags 中包含 PROMISC 就说明目前支持混杂模式，例如：</p><pre><code>...
+</p> <article class="content" data-astro-cid-4sn4zg3r> <p>（这是 HNU 肖晟老师的《计算机网络》第一次实验）</p><!--more--><h2>实验环境</h2><p>手机（iPhone）开启热点作为 gateway，让电脑（MacBook）连接热点作为<strong>攻击者</strong>，平板（iPad）也连接热点作为 <strong>victim</strong>。让我们来看看，当 victim 上网时，攻击者能看到什么。</p><h2>混杂模式</h2><p>大多数的网卡都支持开启混杂模式（promiscuous mode），只是一般工作在非混杂模式下。<br>在混杂模式下，网卡可以接收所有经过它的数据流，不论目的地是否是它。</p><p>在一般 Linux 发行版中需要手动开启混杂模式：</p><pre><code class="lang-shell">ip link set eth0 promisc on</code></pre><p>开启之后，网卡应该就可以支持混杂模式了。</p><p>在终端使用 <code>ifconfig</code> 查看网卡接口信息，接口的 flags 中包含 PROMISC 就说明目前支持混杂模式，例如：</p><pre><code>...
 en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
     options=6463&lt;RXCSUM,TXCSUM,TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM&gt;
     ether 1c:91:80:e2:0f:f6 
