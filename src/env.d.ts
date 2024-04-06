@@ -81,3 +81,8 @@ interface Service {
   method: string;
   status?: string;
 }
+
+interface Selection {
+  name: string;
+  slugs: [string];
+}
