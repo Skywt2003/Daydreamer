@@ -11,17 +11,17 @@ import { marked } from "marked";
 {
   posts.map((post: Post) => (
     <>
-      <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
+      <article class="content">
         {post.fields.headPic && post.fields.headPic.value && (
           <img src={post.fields.headPic.value} alt={post.title} />
         )}
-        <a href={"/blog/" + post.slug} class="no-underline link">
+        <a href={"/blog/" + post.slug} class="no-underline-by-default">
           <h1>{post.title}</h1>
         </a>
-        <p set:html={marked.parse(post.digest)} />
-        <a href={"/blog/" + post.slug} class="no-underline link">
-          阅读更多
-        </a>
+        <div class="summary">
+          <Fragment set:html={marked.parse(post.digest)} />
+        </div>
+        <a href={"/blog/" + post.slug}>阅读更多</a>
       </article>
       <hr class="my-8" />
     </>
@@ -29,18 +29,10 @@ import { marked } from "marked";
 }
 
 <style lang="scss">
-  .link {
-    @apply transition-all;
-    &:hover {
-      @apply underline;
-    }
-  }
-
-  img {
-    @apply shadow-lg rounded;
-  }
-
+  // typography 有一点不好：样式不能直接覆盖
+  // 因为其默认设置的样式优先级比传入 tailwind 样式优先级高
+  // 只能以这种丑陋的方式应用样式
   h1 {
-    @apply leading-normal;
+    @apply leading-relaxed;
   }
 </style>

@@ -150,3 +150,38 @@ h5 {
 .all-0 {
   @apply left-0 right-0 top-0 bottom-0;
 }
+
+// 应用 typography 的样式，并进行一些微调
+.content {
+  @apply prose dark:prose-neutral dark:prose-invert max-w-none;
+  img {
+    @apply shadow-lg rounded;
+  }
+  blockquote {
+    @apply not-italic;
+    strong,
+    b {
+      @apply font-bold;
+    }
+  }
+}
+
+// typography 默认将所有 a 都加上下划线
+// 虽然这可以很好地提示用户超链接，但是：
+// 1）当应用于标题时不美观
+// 2）当应用于大量超链接列表时，无必要（因为用户已知道都是超链接）
+// 所以添加此属性，消除默认下划线，改为 hover 下划线
+.no-underline-by-default {
+  @apply decoration-transparent hover:decoration-inherit transition-all;
+}
+
+.summary {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-lg mt-0;
+  }
+}

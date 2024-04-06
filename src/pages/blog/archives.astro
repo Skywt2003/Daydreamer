@@ -32,7 +32,7 @@ function formatTimestamp(timestamp: number) {
       <h1 class="primary-color">文章归档</h1>
       <p class="mt-4 primary-color">共发布 {posts.length} 篇文章。</p>
       <hr class="my-8" />
-      <article class="prose dark:prose-neutral dark:prose-invert max-w-none">
+      <article class="content">
         <ul>
           {
             posts.map(
@@ -41,9 +41,14 @@ function formatTimestamp(timestamp: number) {
                 post.title != " " && (
                   <li>
                     {formatTimestamp(post.created)}
-                    <a href={"/blog/" + post.slug}>{post.title}</a>
+                    <a
+                      href={"/blog/" + post.slug}
+                      class="no-underline-by-default"
+                    >
+                      {post.title}
+                    </a>
                   </li>
-                ),
+                )
             )
           }
         </ul>

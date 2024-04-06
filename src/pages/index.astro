@@ -42,7 +42,7 @@ import Rating from "../components/Rating.astro";
                 }
               }, 5000);
             },
-            { once: false },
+            { once: false }
           );
           document.addEventListener(
             "astro:before-swap",
@@ -50,7 +50,7 @@ import Rating from "../components/Rating.astro";
               clearTimeout(hintTimer);
               hintTimer = null;
             },
-            { once: false },
+            { once: false }
           );
         </script>
         <p id="too-small-hint" class="mt-2 primary-color">
@@ -147,7 +147,7 @@ import Rating from "../components/Rating.astro";
     <section>
       <div class="container primary-color">
         <h2>关于本站</h2>
-        <div class="mt-8 prose dark:prose-neutral dark:prose-invert max-w-none">
+        <div class="mt-8 content">
           <p class="card p-2">
             ⚙️
             这个网站目前还在开发测试阶段，只上线了部分功能，并且可能会出现奇怪的
