@@ -1,0 +1,26 @@
+selections:
+  - name: 帮你踩过坑了！
+    slugs:
+      - macbook-apple-silicon-survival-guide-in-hnu-csee
+      - kali-linux-install-log
+      - self-host-overleaf
+      - seven-notes-and-wiki-systems-evaluation
+      - typecho-pjax-and-some-problems
+  - name: 从零开始……
+    slugs:
+      - configure-a-modern-frontend-toolchain-from-scratch
+      - best-practices-for-building-a-blog-from-scratch
+  - name: 就是喜欢折腾！
+    slugs:
+      # - yubikey-purchase
+      - yubikey-intro
+      - configure-a-comfortable-zsh-environment
+      - automatic-remote-dr-solution-for-servers-free
+      - gracefully-caddy-wildcard-certificates-and-404-page
+  - name: 杂记和我的故事。
+    slugs:
+      - new-personal-website-daydreamer-design-development-log
+      - school-closure-stories
+      - college-life-first-experience
+      - june-the-sea
+      - helloworld

@@ -13,6 +13,7 @@ const posts = data.data.dataSet;
 import Layout from "../layouts/Layout.astro";
 import Passages from "../components/blog/Passages.astro";
 import Subscribe from "../components/blog/Subscribe.astro";
+import Selection from "../components/blog/Selection.astro";
 ---
 
 <Layout title="博客" path={[{ title: "博客", url: "" }]}>
@@ -26,10 +27,21 @@ import Subscribe from "../components/blog/Subscribe.astro";
           href="https://mailchi.mp/97e1f54049cd/subscribe"
           class="link underline">使用邮箱订阅本博客</a
         >。欢迎订阅！
-        <br />🗃️ 前往<a href="/blog/archives" class="link underline">文章归档</a
-        >页面可一览全部文章。
       </p>
-      <Passages posts={posts} />
+
+      <h1>文章精选</h1>
+      <Selection />
+      <p class="card p-2 leading-loose">
+        🗃️ 前往「<a href="/blog/archives" class="link underline">文章归档</a
+        >」页面即可一览博客的全部文章。
+      </p>
+
+      <hr class="my-16" />
+      <h1>最新文章</h1>
+      <div class="mt-16">
+        <Passages posts={posts} />
+      </div>
+
       <div class="primary-color flex">
         <div class="basis-1/3"></div>
         <div class="basis-1/3 text-center">

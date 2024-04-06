@@ -1,0 +1,41 @@
+---
+import yml from "./selections.yml";
+
+async function getPost(slug: string) {
+  const url = new URL("https://blog.skywt.cn/api/post");
+  url.search = new URLSearchParams({
+    slug: slug,
+  }).toString();
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.data;
+}
+---
+
+<div class="flex flex-wrap content my-8">
+  {
+    yml.selections.map((selection: Selection) => (
+      <div class="basis-full sm:basis-1/2 px-2">
+        <h2>{selection.name}</h2>
+        <ul>
+          {selection.slugs.map(async (slug) => {
+            const post = await getPost(slug);
+            return (
+              <li>
+                <a href={"/blog/" + slug} class="no-underline-by-default">
+                  {post.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  h2 {
+    @apply mt-4;
+  }
+</style>
