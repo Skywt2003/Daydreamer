@@ -1,10 +1,15 @@
 ---
+interface Props {
+  lg: [number, number, number, number];
+  sm: [number, number, number, number];
+}
 
+const { lg, sm } = Astro.props;
 ---
 
 <div
-  id="inner-wrapper"
-  class="absolute all-0 m-2 sm:m-4 flex flex-col justify-center bento-border primary-color"
+  id="box-wrapper"
+  class="flex flex-col justify-center bento-border primary-color relative"
   onclick=""
 >
   <p class="absolute top-4 left-4 text-sm z-10">
@@ -14,10 +19,6 @@
     <h3 class="text-white">
       湖南省<br />长沙市<br />岳麓区
     </h3>
-    <!-- <button id="get-distance" class="mt-2">
-      <i class="ri-map-pin-user-line"></i>
-      <span id="distance">离我多远？</span>
-    </button> -->
   </div>
 
   <div class="self-center border-2 border-white rounded-full shadow-lg z-10">
@@ -25,91 +26,23 @@
   </div>
 </div>
 
-<!-- <script>
-  type Location = {
-    lat: number;
-    lng: number;
-  };
-
-  const targetLocation: Location = {
-    lat: 40.7128,
-    lng: -74.006,
-  };
-
-  const getDistanceEle = document.querySelector("#get-distance") as HTMLElement;
-  const distanceLabel = document.querySelector("#distance") as HTMLElement;
-
-  const showDistance: () => void = () => {
-    getDistanceEle.classList.remove("link");
-    getDistanceEle.removeEventListener("click", showDistance);
-    distanceLabel.innerText = "获取定位中……";
-
-    if (!navigator.geolocation) {
-      distanceLabel.innerText = "你的浏览器似乎不支持定位。";
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userLocation: Location = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        const distance = getDistance(userLocation, targetLocation);
-        console.log(distance);
-        distanceLabel.innerText =
-          "离你 " + distance.toFixed(2).toString() + " 公里。";
-      },
-      (error) => {
-        let errorText = "未知错误。";
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            errorText = "您拒绝了给予位置信息。";
-            break;
-          case error.POSITION_UNAVAILABLE:
-            errorText = "定位不可用。";
-            break;
-          case error.TIMEOUT:
-            errorText = "获取定位超时。";
-            break;
-          default:
-            errorText = "未知错误。";
-            break;
-        }
-        distanceLabel.innerText = "错误：" + errorText;
-      },
-    );
-  };
-
-  getDistanceEle.addEventListener("click", showDistance);
-
-  // 使用 Haversine 公式计算两个位置之间的距离
-  function getDistance(location1: Location, location2: Location) {
-    const R = 6371; // 地球的平均半径，单位是公里
-    const dLat = deg2rad(location2.lat - location1.lat);
-    const dLon = deg2rad(location2.lng - location1.lng);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(location1.lat)) *
-        Math.cos(deg2rad(location2.lat)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const distance = R * c; // 距离，单位是公里
-    return distance;
-  }
-
-  function deg2rad(deg: number) {
-    return deg * (Math.PI / 180);
-  }
-</script> -->
-
-<style lang="scss">
+<style
+  define:vars={{
+    lg: lg.join(" / "),
+    sm: sm.join(" / "),
+  }}
+  lang="scss"
+>
   #address {
     display: none;
   }
 
-  #inner-wrapper {
+  #box-wrapper {
+    grid-area: var(--sm);
+    @screen lg {
+      grid-area: var(--lg);
+    }
+
     @apply transition-all bg-center bg-cover bg-no-repeat bg-blend-overlay bg-transparent;
     background-image: url("/map.png");
     @media (prefers-color-scheme: dark) {

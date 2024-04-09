@@ -1,30 +1,54 @@
 ---
+// Box 本身是一个 flexbox，默认 direction: column 且 justify-content: center
+// 可以传入额外的 class，比如 items-center
+// 如果要文字居中，相比之下，使其中元素 text-center 更好。统一使用此方式
 interface Props {
   url?: string;
+  lg: [number, number, number, number];
+  sm: [number, number, number, number];
+  class?: string;
 }
 
-const { url } = Astro.props;
+const { url, lg, sm, class: className } = Astro.props;
 ---
 
 {
   url ? (
-    <a href={url}>
-      <div
-        id="inner-wrapper"
-        class="all-0 bento-border bento-bg clickable primary-color"
-      >
-        <slot />
-      </div>
+    <a
+      href={url}
+      id="box-wrapper"
+      class={
+        "bento-border bento-bg clickable primary-color" +
+        (className ? " " + className : "")
+      }
+    >
+      <slot />
     </a>
   ) : (
-    <div id="inner-wrapper" class="all-0 bento-border bento-bg primary-color">
+    <div
+      id="box-wrapper"
+      class={
+        "bento-border bento-bg primary-color" +
+        (className ? " " + className : "")
+      }
+    >
       <slot />
     </div>
   )
 }
 
-<style lang="scss">
-  #inner-wrapper {
-    @apply absolute m-2 sm:m-4 flex flex-col justify-center;
+<style
+  define:vars={{
+    lg: lg.join(" / "),
+    sm: sm.join(" / "),
+  }}
+  lang="scss"
+>
+  #box-wrapper {
+    @apply flex flex-col justify-center p-4 relative;
+    grid-area: var(--sm);
+    @screen lg {
+      grid-area: var(--lg);
+    }
   }
 </style>

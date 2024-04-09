@@ -1,215 +1,175 @@
 ---
-import BoxWrapper from "./BoxWrapper.astro";
-
 import Box from "./Box.astro";
 import BgBox from "./BgBox.astro";
 import Map from "./Map.astro";
-import MBTI from "./MBTI.astro";
-import LearnMore from "./LearnMore.astro";
 ---
 
 <div id="too-small-hint" class="text-center secondary-color mt-4">
   <i class="ri-alert-line text-4xl"></i>
   <p class="mt-2">您的屏幕太小，这一部分的自我介绍 Bento 组件无法正常显示。</p>
-  <p class="mt-2">请尝试在浏览器中缩小页面字号，或者使用屏幕更大的设备浏览，</p>
   <p class="mt-2">
-    <a class="link" href="https://blog.skywt.cn/about">
+    请尝试在浏览器选项中缩小页面字号，或者使用屏幕更大的设备浏览，
+  </p>
+  <p class="mt-2">
+    <a class="link underline" href="/about">
       看看 <i class="ri-cup-line"></i> 关于 页面
     </a>
   </p>
 </div>
 
-<div id="bento-wrapper" class="relative mx-auto max-w-md lg:max-w-4xl mt-8">
-  <BoxWrapper top="0" left="0" width="25%" height="25%" smt="50%" sml="0">
-    <Box>
-      <div class="p-4">
-        <h3>
-          💻📱⌚️🛠️<br />
-          科技数码<br />爱好者
-        </h3>
-      </div>
-    </Box>
-  </BoxWrapper>
+<div
+  id="bento-wrapper"
+  class="mt-16 grid gap-4 sm:gap-6 justify-center grid-rows-[repeat(20,_5rem)] grid-cols-[repeat(4,_5rem)] lg:grid-rows-[repeat(10,_5rem)] lg:grid-cols-[repeat(8,_5rem)]"
+>
+  <Box lg={[1, 1, 3, 3]} sm={[1, 1, 3, 3]}>
+    <h3>
+      💻📱⌚️🛠️<br />
+      科技数码<br />爱好者
+    </h3>
+  </Box>
 
-  <BoxWrapper top="0" left="25%" width="25%" height="25%" smt="50%" sml="50%">
-    <Box>
-      <div class="p-4">
-        <h3>Self-hoster</h3>
-        <a href="/lab" class="block link mt-2 secondary-color">
-          看看我的<br />实验室 <i class="ri-external-link-line"></i>
-        </a>
-      </div>
-    </Box>
-  </BoxWrapper>
+  <Box lg={[1, 3, 3, 5]} sm={[1, 3, 3, 5]}>
+    <h3>Self-hoster</h3>
+    <a href="/lab" class="block link mt-2 secondary-color">
+      看看我的<br />实验室 <i class="ri-external-link-line"></i>
+    </a>
+  </Box>
 
-  <BoxWrapper top="0" left="50%" width="50%" height="25%" smt="100%" sml="0">
-    <MBTI />
-  </BoxWrapper>
-
-  <BoxWrapper top="25%" left="0%" width="25%" height="50%" smt="200%" sml="0">
-    <BgBox bg_image="url('/quzhou_tower.jpeg')">
-      <div class="p-4 z-10">
-        <p class="absolute top-4 left-4 text-sm">
-          <i class="ri-home-line"></i> 故乡
-        </p>
-        <h3 class="pt-2 text-center text-white">
-          浙<br />江<br />衢<br />州
-        </h3>
-      </div>
-    </BgBox>
-  </BoxWrapper>
-
-  <BoxWrapper
-    top="25%"
-    left="25%"
-    width="25%"
-    height="25%"
-    smt="200%"
-    sml="50%"
-  >
-    <BgBox bg_image="url('/hnu.jpg')">
-      <div class="p-4">
-        <p class="absolute top-4 left-4 text-sm">
-          <i class="ri-graduation-cap-line"></i> 本科在读
-        </p>
-        <div class="text-center">
-          <h3 class="pt-2 text-white">湖南大学</h3>
-          <p class="mt-2 font-bold">Hunan University</p>
-        </div>
-      </div>
-    </BgBox>
-  </BoxWrapper>
-
-  <BoxWrapper top="25%" left="50%" width="50%" height="25%" smt="150%" sml="0">
-    <Map />
-  </BoxWrapper>
-
-  <BoxWrapper top="50%" left="25%" width="50%" height="25%" smt="0" sml="0">
-    <div class="absolute all-0 m-4 flex flex-col justify-center items-center">
-      <h3 class="primary-color" id="type"></h3>
+  <Box lg={[1, 5, 3, 9]} sm={[3, 1, 5, 5]}>
+    <div class="text-right">
+      <img
+        src="/infj.svg"
+        alt="INFJ"
+        class="absolute left-0 bottom-0 h-[120%]"
+      />
+      <p class="absolute top-4 right-4 text-sm secondary-color">
+        <i class="ri-user-heart-line"></i> MBTI 人格类型
+      </p>
+      <h3 class="text-[#33a474]">
+        INFJ<br />提倡者
+      </h3>
+      <a
+        href="https://www.16personalities.com/infj-personality"
+        class="absolute bottom-4 right-4 text-sm link secondary-color"
+        target="_blank"
+      >
+        了解更多 <i class="ri-external-link-line"></i>
+      </a>
     </div>
-  </BoxWrapper>
-  <script>
-    import TypeIt from "typeit";
-    new TypeIt("#type", {
-      strings: "嗨 👋 我是 SkyWT。<br>很高兴认识你～",
-      speed: 100,
-      waitUntilVisible: true,
-    }).go();
-  </script>
+  </Box>
 
-  <BoxWrapper
-    top="50%"
-    left="75%"
-    width="25%"
-    height="25%"
-    smt="250%"
-    sml="50%"
+  <BgBox
+    lg={[3, 1, 7, 3]}
+    sm={[7, 1, 11, 3]}
+    bg_image="url('/quzhou_tower.jpeg')"
   >
-    <BgBox bg_image="url('/changsha.jpg')" dim={true} />
-  </BoxWrapper>
+    <p class="absolute text-sm top-4 left-4">
+      <i class="ri-home-line"></i> 故乡
+    </p>
+    <h3 class="text-white text-center">
+      浙<br />江<br />衢<br />州
+    </h3>
+  </BgBox>
 
-  <BoxWrapper top="75%" left="0" width="50%" height="25%" smt="300%" sml="0">
-    <Box>
-      <div class="p-4">
-        <h3>
-          <span class="secondary-color">立志成为</span>
-          <br />
-          <span>全栈工程师 ⚙️</span>
-          <!-- <span>独立开发者 👨‍💻</span> -->
-          <!-- <span>黑客与画家 🎨</span> -->
-          <!-- <span>终身学习者 📚</span> -->
-        </h3>
-      </div>
-    </Box>
-  </BoxWrapper>
+  <BgBox lg={[3, 3, 5, 5]} sm={[7, 3, 9, 5]} bg_image="url('/hnu.jpg')">
+    <p class="absolute text-sm top-4 left-4">
+      <i class="ri-graduation-cap-line"></i> 本科在读
+    </p>
+    <h3 class="mt-2 text-center text-white">湖南大学</h3>
+    <p class="mt-2 font-bold text-center">Hunan University</p>
+  </BgBox>
 
-  <BoxWrapper top="75%" left="50%" width="25%" height="25%" smt="350%" sml="0">
-    <Box>
-      <div class="flex flex-col items-center">
-        <img src="/avatar.png" alt="My Avatar" class="rounded-full w-24 h-24" />
-      </div>
-    </Box>
-  </BoxWrapper>
+  <Map lg={[3, 5, 5, 9]} sm={[5, 1, 7, 5]} />
 
-  <BoxWrapper
-    top="75%"
-    left="75%"
-    width="25%"
-    height="12.5%"
-    smt="350%"
-    sml="50%"
+  <BgBox lg={[5, 7, 7, 9]} sm={[9, 3, 11, 5]} bg_image="url('/changsha.jpg')" />
+
+  <Box lg={[5, 3, 9, 7]} sm={[11, 1, 15, 5]}>
+    <h1 class="text-center text-8xl">👨‍💻</h1>
+    <h3 class="text-center mt-6">
+      <span class="secondary-color">立志成为</span>
+      <br />
+      <span>全栈工程师</span>
+    </h3>
+
+    <div class="mt-1 text-lg text-center w-2/3 mx-auto secondary-color">
+      <i class="ri-html5-line"></i>
+      <i class="ri-css3-line"></i>
+      <i class="ri-javascript-line"></i>
+      <i class="ri-reactjs-line"></i>
+      <i class="ri-nextjs-line"></i>
+      <i class="ri-vuejs-line"></i>
+      <i class="ri-svelte-line"></i>
+      <i class="ri-npmjs-line"></i>
+      <i class="ri-nodejs-line"></i>
+      <i class="ri-mini-program-line"></i>
+      <i class="ri-tailwind-css-line"></i>
+      <i class="ri-bootstrap-line"></i>
+      <i class="ri-codepen-line"></i>
+      <i class="ri-safari-line"></i>
+      <i class="ri-chrome-line"></i>
+      <i class="ri-firefox-line"></i>
+      <i class="ri-flutter-line"></i>
+      <i class="ri-apple-line"></i>
+      <i class="ri-android-line"></i>
+      <i class="ri-google-play-line"></i>
+      <i class="ri-windows-line"></i>
+      <i class="ri-copilot-line"></i>
+      <i class="ri-github-line"></i>
+      <i class="ri-openai-line"></i>
+      <i class="ri-open-source-line"></i>
+      <i class="ri-product-hunt-line"></i>
+      <i class="ri-stack-overflow-line"></i>
+    </div>
+  </Box>
+
+  <Box lg={[7, 1, 9, 3]} sm={[15, 1, 17, 3]} class="items-center">
+    <img src="/avatar.png" alt="My Avatar" class="rounded-full w-24 h-24" />
+  </Box>
+
+  <Box lg={[7, 7, 8, 9]} sm={[15, 3, 16, 5]} url="https://cv.skywt.cn">
+    <div class="absolute top-1 right-2 text-sm">
+      <i class="ri-external-link-line"></i>
+    </div>
+    <p class="text-center">
+      <i class="ri-file-list-line"></i>
+      我的简历
+    </p>
+  </Box>
+
+  <Box lg={[8, 7, 9, 9]} sm={[16, 3, 17, 5]} url="mailto:me@skywt.cn">
+    <div class="absolute top-1 right-2 text-sm">
+      <i class="ri-external-link-line"></i>
+    </div>
+    <p class="text-center">
+      <i class="ri-mail-line"></i>
+      me@skywt.cn
+    </p>
+  </Box>
+
+  <Box lg={[9, 1, 11, 3]} sm={[19, 1, 21, 3]}>
+    <h3 class="tertiary-color text-center">
+      不是一个<br />
+      ❌<br />
+      做题家
+    </h3>
+  </Box>
+
+  <Box lg={[9, 3, 11, 7]} sm={[17, 1, 19, 5]}>
+    <p class="font-bold font-kai text-lg pl-6 relative">
+      <i class="ri-double-quotes-l text-xl absolute top-0 left-0"></i>
+      黑客与画家的共同之处，在于他们都是创作者。与作曲家、建筑师、作家一样，黑客和画家都是试图创作出优秀的作品。
+    </p>
+    <p class="mt-2 text-right">——《黑客与画家》</p>
+  </Box>
+
+  <Box
+    lg={[9, 7, 11, 9]}
+    sm={[19, 3, 21, 5]}
+    class="items-center hover:border-8 hover:border-dotted border-gray-300 dark:border-neutral-500"
+    url="/about"
   >
-    <Box url="https://cv.skywt.cn">
-      <div class="p-4">
-        <div class="absolute top-1 right-2 text-sm">
-          <i class="ri-external-link-line"></i>
-        </div>
-        <p class="text-center">
-          <i class="ri-file-list-line"></i>
-          我的简历
-        </p>
-      </div>
-    </Box>
-  </BoxWrapper>
-
-  <BoxWrapper
-    top="87.5%"
-    left="75%"
-    width="25%"
-    height="12.5%"
-    smt="375%"
-    sml="50%"
-  >
-    <Box url="mailto:me@skywt.cn">
-      <div class="p-4">
-        <div class="absolute top-1 right-2 text-sm">
-          <i class="ri-external-link-line"></i>
-        </div>
-        <p class="text-center">
-          <i class="ri-mail-line"></i>
-          me@skywt.cn
-        </p>
-      </div>
-    </Box>
-  </BoxWrapper>
-
-  <BoxWrapper top="100%" left="0%" width="25%" height="25%" smt="450%" sml="0">
-    <Box>
-      <div class="p-4">
-        <h3 class="text-center tertiary-color font-light">
-          不是一个<br />
-          ❌<br />
-          做题家
-        </h3>
-      </div>
-    </Box>
-  </BoxWrapper>
-
-  <BoxWrapper top="100%" left="25%" width="50%" height="25%" smt="400%" sml="0">
-    <Box>
-      <div class="p-8 relative">
-        <i class="ri-double-quotes-l text-2xl absolute top-8 left-8"></i>
-        <p class="font-bold font-kai text-lg pl-8">
-          黑客与画家的共同之处，在于他们都是创作者。与作曲家、建筑师、作家一样，黑客和画家都是试图创作出优秀的作品。
-        </p>
-        <p class="mt-2 text-right">——《黑客与画家》</p>
-      </div>
-    </Box>
-  </BoxWrapper>
-
-  <BoxWrapper
-    top="100%"
-    left="75%"
-    width="25%"
-    height="25%"
-    smt="450%"
-    sml="50%"
-  >
-    <LearnMore />
-  </BoxWrapper>
-
-  <div id="bento-placeholder"></div>
+    <h3>了🤔解<br />更多👉<br />🌟<i class="ri-external-link-line"></i>👀</h3>
+  </Box>
 </div>
 
 <style lang="scss">
@@ -222,13 +182,6 @@ import LearnMore from "./LearnMore.astro";
   #too-small-hint {
     @media (min-width: 375px) {
       @apply hidden;
-    }
-  }
-
-  #bento-placeholder {
-    padding-bottom: 500%;
-    @screen lg {
-      padding-bottom: 125%;
     }
   }
 
