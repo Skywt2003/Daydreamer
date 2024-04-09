@@ -327,22 +327,18 @@ module.exports = {
   plugins: [],
 };</code></pre><p>最后，别忘了安装 <strong>React 本体</strong>，以及其对应的类型定义：</p><pre><code class="lang-bash">npm i react react-dom --save
 npm i @types/react @types/react-dom --save-dev</code></pre><h3>编写 React 组件</h3><p>现在，在 <code>src</code> 下创建 <code>App.tsx</code> 文件，我们可以在其中用 TSX 语法编写一个 React 组件了。</p><p>将之前写的显示时间的组件写进这里面：</p><pre><code class="lang-tsx">// App.tsx
-import React, { Component } from &quot;react&quot;;
+import React from &quot;react&quot;;
 import &quot;./style.css&quot;;
 import moment from &quot;moment&quot;;
 
-class App extends Component {
-  render (): React.JSX.Element {
-    return (
-      &lt;div className=&quot;App&quot;&gt;
-        &lt;h1 className=&quot;text-4xl&quot;&gt;Hello, World!&lt;/h1&gt;
-        &lt;p&gt;{moment().format()}&lt;/p&gt;
-      &lt;/div&gt;
-    );
-  }
-}
-
-export default App;</code></pre><p>为了引用该组件，入口文件 <code>index.ts</code> 也需要用到 TSX 语法。因此，将其重命名为 <code>index.tsx</code>，修改为如下内容：</p><pre><code class="lang-tsx">// index.tsx
+export default function App() {
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;h1 className=&quot;text-4xl&quot;&gt;Hello, World!&lt;/h1&gt;
+      &lt;p&gt;{moment().format()}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre><p>为了引用该组件，入口文件 <code>index.ts</code> 也需要用到 TSX 语法。因此，将其重命名为 <code>index.tsx</code>，修改为如下内容：</p><pre><code class="lang-tsx">// index.tsx
 import React from &quot;react&quot;;
 import { createRoot } from &quot;react-dom/client&quot;;
 
