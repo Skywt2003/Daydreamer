@@ -8,15 +8,37 @@ url.search = new URLSearchParams({
 const response = await fetch(url);
 const data = await response.json();
 const posts = data.data.dataSet;
+const groupedPosts = groupByYear(posts);
 
 import Layout from "../../layouts/Layout.astro";
 
 function formatTimestamp(timestamp: number) {
   const date = new Date(timestamp * 1000);
-  const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return `${month}-${day}`;
+}
+
+interface GroupedPosts {
+  [year: number]: Post[];
+}
+
+function groupByYear(posts: Post[]): GroupedPosts {
+  function getYear(timestamp: number) {
+    const date = new Date(timestamp * 1000);
+    return date.getFullYear();
+  }
+
+  const ret: GroupedPosts = {};
+  posts.forEach((post: Post) => {
+    const year = getYear(post.created);
+    if (ret[year] === undefined) {
+      ret[year] = [];
+    }
+    ret[year].push(post);
+  });
+
+  return ret;
 }
 ---
 
@@ -33,25 +55,38 @@ function formatTimestamp(timestamp: number) {
       <p class="mt-4 primary-color">共发布 {posts.length} 篇文章。</p>
       <hr class="my-8" />
       <article class="content">
-        <ul>
-          {
-            posts.map(
-              (post: Post) =>
-                post.title &&
-                post.title != " " && (
-                  <li>
-                    {formatTimestamp(post.created)}
-                    <a
-                      href={"/blog/" + post.slug}
-                      class="no-underline-by-default"
-                    >
-                      {post.title}
-                    </a>
-                  </li>
-                )
-            )
-          }
-        </ul>
+        {
+          Object.entries(groupedPosts)
+            .sort((a, b) => parseInt(b[0]) - parseInt(a[0]))
+            .map((entry) => (
+              <>
+                <h2>{entry[0]}</h2>
+                <ul>
+                  {entry[1].map(
+                    (post: Post) =>
+                      post.title &&
+                      post.title !== " " && (
+                        <li>
+                          {formatTimestamp(post.created)}
+                          <a
+                            href={"/blog/" + post.slug}
+                            class="no-underline-by-default"
+                          >
+                            {post.title}
+                          </a>
+                          {post.commentsNum > 0 && (
+                            <span class="tertiary-color text-sm">
+                              <i class="ml-2 ri-message-2-line" />{" "}
+                              {post.commentsNum}
+                            </span>
+                          )}
+                        </li>
+                      )
+                  )}
+                </ul>
+              </>
+            ))
+        }
       </article>
     </section>
   </main>

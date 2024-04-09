@@ -12,6 +12,7 @@ interface Post {
   created: number;
   modified: number;
   slug: string;
+  commentsNum: number;
   type: string;
   digest: string;
   permalink: string;
