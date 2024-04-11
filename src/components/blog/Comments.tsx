@@ -136,6 +136,7 @@ export default function Comments(props: Props) {
         path: "/",
         maxAge: 2592000,
         sameSite: "lax",
+        domain: ".skywt.cn",
       }}
     >
       {error ? (
