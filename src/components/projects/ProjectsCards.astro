@@ -1,5 +1,6 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
+import GithubButton from "../buttons/GithubButton.astro";
 
 import yml from "./config.yml";
 
@@ -10,10 +11,57 @@ interface Project {
 }
 ---
 
-<ul class="flex flex-wrap mt-2 sm:mx-2">
+<ul class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+  <li
+    id="special-project"
+    class="card p-4 flex flex-wrap justify-between items-center box-border"
+  >
+    <div class="box-border w-full md:w-1/2 py-4 md:px-4">
+      <h3>✨ Daydream</h3>
+      <p class="mt-4 secondary-color">
+        简洁优雅、功能强大的 Typecho 博客主题。<br />
+        现已支持 PJAX 全站无刷新。<br />
+      </p>
+      <p class="mt-2 secondary-color">
+        <a
+          href="https://github.com/skywt2003/Daydream"
+          class="link"
+          target="_blank"><i class="ri-github-line"></i> GitHub</a
+        > /
+        <a href="https://beta.skywt.cn" class="link" target="_blank"
+          >体验 Demo <i class="ri-external-link-line"></i></a
+        >
+      </p>
+      <div class="mt-4">
+        <GithubButton type="star" target="Skywt2003/Daydream" />
+      </div>
+    </div>
+    <img
+      src="/daydream_pc_dark.png"
+      alt="Daydream Theme Screenshot"
+      class="w-full md:w-1/2 grow-1 rounded-2xl shadow-lg shadow-neutral-900 border-8 border-neutral-900 hidden dark:block"
+    />
+    <img
+      src="/daydream_pc_light.png"
+      alt="Daydream Theme Screenshot"
+      class="box-border w-full md:w-1/2 rounded-2xl shadow-lg shadow-gray-200 border-8 border-gray-200 dark:hidden"
+    />
+  </li>
   {
     yml.projects.map((project: Project) => (
       <ProjectCard name={project.name} desc={project.desc} url={project.url} />
     ))
   }
 </ul>
+
+<style>
+  #special-project {
+    grid-area: 1 / 1 / 2 / 2;
+    @screen md {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+    @screen lg {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+  }
+</style>

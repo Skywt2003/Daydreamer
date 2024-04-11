@@ -8,7 +8,7 @@ import yml from "./config.yml";
   yml.types.map((type: ServiceType) => (
     <div class="mt-16">
       <h3>{type.name}</h3>
-      <ul class="flex flex-wrap mt-4">
+      <ul class="mt-4 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {type.services.map((service: Service) => (
           <ServiceCard
             name={service.name}

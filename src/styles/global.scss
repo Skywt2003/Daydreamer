@@ -52,9 +52,18 @@ html {
 
 .wide-container {
   @apply mx-auto px-4;
-  @apply w-full;
+  @apply max-w-lg;
   @screen sm {
-    @apply w-10/12;
+    @apply max-w-xl;
+  }
+  @screen md {
+    @apply max-w-2xl;
+  }
+  @screen lg {
+    @apply max-w-3xl;
+  }
+  @screen xl {
+    @apply max-w-5xl;
   }
 }
 
