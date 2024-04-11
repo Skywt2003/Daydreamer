@@ -18,10 +18,14 @@ export default function CommentForm(props: Props) {
   const [content, setContent] = useState("");
   const [firstComment, setFirstComment] = useState(true);
 
+  // 下面两个是 Typecho 博客系统的 Cookie
+  // 前缀为 URL（https://blog.skywt.cn）的 MD5
   const [cookies, setCookie, removeCookie] = useCookies([
     "author",
     "email",
     "url",
+    "6b3ebcda94b5d7402440f389500dd314__typecho_remember_author",
+    "6b3ebcda94b5d7402440f389500dd314__typecho_remember_mail",
   ]);
 
   useEffect(() => {
@@ -54,10 +58,18 @@ export default function CommentForm(props: Props) {
       </p>
       <form
         onSubmit={(e) => {
-          props.handleSubmit(author, email, url, content);
           setCookie("author", author);
           setCookie("email", email);
           setCookie("url", url);
+          setCookie(
+            "6b3ebcda94b5d7402440f389500dd314__typecho_remember_author",
+            author,
+          );
+          setCookie(
+            "6b3ebcda94b5d7402440f389500dd314__typecho_remember_mail",
+            email,
+          );
+          props.handleSubmit(author, email, url, content);
           setContent("");
           e.preventDefault();
         }}

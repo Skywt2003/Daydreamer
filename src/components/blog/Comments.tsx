@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useCookies, CookiesProvider } from "react-cookie";
+import { CookiesProvider } from "react-cookie";
 import Comment from "./Comment.tsx";
 import CommentForm from "./CommentForm.tsx";
 
@@ -31,15 +31,6 @@ export default function Comments(props: Props) {
   const [count, setCount] = useState(0);
   const [selected, setSelected] = useState<Selected>({ coid: 0, author: "" });
   const [sending, setSending] = useState(false);
-
-  // 下面两个是 Typecho 博客系统的 Cookie
-  // 前缀为 URL（https://blog.skywt.cn）的 MD5
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "author",
-    "email",
-    "6b3ebcda94b5d7402440f389500dd314__typecho_remember_author",
-    "6b3ebcda94b5d7402440f389500dd314__typecho_remember_mail",
-  ]);
 
   function submitComment(
     author: string,
@@ -124,15 +115,6 @@ export default function Comments(props: Props) {
       slug: props.slug,
     }).toString();
 
-    setCookie(
-      "6b3ebcda94b5d7402440f389500dd314__typecho_remember_author",
-      cookies.author,
-    );
-    setCookie(
-      "6b3ebcda94b5d7402440f389500dd314__typecho_remember_mail",
-      cookies.email,
-    );
-
     fetch(url, {
       method: "GET",
       credentials: "include",
@@ -149,7 +131,13 @@ export default function Comments(props: Props) {
   }, []);
 
   return (
-    <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 2592000 }}>
+    <CookiesProvider
+      defaultSetOptions={{
+        path: "/",
+        maxAge: 2592000,
+        sameSite: "lax",
+      }}
+    >
       {error ? (
         <>
           <h2>
