@@ -185,3 +185,24 @@ h5 {
     @apply text-lg mt-0;
   }
 }
+
+input,
+textarea {
+  @apply p-2 rounded-xl transition-all;
+  @apply bg-gray-100 dark:bg-neutral-900;
+  @apply border border-gray-300 dark:border-neutral-700;
+  @apply text-black dark:text-white;
+  @apply shadow-inner shadow-gray-200 dark:shadow-neutral-800 outline-0;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  @apply transition-all;
+  @apply p-2 rounded-xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+  @apply bg-white dark:bg-neutral-800;
+  @apply hover:bg-gray-200 hover:dark:bg-black hover:shadow-none;
+  @apply text-gray-900 dark:text-neutral-100;
+  @apply disabled:shadow-none disabled:bg-gray-100 disabled:dark:bg-neutral-900 text-gray-500;
+}

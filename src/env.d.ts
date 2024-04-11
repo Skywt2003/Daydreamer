@@ -52,7 +52,9 @@ interface PostDetail {
   };
 }
 
-interface Comment {
+// 此 interface 本应该叫做 Comment
+// 但是和 Comment 组件重名，故改此名
+interface PostComment {
   coid: number;
   parent: number;
   cid: number;
@@ -60,9 +62,9 @@ interface Comment {
   author: string;
   url: string;
   text: string;
-  status: string;
+  status: "wating" | "approved";
   mailHash: string;
-  children: Comment[];
+  children: PostComment[];
 }
 
 interface PathItem {
