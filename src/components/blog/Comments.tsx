@@ -115,8 +115,8 @@ export default function Comments(props: Props) {
       return count;
     }
 
-    // const url = new URL("https://blog.skywt.cn/api/comments");
-    const url = new URL("http://localhost:3000/api/comments");
+    const url = new URL("https://blog.skywt.cn/api/comments");
+    // const url = new URL("http://localhost:3000/api/comments");
     url.search = new URLSearchParams({
       page: "1",
       pageSize: "100",
