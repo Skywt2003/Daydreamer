@@ -128,10 +128,21 @@ types:
         slogan: 云卷云舒，处之泰然。
         url: https://www.seaeye.cn/
         avatar: https://img.seaeye.cn/img/seaeye/portrait.jpg
-      # - name: BKCat
-      #   desc: 小苏班长。「成年人要学会做自己的事情。」
-      #   url: https://bkcat.cn/
-      #   avatar:
+      - name: Kaisuping
+        desc: 小苏班长。
+        slogan: Hacking for fun.
+        url: https://blog.kaisuping.cn/
+        avatar: https://avatars.githubusercontent.com/u/93633273?v=4
+      - name: Cuefe
+        desc: 温柔帅气的郑代表。
+        slogan: （╯' - ')╯︵ ┻━┻
+        url: https://cuefe.com/
+        avatar: https://f005.backblazeb2.com/file/img-buckets-oqh/2023/04/android-chrome-512x512.png
+      - name: Kawasuki
+        desc: 懂得生活的冯代表。
+        slogan:
+        url: https://kawatsuki.com/
+        avatar: https://kawatsuki.com/MyPic/bella.png
       - name: 贰猹的小窝
         desc:
         slogan: 用这生命中的每一秒，给自己一个不后悔的未来。
