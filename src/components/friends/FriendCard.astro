@@ -1,4 +1,6 @@
 ---
+import LinkCard from "@components/LinkCard.astro";
+
 interface Props {
   name: string;
   desc?: string;
@@ -8,8 +10,6 @@ interface Props {
 }
 
 const { name, desc, slogan, url, avatar } = Astro.props;
-
-import LinkCard from "../LinkCard.astro";
 ---
 
 <LinkCard url={url}>

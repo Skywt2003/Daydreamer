@@ -1,6 +1,6 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 
 import "@fontsource/noto-serif-sc/200.css";
 import "@fontsource/noto-serif-sc/300.css";
@@ -14,9 +14,10 @@ import "highlight.js/styles/github-dark.css";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "katex/dist/katex.css";
 
-import "../styles/global.scss";
+import "@styles/global.scss";
 
 import { ViewTransitions } from "astro:transitions";
+import menu_yml from "@configs/menu.yml";
 
 interface Props {
   title: string;
@@ -67,8 +68,8 @@ const { title, includeHeader = true, path = [] } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    {includeHeader && <Header path={path} />}
+    {includeHeader && <Header items={menu_yml.items} path={path} />}
     <slot />
-    <Footer path={path} />
+    <Footer items={menu_yml.items} path={path} />
   </body>
 </html>

@@ -1,14 +1,13 @@
 ---
+import GithubButton from "@components/buttons/GithubButton.astro";
+
 interface Props {
   name: string;
   desc: string;
   url: string;
-  tech?: string;
 }
 
 const { name, desc, url } = Astro.props;
-
-import GithubButton from "../buttons/GithubButton.astro";
 ---
 
 <li>

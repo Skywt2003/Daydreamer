@@ -1,37 +1,26 @@
 ---
-import FriendCard from "./FriendCard.astro";
+import FriendCard from "@components/friends/FriendCard.astro";
 
-import yml from "./config.yml";
-
-interface FriendType {
-  name: string;
-  desc: string;
-  friends: [Friend];
+interface Props {
+  groups: FriendsGroup[];
 }
 
-interface Friend {
-  name: string;
-  section?: boolean;
-  desc?: string;
-  slogan?: string;
-  url: string;
-  avatar: string;
-}
+const { groups } = Astro.props;
 ---
 
 {
-  yml.types.map((type: FriendType) => (
+  groups.map((group) => (
     <div class="mt-16">
-      <h3>{type.name}</h3>
-      {type.desc && (
+      <h3>{group.name}</h3>
+      {group.desc && (
         <p class="secondary-color mt-2">
           <i class="ri-double-quotes-l" />
-          {type.desc}
+          {group.desc}
           <i class="ri-double-quotes-r" />
         </p>
       )}
       <ul class="mt-4 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {type.friends.map((friend: Friend) => (
+        {group.friends.map((friend: Friend) => (
           <FriendCard
             name={friend.name}
             desc={friend.desc}

@@ -1,12 +1,13 @@
 ---
-import Menu from "./menu/Menu.astro";
-import Path from "./Path.astro";
+import Menu from "@components/menu/Menu.astro";
+import Path from "@components/Path.astro";
 
 interface Props {
+  items: MenuItem[];
   path: PathItem[];
 }
 
-const { path = [] } = Astro.props;
+const { items, path = [] } = Astro.props;
 ---
 
 <header class="mt-12 wide-container">
@@ -24,7 +25,7 @@ const { path = [] } = Astro.props;
       <Path path={path} />
     </h5>
     <div class="m-2 secondary-color">
-      <Menu />
+      <Menu items={items} />
     </div>
   </div>
 </nav>
@@ -57,7 +58,7 @@ const { path = [] } = Astro.props;
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -65,7 +66,7 @@ const { path = [] } = Astro.props;
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 </script>
 

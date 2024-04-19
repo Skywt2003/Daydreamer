@@ -1,7 +1,15 @@
 /// <reference types="astro/client" />
 
-declare module "*.yml" {
-  const value: any;
+interface MenuItem {
+  name: string;
+  icon: string;
+  url: string;
+}
+
+declare module "@configs/menu.yml" {
+  const value: {
+    items: MenuItems[];
+  }
   export default value;
 }
 
@@ -52,6 +60,26 @@ interface Selection {
   slugs: string[];
 }
 
+declare module "@configs/selections.yml" {
+  const value: {
+    selections: Selection[];
+  }
+  export default value;
+}
+
+interface Project {
+  name: string;
+  desc: string;
+  url: string;
+}
+
+declare module "@configs/projects.yml" {
+  const value: {
+    projects: Project[];
+  }
+  export default value;
+}
+
 interface Service {
   name: string;
   app: string;
@@ -60,9 +88,38 @@ interface Service {
   status?: string;
 }
 
-interface ServiceType {
+interface ServicesGroup {
   name: string;
   services: Service[];
+}
+
+declare module "@configs/services.yml" {
+  const value: {
+    groups: ServicesGroup[];
+  }
+  export default value;
+}
+
+interface Friend {
+  name: string;
+  section?: boolean;
+  desc?: string;
+  slogan?: string;
+  url: string;
+  avatar: string;
+}
+
+interface FriendsGroup {
+  name: string;
+  desc: string;
+  friends: [Friend];
+}
+
+declare module "@configs/friends.yml" {
+  const value: {
+    groups: FriendsGroup[];
+  }
+  export default value;
 }
 
 declare module 'remarkable';

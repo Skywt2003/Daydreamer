@@ -2,17 +2,10 @@
 interface Props {
   includeHome?: boolean;
   showIcon?: boolean;
+  items: MenuItem[];
 }
 
-const { includeHome = true, showIcon = true } = Astro.props;
-
-interface MenuItem {
-  name: string;
-  icon: string;
-  url: string;
-}
-
-import yml from "./config.yml";
+const { includeHome = true, showIcon = true, items } = Astro.props;
 ---
 
 <ul>
@@ -27,7 +20,7 @@ import yml from "./config.yml";
     )
   }
   {
-    yml.menu.map((item: MenuItem) => (
+    items.map((item) => (
       <li>
         <a class="link" href={item.url}>
           {showIcon && <i class={item.icon} />}

@@ -1,10 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Passages from "../components/blog/Passages.astro";
-import Subscribe from "../components/blog/Subscribe.astro";
-import Selection from "../components/blog/Selection.astro";
-
-import { api } from "../scripts/functions";
+import Layout from "@layouts/Layout.astro";
+import Passages from "@components/blog/Passages.astro";
+import Subscribe from "@components/blog/Subscribe.astro";
+import Selection from "@components/blog/Selection.astro";
+import selections_yml from "@configs/selections.yml";
+import { api } from "@scripts/functions";
 
 const posts = await api.getTimeline(1, 10);
 ---
@@ -23,7 +23,7 @@ const posts = await api.getTimeline(1, 10);
       </p>
 
       <h1>文章精选</h1>
-      <Selection />
+      <Selection selections={selections_yml.selections} />
       <p class="card p-2 leading-loose">
         🗃️ 前往「<a href="/blog/archives" class="link underline">文章归档</a
         >」页面即可一览博客的全部文章。

@@ -1,4 +1,4 @@
-menu:
+items:
   - name: 博客
     icon: ri-newspaper-line
     url: /blog

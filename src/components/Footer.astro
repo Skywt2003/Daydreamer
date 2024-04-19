@@ -1,14 +1,15 @@
 ---
-import CC from "./badges/CC.astro";
-import NotByAI from "./badges/NotByAI.astro";
-import Menu from "./menu/Menu.astro";
-import Path from "./Path.astro";
+import CC from "@components/badges/CC.astro";
+import NotByAI from "@components/badges/NotByAI.astro";
+import Menu from "@components/menu/Menu.astro";
+import Path from "@components/Path.astro";
 
 interface Props {
+  items: MenuItem[];
   path: PathItem[];
 }
 
-const { path } = Astro.props;
+const { items, path } = Astro.props;
 ---
 
 <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900">
@@ -18,7 +19,7 @@ const { path } = Astro.props;
         <Path path={path} />
       </div>
       <div class="m-2">
-        <Menu showIcon={false} />
+        <Menu showIcon={false} items={items} />
       </div>
     </div>
     <hr class="my-4" />

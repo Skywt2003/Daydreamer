@@ -1,12 +1,16 @@
 ---
-import yml from "./selections.yml";
+import { api } from "@scripts/functions";
 
-import { api } from "../../scripts/functions";
+interface Props {
+  selections: Selection[];
+}
+
+const { selections } = Astro.props;
 ---
 
 <div class="flex flex-wrap content my-8">
   {
-    yml.selections.map((selection: Selection) => (
+    selections.map((selection) => (
       <div class="basis-full sm:basis-1/2 px-2">
         <h2>{selection.name}</h2>
         <ul>

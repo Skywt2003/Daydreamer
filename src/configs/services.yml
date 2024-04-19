@@ -1,4 +1,4 @@
-types:
+groups:
   - name: 🌟 公共服务
     services:
       - name: Blog

@@ -1,11 +1,10 @@
 ---
+import { markdown } from "@scripts/functions";
 interface Props {
   posts: ArticleInTimeline[];
 }
 
 const { posts } = Astro.props;
-
-import { markdown } from "../../scripts/functions";
 ---
 
 {

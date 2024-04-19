@@ -1,14 +1,12 @@
 ---
-import ProjectCard from "./ProjectCard.astro";
-import GithubButton from "../buttons/GithubButton.astro";
+import ProjectCard from "@components/projects/ProjectCard.astro";
+import GithubButton from "@components/buttons/GithubButton.astro";
 
-import yml from "./config.yml";
-
-interface Project {
-  name: string;
-  desc: string;
-  url: string;
+interface Props {
+  projects: Project[];
 }
+
+const { projects } = Astro.props;
 ---
 
 <ul class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -48,7 +46,7 @@ interface Project {
     />
   </li>
   {
-    yml.projects.map((project: Project) => (
+    projects.map((project) => (
       <ProjectCard name={project.name} desc={project.desc} url={project.url} />
     ))
   }

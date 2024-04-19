@@ -1,10 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Menu from "../components/menu/Menu.astro";
-import Bento from "../components/bento/Bento.astro";
-import ProjectsCards from "../components/projects/ProjectsCards.astro";
-
-import Rating from "../components/Rating.astro";
+import Layout from "@layouts/Layout.astro";
+import Menu from "@components/menu/Menu.astro";
+import Bento from "@components/bento/Bento.astro";
+import ProjectsCards from "@components/projects/ProjectsCards.astro";
+import Rating from "@components/Rating.astro";
+import projects_yml from "@configs/projects.yml";
+import menu_yml from "@configs/menu.yml";
 ---
 
 <Layout title="SkyWT" includeHeader={false}>
@@ -19,7 +20,7 @@ import Rating from "../components/Rating.astro";
         </h4>
         <div class="mt-12 font-thin tertiary-color fade-in">
           <span class="mr-2">SkyWT</span>
-          <Menu includeHome={false} />
+          <Menu includeHome={false} items={menu_yml.items} />
         </div>
         <p id="scroll-hint" class="mt-2 font-thin tertiary-color opacity-0">
           <i class="ri-mouse-line"></i>
@@ -94,7 +95,7 @@ import Rating from "../components/Rating.astro";
           独立设计和开发<br />只是为了好玩……
         </h1>
         <div class="mt-8">
-          <ProjectsCards />
+          <ProjectsCards projects={projects_yml.projects} />
         </div>
       </div>
     </section>

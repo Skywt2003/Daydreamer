@@ -1,16 +1,14 @@
 ---
-import ServicesCards from "../components/labs/ServicesCards.astro";
-
-import Page from "../layouts/Page.astro";
-
-import yml from "../components/labs/config.yml";
+import ServicesCards from "@components/labs/ServicesCards.astro";
+import Page from "@layouts/Page.astro";
+import services_yml from "@configs/services.yml";
 
 let running = 0,
   stopped = 0,
   error = 0;
 
-yml.types.map((type: ServiceType) => {
-  type.services.map((service: Service) => {
+services_yml.groups.map((group) => {
+  group.services.map((service) => {
     switch (service.status) {
       case "running":
         running++;
@@ -51,5 +49,5 @@ yml.types.map((type: ServiceType) => {
       {error} 故障
     </span>
   </p>
-  <ServicesCards />
+  <ServicesCards groups={services_yml.groups} />
 </Page>

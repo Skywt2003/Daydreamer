@@ -1,6 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Menu from "../components/menu/Menu.astro";
+import Layout from "@layouts/Layout.astro";
+import Menu from "@components/menu/Menu.astro";
+import menu_yml from "@configs/menu.yml";
 ---
 
 <Layout title="404 Not Found" includeHeader={false}>
@@ -11,7 +12,7 @@ import Menu from "../components/menu/Menu.astro";
         <a href="/" class="link"><i class="ri-home-line"></i> 返回首页</a>
       </p>
       <p class="mt-2">
-        <Menu includeHome={false} />
+        <Menu includeHome={false} items={menu_yml.items} />
       </p>
     </div>
   </div>

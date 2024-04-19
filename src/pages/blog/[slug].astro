@@ -1,8 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Comments from "../../components/blog/Comments.tsx";
-
-import { api, markdown, utils } from "../../scripts/functions";
+import Layout from "@layouts/Layout.astro";
+import Comments from "@components/blog/Comments.tsx";
+import { api, markdown, utils } from "@scripts/functions";
 
 export async function getStaticPaths() {
   const posts = await api.getTimeline(1, 10000);

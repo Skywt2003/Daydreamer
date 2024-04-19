@@ -1,7 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-
-import { api, utils } from "../../scripts/functions";
+import Layout from "@layouts/Layout.astro";
+import { api, utils } from "@scripts/functions";
 
 const posts = await api.getTimeline(1, 10000);
 const groupedPosts = groupByYear(posts);
