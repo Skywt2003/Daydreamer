@@ -5,66 +5,41 @@ declare module "*.yml" {
   export default value;
 }
 
-// 显示文章列表使用的文章概要
-interface Post {
-  cid: number;
+interface ArticleInTimeline {
+  slug: string;
   title: string;
   created: number;
   modified: number;
-  slug: string;
-  commentsNum: number;
-  type: string;
   digest: string;
-  permalink: string;
-  fields: {
-    headPic: {
-      value: string;
-    };
-  };
+  headPic: string;
 }
 
-// 显示文章使用的文章细节
-interface PostDetail {
-  title: string;
+interface Article {
   cid: number;
-  created: number;
-  type: string;
   slug: string;
-  commentsNum: number;
+  title: string;
+  created: number;
+  modified: number;
   text: string;
-  permalink: string;
-  date: {
-    timeStamp: number;
-    year: number;
-    month: number;
-    day: number;
-  };
-  fields: {
-    headPic: {
-      value: string;
-    };
-    pubPlace: {
-      value: string;
-    };
-    linkTo: {
-      value: string;
-    };
-  };
+  inTimeline: boolean;
+  headPic: string;
+  allowComment: boolean;
 }
 
 // 此 interface 本应该叫做 Comment
 // 但是和 Comment 组件重名，故改此名
-interface PostComment {
+interface ArticleComment {
   coid: number;
-  parent: number;
   cid: number;
   created: number;
   author: string;
   url: string;
+  avatar: string;
+  status: "pending" | "approved";
   text: string;
-  status: "wating" | "approved";
-  mailHash: string;
-  children: PostComment[];
+  isOwner: boolean;
+  parent: number;
+  children: ArticleComment[];
 }
 
 interface PathItem {
@@ -72,9 +47,9 @@ interface PathItem {
   url: string;
 }
 
-interface ServiceType {
+interface Selection {
   name: string;
-  services: Service[];
+  slugs: string[];
 }
 
 interface Service {
@@ -85,7 +60,11 @@ interface Service {
   status?: string;
 }
 
-interface Selection {
+interface ServiceType {
   name: string;
-  slugs: [string];
+  services: Service[];
 }
+
+declare module 'remarkable';
+declare module 'remarkable-katex';
+declare module 'markdown-toc';

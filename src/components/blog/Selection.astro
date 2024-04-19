@@ -1,15 +1,7 @@
 ---
 import yml from "./selections.yml";
 
-async function getPost(slug: string) {
-  const url = new URL("https://blog.skywt.cn/api/post");
-  url.search = new URLSearchParams({
-    slug: slug,
-  }).toString();
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.data;
-}
+import { api } from "../../scripts/functions";
 ---
 
 <div class="flex flex-wrap content my-8">
@@ -19,7 +11,7 @@ async function getPost(slug: string) {
         <h2>{selection.name}</h2>
         <ul>
           {selection.slugs.map(async (slug) => {
-            const post = await getPost(slug);
+            const post = await api.getArticle(slug);
             return (
               <li>
                 <a href={"/blog/" + slug} class="no-underline-by-default">

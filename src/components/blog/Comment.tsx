@@ -1,35 +1,21 @@
 import { default as CommentCopy } from "./Comment.tsx";
 import CommentForm from "./CommentForm.tsx";
 
+import { utils } from "../../scripts/functions.ts";
+
 interface Props {
-  comment: PostComment;
-  selected: {
-    coid: number;
-    author: string;
-  };
-  handleReply: Function;
-  handleSubmit: Function;
+  comment: ArticleComment;
+  selected: ArticleComment | null;
+  setSelected: Function;
+  submitComment: Function;
   sending: boolean;
 }
 
 export default function Comment(props: Props) {
-  function formatTimestamp(timestamp: number) {
-    const date = new Date(timestamp * 1000);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    return `${year} 年 ${month} 月 ${day} 日 ${hours}:${minutes}`;
-  }
-
   return (
     <div className="primary-color my-4">
       <div className="flex items-center">
-        <img
-          src={"https://gravatar.com/avatar/" + props.comment.mailHash}
-          className="rounded-full w-12 mr-2"
-        />
+        <img src={props.comment.avatar} className="rounded-full w-12 mr-2" />
         <div className="m-2">
           {props.comment.url ? (
             <a href={props.comment.url} className="link" target="_blank">
@@ -40,13 +26,13 @@ export default function Comment(props: Props) {
           )}
           <p className="mt-1">
             <span className="secondary-color">
-              {formatTimestamp(props.comment.created)}
+              {utils.formatTimestamp(props.comment.created)}
             </span>
             {props.comment.status === "approved" ? (
               <span
                 className="link ml-2 primary-color"
                 onClick={() => {
-                  props.handleReply(props.comment.coid, props.comment.author);
+                  props.setSelected(props.comment);
                 }}
               >
                 <i className="ri-reply-line"></i> 回复
@@ -60,23 +46,21 @@ export default function Comment(props: Props) {
         </div>
       </div>
       <p className="mt-2 break-all">{props.comment.text}</p>
-      {props.comment.coid === props.selected.coid && (
+      {props.comment === props.selected && (
         <CommentForm
           selected={props.selected}
-          clearReply={() => {
-            props.handleReply(0, "");
-          }}
-          handleSubmit={props.handleSubmit}
+          setSelected={props.setSelected}
+          submitComment={props.submitComment}
           sending={props.sending}
         ></CommentForm>
       )}
       <div className="ml-8">
-        {props.comment.children.map((child: PostComment) => (
+        {props.comment.children.map((child: ArticleComment) => (
           <CommentCopy
             selected={props.selected}
             comment={child}
-            handleReply={props.handleReply}
-            handleSubmit={props.handleSubmit}
+            setSelected={props.setSelected}
+            submitComment={props.submitComment}
             key={child.coid}
             sending={props.sending}
           />

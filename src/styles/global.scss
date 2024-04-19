@@ -8,6 +8,7 @@ html {
   @media (prefers-color-scheme: dark) {
     @apply bg-neutral-900;
   }
+  @apply scroll-smooth;
 }
 
 /*
@@ -172,6 +173,12 @@ h5 {
     b {
       @apply font-bold;
     }
+    :before {
+      content: "";
+    }
+    :after {
+      content: "";
+    }
   }
 }
 
@@ -195,13 +202,26 @@ h5 {
   }
 }
 
-input,
+input[type="text"],
+input[type="url"],
+input[type="email"],
 textarea {
   @apply p-2 rounded-xl transition-all;
   @apply bg-gray-100 dark:bg-neutral-900;
   @apply border border-gray-300 dark:border-neutral-700;
   @apply text-black dark:text-white;
   @apply shadow-inner shadow-gray-200 dark:shadow-neutral-800 outline-0;
+}
+
+input[type="checkbox"] {
+  @apply appearance-none;
+  @apply w-4 h-4 rounded transition-all;
+  @apply bg-gray-100 dark:bg-neutral-900;
+  @apply checked:bg-gray-500 dark:checked:bg-neutral-500;
+  @apply border border-gray-300 dark:border-neutral-700;
+  @apply text-black dark:text-white;
+  @apply shadow-inner shadow-gray-200 dark:shadow-neutral-800 outline-0;
+  @apply checked:shadow-none;
 }
 
 button,
@@ -214,4 +234,18 @@ button,
   @apply hover:bg-gray-200 hover:dark:bg-black hover:shadow-none;
   @apply text-gray-900 dark:text-neutral-100;
   @apply disabled:shadow-none disabled:bg-gray-100 disabled:dark:bg-neutral-900 text-gray-500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply relative;
+}
+
+.heading-anchor {
+  @apply absolute;
+  @apply -top-20;
 }

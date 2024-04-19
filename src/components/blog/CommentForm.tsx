@@ -2,48 +2,47 @@ import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 interface Props {
-  selected: {
-    coid: number;
-    author: string;
-  };
-  clearReply: Function;
-  handleSubmit: Function;
+  selected: ArticleComment | null;
+  setSelected: Function;
+  submitComment: Function;
   sending: boolean;
 }
 
 export default function CommentForm(props: Props) {
   const [author, setAuthor] = useState("");
-  const [email, setEmail] = useState("");
+  const [mail, setMail] = useState("");
   const [url, setUrl] = useState("");
-  const [content, setContent] = useState("");
+  const [text, setText] = useState("");
+  const [receiveMail, setReceiveMail] = useState(true);
   const [firstComment, setFirstComment] = useState(true);
 
-  // 下面两个是 Typecho 博客系统的 Cookie
-  // 前缀为 URL（https://blog.skywt.cn）的 MD5
   const [cookies, setCookie, removeCookie] = useCookies([
     "author",
-    "email",
+    "mail",
     "url",
-    "6b3ebcda94b5d7402440f389500dd314__typecho_remember_author",
-    "6b3ebcda94b5d7402440f389500dd314__typecho_remember_mail",
   ]);
 
   useEffect(() => {
     cookies.author && (setAuthor(cookies.author), setFirstComment(false));
-    cookies.email && setEmail(cookies.email);
+    cookies.mail && setMail(cookies.mail);
     cookies.url && setUrl(cookies.url);
   }, []);
 
   return (
     <>
-      {props.selected.coid !== 0 && (
+      {props.selected !== null && (
         <div className="mt-4 flex justify-between">
           <p className="primary-color font-bold">
             <i className="ri-reply-line"></i> 回复 @{props.selected.author}{" "}
             的评论：
           </p>
           <p>
-            <span className="link" onClick={() => props.clearReply()}>
+            <span
+              className="link"
+              onClick={() => {
+                props.setSelected(null);
+              }}
+            >
               取消回复
             </span>
           </p>
@@ -58,19 +57,8 @@ export default function CommentForm(props: Props) {
       </p>
       <form
         onSubmit={(e) => {
-          setCookie("author", author);
-          setCookie("email", email);
-          setCookie("url", url);
-          setCookie(
-            "6b3ebcda94b5d7402440f389500dd314__typecho_remember_author",
-            author,
-          );
-          setCookie(
-            "6b3ebcda94b5d7402440f389500dd314__typecho_remember_mail",
-            email,
-          );
-          props.handleSubmit(author, email, url, content);
-          setContent("");
+          props.submitComment(author, mail, url, text, receiveMail);
+          setText("");
           e.preventDefault();
         }}
         className="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"
@@ -91,9 +79,9 @@ export default function CommentForm(props: Props) {
           placeholder="邮箱"
           type="email"
           required={true}
-          value={email}
+          value={mail}
           onChange={(e) => {
-            setEmail((e.target as HTMLInputElement).value);
+            setMail((e.target as HTMLInputElement).value);
           }}
         />
         <input
@@ -109,9 +97,9 @@ export default function CommentForm(props: Props) {
           className="sm:col-span-3"
           placeholder="说点什么吧……"
           required={true}
-          value={content}
+          value={text}
           onChange={(e) => {
-            setContent((e.target as HTMLTextAreaElement).value);
+            setText((e.target as HTMLTextAreaElement).value);
           }}
         ></textarea>
         <button
@@ -121,6 +109,21 @@ export default function CommentForm(props: Props) {
         >
           {props.sending ? "提交中……" : "提交"}
         </button>
+        {/* 这个组件太丑了，改天美化一下 */}
+        {/* <div className="sm:col-span-3 flex items-center">
+          <input
+            type="checkbox"
+            id="receiveMail"
+            name="receiveMail"
+            checked={receiveMail}
+            onChange={(e) => {
+              setReceiveMail((e.target as HTMLInputElement).checked);
+            }}
+          />
+          <label htmlFor="receiveMail" className="secondary-color ml-2">
+            当有人回复我时，接收邮件通知
+          </label>
+        </div> */}
       </form>
       {firstComment && (
         <p className="mt-4 secondary-color text-sm leading-normal">

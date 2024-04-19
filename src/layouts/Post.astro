@@ -1,8 +1,8 @@
 ---
-const { frontmatter } = Astro.props;
-
 import Layout from "./Layout.astro";
 import Comments from "../components/blog/Comments.tsx";
+
+const { frontmatter } = Astro.props;
 ---
 
 <Layout
@@ -18,14 +18,10 @@ import Comments from "../components/blog/Comments.tsx";
         <slot />
       </article>
       {
-        frontmatter.typechoSlug && (
+        frontmatter.slug && (
           <>
             <hr class="my-8" />
-            <Comments
-              client:load
-              slug={frontmatter.typechoSlug}
-              permalink={"https://blog.skywt.cn/" + frontmatter.typechoSlug}
-            />
+            <Comments client:load slug={frontmatter.slug} />
           </>
         )
       }

@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/Post.astro"
 title: 关于
-typechoSlug: about
+slug: about
 ---
 
 ## 关于我

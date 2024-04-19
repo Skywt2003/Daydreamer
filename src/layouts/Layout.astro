@@ -1,4 +1,23 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+import "@fontsource/noto-serif-sc/200.css";
+import "@fontsource/noto-serif-sc/300.css";
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/500.css";
+import "@fontsource/noto-serif-sc/600.css";
+import "@fontsource/noto-serif-sc/700.css";
+import "@fontsource/noto-serif-sc/900.css";
+import "remixicon/fonts/remixicon.css";
+import "highlight.js/styles/github-dark.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import "katex/dist/katex.css";
+
+import "../styles/global.scss";
+
+import { ViewTransitions } from "astro:transitions";
+
 interface Props {
   title: string;
   includeHeader?: boolean;
@@ -6,14 +25,6 @@ interface Props {
 }
 
 const { title, includeHeader = true, path = [] } = Astro.props;
-
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-import "remixicon/fonts/remixicon.css";
-import "../styles/global.scss";
-
-import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -25,11 +36,6 @@ import { ViewTransitions } from "astro:transitions";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"
-    />
 
     <script is:inline>
       function addMatomo() {

@@ -1,25 +1,27 @@
 ---
 interface Props {
-  posts: Post[];
+  posts: ArticleInTimeline[];
 }
 
 const { posts } = Astro.props;
 
-import { marked } from "marked";
+import { markdown } from "../../scripts/functions";
 ---
 
 {
-  posts.map((post: Post) => (
+  posts.map((post) => (
     <>
       <article class="content">
-        {post.fields.headPic && post.fields.headPic.value && (
-          <img src={post.fields.headPic.value} alt={post.title} />
+        {post.headPic && (
+          <a href={post.headPic} data-fancybox data-caption={post.title}>
+            <img src={post.headPic} alt={post.title} title={post.title} />
+          </a>
         )}
         <a href={"/blog/" + post.slug} class="no-underline-by-default">
           <h1>{post.title}</h1>
         </a>
         <div class="summary">
-          <Fragment set:html={marked.parse(post.digest)} />
+          <Fragment set:html={markdown.parseContentSimple(post.digest)} />
         </div>
         <a href={"/blog/" + post.slug}>阅读更多</a>
       </article>
@@ -36,3 +38,14 @@ import { marked } from "marked";
     @apply leading-relaxed;
   }
 </style>
+
+<script>
+  import { Fancybox } from "@fancyapps/ui";
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      Fancybox.bind("[data-fancybox]", {});
+    },
+    { once: false }
+  );
+</script>

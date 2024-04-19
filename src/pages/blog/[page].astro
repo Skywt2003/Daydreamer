@@ -1,28 +1,20 @@
 ---
 import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 
-export const getStaticPaths = (async ({ paginate }) => {
-  const url = new URL("https://blog.skywt.cn/api/posts");
-  url.search = new URLSearchParams({
-    page: "1",
-    pageSize: "10000",
-    showDigest: "more",
-    showContent: "false",
-  }).toString();
-  const response = await fetch(url);
-  const data = await response.json();
-  const posts: Post[] = data.data.dataSet;
+import Layout from "../../layouts/Layout.astro";
+import Passages from "../../components/blog/Passages.astro";
+import Subscribe from "../../components/blog/Subscribe.astro";
 
+import { api } from "../../scripts/functions";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts: ArticleInTimeline[] = await api.getTimeline(1, 10000);
   return paginate(posts, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page } = Astro.props;
-
-import Layout from "../../layouts/Layout.astro";
-import Passages from "../../components/blog/Passages.astro";
-import Subscribe from "../../components/blog/Subscribe.astro";
 ---
 
 <Layout

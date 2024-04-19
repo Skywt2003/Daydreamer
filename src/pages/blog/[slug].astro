@@ -1,47 +1,24 @@
 ---
-export async function getStaticPaths() {
-  const url = new URL("https://blog.skywt.cn/api/posts");
-  url.search = new URLSearchParams({
-    page: "1",
-    pageSize: "10000",
-    showDigest: "more",
-    showContent: "false",
-  }).toString();
-  const response = await fetch(url);
-  const data = await response.json();
-  const posts = data.data.dataSet;
+import Layout from "../../layouts/Layout.astro";
+import Comments from "../../components/blog/Comments.tsx";
 
+import { api, markdown, utils } from "../../scripts/functions";
+
+export async function getStaticPaths() {
+  const posts = await api.getTimeline(1, 10000);
   let ret: {
-    params: {
-      slug: string;
+    params: { slug: string };
+  }[] = posts.map((post) => {
+    return {
+      params: { slug: post.slug },
     };
-  }[] = [];
-  posts.map((post: Post) => {
-    ret.push({
-      params: {
-        slug: post.slug,
-      },
-    });
   });
   return ret;
 }
 
 const { slug } = Astro.params;
 
-const url = new URL("https://blog.skywt.cn/api/post");
-url.search = new URLSearchParams({
-  slug: slug,
-}).toString();
-const response = await fetch(url);
-const data = await response.json();
-const post = data.data;
-
-if (post.fields.linkTo && post.fields.linkTo.value) {
-  return Astro.redirect(post.fields.linkTo.value);
-}
-
-import Layout from "../../layouts/Layout.astro";
-import Comments from "../../components/blog/Comments.tsx";
+const post = await api.getArticle(slug);
 ---
 
 <Layout
@@ -55,24 +32,22 @@ import Comments from "../../components/blog/Comments.tsx";
   <main>
     <section class="container mt-8 sm:mt-32">
       {
-        post.fields.headPic && post.fields.headPic.value && (
-          <img src={post.fields.headPic.value} alt={post.title} class="mb-8" />
+        post.headPic && (
+          <a href={post.headPic} data-fancybox data-caption={post.title}>
+            <img
+              src={post.headPic}
+              alt={post.title}
+              title={post.title}
+              class="mb-8"
+            />
+          </a>
         )
       }
       <h1 class="primary-color leading-relaxed">{post.title}</h1>
       <p class="mt-4 secondary-color leading-relaxed">
         <i class="ri-calendar-line"></i>
-        <span>{post.date.year} 年 {post.date.month} 月 {post.date.day} 日</span>
-        {
-          post.fields.pubPlace && post.fields.pubPlace.value && (
-            <>
-              <br />
-              <i class="ri-map-pin-line" />
-              <span>{post.fields.pubPlace.value}</span>
-            </>
-          )
-        }
-        {
+        <span>{utils.formatTimestamp(post.created)}</span>
+        <!-- {
           post.commentsNum > 0 && (
             <>
               <br />
@@ -80,24 +55,18 @@ import Comments from "../../components/blog/Comments.tsx";
               <span>共 {post.commentsNum} 条评论</span>
             </>
           )
-        }
+        } -->
       </p>
 
       <hr class="my-8" />
-      <p class="card p-2 my-8">
-        ⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a
-          href={post.permalink}
-          class="link underline">原博客的这篇文章</a
-        >。
-      </p>
 
       <article class="content">
-        <Fragment set:html={post.text} />
+        <Fragment set:html={markdown.parseContent(post.text)} />
       </article>
 
       <hr class="my-8" />
 
-      <Comments client:load slug={slug} permalink={post.permalink} />
+      {post.allowComment && <Comments client:load slug={slug} />}
     </section>
   </main>
 </Layout>
@@ -107,3 +76,14 @@ import Comments from "../../components/blog/Comments.tsx";
     @apply shadow-lg rounded;
   }
 </style>
+
+<script>
+  import { Fancybox } from "@fancyapps/ui";
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      Fancybox.bind("[data-fancybox]", {});
+    },
+    { once: false }
+  );
+</script>

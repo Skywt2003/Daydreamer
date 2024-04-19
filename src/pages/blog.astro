@@ -1,19 +1,12 @@
 ---
-const url = new URL("https://blog.skywt.cn/api/posts");
-url.search = new URLSearchParams({
-  page: "1",
-  pageSize: "10",
-  showDigest: "more",
-  showContent: "false",
-}).toString();
-const response = await fetch(url);
-const data = await response.json();
-const posts = data.data.dataSet;
-
 import Layout from "../layouts/Layout.astro";
 import Passages from "../components/blog/Passages.astro";
 import Subscribe from "../components/blog/Subscribe.astro";
 import Selection from "../components/blog/Selection.astro";
+
+import { api } from "../scripts/functions";
+
+const posts = await api.getTimeline(1, 10);
 ---
 
 <Layout title="博客" path={[{ title: "博客", url: "" }]}>
