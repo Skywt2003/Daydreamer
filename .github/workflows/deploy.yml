@@ -9,13 +9,10 @@ on:
 permissions:
   contents: write
 
-env:
-  PUBLIC_API_ENDPOINT: ${{ vars.PUBLIC_API_ENDPOINT }}
-  PUBLIC_COOKIE_DOMAIN: ${{ vars.PUBLIC_COOKIE_DOMAIN }}
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
