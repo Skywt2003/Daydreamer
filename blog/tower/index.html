@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>动态规划经典题目（二）：又上锁妖塔</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>动态规划经典题目（二）：又上锁妖塔</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,41 +72,70 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（二）：又上锁妖塔</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 01 月 21 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tower" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>又是超级水的一题，一道线性DP。</p><p>这几道DP很简单，分成很多篇文章发可以假装自己的博客写了很多文章～</p><!--more--><h2>又上锁妖塔(tower.pas/c/cpp)</h2><p>洛谷题目提交地址：<a href="https://www.luogu.org/problemnew/show/2800">又上锁妖塔</a></p><h3>题目描述</h3><p>小D在X星买完了想要的东西，在飞往下一个目的地的途中，正无聊的他转头看了看身边的小A，发现小A正在玩《仙剑》。可是小A很奇怪，他一直在锁妖塔的周围转来转去，可是就是不进去。于是小D问他：“你在干什么？怎么不上去？”小A 说：“我在想怎么从锁妖塔外面爬上去。”（倒…）锁妖塔的建造很特别，塔总共有n层，但是高度却不相同，这造成了小A爬过每层的时间也不同。小A会用仙术，每用一次可以让他向上跳一层或两层，但是每次跳跃后小A都将用完灵力，必须爬过至少一层才能再次跳跃（你可以认为小A需要跳两次一层才休息）。小A想用最短的时间爬到塔顶，可是他不能找到时间最短的方案，所以请你帮他找到一个时间最短的方案让他爬到塔顶。小A只关心时间，所以你只要告诉他最短时间是多少就可以了。你可以最后跳到塔外即超过塔高。</p><ul>
-     <li>
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>动态规划经典题目（二）：又上锁妖塔</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 1 月 21 日 12:49</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <p>又是超级水的一题，一道线性DP。</p>
+<p>这几道DP很简单，分成很多篇文章发可以假装自己的博客写了很多文章～</p>
+<p><h2>又上锁妖塔(tower.pas/c/cpp)</h2><br>
+洛谷题目提交地址：<a href="https://www.luogu.org/problemnew/show/2800">又上锁妖塔</a><br>
+<h3>题目描述</h3><br>
+小D在X星买完了想要的东西，在飞往下一个目的地的途中，正无聊的他转头看了看身边的小A，发现小A正在玩《仙剑》。可是小A很奇怪，他一直在锁妖塔的周围转来转去，可是就是不进去。于是小D问他：“你在干什么？怎么不上去？”小A 说：“我在想怎么从锁妖塔外面爬上去。”（倒…）锁妖塔的建造很特别，塔总共有n层，但是高度却不相同，这造成了小A爬过每层的时间也不同。小A会用仙术，每用一次可以让他向上跳一层或两层，但是每次跳跃后小A都将用完灵力，必须爬过至少一层才能再次跳跃（你可以认为小A需要跳两次一层才休息）。小A想用最短的时间爬到塔顶，可是他不能找到时间最短的方案，所以请你帮他找到一个时间最短的方案让他爬到塔顶。小A只关心时间，所以你只要告诉他最短时间是多少就可以了。你可以最后跳到塔外即超过塔高。</p>
+<ul>
+    <li>
 <h3>输入格式</h3>
 </li>
-</ul><p>第一行一个数n(n≤10000)，表示塔的层数。<br>接下来的n行每行一个数(≤100)，表示从下往上每层的高度。</p><ul>
-     <li>
+</ul>
+第一行一个数n(n≤10000)，表示塔的层数。
+接下来的n行每行一个数(≤100)，表示从下往上每层的高度。
+<ul>
+    <li>
 <h3>输出格式</h3>
 </li>
-</ul><p>一个数，表示最短时间。</p><ul>
-     <li>
+</ul>
+一个数，表示最短时间。
+<ul>
+    <li>
 <h3>样例输入</h3>
 </li>
-</ul><pre>5
+</ul>
+<pre>5
 3
 5
 1
 8
-4</pre><ul>
-     <li>
+4</pre>
+<ul>
+    <li>
 <h3>样例输出</h3>
 </li>
-</ul><pre>1</pre><ul>
-     <li>
+</ul>
+<pre>1</pre>
+<ul>
+    <li>
 <h3>数据规模</h3>
 </li>
-</ul><p>对20%的数据：n≤10；<br>对40%的数据：n≤100；<br>对60%的数据：n≤5000；<br>对100%的数据：n≤10000；</p><ul>
-     <li>
+</ul>
+对20%的数据：n≤10；
+对40%的数据：n≤100；
+对60%的数据：n≤5000；
+对100%的数据：n≤10000；
+<ul>
+    <li>
 <h3>问题分析</h3>
 </li>
-</ul><p>显然这题是DP，线性DP。直接F[i]定义不行，因为上次的是否用仙术这一决策会影响这一次的决策。那么我们自然想到定义Fi表示到达第i层所用最短时间，0表示上次是飞过来的，1表示上次是爬过来的。那么显然转移方程就是：</p><pre>F[i][0]=min(F[i-1][1],F[i-1][0])+t[i];
-F[i][1]=min(F[i-1][1],F[i-2][1]);</pre><p>时间复杂度O(N)！</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="19uj0F" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;tower&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/tower&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+</ul>
+显然这题是DP，线性DP。直接F[i]定义不行，因为上次的是否用仙术这一决策会影响这一次的决策。那么我们自然想到定义F[i][0/1]表示到达第i层所用最短时间，0表示上次是飞过来的，1表示上次是爬过来的。那么显然转移方程就是：
+<pre>F[i][0]=min(F[i-1][1],F[i-1][0])+t[i];
+F[i][1]=min(F[i-1][1],F[i-2][1]);</pre>
+时间复杂度O(N)！ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="PtVk5" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;tower&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -133,4 +162,4 @@ F[i][1]=min(F[i-1][1],F[i-2][1]);</pre><p>时间复杂度O(N)！</p> </article> 
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

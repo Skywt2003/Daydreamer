@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>服务器 Overleaf 部署指南</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>服务器 Overleaf 部署指南</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,16 +72,47 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器 Overleaf 部署指南</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 12 月 25 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 4 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/self-host-overleaf" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>程设课的大作业是「图书管理系统」，似乎要我们完成一个「实验报告」。看看发下来的这个范例 pdf 总觉得用 Word 来写会惨不忍睹。「天下苦 Microsoft 久矣！」于是决定尝试一下大名鼎鼎的 $\LaTeX$。</p><p>心血来潮去学了 LaTeX 语法，本来打算在本地 vscode 里写，结果发现这个 LaTeX 的编译器五花八门琳琅满目，配置也极其复杂和不统一。于是想去看看有没有在线的 all-in-one 协作平台，发现了 Overleaf 这个网站，这个程序是开源的，可以部署到自己的服务器上。终于可以愉快地写 LaTeX 啦！</p><!--more--><p>Overleaf 在 Github 上的项目地址在<a href="https://github.com/overleaf/overleaf">这里</a>。<br>由于直接提供了 Docker，所以安装过程非常简单。（新买的腾讯云服务器打算完全采用容器化部署。我简直爱上 Docker 了！！）</p><h2>使用 Toolkit？</h2><p>官方提供了一个叫做 Toolkit 的东西，可以直接参照<a href="https://github.com/overleaf/toolkit/blob/master/doc/quick-start-guide.md">这个文档</a>部署。<br>默认可以帮你装好 MongoDB 和 Redis 的 Docker。启动和停止的脚本也都写好了。</p><pre><code class="lang-sh">git clone https://github.com/overleaf/toolkit.git ./overleaf
-cd overleaf
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器 Overleaf 部署指南</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 12 月 25 日 12:42</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8-toolkit">使用 Toolkit？</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">配置环境变量</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8">启动容器</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E5%AE%89%E8%A3%85-tex-live">完整安装 TeX Live</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE-minted-%E5%8C%85">代码高亮 minted 包</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93">安装字体</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87">使用中文</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C">使用效果</a></li>
+</ul>
+<p>程设课的大作业是「图书管理系统」，似乎要我们完成一个「实验报告」。看看发下来的这个范例 pdf 总觉得用 Word 来写会惨不忍睹。「天下苦 Microsoft 久矣！」于是决定尝试一下大名鼎鼎的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>。</p>
+<p>心血来潮去学了 LaTeX 语法，本来打算在本地 vscode 里写，结果发现这个 LaTeX 的编译器五花八门琳琅满目，配置也极其复杂和不统一。于是想去看看有没有在线的 all-in-one 协作平台，发现了 Overleaf 这个网站，这个程序是开源的，可以部署到自己的服务器上。终于可以愉快地写 LaTeX 啦！</p>
+<p>Overleaf 在 Github 上的项目地址在<a href="https://github.com/overleaf/overleaf">这里</a>。<br>
+由于直接提供了 Docker，所以安装过程非常简单。（新买的腾讯云服务器打算完全采用容器化部署。我简直爱上 Docker 了！！）</p>
+<h2><a id="使用-toolkit" class="heading-anchor"></a>使用 Toolkit？</h2>
+<p>官方提供了一个叫做 Toolkit 的东西，可以直接参照<a href="https://github.com/overleaf/toolkit/blob/master/doc/quick-start-guide.md">这个文档</a>部署。<br>
+默认可以帮你装好 MongoDB 和 Redis 的 Docker。启动和停止的脚本也都写好了。</p>
+<pre><code class="language-sh">git <span class="hljs-built_in">clone</span> https://github.com/overleaf/toolkit.git ./overleaf
+<span class="hljs-built_in">cd</span> overleaf
 bin/init
 nano config/overleaf.rc
 bin/up
-bin/start</code></pre><p>然而我的服务器上已经装好了 MongoDB 和 Redis 的 Docker 要给其他很多程序用，虽然说这个 Toolkit 的配置里可以选择不安装这俩镜像，但是总感觉这样还用这个 Toolkit 有些多此一举了……</p><p>于是直接去安装 sharelatex 的镜像。官方的教程在<a href="https://github.com/overleaf/overleaf/wiki/Quick-Start-Guide">这里</a>。</p><h2>配置环境变量</h2><p>可以参考 Toolkit 里的 <code>config/vaiables.env</code> 文件来配置。主要就是 MongoDB 和 Redis 的连接，以及 SMTP 的配置。详细的环境变量的配置在<a href="https://github.com/overleaf/overleaf/wiki/Configuring-Overleaf">这里</a>。</p><p>最终配置文件是这样的：</p><pre><code>SHARELATEX_MONGO_URL=mongodb://yourUserName:yourPassWord@mongo/sharelatex
+bin/start
+</code></pre>
+<p>然而我的服务器上已经装好了 MongoDB 和 Redis 的 Docker 要给其他很多程序用，虽然说这个 Toolkit 的配置里可以选择不安装这俩镜像，但是总感觉这样还用这个 Toolkit 有些多此一举了……</p>
+<p>于是直接去安装 sharelatex 的镜像。官方的教程在<a href="https://github.com/overleaf/overleaf/wiki/Quick-Start-Guide">这里</a>。</p>
+<h2><a id="配置环境变量" class="heading-anchor"></a>配置环境变量</h2>
+<p>可以参考 Toolkit 里的 <code>config/vaiables.env</code> 文件来配置。主要就是 MongoDB 和 Redis 的连接，以及 SMTP 的配置。详细的环境变量的配置在<a href="https://github.com/overleaf/overleaf/wiki/Configuring-Overleaf">这里</a>。</p>
+<p>最终配置文件是这样的：</p>
+<pre><code>SHARELATEX_MONGO_URL=mongodb://yourUserName:yourPassWord@mongo/sharelatex
 MONGO_URL=mongodb://yourUserName:yourPassWord@mongo/sharelatex
 SHARELATEX_REDIS_HOST=redis
 REDIS_HOST=redis
@@ -124,22 +155,61 @@ SHARELATEX_EMAIL_SMTP_PASS=EFg3svYe6Pff24Yr
 SHARELATEX_EMAIL_SMTP_LOGGER=false
 SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH=true
 SHARELATEX_EMAIL_SMTP_IGNORE_TLS=false
-SHARELATEX_CUSTOM_EMAIL_FOOTER=&quot;&lt;a href='https://latex.skywt.cn/'&gt;SkyLatex&lt;/a&gt; hosted on &lt;a href='https://skywt.cn/'&gt;SkyWT.cn&lt;/a&gt;.&quot;
+SHARELATEX_CUSTOM_EMAIL_FOOTER=&quot;&lt;a href=&#x27;https://latex.skywt.cn/&#x27;&gt;SkyLatex&lt;/a&gt; hosted on &lt;a href=&#x27;https://skywt.cn/&#x27;&gt;SkyWT.cn&lt;/a&gt;.&quot;
 
 TEX_LIVE_DOCKER_IMAGE=quay.io/sharelatex/texlive-full:2020.1
-ALL_TEX_LIVE_DOCKER_IMAGES=quay.io/sharelatex/texlive-full:2020.1,quay.io/sharelatex/texlive-full:2019.1</code></pre><h2>启动容器</h2><p>创建一个 Docker 网络 sharelatex，把 Redis 和 MongoDB 的容器都提前加进来，然后启动容器，指定加入 sharelatex 网络，开放端口，文档资源挂载到外部，并且引入环境变量文件 variables.env。</p><pre><code class="lang-sh">docker run -d \
+ALL_TEX_LIVE_DOCKER_IMAGES=quay.io/sharelatex/texlive-full:2020.1,quay.io/sharelatex/texlive-full:2019.1
+</code></pre>
+<h2><a id="启动容器" class="heading-anchor"></a>启动容器</h2>
+<p>创建一个 Docker 网络 sharelatex，把 Redis 和 MongoDB 的容器都提前加进来，然后启动容器，指定加入 sharelatex 网络，开放端口，文档资源挂载到外部，并且引入环境变量文件 variables.env。</p>
+<pre><code class="language-sh">docker run -d \
   --name sharelatex \
   --network sharelatex \
   -p 28080:80 \
   -v /data/sharelatex:/var/lib/sharelatex \
   --env-file ~/overleaf/variables.env \
-  sharelatex/sharelatex:latest</code></pre><h2>完整安装 TeX Live</h2><p>默认自带的 TeX Live 是精简版本，实测比如 XeLaTeX 就是用不了的。需要自行安装完整版。进入容器，使用国内的源升级 tlmgr 并完整安装 TeX Live：</p><pre><code class="lang-sh">docker exec -it sharelatex /bin/bash
+  sharelatex/sharelatex:latest
+</code></pre>
+<h2><a id="完整安装-tex-live" class="heading-anchor"></a>完整安装 TeX Live</h2>
+<p>默认自带的 TeX Live 是精简版本，实测比如 XeLaTeX 就是用不了的。需要自行安装完整版。进入容器，使用国内的源升级 tlmgr 并完整安装 TeX Live：</p>
+<pre><code class="language-sh">docker <span class="hljs-built_in">exec</span> -it sharelatex /bin/bash
 tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 tlmgr update --self
-tlmgr install scheme-full</code></pre><p>这里我用的是中科大的源，也可以用清华源 <code>https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/</code>。不过就这个下载而言，中科大源比清华源快很多。可能是因为服务器地域问题。</p><p>一共有四千多个包……要装挺久的。</p><h2>代码高亮 minted 包</h2><p>Overleaf 的官方<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted">这个文档</a>里有个说明：</p><blockquote>Note: For minted to work with your local LaTeX distribution, an additional program called Pygments must be installed. Overleaf can save you the trouble of installing it and having to run special commands to compile your document—on Overleaf, documents that use minted will work "out of the box".</blockquote><p>进入容器里安装 pygments 就好了。</p><pre><code class="lang-sh">docker exec -it sharelatex /bin/bash
+tlmgr install scheme-full
+</code></pre>
+<p>这里我用的是中科大的源，也可以用清华源 <code>https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/</code>。不过就这个下载而言，中科大源比清华源快很多。可能是因为服务器地域问题。</p>
+<p>一共有四千多个包……要装挺久的。</p>
+<h2><a id="代码高亮-minted-包" class="heading-anchor"></a>代码高亮 minted 包</h2>
+<p>Overleaf 的官方<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted">这个文档</a>里有个说明：</p>
+<blockquote>
+<p>Note: For minted to work with your local LaTeX distribution, an additional program called Pygments must be installed. Overleaf can save you the trouble of installing it and having to run special commands to compile your document—on Overleaf, documents that use minted will work &quot;out of the box&quot;.</p>
+</blockquote>
+<p>进入容器里安装 pygments 就好了。</p>
+<pre><code class="language-sh">docker <span class="hljs-built_in">exec</span> -it sharelatex /bin/bash
 apt-get update
-apt-get install pygments</code></pre><p>minted 包还需要启用 <code>shell_escape</code>。编辑 <code>/usr/local/texlive/2021/texmf.cnf</code>，加上一行：</p><pre><code>shell_escape = t</code></pre><p>重启容器就可以使用 minted 包了。</p><h2>安装字体</h2><p>这个容器里默认是没有 Times New Roman 之类的字体的，如果 LaTeX 模板用了某个不存在的字体就会报错（然而我这里是会一直显示正在编译而没有任何错误提示……十分玄学）。<br>先换 apt 的源，然后在容器里安装字体并刷新缓存：</p><pre><code>apt-get install ttf-mscorefonts-installer
-fc-cache</code></pre><p>这个 mscorefonts 包包含了 Arial、Georgia、Times Roman 等热门的 Microsoft’s Truetype fonts。</p><h2>使用中文</h2><p>Menu 里编译器选择 XeLaTeX，并且</p><pre><code>\usepackage{ctex}</code></pre><p>其他编译器都不支持中文。</p><h2>使用效果</h2><p><img src="https://skywt.cn/usr/uploads/2021/12/2795676573.png" alt="pic1" title="pic1"></p><p><img src="https://skywt.cn/usr/uploads/2021/12/2023490616.png" alt="pic2" title="pic2"></p><p>嗯，有内味了。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZQADMH" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;self-host-overleaf&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/self-host-overleaf&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+apt-get install pygments
+</code></pre>
+<p>minted 包还需要启用 <code>shell_escape</code>。编辑 <code>/usr/local/texlive/2021/texmf.cnf</code>，加上一行：</p>
+<pre><code>shell_escape = t
+</code></pre>
+<p>重启容器就可以使用 minted 包了。</p>
+<h2><a id="安装字体" class="heading-anchor"></a>安装字体</h2>
+<p>这个容器里默认是没有 Times New Roman 之类的字体的，如果 LaTeX 模板用了某个不存在的字体就会报错（然而我这里是会一直显示正在编译而没有任何错误提示……十分玄学）。<br>
+先换 apt 的源，然后在容器里安装字体并刷新缓存：</p>
+<pre><code>apt-get install ttf-mscorefonts-installer
+fc-cache
+</code></pre>
+<p>这个 mscorefonts 包包含了 Arial、Georgia、Times Roman 等热门的 Microsoft’s Truetype fonts。</p>
+<h2><a id="使用中文" class="heading-anchor"></a>使用中文</h2>
+<p>Menu 里编译器选择 XeLaTeX，并且</p>
+<pre><code>\usepackage{ctex}
+</code></pre>
+<p>其他编译器都不支持中文。</p>
+<h2><a id="使用效果" class="heading-anchor"></a>使用效果</h2>
+<p><a href="https://skywt.cn/usr/uploads/2021/12/2795676573.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2021/12/2795676573.png" alt="pic1" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2021/12/2023490616.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2021/12/2023490616.png" alt="pic2" title="" /></a></p>
+<p>嗯，有内味了。</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="1BoI2X" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;self-host-overleaf&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -166,4 +236,4 @@ fc-cache</code></pre><p>这个 mscorefonts 包包含了 Arial、Georgia、Times 
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解 </span> </h5> <div class="m-2 se
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,66 +72,147 @@ Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解 </span> </h5> <div class="m-2 se
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 28 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-638-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 638 Div2 T3 CandleTimerEasy 题解<br><del>每天被 XY 题困扰的我们怎么会去做 Topcoder 呢</del></p><!--more--><hr><h2>Translation</h2><p>你有很多蜡烛，每条蜡烛看成一条边，则构成了一棵树。现在你要点燃所有蜡烛，有两个条件：</p><ul><li>只能从树的叶节点开始点燃；</li><li>长度为 len[i] 的蜡烛完全燃烧需要 len[i] 的时间。如果从它的两边同时点燃，则只需要 len[i]/2 的时间。</li></ul><p>问你以不同方式从叶节点点燃蜡烛，最后所有蜡烛燃烧完需要消耗的时间有多少种。</p><p>给出数据的方式是给你三个 vector<int>：A、B 和 len，对于 i，节点 A[i] 与 B[i] 之间有一条长度为 len[i] 的蜡烛。<br>数据范围：$1 \leqslant e \leqslant 19$。</p><blockquote><ul><li>A will contain <strong>between 1 and 19 elements</strong>, inclusive.</li><li>A, B and len will contain same number of elements.</li><li>Each element in A will be between 0 and |A|, inclusive.</li><li>Each element in B will be between 0 and |A|, inclusive.</li><li>Each element in len will be between 1 and 1000, inclusive.</li><li>A, B and len will describe a tree.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li></ul></blockquote><hr><h2>Examples</h2><p>样例零：</p><pre><code>{0,1}
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 8 月 28 日 12:33</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#translation">Translation</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#original">Original</a></li>
+<li><a href="#codes">Codes</a></li>
+</ul>
+<p>Topcoder Single Round Match 638 Div2 T3 CandleTimerEasy 题解<br>
+<del>每天被 XY 题困扰的我们怎么会去做 Topcoder 呢</del></p>
+<hr>
+<h2><a id="translation" class="heading-anchor"></a>Translation</h2>
+<p>你有很多蜡烛，每条蜡烛看成一条边，则构成了一棵树。现在你要点燃所有蜡烛，有两个条件：</p>
+<ul>
+<li>只能从树的叶节点开始点燃；</li>
+<li>长度为 len[i] 的蜡烛完全燃烧需要 len[i] 的时间。如果从它的两边同时点燃，则只需要 len[i]/2 的时间。</li>
+</ul>
+<p>问你以不同方式从叶节点点燃蜡烛，最后所有蜡烛燃烧完需要消耗的时间有多少种。</p>
+<p>给出数据的方式是给你三个 vector<int>：A、B 和 len，对于 i，节点 A[i] 与 B[i] 之间有一条长度为 len[i] 的蜡烛。<br>
+数据范围：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⩽</mo><mi>e</mi><mo>⩽</mo><mn>19</mn></mrow><annotation encoding="application/x-tex">1 \leqslant e \leqslant 19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19</span></span></span></span>。</p>
+<blockquote>
+<ul>
+<li>A will contain <strong>between 1 and 19 elements</strong>, inclusive.</li>
+<li>A, B and len will contain same number of elements.</li>
+<li>Each element in A will be between 0 and |A|, inclusive.</li>
+<li>Each element in B will be between 0 and |A|, inclusive.</li>
+<li>Each element in len will be between 1 and 1000, inclusive.</li>
+<li>A, B and len will describe a tree.</li>
+<li>Time limit (s): 2.000</li>
+<li>Memory limit (MB): 256</li>
+</ul>
+</blockquote>
+<hr>
+<h2><a id="examples" class="heading-anchor"></a>Examples</h2>
+<p>样例零：</p>
+<pre><code>{0,1}
 {1,2}
-{10,1}</code></pre><p>Returns: <code>2</code></p><p>这是一条链，可以看成一条长度为 11 的长蜡烛，从头、尾单独点燃时间 11，同时点燃时间 5.5，一共 2 种。</p><blockquote>This tree looks the same as a single candle of length 11. If we light it on one end, we will measure the time 11. If we light it on both ends, we will measure the time 5.5.</blockquote><p>样例一：</p><pre><code>{0,0,0}
+{10,1}
+</code></pre>
+<p>Returns: <code>2</code></p>
+<p>这是一条链，可以看成一条长度为 11 的长蜡烛，从头、尾单独点燃时间 11，同时点燃时间 5.5，一共 2 种。</p>
+<blockquote>
+<p>This tree looks the same as a single candle of length 11. If we light it on one end, we will measure the time 11. If we light it on both ends, we will measure the time 5.5.</p>
+</blockquote>
+<p>样例一：</p>
+<pre><code>{0,0,0}
 {1,2,3}
-{1,1,1}</code></pre><p>Returns: <code>2</code></p><p>这次有 3 个地方可以点燃。如果全部同时点燃，需要消耗 1 的时间，否则消耗 2。</p><blockquote>This time we have 3 ends. If we ignite all of them the time is 1, otherwise the time is 2.</blockquote><p>样例二：</p><pre><code>{0,0,0}
+{1,1,1}
+</code></pre>
+<p>Returns: <code>2</code></p>
+<p>这次有 3 个地方可以点燃。如果全部同时点燃，需要消耗 1 的时间，否则消耗 2。</p>
+<blockquote>
+<p>This time we have 3 ends. If we ignite all of them the time is 1, otherwise the time is 2.</p>
+</blockquote>
+<p>样例二：</p>
+<pre><code>{0,0,0}
 {1,2,3}
-{1,2,3}</code></pre><p>Returns: 4</p><blockquote>We can get 4 different outcomes: 2.5, 3, 4, 5.</blockquote><hr><h2>Original</h2><blockquote>You have a lot of candles. The candles burn at a uniform rate: if you ignite a candle of length L, it will burn completely in L units of time. You can also ignite a candle at both ends, which makes it burn twice as fast.   You have arranged some candles into the shape of a tree. You want to use the tree to measure time. At the beginning, you will ingite some leaves of the tree (all at the same time). Then you will just wait and watch the flames spread across the entire tree. (Whenever a flame reaches an inner node of the tree, it spreads to all branches that meet at that node.) Note that you are not allowed to light new flames during the process. The time you will measure is the time between the moment when you lighted the fire(s) and the moment when the last part of the tree finished burning.   You are given a description of the tree as three vector <int>s: a, b, and len, with N elements each. The nodes of the tree are numbered 0 through N, inclusive. For each valid i, there is a candle between the nodes a[i] and b[i] with length len[i].   Compute and return the number of different times you can measure when following the above procedure.</blockquote><hr><p>因为数据非常非常非常小，可以考虑暴枚。暴力枚举每个叶节点点燃或不点燃，则复杂度是 $\Theta (2^{f})$（f 代表叶节点数量）。接下来考虑的就是根据某个叶节点的点集来算出燃烧时间。</p><p>因为数据非常非常非常小，可以先直接来一趟 Floyd 算出两两叶节点之间蜡烛长度。假设 <code>t[i]</code> 表示烧到第 i 个节点的最早时间，那么接下来：对所有非点燃处，寻找离它最近的点燃处，两者之间距离即是烧到这个点的最早时间；对所有点燃处，<code>t[i]=0</code>。<br>但是这不够。你以为处理所有“点燃处”时间的最大值 <code>max(t[i])</code> 就是当前答案吗？其实即使考虑完所有的点，<strong>仍然会有些边没有被考虑到</strong>。我们要再枚举所有的边，这时候每条边两个端点的最早烧到的时间都已经得出，我们只需要考虑根据这个算出<strong>这条边烧完的时间</strong>。<br>如何根据这条边两个端点 $A_i$ 和 $B_i$ 最早被烧到的时间，算出这条边被烧完的时间？两个端点的最早烧到时间可以看成有先后顺序的，那么分为两种情况：</p><ul><li>两端点中先烧到的一个，直接把整根蜡烛烧掉了，另一端的小火苗根本没有机会，则时间是：$min(t_{A_i},t_{B_i})+len_i$；</li><li>两端点中一个先开始烧这根蜡烛，烧了一会儿另外一端开始烧。那么较晚的一端开始烧的时候，剩下蜡烛长度是：$len_i-|t_{A_i}-t_{B_i}|$，这段只需要一半的时间；其余的一段则是需要完整的时间。烧完这根蜡烛总时间就是：<code>max(t[A[i]],t[B[i]])+(len[i]-Abs(t[A[i]]-t[B[i]]))/2.0)</code>。</li></ul><p>因为数据非常非常非常小，而且时限 2s，即使上述方法 $\Theta (f^2\ast 2^f)$ 完成，也不会超时……</p><hr><h2>Codes</h2><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define CLEAR(x) memset(x,0,sizeof(x))
-#define CLEAR_MAX(x) memset(x,63,sizeof(x))
-using namespace std;
-const int maxn=25,INF=1e8;
-int n,s,ind[maxn];
-int dst[maxn][maxn];
-double t[maxn];
-vector &lt;double&gt; vec;
+{1,2,3}
+</code></pre>
+<p>Returns: 4</p>
+<blockquote>
+<p>We can get 4 different outcomes: 2.5, 3, 4, 5.</p>
+</blockquote>
+<hr>
+<h2><a id="original" class="heading-anchor"></a>Original</h2>
+<blockquote>
+<p>You have a lot of candles. The candles burn at a uniform rate: if you ignite a candle of length L, it will burn completely in L units of time. You can also ignite a candle at both ends, which makes it burn twice as fast.   You have arranged some candles into the shape of a tree. You want to use the tree to measure time. At the beginning, you will ingite some leaves of the tree (all at the same time). Then you will just wait and watch the flames spread across the entire tree. (Whenever a flame reaches an inner node of the tree, it spreads to all branches that meet at that node.) Note that you are not allowed to light new flames during the process. The time you will measure is the time between the moment when you lighted the fire(s) and the moment when the last part of the tree finished burning.   You are given a description of the tree as three vector <int>s: a, b, and len, with N elements each. The nodes of the tree are numbered 0 through N, inclusive. For each valid i, there is a candle between the nodes a[i] and b[i] with length len[i].   Compute and return the number of different times you can measure when following the above procedure.</p>
+</blockquote>
+<hr>
+<p>因为数据非常非常非常小，可以考虑暴枚。暴力枚举每个叶节点点燃或不点燃，则复杂度是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>f</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta (2^{f})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>（f 代表叶节点数量）。接下来考虑的就是根据某个叶节点的点集来算出燃烧时间。</p>
+<p>因为数据非常非常非常小，可以先直接来一趟 Floyd 算出两两叶节点之间蜡烛长度。假设 <code>t[i]</code> 表示烧到第 i 个节点的最早时间，那么接下来：对所有非点燃处，寻找离它最近的点燃处，两者之间距离即是烧到这个点的最早时间；对所有点燃处，<code>t[i]=0</code>。<br>
+但是这不够。你以为处理所有“点燃处”时间的最大值 <code>max(t[i])</code> 就是当前答案吗？其实即使考虑完所有的点，<strong>仍然会有些边没有被考虑到</strong>。我们要再枚举所有的边，这时候每条边两个端点的最早烧到的时间都已经得出，我们只需要考虑根据这个算出<strong>这条边烧完的时间</strong>。<br>
+如何根据这条边两个端点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">B_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 最早被烧到的时间，算出这条边被烧完的时间？两个端点的最早烧到时间可以看成有先后顺序的，那么分为两种情况：</p>
+<ul>
+<li><p>两端点中先烧到的一个，直接把整根蜡烛烧掉了，另一端的小火苗根本没有机会，则时间是：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><msub><mi>t</mi><msub><mi>A</mi><mi>i</mi></msub></msub><mo separator="true">,</mo><msub><mi>t</mi><msub><mi>B</mi><mi>i</mi></msub></msub><mo stretchy="false">)</mo><mo>+</mo><mi>l</mi><mi>e</mi><msub><mi>n</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">min(t_{A_i},t_{B_i})+len_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="mord mathnormal">min</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.0502em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>；</p></li>
+<li><p>两端点中一个先开始烧这根蜡烛，烧了一会儿另外一端开始烧。那么较晚的一端开始烧的时候，剩下蜡烛长度是：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mi mathvariant="normal">∣</mi><msub><mi>t</mi><msub><mi>A</mi><mi>i</mi></msub></msub><mo>−</mo><msub><mi>t</mi><msub><mi>B</mi><mi>i</mi></msub></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">len_i-|t_{A_i}-t_{B_i}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.0502em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span>，这段只需要一半的时间；其余的一段则是需要完整的时间。烧完这根蜡烛总时间就是：<code>max(t[A[i]],t[B[i]])+(len[i]-Abs(t[A[i]]-t[B[i]]))/2.0)</code>。</p></li>
+</ul>
+<p>因为数据非常非常非常小，而且时限 2s，即使上述方法 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><msup><mi>f</mi><mn>2</mn></msup><mo>∗</mo><msup><mn>2</mn><mi>f</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta (f^2\ast 2^f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 完成，也不会超时……</p>
+<hr>
+<h2><a id="codes" class="heading-anchor"></a>Codes</h2>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> CLEAR(x) memset(x,0,sizeof(x))</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> CLEAR_MAX(x) memset(x,63,sizeof(x))</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">25</span>,INF=<span class="hljs-number">1e8</span>;
+<span class="hljs-type">int</span> n,s,ind[maxn];
+<span class="hljs-type">int</span> dst[maxn][maxn];
+<span class="hljs-type">double</span> t[maxn];
+vector &lt;<span class="hljs-type">double</span>&gt; vec;
 
-class CandleTimerEasy {
-public:
-    int differentTime( vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; len );
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CandleTimerEasy</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">differentTime</span><span class="hljs-params">( vector &lt;<span class="hljs-type">int</span>&gt; A, vector &lt;<span class="hljs-type">int</span>&gt; B, vector &lt;<span class="hljs-type">int</span>&gt; len )</span></span>;
 };
-inline void init(){
-    vec.clear();CLEAR(ind);CLEAR_MAX(dst);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
+    vec.<span class="hljs-built_in">clear</span>();<span class="hljs-built_in">CLEAR</span>(ind);<span class="hljs-built_in">CLEAR_MAX</span>(dst);
 }
-inline void Floyd(){
-    for (int i=0;i&lt;n;i++) dst[i][i]=0;
-    for (int k=0;k&lt;n;k++)
-    for (int i=0;i&lt;n;i++) if (i!=k)
-    for (int j=0;j&lt;n;j++) if ((j!=k)&amp;&amp;(j!=i))
-        dst[i][j]=dst[j][i]=min(dst[i][j],dst[i][k]+dst[k][j]);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Floyd</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) dst[i][i]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;n;k++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) <span class="hljs-keyword">if</span> (i!=k)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++) <span class="hljs-keyword">if</span> ((j!=k)&amp;&amp;(j!=i))
+        dst[i][j]=dst[j][i]=<span class="hljs-built_in">min</span>(dst[i][j],dst[i][k]+dst[k][j]);
 }
-inline double Abs(double x) {return x&lt;0?-x:x;}
-inline double Get(int x,vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; len){
-    double ret=0.0;
-    for (int i=0;i&lt;n;i++) if ((ind[i]==1)&amp;&amp;(x&amp;(1&lt;&lt;i))) t[i]=0; else {
-        t[i]=(double)INF;
-        for (int j=0;j&lt;n;j++) if ((ind[j]==1)&amp;&amp;(x&amp;(1&lt;&lt;j))&amp;&amp;(i!=j)) t[i]=min(t[i],(double)dst[i][j]);
-        ret=max(ret,t[i]);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">double</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> </span>{<span class="hljs-keyword">return</span> x&lt;<span class="hljs-number">0</span>?-x:x;}
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">double</span> <span class="hljs-title">Get</span><span class="hljs-params">(<span class="hljs-type">int</span> x,vector &lt;<span class="hljs-type">int</span>&gt; A, vector &lt;<span class="hljs-type">int</span>&gt; B, vector &lt;<span class="hljs-type">int</span>&gt; len)</span></span>{
+    <span class="hljs-type">double</span> ret=<span class="hljs-number">0.0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) <span class="hljs-keyword">if</span> ((ind[i]==<span class="hljs-number">1</span>)&amp;&amp;(x&amp;(<span class="hljs-number">1</span>&lt;&lt;i))) t[i]=<span class="hljs-number">0</span>; <span class="hljs-keyword">else</span> {
+        t[i]=(<span class="hljs-type">double</span>)INF;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++) <span class="hljs-keyword">if</span> ((ind[j]==<span class="hljs-number">1</span>)&amp;&amp;(x&amp;(<span class="hljs-number">1</span>&lt;&lt;j))&amp;&amp;(i!=j)) t[i]=<span class="hljs-built_in">min</span>(t[i],(<span class="hljs-type">double</span>)dst[i][j]);
+        ret=<span class="hljs-built_in">max</span>(ret,t[i]);
     }
-    for (int i=0;i&lt;n-1;i++) ret=max(ret,min(min(t[A[i]],t[B[i]])+len[i],max(t[A[i]],t[B[i]])+(len[i]-Abs(t[A[i]]-t[B[i]]))/2.0));
-    return ret;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++) ret=<span class="hljs-built_in">max</span>(ret,<span class="hljs-built_in">min</span>(<span class="hljs-built_in">min</span>(t[A[i]],t[B[i]])+len[i],<span class="hljs-built_in">max</span>(t[A[i]],t[B[i]])+(len[i]-<span class="hljs-built_in">Abs</span>(t[A[i]]-t[B[i]]))/<span class="hljs-number">2.0</span>));
+    <span class="hljs-keyword">return</span> ret;
 }
-int CandleTimerEasy::differentTime(vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; len) {
-    init();
-    n=A.size()+1;s=1&lt;&lt;n;
-    for (int i=0;i&lt;n-1;i++){
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">CandleTimerEasy::differentTime</span><span class="hljs-params">(vector &lt;<span class="hljs-type">int</span>&gt; A, vector &lt;<span class="hljs-type">int</span>&gt; B, vector &lt;<span class="hljs-type">int</span>&gt; len)</span> </span>{
+    <span class="hljs-built_in">init</span>();
+    n=A.<span class="hljs-built_in">size</span>()+<span class="hljs-number">1</span>;s=<span class="hljs-number">1</span>&lt;&lt;n;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++){
         dst[A[i]][B[i]]=dst[B[i]][A[i]]=len[i];
         ind[A[i]]++;ind[B[i]]++;
     }
-    Floyd();
-    for (int i=1;i&lt;s;i++) vec.push_back(Get(i,A,B,len));
-    sort(vec.begin(),vec.end());
-    int ans=0;
-    // for (int i=0;i&lt;vec.size();i++) printf(&quot;ANS: %.3lf\n&quot;,vec[i]);
-    for (int i=0;i&lt;vec.size();i++) if (((i==0)||(vec[i]!=vec[i-1]))&amp;&amp;(vec[i]&gt;0)&amp;&amp;(vec[i]&lt;INF)) ans++;//,printf(&quot;%.2f\n&quot;,vec[i]);
-    return ans;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1w3yDF" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;tc-638-div2-t3&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/tc-638-div2-t3&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-built_in">Floyd</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;s;i++) vec.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">Get</span>(i,A,B,len));
+    <span class="hljs-built_in">sort</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>());
+    <span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-comment">// for (int i=0;i&lt;vec.size();i++) printf(&quot;ANS: %.3lf\n&quot;,vec[i]);</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;vec.<span class="hljs-built_in">size</span>();i++) <span class="hljs-keyword">if</span> (((i==<span class="hljs-number">0</span>)||(vec[i]!=vec[i<span class="hljs-number">-1</span>]))&amp;&amp;(vec[i]&gt;<span class="hljs-number">0</span>)&amp;&amp;(vec[i]&lt;INF)) ans++;<span class="hljs-comment">//,printf(&quot;%.2f\n&quot;,vec[i]);</span>
+    <span class="hljs-keyword">return</span> ans;
+}
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="2kHI6x" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;tc-638-div2-t3&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -158,4 +239,4 @@ Topcoder SRM 638 Div2 T3 CandleTimerEasy 题解 </span> </div> <div class="m-2">
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

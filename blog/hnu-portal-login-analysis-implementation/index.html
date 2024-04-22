@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>湖大个人门户登录浅析与实现</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>湖大个人门户登录浅析与实现</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,179 +72,332 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>湖大个人门户登录浅析与实现</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 05 月 13 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/hnu-portal-login-analysis-implementation" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>最初目的只是想看看个人门户查询图书馆借阅书籍的接口，写个还书提醒的程序（因为借的书总是忘记还，过期了图书馆不仅不会提醒还不能直接续借，得付滞纳金……），结果就一发不可收拾，研究了一下 HNU 的个人门户登录逻辑并用 Python 浅浅实现了一下。</p><!--more--><p><strong>⚠️ 警告：本文介绍的研究试验仅供学习交流，请勿用于任何非法用途。</strong></p><p>提示：为了保证账号安全性，本文中所有的示例字符串都进行了一些字符的修改。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="湖南大学「统一身份认证」截图"></p><p>研究地址：<a href="http://cas.hnu.edu.cn/cas/login">http://cas.hnu.edu.cn/cas/login</a>，其实是「统一身份认证」，应该是想做一个类似 SSO 的东西。非常神奇的是这个网站直接用 https 访问会出错，但是登录之后又会跳转 https。</p><h2>按下「登录」之后</h2><p>审查元素可以看到整个表单的 HTML 代码是这样的：</p><pre><code class="lang-html">&lt;form id=&quot;fm1&quot; action=&quot;/cas/login&quot; method=&quot;post&quot; data-bitwarden-watching=&quot;1&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;p class=&quot;error text-left&quot; id=&quot;errormsg&quot;&gt;&lt;/p&gt;
-        &lt;div class=&quot;input-group&quot;&gt;
-            &lt;div class=&quot;input-group-addon&quot;&gt;&lt;img src=&quot;assets/images/user.png&quot;&gt;&lt;/div&gt;
-            &lt;input id=&quot;username&quot; name=&quot;username&quot; class=&quot;form-control user-input&quot; tabindex=&quot;1&quot; placeholder=&quot;职工号/学号&quot; type=&quot;text&quot; value=&quot;&quot; size=&quot;25&quot; autocomplete=&quot;off&quot; data-com.bitwarden.browser.user-edited=&quot;yes&quot;&gt;
-            &lt;input type=&quot;button&quot; id=&quot;sendsms&quot; class=&quot;btn btn-primary get-code-btn&quot; value=&quot;获取动态口令&quot; style=&quot;display:none&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-        &lt;div class=&quot;input-group&quot;&gt;
-            &lt;div class=&quot;input-group-addon&quot;&gt;&lt;img src=&quot;assets/images/lock.png&quot;&gt;&lt;/div&gt;
-            &lt;input id=&quot;password&quot; name=&quot;password&quot; class=&quot;form-control pwd-input&quot; tabindex=&quot;2&quot; onkeyup=&quot;CreateRatePasswdReq(this);&quot; placeholder=&quot;请输入个人门户密码&quot; type=&quot;password&quot; value=&quot;&quot; size=&quot;25&quot; autocomplete=&quot;off&quot; data-com.bitwarden.browser.user-edited=&quot;yes&quot;&gt;
-            &lt;a class=&quot;forget-pwd&quot; target=&quot;_blank&quot; href=&quot;http://cas.hnu.edu.cn/securitycenter/findPwd/index.zf&quot;&gt;忘记密码&lt;!--忘记登录密码 ?--&gt; &lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;code&quot; id=&quot;kaptcha&quot; style=&quot;display: none;&quot;&gt;
-        &lt;!--
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>湖大个人门户登录浅析与实现</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 5 月 13 日 02:30</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E6%8C%89%E4%B8%8B%E7%99%BB%E5%BD%95%E4%B9%8B%E5%90%8E">按下「登录」之后</a></li>
+<li><a href="#post-%E9%83%BD%E5%8F%91%E4%BA%86%E4%BA%9B%E5%95%A5">POST 都发了些啥</a>
+<ul>
+<li><a href="#jsessionid">JSESSIONID</a></li>
+<li><a href="#getpubkey">getPubKey</a></li>
+<li><a href="#%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86">密码加密</a></li>
+</ul></li>
+<li><a href="#%E5%8F%91%E9%80%81-post-%E8%AF%B7%E6%B1%82">发送 POST 请求</a></li>
+<li><a href="#post-%E8%AF%B7%E6%B1%82%E4%B9%8B%E5%90%8E">POST 请求之后</a></li>
+<li><a href="#%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F%E5%90%8E%E7%9A%84%E8%AF%B7%E6%B1%82">登录成功后的请求</a></li>
+<li><a href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">Python 代码实现</a>
+<ul>
+<li><a href="#requests-%E5%BA%93%E5%8F%91%E8%AF%B7%E6%B1%82">Requests 库发请求</a></li>
+<li><a href="#beautifulsoup-%E8%A7%A3%E6%9E%90-html">BeautifulSoup 解析 HTML</a></li>
+<li><a href="#pyexecjs-%E8%B0%83%E7%94%A8-js">Pyexecjs 调用 js</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">完整代码实现</a></li>
+</ul></li>
+<li><a href="#%E4%B8%8B%E4%B8%80%E6%AD%A5">下一步</a></li>
+</ul>
+<p>最初目的只是想看看个人门户查询图书馆借阅书籍的接口，写个还书提醒的程序（因为借的书总是忘记还，过期了图书馆不仅不会提醒还不能直接续借，得付滞纳金……），结果就一发不可收拾，研究了一下 HNU 的个人门户登录逻辑并用 Python 浅浅实现了一下。</p>
+<p><strong>⚠️ 警告：本文介绍的研究试验仅供学习交流，请勿用于任何非法用途。</strong></p>
+<p>提示：为了保证账号安全性，本文中所有的示例字符串都进行了一些字符的修改。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="" /></a></p>
+<p>研究地址：<a href="http://cas.hnu.edu.cn/cas/login">http://cas.hnu.edu.cn/cas/login</a>，其实是「统一身份认证」，应该是想做一个类似 SSO 的东西。非常神奇的是这个网站直接用 https 访问会出错，但是登录之后又会跳转 https。</p>
+<h2><a id="按下登录之后" class="heading-anchor"></a>按下「登录」之后</h2>
+<p>审查元素可以看到整个表单的 HTML 代码是这样的：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fm1&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/cas/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">data-bitwarden-watching</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error text-left&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;errormsg&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-addon&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/images/user.png&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control user-input&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;职工号/学号&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span> <span class="hljs-attr">data-com.bitwarden.browser.user-edited</span>=<span class="hljs-string">&quot;yes&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;sendsms&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary get-code-btn&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;获取动态口令&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-addon&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/images/lock.png&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control pwd-input&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">onkeyup</span>=<span class="hljs-string">&quot;CreateRatePasswdReq(this);&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入个人门户密码&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span> <span class="hljs-attr">data-com.bitwarden.browser.user-edited</span>=<span class="hljs-string">&quot;yes&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;forget-pwd&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://cas.hnu.edu.cn/securitycenter/findPwd/index.zf&quot;</span>&gt;</span>忘记密码<span class="hljs-comment">&lt;!--忘记登录密码 ?--&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;code&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;kaptcha&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--
         &lt;div class=&quot;col-xs-2 text-left p-r-0 code-text&quot;&gt;
             &lt;span&gt;验证码 &lt;/span&gt;
-        &lt;/div&gt;--&gt;
-        &lt;div&gt;
-            &lt;div class=&quot;col-xs-5&quot; style=&quot;border:1px solid #777777;&quot;&gt;
-                &lt;input id=&quot;authcode&quot; name=&quot;authcode&quot; class=&quot;form-control&quot; tabindex=&quot;2&quot; style=&quot;text-align:center;&quot; placeholder=&quot;输入验证码&quot; type=&quot;text&quot; value=&quot;&quot; size=&quot;10&quot; autocomplete=&quot;off&quot;&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;col-xs-7 p-0 code-img&quot;&gt;&lt;img id=&quot;yzmPic&quot; onclick=&quot;javascript:refreshCode();&quot; class=&quot;&quot; src=&quot;kaptcha?time=1652268176109&quot;&gt;
-                &lt;a href=&quot;javascript:refreshCode();&quot;&gt;
-                    看不清&lt;!--看不清 ?--&gt; &lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;login-info row&quot;&gt;
-        &lt;div class=&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12  login-button&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-block btn-primary login-btn&quot; id=&quot;dl&quot;&gt;登 录 &lt;/button&gt;&lt;/div&gt;
-        &lt;div class=&quot;col-lg-3 col-md-3 col-sm-3 col-xs-4 remember-me &quot; style=&quot;display:none;&quot;&gt;
-            &lt;input class=&quot;default-checkbox checkbox&quot; type=&quot;checkbox&quot; name=&quot;rememberMe&quot; value=&quot;true&quot; id=&quot;rember&quot;&gt;
-            &lt;label for=&quot;rember&quot;&gt;记住我 &lt;/label&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;input type=&quot;hidden&quot; name=&quot;execution&quot; value=&quot;9e4a732f-501e-4dee-8a8f-2e6a9faedb4a_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUTNaUWVrNXVRMVl6WVhWM2EwMWlWbnAyWkM5MFZHdFdjbUoyU2pFMmFFTk1iSHBEWWxoemMzcDFOMlZEZDNZclZrZElka05MTjBkUFpraDFTR1V6VmxCNVVUTkhMMjVsWXpRNFpUQktOMk4yVTA1VVExWnBUV2RZUzJWUFpVTTBPSEpOUm1sSVJUZ3lOMUJ4Tm1OdldrNW9jRTVsTWtwcFpYVm9PRGRhYlROek5tOVVlVW80ZUhaMGJUVkJhREZpVUdrMEwwbGxlbFZKVkVKS1VUUjFMMUZXZUZSYWRVOVdaVkZTTVVNclIyWXlNVU0wZFVKVlNVRXlRbEE1UVdrNWIzQnVZMjVHVVN0M1JtUmhhMXBNUzA4NGRFdzVTbFpLTlVFMlUwRm9UMVIyV2pCUWIzTkxhRnBGVlVkNVlucFFVVmxJVVcwemJrUlVVRGwwTkRBMlZtVndjQzhyT0c0cmRpdFdXV0pWVm5KUWJFTjNhRFJXVFdKUWFWWjJVM2xMWkhSNVkyRk5XVW8zYUVNelRFWmtVUzlMZEU1QlVqY3paMUUzV0d0VllUZHVWRU5GUkdsb2VXUnZWbVVyVVdaRU5IRm1kbk5aWjFKR05WaExWMUl3YkdFcmJUWlFaMVZhVFhVNVNuSjFPRXN5V0doaEx6WnphekJIVFZvd1N6WXZRVWQ1TTBoM1lUSTBRV3RsVmxWYVdFZHRTUzlJVkVWTVptOUdjMm9yTkdSdk5VdHdkbTlqY25wYVluUnRaRGR3YmxCRVFtUlBWR1YyZEVKS1ZFczVhMVJDYlRGek9VZDVkVEpRYnpsYWNsWTNNVEozVm5CaVZsb3ZMMlpUT0hoR1ZrRkdOM1JKTkRCcGNITmxhRzh4VFd4b2VGZHpOaXMyWm1oR1IyRjNVa1lyY201clkyNTNSSEJsZEVkaGIxSkxkVkZaUW5KTFlscExjaXRYYTBSa1FqazRZalk0ZFVsTWFTc3ZUazFUVlhSTGRUVndUMlVyYWxsUVRHOTNkbEZrUjFOcEsxaEtlbUl6TXpWUVNERXhZelZRVEZkVlMxRk5VbFJqVVZkQ2FtMVhTa1JEZDBkdk5WbHpkV1Z1Y0dsM1UwVkliekZaVjFaNWVUaGliVTVZUW00MWFVTlFUbWQzY1daUk1YQjBPV0p1YzJaNmMwOVdPV0UwU0ZScEsyY3dZWE5LWjBOMGRWWnlkREV5TnpGd1ZFZFpkalJOU0RrMFQzWkZUR1JKVFVsamVtSkhWWGwxV2xoaGVreFJRV3BIT0dKdE5FVk9PVUZKVFVrM2RVVkRWa2tyT0N0SU5VUlNWMFJUWVUxTU5WSkVVemsyUm5nMlVFMXBVbEpyWldoU2JFSk9jM2g1YWs1cFZGQkhha3BKZEVsSGNHTTFhVGxSWVdGR1JrczFjSGRhVTJoaVVXMW1NVkpsUm1NMVRYY3pNMEk1T0N0SlMwTm9OVzlKZWtWQlRHZDBVMGh0TVdGek5WUTBiV3BaVDBVMmJWazBXbU56T0hWeFpUSktWbVV2Y0RsUGEwdGllVlprTldaVmVFUjFOa3RoUTNCWk5YZGpkSG81UkVoSVYyZzBkVXgwYWxaTmFuY3lXa1pWU1VoeUwycHFUWGRpWTFCQ2RrZ3hSMWg1VUhvdmQxY3pUa1EzWW5oQlEyNHZSa1JuV2tKNFNsWlhaVmRXYUhWc1lqQjZRekpSVmpKcVNrdHJURzlqZWxGRk0wSkxaVU52Y0hNMlRtVmhkMWhOV1VodmEzaFVZMHRKTm5FemJHdExjazVLVUhoV1VUaE5NazVCWkZGWk1qVndiRTB3T1RKVGFrZHRiMDFtV25WbFlXSlJNMWg0YkRCc1kwNVhjbnBUYVROblVWTjVha01yVW14d1MyRktXRmhSV1ZkbWJsRkVaRGhFV1ROR1VEWlpZVnAyYWtkR2NVMUZTR1ExY1ZCM2VVTlZObkJPTVZwNlF5dDFWR3BIZEZORk5WcEhiazFpUVhWRGRtZHpjbU51ZFhWMmNHOVphVlZLTUhRMk5sZ3lLMmRCZUd4Qk16Y3hjbkpoUVdoVlYzUXZhVkk1TVVGS2FERmtVRWw0ZWtkdlVVRlNZVE5LV2t3emVqVjZTazF3TjFSdFJGZzBPVm9yT1hCNFNpdEJVbXMxU0hWWWJWcFBhMVY1VmxkTU1TdHlkVXRrTVdoa01FOTZhMmhOTUhnMWVrVmpTbHB6YlZjd0sweFdkRXBYV1UweVpESkJkRWwyWWxOM1YyMUpTME01VVRsc1VuRjZWVk5OS3prNEwzbEZLM2xzYzNoVVpHZEliMUkxZVhKTWRUbHNObE5pVkdOYVV6ZFlVWE41TTB0blJ6bE1iMFJCVmxkMVIzcHFaRFJpVTBoWGVHVkpXWEY1VkVaWGR6TmFWMDlwVTNoYVlXbHNkWFJUUkVvMGVXdHBVV3QwZVVSUU16SkllR2xXYlcxUmJHaHlSMmR6ZG5SdE1WbHpZV0pZVEhOalkxbDFNRXB0VmxCWFF6Sk5RWFZpZDBsUVJUZFJWMkZ3UWxka01qVjZVbXBqZFhRMk1HUjRjRnBrU1hFM1lWb3pZV3hSVkU5SlJFUkdkMU0yTlU1VGJFeHlZMUpVYUZnMVJISmhNRVl5Y0RSUFltUnNSVW93VFhwT1ZWZzBkV3RESzNwNFNFTjFSR1ZxVUhkNmFtdGlVR0ZxU1RGVE1rUmhMMVpRTUhOUWIwcEQuMXNRWGZiNDlvbUJhLW9HYV9lbGpfMTF0WDdHVmJzMzVZb3ZkVEE0eHkweHR5azVWanBLS2VfbW5XSjZkeTdlZEV0SDNfQ3dTTkRYX3dvMFNGRWdEQUE=&quot;&gt;
-    &lt;input type=&quot;hidden&quot; name=&quot;_eventId&quot; value=&quot;submit&quot;&gt;
-&lt;/form&gt;</code></pre><p>整个表单的 id 是 <code>fm1</code>，可以看到其中「登录」按钮组件 id 为<code>dl</code>。</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" alt="文件树" title="文件树"></p><p>查看文件树，我们大概可以猜到 <code>/cas/js/login/login.js</code> 是负责处理登录操作的代码，<code>pwdYz.js</code> 用来验证密码的强度，<code>security.js</code> 是下面会用到的 RSA 加密算法的代码。</p><p>按下这个登录按钮之后会发生什么呢？我们可以看到 <code>login.js</code> 中有这样一段代码：</p><pre><code class="lang-js">jQuery.getJSON(&quot;v2/getPubKey&quot;,function(data){
-    Modulus = data[&quot;modulus&quot;];
-    public_exponent = data[&quot;exponent&quot;];
+        &lt;/div&gt;--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-xs-5&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border:1px solid #777777;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;authcode&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;authcode&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align:center;&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;输入验证码&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-xs-7 p-0 code-img&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;yzmPic&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;javascript:refreshCode();&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;kaptcha?time=1652268176109&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:refreshCode();&quot;</span>&gt;</span>
+                    看不清<span class="hljs-comment">&lt;!--看不清 ?--&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;login-info row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-lg-12 col-md-12 col-sm-12 col-xs-12  login-button&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-block btn-primary login-btn&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dl&quot;</span>&gt;</span>登 录 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-lg-3 col-md-3 col-sm-3 col-xs-4 remember-me &quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none;&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default-checkbox checkbox&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;rememberMe&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;rember&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;rember&quot;</span>&gt;</span>记住我 <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;execution&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;9e4a732f-501e-4dee-8a8f-2e6a9faedb4a_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUTNaUWVrNXVRMVl6WVhWM2EwMWlWbnAyWkM5MFZHdFdjbUoyU2pFMmFFTk1iSHBEWWxoemMzcDFOMlZEZDNZclZrZElka05MTjBkUFpraDFTR1V6VmxCNVVUTkhMMjVsWXpRNFpUQktOMk4yVTA1VVExWnBUV2RZUzJWUFpVTTBPSEpOUm1sSVJUZ3lOMUJ4Tm1OdldrNW9jRTVsTWtwcFpYVm9PRGRhYlROek5tOVVlVW80ZUhaMGJUVkJhREZpVUdrMEwwbGxlbFZKVkVKS1VUUjFMMUZXZUZSYWRVOVdaVkZTTVVNclIyWXlNVU0wZFVKVlNVRXlRbEE1UVdrNWIzQnVZMjVHVVN0M1JtUmhhMXBNUzA4NGRFdzVTbFpLTlVFMlUwRm9UMVIyV2pCUWIzTkxhRnBGVlVkNVlucFFVVmxJVVcwemJrUlVVRGwwTkRBMlZtVndjQzhyT0c0cmRpdFdXV0pWVm5KUWJFTjNhRFJXVFdKUWFWWjJVM2xMWkhSNVkyRk5XVW8zYUVNelRFWmtVUzlMZEU1QlVqY3paMUUzV0d0VllUZHVWRU5GUkdsb2VXUnZWbVVyVVdaRU5IRm1kbk5aWjFKR05WaExWMUl3YkdFcmJUWlFaMVZhVFhVNVNuSjFPRXN5V0doaEx6WnphekJIVFZvd1N6WXZRVWQ1TTBoM1lUSTBRV3RsVmxWYVdFZHRTUzlJVkVWTVptOUdjMm9yTkdSdk5VdHdkbTlqY25wYVluUnRaRGR3YmxCRVFtUlBWR1YyZEVKS1ZFczVhMVJDYlRGek9VZDVkVEpRYnpsYWNsWTNNVEozVm5CaVZsb3ZMMlpUT0hoR1ZrRkdOM1JKTkRCcGNITmxhRzh4VFd4b2VGZHpOaXMyWm1oR1IyRjNVa1lyY201clkyNTNSSEJsZEVkaGIxSkxkVkZaUW5KTFlscExjaXRYYTBSa1FqazRZalk0ZFVsTWFTc3ZUazFUVlhSTGRUVndUMlVyYWxsUVRHOTNkbEZrUjFOcEsxaEtlbUl6TXpWUVNERXhZelZRVEZkVlMxRk5VbFJqVVZkQ2FtMVhTa1JEZDBkdk5WbHpkV1Z1Y0dsM1UwVkliekZaVjFaNWVUaGliVTVZUW00MWFVTlFUbWQzY1daUk1YQjBPV0p1YzJaNmMwOVdPV0UwU0ZScEsyY3dZWE5LWjBOMGRWWnlkREV5TnpGd1ZFZFpkalJOU0RrMFQzWkZUR1JKVFVsamVtSkhWWGwxV2xoaGVreFJRV3BIT0dKdE5FVk9PVUZKVFVrM2RVVkRWa2tyT0N0SU5VUlNWMFJUWVUxTU5WSkVVemsyUm5nMlVFMXBVbEpyWldoU2JFSk9jM2g1YWs1cFZGQkhha3BKZEVsSGNHTTFhVGxSWVdGR1JrczFjSGRhVTJoaVVXMW1NVkpsUm1NMVRYY3pNMEk1T0N0SlMwTm9OVzlKZWtWQlRHZDBVMGh0TVdGek5WUTBiV3BaVDBVMmJWazBXbU56T0hWeFpUSktWbVV2Y0RsUGEwdGllVlprTldaVmVFUjFOa3RoUTNCWk5YZGpkSG81UkVoSVYyZzBkVXgwYWxaTmFuY3lXa1pWU1VoeUwycHFUWGRpWTFCQ2RrZ3hSMWg1VUhvdmQxY3pUa1EzWW5oQlEyNHZSa1JuV2tKNFNsWlhaVmRXYUhWc1lqQjZRekpSVmpKcVNrdHJURzlqZWxGRk0wSkxaVU52Y0hNMlRtVmhkMWhOV1VodmEzaFVZMHRKTm5FemJHdExjazVLVUhoV1VUaE5NazVCWkZGWk1qVndiRTB3T1RKVGFrZHRiMDFtV25WbFlXSlJNMWg0YkRCc1kwNVhjbnBUYVROblVWTjVha01yVW14d1MyRktXRmhSV1ZkbWJsRkVaRGhFV1ROR1VEWlpZVnAyYWtkR2NVMUZTR1ExY1ZCM2VVTlZObkJPTVZwNlF5dDFWR3BIZEZORk5WcEhiazFpUVhWRGRtZHpjbU51ZFhWMmNHOVphVlZLTUhRMk5sZ3lLMmRCZUd4Qk16Y3hjbkpoUVdoVlYzUXZhVkk1TVVGS2FERmtVRWw0ZWtkdlVVRlNZVE5LV2t3emVqVjZTazF3TjFSdFJGZzBPVm9yT1hCNFNpdEJVbXMxU0hWWWJWcFBhMVY1VmxkTU1TdHlkVXRrTVdoa01FOTZhMmhOTUhnMWVrVmpTbHB6YlZjd0sweFdkRXBYV1UweVpESkJkRWwyWWxOM1YyMUpTME01VVRsc1VuRjZWVk5OS3prNEwzbEZLM2xzYzNoVVpHZEliMUkxZVhKTWRUbHNObE5pVkdOYVV6ZFlVWE41TTB0blJ6bE1iMFJCVmxkMVIzcHFaRFJpVTBoWGVHVkpXWEY1VkVaWGR6TmFWMDlwVTNoYVlXbHNkWFJUUkVvMGVXdHBVV3QwZVVSUU16SkllR2xXYlcxUmJHaHlSMmR6ZG5SdE1WbHpZV0pZVEhOalkxbDFNRXB0VmxCWFF6Sk5RWFZpZDBsUVJUZFJWMkZ3UWxka01qVjZVbXBqZFhRMk1HUjRjRnBrU1hFM1lWb3pZV3hSVkU5SlJFUkdkMU0yTlU1VGJFeHlZMUpVYUZnMVJISmhNRVl5Y0RSUFltUnNSVW93VFhwT1ZWZzBkV3RESzNwNFNFTjFSR1ZxVUhkNmFtdGlVR0ZxU1RGVE1rUmhMMVpRTUhOUWIwcEQuMXNRWGZiNDlvbUJhLW9HYV9lbGpfMTF0WDdHVmJzMzVZb3ZkVEE0eHkweHR5azVWanBLS2VfbW5XSjZkeTdlZEV0SDNfQ3dTTkRYX3dvMFNGRWdEQUE=&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;_eventId&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>整个表单的 id 是 <code>fm1</code>，可以看到其中「登录」按钮组件 id 为<code>dl</code>。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" alt="文件树" title="" /></a></p>
+<p>查看文件树，我们大概可以猜到 <code>/cas/js/login/login.js</code> 是负责处理登录操作的代码，<code>pwdYz.js</code> 用来验证密码的强度，<code>security.js</code> 是下面会用到的 RSA 加密算法的代码。</p>
+<p>按下这个登录按钮之后会发生什么呢？我们可以看到 <code>login.js</code> 中有这样一段代码：</p>
+<pre><code class="language-js">jQuery.<span class="hljs-title function_">getJSON</span>(<span class="hljs-string">&quot;v2/getPubKey&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>){
+    <span class="hljs-title class_">Modulus</span> = data[<span class="hljs-string">&quot;modulus&quot;</span>];
+    public_exponent = data[<span class="hljs-string">&quot;exponent&quot;</span>];
 });
 
-// ...
+<span class="hljs-comment">// ...</span>
 
-$(&quot;#dl&quot;).click(function(){
-    checkForm();
+$(<span class="hljs-string">&quot;#dl&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+    <span class="hljs-title function_">checkForm</span>();
 })
 
-// ...
+<span class="hljs-comment">// ...</span>
 
-function checkForm(){
-    // ...
-    var password = $(&quot;#password&quot;).val();
-    var key = new RSAUtils.getKeyPair(publice_exponent, &quot;&quot;, Modulus);
-    var reversedPwd = password.split(&quot;&quot;).reverse().join(&quot;&quot;);
-    var encrypedPwd = RSAUtils.encryptedString(key,reversedPwd);
-    $(&quot;#password&quot;).val(encrypedPwd);
-    $(&quot;#fm1&quot;).submit();
-}</code></pre><p>当按下 <code>#dl</code> 之后，调用 <code>checkForm()</code> 函数，先是检查输入框是否为空，然后用一些神秘的 RSA 算法将用户输入的密码初步加密了一下，再提交表单发请求。</p><p>比较鬼畜的是这里直接改 password 输入框的内容，再用表单提交，这会导致在点击按钮之后密码框的密码突然变成一长串乱码，使得一般的密码管理器总是记下错误的密码……不知道为啥要这样写。</p><p>至于这里用 RSA 加密用到的公钥，也就是 <code>Modulus</code> 和 <code>public_exponent</code> 两个东西，可以看到是事先向 <code>v2/getPubKey</code> 发请求取得的。</p><h2>POST 都发了些啥</h2><p>正常登录之后找到向 <code>/cas/login</code> 发送的 POST 请求，可以看到有效载荷有以下几个：</p><pre><code class="lang-js">username: 202108060109
-password: 90c4e8b1be56a82f34df187379147d50bc694556c7451e8fd5c2a4047cf22385151cbc698ed84e0562915487e18f2420f4cb6c633149cef07d192a041038a73f
-authcode: 
-execution: 9e4a732f-501e-4dee-8a8f-2e6a9faedb4a_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUTNaUWVrNXVRMVl6WVhWM2EwMWlWbnAyWkM5MFZHdFdjbUoyU2pFMmFFTk1iSHBEWWxoemMzcDFOMlZEZDNZclZrZElka05MTjBkUFpraDFTR1V6VmxCNVVUTkhMMjVsWXpRNFpUQktOMk4yVTA1VVExWnBUV2RZUzJWUFpVTTBPSEpOUm1sSVJUZ3lOMUJ4Tm1OdldrNW9jRTVsTWtwcFpYVm9PRGRhYlROek5tOVVlVW80ZUhaMGJUVkJhREZpVUdrMEwwbGxlbFZKVkVKS1VUUjFMMUZXZUZSYWRVOVdaVkZTTVVNclIyWXlNVU0wZFVKVlNVRXlRbEE1UVdrNWIzQnVZMjVHVVN0M1JtUmhhMXBNUzA4NGRFdzVTbFpLTlVFMlUwRm9UMVIyV2pCUWIzTkxhRnBGVlVkNVlucFFVVmxJVVcwemJrUlVVRGwwTkRBMlZtVndjQzhyT0c0cmRpdFdXV0pWVm5KUWJFTjNhRFJXVFdKUWFWWjJVM2xMWkhSNVkyRk5XVW8zYUVNelRFWmtVUzlMZEU1QlVqY3paMUUzV0d0VllUZHVWRU5GUkdsb2VXUnZWbVVyVVdaRU5IRm1kbk5aWjFKR05WaExWMUl3YkdFcmJUWlFaMVZhVFhVNVNuSjFPRXN5V0doaEx6WnphekJIVFZvd1N6WXZRVWQ1TTBoM1lUSTBRV3RsVmxWYVdFZHRTUzlJVkVWTVptOUdjMm9yTkdSdk5VdHdkbTlqY25wYVluUnRaRGR3YmxCRVFtUlBWR1YyZEVKS1ZFczVhMVJDYlRGek9VZDVkVEpRYnpsYWNsWTNNVEozVm5CaVZsb3ZMMlpUT0hoR1ZrRkdOM1JKTkRCcGNITmxhRzh4VFd4b2VGZHpOaXMyWm1oR1IyRjNVa1lyY201clkyNTNSSEJsZEVkaGIxSkxkVkZaUW5KTFlscExjaXRYYTBSa1FqazRZalk0ZFVsTWFTc3ZUazFUVlhSTGRUVndUMlVyYWxsUVRHOTNkbEZrUjFOcEsxaEtlbUl6TXpWUVNERXhZelZRVEZkVlMxRk5VbFJqVVZkQ2FtMVhTa1JEZDBkdk5WbHpkV1Z1Y0dsM1UwVkliekZaVjFaNWVUaGliVTVZUW00MWFVTlFUbWQzY1daUk1YQjBPV0p1YzJaNmMwOVdPV0UwU0ZScEsyY3dZWE5LWjBOMGRWWnlkREV5TnpGd1ZFZFpkalJOU0RrMFQzWkZUR1JKVFVsamVtSkhWWGwxV2xoaGVreFJRV3BIT0dKdE5FVk9PVUZKVFVrM2RVVkRWa2tyT0N0SU5VUlNWMFJUWVUxTU5WSkVVemsyUm5nMlVFMXBVbEpyWldoU2JFSk9jM2g1YWs1cFZGQkhha3BKZEVsSGNHTTFhVGxSWVdGR1JrczFjSGRhVTJoaVVXMW1NVkpsUm1NMVRYY3pNMEk1T0N0SlMwTm9OVzlKZWtWQlRHZDBVMGh0TVdGek5WUTBiV3BaVDBVMmJWazBXbU56T0hWeFpUSktWbVV2Y0RsUGEwdGllVlprTldaVmVFUjFOa3RoUTNCWk5YZGpkSG81UkVoSVYyZzBkVXgwYWxaTmFuY3lXa1pWU1VoeUwycHFUWGRpWTFCQ2RrZ3hSMWg1VUhvdmQxY3pUa1EzWW5oQlEyNHZSa1JuV2tKNFNsWlhaVmRXYUhWc1lqQjZRekpSVmpKcVNrdHJURzlqZWxGRk0wSkxaVU52Y0hNMlRtVmhkMWhOV1VodmEzaFVZMHRKTm5FemJHdExjazVLVUhoV1VUaE5NazVCWkZGWk1qVndiRTB3T1RKVGFrZHRiMDFtV25WbFlXSlJNMWg0YkRCc1kwNVhjbnBUYVROblVWTjVha01yVW14d1MyRktXRmhSV1ZkbWJsRkVaRGhFV1ROR1VEWlpZVnAyYWtkR2NVMUZTR1ExY1ZCM2VVTlZObkJPTVZwNlF5dDFWR3BIZEZORk5WcEhiazFpUVhWRGRtZHpjbU51ZFhWMmNHOVphVlZLTUhRMk5sZ3lLMmRCZUd4Qk16Y3hjbkpoUVdoVlYzUXZhVkk1TVVGS2FERmtVRWw0ZWtkdlVVRlNZVE5LV2t3emVqVjZTazF3TjFSdFJGZzBPVm9yT1hCNFNpdEJVbXMxU0hWWWJWcFBhMVY1VmxkTU1TdHlkVXRrTVdoa01FOTZhMmhOTUhnMWVrVmpTbHB6YlZjd0sweFdkRXBYV1UweVpESkJkRWwyWWxOM1YyMUpTME01VVRsc1VuRjZWVk5OS3prNEwzbEZLM2xzYzNoVVpHZEliMUkxZVhKTWRUbHNObE5pVkdOYVV6ZFlVWE41TTB0blJ6bE1iMFJCVmxkMVIzcHFaRFJpVTBoWGVHVkpXWEY1VkVaWGR6TmFWMDlwVTNoYVlXbHNkWFJUUkVvMGVXdHBVV3QwZVVSUU16SkllR2xXYlcxUmJHaHlSMmR6ZG5SdE1WbHpZV0pZVEhOalkxbDFNRXB0VmxCWFF6Sk5RWFZpZDBsUVJUZFJWMkZ3UWxka01qVjZVbXBqZFhRMk1HUjRjRnBrU1hFM1lWb3pZV3hSVkU5SlJFUkdkMU0yTlU1VGJFeHlZMUpVYUZnMVJISmhNRVl5Y0RSUFltUnNSVW93VFhwT1ZWZzBkV3RESzNwNFNFTjFSR1ZxVUhkNmFtdGlVR0ZxU1RGVE1rUmhMMVpRTUhOUWIwcEQuMXNRWGZiNDlvbUJhLW9HYV9lbGpfMTF0WDdHVmJzMzVZb3ZkVEE0eHkweHR5azVWanBLS2VfbW5XSjZkeTdlZEV0SDNfQ3dTTkRYX3dvMFNGRWdEQUE=
-_eventId: submit</code></pre><p>由于是直接表单提交的而不是用 js 发的请求，可以直接在上面的 html 代码里根据 name 找到各个字段源于哪里。</p><ul><li><code>username</code> 就是用户名（即学号）。</li><li><code>password</code> 就是加密后的 <code>encrypedPwd</code>。</li><li><code>authcode</code> 是图片验证码输入框中内容。图片验证码有时候显示有时候不显示，不显示时该字段就留为空。具体显示逻辑尚不清楚。</li><li><code>execution</code> 源于表单中一个不可见的 input 元素，值是一串乱码，每次加载页面其值不同。意义不明。可能是与 JSESSIONID 匹配用于某种验证机制。</li><li><code>_eventId</code> 也源于一个不可见的 input 元素，值总为 <code>submit</code>。</li></ul><p>以上五个字段都是可以得到的。</p><p>同时注意到 POST 中携带了若干 Cookies：</p><pre><code class="lang-js">JSESSIONID=808D31AC4F6F45E8EA8D8F05E2C76C74.cas30;
-_pv0=KI+EtIxj2UDs/BXMv0vdZmI5APblUZJyrVMXRSekKrN5+bfckHbJmzPKaku45uKVc02qmwhWAisV1fsVG3B6NScgp8RNOGmd3vjBGTnPy10/bkYnbNF7sxpkzKqxHuHG9iPSu9gAGf3p1fvnIE5iQQBicDhdYg6cDD/7J45Dzfr1K4UnL4KN7Ph79o3hPCz8++7ECbXgABbOJU5SdCX5KSPkfPP9GcBqwzN1UYUu8Z6/6MGW12okSx4GO7J/j13A0E++BcNpeBdnSGAmI4Pdq4grl92whh8GkCGUzec84fdGx+hXn/w/uggLohZVKxGHkqrwKFYkT0uW2+hR7SZUQTWHH5oVcNqjKxJNUD5a2br0DdM9ethXox+DaTYD5bgeyidNqpgfDRDHTvvGda3r3r5CrwnYP/pmPXBslnllk5U=</code></pre><p>也就是说，为了模拟发送 POST 请求，我们要拿到五个表单字段内容、两个 Cookie。</p><h3>JSESSIONID</h3><p>可以看到在最初载入登录页面的时候，就带上了一个 <code>Set-Cookie</code>：</p><pre><code class="lang-js">JSESSIONID=4736615D840602A1B50AF6D6298C3A1E.cas32;
-  Path=/cas;
-  HttpOnly</code></pre><p><code>JSESSIONID</code> 是 Servlet 容器（tomcat，jetty）用来记录用户 session 的 Cookie。看起来就是它了。</p><h3>getPubKey</h3><p>观察发现，页面在加载之后就向 <code>v2/getPubKey</code> 发送了请求，可以得到这样的返回数据：</p><pre><code class="lang-json">{
-  &quot;modulus&quot;:&quot;991d141f56c671c9c55d31c35ae55901faaeea8dd4be5b2e6d7e38274e9feada58a4c47a554dae2adb71a6618d42a9d6be817f9aa8f5eb8de53acc56be4e2473&quot;,
-  &quot;exponent&quot;:&quot;10001&quot;
-}</code></pre><p>这两个应该是生成密钥对的参数，具体原理尚不清楚。总之根据此可以用上面的代码算出相同的 <code>encrypedPwd</code>。</p><p>同时这个请求还在请求头中返回了以下 <code>Set-Cookie</code>：</p><pre><code class="lang-js">_pv0=gd1g%2FkuF8nKPObhdqygtrVhcdleX1lJEhbjuFFpqPt42mTUyjKN4icZFlgsrcVJMQYzcP7QluP4NPDUstVZpiyzxnMC%2Bxvj5HZhcKUttP1DgSNgAolMMgwEJD6GMxvV%2FrgffR0SW3i5PDd%2B3p8kGGv57d3Fs0uEVuYa6rtKZpAFoL5k5b%2B8XYtrOqMiLr3RnKT26xLiBv70imOLmSrLn2qPtepFj3D9xxSU5cwzlKTk%2BUSXYowGZlcNo%2BvBsL9dOIy%2FvlI6x6A%2BdqY4RyQ6Ft9KGUnxpZgkSTsSMm86yevTh9YSnzVY%2F8eoz1HA2CsS6Vw6%2FKTSjavRHjVguJY7R7r5CsWa0gVtpF7IT1E1%2FE8qYp5VxDbYLIEVPs85xkjKRbyqg%2F7WkQS2OnV%2F02mCGWAoRtxKs7qD%2BNLSD8eL1aFA%3D;
-  Domain=cas.hnu.edu.cn; Path=/</code></pre><p>于是 <code>_pv0</code> 这个 Cookie 的问题解决了。</p><h3>密码加密</h3><p>这个密码加密算法用了相同目录下的 <code>security.js</code> 代码，是个源于 1998 年的 js 库，但是具体看不懂。</p><p>这段注释里面说了作者，可以去<a href="https://ohdave.com/rsa/">官网</a>看到这个代码的介绍：</p><pre><code class="lang-js">/*
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">checkForm</span>(<span class="hljs-params"></span>){
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">var</span> password = $(<span class="hljs-string">&quot;#password&quot;</span>).<span class="hljs-title function_">val</span>();
+    <span class="hljs-keyword">var</span> key = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RSAUtils</span>.<span class="hljs-title function_">getKeyPair</span>(publice_exponent, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-title class_">Modulus</span>);
+    <span class="hljs-keyword">var</span> reversedPwd = password.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">reverse</span>().<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);
+    <span class="hljs-keyword">var</span> encrypedPwd = <span class="hljs-title class_">RSAUtils</span>.<span class="hljs-title function_">encryptedString</span>(key,reversedPwd);
+    $(<span class="hljs-string">&quot;#password&quot;</span>).<span class="hljs-title function_">val</span>(encrypedPwd);
+    $(<span class="hljs-string">&quot;#fm1&quot;</span>).<span class="hljs-title function_">submit</span>();
+}
+</code></pre>
+<p>当按下 <code>#dl</code> 之后，调用 <code>checkForm()</code> 函数，先是检查输入框是否为空，然后用一些神秘的 RSA 算法将用户输入的密码初步加密了一下，再提交表单发请求。</p>
+<p>比较鬼畜的是这里直接改 password 输入框的内容，再用表单提交，这会导致在点击按钮之后密码框的密码突然变成一长串乱码，使得一般的密码管理器总是记下错误的密码……不知道为啥要这样写。</p>
+<p>至于这里用 RSA 加密用到的公钥，也就是 <code>Modulus</code> 和 <code>public_exponent</code> 两个东西，可以看到是事先向 <code>v2/getPubKey</code> 发请求取得的。</p>
+<h2><a id="post-都发了些啥" class="heading-anchor"></a>POST 都发了些啥</h2>
+<p>正常登录之后找到向 <code>/cas/login</code> 发送的 POST 请求，可以看到有效载荷有以下几个：</p>
+<pre><code class="language-js"><span class="hljs-attr">username</span>: <span class="hljs-number">202108060109</span>
+<span class="hljs-attr">password</span>: 90c4e8b1be56a82f34df187379147d50bc694556c7451e8fd5c2a4047cf22385151cbc698ed84e0562915487e18f2420f4cb6c633149cef07d192a041038a73f
+<span class="hljs-attr">authcode</span>: 
+<span class="hljs-attr">execution</span>: 9e4a732f-501e-4dee-8a8f-2e6a9faedb4a_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUTNaUWVrNXVRMVl6WVhWM2EwMWlWbnAyWkM5MFZHdFdjbUoyU2pFMmFFTk1iSHBEWWxoemMzcDFOMlZEZDNZclZrZElka05MTjBkUFpraDFTR1V6VmxCNVVUTkhMMjVsWXpRNFpUQktOMk4yVTA1VVExWnBUV2RZUzJWUFpVTTBPSEpOUm1sSVJUZ3lOMUJ4Tm1OdldrNW9jRTVsTWtwcFpYVm9PRGRhYlROek5tOVVlVW80ZUhaMGJUVkJhREZpVUdrMEwwbGxlbFZKVkVKS1VUUjFMMUZXZUZSYWRVOVdaVkZTTVVNclIyWXlNVU0wZFVKVlNVRXlRbEE1UVdrNWIzQnVZMjVHVVN0M1JtUmhhMXBNUzA4NGRFdzVTbFpLTlVFMlUwRm9UMVIyV2pCUWIzTkxhRnBGVlVkNVlucFFVVmxJVVcwemJrUlVVRGwwTkRBMlZtVndjQzhyT0c0cmRpdFdXV0pWVm5KUWJFTjNhRFJXVFdKUWFWWjJVM2xMWkhSNVkyRk5XVW8zYUVNelRFWmtVUzlMZEU1QlVqY3paMUUzV0d0VllUZHVWRU5GUkdsb2VXUnZWbVVyVVdaRU5IRm1kbk5aWjFKR05WaExWMUl3YkdFcmJUWlFaMVZhVFhVNVNuSjFPRXN5V0doaEx6WnphekJIVFZvd1N6WXZRVWQ1TTBoM1lUSTBRV3RsVmxWYVdFZHRTUzlJVkVWTVptOUdjMm9yTkdSdk5VdHdkbTlqY25wYVluUnRaRGR3YmxCRVFtUlBWR1YyZEVKS1ZFczVhMVJDYlRGek9VZDVkVEpRYnpsYWNsWTNNVEozVm5CaVZsb3ZMMlpUT0hoR1ZrRkdOM1JKTkRCcGNITmxhRzh4VFd4b2VGZHpOaXMyWm1oR1IyRjNVa1lyY201clkyNTNSSEJsZEVkaGIxSkxkVkZaUW5KTFlscExjaXRYYTBSa1FqazRZalk0ZFVsTWFTc3ZUazFUVlhSTGRUVndUMlVyYWxsUVRHOTNkbEZrUjFOcEsxaEtlbUl6TXpWUVNERXhZelZRVEZkVlMxRk5VbFJqVVZkQ2FtMVhTa1JEZDBkdk5WbHpkV1Z1Y0dsM1UwVkliekZaVjFaNWVUaGliVTVZUW00MWFVTlFUbWQzY1daUk1YQjBPV0p1YzJaNmMwOVdPV0UwU0ZScEsyY3dZWE5LWjBOMGRWWnlkREV5TnpGd1ZFZFpkalJOU0RrMFQzWkZUR1JKVFVsamVtSkhWWGwxV2xoaGVreFJRV3BIT0dKdE5FVk9PVUZKVFVrM2RVVkRWa2tyT0N0SU5VUlNWMFJUWVUxTU5WSkVVemsyUm5nMlVFMXBVbEpyWldoU2JFSk9jM2g1YWs1cFZGQkhha3BKZEVsSGNHTTFhVGxSWVdGR1JrczFjSGRhVTJoaVVXMW1NVkpsUm1NMVRYY3pNMEk1T0N0SlMwTm9OVzlKZWtWQlRHZDBVMGh0TVdGek5WUTBiV3BaVDBVMmJWazBXbU56T0hWeFpUSktWbVV2Y0RsUGEwdGllVlprTldaVmVFUjFOa3RoUTNCWk5YZGpkSG81UkVoSVYyZzBkVXgwYWxaTmFuY3lXa1pWU1VoeUwycHFUWGRpWTFCQ2RrZ3hSMWg1VUhvdmQxY3pUa1EzWW5oQlEyNHZSa1JuV2tKNFNsWlhaVmRXYUhWc1lqQjZRekpSVmpKcVNrdHJURzlqZWxGRk0wSkxaVU52Y0hNMlRtVmhkMWhOV1VodmEzaFVZMHRKTm5FemJHdExjazVLVUhoV1VUaE5NazVCWkZGWk1qVndiRTB3T1RKVGFrZHRiMDFtV25WbFlXSlJNMWg0YkRCc1kwNVhjbnBUYVROblVWTjVha01yVW14d1MyRktXRmhSV1ZkbWJsRkVaRGhFV1ROR1VEWlpZVnAyYWtkR2NVMUZTR1ExY1ZCM2VVTlZObkJPTVZwNlF5dDFWR3BIZEZORk5WcEhiazFpUVhWRGRtZHpjbU51ZFhWMmNHOVphVlZLTUhRMk5sZ3lLMmRCZUd4Qk16Y3hjbkpoUVdoVlYzUXZhVkk1TVVGS2FERmtVRWw0ZWtkdlVVRlNZVE5LV2t3emVqVjZTazF3TjFSdFJGZzBPVm9yT1hCNFNpdEJVbXMxU0hWWWJWcFBhMVY1VmxkTU1TdHlkVXRrTVdoa01FOTZhMmhOTUhnMWVrVmpTbHB6YlZjd0sweFdkRXBYV1UweVpESkJkRWwyWWxOM1YyMUpTME01VVRsc1VuRjZWVk5OS3prNEwzbEZLM2xzYzNoVVpHZEliMUkxZVhKTWRUbHNObE5pVkdOYVV6ZFlVWE41TTB0blJ6bE1iMFJCVmxkMVIzcHFaRFJpVTBoWGVHVkpXWEY1VkVaWGR6TmFWMDlwVTNoYVlXbHNkWFJUUkVvMGVXdHBVV3QwZVVSUU16SkllR2xXYlcxUmJHaHlSMmR6ZG5SdE1WbHpZV0pZVEhOalkxbDFNRXB0VmxCWFF6Sk5RWFZpZDBsUVJUZFJWMkZ3UWxka01qVjZVbXBqZFhRMk1HUjRjRnBrU1hFM1lWb3pZV3hSVkU5SlJFUkdkMU0yTlU1VGJFeHlZMUpVYUZnMVJISmhNRVl5Y0RSUFltUnNSVW93VFhwT1ZWZzBkV3RESzNwNFNFTjFSR1ZxVUhkNmFtdGlVR0ZxU1RGVE1rUmhMMVpRTUhOUWIwcEQuMXNRWGZiNDlvbUJhLW9HYV9lbGpfMTF0WDdHVmJzMzVZb3ZkVEE0eHkweHR5azVWanBLS2VfbW5XSjZkeTdlZEV0SDNfQ3dTTkRYX3dvMFNGRWdEQUE=
+<span class="hljs-attr">_eventId</span>: submit
+</code></pre>
+<p>由于是直接表单提交的而不是用 js 发的请求，可以直接在上面的 html 代码里根据 name 找到各个字段源于哪里。</p>
+<ul>
+<li><code>username</code> 就是用户名（即学号）。</li>
+<li><code>password</code> 就是加密后的 <code>encrypedPwd</code>。</li>
+<li><code>authcode</code> 是图片验证码输入框中内容。图片验证码有时候显示有时候不显示，不显示时该字段就留为空。具体显示逻辑尚不清楚。</li>
+<li><code>execution</code> 源于表单中一个不可见的 input 元素，值是一串乱码，每次加载页面其值不同。意义不明。可能是与 JSESSIONID 匹配用于某种验证机制。</li>
+<li><code>_eventId</code> 也源于一个不可见的 input 元素，值总为 <code>submit</code>。</li>
+</ul>
+<p>以上五个字段都是可以得到的。</p>
+<p>同时注意到 POST 中携带了若干 Cookies：</p>
+<pre><code class="language-js"><span class="hljs-variable constant_">JSESSIONID</span>=808D31AC4F6F45E8EA8D8F05E2C76C74.<span class="hljs-property">cas30</span>;
+_pv0=<span class="hljs-variable constant_">KI</span>+<span class="hljs-title class_">EtIxj2UDs</span>/<span class="hljs-title class_">BXMv0</span>vdZmI5APblUZJyrVMXRSekKrN5+bfckHbJmzPKaku45uKVc02qmwhWAisV1fsVG3B6NScgp8RNOGmd3vjBGTnPy10/bkYnbNF7sxpkzKqxHuHG9iPSu9gAGf3p1fvnIE5iQQBicDhdYg6cDD/7J45Dzfr1K4UnL4KN7Ph79o3hPCz8++7ECbXgABbOJU5SdCX5KSPkfPP9GcBqwzN1UYUu8Z6/6MGW12okSx4GO7J/j13A0E++<span class="hljs-title class_">BcNpeBdnSGAmI4Pdq4</span>grl92whh8GkCGUzec84fdGx+hXn/w/uggLohZVKxGHkqrwKFYkT0uW2+hR7SZUQTWHH5oVcNqjKxJNUD5a2br0DdM9ethXox+<span class="hljs-title class_">DaTYD5</span>bgeyidNqpgfDRDHTvvGda3r3r5CrwnYP/pmPXBslnllk5U=
+</code></pre>
+<p>也就是说，为了模拟发送 POST 请求，我们要拿到五个表单字段内容、两个 Cookie。</p>
+<h3><a id="jsessionid" class="heading-anchor"></a>JSESSIONID</h3>
+<p>可以看到在最初载入登录页面的时候，就带上了一个 <code>Set-Cookie</code>：</p>
+<pre><code class="language-js"><span class="hljs-variable constant_">JSESSIONID</span>=4736615D840602A1B50AF6D6298C3A1E.<span class="hljs-property">cas32</span>;
+  <span class="hljs-title class_">Path</span>=/cas;
+  <span class="hljs-title class_">HttpOnly</span>
+</code></pre>
+<p><code>JSESSIONID</code> 是 Servlet 容器（tomcat，jetty）用来记录用户 session 的 Cookie。看起来就是它了。</p>
+<h3><a id="getpubkey" class="heading-anchor"></a>getPubKey</h3>
+<p>观察发现，页面在加载之后就向 <code>v2/getPubKey</code> 发送了请求，可以得到这样的返回数据：</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;modulus&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;991d141f56c671c9c55d31c35ae55901faaeea8dd4be5b2e6d7e38274e9feada58a4c47a554dae2adb71a6618d42a9d6be817f9aa8f5eb8de53acc56be4e2473&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;exponent&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;10001&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>这两个应该是生成密钥对的参数，具体原理尚不清楚。总之根据此可以用上面的代码算出相同的 <code>encrypedPwd</code>。</p>
+<p>同时这个请求还在请求头中返回了以下 <code>Set-Cookie</code>：</p>
+<pre><code class="language-js">_pv0=gd1g%2FkuF8nKPObhdqygtrVhcdleX1lJEhbjuFFpqPt42mTUyjKN4icZFlgsrcVJMQYzcP7QluP4NPDUstVZpiyzxnMC%2Bxvj5HZhcKUttP1DgSNgAolMMgwEJD6GMxvV%2FrgffR0SW3i5PDd%2B3p8kGGv57d3Fs0uEVuYa6rtKZpAFoL5k5b%2B8XYtrOqMiLr3RnKT26xLiBv70imOLmSrLn2qPtepFj3D9xxSU5cwzlKTk%2BUSXYowGZlcNo%2BvBsL9dOIy%2FvlI6x6A%2BdqY4RyQ6Ft9KGUnxpZgkSTsSMm86yevTh9YSnzVY%2F8eoz1HA2CsS6Vw6%2FKTSjavRHjVguJY7R7r5CsWa0gVtpF7IT1E1%2FE8qYp5VxDbYLIEVPs85xkjKRbyqg%2F7WkQS2OnV%2F02mCGWAoRtxKs7qD%2BNLSD8eL1aFA%3D;
+  <span class="hljs-title class_">Domain</span>=cas.<span class="hljs-property">hnu</span>.<span class="hljs-property">edu</span>.<span class="hljs-property">cn</span>; <span class="hljs-title class_">Path</span>=/
+</code></pre>
+<p>于是 <code>_pv0</code> 这个 Cookie 的问题解决了。</p>
+<h3><a id="密码加密" class="heading-anchor"></a>密码加密</h3>
+<p>这个密码加密算法用了相同目录下的 <code>security.js</code> 代码，是个源于 1998 年的 js 库，但是具体看不懂。</p>
+<p>这段注释里面说了作者，可以去<a href="https://ohdave.com/rsa/">官网</a>看到这个代码的介绍：</p>
+<pre><code class="language-js"><span class="hljs-comment">/*
  * RSA, a suite of routines for performing RSA public-key computations in JavaScript.
  * Copyright 1998-2005 David Shapiro.
  * Dave Shapiro
  * dave@ohdave.com 
  * changed by Fuchun, 2010-05-06
  * fcrpg2005@gmail.com
- */</code></pre><p>代码作者并没有给出对应的 Python 版本，如何在 Python 脚本里实现呢？<strong>有几种解决方案（从难到易）：</strong></p><ul><li>研究加密原理，使用 PyCrypto、RSA、M2Crypto 等 Python 库<strong>自己实现</strong>。</li><li>使用 Jiphy 等工具<strong>将 JavaScript 代码转换为 Python 代码</strong>。由于不能保证完全兼容，一般需要了解原理，对转换后的代码进行一定的修改。实测失败了。</li><li>直接用 js 代码<strong>跑一个 HTTPServer</strong>，发请求调用函数。比较麻烦，有点小题大做，不够优雅。</li><li><p>使用 PyV8 或者 Pyexecjs，<strong>在 Python 中调用 JavaScript 代码</strong>。需要小小地改写一下 <code>security.js</code>。使用这种方法成功了。</p><ul><li>Tips：PyV8 安装难度非常大，折腾死我了……推荐 Pyexecjs，是依赖于 Node.js 的库，用起来比较轻松。</li></ul></li></ul><p>这个具体实现挺奇怪的，把用户的密码倒过来再加密，有点迷惑。</p><h2>发送 POST 请求</h2><p>经过测试，最简请求只需要发两个 Cookie、五个 form-data。</p><pre><code class="lang-bash">curl 'http://cas.hnu.edu.cn/cas/login' \
-  -H 'Cookie: JSESSIONID=2001762369FF0645ED3EC64382613117.im32; _pv0=wgfGE0rwBEr3341hmwwtiojDjR30dBqfRxrBe9kPlurTSU%2B4u%2FlWwZzHtzbY1I2OeeLAsHJfU7ftg%2BuIcZF8hMs3QsayPvTVi%2FUb55RTnLmJjgjp%2B6vti%2BlQj9iXJP6uu0hsUs8Oc2LVNbOiuq6Ezr4iyLHxTr%2BPFc2pxeunZ2XTKIMcKLpnoMcRuSyuG5TLTmUzJYG55A7m6Xqrn0Vu8KjOXlwpadDhi01JZxaHxAC6Ge02Zcc%2BCB3Rv8%2BAiQwE6VLu%2Fvmm%2B3URsxCOpD2FoE2c2xUVjuHVcdbpgkpLUaNahQM3sKBgmG7fr1RyYH7dIvi%2BNqWuNcC3O5KcsoIwGhxo216CQ6c0yrBqqWqfPq%2BTxmlNZyUoXJ%2B5DUgsnB0bYpB7pL7wxtGOGkn4F%2BCv44yDn8%2BUb5oHwQyyZM24%2BeY%3D' \
-  --data-raw 'username=202108060109&amp;password=84b38bf84fbdcdf46acd06410fc194de10f896679fb3d2fab1e8e1b725d8828a3610df5afe4ffb8ae31744969b1d5d855a5844d8454bb052fafb15af5f930dd5&amp;authcode=&amp;execution=f77fe468-1dc5-4fdb-b883-f881ed207045_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUWtFMlJFc3ZlakZCY0ZRM1FYVmFWakZCYW1zdlFXcERlVlp1ZEhWTGNreFBSM0Z5WTFsMkwzbFpkVWRUWmtKak1FUjFVblpaTjJ0UVpVNUljRTlMWkZGdGNFNVhlREo0V21oNVZFY3JLMkVyU0c1dE0zQkZiVEE1TDBaaGVrSXlaMWxrUms1cVdUTXZLMmxhT0hoWVdYWlpWa2Q0TDBWWFJEWm9kRXN3T0VoTmMzbG5jRll3Y1d3dmNEaEZNMlZHYUd0aFZURlNibk5wZGpacWRqWnBhV3BtT1RKa1REZDNlVzQ1WVhBelJrbzVWSFF2U25WYVpERlhiMVZ0TjA5R2JXSm1aVVZDTHpOSU5tdzBUMDVTYm1OV1ZFeHZjbVJZZVhZNWVFeEJaRU4yY2tOdFZHSndNbU5CV0VOckwxWmpTVWxDVGk5RVFXdHJkWFl3Tkc1WmMyNWtUR3N6SzJwbVFtazRhRkoxTW5vMFZtOU5PRkJ4ZFZkYU9WTkZNM1JZVlhKM0syTlRNRkpGTVVzNFVWTnFjbXhUTkV4Vk1HRmtkWEJGWWxwaVpuRnNlVzFMYmtKa01rUldabFZGWVhodUwxaElhVE5WY1VkRVQybGhWVzhyZVZRM1ZYVjNZeXRwYlZwRU1IUjZjRE53V1ZaeE1VbGxMMmRIT1N0dlYyOVdhVVZPV0c1b2RHeHBNM05qZGtSTFJsbDBNSFoyWTJGR2JqVnlWazlWUW10TFpuUm9RME5yYldwbmMyVTRjbVJ2VkhoeFJqUkJhR1JqUjJoWlJDdG5URTVRUlhOUVJrTlVVM3BtY0VaNmExUlBja00xV21sS056RjRWR1ZHTDAxU1kwZGtTRTVtWldoR1JGb3JNWGR0YWxwd1QwcFBOelJ3VjFCNVNFYzFibVl6THpaTk1rdzBkSEJ5TW1KS05ETkhZVnBQU0ZsbmFTdFJhM3BEVUhGbU1VSkxNMk00ZW1WdGRrWlpia1E1ZDBSWVQwUkZiVVozSzNGeWFGTm9lbTVXWkd3dmJUTkhOMWRrV1RSd0szRnNUaXQ2UlRoQ1VHcDFWeTlwUzJ0MlFXUktOVzF5ZVV0b00zSnNORkozVGtOTmRtbFllVEpESzBJM1dWVlFSelp0VDJzNVoycDZPVFJKUm5nNE1tc3pUR2hHYUhkNVVIZHFTa1J1VDJSU05ucHVWVFZ4VmtSRmFXVjRSVk5MYnpOU2JGRnJiV05aTmxBMFdUUlhhbTVEZFZKVmJqWXhaM1IyUjBSdFdrWTVjRzE0UkU5TWJrcE5ORzFsT0M5NWRVRmFVV1pZU25adFREUnZkalZYWXpaWWRXOVNSVmhWUnpNMkwxaEJiM3AzWWk5clJtSTFSWFZ6YVZKMmVuSmlkbFpCWWs0cmJYYzNhbkpvVEdkVFVqUlBSWGxNY1c1WE1uRXdlVFZoV0VOQmRFVlRLellyVmpOd2FWSk9lR3hqWVRKSWIzZEdSVEZ3UkVKdE5FUXpRVUpGUW1WVGJtMUVSR3BWU2xWU1NXMUNaVGwyWlVwVGNFVnFOR2dyTUVaUVdVSmtiMk40Y0ZSdFlXbDJWREJPUkVORlJtTmxibWhUVFVOWVYzRmpUaXR6YUVObVRqRm9RWEU1V25jMFdHTlhkalJWY1haVGEyUnNURzFUWlZCRWVuSnVia1YyY1VOaU1tODRMMDl0V0ZSSGJHOTFVR3B6ZFZSQlpqZG5PVVJNY0hKcFFqWlpVbVVyTm5VMk4ybEJkWFpqUkc0MGJrZ3pTRkEyVWswelZXdEJlSGxHTVRsd1ZIRkxVbVkzUlhaRlExTlRWVzk0YjNCQk15OUthVVV4VldKWFNFWTNMMmx2Y0hkSGVFSkJORUpLZEdWaFlrbDNaSEpOTlM4dmIySmtRazEyUW5CWmJYUTJUeXR3V1ZBNWJHNDNSbWxpUVc1T1ExaFJaRTFGTms1TFZERm9jV2RwVkRCeWJIRk1RWEl2VVhNd1ZsWkZZVlpRSzJaM2FGVndhbGxtTUc4eFVtMXJjRFV2Y1ZJNVkxVTRRWEZHVW1WWFlWcDNhRmMwZUVaaFVUZGpVVzE1U1dwT04wNVNUR1I2YlRkaVRrNWFTVGRJVTI1QkwzaE9WWFJVT1RWWGNGWmxkSFpWWlUwMGJreFNUa3hXZDJWd1VubElTRFE0VldwVFFWTnJiMVF2UWxkbFJuSkdURTFYV1VZcmRYWjJWV2RvYTB4a01uVlVha013ZWtSRE1qRTRZMDVrV1ZjMGFWQnZMMVI2TVhCTWExbHNUWFZOUWxCbWEzaGhOMWxuUWsxbWQxWm5lUzlPUzBWNEwycGFSR3RqVHpBdlNXazVVM3BwTjNKbGFWRjNjV0p2U2xscFVHNVNaV05MZVhsSmNGSlFSazFKVkhwd04wbEJkR1l6UjA1RGNtMVVZMkY0ZEZGRVlYRjViblpIWlVOTWFWZzNXbWxpYjNnd2QyVnVWVFZoUzBkb2RETXJLMjVGVDBNM2NXNXNkVWQwUVRKT1MwUklWM1JES3poNFFuUjBZbWg0WVV0TWRqTnlUMFZvVVcwclpGVnNRV1JWWXpJd1dWaDFNekp3Ym0xTE4zbHdhVGxqTUdvelRXbFVRMWhXY25KR2NrOU9jMjlpZURGVkx5OVVhWE00Vm5Od1kwNDRVRUZDUm5vNWNXZ3ZaRTE1TmxoSGIxa3JkVlJMYUVOVlpXTlZTRkZNYVd4UGQwSnguSGtGOV9LMFVHZ2gwcG9yUTY2bzJFWkRlQlFTNi1pczVMcE8wTHFrVzJLMFhVY2JlanM0ZXdYRzBmUlFEVHlfV1RaOVg1aUQzNjNSaEdsa3BOTVB6OGc%3D&amp;_eventId=submit'</code></pre><p>这些内容好像是没有过期时间的。</p><h2>POST 请求之后</h2><p>对 <code>login</code> 发完 POST 请求之后，返回的并不是 200 而是 302，附带了若干 <code>Set-Cookie</code>：</p><pre><code class="lang-js">CASPRIVACY=;
-  Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/cas/; Secure
+ */</span>
+</code></pre>
+<p>代码作者并没有给出对应的 Python 版本，如何在 Python 脚本里实现呢？<strong>有几种解决方案（从难到易）：</strong></p>
+<ul>
+<li>研究加密原理，使用 PyCrypto、RSA、M2Crypto 等 Python 库<strong>自己实现</strong>。</li>
+<li>使用 Jiphy 等工具<strong>将 JavaScript 代码转换为 Python 代码</strong>。由于不能保证完全兼容，一般需要了解原理，对转换后的代码进行一定的修改。实测失败了。</li>
+<li>直接用 js 代码<strong>跑一个 HTTPServer</strong>，发请求调用函数。比较麻烦，有点小题大做，不够优雅。</li>
+<li>使用 PyV8 或者 Pyexecjs，<strong>在 Python 中调用 JavaScript 代码</strong>。需要小小地改写一下 <code>security.js</code>。使用这种方法成功了。
+<ul>
+<li>Tips：PyV8 安装难度非常大，折腾死我了……推荐 Pyexecjs，是依赖于 Node.js 的库，用起来比较轻松。</li>
+</ul></li>
+</ul>
+<p>这个具体实现挺奇怪的，把用户的密码倒过来再加密，有点迷惑。</p>
+<h2><a id="发送-post-请求" class="heading-anchor"></a>发送 POST 请求</h2>
+<p>经过测试，最简请求只需要发两个 Cookie、五个 form-data。</p>
+<pre><code class="language-bash">curl <span class="hljs-string">&#x27;http://cas.hnu.edu.cn/cas/login&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Cookie: JSESSIONID=2001762369FF0645ED3EC64382613117.im32; _pv0=wgfGE0rwBEr3341hmwwtiojDjR30dBqfRxrBe9kPlurTSU%2B4u%2FlWwZzHtzbY1I2OeeLAsHJfU7ftg%2BuIcZF8hMs3QsayPvTVi%2FUb55RTnLmJjgjp%2B6vti%2BlQj9iXJP6uu0hsUs8Oc2LVNbOiuq6Ezr4iyLHxTr%2BPFc2pxeunZ2XTKIMcKLpnoMcRuSyuG5TLTmUzJYG55A7m6Xqrn0Vu8KjOXlwpadDhi01JZxaHxAC6Ge02Zcc%2BCB3Rv8%2BAiQwE6VLu%2Fvmm%2B3URsxCOpD2FoE2c2xUVjuHVcdbpgkpLUaNahQM3sKBgmG7fr1RyYH7dIvi%2BNqWuNcC3O5KcsoIwGhxo216CQ6c0yrBqqWqfPq%2BTxmlNZyUoXJ%2B5DUgsnB0bYpB7pL7wxtGOGkn4F%2BCv44yDn8%2BUb5oHwQyyZM24%2BeY%3D&#x27;</span> \
+  --data-raw <span class="hljs-string">&#x27;username=202108060109&amp;password=84b38bf84fbdcdf46acd06410fc194de10f896679fb3d2fab1e8e1b725d8828a3610df5afe4ffb8ae31744969b1d5d855a5844d8454bb052fafb15af5f930dd5&amp;authcode=&amp;execution=f77fe468-1dc5-4fdb-b883-f881ed207045_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuUWtFMlJFc3ZlakZCY0ZRM1FYVmFWakZCYW1zdlFXcERlVlp1ZEhWTGNreFBSM0Z5WTFsMkwzbFpkVWRUWmtKak1FUjFVblpaTjJ0UVpVNUljRTlMWkZGdGNFNVhlREo0V21oNVZFY3JLMkVyU0c1dE0zQkZiVEE1TDBaaGVrSXlaMWxrUms1cVdUTXZLMmxhT0hoWVdYWlpWa2Q0TDBWWFJEWm9kRXN3T0VoTmMzbG5jRll3Y1d3dmNEaEZNMlZHYUd0aFZURlNibk5wZGpacWRqWnBhV3BtT1RKa1REZDNlVzQ1WVhBelJrbzVWSFF2U25WYVpERlhiMVZ0TjA5R2JXSm1aVVZDTHpOSU5tdzBUMDVTYm1OV1ZFeHZjbVJZZVhZNWVFeEJaRU4yY2tOdFZHSndNbU5CV0VOckwxWmpTVWxDVGk5RVFXdHJkWFl3Tkc1WmMyNWtUR3N6SzJwbVFtazRhRkoxTW5vMFZtOU5PRkJ4ZFZkYU9WTkZNM1JZVlhKM0syTlRNRkpGTVVzNFVWTnFjbXhUTkV4Vk1HRmtkWEJGWWxwaVpuRnNlVzFMYmtKa01rUldabFZGWVhodUwxaElhVE5WY1VkRVQybGhWVzhyZVZRM1ZYVjNZeXRwYlZwRU1IUjZjRE53V1ZaeE1VbGxMMmRIT1N0dlYyOVdhVVZPV0c1b2RHeHBNM05qZGtSTFJsbDBNSFoyWTJGR2JqVnlWazlWUW10TFpuUm9RME5yYldwbmMyVTRjbVJ2VkhoeFJqUkJhR1JqUjJoWlJDdG5URTVRUlhOUVJrTlVVM3BtY0VaNmExUlBja00xV21sS056RjRWR1ZHTDAxU1kwZGtTRTVtWldoR1JGb3JNWGR0YWxwd1QwcFBOelJ3VjFCNVNFYzFibVl6THpaTk1rdzBkSEJ5TW1KS05ETkhZVnBQU0ZsbmFTdFJhM3BEVUhGbU1VSkxNMk00ZW1WdGRrWlpia1E1ZDBSWVQwUkZiVVozSzNGeWFGTm9lbTVXWkd3dmJUTkhOMWRrV1RSd0szRnNUaXQ2UlRoQ1VHcDFWeTlwUzJ0MlFXUktOVzF5ZVV0b00zSnNORkozVGtOTmRtbFllVEpESzBJM1dWVlFSelp0VDJzNVoycDZPVFJKUm5nNE1tc3pUR2hHYUhkNVVIZHFTa1J1VDJSU05ucHVWVFZ4VmtSRmFXVjRSVk5MYnpOU2JGRnJiV05aTmxBMFdUUlhhbTVEZFZKVmJqWXhaM1IyUjBSdFdrWTVjRzE0UkU5TWJrcE5ORzFsT0M5NWRVRmFVV1pZU25adFREUnZkalZYWXpaWWRXOVNSVmhWUnpNMkwxaEJiM3AzWWk5clJtSTFSWFZ6YVZKMmVuSmlkbFpCWWs0cmJYYzNhbkpvVEdkVFVqUlBSWGxNY1c1WE1uRXdlVFZoV0VOQmRFVlRLellyVmpOd2FWSk9lR3hqWVRKSWIzZEdSVEZ3UkVKdE5FUXpRVUpGUW1WVGJtMUVSR3BWU2xWU1NXMUNaVGwyWlVwVGNFVnFOR2dyTUVaUVdVSmtiMk40Y0ZSdFlXbDJWREJPUkVORlJtTmxibWhUVFVOWVYzRmpUaXR6YUVObVRqRm9RWEU1V25jMFdHTlhkalJWY1haVGEyUnNURzFUWlZCRWVuSnVia1YyY1VOaU1tODRMMDl0V0ZSSGJHOTFVR3B6ZFZSQlpqZG5PVVJNY0hKcFFqWlpVbVVyTm5VMk4ybEJkWFpqUkc0MGJrZ3pTRkEyVWswelZXdEJlSGxHTVRsd1ZIRkxVbVkzUlhaRlExTlRWVzk0YjNCQk15OUthVVV4VldKWFNFWTNMMmx2Y0hkSGVFSkJORUpLZEdWaFlrbDNaSEpOTlM4dmIySmtRazEyUW5CWmJYUTJUeXR3V1ZBNWJHNDNSbWxpUVc1T1ExaFJaRTFGTms1TFZERm9jV2RwVkRCeWJIRk1RWEl2VVhNd1ZsWkZZVlpRSzJaM2FGVndhbGxtTUc4eFVtMXJjRFV2Y1ZJNVkxVTRRWEZHVW1WWFlWcDNhRmMwZUVaaFVUZGpVVzE1U1dwT04wNVNUR1I2YlRkaVRrNWFTVGRJVTI1QkwzaE9WWFJVT1RWWGNGWmxkSFpWWlUwMGJreFNUa3hXZDJWd1VubElTRFE0VldwVFFWTnJiMVF2UWxkbFJuSkdURTFYV1VZcmRYWjJWV2RvYTB4a01uVlVha013ZWtSRE1qRTRZMDVrV1ZjMGFWQnZMMVI2TVhCTWExbHNUWFZOUWxCbWEzaGhOMWxuUWsxbWQxWm5lUzlPUzBWNEwycGFSR3RqVHpBdlNXazVVM3BwTjNKbGFWRjNjV0p2U2xscFVHNVNaV05MZVhsSmNGSlFSazFKVkhwd04wbEJkR1l6UjA1RGNtMVVZMkY0ZEZGRVlYRjViblpIWlVOTWFWZzNXbWxpYjNnd2QyVnVWVFZoUzBkb2RETXJLMjVGVDBNM2NXNXNkVWQwUVRKT1MwUklWM1JES3poNFFuUjBZbWg0WVV0TWRqTnlUMFZvVVcwclpGVnNRV1JWWXpJd1dWaDFNekp3Ym0xTE4zbHdhVGxqTUdvelRXbFVRMWhXY25KR2NrOU9jMjlpZURGVkx5OVVhWE00Vm5Od1kwNDRVRUZDUm5vNWNXZ3ZaRTE1TmxoSGIxa3JkVlJMYUVOVlpXTlZTRkZNYVd4UGQwSnguSGtGOV9LMFVHZ2gwcG9yUTY2bzJFWkRlQlFTNi1pczVMcE8wTHFrVzJLMFhVY2JlanM0ZXdYRzBmUlFEVHlfV1RaOVg1aUQzNjNSaEdsa3BOTVB6OGc%3D&amp;_eventId=submit&#x27;</span>
+</code></pre>
+<p>这些内容好像是没有过期时间的。</p>
+<h2><a id="post-请求之后" class="heading-anchor"></a>POST 请求之后</h2>
+<p>对 <code>login</code> 发完 POST 请求之后，返回的并不是 200 而是 302，附带了若干 <code>Set-Cookie</code>：</p>
+<pre><code class="language-js"><span class="hljs-variable constant_">CASPRIVACY</span>=;
+  <span class="hljs-title class_">Max</span>-<span class="hljs-title class_">Age</span>=<span class="hljs-number">0</span>; <span class="hljs-title class_">Expires</span>=<span class="hljs-title class_">Thu</span>, <span class="hljs-number">01</span>-<span class="hljs-title class_">Jan</span>-<span class="hljs-number">1970</span> <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">10</span> <span class="hljs-variable constant_">GMT</span>; <span class="hljs-title class_">Path</span>=<span class="hljs-regexp">/cas/</span>; <span class="hljs-title class_">Secure</span>
 _pf0=yNlillHGbCY1t2AdPozsaozqFnWzSZo59I6ehvg2XsA=;
-  Max-Age=86400; Expires=Thu, 12-May-2022 11:45:18 GMT; Domain=cas.hnu.edu.cn; Path=/; HttpOnly
+  <span class="hljs-title class_">Max</span>-<span class="hljs-title class_">Age</span>=<span class="hljs-number">86400</span>; <span class="hljs-title class_">Expires</span>=<span class="hljs-title class_">Thu</span>, <span class="hljs-number">12</span>-<span class="hljs-title class_">May</span>-<span class="hljs-number">2022</span> <span class="hljs-number">11</span>:<span class="hljs-number">45</span>:<span class="hljs-number">18</span> <span class="hljs-variable constant_">GMT</span>; <span class="hljs-title class_">Domain</span>=cas.<span class="hljs-property">hnu</span>.<span class="hljs-property">edu</span>.<span class="hljs-property">cn</span>; <span class="hljs-title class_">Path</span>=/; <span class="hljs-title class_">HttpOnly</span>
 _pm0=;
-  Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Domain=cas.hnu.edu.cn; Path=/
-_pc0=vUfpP1MGYarocLQgQgfAFRsxO2HyBGTzEcg+mGwf+7yewseSDEDYQSGEUIdSz+Oi;
-  Domain=cas.hnu.edu.cn; Path=/; HttpOnly
-iPlanetDirectoryPro=ZOMenIjL39gmMSKoZAowUqSSd9jimVIhN6ocARhLTD+zeFQPTWyBUSEZdxwS70lbXbLDi0WKL6LTsydgeCfSwJ+aeSPdfSfwj58sBE0eqSCboGqrMtXlz99xb+ia8dcBe2+vpFHGBjdT4we+WJyPs8+rzHOPMOf108uyV7M8zM9scARGxhoHOnADRQx33iKJPEP4qmlkBlw3A9MV9XFtO0MNV/iSn6bcSNujfUHFOa/xZ9fRsd5fMXFnFScsBEGgUxQKDpU02thXp7efiPP55ymb3c04Xova6g2M6qBl+xi1PfH2pfW5wyujRko4/istmw1dZBPEcB7tlaCw9SeXKgXs/viGuhI/JbeuzN7/kIBPtTm2bl48FamXdXohYElt;
-  Domain=cas.hnu.edu.cn; Path=/</code></pre><ul><li>302 响应标头中，<code>Location</code> 字段为 <code>http://pt.hnu.edu.cn/</code>，也就是说重定向到了个人门户。</li><li>个人门户 301 到  https 的个人门户。很奇怪，登录页面没有跳转 https（甚至不支持 https），倒是登录之后会跳转，而且居然还是 301。</li><li>https 个人门户（<code>https://pt.hnu.edu.cn/</code>）又 302 回到了登录页面（<code>http://cas.hnu.edu.cn/cas/login?service=https%3A%2F%2Fpt.hnu.edu.cn%2F</code>）带了个参数。这一波操作十分迷惑。</li><li><p>最后登录页面（<code>http://cas.hnu.edu.cn/cas/login?service=https%3A%2F%2Fpt.hnu.edu.cn%2F</code>）又 302 到了 一个 ticket 地址（<code>https://pt.hnu.edu.cn/?ticket=ST-2355568-yPfsfBJ3ABdVnkpKlbJS-zfsoft.com</code>）。对该 <code>ticket</code> 地址的请求，也返回了一个 <code>Set-Cookie</code>：</p><pre><code class="lang-js">wisportalId=F-e_MS4pRlGt8WU8IU_r9cOMPRcM-VuRMMfSe2xK;
-  path=/</code></pre></li><li>结果 302 回到了个人门户（<code>https://pt.hnu.edu.cn/</code>），也就是回到了个人门户的主页面。带上 Cookie 来到这个页面之后终于 200 了。</li></ul><p>猜测这一串操作就是为了设置这些 Cookie，进入主页面即根据检测到的 Cookie 合法性判断用户。可以验证两次对 <code>https://pt.hnu.edu.cn/</code> 的访问，区别只在于有没有 <code>wisportalId</code> 这个 Cookie。</p><p>这段重定向非常麻烦也很复杂，理论上我们可以在 Python 里写个 <code>while</code> 循环，但是 <code>requests</code> 库的请求可以帮我们自动处理重定向。一通重定向之后，<code>prepareRequest</code> 对象中的 Cookie 就存储了我们想要的 <code>wisportalId</code> 等 Cookie。</p><pre><code class="lang-python">&gt;&gt;&gt; postLogin.history
-[&lt;Response [302]&gt;, &lt;Response [301]&gt;, &lt;Response [302]&gt;, &lt;Response [302]&gt;, &lt;Response [302]&gt;]</code></pre><h2>登录成功后的请求</h2><p>对图书馆数据的请求：</p><pre><code class="lang-bash">curl 'https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail?_=1652352553585' \
-  -H 'Accept: application/json, text/plain, */*' \
-  -H 'Accept-Language: en,zh-CN;q=0.9,zh;q=0.8' \
-  -H 'Connection: keep-alive' \
-  -H 'Cookie: route=a09caef73920180c25245f140604ba0b; wisportalId=WHYE4cN7TZAjB-AVLMHEjx56pELpBe5SbIrFjbMR' \
-  -H 'Referer: https://pt.hnu.edu.cn/personal-center' \
-  -H 'Sec-Fetch-Dest: empty' \
-  -H 'Sec-Fetch-Mode: cors' \
-  -H 'Sec-Fetch-Site: same-origin' \
-  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36' \
-  -H 'sec-ch-ua: &quot; Not A;Brand&quot;;v=&quot;99&quot;, &quot;Chromium&quot;;v=&quot;101&quot;, &quot;Google Chrome&quot;;v=&quot;101&quot;' \
-  -H 'sec-ch-ua-mobile: ?0' \
-  -H 'sec-ch-ua-platform: &quot;macOS&quot;' \
-  --compressed</code></pre><p>经过试验，可以发现只要带上 <code>wisportalId</code> 这一个 Cookie 就可以了。</p><pre><code class="lang-bash">curl 'https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail' \
-  -H 'Cookie: wisportalId=WHYE4cN7TZAjB-AVLMHEjx56pELpBe5SbIrFjbMR'</code></pre><p>所以这个 Cookie 是我们的最终成果，也是登录之后的关键。</p><p>返回结果是 json 格式，就是我图书馆借的所有书的数据。</p><pre><code class="lang-json">{
-    &quot;data&quot;:[
-        {
-            &quot;attachment&quot;:&quot;0&quot;,
-            &quot;barcode&quot;:&quot;XS0028533&quot;,
-            &quot;loancount&quot;:&quot;0&quot;,
-            &quot;loandate&quot;:&quot;2022-04-25&quot;,
-            &quot;returndate&quot;:&quot;2022-05-25&quot;,
-            &quot;title&quot;:&quot;未来简史：从智人到神人：a brief history of tomorrow&quot;
-        }
-    ],
-    &quot;error_code&quot;:0,
-    &quot;message&quot;:&quot;请求成功!&quot;
-}</code></pre><p>实测这个 <code>wisportalId</code> 是有一个有效时间的，过一点时间之后就会失效。应该是有续租的借口，不过目前未见系统对登录频率有什么严格的限制，所以暂时懒得研究了，失效了重新登录就好。</p><h2>Python 代码实现</h2><h3>Requests 库发请求</h3><p><code>requests</code> 库应该无需介绍了。</p><p>最后的实现有一点不足，就是最后的一波重定向是 <code>requests</code> 帮我处理了的，表现为最后一个请求发出之后结果没有 301/302 而是 200，然后 <code>postLogin</code> 对象（类型为 <code>prepareRequest</code>）里的 Cookie 改变了。然而 <code>prepareRequest</code> 这个类型没有提取 Cookie 的成员函数……我们只能将其作为一个 Header 拿出来，直接放到之后请求的 Header 里。</p><p>或许改写成 <code>while</code> 循环自己模拟这个重定向会更好。</p><h3>BeautifulSoup 解析 HTML</h3><p>一开始想尝试用 <code>xml.dom.minidom</code> 这样的解析器尝试构建 DOM，结果想起来 HTML 并不是标准的 XML 实现，并且湖大这个网页说不定也不是规范的 HTML……</p><p>所以直接用 <code>BeautifulSoup</code> 了，这是一个可以用于解析 HTML 文件的库，常用于网页爬虫。</p><p>需要注意的一个点是，在获取 name 为 <code>execution</code> 的 input 元素的 <code>value</code> 时，name 这个关键字和 <code>find()</code> 成员函数的形参名冲突，所以必须用 attrs 的写法：</p><pre><code class="lang-python"># 错误的写法：找不到元素
-execution = pageSoup.find(name='execution').get('value')
-# 正确的写法：
-execution = pageSoup.find(attrs={'name': 'execution'}).get('value') # name 关键字和形参列表冲突</code></pre><h3>Pyexecjs 调用 js</h3><p>一开始尝试用 PyV8，结果安装起来非常麻烦，折腾了半天也没搞定，后来就发现了 Pyexecjs 这个替代品。需要 Node.js 环境才能使用。</p><p>在这里我们可以用「预编译」js 文件的方式来调用，只要在 js 里封装好了 <code>getResult()</code> 函数，Python 里可以 call：</p><pre><code class="lang-python">with open('security.js', 'r', encoding='utf-8') as jsfile:
+  <span class="hljs-title class_">Max</span>-<span class="hljs-title class_">Age</span>=<span class="hljs-number">0</span>; <span class="hljs-title class_">Expires</span>=<span class="hljs-title class_">Thu</span>, <span class="hljs-number">01</span>-<span class="hljs-title class_">Jan</span>-<span class="hljs-number">1970</span> <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">10</span> <span class="hljs-variable constant_">GMT</span>; <span class="hljs-title class_">Domain</span>=cas.<span class="hljs-property">hnu</span>.<span class="hljs-property">edu</span>.<span class="hljs-property">cn</span>; <span class="hljs-title class_">Path</span>=/
+_pc0=vUfpP1MGYarocLQgQgfAFRsxO2HyBGTzEcg+mGwf+7yewseSDEDYQSGEUIdSz+<span class="hljs-title class_">Oi</span>;
+  <span class="hljs-title class_">Domain</span>=cas.<span class="hljs-property">hnu</span>.<span class="hljs-property">edu</span>.<span class="hljs-property">cn</span>; <span class="hljs-title class_">Path</span>=/; <span class="hljs-title class_">HttpOnly</span>
+iPlanetDirectoryPro=<span class="hljs-title class_">ZOMenIjL</span>39gmMSKoZAowUqSSd9jimVIhN6ocARhLTD+zeFQPTWyBUSEZdxwS70lbXbLDi0WKL6LTsydgeCfSwJ+aeSPdfSfwj58sBE0eqSCboGqrMtXlz99xb+ia8dcBe2+vpFHGBjdT4we+<span class="hljs-title class_">WJyPs8</span>+rzHOPMOf108uyV7M8zM9scARGxhoHOnADRQx33iKJPEP4qmlkBlw3A9MV9XFtO0MNV/iSn6bcSNujfUHFOa/xZ9fRsd5fMXFnFScsBEGgUxQKDpU02thXp7efiPP55ymb3c04Xova6g2M6qBl+xi1PfH2pfW5wyujRko4/istmw1dZBPEcB7tlaCw9SeXKgXs/viGuhI/<span class="hljs-title class_">JbeuzN7</span>/kIBPtTm2bl48FamXdXohYElt;
+  <span class="hljs-title class_">Domain</span>=cas.<span class="hljs-property">hnu</span>.<span class="hljs-property">edu</span>.<span class="hljs-property">cn</span>; <span class="hljs-title class_">Path</span>=/
+</code></pre>
+<ul>
+<li><p>302 响应标头中，<code>Location</code> 字段为 <code>http://pt.hnu.edu.cn/</code>，也就是说重定向到了个人门户。</p></li>
+<li><p>个人门户 301 到  https 的个人门户。很奇怪，登录页面没有跳转 https（甚至不支持 https），倒是登录之后会跳转，而且居然还是 301。</p></li>
+<li><p>https 个人门户（<code>https://pt.hnu.edu.cn/</code>）又 302 回到了登录页面（<code>http://cas.hnu.edu.cn/cas/login?service=https%3A%2F%2Fpt.hnu.edu.cn%2F</code>）带了个参数。这一波操作十分迷惑。</p></li>
+<li><p>最后登录页面（<code>http://cas.hnu.edu.cn/cas/login?service=https%3A%2F%2Fpt.hnu.edu.cn%2F</code>）又 302 到了 一个 ticket 地址（<code>https://pt.hnu.edu.cn/?ticket=ST-2355568-yPfsfBJ3ABdVnkpKlbJS-zfsoft.com</code>）。对该 <code>ticket</code> 地址的请求，也返回了一个 <code>Set-Cookie</code>：</p>
+<pre><code class="language-js">wisportalId=F-e_MS4pRlGt8WU8IU_r9cOMPRcM-<span class="hljs-title class_">VuRMMfSe2</span>xK;
+  path=/
+</code></pre></li>
+<li><p>结果 302 回到了个人门户（<code>https://pt.hnu.edu.cn/</code>），也就是回到了个人门户的主页面。带上 Cookie 来到这个页面之后终于 200 了。</p></li>
+</ul>
+<p>猜测这一串操作就是为了设置这些 Cookie，进入主页面即根据检测到的 Cookie 合法性判断用户。可以验证两次对 <code>https://pt.hnu.edu.cn/</code> 的访问，区别只在于有没有 <code>wisportalId</code> 这个 Cookie。</p>
+<p>这段重定向非常麻烦也很复杂，理论上我们可以在 Python 里写个 <code>while</code> 循环，但是 <code>requests</code> 库的请求可以帮我们自动处理重定向。一通重定向之后，<code>prepareRequest</code> 对象中的 Cookie 就存储了我们想要的 <code>wisportalId</code> 等 Cookie。</p>
+<pre><code class="language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>postLogin.history
+[&lt;Response [<span class="hljs-number">302</span>]&gt;, &lt;Response [<span class="hljs-number">301</span>]&gt;, &lt;Response [<span class="hljs-number">302</span>]&gt;, &lt;Response [<span class="hljs-number">302</span>]&gt;, &lt;Response [<span class="hljs-number">302</span>]&gt;]
+</code></pre>
+<h2><a id="登录成功后的请求" class="heading-anchor"></a>登录成功后的请求</h2>
+<p>对图书馆数据的请求：</p>
+<pre><code class="language-bash">curl <span class="hljs-string">&#x27;https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail?_=1652352553585&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Accept: application/json, text/plain, */*&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Accept-Language: en,zh-CN;q=0.9,zh;q=0.8&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Connection: keep-alive&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Cookie: route=a09caef73920180c25245f140604ba0b; wisportalId=WHYE4cN7TZAjB-AVLMHEjx56pELpBe5SbIrFjbMR&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Referer: https://pt.hnu.edu.cn/personal-center&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Sec-Fetch-Dest: empty&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Sec-Fetch-Mode: cors&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Sec-Fetch-Site: same-origin&#x27;</span> \
+  -H <span class="hljs-string">&#x27;User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36&#x27;</span> \
+  -H <span class="hljs-string">&#x27;sec-ch-ua: &quot; Not A;Brand&quot;;v=&quot;99&quot;, &quot;Chromium&quot;;v=&quot;101&quot;, &quot;Google Chrome&quot;;v=&quot;101&quot;&#x27;</span> \
+  -H <span class="hljs-string">&#x27;sec-ch-ua-mobile: ?0&#x27;</span> \
+  -H <span class="hljs-string">&#x27;sec-ch-ua-platform: &quot;macOS&quot;&#x27;</span> \
+  --compressed
+</code></pre>
+<p>经过试验，可以发现只要带上 <code>wisportalId</code> 这一个 Cookie 就可以了。</p>
+<pre><code class="language-bash">curl <span class="hljs-string">&#x27;https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Cookie: wisportalId=WHYE4cN7TZAjB-AVLMHEjx56pELpBe5SbIrFjbMR&#x27;</span>
+</code></pre>
+<p>所以这个 Cookie 是我们的最终成果，也是登录之后的关键。</p>
+<p>返回结果是 json 格式，就是我图书馆借的所有书的数据。</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">&quot;attachment&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;barcode&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;XS0028533&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;loancount&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;loandate&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2022-04-25&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;returndate&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2022-05-25&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;未来简史：从智人到神人：a brief history of tomorrow&quot;</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;error_code&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;请求成功!&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>实测这个 <code>wisportalId</code> 是有一个有效时间的，过一点时间之后就会失效。应该是有续租的借口，不过目前未见系统对登录频率有什么严格的限制，所以暂时懒得研究了，失效了重新登录就好。</p>
+<h2><a id="python-代码实现" class="heading-anchor"></a>Python 代码实现</h2>
+<h3><a id="requests-库发请求" class="heading-anchor"></a>Requests 库发请求</h3>
+<p><code>requests</code> 库应该无需介绍了。</p>
+<p>最后的实现有一点不足，就是最后的一波重定向是 <code>requests</code> 帮我处理了的，表现为最后一个请求发出之后结果没有 301/302 而是 200，然后 <code>postLogin</code> 对象（类型为 <code>prepareRequest</code>）里的 Cookie 改变了。然而 <code>prepareRequest</code> 这个类型没有提取 Cookie 的成员函数……我们只能将其作为一个 Header 拿出来，直接放到之后请求的 Header 里。</p>
+<p>或许改写成 <code>while</code> 循环自己模拟这个重定向会更好。</p>
+<h3><a id="beautifulsoup-解析-html" class="heading-anchor"></a>BeautifulSoup 解析 HTML</h3>
+<p>一开始想尝试用 <code>xml.dom.minidom</code> 这样的解析器尝试构建 DOM，结果想起来 HTML 并不是标准的 XML 实现，并且湖大这个网页说不定也不是规范的 HTML……</p>
+<p>所以直接用 <code>BeautifulSoup</code> 了，这是一个可以用于解析 HTML 文件的库，常用于网页爬虫。</p>
+<p>需要注意的一个点是，在获取 name 为 <code>execution</code> 的 input 元素的 <code>value</code> 时，name 这个关键字和 <code>find()</code> 成员函数的形参名冲突，所以必须用 attrs 的写法：</p>
+<pre><code class="language-python"><span class="hljs-comment"># 错误的写法：找不到元素</span>
+execution = pageSoup.find(name=<span class="hljs-string">&#x27;execution&#x27;</span>).get(<span class="hljs-string">&#x27;value&#x27;</span>)
+<span class="hljs-comment"># 正确的写法：</span>
+execution = pageSoup.find(attrs={<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;execution&#x27;</span>}).get(<span class="hljs-string">&#x27;value&#x27;</span>) <span class="hljs-comment"># name 关键字和形参列表冲突</span>
+</code></pre>
+<h3><a id="pyexecjs-调用-js" class="heading-anchor"></a>Pyexecjs 调用 js</h3>
+<p>一开始尝试用 PyV8，结果安装起来非常麻烦，折腾了半天也没搞定，后来就发现了 Pyexecjs 这个替代品。需要 Node.js 环境才能使用。</p>
+<p>在这里我们可以用「预编译」js 文件的方式来调用，只要在 js 里封装好了 <code>getResult()</code> 函数，Python 里可以 call：</p>
+<pre><code class="language-python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;security.js&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> jsfile:
     jstext = jsfile.read()
-ctx = execjs.compile(jstext)
-encrypedPwd = ctx.call('getResult', exponent, modulus, password)</code></pre><h3>完整代码实现</h3><p>这是还没封装的简陋代码，只把拿到的数据输出了。</p><pre><code class="lang-python">username = '202108060109'
-password = 'YourPassWord'
+ctx = execjs.<span class="hljs-built_in">compile</span>(jstext)
+encrypedPwd = ctx.call(<span class="hljs-string">&#x27;getResult&#x27;</span>, exponent, modulus, password)
+</code></pre>
+<h3><a id="完整代码实现" class="heading-anchor"></a>完整代码实现</h3>
+<p>这是还没封装的简陋代码，只把拿到的数据输出了。</p>
+<pre><code class="language-python">username = <span class="hljs-string">&#x27;202108060109&#x27;</span>
+password = <span class="hljs-string">&#x27;YourPassWord&#x27;</span>
 
-import requests
-from bs4 import BeautifulSoup
-import execjs
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-keyword">import</span> execjs
 
-getPage = requests.get('http://cas.hnu.edu.cn/cas/login')
-print('GET http://cas.hnu.edu.cn/cas/login : ' + str(getPage.status_code))
-pageSoup = BeautifulSoup(getPage.text, 'html.parser')
-execution = pageSoup.find(attrs={'name': 'execution'}).get('value') # name 关键字和形参列表冲突
-myJSESSIONID = getPage.cookies['JSESSIONID']
-print('Cookie JSESSIONID: ' + myJSESSIONID)
+getPage = requests.get(<span class="hljs-string">&#x27;http://cas.hnu.edu.cn/cas/login&#x27;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;GET http://cas.hnu.edu.cn/cas/login : &#x27;</span> + <span class="hljs-built_in">str</span>(getPage.status_code))
+pageSoup = BeautifulSoup(getPage.text, <span class="hljs-string">&#x27;html.parser&#x27;</span>)
+execution = pageSoup.find(attrs={<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;execution&#x27;</span>}).get(<span class="hljs-string">&#x27;value&#x27;</span>) <span class="hljs-comment"># name 关键字和形参列表冲突</span>
+myJSESSIONID = getPage.cookies[<span class="hljs-string">&#x27;JSESSIONID&#x27;</span>]
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Cookie JSESSIONID: &#x27;</span> + myJSESSIONID)
 
-myCookies = {'JSESSIONID': myJSESSIONID}
-getPubKey = requests.get('http://cas.hnu.edu.cn/cas/v2/getPubKey', cookies=myCookies)
-print('GET http://cas.hnu.edu.cn/cas/v2/getPubKey : ' + str(getPubKey.status_code))
-modulus = getPubKey.json()['modulus']
-exponent = getPubKey.json()['exponent']
-_pv0 = getPubKey.cookies['_pv0']
-print('Cookie _pv0: ' + _pv0)
+myCookies = {<span class="hljs-string">&#x27;JSESSIONID&#x27;</span>: myJSESSIONID}
+getPubKey = requests.get(<span class="hljs-string">&#x27;http://cas.hnu.edu.cn/cas/v2/getPubKey&#x27;</span>, cookies=myCookies)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;GET http://cas.hnu.edu.cn/cas/v2/getPubKey : &#x27;</span> + <span class="hljs-built_in">str</span>(getPubKey.status_code))
+modulus = getPubKey.json()[<span class="hljs-string">&#x27;modulus&#x27;</span>]
+exponent = getPubKey.json()[<span class="hljs-string">&#x27;exponent&#x27;</span>]
+_pv0 = getPubKey.cookies[<span class="hljs-string">&#x27;_pv0&#x27;</span>]
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Cookie _pv0: &#x27;</span> + _pv0)
 
-with open('security.js', 'r', encoding='utf-8') as jsfile:
+<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;security.js&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> jsfile:
     jstext = jsfile.read()
-ctx = execjs.compile(jstext)
-encrypedPwd = ctx.call('getResult', exponent, modulus, password)
-print(encrypedPwd)
+ctx = execjs.<span class="hljs-built_in">compile</span>(jstext)
+encrypedPwd = ctx.call(<span class="hljs-string">&#x27;getResult&#x27;</span>, exponent, modulus, password)
+<span class="hljs-built_in">print</span>(encrypedPwd)
 
-authcode = ''
-_eventId = 'submit'
+authcode = <span class="hljs-string">&#x27;&#x27;</span>
+_eventId = <span class="hljs-string">&#x27;submit&#x27;</span>
 
-myUA = r'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15'
+myUA = <span class="hljs-string">r&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15&#x27;</span>
 
-postData = {'username': username, 'password': encrypedPwd, 'authcode': authcode, 'execution': execution, '_eventId': _eventId}
-postCookies = {'JSESSIONID': myJSESSIONID, '_pv0': _pv0}
-postHeaders = {'User-Agent': myUA}
-postLogin = requests.post('http://cas.hnu.edu.cn/cas/login', data=postData, cookies=postCookies, headers=postHeaders)
-print('POST http://cas.hnu.edu.cn/cas/login : ' + str(postLogin.status_code))
-print(postLogin.history)
+postData = {<span class="hljs-string">&#x27;username&#x27;</span>: username, <span class="hljs-string">&#x27;password&#x27;</span>: encrypedPwd, <span class="hljs-string">&#x27;authcode&#x27;</span>: authcode, <span class="hljs-string">&#x27;execution&#x27;</span>: execution, <span class="hljs-string">&#x27;_eventId&#x27;</span>: _eventId}
+postCookies = {<span class="hljs-string">&#x27;JSESSIONID&#x27;</span>: myJSESSIONID, <span class="hljs-string">&#x27;_pv0&#x27;</span>: _pv0}
+postHeaders = {<span class="hljs-string">&#x27;User-Agent&#x27;</span>: myUA}
+postLogin = requests.post(<span class="hljs-string">&#x27;http://cas.hnu.edu.cn/cas/login&#x27;</span>, data=postData, cookies=postCookies, headers=postHeaders)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;POST http://cas.hnu.edu.cn/cas/login : &#x27;</span> + <span class="hljs-built_in">str</span>(postLogin.status_code))
+<span class="hljs-built_in">print</span>(postLogin.history)
 
-cookies = postLogin.request.headers['Cookie']
-headers = {'User-Agent': myUA, 'Cookie': cookies}
-getBooks = requests.get('https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail', headers=headers)
-print(getBooks.text)</code></pre><p>完结撒花 🎉</p><h2>下一步</h2><ul><li>自己实现模拟重定向，精确拿到那几个 Cookie；</li><li>探索验证码出现的机制，或许加上验证码的处理；</li><li>摸索更多的接口。</li></ul> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="2vWqDu" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;hnu-portal-login-analysis-implementation&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/hnu-portal-login-analysis-implementation&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+cookies = postLogin.request.headers[<span class="hljs-string">&#x27;Cookie&#x27;</span>]
+headers = {<span class="hljs-string">&#x27;User-Agent&#x27;</span>: myUA, <span class="hljs-string">&#x27;Cookie&#x27;</span>: cookies}
+getBooks = requests.get(<span class="hljs-string">&#x27;https://pt.hnu.edu.cn/api/hndxTsg/getBorrowBooks/detail&#x27;</span>, headers=headers)
+<span class="hljs-built_in">print</span>(getBooks.text)
+</code></pre>
+<p>完结撒花 🎉</p>
+<h2><a id="下一步" class="heading-anchor"></a>下一步</h2>
+<ul>
+<li>自己实现模拟重定向，精确拿到那几个 Cookie；</li>
+<li>探索验证码出现的机制，或许加上验证码的处理；</li>
+<li>摸索更多的接口。</li>
+</ul>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="1d3xJC" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;hnu-portal-login-analysis-implementation&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -271,4 +424,4 @@ print(getBooks.text)</code></pre><p>完结撒花 🎉</p><h2>下一步</h2><ul><
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

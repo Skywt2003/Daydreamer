@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>NOI Linux 食用指南</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>NOI Linux 食用指南</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ NOI Linux 食用指南 </span> </h5> <div class="m-2 secondary-color" data-astro
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,27 +72,112 @@ NOI Linux 食用指南 </span> </h5> <div class="m-2 secondary-color" data-astro
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>NOI Linux 食用指南</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 09 月 10 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 2 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/noi-linux-guide" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <blockquote>我家跨上了“信息高速路”<br>“太好啦！大好啦！”听妈妈说，我家的电脑跨上了信息高速路，我情不自禁地欢呼起来。电脑网络这个新鲜玩意儿到底是什么呢？<br>……</blockquote><p>以讽 NOI Linux 的复古。9102 年了居然还在 Ubuntu 14.04……</p><!--more--><p>XJ 机房实行严格管理，被迫 Windows7 和 NOILinux 二选一。本来我觉得 NOILinux（32 位的……）并不是设计给人用的，我会毫不犹豫选择了 Win7，但是 Linux 可以没有硬盘保护……所以被迫踏上 NOILinux 这条贼船了……</p><p>然而 ubuntu 14.04 被 CCF 改得面目全非，加上 32 位等复古的因素，装什么都有一大堆问题……非人世所堪！</p><h2>浏览器</h2><p>个人偏爱 Firefox。然而 noilinux 自带的或者直接 apt 安装都是远古版本……<br>正确的安装姿势是：先去 firefox 官网下载安装包，解压得到一个 firefox 文件夹。去替换安装目录下的 firefox：</p><pre><code>sudo rm -rf /usr/lib/firefox
-sudo mv ./firefox /usr/lib/</code></pre><p>再启动</p><h2>编辑器</h2><h3>VSCode</h3><p>NOILinux 内置的编辑器好像只有 emacs、vim 和 gedit 是能用的……<br>我偏要 vscode！</p><p>vscode 1.36 及以后的版本不再支持 32bit linux 了，所以我们要去下载 1.35 版本……（还好是 May 2019 的，不算太远古）<br><a href="https://code.visualstudio.com/updates/v1_35">https://code.visualstudio.com/updates/v1_35</a></p><p>下载完是个 deb 文件，然而 noilinux 阉割了 GUI 的“软件包安装程序”……所以我们要用这个命令手动安装：</p><pre><code>sudo dpkg -i code_1.35.1-1560349847_i386</code></pre><h3>Typora</h3><p>根据 <a href="https://support.typora.io/Typora-on-Linux/">https://support.typora.io/Typora-on-Linux/</a> 的指引：</p><pre><code>wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>NOI Linux 食用指南</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 9 月 10 日 13:00</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E5%99%A8">编辑器</a>
+<ul>
+<li><a href="#vscode">VSCode</a></li>
+<li><a href="#typora">Typora</a></li>
+</ul></li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7">一些工具</a>
+<ul>
+<li><a href="#git">git</a></li>
+<li><a href="#exfat-filesystem">exfat filesystem</a></li>
+</ul></li>
+<li><a href="#%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96">主题&amp;美化</a>
+<ul>
+<li><a href="#unity-tweak-tool">Unity-tweak-tool</a></li>
+<li><a href="#flatabulous">Flatabulous</a></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>我家跨上了“信息高速路”<br>
+“太好啦！大好啦！”听妈妈说，我家的电脑跨上了信息高速路，我情不自禁地欢呼起来。电脑网络这个新鲜玩意儿到底是什么呢？<br>
+……</p>
+</blockquote>
+<p>以讽 NOI Linux 的复古。9102 年了居然还在 Ubuntu 14.04……</p>
+<p>XJ 机房实行严格管理，被迫 Windows7 和 NOILinux 二选一。本来我觉得 NOILinux（32 位的……）并不是设计给人用的，我会毫不犹豫选择了 Win7，但是 Linux 可以没有硬盘保护……所以被迫踏上 NOILinux 这条贼船了……</p>
+<p>然而 ubuntu 14.04 被 CCF 改得面目全非，加上 32 位等复古的因素，装什么都有一大堆问题……非人世所堪！</p>
+<h2><a id="浏览器" class="heading-anchor"></a>浏览器</h2>
+<p>个人偏爱 Firefox。然而 noilinux 自带的或者直接 apt 安装都是远古版本……<br>
+正确的安装姿势是：先去 firefox 官网下载安装包，解压得到一个 firefox 文件夹。去替换安装目录下的 firefox：</p>
+<pre><code>sudo rm -rf /usr/lib/firefox
+sudo mv ./firefox /usr/lib/
+</code></pre>
+<p>再启动</p>
+<h2><a id="编辑器" class="heading-anchor"></a>编辑器</h2>
+<h3><a id="vscode" class="heading-anchor"></a>VSCode</h3>
+<p>NOILinux 内置的编辑器好像只有 emacs、vim 和 gedit 是能用的……<br>
+我偏要 vscode！</p>
+<p>vscode 1.36 及以后的版本不再支持 32bit linux 了，所以我们要去下载 1.35 版本……（还好是 May 2019 的，不算太远古）<br>
+https://code.visualstudio.com/updates/v1_35</p>
+<p>下载完是个 deb 文件，然而 noilinux 阉割了 GUI 的“软件包安装程序”……所以我们要用这个命令手动安装：</p>
+<pre><code>sudo dpkg -i code_1.35.1-1560349847_i386
+</code></pre>
+<h3><a id="typora" class="heading-anchor"></a>Typora</h3>
+<p>根据 https://support.typora.io/Typora-on-Linux/ 的指引：</p>
+<pre><code>wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 
-# add Typora's repository
-sudo add-apt-repository 'deb https://typora.io/linux ./'
+# add Typora&#x27;s repository
+sudo add-apt-repository &#x27;deb https://typora.io/linux ./&#x27;
 sudo apt-get update
 
 # install typora
-sudo apt-get install typora</code></pre><h2>一些工具</h2><h3>git</h3><p>直接 <code>sudo apt-get install git</code> 会安装远古版本的……（vscode 表示看不下去了）</p><p>所以：</p><pre><code>sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get install typora
+</code></pre>
+<h2><a id="一些工具" class="heading-anchor"></a>一些工具</h2>
+<h3><a id="git" class="heading-anchor"></a>git</h3>
+<p>直接 <code>sudo apt-get install git</code> 会安装远古版本的……（vscode 表示看不下去了）</p>
+<p>所以：</p>
+<pre><code>sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
-sudo apt-get install git</code></pre><h3>exfat filesystem</h3><p>这个是有些 U 盘的文件系统，ubuntu 默认没有的，插入 exfat 文件系统的 U 盘会挂载失败，显示：</p><blockquote>mount: unknown filesystem type 'exfat'</blockquote><p>解决方法：</p><pre><code>sudo apt-get install exfat-fuse exfat-utils</code></pre><h2>主题&美化</h2><h3>Unity-tweak-tool</h3><p>首先当然是 unity-tweak-tool 啦：</p><pre><code>sudo apt-get install unity-tweak-tool</code></pre><p>直接安装完运行发现弹出窗口：</p><blockquote><p><strong>The following schema is missing</strong></p><p>com.canonical.unity.webapps</p><p>In order to work properly, Unity Tweak Tool recommends you install the necessary packages</p></blockquote><p>看提示就知道没安装 <code>com.canonical.unity.webapps</code> 这个包。运行以下命令安装：</p><pre><code>sudo apt-get install unity-webapps-common</code></pre><h3>Flatabulous</h3><p>主题和图标包，这个和正常 ubuntu 无异。（长舒一口气）</p><pre><code>sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get install git
+</code></pre>
+<h3><a id="exfat-filesystem" class="heading-anchor"></a>exfat filesystem</h3>
+<p>这个是有些 U 盘的文件系统，ubuntu 默认没有的，插入 exfat 文件系统的 U 盘会挂载失败，显示：</p>
+<blockquote>
+<p>mount: unknown filesystem type 'exfat'</p>
+</blockquote>
+<p>解决方法：</p>
+<pre><code>sudo apt-get install exfat-fuse exfat-utils
+</code></pre>
+<h2><a id="主题美化" class="heading-anchor"></a>主题&amp;美化</h2>
+<h3><a id="unity-tweak-tool" class="heading-anchor"></a>Unity-tweak-tool</h3>
+<p>首先当然是 unity-tweak-tool 啦：</p>
+<pre><code>sudo apt-get install unity-tweak-tool
+</code></pre>
+<p>直接安装完运行发现弹出窗口：</p>
+<blockquote>
+<p><strong>The following schema is missing</strong></p>
+<p>com.canonical.unity.webapps</p>
+<p>In order to work properly, Unity Tweak Tool recommends you install the necessary packages</p>
+</blockquote>
+<p>看提示就知道没安装 <code>com.canonical.unity.webapps</code> 这个包。运行以下命令安装：</p>
+<pre><code>sudo apt-get install unity-webapps-common
+</code></pre>
+<h3><a id="flatabulous" class="heading-anchor"></a>Flatabulous</h3>
+<p>主题和图标包，这个和正常 ubuntu 无异。（长舒一口气）</p>
+<pre><code>sudo add-apt-repository ppa:noobslab/themes
 sudo apt-get update
 sudo apt-get install flatabulous-theme
 
 sudo add-apt-repository ppa:noobslab/icons
 sudo apt-get update
-sudo apt-get install ultra-flat-icons</code></pre><p>至此，你的 noilinux 能用了！！！</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1UXksq" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;noi-linux-guide&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/noi-linux-guide&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+sudo apt-get install ultra-flat-icons
+</code></pre>
+<p>至此，你的 noilinux 能用了！！！</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZKHcV7" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;noi-linux-guide&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -119,4 +204,4 @@ NOI Linux 食用指南 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnb
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

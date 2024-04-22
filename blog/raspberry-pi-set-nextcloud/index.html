@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>树莓派搭建 Nextcloud 折腾日志</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>树莓派搭建 Nextcloud 折腾日志</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,11 +72,78 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>树莓派搭建 Nextcloud 折腾日志</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 08 月 28 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/raspberry-pi-set-nextcloud" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>七夕节开箱了一个孤寡的 RaspberryPi 单板，孤寡到没有显示器没有键盘没有鼠标。<br>其实很早就想搭个类似云盘的东西来当作 NAS，备份照片存文件之类的。阿里云和 BWH 的主机空间都太小，几十 G 存不了什么文件。偶然想起来我还有一块 2016 年买的东芝 2T 移动硬盘（虽然是 HDD），顺便也想实践一下物理的服务器的部署……于是购入了这个 RaspberryPi 4G 版本。</p><!--more--><h2>系统安装与准备</h2><h3>一些链接</h3><p><a href="https://www.raspberrypi.org">RaspberryPi 官网</a> | <a href="https://hub.docker.com/_/nextcloud/">Nextcloud Docker</a> | <a href="https://hub.docker.com/_/mariadb">MariaDB Docker</a> | <a href="https://hub.docker.com/_/mysql">MySQL Docker</a></p><p>树莓派官网推荐了 Raspberry Pi Imager 这个软件，还是很好用的，电脑上插入 SD 卡就可以直接选择系统烧录。<br>为了后续玩机的方便，也是为了尽量避免出现我力所不能解决的奇怪问题，我还是决定了刷入默认的 RaspbianOS。</p><h3>RaspiOS on arm64</h3><p>明明这个树莓派是 64 位的 soc，为什么 Imager 软件里只提供了 32 位的 RaspbianOS 下载？<br>查了一下资料，大概是从很早开始 RaspbianOS 一直是 32 位（arm32v7 架构），最近官方才有 64 位系统的测试版，不过还处于测试阶段，考虑到从 32 位转为 64 位会导致很多系统内部结构的变化，很多程序还未兼容，存在若干问题，所以<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=117&t=275370">官方不推荐使用</a>。<br>不过拿着 64 位的 CPU 用着 32 位的系统，总感觉怪怪的……</p><p>然而，我们肯定要用到的 MySQL 和 MariaDB 都是不支持 arm32v7 架构的。所以我们不得不去尝试一下 arm64 架构的测试版。官方的 Known issues 很多是某些特定程序的问题（比如 Wolfram Mathematica 和 Minecraft）（真有人用树莓派玩 Minecraft 么），似乎对我们搭建 Nextcloud 来说问题不大。那就冲吧！！</p><p>（之所以不选择诸如 Ubuntu Server 这样的其他 arm64 操作系统，是因为它们都没法无屏幕联网启动，并且兼容性也不见得好。）</p><p>最新的下载地址可以在<a href="https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/">这里</a>找到。</p><h2>Raspbian 连接与基础配置</h2><h3>无屏幕启动</h3><p>RapbianOS 提供了开机自动连接 Wi-Fi 的设置，只要在 sd 卡根目录下放一个 <code>wpa_supplicant.conf</code> 文件，写如下设置：</p><pre><code class="lang-shell">country=CN
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>树莓派搭建 Nextcloud 折腾日志</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2021 年 8 月 28 日 15:33</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%B8%8E%E5%87%86%E5%A4%87">系统安装与准备</a>
+<ul>
+<li><a href="#%E4%B8%80%E4%BA%9B%E9%93%BE%E6%8E%A5">一些链接</a></li>
+<li><a href="#raspios-on-arm64">RaspiOS on arm64</a></li>
+</ul></li>
+<li><a href="#raspbian-%E8%BF%9E%E6%8E%A5%E4%B8%8E%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE">Raspbian 连接与基础配置</a>
+<ul>
+<li><a href="#%E6%97%A0%E5%B1%8F%E5%B9%95%E5%90%AF%E5%8A%A8">无屏幕启动</a></li>
+<li><a href="#vnc-%E8%BF%9E%E6%8E%A5">VNC 连接</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%B8%85%E5%8D%8E%E6%BA%90">使用清华源</a>
+<ul>
+<li><a href="#%E5%AF%BC%E5%85%A5%E5%85%AC%E9%92%A5">导入公钥</a></li>
+</ul></li>
+<li><a href="#%E5%88%9D%E6%AD%A5%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%AE%89%E8%A3%85%E6%9B%B4%E6%96%B0">初步配置与安装更新</a></li>
+</ul></li>
+<li><a href="#%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD">磁盘挂载</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0-nextcloud-%E6%90%AD%E5%BB%BA">本地 Nextcloud 搭建</a>
+<ul>
+<li><a href="#%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F">两种方式</a>
+<ul>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%B8%80docker-%E9%83%A8%E7%BD%B2-nextcloud">方式一：Docker 部署 Nextcloud</a></li>
+<li><a href="#%E6%96%B9%E5%BC%8F%E4%BA%8Clnmp--nextcloud">方式二：LNMP + Nextcloud</a></li>
+</ul></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-docker">安装配置 Docker</a></li>
+<li><a href="#docker-%E5%AE%89%E8%A3%85-mariadb">Docker 安装 MariaDB</a></li>
+<li><a href="#docker-%E5%AE%89%E8%A3%85-phpmyadmin">Docker 安装 phpMyAdmin</a></li>
+<li><a href="#docker-%E5%AE%89%E8%A3%85-nextcloud">Docker 安装 Nextcloud</a>
+<ul>
+<li><a href="#%E7%8E%84%E5%AD%A6%E9%94%99%E8%AF%AF">玄学错误</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86">内网穿透与反向代理</a>
+<ul>
+<li><a href="#frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F">Frp 内网穿透</a>
+<ul>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AE%BE%E7%BD%AE">服务端设置</a></li>
+<li><a href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE">客户端设置</a></li>
+</ul></li>
+<li><a href="#nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86">Nginx 反向代理</a></li>
+</ul></li>
+<li><a href="#%E5%8F%8D%E6%80%9D">反思</a></li>
+</ul>
+<p>七夕节开箱了一个孤寡的 RaspberryPi 单板，孤寡到没有显示器没有键盘没有鼠标。<br>
+其实很早就想搭个类似云盘的东西来当作 NAS，备份照片存文件之类的。阿里云和 BWH 的主机空间都太小，几十 G 存不了什么文件。偶然想起来我还有一块 2016 年买的东芝 2T 移动硬盘（虽然是 HDD），顺便也想实践一下物理的服务器的部署……于是购入了这个 RaspberryPi 4G 版本。</p>
+<h2><a id="系统安装与准备" class="heading-anchor"></a>系统安装与准备</h2>
+<h3><a id="一些链接" class="heading-anchor"></a>一些链接</h3>
+<p><a href="https://www.raspberrypi.org">RaspberryPi 官网</a> | <a href="https://hub.docker.com/_/nextcloud/">Nextcloud Docker</a> | <a href="https://hub.docker.com/_/mariadb">MariaDB Docker</a> | <a href="https://hub.docker.com/_/mysql">MySQL Docker</a></p>
+<p>树莓派官网推荐了 Raspberry Pi Imager 这个软件，还是很好用的，电脑上插入 SD 卡就可以直接选择系统烧录。<br>
+为了后续玩机的方便，也是为了尽量避免出现我力所不能解决的奇怪问题，我还是决定了刷入默认的 RaspbianOS。</p>
+<h3><a id="raspios-on-arm64" class="heading-anchor"></a>RaspiOS on arm64</h3>
+<p>明明这个树莓派是 64 位的 soc，为什么 Imager 软件里只提供了 32 位的 RaspbianOS 下载？<br>
+查了一下资料，大概是从很早开始 RaspbianOS 一直是 32 位（arm32v7 架构），最近官方才有 64 位系统的测试版，不过还处于测试阶段，考虑到从 32 位转为 64 位会导致很多系统内部结构的变化，很多程序还未兼容，存在若干问题，所以<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=117&amp;t=275370">官方不推荐使用</a>。<br>
+不过拿着 64 位的 CPU 用着 32 位的系统，总感觉怪怪的……</p>
+<p>然而，我们肯定要用到的 MySQL 和 MariaDB 都是不支持 arm32v7 架构的。所以我们不得不去尝试一下 arm64 架构的测试版。官方的 Known issues 很多是某些特定程序的问题（比如 Wolfram Mathematica 和 Minecraft）（真有人用树莓派玩 Minecraft 么），似乎对我们搭建 Nextcloud 来说问题不大。那就冲吧！！</p>
+<p>（之所以不选择诸如 Ubuntu Server 这样的其他 arm64 操作系统，是因为它们都没法无屏幕联网启动，并且兼容性也不见得好。）</p>
+<p>最新的下载地址可以在<a href="https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/">这里</a>找到。</p>
+<h2><a id="raspbian-连接与基础配置" class="heading-anchor"></a>Raspbian 连接与基础配置</h2>
+<h3><a id="无屏幕启动" class="heading-anchor"></a>无屏幕启动</h3>
+<p>RapbianOS 提供了开机自动连接 Wi-Fi 的设置，只要在 sd 卡根目录下放一个 <code>wpa_supplicant.conf</code> 文件，写如下设置：</p>
+<pre><code class="language-shell">country=CN
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
@@ -85,12 +152,27 @@ network={
   psk=&quot;你的 Wi-Fi 密码&quot;
   key_mgmt=WPA-PSK
   priority=1
-}</code></pre><p>开机就可以自动连接 Wi-Fi。在路由器后台找到这个设备的 ip 就可以 ssh 了。</p><p>至于 ssh 的开启，同样在 sd 卡根目录下放一个名为 ssh 的空白文件即可。</p><p>ssh 默认的用户是 <code>pi</code>，密码是 <code>raspberry</code>，虽然这个用户有 root 权限，但是我还是一般习惯直接用 root 用户登录。第一次登录之后进入 <code>/etc/ssh/sshd_config</code>，增加 <code>PermitRootLogin yes</code>，之后就可以直接用 root 登录。</p><h3>VNC 连接</h3><p>ssh 连接之后运行 <code>raspi-config</code>，可以看到一个命令行里的 GUI 界面……<br>进入 Interface Options 里面可以打开 VNC 服务。<br>如果 VNC 桌面连接不上，一般是分辨率问题，要进入 Display Options 修改 Resolution（分辨率）。</p><h3>使用清华源</h3><p>虽然 RaspbianOS 里的 apt 似乎内置了类似 fastest-mirror 插件，但是我这里最近的镜像会选择浙大的镜像（mirrors.zju.edu.cn），而浙大的镜像在我使用期间似乎挂了 =_= 我们最好手动去换清华的镜像。</p><p>清华的 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">RaspiOS 镜像页面</a>是这么说的：</p><pre><code># 编辑 `/etc/apt/sources.list` 文件，删除原文件所有内容，用以下内容取代：
+}
+</code></pre>
+<p>开机就可以自动连接 Wi-Fi。在路由器后台找到这个设备的 ip 就可以 ssh 了。</p>
+<p>至于 ssh 的开启，同样在 sd 卡根目录下放一个名为 ssh 的空白文件即可。</p>
+<p>ssh 默认的用户是 <code>pi</code>，密码是 <code>raspberry</code>，虽然这个用户有 root 权限，但是我还是一般习惯直接用 root 用户登录。第一次登录之后进入 <code>/etc/ssh/sshd_config</code>，增加 <code>PermitRootLogin yes</code>，之后就可以直接用 root 登录。</p>
+<h3><a id="vnc-连接" class="heading-anchor"></a>VNC 连接</h3>
+<p>ssh 连接之后运行 <code>raspi-config</code>，可以看到一个命令行里的 GUI 界面……<br>
+进入 Interface Options 里面可以打开 VNC 服务。<br>
+如果 VNC 桌面连接不上，一般是分辨率问题，要进入 Display Options 修改 Resolution（分辨率）。</p>
+<h3><a id="使用清华源" class="heading-anchor"></a>使用清华源</h3>
+<p>虽然 RaspbianOS 里的 apt 似乎内置了类似 fastest-mirror 插件，但是我这里最近的镜像会选择浙大的镜像（mirrors.zju.edu.cn），而浙大的镜像在我使用期间似乎挂了 =_= 我们最好手动去换清华的镜像。</p>
+<p>清华的 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">RaspiOS 镜像页面</a>是这么说的：</p>
+<pre><code># 编辑 `/etc/apt/sources.list` 文件，删除原文件所有内容，用以下内容取代：
 deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
 deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
 
 # 编辑 `/etc/apt/sources.list.d/raspi.list` 文件，删除原文件所有内容，用以下内容取代：
-deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</code></pre><p>然而！！！arm64 的 RaspiOS 改了，直接这么改是不行的，<code>/etc/apt/sources.list</code>文件里应该直接用 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/debian/">debian 的镜像</a>：</p><pre><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+</code></pre>
+<p>然而！！！arm64 的 RaspiOS 改了，直接这么改是不行的，<code>/etc/apt/sources.list</code>文件里应该直接用 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/debian/">debian 的镜像</a>：</p>
+<pre><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
@@ -100,16 +182,32 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib n
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
 
 deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free</code></pre><p><code>/etc/apt/sources.list.d/raspi.list</code> 文件还是按上文所述不变。</p><p>编辑后用 <code>sudo apt-get update</code> 命令更新一下。</p><h4>导入公钥</h4><p>哎呀，出错了：</p><pre><code>Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB]
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+</code></pre>
+<p><code>/etc/apt/sources.list.d/raspi.list</code> 文件还是按上文所述不变。</p>
+<p>编辑后用 <code>sudo apt-get update</code> 命令更新一下。</p>
+<h4><a id="导入公钥" class="heading-anchor"></a>导入公钥</h4>
+<p>哎呀，出错了：</p>
+<pre><code>Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB]
 Hit:2 http://mirrors.tuna.tsinghua.edu.cn/raspberrypi buster InRelease
 Err:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease
-  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 9165938D90FDDD2E
+  The following signatures couldn&#x27;t be verified because the public key is not available: NO_PUBKEY 9165938D90FDDD2E
 Reading package lists... Done
-W: GPG error: http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 9165938D90FDDD2E
-E: The repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' is not signed.
-N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-N: See apt-secure(8) manpage for repository creation and user configuration details.</code></pre><p>（32 位的 PaspiOS 没有这个问题）似乎 64 位版本的用了不一样的安全机制，搜了一圈找到了<a href="https://www.jianshu.com/p/8a1921413fad">解决办法</a>：</p><pre><code class="lang-shell">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9165938D90FDDD2E
-sudo gpg --export --armor 9165938D90FDDD2E | sudo apt-key add -</code></pre><h3>初步配置与安装更新</h3><p>VNC 桌面连接以后就可以根据图形界面的提示进行初步的配置啦。</p><p>（如果之前没配置镜像，这里的 update 就会需要很久……很久……很久……）</p><h2>磁盘挂载</h2><p>先 <code>fdisk -l </code> 查看移动硬盘的盘符：</p><pre><code>Disk /dev/sda: 1.8 TiB, 2000398931968 bytes, 3907029164 sectors
+W: GPG error: http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease: The following signatures couldn&#x27;t be verified because the public key is not available: NO_PUBKEY 9165938D90FDDD2E
+E: The repository &#x27;http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease&#x27; is not signed.
+N: Updating from such a repository can&#x27;t be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+</code></pre>
+<p>（32 位的 PaspiOS 没有这个问题）似乎 64 位版本的用了不一样的安全机制，搜了一圈找到了<a href="https://www.jianshu.com/p/8a1921413fad">解决办法</a>：</p>
+<pre><code class="language-shell">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9165938D90FDDD2E
+sudo gpg --export --armor 9165938D90FDDD2E | sudo apt-key add -
+</code></pre>
+<h3><a id="初步配置与安装更新" class="heading-anchor"></a>初步配置与安装更新</h3>
+<p>VNC 桌面连接以后就可以根据图形界面的提示进行初步的配置啦。</p>
+<p>（如果之前没配置镜像，这里的 update 就会需要很久……很久……很久……）</p>
+<h2><a id="磁盘挂载" class="heading-anchor"></a>磁盘挂载</h2>
+<p>先 <code>fdisk -l</code> 查看移动硬盘的盘符：</p>
+<pre><code>Disk /dev/sda: 1.8 TiB, 2000398931968 bytes, 3907029164 sectors
 Disk model: External USB 3.0
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -118,26 +216,88 @@ Disklabel type: dos
 Disk identifier: 0x00000000
 
 Device     Boot Start        End    Sectors  Size Id Type
-/dev/sda1        2048 3907028991 3907026944  1.8T  7 HPFS/NTFS/exFAT</code></pre><p>看到是 <code>/dev/sda1</code>。</p><p>为了方便，把移动硬盘挂载到 <code>/mnt/sda1/</code> 目录下：</p><pre><code>mount /dev/sda1 /mnt/sda1/</code></pre><h2>本地 Nextcloud 搭建</h2><h3>两种方式</h3><p>我尝试了两种方式搭建这个 Nextcloud（可实在是太折腾了（吐血））：</p><h4>方式一：Docker 部署 Nextcloud</h4><p>这种方法很大的一个优点就是部署简单。缺点就是由于这个 Docker 里面附带了 Apache，如果需要一些拓展的配置就会很麻烦（下文会看到）。并且需要另外装数据库。</p><h4>方式二：LNMP + Nextcloud</h4><p>这种方法是最折腾的，但是是我比较熟悉的（并没有），因为我的阿里云服务器（就是运行了当前这个网站的服务器）就是 LNMP 的架构。配置起来确实很麻烦，但是有一种 Everything in control 的感觉。</p><p>由于第二种方法实在是太复杂，配置的时候 MySQL 出现了各种玄学的问题（事实上是第一次实验的时候用的 32 位系统，MySQL 高版本不支持，所以用脚本死活装不上，后来才想起来），Nginx 也要进行很多复杂的配置，决定还是用第一种方法吧。</p><h3>安装配置 Docker</h3><p>对了，先最好安装个 screen，养成好习惯。</p><p>脚本自动安装 Docker：</p><pre><code>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</code></pre><h3>Docker 安装 MariaDB</h3><p>Nextcloud 支持 MySQL 和 MariaDB。后者没有体验过，据说是 MySQL 的一个分支，性能比 MySQL 更好，这次尝试一下吧。</p><p>首先</p><pre><code>docker pull mariadb:latest</code></pre><p>然后运行容器创建一个数据库：</p><pre><code>docker run --name mariadb -d \
+/dev/sda1        2048 3907028991 3907026944  1.8T  7 HPFS/NTFS/exFAT
+</code></pre>
+<p>看到是 <code>/dev/sda1</code>。</p>
+<p>为了方便，把移动硬盘挂载到 <code>/mnt/sda1/</code> 目录下：</p>
+<pre><code>mount /dev/sda1 /mnt/sda1/
+</code></pre>
+<h2><a id="本地-nextcloud-搭建" class="heading-anchor"></a>本地 Nextcloud 搭建</h2>
+<h3><a id="两种方式" class="heading-anchor"></a>两种方式</h3>
+<p>我尝试了两种方式搭建这个 Nextcloud（可实在是太折腾了（吐血））：</p>
+<h4><a id="方式一docker-部署-nextcloud" class="heading-anchor"></a>方式一：Docker 部署 Nextcloud</h4>
+<p>这种方法很大的一个优点就是部署简单。缺点就是由于这个 Docker 里面附带了 Apache，如果需要一些拓展的配置就会很麻烦（下文会看到）。并且需要另外装数据库。</p>
+<h4><a id="方式二lnmp--nextcloud" class="heading-anchor"></a>方式二：LNMP + Nextcloud</h4>
+<p>这种方法是最折腾的，但是是我比较熟悉的（并没有），因为我的阿里云服务器（就是运行了当前这个网站的服务器）就是 LNMP 的架构。配置起来确实很麻烦，但是有一种 Everything in control 的感觉。</p>
+<p>由于第二种方法实在是太复杂，配置的时候 MySQL 出现了各种玄学的问题（事实上是第一次实验的时候用的 32 位系统，MySQL 高版本不支持，所以用脚本死活装不上，后来才想起来），Nginx 也要进行很多复杂的配置，决定还是用第一种方法吧。</p>
+<h3><a id="安装配置-docker" class="heading-anchor"></a>安装配置 Docker</h3>
+<p>对了，先最好安装个 screen，养成好习惯。</p>
+<p>脚本自动安装 Docker：</p>
+<pre><code>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre>
+<h3><a id="docker-安装-mariadb" class="heading-anchor"></a>Docker 安装 MariaDB</h3>
+<p>Nextcloud 支持 MySQL 和 MariaDB。后者没有体验过，据说是 MySQL 的一个分支，性能比 MySQL 更好，这次尝试一下吧。</p>
+<p>首先</p>
+<pre><code>docker pull mariadb:latest
+</code></pre>
+<p>然后运行容器创建一个数据库：</p>
+<pre><code>docker run --name mariadb -d \
   -p 127.0.0.1:3306:3306
   -e MYSQL_ROOT_PASSWORD=&quot;你的密码&quot; \
   -v /mnt/sda1/SkyCloud/database:/var/lib/mysql \
   --restart=always \
-  -d mariadb:latest</code></pre><p><code>-v /mnt/sda1/SkyCloud/database:/var/lib/mysql</code> 的意思是把默认的数据卷存放位置映射到 <code>/mnt/sda1/SkyCloud/database</code> 也就是我的硬盘里的一个目录下，让数据库也存在硬盘里。</p><h3>Docker 安装 phpMyAdmin</h3><p>为了测试数据库是否正常，以及为了让我这个完全不会 SQL 命令的人进行创建数据表、更改权限等操作，再安装一个 phpMyAdmin 吧。</p><p>按照<a href="https://hub.docker.com/r/phpmyadmin/phpmyadmin/">说明</a>一样 pull 之后直接 link 那个 mariadb 的进程：</p><pre><code>docker run --name phpmyadmin -d --link mariadb:db -p 8080:80 phpmyadmin</code></pre><p>访问 <code>你的IP:8080</code> 登录就可以管理数据库。进入后台创建一个叫做 nextcloud 的用户和同名数据库。</p><h3>Docker 安装 Nextcloud</h3><p>重头戏来啦！</p><p>刚才把移动硬盘挂载到了 <code>/mnt/sda1</code>，为了让文件完全存储在移动硬盘里：</p><pre><code>docker run -d --name nextcloud \
+  -d mariadb:latest
+</code></pre>
+<p><code>-v /mnt/sda1/SkyCloud/database:/var/lib/mysql</code> 的意思是把默认的数据卷存放位置映射到 <code>/mnt/sda1/SkyCloud/database</code> 也就是我的硬盘里的一个目录下，让数据库也存在硬盘里。</p>
+<h3><a id="docker-安装-phpmyadmin" class="heading-anchor"></a>Docker 安装 phpMyAdmin</h3>
+<p>为了测试数据库是否正常，以及为了让我这个完全不会 SQL 命令的人进行创建数据表、更改权限等操作，再安装一个 phpMyAdmin 吧。</p>
+<p>按照<a href="https://hub.docker.com/r/phpmyadmin/phpmyadmin/">说明</a>一样 pull 之后直接 link 那个 mariadb 的进程：</p>
+<pre><code>docker run --name phpmyadmin -d --link mariadb:db -p 8080:80 phpmyadmin
+</code></pre>
+<p>访问 <code>你的IP:8080</code> 登录就可以管理数据库。进入后台创建一个叫做 nextcloud 的用户和同名数据库。</p>
+<h3><a id="docker-安装-nextcloud" class="heading-anchor"></a>Docker 安装 Nextcloud</h3>
+<p>重头戏来啦！</p>
+<p>刚才把移动硬盘挂载到了 <code>/mnt/sda1</code>，为了让文件完全存储在移动硬盘里：</p>
+<pre><code>docker run -d --name nextcloud \
   -p 80:80 \
   --restart=always \
   -v /mnt/sda1/SkyCloud/html:/var/www/html \
   -v /mnt/sda1/SkyCloud/data:/var/www/data \
   -v /mnt/sda1:/SkyDisk \
   --link mariadb:mysql \
-  nextcloud</code></pre><p>访问 <code>http://你的IP</code> 应该就可以看到 Nextcloud 的配置界面了。</p><p>需要注意的是这里把 mysql 映射到了 mariadb 的进程，所以（根据官方的 Docker 文档）在 Nextcloud 的配置界面，数据库主机的 <code>localhost</code> 应该改成 <code>mysql</code>。</p><h4>玄学错误</h4><pre><code>Doctrine\DBAL\Exception\DriverException: An exception occurred while executing a query: SQLSTATE[HY000]: General error: 4047 InnoDB refuses to write tables with ROW_FORMAT=COMPRESSED or KEY_BLOCK_SIZE.</code></pre><p>看起来某个地方没有权限呢，Nextcloud 论坛上有人遇到了一样的问题（参考<a href="https://help.nextcloud.com/t/update-to-next-cloud-21-0-2-has-get-an-error/117028/7">这里</a>），只要修改 innodb read only compressed 就可以了。</p><p>唉，MariaDB 还真是麻烦。</p><p><img src="https://skywt.cn/usr/uploads/2021/08/2007805589.jpg" alt=" title="How to solve a problem like Maria?"" title=" title="How to solve a problem like Maria?""></p><p>之后 Nextcloud 自动配置，进入仪表盘，就代表本地的安装成功啦！！</p><h2>内网穿透与反向代理</h2><h3>Frp 内网穿透</h3><p>本地的这个 Nextcloud 只有内网可以访问，我们需要用一台 VPS 做内网穿透。</p><p>去 <a href="https://github.com/fatedier/frp/releases">release 页面</a>下载 frp 的对应架构的版本，我这里树莓派下载 linx_arm64 版本，阿里云的 VPS 上下载 amd64 的版本（相当于 x86_64，具体架构啥的我也不太懂），树莓派是客户端，阿里云是服务端。</p><h4>服务端设置</h4><p>编辑 frps.ini：</p><pre><code>[common]
+  nextcloud
+</code></pre>
+<p>访问 <code>http://你的IP</code> 应该就可以看到 Nextcloud 的配置界面了。</p>
+<p>需要注意的是这里把 mysql 映射到了 mariadb 的进程，所以（根据官方的 Docker 文档）在 Nextcloud 的配置界面，数据库主机的 <code>localhost</code> 应该改成 <code>mysql</code>。</p>
+<h4><a id="玄学错误" class="heading-anchor"></a>玄学错误</h4>
+<pre><code>Doctrine\DBAL\Exception\DriverException: An exception occurred while executing a query: SQLSTATE[HY000]: General error: 4047 InnoDB refuses to write tables with ROW_FORMAT=COMPRESSED or KEY_BLOCK_SIZE.
+</code></pre>
+<p>看起来某个地方没有权限呢，Nextcloud 论坛上有人遇到了一样的问题（参考<a href="https://help.nextcloud.com/t/update-to-next-cloud-21-0-2-has-get-an-error/117028/7">这里</a>），只要修改 innodb read only compressed 就可以了。</p>
+<p>唉，MariaDB 还真是麻烦。</p>
+<p><a href="https://skywt.cn/usr/uploads/2021/08/2007805589.jpg" data-fancybox data-caption="How to solve a problem like Maria?"><img src="https://skywt.cn/usr/uploads/2021/08/2007805589.jpg" alt="How to solve a problem like Maria?" title="How to solve a problem like Maria?" /></a></p>
+<p>之后 Nextcloud 自动配置，进入仪表盘，就代表本地的安装成功啦！！</p>
+<h2><a id="内网穿透与反向代理" class="heading-anchor"></a>内网穿透与反向代理</h2>
+<h3><a id="frp-内网穿透" class="heading-anchor"></a>Frp 内网穿透</h3>
+<p>本地的这个 Nextcloud 只有内网可以访问，我们需要用一台 VPS 做内网穿透。</p>
+<p>去 <a href="https://github.com/fatedier/frp/releases">release 页面</a>下载 frp 的对应架构的版本，我这里树莓派下载 linx_arm64 版本，阿里云的 VPS 上下载 amd64 的版本（相当于 x86_64，具体架构啥的我也不太懂），树莓派是客户端，阿里云是服务端。</p>
+<h4><a id="服务端设置" class="heading-anchor"></a>服务端设置</h4>
+<p>编辑 frps.ini：</p>
+<pre><code>[common]
 bind_port = 7000
 dashboard_port = 7500
 token = 和客户端一致的 token
 dashboard_user = admin
 dashboard_pwd = yourPassword
 vhost_http_port = 10080
-vhost_https_port = 10443</code></pre><p><code>bind_port</code> 是监听端口，和客户端一致；<code>dashboard_port</code> 是控制面板的端口，可以直接访问查看 frp 的状态；<code>token</code> 用于验证，也要喝客户端一致；之后是控制面板的用户名密码端口设置。</p><p>之后用这个配置文件开启 frp 服务器：</p><pre><code>./frps -c frps.ini</code></pre><p>访问 <code>IP:7500</code> 可以看到一个面板，显示 frp 的各种运行状态。</p><h4>客户端设置</h4><pre><code>[common]
+vhost_https_port = 10443
+</code></pre>
+<p><code>bind_port</code> 是监听端口，和客户端一致；<code>dashboard_port</code> 是控制面板的端口，可以直接访问查看 frp 的状态；<code>token</code> 用于验证，也要喝客户端一致；之后是控制面板的用户名密码端口设置。</p>
+<p>之后用这个配置文件开启 frp 服务器：</p>
+<pre><code>./frps -c frps.ini
+</code></pre>
+<p>访问 <code>IP:7500</code> 可以看到一个面板，显示 frp 的各种运行状态。</p>
+<h4><a id="客户端设置" class="heading-anchor"></a>客户端设置</h4>
+<pre><code>[common]
 server_addr = 服务端的 IP
 server_port = 7000
 token = 和服务端一致的 token
@@ -146,7 +306,14 @@ token = 和服务端一致的 token
 type = tcp
 local_ip = 127.0.0.1
 local_port = 80
-remote_port = 7001</code></pre><p>同样本地开启：</p><pre><code>./frps -c ./frpc.ini</code></pre><h3>Nginx 反向代理</h3><p>大概直接转发就好了，我用的配置文件是这样的：</p><pre><code>server
+remote_port = 7001
+</code></pre>
+<p>同样本地开启：</p>
+<pre><code>./frps -c ./frpc.ini
+</code></pre>
+<h3><a id="nginx-反向代理" class="heading-anchor"></a>Nginx 反向代理</h3>
+<p>大概直接转发就好了，我用的配置文件是这样的：</p>
+<pre><code>server
     {
         listen 80;
         #listen [::]:80;
@@ -187,7 +354,12 @@ server
         }
 
         access_log off;
-    }</code></pre><h2>反思</h2><p>折腾的过程中实在是遇到了非常多的困难，感觉自己的问题主要是各种知识的学习不系统，关于文件权限、SQL 命令、数据库等等基础知识都是不懂的，在折腾的过程中也没耐心学。</p><p>学习的过程本身是很枯燥的，只有这种应用的过程由于成就感会吸引人一点，但是应用实践却是要以学习为基础的，没有基础各种知识的系统的学习，在应用实践的时候肯定也是不顺利的。有计划、有系统的学习，而非服务于应用的学习，才是进步的最快方式。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZmqRh0" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;raspberry-pi-set-nextcloud&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/raspberry-pi-set-nextcloud&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    }
+</code></pre>
+<h2><a id="反思" class="heading-anchor"></a>反思</h2>
+<p>折腾的过程中实在是遇到了非常多的困难，感觉自己的问题主要是各种知识的学习不系统，关于文件权限、SQL 命令、数据库等等基础知识都是不懂的，在折腾的过程中也没耐心学。</p>
+<p>学习的过程本身是很枯燥的，只有这种应用的过程由于成就感会吸引人一点，但是应用实践却是要以学习为基础的，没有基础各种知识的系统的学习，在应用实践的时候肯定也是不顺利的。有计划、有系统的学习，而非服务于应用的学习，才是进步的最快方式。</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1uOn2D" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;raspberry-pi-set-nextcloud&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -214,4 +386,4 @@ server
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

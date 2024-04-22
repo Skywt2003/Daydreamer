@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>服务器自动化异地容灾备份方案（白嫖版）</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>服务器自动化异地容灾备份方案（白嫖版）</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,123 +72,207 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器自动化异地容灾备份方案（白嫖版）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 06 月 20 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/automatic-remote-dr-solution-for-servers-free" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>随着自己 Self-host 的服务越来越多，服务器上的数据也越来越重要。虽然服务器很少有完全 crash 掉的可能性，但是如果某天真的有什么不可抗力，后果是不堪设想的……所以一个自动化且白嫖的「容灾备份」方案就十分重要。</p><!--more--><p>真正提醒我异地「容灾备份」的重要性的是某天看到的一个 meme……</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/06/1744578141.jpg" alt="Server has crashed..." title="Server has crashed..."></p><p>把自己服务器的备份放在自己的服务器上，就是相当于没有备份 =_=</p><p>于是我找到了 Storj、Google Drive 两个白嫖的备份去处，记录一下遇到的一些坑。</p><h2>Restic + Rclone</h2><p>我选择了 <a href="https://restic.net/">Restic</a> 作为备份的软件。Restic 是一个开源的轻量级备份工具，使用起来非常方便。</p><p>为了实现远程的存储，我使用 <a href="https://rclone.org/">Rclone</a> 作为 Restic 的后端。Rclone 是一个用于管理云存储文件的命令行程序，支持非常多的云服务。</p><p>Restic、Rclone 的基本用法可以参阅官网，这里不赘述。</p><h2>Storj</h2><p>Storj 是一家云存储厂商，免费计划提供 150G 的云存储可以白嫖，拿来存放备份绰绰有余。Rclone 也支持 Storj。</p><p>目前 Storj 没有被墙，即使服务器在国内也可以正常使用。</p><h3>Rclone 挂载</h3><p>Storj 有个概念叫做 Access Grant，一开始我也有点迷糊。</p><p>原始的 API key + passphrase 的认证方式是在被逐步弃用的。所谓 Access Grant 是一个长长的字符串，作用相当于 API key 但是无需其他验证，通过这个可以直接证明对自己指定 Bucket 的访问权限。在 Storj 后台可以生成 Access Grants。</p><p>所以在 <code>rclone config</code> 到这一步的时候：</p><pre><code class="lang-plaintext">Option provider.
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>服务器自动化异地容灾备份方案（白嫖版）</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 6 月 20 日 08:02</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#restic--rclone">Restic + Rclone</a></li>
+<li><a href="#storj">Storj</a>
+<ul>
+<li><a href="#rclone-%E6%8C%82%E8%BD%BD">Rclone 挂载</a></li>
+<li><a href="#restic-with-rclone">Restic with Rclone</a></li>
+</ul></li>
+<li><a href="#google-drive">Google Drive</a>
+<ul>
+<li><a href="#%E8%87%AA%E5%B7%B1%E7%9A%84-client-id">自己的 client-id</a></li>
+</ul></li>
+<li><a href="#%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8sftp">另一台服务器（SFTP）</a></li>
+<li><a href="#%E8%BD%AF%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93">软备份数据库</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC">自动化脚本</a></li>
+<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
+</ul>
+<p>随着自己 Self-host 的服务越来越多，服务器上的数据也越来越重要。虽然服务器很少有完全 crash 掉的可能性，但是如果某天真的有什么不可抗力，后果是不堪设想的……所以一个自动化且白嫖的「容灾备份」方案就十分重要。</p>
+<p>真正提醒我异地「容灾备份」的重要性的是某天看到的一个 meme……</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/06/1744578141.jpg" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/06/1744578141.jpg" alt="Server has crashed..." title="" /></a></p>
+<p>把自己服务器的备份放在自己的服务器上，就是相当于没有备份 =_=</p>
+<p>于是我找到了 Storj、Google Drive 两个白嫖的备份去处，记录一下遇到的一些坑。</p>
+<h2><a id="restic--rclone" class="heading-anchor"></a>Restic + Rclone</h2>
+<p>我选择了 <a href="https://restic.net/">Restic</a> 作为备份的软件。Restic 是一个开源的轻量级备份工具，使用起来非常方便。</p>
+<p>为了实现远程的存储，我使用 <a href="https://rclone.org/">Rclone</a> 作为 Restic 的后端。Rclone 是一个用于管理云存储文件的命令行程序，支持非常多的云服务。</p>
+<p>Restic、Rclone 的基本用法可以参阅官网，这里不赘述。</p>
+<h2><a id="storj" class="heading-anchor"></a>Storj</h2>
+<p>Storj 是一家云存储厂商，免费计划提供 150G 的云存储可以白嫖，拿来存放备份绰绰有余。Rclone 也支持 Storj。</p>
+<p>目前 Storj 没有被墙，即使服务器在国内也可以正常使用。</p>
+<h3><a id="rclone-挂载" class="heading-anchor"></a>Rclone 挂载</h3>
+<p>Storj 有个概念叫做 Access Grant，一开始我也有点迷糊。</p>
+<p>原始的 API key + passphrase 的认证方式是在被逐步弃用的。所谓 Access Grant 是一个长长的字符串，作用相当于 API key 但是无需其他验证，通过这个可以直接证明对自己指定 Bucket 的访问权限。在 Storj 后台可以生成 Access Grants。</p>
+<p>所以在 <code>rclone config</code> 到这一步的时候：</p>
+<pre><code class="language-plaintext">Option provider.
 Choose an authentication method.
 Choose a number from below, or type in your own string value.
 Press Enter for the default (existing).
  1 / Use an existing access grant.
    \ (existing)
  2 / Create a new access grant from satellite address, API key, and passphrase.
-   \ (new)</code></pre><p>应该选择 1，然后粘贴后台生成的 Access Grant。</p><h3>Restic with Rclone</h3><p>初始化 Restic 存储库，记得设置一个随机的猜不到的密码：</p><pre><code class="lang-bash">restic -r rclone:storj:server-dr/backup init</code></pre><p>其中 <code>storj</code> 是 <code>rclone config</code> 时设置的 remote 名称，<code>server-dr</code> 是 Storj 上的 Bucket 名称，<code>/backup</code> 才是自己指定的目录。</p><p>这一步完成后，浏览器进入 Storj 的后台文件管理，就可以看见 <code>server-dr</code> 这个 Bucket 中多了一个 <code>backup</code> 文件夹，其中就是初始化的 Restic 备份仓库。</p><p>进行备份：</p><pre><code class="lang-bash">restic backup /data -r rclone:storj:server-dr/backup --verbose</code></pre><p>删除过期快照，只保留最近三天的备份：</p><pre><code class="lang-bash">restic forget --keep-daily 3 --prune -r rclone:storj:server-dr/backup</code></pre><p>第一次备份会比较慢，共 3G 左右的内容，我的第一次备份用了三个多小时……之后的备份就都会是增量备份，会很快。</p><h2>Google Drive</h2><p>Rclone 也支持 Google Drive，免费空间 15G，也是一种绝佳的白嫖方案。只不过如果是国内的服务器的话要开代理。</p><p>类似的选择还有 Onedrive（空间小，免费计划只有 5G）、Dropbox（也要开代理），Rclone 也都支持，可以尝试。</p><p>使用和上述 Storj 类似，<code>rclone config</code> 之后；</p><pre><code class="lang-bash">restic -r rclone:gdrive:/backup init
+   \ (new)
+</code></pre>
+<p>应该选择 1，然后粘贴后台生成的 Access Grant。</p>
+<h3><a id="restic-with-rclone" class="heading-anchor"></a>Restic with Rclone</h3>
+<p>初始化 Restic 存储库，记得设置一个随机的猜不到的密码：</p>
+<pre><code class="language-bash">restic -r rclone:storj:server-dr/backup init
+</code></pre>
+<p>其中 <code>storj</code> 是 <code>rclone config</code> 时设置的 remote 名称，<code>server-dr</code> 是 Storj 上的 Bucket 名称，<code>/backup</code> 才是自己指定的目录。</p>
+<p>这一步完成后，浏览器进入 Storj 的后台文件管理，就可以看见 <code>server-dr</code> 这个 Bucket 中多了一个 <code>backup</code> 文件夹，其中就是初始化的 Restic 备份仓库。</p>
+<p>进行备份：</p>
+<pre><code class="language-bash">restic backup /data -r rclone:storj:server-dr/backup --verbose
+</code></pre>
+<p>删除过期快照，只保留最近三天的备份：</p>
+<pre><code class="language-bash">restic forget --keep-daily 3 --prune -r rclone:storj:server-dr/backup
+</code></pre>
+<p>第一次备份会比较慢，共 3G 左右的内容，我的第一次备份用了三个多小时……之后的备份就都会是增量备份，会很快。</p>
+<h2><a id="google-drive" class="heading-anchor"></a>Google Drive</h2>
+<p>Rclone 也支持 Google Drive，免费空间 15G，也是一种绝佳的白嫖方案。只不过如果是国内的服务器的话要开代理。</p>
+<p>类似的选择还有 Onedrive（空间小，免费计划只有 5G）、Dropbox（也要开代理），Rclone 也都支持，可以尝试。</p>
+<p>使用和上述 Storj 类似，<code>rclone config</code> 之后；</p>
+<pre><code class="language-bash">restic -r rclone:gdrive:/backup init
 
 restic backup /data -r rclone:gdrive:/backup --verbose --password-file /root/backup/password_gdrive &gt; /root/backup/backup_gdrive.log
-restic forget --keep-daily 3 --prune -r rclone:gdrive:/backup</code></pre><h3>自己的 client-id</h3><p>在创建 Google Drive 的 remote 时，rclone 推荐你去申请自己的 client id，参照<a href="https://rclone.org/drive/#making-your-own-client-id">这个文档</a>。</p><p>有一个小坑点，根据这个文档申请成功之后，回到 Rclone 的登录步骤时，由于我的服务器是 headless 的，我就用本地的 rclone 进行登录操作，这时候终端 rclone 也要开启代理，否则即使登录成功了 get code 操作也是拿不到 code 的（也就是显示 got code 但是却没有输出 code，困惑了我好久）。</p><h2>另一台服务器（SFTP）</h2><p>如果要备份到另一台服务器，无需 Rclone，Restic 自带了 SFTP 协议连接，只要目标主机开启了 SSH 就行。</p><pre><code class="lang-bash">restic -r sftp:user@host:/srv/restic-repo init</code></pre><p>如果自己搭建了 NAS，也可以用 SFTP 备份。</p><h2>软备份数据库</h2><p>对于 MySQL 数据库，采用「硬备份」或称为「物理备份」的方式（即直接备份整个 MySQL 数据存放的文件夹）是有一定的风险的，可能导致数据损坏。</p><p>为了安全性，我们再增加一个「软备份」，用 <code>mysqldump</code> 导出 MySQL 的数据到一个 <code>.sql</code> 文件里，再备份这个文件。</p><pre><code class="lang-bash"># 备份指定数据库
+restic forget --keep-daily 3 --prune -r rclone:gdrive:/backup
+</code></pre>
+<h3><a id="自己的-client-id" class="heading-anchor"></a>自己的 client-id</h3>
+<p>在创建 Google Drive 的 remote 时，rclone 推荐你去申请自己的 client id，参照<a href="https://rclone.org/drive/#making-your-own-client-id">这个文档</a>。</p>
+<p>有一个小坑点，根据这个文档申请成功之后，回到 Rclone 的登录步骤时，由于我的服务器是 headless 的，我就用本地的 rclone 进行登录操作，这时候终端 rclone 也要开启代理，否则即使登录成功了 get code 操作也是拿不到 code 的（也就是显示 got code 但是却没有输出 code，困惑了我好久）。</p>
+<h2><a id="另一台服务器sftp" class="heading-anchor"></a>另一台服务器（SFTP）</h2>
+<p>如果要备份到另一台服务器，无需 Rclone，Restic 自带了 SFTP 协议连接，只要目标主机开启了 SSH 就行。</p>
+<pre><code class="language-bash">restic -r sftp:user@host:/srv/restic-repo init
+</code></pre>
+<p>如果自己搭建了 NAS，也可以用 SFTP 备份。</p>
+<h2><a id="软备份数据库" class="heading-anchor"></a>软备份数据库</h2>
+<p>对于 MySQL 数据库，采用「硬备份」或称为「物理备份」的方式（即直接备份整个 MySQL 数据存放的文件夹）是有一定的风险的，可能导致数据损坏。</p>
+<p>为了安全性，我们再增加一个「软备份」，用 <code>mysqldump</code> 导出 MySQL 的数据到一个 <code>.sql</code> 文件里，再备份这个文件。</p>
+<pre><code class="language-bash"><span class="hljs-comment"># 备份指定数据库</span>
 mysqldump -u username -p db_name &gt; mydb.sql
-# 备份所有数据库
+<span class="hljs-comment"># 备份所有数据库</span>
 mysqldump -u username -p --all-databases &gt; alldb.sql
-# 备份 Docker 容器中的数据库
-bash -c &quot;docker exec mariadb mysqldump -u username --password=password --all-databases&quot; &gt; mysql_all.sql</code></pre><h2>自动化脚本</h2><p>可以把以上操作写到一个 <code>backup.sh</code> 脚本里，设置以下 Crontab 规则每天凌晨 3:00 定时执行备份：</p><pre><code>0 3 * * * /root/backup/backup.sh &gt; /root/backup/backup.log</code></pre><p>我写的脚本如下：</p><pre><code class="lang-bash">#!/bin/bash
-# Author: SkyWT
+<span class="hljs-comment"># 备份 Docker 容器中的数据库</span>
+bash -c <span class="hljs-string">&quot;docker exec mariadb mysqldump -u username --password=password --all-databases&quot;</span> &gt; mysql_all.sql
+</code></pre>
+<h2><a id="自动化脚本" class="heading-anchor"></a>自动化脚本</h2>
+<p>可以把以上操作写到一个 <code>backup.sh</code> 脚本里，设置以下 Crontab 规则每天凌晨 3:00 定时执行备份：</p>
+<pre><code>0 3 * * * /root/backup/backup.sh &gt; /root/backup/backup.log
+</code></pre>
+<p>我写的脚本如下：</p>
+<pre><code class="language-bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-comment"># Author: SkyWT</span>
 
-# 已经初始化的 RESTIC 仓库
+<span class="hljs-comment"># 已经初始化的 RESTIC 仓库</span>
 RESTIC_REPO=(
-  &quot;rclone:storj:server-dr/backup&quot;
-  &quot;rclone:gdrive:/backup&quot;
-#  &quot;sftp://root@localhost:7051//data/tc_backup&quot;
+  <span class="hljs-string">&quot;rclone:storj:server-dr/backup&quot;</span>
+  <span class="hljs-string">&quot;rclone:gdrive:/backup&quot;</span>
+<span class="hljs-comment">#  &quot;sftp://root@localhost:7051//data/tc_backup&quot;</span>
 )
-# 各个仓库是否需要代理
+<span class="hljs-comment"># 各个仓库是否需要代理</span>
 RESTIC_PROXY_NEEDED=(
-  &quot;false&quot;
-  &quot;true&quot;
+  <span class="hljs-string">&quot;false&quot;</span>
+  <span class="hljs-string">&quot;true&quot;</span>
 )
-# 各个仓库的密码
+<span class="hljs-comment"># 各个仓库的密码</span>
 RESTIC_PASS=(
-  &quot;YourPassWord&quot;
-  &quot;YourPassWord&quot;
+  <span class="hljs-string">&quot;YourPassWord&quot;</span>
+  <span class="hljs-string">&quot;YourPassWord&quot;</span>
 )
 
-# 设置网络代理的地址
-BACKUP_PROXY=&quot;http://127.0.0.1:10800&quot;
+<span class="hljs-comment"># 设置网络代理的地址</span>
+BACKUP_PROXY=<span class="hljs-string">&quot;http://127.0.0.1:10800&quot;</span>
 
-# 备份 MySQL 的相关配置
-BACKUP_MYSQL=true
+<span class="hljs-comment"># 备份 MySQL 的相关配置</span>
+BACKUP_MYSQL=<span class="hljs-literal">true</span>
 MYSQL_CONTAINER_NAME=mariadb
 MYSQL_ROOT_NAME=root
 MYSQL_ROOT_PASS=YourPassWord
 
-# 备份文件的相关配置
-BACKUP_FILES=true
-# 需要备份的文件/文件夹
+<span class="hljs-comment"># 备份文件的相关配置</span>
+BACKUP_FILES=<span class="hljs-literal">true</span>
+<span class="hljs-comment"># 需要备份的文件/文件夹</span>
 FILES_TARGET=(
-  &quot;/data&quot;
+  <span class="hljs-string">&quot;/data&quot;</span>
 )
 
-# 清理旧快照的相关配置
-BACKUP_FORGET=true
-# 快照的保留策略，可参阅 Restic 文档
-FORGET_POLICY_ARG=&quot;--keep-daily 3&quot;
+<span class="hljs-comment"># 清理旧快照的相关配置</span>
+BACKUP_FORGET=<span class="hljs-literal">true</span>
+<span class="hljs-comment"># 快照的保留策略，可参阅 Restic 文档</span>
+FORGET_POLICY_ARG=<span class="hljs-string">&quot;--keep-daily 3&quot;</span>
 
-# ----- END OF CONFIG -----
+<span class="hljs-comment"># ----- END OF CONFIG -----</span>
 
-set_proxy(){
-    export http_proxy=$BACKUP_PROXY
-    export https_proxy=$BACKUP_PROXY
+<span class="hljs-function"><span class="hljs-title">set_proxy</span></span>(){
+    <span class="hljs-built_in">export</span> http_proxy=<span class="hljs-variable">$BACKUP_PROXY</span>
+    <span class="hljs-built_in">export</span> https_proxy=<span class="hljs-variable">$BACKUP_PROXY</span>
 }
 
-unset_proxy(){
-    unset http_proxy
-    unset https_proxy
+<span class="hljs-function"><span class="hljs-title">unset_proxy</span></span>(){
+    <span class="hljs-built_in">unset</span> http_proxy
+    <span class="hljs-built_in">unset</span> https_proxy
 }
 
-backup_mysql(){
-    echo -e &quot;\e[32m --- Backup MySQL Start. --- \e[0m&quot;
-    repo=$1
-    bash -c &quot;docker exec $MYSQL_CONTAINER_NAME mysqldump -u $MYSQL_ROOT_NAME --password=$MYSQL_ROOT_PASS --all-databases&quot; &gt; mysql_all.sql
-    restic -r $repo --verbose backup mysql_all.sql --password-file /tmp/.tmp_restic_pass
-    echo -e &quot;\e[32m --- Backup MySQL OK. --- \e[0m&quot;
+<span class="hljs-function"><span class="hljs-title">backup_mysql</span></span>(){
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Backup MySQL Start. --- \e[0m&quot;</span>
+    repo=<span class="hljs-variable">$1</span>
+    bash -c <span class="hljs-string">&quot;docker exec <span class="hljs-variable">$MYSQL_CONTAINER_NAME</span> mysqldump -u <span class="hljs-variable">$MYSQL_ROOT_NAME</span> --password=<span class="hljs-variable">$MYSQL_ROOT_PASS</span> --all-databases&quot;</span> &gt; mysql_all.sql
+    restic -r <span class="hljs-variable">$repo</span> --verbose backup mysql_all.sql --password-file /tmp/.tmp_restic_pass
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Backup MySQL OK. --- \e[0m&quot;</span>
 }
 
-backup_files(){
-    echo -e &quot;\e[32m --- Backup files Start. --- \e[0m&quot;
-    repo=$1
-    for target in ${FILES_TARGET[@]}
-    do
-        restic -r $repo --verbose backup $target --password-file /tmp/.tmp_restic_pass
-    done
-    echo -e &quot;\e[32m --- Backup files OK. --- \e[0m&quot;
+<span class="hljs-function"><span class="hljs-title">backup_files</span></span>(){
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Backup files Start. --- \e[0m&quot;</span>
+    repo=<span class="hljs-variable">$1</span>
+    <span class="hljs-keyword">for</span> target <span class="hljs-keyword">in</span> <span class="hljs-variable">${FILES_TARGET[@]}</span>
+    <span class="hljs-keyword">do</span>
+        restic -r <span class="hljs-variable">$repo</span> --verbose backup <span class="hljs-variable">$target</span> --password-file /tmp/.tmp_restic_pass
+    <span class="hljs-keyword">done</span>
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Backup files OK. --- \e[0m&quot;</span>
 }
 
-backup_forget(){
-    echo -e &quot;\e[32m --- Forget Start. --- \e[0m&quot;
-    repo=$1
-    bash -c &quot;restic -r $repo forget $FORGET_POLICY_ARG --password-file /tmp/.tmp_restic_pass --prune&quot;
-    echo -e &quot;\e[32m --- Forget OK. --- \e[0m&quot;
+<span class="hljs-function"><span class="hljs-title">backup_forget</span></span>(){
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Forget Start. --- \e[0m&quot;</span>
+    repo=<span class="hljs-variable">$1</span>
+    bash -c <span class="hljs-string">&quot;restic -r <span class="hljs-variable">$repo</span> forget <span class="hljs-variable">$FORGET_POLICY_ARG</span> --password-file /tmp/.tmp_restic_pass --prune&quot;</span>
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Forget OK. --- \e[0m&quot;</span>
 }
 
-start_time=$(date +%s)
-for ((i=0; i&lt;${#RESTIC_REPO[@]}; i++));
-do
-    echo -e &quot;\e[32m --- Starting a repo. --- \e[0m&quot;
-    repo=${RESTIC_REPO[$i]}
-    echo ${RESTIC_PASS[$i]} &gt; /tmp/.tmp_restic_pass
-    if ${RESTIC_PROXY_NEEDED[$i]}; then set_proxy; fi
+start_time=$(<span class="hljs-built_in">date</span> +%s)
+<span class="hljs-keyword">for</span> ((i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-variable">${#RESTIC_REPO[@]}</span>; i++));
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Starting a repo. --- \e[0m&quot;</span>
+    repo=<span class="hljs-variable">${RESTIC_REPO[$i]}</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-variable">${RESTIC_PASS[$i]}</span> &gt; /tmp/.tmp_restic_pass
+    <span class="hljs-keyword">if</span> <span class="hljs-variable">${RESTIC_PROXY_NEEDED[$i]}</span>; <span class="hljs-keyword">then</span> set_proxy; <span class="hljs-keyword">fi</span>
 
-    if $BACKUP_MYSQL; then backup_mysql $repo; fi
-    if $BACKUP_FILES; then backup_files $repo; fi
-    if $BACKUP_FORGET; then backup_forget $repo; fi
+    <span class="hljs-keyword">if</span> <span class="hljs-variable">$BACKUP_MYSQL</span>; <span class="hljs-keyword">then</span> backup_mysql <span class="hljs-variable">$repo</span>; <span class="hljs-keyword">fi</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-variable">$BACKUP_FILES</span>; <span class="hljs-keyword">then</span> backup_files <span class="hljs-variable">$repo</span>; <span class="hljs-keyword">fi</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-variable">$BACKUP_FORGET</span>; <span class="hljs-keyword">then</span> backup_forget <span class="hljs-variable">$repo</span>; <span class="hljs-keyword">fi</span>
 
-    if ${RESTIC_PROXY_NEEDED[$i]}; then unset_proxy; fi
-    rm -rf /tmp/.tmp_restic_pass
-    echo -e &quot;\e[32m --- Ending a repo. --- \e[0m&quot;
-done
-end_time=$(date +%s)
-cost_time=$[ $end_time-$start_time ]
+    <span class="hljs-keyword">if</span> <span class="hljs-variable">${RESTIC_PROXY_NEEDED[$i]}</span>; <span class="hljs-keyword">then</span> unset_proxy; <span class="hljs-keyword">fi</span>
+    <span class="hljs-built_in">rm</span> -rf /tmp/.tmp_restic_pass
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m --- Ending a repo. --- \e[0m&quot;</span>
+<span class="hljs-keyword">done</span>
+end_time=$(<span class="hljs-built_in">date</span> +%s)
+cost_time=$[ <span class="hljs-variable">$end_time</span>-<span class="hljs-variable">$start_time</span> ]
 
-echo -e &quot;\e[32m Done in $cost_time s.  \e[0m&quot;</code></pre><h2>结语</h2><p>对于 Self-hosted 玩家来说，没有什么比数据更宝贵了。虽然折腾起来有点麻烦，但是如果没有合适的备份方案，等服务器 crash 的时候真的会追悔莫及。</p><p>虽然我没有经历过，但是我说实话没办法保证服务器在下一秒会不会因为什么不可抗力而 crash，导致数据丢失。有太多东西是我们无法控制的。我们只能做好我们能控制的一切。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z2jpRDi" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;automatic-remote-dr-solution-for-servers-free&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/automatic-remote-dr-solution-for-servers-free&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+<span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\e[32m Done in <span class="hljs-variable">$cost_time</span> s.  \e[0m&quot;</span>
+</code></pre>
+<h2><a id="结语" class="heading-anchor"></a>结语</h2>
+<p>对于 Self-hosted 玩家来说，没有什么比数据更宝贵了。虽然折腾起来有点麻烦，但是如果没有合适的备份方案，等服务器 crash 的时候真的会追悔莫及。</p>
+<p>虽然我没有经历过，但是我说实话没办法保证服务器在下一秒会不会因为什么不可抗力而 crash，导致数据丢失。有太多东西是我们无法控制的。我们只能做好我们能控制的一切。</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZOop7K" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;automatic-remote-dr-solution-for-servers-free&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -215,4 +299,4 @@ echo -e &quot;\e[32m Done in $cost_time s.  \e[0m&quot;</code></pre><h2>结语</
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

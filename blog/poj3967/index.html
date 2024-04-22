@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS </span> </h5> <div class="m-2 
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,104 +72,148 @@ Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS </span> </h5> <div class="m-2 
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 07 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 1 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/poj3967" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>题目链接：<a href="https://uva.onlinejudge.org/external/15/1599.pdf" title="UVa 1599 Ideal Path">UVa 1599 Ideal Path</a> 或者 <a href="http://poj.org/problem?id=3967" title="POJ 3967 Ideal Path">POJ 3967 Ideal Path</a></p><p>POJ 上居然不能用 vector ！！！强烈不满！</p><!--more--><p>（本博客以 UVa 上的题目为准）</p><h2>Problem</h2><p>New labyrinth attraction is open in New Lostland amusement park. The labyrinth consists of n rooms connected by m passages. Each passage is colored into some color ci. Visitors of the labyrinth are dropped from the helicopter to the room number 1 and their goal is to get to the labyrinth exit located in the room number n.</p><p>Labyrinth owners are planning to run a contest tomorrow. Several runners will be dropped to the room number 1. They will run to the room number n writing down colors of passages as they run through them. The contestant with the shortest sequence of colors is the winner of the contest. If there are several contestants with the same sequence length, the one with the ideal path is the winner. The path is the ideal path if its color sequence is the lexicographically smallest among shortest paths.</p><p>Andrew is preparing for the contest. He took a helicopter tour above New Lostland and made a picture of the labyrinth. Your task is to help him find the ideal path from the room number 1 to the room number n that would allow him to win the contest.</p><p><strong>Note:</strong> A sequence (a1, a2, . . . , ak) is lexicographically smaller than a sequence (b1, b2, . . . , bk) if there exists i such that ai &lt; bi , and aj = bj for all j &lt; i.</p><h2>Input</h2><p>The input file contains several test cases, each of them as described below.<br>The first line of the input file contains integers n and m — the number of rooms and passages, respectively $(2 ≤ n ≤ 100000, 1 ≤ m ≤ 200000)$. The following m lines describe passages, each passage is described with three integer numbers: ai, bi, and ci — the numbers of rooms it connects and its color $(1 ≤ a_i, b_i ≤ n, 1 ≤ c_i ≤ 10^9)$. Each passage can be passed in either direction. Two rooms can be connected with more than one passage, there can be a passage from a room to itself. It is guaranteed that it is possible to reach the room number n from the room number 1.</p><h2>Output</h2><p>For each test case, the output must follow the description below.<br>The first line of the output file must contain k — the length of the shortest path from the room<br>number 1 to the room number n. The second line must contain k numbers — the colors of passages in<br>the order they must be passed in the ideal path.</p><h2>Sample Input</h2><pre><code>4 6
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 8 月 7 日 11:42</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#output">Output</a></li>
+<li><a href="#sample-input">Sample Input</a></li>
+<li><a href="#sample-output">Sample Output</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+<p>题目链接：<a href="https://uva.onlinejudge.org/external/15/1599.pdf" title="UVa 1599 Ideal Path">UVa 1599 Ideal Path</a> 或者 <a href="http://poj.org/problem?id=3967" title="POJ 3967 Ideal Path">POJ 3967 Ideal Path</a></p>
+<p>POJ 上居然不能用 vector ！！！强烈不满！</p>
+<p>（本博客以 UVa 上的题目为准）</p>
+<h2><a id="problem" class="heading-anchor"></a>Problem</h2>
+<p>New labyrinth attraction is open in New Lostland amusement park. The labyrinth consists of n rooms connected by m passages. Each passage is colored into some color ci. Visitors of the labyrinth are dropped from the helicopter to the room number 1 and their goal is to get to the labyrinth exit located in the room number n.</p>
+<p>Labyrinth owners are planning to run a contest tomorrow. Several runners will be dropped to the room number 1. They will run to the room number n writing down colors of passages as they run through them. The contestant with the shortest sequence of colors is the winner of the contest. If there are several contestants with the same sequence length, the one with the ideal path is the winner. The path is the ideal path if its color sequence is the lexicographically smallest among shortest paths.</p>
+<p>Andrew is preparing for the contest. He took a helicopter tour above New Lostland and made a picture of the labyrinth. Your task is to help him find the ideal path from the room number 1 to the room number n that would allow him to win the contest.</p>
+<p><strong>Note:</strong> A sequence (a1, a2, . . . , ak) is lexicographically smaller than a sequence (b1, b2, . . . , bk) if there exists i such that ai &lt; bi , and aj = bj for all j &lt; i.</p>
+<h2><a id="input" class="heading-anchor"></a>Input</h2>
+<p>The input file contains several test cases, each of them as described below.<br>
+The first line of the input file contains integers n and m — the number of rooms and passages, respectively <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>100000</mn><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>200000</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2 ≤ n ≤ 100000, 1 ≤ m ≤ 200000)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">100000</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">200000</span><span class="mclose">)</span></span></span></span>. The following m lines describe passages, each passage is described with three integer numbers: ai, bi, and ci — the numbers of rooms it connects and its color <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>≤</mo><mi>n</mi><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><msub><mi>c</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1 ≤ a_i, b_i ≤ n, 1 ≤ c_i ≤ 10^9)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>. Each passage can be passed in either direction. Two rooms can be connected with more than one passage, there can be a passage from a room to itself. It is guaranteed that it is possible to reach the room number n from the room number 1.</p>
+<h2><a id="output" class="heading-anchor"></a>Output</h2>
+<p>For each test case, the output must follow the description below.<br>
+The first line of the output file must contain k — the length of the shortest path from the room<br>
+number 1 to the room number n. The second line must contain k numbers — the colors of passages in<br>
+the order they must be passed in the ideal path.</p>
+<h2><a id="sample-input" class="heading-anchor"></a>Sample Input</h2>
+<pre><code>4 6
 1 2 1
 1 3 2
 3 4 3
 2 3 1
 2 4 4
 3 1 1
-
-</code></pre><h2>Sample Output</h2><pre><code>2
+</code></pre>
+<h2><a id="sample-output" class="heading-anchor"></a>Sample Output</h2>
+<pre><code>2
 1 3
-
-</code></pre><h2>Analysis</h2><p>这题是《算法竞赛入门经典》上面的原题，在书上作者还加粗标注：<strong>“此题非常重要，强烈建议读者编写程序！”</strong>但是写起来似乎并没有这么简单……</p><p>想法比较简单，如果光问我们最短路径，这就是入门题；关键是要让最短路径上颜色字典序最小，并且还要输出。可以从终点 n 开始反向 BFS，求出每个点到 n 点的距离 $dist(n)$，这样处理的好处是：在之后正向 BFS 处理的时候，可以方便地得出某个点是否在最短路径中。<br>处理好反向的 BFS 之后，处理正向的求答案的 BFS 才是重头戏。其实也是 BFS 的思想，但是写起来却不像我们平常的“维护一个队列”的 BFS。我们需要把每步可能的走法都单独维护。具体处理起来还有技巧：将所有下一步的可能全都存在 vector 里，然后<strong>排序去重</strong>，加入下次的处理队列里。这样很大程度地避免了元素重复与空间浪费。<br>具体实现的时候，可以用两个 vector，一个 now，一个 next。详见代码的 GetAns 部分～</p><p>emm，咨询 dalao 听说，据说 POJ 是不能用 vector 的……害怕……<br><del>代码懒得改了……</del></p><h2>Code</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=100005,maxe=400005;
-int T,n,e,dst[maxn],INF,dist=0;
-bool vis[maxn];
-struct VertexInfo{
-    int x,c;
+</code></pre>
+<h2><a id="analysis" class="heading-anchor"></a>Analysis</h2>
+<p>这题是《算法竞赛入门经典》上面的原题，在书上作者还加粗标注：<strong>“此题非常重要，强烈建议读者编写程序！”</strong>但是写起来似乎并没有这么简单……</p>
+<p>想法比较简单，如果光问我们最短路径，这就是入门题；关键是要让最短路径上颜色字典序最小，并且还要输出。可以从终点 n 开始反向 BFS，求出每个点到 n 点的距离 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dist(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，这样处理的好处是：在之后正向 BFS 处理的时候，可以方便地得出某个点是否在最短路径中。<br>
+处理好反向的 BFS 之后，处理正向的求答案的 BFS 才是重头戏。其实也是 BFS 的思想，但是写起来却不像我们平常的“维护一个队列”的 BFS。我们需要把每步可能的走法都单独维护。具体处理起来还有技巧：将所有下一步的可能全都存在 vector 里，然后<strong>排序去重</strong>，加入下次的处理队列里。这样很大程度地避免了元素重复与空间浪费。<br>
+具体实现的时候，可以用两个 vector，一个 now，一个 next。详见代码的 GetAns 部分～</p>
+<p>emm，咨询 dalao 听说，据说 POJ 是不能用 vector 的……害怕……<br>
+<del>代码懒得改了……</del></p>
+<h2><a id="code" class="heading-anchor"></a>Code</h2>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;queue&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">100005</span>,maxe=<span class="hljs-number">400005</span>;
+<span class="hljs-type">int</span> T,n,e,dst[maxn],INF,dist=<span class="hljs-number">0</span>;
+<span class="hljs-type">bool</span> vis[maxn];
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">VertexInfo</span>{
+    <span class="hljs-type">int</span> x,c;
 };
-vector&lt;int&gt; ans,edge[maxn],color[maxn];
+vector&lt;<span class="hljs-type">int</span>&gt; ans,edge[maxn],color[maxn];
 vector&lt;VertexInfo&gt; now,nxt;
-queue&lt;int&gt; que;
-inline int read(){
-    int ret=0,f=1;char ch=getchar();
-    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
-    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
-    return ret*f;
+queue&lt;<span class="hljs-type">int</span>&gt; que;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>) {<span class="hljs-keyword">if</span> (ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;ch=<span class="hljs-built_in">getchar</span>();}
+    <span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>) ret=ret*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">return</span> ret*f;
 }
-inline void init(){
-    memset(dst,0x3f,sizeof(dst));INF=dst[0];
-    for (int i=1;i&lt;=n;i++) edge[i].clear(),color[i].clear();
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">memset</span>(dst,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(dst));INF=dst[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) edge[i].<span class="hljs-built_in">clear</span>(),color[i].<span class="hljs-built_in">clear</span>();
 }
-inline void BFS(int s){
-    memset(vis,0,sizeof(vis));
-    que.push(s);vis[s]=1;dst[s]=0;
-    while (!que.empty()){
-        int x=que.front();que.pop();
-        for (int i=0;i&lt;edge[x].size();i++) if (!vis[edge[x][i]]){
-            vis[edge[x][i]]=true;
-            dst[edge[x][i]]=dst[x]+1;
-            que.push(edge[x][i]);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">BFS</span><span class="hljs-params">(<span class="hljs-type">int</span> s)</span></span>{
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
+    que.<span class="hljs-built_in">push</span>(s);vis[s]=<span class="hljs-number">1</span>;dst[s]=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (!que.<span class="hljs-built_in">empty</span>()){
+        <span class="hljs-type">int</span> x=que.<span class="hljs-built_in">front</span>();que.<span class="hljs-built_in">pop</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;edge[x].<span class="hljs-built_in">size</span>();i++) <span class="hljs-keyword">if</span> (!vis[edge[x][i]]){
+            vis[edge[x][i]]=<span class="hljs-literal">true</span>;
+            dst[edge[x][i]]=dst[x]+<span class="hljs-number">1</span>;
+            que.<span class="hljs-built_in">push</span>(edge[x][i]);
         }
     }
 }
-inline bool CompareColor(VertexInfo aa,VertexInfo bb){
-    return aa.c&lt;bb.c||(aa.c==bb.c&amp;&amp;aa.x&lt;bb.x);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">CompareColor</span><span class="hljs-params">(VertexInfo aa,VertexInfo bb)</span></span>{
+    <span class="hljs-keyword">return</span> aa.c&lt;bb.c||(aa.c==bb.c&amp;&amp;aa.x&lt;bb.x);
 }
-inline void GetAns(int s){
-    memset(vis,0,sizeof(vis));ans.clear();
-    //Init Vector &quot;now&quot;
-    vis[s]=1;now.clear();
-    now.push_back((VertexInfo){s,-1});
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">GetAns</span><span class="hljs-params">(<span class="hljs-type">int</span> s)</span></span>{
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));ans.<span class="hljs-built_in">clear</span>();
+    <span class="hljs-comment">//Init Vector &quot;now&quot;</span>
+    vis[s]=<span class="hljs-number">1</span>;now.<span class="hljs-built_in">clear</span>();
+    now.<span class="hljs-built_in">push_back</span>((VertexInfo){s,<span class="hljs-number">-1</span>});
 
-    for (int t=1;t&lt;=dist;t++){ // Do BT BFS
-        nxt.clear();
-        for (int i=0;i&lt;now.size();i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t=<span class="hljs-number">1</span>;t&lt;=dist;t++){ <span class="hljs-comment">// Do BT BFS</span>
+        nxt.<span class="hljs-built_in">clear</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;now.<span class="hljs-built_in">size</span>();i++){
             VertexInfo head=now[i];
-            for (int j=0;j&lt;edge[head.x].size();j++) if (!vis[edge[head.x][j]]){
-                if (t+dst[edge[head.x][j]]!=dist) continue;
-                nxt.push_back((VertexInfo){edge[head.x][j],color[head.x][j]});
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;edge[head.x].<span class="hljs-built_in">size</span>();j++) <span class="hljs-keyword">if</span> (!vis[edge[head.x][j]]){
+                <span class="hljs-keyword">if</span> (t+dst[edge[head.x][j]]!=dist) <span class="hljs-keyword">continue</span>;
+                nxt.<span class="hljs-built_in">push_back</span>((VertexInfo){edge[head.x][j],color[head.x][j]});
             }
         }
 
-        now.clear();
-        sort(nxt.begin(),nxt.end(),CompareColor);
-        for (int i=0;i&lt;nxt.size()&amp;&amp;nxt[i].c==nxt[0].c;i++){
-            if (i!=0&amp;&amp;nxt[i].x==nxt[i-1].x) continue;
-            now.push_back(nxt[i]);
-            vis[nxt[i].x]=true;
+        now.<span class="hljs-built_in">clear</span>();
+        <span class="hljs-built_in">sort</span>(nxt.<span class="hljs-built_in">begin</span>(),nxt.<span class="hljs-built_in">end</span>(),CompareColor);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;nxt.<span class="hljs-built_in">size</span>()&amp;&amp;nxt[i].c==nxt[<span class="hljs-number">0</span>].c;i++){
+            <span class="hljs-keyword">if</span> (i!=<span class="hljs-number">0</span>&amp;&amp;nxt[i].x==nxt[i<span class="hljs-number">-1</span>].x) <span class="hljs-keyword">continue</span>;
+            now.<span class="hljs-built_in">push_back</span>(nxt[i]);
+            vis[nxt[i].x]=<span class="hljs-literal">true</span>;
         }
-        ans.push_back(now[0].c);
+        ans.<span class="hljs-built_in">push_back</span>(now[<span class="hljs-number">0</span>].c);
     }
 }
-int main(){
-    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;e)!=-1){
-        init();
-        for (int i=1;i&lt;=e;i++){
-            int x=read(),y=read(),z=read();
-            edge[x].push_back(y);color[x].push_back(z);
-            edge[y].push_back(x);color[y].push_back(z);
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;e)!=<span class="hljs-number">-1</span>){
+        <span class="hljs-built_in">init</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=e;i++){
+            <span class="hljs-type">int</span> x=<span class="hljs-built_in">read</span>(),y=<span class="hljs-built_in">read</span>(),z=<span class="hljs-built_in">read</span>();
+            edge[x].<span class="hljs-built_in">push_back</span>(y);color[x].<span class="hljs-built_in">push_back</span>(z);
+            edge[y].<span class="hljs-built_in">push_back</span>(x);color[y].<span class="hljs-built_in">push_back</span>(z);
         }
-        BFS(n);dist=dst[1];
-        GetAns(1);
-        printf(&quot;%d\n&quot;,(int)ans.size());
-        printf(&quot;%d&quot;,ans[0]);
-        for (int i=1;i&lt;ans.size();i++) printf(&quot; %d&quot;,ans[i]);
-        printf(&quot;\n&quot;);
+        <span class="hljs-built_in">BFS</span>(n);dist=dst[<span class="hljs-number">1</span>];
+        <span class="hljs-built_in">GetAns</span>(<span class="hljs-number">1</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,(<span class="hljs-type">int</span>)ans.<span class="hljs-built_in">size</span>());
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,ans[<span class="hljs-number">0</span>]);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;ans.<span class="hljs-built_in">size</span>();i++) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; %d&quot;</span>,ans[i]);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
     }
-    return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="2pHo6y" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;poj3967&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/poj3967&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1GhvtJ" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;poj3967&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -196,4 +240,4 @@ Uva 1599 / POJ 3967 Ideal Path：不一样的 BFS </span> </div> <div class="m-2
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

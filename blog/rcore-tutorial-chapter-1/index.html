@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>rCore Tutorial Chapter 1 练习</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>rCore Tutorial Chapter 1 练习</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ rCore Tutorial Chapter 1 练习 </span> </h5> <div class="m-2 secondary-color" d
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,42 +72,102 @@ rCore Tutorial Chapter 1 练习 </span> </h5> <div class="m-2 secondary-color" d
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>rCore Tutorial Chapter 1 练习</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 04 月 10 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/rcore-tutorial-chapter-1" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>这是 <a href="http://rcore-os.cn/rCore-Tutorial-Book-v3">rCore Tutorial Book</a> 第一章「应用程序与基本执行环境」的练习。</p><!--more--><h2>课后练习</h2><h3>编程题</h3><h4>Program 1</h4><p><strong>1. 实现一个 linux 应用程序 A，显示当前目录下的文件名。</strong></p><pre><code class="lang-c">#include &lt;dirent.h&gt;
-#include &lt;stdio.h&gt;
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>rCore Tutorial Chapter 1 练习</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 4 月 10 日 13:29</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0">课后练习</a>
+<ul>
+<li><a href="#%E7%BC%96%E7%A8%8B%E9%A2%98">编程题</a>
+<ul>
+<li><a href="#program-1">Program 1</a></li>
+<li><a href="#program-2">Program 2</a></li>
+<li><a href="#program-3">Program 3</a></li>
+</ul></li>
+<li><a href="#%E9%97%AE%E7%AD%94%E9%A2%98">问答题</a>
+<ul>
+<li><a href="#problem-1">Problem 1</a></li>
+<li><a href="#problem-2">Problem 2</a></li>
+<li><a href="#problem-3">Problem 3</a></li>
+<li><a href="#problem-4">Problem 4</a></li>
+<li><a href="#problem-5">Problem 5</a></li>
+<li><a href="#problem-6">Problem 6</a></li>
+<li><a href="#problem-7">Problem 7</a></li>
+<li><a href="#problem-8">Problem 8</a></li>
+<li><a href="#problem-9">Problem 9</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E7%BB%83%E4%B9%A0">实验练习</a>
+<ul>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A%E5%BD%A9%E8%89%B2%E5%8C%96-log">实验作业：彩色化 LOG</a></li>
+<li><a href="#%E9%97%AE%E7%AD%94%E4%BD%9C%E4%B8%9A">问答作业</a></li>
+</ul></li>
+</ul>
+<p>这是 <a href="http://rcore-os.cn/rCore-Tutorial-Book-v3">rCore Tutorial Book</a> 第一章「应用程序与基本执行环境」的练习。</p>
+<h2><a id="课后练习" class="heading-anchor"></a>课后练习</h2>
+<h3><a id="编程题" class="heading-anchor"></a>编程题</h3>
+<h4><a id="program-1" class="heading-anchor"></a>Program 1</h4>
+<p><strong>1. 实现一个 linux 应用程序 A，显示当前目录下的文件名。</strong></p>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;dirent.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 
-int main() {
-    DIR *dir = opendir(&quot;.&quot;);
-    struct dirent *entry;
-    while ((entry = readdir(dir))) {
-        printf(&quot;%s\n&quot;, entry-&gt;d_name);
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    DIR *dir = opendir(<span class="hljs-string">&quot;.&quot;</span>);
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">dirent</span> *<span class="hljs-title">entry</span>;</span>
+    <span class="hljs-keyword">while</span> ((entry = readdir(dir))) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, entry-&gt;d_name);
     }
-    return 0;
-}</code></pre><p>相关库的用法：</p><ul><li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/dirent.h.html">dirent.h</a> 这个库中，定义了 <code>DIR</code> 数据类型，表示一个目录流。同时还定义了一个叫做 <code>dirent</code> 的数据类型，是一个结构体，其中一个成员是 <code>char d_name[]</code>，即目录的名称。</li><li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/opendir.html">opendir</a> 函数打开一个目录流，返回的正是 <code>DIR</code> 对象。</li><li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/readdir.html">readdir</a> 函数以一个 <code>DIR</code> 对象为参数，返回一个 <code>dirent</code> 类型结构体，它表示传入的 <code>DIR</code> 指针指向的条目；同时，会将指针指向下一个条目。</li></ul><h4>Program 2</h4><p><strong>2. 实现一个 Linux 应用程序 B，能打印出调用栈链信息。</strong></p><p>（前置知识：C 语言中内联汇编语句 asm 的用法）</p><p>这里在 x86_64 环境下运行。我们直接内联汇编命令，将栈底指针寄存器 rbp 取出来，并不断根据寄存器的内容追溯上一个栈帧的 rbp。（注意我们是 64 位环境，所以最好使用 64 位的 rbp 而不是 ebp）<br>需要注意的是，根据实践，第一个栈帧的 rbp 指向的是 0x1 而不是 0x0。while 循环何时停止需要根据此判断。<br>编写输出栈信息的函数如下：</p><pre><code class="lang-cpp">void print_call_stack_info() {
-    unsigned long long stack_ptr;
-    asm (&quot;mov %%rbp, %0&quot; : &quot;=r&quot; (stack_ptr));
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>相关库的用法：</p>
+<ul>
+<li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/dirent.h.html">dirent.h</a> 这个库中，定义了 <code>DIR</code> 数据类型，表示一个目录流。同时还定义了一个叫做 <code>dirent</code> 的数据类型，是一个结构体，其中一个成员是 <code>char d_name[]</code>，即目录的名称。</li>
+<li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/opendir.html">opendir</a> 函数打开一个目录流，返回的正是 <code>DIR</code> 对象。</li>
+<li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/readdir.html">readdir</a> 函数以一个 <code>DIR</code> 对象为参数，返回一个 <code>dirent</code> 类型结构体，它表示传入的 <code>DIR</code> 指针指向的条目；同时，会将指针指向下一个条目。</li>
+</ul>
+<h4><a id="program-2" class="heading-anchor"></a>Program 2</h4>
+<p><strong>2. 实现一个 Linux 应用程序 B，能打印出调用栈链信息。</strong></p>
+<p>（前置知识：C 语言中内联汇编语句 asm 的用法）</p>
+<p>这里在 x86_64 环境下运行。我们直接内联汇编命令，将栈底指针寄存器 rbp 取出来，并不断根据寄存器的内容追溯上一个栈帧的 rbp。（注意我们是 64 位环境，所以最好使用 64 位的 rbp 而不是 ebp）<br>
+需要注意的是，根据实践，第一个栈帧的 rbp 指向的是 0x1 而不是 0x0。while 循环何时停止需要根据此判断。<br>
+编写输出栈信息的函数如下：</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print_call_stack_info</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> stack_ptr;
+    <span class="hljs-built_in">asm</span> (<span class="hljs-string">&quot;mov %%rbp, %0&quot;</span> : <span class="hljs-string">&quot;=r&quot;</span> (stack_ptr));
 
-    printf(&quot;== BEGIN CALL STACK INFO\n&quot;);
-    while (stack_ptr != 0x1) {
-        printf(&quot; == %p\n&quot;, (void*)stack_ptr);
-        stack_ptr = *((unsigned long long*)stack_ptr);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;== BEGIN CALL STACK INFO\n&quot;</span>);
+    <span class="hljs-keyword">while</span> (stack_ptr != <span class="hljs-number">0x1</span>) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; == %p\n&quot;</span>, (<span class="hljs-type">void</span>*)stack_ptr);
+        stack_ptr = *((<span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span>*)stack_ptr);
     }
-    printf(&quot;== END CALL STACK INFO\n&quot;);
-}</code></pre><p>递归调用的函数能让我们最直观地体会到栈的变化。编写好如上函数之后，我们来编写一个递归计算阶乘的函数，并让程序计算 5 的阶乘：</p><pre><code class="lang-cpp">int fact(int x){
-    printf(&quot;Calling fact(%d)\n&quot;, x);
-    print_call_stack_info();
-    if (x == 0) return 1;
-    return fact(x-1) * x;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;== END CALL STACK INFO\n&quot;</span>);
+}
+</code></pre>
+<p>递归调用的函数能让我们最直观地体会到栈的变化。编写好如上函数之后，我们来编写一个递归计算阶乘的函数，并让程序计算 5 的阶乘：</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fact</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Calling fact(%d)\n&quot;</span>, x);
+    <span class="hljs-built_in">print_call_stack_info</span>();
+    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">fact</span>(x<span class="hljs-number">-1</span>) * x;
 }
 
-int main() {
-    print_call_stack_info();
-    printf(&quot;5! = %d\n&quot;, fact(5));
-    return 0;
-}</code></pre><p>编译运行，程序会在每次调用 <code>fact</code> 时输出栈信息。可以看到在 <code>fact(0)</code> 中调用 <code>print_call_stack_info()</code> 有 8 行输出（也就是有 8 个栈帧），在 <code>fact(5)</code> 中则是 3 行输出（3 个栈帧）。这表示从 <code>fact(5)</code> 递归调用到 <code>fact(0)</code>，创建了 5 个栈帧。每个栈帧的大小是 <code>0x20</code>。</p><pre><code>Calling fact(5)
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">print_call_stack_info</span>();
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;5! = %d\n&quot;</span>, <span class="hljs-built_in">fact</span>(<span class="hljs-number">5</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>编译运行，程序会在每次调用 <code>fact</code> 时输出栈信息。可以看到在 <code>fact(0)</code> 中调用 <code>print_call_stack_info()</code> 有 8 行输出（也就是有 8 个栈帧），在 <code>fact(5)</code> 中则是 3 行输出（3 个栈帧）。这表示从 <code>fact(5)</code> 递归调用到 <code>fact(0)</code>，创建了 5 个栈帧。每个栈帧的大小是 <code>0x20</code>。</p>
+<pre><code>Calling fact(5)
 == BEGIN CALL STACK INFO
  == 0x7ffdb04f1060
  == 0x7ffdb04f1080
@@ -125,8 +185,32 @@ Calling fact(0)
  == 0x7ffdb04f1080
  == 0x7ffdb04f1090
 == END CALL STACK INFO
-5! = 120</code></pre><h4>Program 3</h4><p><strong>3. 实现一个基于 rcore/ucore tutorial 的应用程序 C，用 sleep 系统调用睡眠 5 秒（in rcore/ucore tutorial v3: Branch ch1）</strong></p><p>（超纲了，不会）</p><h3>问答题</h3><h4>Problem 1</h4><p><strong>1. 应用程序在执行过程中，会占用哪些计算机资源？</strong></p><ul><li>CPU：应用程序的指令由 CPU 执行。</li><li>RAM：指令和数据存在内存中。</li><li>磁盘：程序可能进行磁盘读写操作。当 RAM 不足时也可能占用磁盘上的 swap 分区。</li><li>网络：使用网络的程序可能通过网卡进行网络通信。</li><li>输入输出设备：程序通过鼠标、键盘等设备获得输入，通过显示器、扬声器等设备实现输出。</li><li>GPU：某些程序可能使用 GPU 进行图形渲染。</li></ul><h4>Problem 2</h4><p><strong>2. 请用相关工具软件分析并给出应用程序 A 的代码段/数据段/堆/栈的地址空间范围。</strong></p><p><strong>查看代码段、数据段信息：</strong></p><p>为了查看完整代码段和数据段信息，需要对程序进行静态编译。否则，只能看到共享库的代码段和数据段信息，无法看到程序本身的代码段和数据段信息。</p><p>使用 gcc 对 <code>ls.c</code> 文件进行静态编译，然后使用 readelf 工具查看地址空间：</p><pre><code class="lang-shell">gcc -static ls.c -o ls_static
-readelf --headers ./ls</code></pre><p>输出如下信息：</p><pre><code>节头：
+5! = 120
+</code></pre>
+<h4><a id="program-3" class="heading-anchor"></a>Program 3</h4>
+<p><strong>3. 实现一个基于 rcore/ucore tutorial 的应用程序 C，用 sleep 系统调用睡眠 5 秒（in rcore/ucore tutorial v3: Branch ch1）</strong></p>
+<p>（超纲了，不会）</p>
+<h3><a id="问答题" class="heading-anchor"></a>问答题</h3>
+<h4><a id="problem-1" class="heading-anchor"></a>Problem 1</h4>
+<p><strong>1. 应用程序在执行过程中，会占用哪些计算机资源？</strong></p>
+<ul>
+<li>CPU：应用程序的指令由 CPU 执行。</li>
+<li>RAM：指令和数据存在内存中。</li>
+<li>磁盘：程序可能进行磁盘读写操作。当 RAM 不足时也可能占用磁盘上的 swap 分区。</li>
+<li>网络：使用网络的程序可能通过网卡进行网络通信。</li>
+<li>输入输出设备：程序通过鼠标、键盘等设备获得输入，通过显示器、扬声器等设备实现输出。</li>
+<li>GPU：某些程序可能使用 GPU 进行图形渲染。</li>
+</ul>
+<h4><a id="problem-2" class="heading-anchor"></a>Problem 2</h4>
+<p><strong>2. 请用相关工具软件分析并给出应用程序 A 的代码段/数据段/堆/栈的地址空间范围。</strong></p>
+<p><strong>查看代码段、数据段信息：</strong></p>
+<p>为了查看完整代码段和数据段信息，需要对程序进行静态编译。否则，只能看到共享库的代码段和数据段信息，无法看到程序本身的代码段和数据段信息。</p>
+<p>使用 gcc 对 <code>ls.c</code> 文件进行静态编译，然后使用 readelf 工具查看地址空间：</p>
+<pre><code class="language-shell">gcc -static ls.c -o ls_static
+readelf --headers ./ls
+</code></pre>
+<p>输出如下信息：</p>
+<pre><code>节头：
   [号] 名称              类型             地址              偏移量
        大小              全体大小          旗标   链接   信息   对齐
   [ 0]                   NULL             0000000000000000  00000000
@@ -143,12 +227,37 @@ readelf --headers ./ls</code></pre><p>输出如下信息：</p><pre><code>节头
   ...
   [24] .bss              NOBITS           00000000004a6280  000a6270
        0000000000005800  0000000000000000  WA       0     0     32
-  ...</code></pre><p>可以看到：</p><ul><li>代码段地址空间 <code>.text</code> 的虚拟地址是从 <code>0x401100</code> 到 <code>0x477f3e</code>。</li><li><p>数据段的几个地址空间：</p><ul><li><code>.rodata</code> 段地址是 <code>0x479000</code> 到 <code>0x494ca4</code>。</li><li><code>.data</code> 段由 <code>0x4a40c0</code> 到 <code>0x4a5ab8</code>。</li><li><code>.bss</code> 段由 <code>4a6280</code> 到 <code>0x4aba80</code>。</li></ul></li></ul><p><strong>查看堆栈信息：</strong></p><p>堆栈是程序运行时由 OS 内核分配的一段内存，所以我们需要在程序运行时查看。</p><p>首先在程序最后一行加上无限循环的 for 语句，使其能一直保持运行，方便我们查看：</p><pre><code class="lang-cpp">for (;;);</code></pre><p>然后将该程序命名为 <code>myls</code>（以在 grep 时区分系统自带的 <code>ls</code>），新开一个 tmux session（或者 screen），将其放在后台运行：</p><pre><code class="lang-shell">tmux new -s test
+  ...
+</code></pre>
+<p>可以看到：</p>
+<ul>
+<li>代码段地址空间 <code>.text</code> 的虚拟地址是从 <code>0x401100</code> 到 <code>0x477f3e</code>。</li>
+<li>数据段的几个地址空间：
+<ul>
+<li><code>.rodata</code> 段地址是 <code>0x479000</code> 到 <code>0x494ca4</code>。</li>
+<li><code>.data</code> 段由 <code>0x4a40c0</code> 到 <code>0x4a5ab8</code>。</li>
+<li><code>.bss</code> 段由 <code>4a6280</code> 到 <code>0x4aba80</code>。</li>
+</ul></li>
+</ul>
+<p><strong>查看堆栈信息：</strong></p>
+<p>堆栈是程序运行时由 OS 内核分配的一段内存，所以我们需要在程序运行时查看。</p>
+<p>首先在程序最后一行加上无限循环的 for 语句，使其能一直保持运行，方便我们查看：</p>
+<pre><code class="language-cpp"><span class="hljs-keyword">for</span> (;;);
+</code></pre>
+<p>然后将该程序命名为 <code>myls</code>（以在 grep 时区分系统自带的 <code>ls</code>），新开一个 tmux session（或者 screen），将其放在后台运行：</p>
+<pre><code class="language-shell">tmux new -s test
 ./myls
-# 按下 Ctrl + A，再按下 D 即可 detach 当前 session</code></pre><p>回到 tmux 之外的 shell 后，我们查看 <code>myls</code> 这个进程的信息：</p><pre><code class="lang-shell">ps -aux | grep myls
+<span class="hljs-meta prompt_"># </span><span class="language-bash">按下 Ctrl + A，再按下 D 即可 detach 当前 session</span>
+</code></pre>
+<p>回到 tmux 之外的 shell 后，我们查看 <code>myls</code> 这个进程的信息：</p>
+<pre><code class="language-shell">ps -aux | grep myls
 
 skywt     203187  100  0.0   2460   904 pts/1    R+   21:00   0:05 ./myls
-skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=auto myls</code></pre><p>可以看到正在运行的 myls 进程的 PID 是 203187。<br>此时查看 <code>/proc/203187/maps</code> 可以看到堆栈空间的分布：</p><pre><code>cat /proc/203187/maps
+skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=auto myls
+</code></pre>
+<p>可以看到正在运行的 myls 进程的 PID 是 203187。<br>
+此时查看 <code>/proc/203187/maps</code> 可以看到堆栈空间的分布：</p>
+<pre><code>cat /proc/203187/maps
 
 55ad32a2c000-55ad32a2d000 r--p 00000000 103:04 555500                    /home/skywt/labs/rCore/homework/myls
 ...
@@ -156,38 +265,122 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 7f8045692000-7f8045695000 rw-p 00000000 00:00 0 
 ...
 7ffe7709a000-7ffe770bb000 rw-p 00000000 00:00 0                          [stack]
-...</code></pre><p><code>/proc/[pid]/maps</code> 是一个特殊的文件，用于显示某个进程的内存映射信息，其中包含了该进程的内存分段（或称为内存映射）的详细信息。<br>每一行 <code>/proc/[pid]/maps</code> 文件中的内容描述了一个内存分段的起始地址、结束地址、访问权限、偏移量、设备号、节点号等信息。这些信息可以帮助我们了解进程的内存使用情况。文件格式如下：</p><pre><code>&lt;start_address&gt;-&lt;end_address&gt; &lt;perms&gt; &lt;offset&gt; &lt;dev&gt; &lt;inode&gt; &lt;pathname&gt;</code></pre><p>其中：</p><ul><li><code>&lt;perms&gt;</code> 表示内存分段的访问权限，如 r（可读）、w（可写）、x（可执行）等。</li><li><code>&lt;offset&gt;</code> 表示该内存分段在文件中的偏移量，如果不是文件映射则为 0。</li><li><code>&lt;dev&gt;</code> 表示设备号，通常是一个主设备号和次设备号的组合。</li><li><code>&lt;inode&gt;</code> 表示节点号，对于文件映射，表示文件在文件系统中的索引节点号。</li><li><code>&lt;pathname&gt;</code> 表示映射到内存中的文件路径，如果没有映射文件则为 <code>[anon]</code>。</li></ul><p>可以看到，堆（<code>[heap]</code>）的内存地址是 <code>55ad3438a000-55ad343ab000</code>，栈（<code>[stack]</code>）的内存地址是 <code>7ffe7709a000-7ffe770bb000</code>。</p><h4>Problem 3</h4><p><strong>3. 请简要说明应用程序与操作系统的异同之处。</strong></p><ul><li><p>异：</p><ul><li>应用程序一般运行在操作系统上；操作系统一般运行在裸机（bare-metal）环境（或虚拟机模拟的硬件环境）中。</li><li>应用程序一般面向用户；而操作系统（内核）一般并不面向用户，而是面向应用程序。</li><li>应用程序无法自由使用计算的资源，只有对资源部分的访问权限；操作系统则可以自由支配计算机资源，对资源具有完全的访问权限。</li><li>应用程序一般不关注计算机底层的硬件细节，但是操作系统需要关注。</li><li>编写应用程序一般不需要编写汇编代码，但是编写一个操作系统必须使用部分汇编代码。</li></ul></li><li><p>同：</p><ul><li>都是运行在计算机上的程序。操作系统可以视为一种特殊的应用程序。</li><li>都一般以二进制文件的形式保存在磁盘中。</li></ul></li></ul><h4>Problem 4</h4><p><strong>4. 请基于 QEMU 模拟 RISC—V 的执行过程和 QEMU 源代码，说明 RISC-V 硬件加电后的几条指令在哪里？完成了哪些功能？</strong></p><p>在 QEMU 源码中可以找到「上电」的时候刚执行的几条指令，如下：</p><pre><code class="lang-cpp">uint32_t reset_vec[10] = {
-    0x00000297,                   /* 1:  auipc  t0, %pcrel_hi(fw_dyn) */
-    0x02828613,                   /*     addi   a2, t0, %pcrel_lo(1b) */
-    0xf1402573,                   /*     csrr   a0, mhartid  */
-#if defined(TARGET_RISCV32)
-    0x0202a583,                   /*     lw     a1, 32(t0) */
-    0x0182a283,                   /*     lw     t0, 24(t0) */
-#elif defined(TARGET_RISCV64)
-    0x0202b583,                   /*     ld     a1, 32(t0) */
-    0x0182b283,                   /*     ld     t0, 24(t0) */
-#endif
-    0x00028067,                   /*     jr     t0 */
-    start_addr,                   /* start: .dword */
+...
+</code></pre>
+<p><code>/proc/[pid]/maps</code> 是一个特殊的文件，用于显示某个进程的内存映射信息，其中包含了该进程的内存分段（或称为内存映射）的详细信息。<br>
+每一行 <code>/proc/[pid]/maps</code> 文件中的内容描述了一个内存分段的起始地址、结束地址、访问权限、偏移量、设备号、节点号等信息。这些信息可以帮助我们了解进程的内存使用情况。文件格式如下：</p>
+<pre><code>&lt;start_address&gt;-&lt;end_address&gt; &lt;perms&gt; &lt;offset&gt; &lt;dev&gt; &lt;inode&gt; &lt;pathname&gt;
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>&lt;perms&gt;</code> 表示内存分段的访问权限，如 r（可读）、w（可写）、x（可执行）等。</li>
+<li><code>&lt;offset&gt;</code> 表示该内存分段在文件中的偏移量，如果不是文件映射则为 0。</li>
+<li><code>&lt;dev&gt;</code> 表示设备号，通常是一个主设备号和次设备号的组合。</li>
+<li><code>&lt;inode&gt;</code> 表示节点号，对于文件映射，表示文件在文件系统中的索引节点号。</li>
+<li><code>&lt;pathname&gt;</code> 表示映射到内存中的文件路径，如果没有映射文件则为 <code>[anon]</code>。</li>
+</ul>
+<p>可以看到，堆（<code>[heap]</code>）的内存地址是 <code>55ad3438a000-55ad343ab000</code>，栈（<code>[stack]</code>）的内存地址是 <code>7ffe7709a000-7ffe770bb000</code>。</p>
+<h4><a id="problem-3" class="heading-anchor"></a>Problem 3</h4>
+<p><strong>3. 请简要说明应用程序与操作系统的异同之处。</strong></p>
+<ul>
+<li>异：
+<ul>
+<li>应用程序一般运行在操作系统上；操作系统一般运行在裸机（bare-metal）环境（或虚拟机模拟的硬件环境）中。</li>
+<li>应用程序一般面向用户；而操作系统（内核）一般并不面向用户，而是面向应用程序。</li>
+<li>应用程序无法自由使用计算的资源，只有对资源部分的访问权限；操作系统则可以自由支配计算机资源，对资源具有完全的访问权限。</li>
+<li>应用程序一般不关注计算机底层的硬件细节，但是操作系统需要关注。</li>
+<li>编写应用程序一般不需要编写汇编代码，但是编写一个操作系统必须使用部分汇编代码。</li>
+</ul></li>
+<li>同：
+<ul>
+<li>都是运行在计算机上的程序。操作系统可以视为一种特殊的应用程序。</li>
+<li>都一般以二进制文件的形式保存在磁盘中。</li>
+</ul></li>
+</ul>
+<h4><a id="problem-4" class="heading-anchor"></a>Problem 4</h4>
+<p><strong>4. 请基于 QEMU 模拟 RISC—V 的执行过程和 QEMU 源代码，说明 RISC-V 硬件加电后的几条指令在哪里？完成了哪些功能？</strong></p>
+<p>在 QEMU 源码中可以找到「上电」的时候刚执行的几条指令，如下：</p>
+<pre><code class="language-cpp"><span class="hljs-type">uint32_t</span> reset_vec[<span class="hljs-number">10</span>] = {
+    <span class="hljs-number">0x00000297</span>,                   <span class="hljs-comment">/* 1:  auipc  t0, %pcrel_hi(fw_dyn) */</span>
+    <span class="hljs-number">0x02828613</span>,                   <span class="hljs-comment">/*     addi   a2, t0, %pcrel_lo(1b) */</span>
+    <span class="hljs-number">0xf1402573</span>,                   <span class="hljs-comment">/*     csrr   a0, mhartid  */</span>
+<span class="hljs-meta">#<span class="hljs-keyword">if</span> defined(TARGET_RISCV32)</span>
+    <span class="hljs-number">0x0202a583</span>,                   <span class="hljs-comment">/*     lw     a1, 32(t0) */</span>
+    <span class="hljs-number">0x0182a283</span>,                   <span class="hljs-comment">/*     lw     t0, 24(t0) */</span>
+<span class="hljs-meta">#<span class="hljs-keyword">elif</span> defined(TARGET_RISCV64)</span>
+    <span class="hljs-number">0x0202b583</span>,                   <span class="hljs-comment">/*     ld     a1, 32(t0) */</span>
+    <span class="hljs-number">0x0182b283</span>,                   <span class="hljs-comment">/*     ld     t0, 24(t0) */</span>
+<span class="hljs-meta">#<span class="hljs-keyword">endif</span></span>
+    <span class="hljs-number">0x00028067</span>,                   <span class="hljs-comment">/*     jr     t0 */</span>
+    start_addr,                   <span class="hljs-comment">/* start: .dword */</span>
     start_addr_hi32,
-    fdt_load_addr,                /* fdt_laddr: .dword */
-    0x00000000,
-                                  /* fw_dyn: */
-};</code></pre><p>完成的工作是：</p><ul><li>读取当前的 Hart ID CSR mhartid 写入寄存器 a0。</li><li>（我们还没有用到：将 FDT (Flatten device tree) 在物理内存中的地址写入 a1）。</li><li>跳转到 start_addr ，在我们实验中是 RustSBI 的地址。</li></ul><h4>Problem 5</h4><p><strong>5. RISC-V 中的 SBI 的含义和功能是啥？</strong></p><p><a href="https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc">RISC-V SBI 官方文档</a></p><p>RISC-V 处理器有三种状态（特权级别），通过存储在 Control and Status Register CSR 中的特权位来控制：</p><ul><li>机器模式（M 态）：用于执行处理器级别任务</li><li>监管模式（S 态）：用于执行 OS 内核代码相关任务，受限的系统级操作</li><li>用户模式（U 态）：用于执行普通应用程序</li></ul><p>RISC-V SBI（Supervisor Binary Interface）是一套规范，定义了在 S 态下 OS 和硬件之间的接口。例如系统调用、中断控制接口、内存访问接口、I/O 设备访问接口等。<br>通过这些接口，OS 可以与硬件进行交互。当我们编写操作系统内核时，我们通过 SBI 规定的接口与模拟的硬件进行交互（如读入、输出字符等操作），而不是直接操作硬件。</p><p>SBI 相当于硬件和 OS 内核之间的一层，对硬件进行抽象。</p><h4>Problem 6</h4><p><strong>6. 为了让应用程序能在计算机上执行，操作系统与编译器之间需要达成哪些协议？</strong></p><ul><li>程序库、依赖库等文件信息：需要约定好 OS 中各种库存放的位置，以方便应用程序调用。</li><li>二进制文件格式协议：需要约定可执行文件以什么格式存储，如 ELF（Executable and Linkable Format）就是一种常见的格式。</li><li>系统调用接口协议：要约定应用如何使用各种系统调用，在编译时写入对应操作系统的相关代码。</li><li>内存管理协议：需要约定内存管理的规范，编译器需要获知应用程序运行时分配得到的内存地址范围等信息。</li><li>进程管理协议：需要约定进程管理的模型，编译器需要据此来生成汇编代码控制应用的运行、发起子进程等等。</li><li>文件系统协议：需要约定应用程序如何访问文件系统，编译器通过约定的方式生成汇编代码对文件系统进行访问。</li><li>异常处理协议：需要约定如何处理应用程序运行时出现的各种异常。</li></ul><h4>Problem 7</h4><p><strong>7. 请简要说明从 QEMU 模拟的 RISC-V 计算机加电开始运行到执行应用程序的第一条指令这个阶段的执行过程。</strong></p><p>加电开始运行后，QEMU 的启动流程：</p><ul><li>Step1：PC 初始化为 0x1000，执行一些指令后跳转到 0x80000000，进入第二阶段。</li><li>Step2：载入从 0x80000000 开始的 bootloader，这里就是 RustSBI（实验目录 <code>/bootloader/</code> 下的 <code>rustsbi-qemu.bin</code> 文件）。RustSBI 进行一些硬件（如串口）初始化，并通过 mret 使 PC 跳转到 0x80200000，即内存起始地址。</li><li>Step3：载入 0x80200000 开始的 OS 内核镜像，正式进入 OS 内核。内核进行部分初始化（如内存管理、进程初始化等），通过 sret 跳转到应用程序的第一行开始执行。</li></ul><h4>Problem 8</h4><p><strong>8. 为何应用程序员编写应用时不需要建立栈空间和指定地址空间？</strong></p><p>应用程序访问的栈空间和地址空间需要由操作系统内核负责分配。对内存的访问需要通过 MMU 的地址翻译，使用的栈空间需要操作系统进行分配和管理。</p><p>程序员编写应用程序时，无需考虑操作系统底层的栈分配和地址空间分配，只需要使用操作系统、编译器等共同提供的「变量」、「函数」等抽象。这种设计大大方便了应用程序开发人员的软件开发。</p><h4>Problem 9</h4><p><strong>9. 现代的很多编译器生成的代码，默认情况下不再严格保存/恢复栈帧指针。在这个情况下，我们只要编译器提供足够的信息，也可以完成对调用栈的恢复。</strong><br>我们可以手动阅读汇编代码和栈上的数据，体验一下这个过程。例如，对如下两个互相递归调用的函数：</p><pre><code class="lang-cpp">void flip(unsigned n) {
-    if ((n &amp; 1) == 0) {
-        flip(n &gt;&gt; 1);
-    } else if ((n &amp; 1) == 1) {
-        flap(n &gt;&gt; 1);
+    fdt_load_addr,                <span class="hljs-comment">/* fdt_laddr: .dword */</span>
+    <span class="hljs-number">0x00000000</span>,
+                                  <span class="hljs-comment">/* fw_dyn: */</span>
+};
+</code></pre>
+<p>完成的工作是：</p>
+<ul>
+<li>读取当前的 Hart ID CSR mhartid 写入寄存器 a0。</li>
+<li>（我们还没有用到：将 FDT (Flatten device tree) 在物理内存中的地址写入 a1）。</li>
+<li>跳转到 start_addr ，在我们实验中是 RustSBI 的地址。</li>
+</ul>
+<h4><a id="problem-5" class="heading-anchor"></a>Problem 5</h4>
+<p><strong>5. RISC-V 中的 SBI 的含义和功能是啥？</strong></p>
+<p><a href="https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc">RISC-V SBI 官方文档</a></p>
+<p>RISC-V 处理器有三种状态（特权级别），通过存储在 Control and Status Register CSR 中的特权位来控制：</p>
+<ul>
+<li>机器模式（M 态）：用于执行处理器级别任务</li>
+<li>监管模式（S 态）：用于执行 OS 内核代码相关任务，受限的系统级操作</li>
+<li>用户模式（U 态）：用于执行普通应用程序</li>
+</ul>
+<p>RISC-V SBI（Supervisor Binary Interface）是一套规范，定义了在 S 态下 OS 和硬件之间的接口。例如系统调用、中断控制接口、内存访问接口、I/O 设备访问接口等。<br>
+通过这些接口，OS 可以与硬件进行交互。当我们编写操作系统内核时，我们通过 SBI 规定的接口与模拟的硬件进行交互（如读入、输出字符等操作），而不是直接操作硬件。</p>
+<p>SBI 相当于硬件和 OS 内核之间的一层，对硬件进行抽象。</p>
+<h4><a id="problem-6" class="heading-anchor"></a>Problem 6</h4>
+<p><strong>6. 为了让应用程序能在计算机上执行，操作系统与编译器之间需要达成哪些协议？</strong></p>
+<ul>
+<li>程序库、依赖库等文件信息：需要约定好 OS 中各种库存放的位置，以方便应用程序调用。</li>
+<li>二进制文件格式协议：需要约定可执行文件以什么格式存储，如 ELF（Executable and Linkable Format）就是一种常见的格式。</li>
+<li>系统调用接口协议：要约定应用如何使用各种系统调用，在编译时写入对应操作系统的相关代码。</li>
+<li>内存管理协议：需要约定内存管理的规范，编译器需要获知应用程序运行时分配得到的内存地址范围等信息。</li>
+<li>进程管理协议：需要约定进程管理的模型，编译器需要据此来生成汇编代码控制应用的运行、发起子进程等等。</li>
+<li>文件系统协议：需要约定应用程序如何访问文件系统，编译器通过约定的方式生成汇编代码对文件系统进行访问。</li>
+<li>异常处理协议：需要约定如何处理应用程序运行时出现的各种异常。</li>
+</ul>
+<h4><a id="problem-7" class="heading-anchor"></a>Problem 7</h4>
+<p><strong>7. 请简要说明从 QEMU 模拟的 RISC-V 计算机加电开始运行到执行应用程序的第一条指令这个阶段的执行过程。</strong></p>
+<p>加电开始运行后，QEMU 的启动流程：</p>
+<ul>
+<li>Step1：PC 初始化为 0x1000，执行一些指令后跳转到 0x80000000，进入第二阶段。</li>
+<li>Step2：载入从 0x80000000 开始的 bootloader，这里就是 RustSBI（实验目录 <code>/bootloader/</code> 下的 <code>rustsbi-qemu.bin</code> 文件）。RustSBI 进行一些硬件（如串口）初始化，并通过 mret 使 PC 跳转到 0x80200000，即内存起始地址。</li>
+<li>Step3：载入 0x80200000 开始的 OS 内核镜像，正式进入 OS 内核。内核进行部分初始化（如内存管理、进程初始化等），通过 sret 跳转到应用程序的第一行开始执行。</li>
+</ul>
+<h4><a id="problem-8" class="heading-anchor"></a>Problem 8</h4>
+<p><strong>8. 为何应用程序员编写应用时不需要建立栈空间和指定地址空间？</strong></p>
+<p>应用程序访问的栈空间和地址空间需要由操作系统内核负责分配。对内存的访问需要通过 MMU 的地址翻译，使用的栈空间需要操作系统进行分配和管理。</p>
+<p>程序员编写应用程序时，无需考虑操作系统底层的栈分配和地址空间分配，只需要使用操作系统、编译器等共同提供的「变量」、「函数」等抽象。这种设计大大方便了应用程序开发人员的软件开发。</p>
+<h4><a id="problem-9" class="heading-anchor"></a>Problem 9</h4>
+<p><strong>9. 现代的很多编译器生成的代码，默认情况下不再严格保存/恢复栈帧指针。在这个情况下，我们只要编译器提供足够的信息，也可以完成对调用栈的恢复。</strong><br>
+我们可以手动阅读汇编代码和栈上的数据，体验一下这个过程。例如，对如下两个互相递归调用的函数：</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">flip</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">flip</span>(n &gt;&gt; <span class="hljs-number">1</span>);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+        <span class="hljs-built_in">flap</span>(n &gt;&gt; <span class="hljs-number">1</span>);
     }
 }
 
-void flap(unsigned n) {
-    if ((n &amp; 1) == 0) {
-        flip(n &gt;&gt; 1);
-    } else if ((n &amp; 1) == 1) {
-        flap(n &gt;&gt; 1);
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">flap</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">flip</span>(n &gt;&gt; <span class="hljs-number">1</span>);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+        <span class="hljs-built_in">flap</span>(n &gt;&gt; <span class="hljs-number">1</span>);
     }
-}</code></pre><p>在某种编译环境下，编译器产生的代码不包括保存和恢复栈帧指针 fp 的代码。以下是 GDB 输出的本次运行的时候，这两个函数所在的地址和对应地址指令的反汇编，为了方便阅读节选了重要的控制流和栈操作（省略部分不含栈操作）：</p><pre><code>(gdb) disassemble flap
+}
+</code></pre>
+<p>在某种编译环境下，编译器产生的代码不包括保存和恢复栈帧指针 fp 的代码。以下是 GDB 输出的本次运行的时候，这两个函数所在的地址和对应地址指令的反汇编，为了方便阅读节选了重要的控制流和栈操作（省略部分不含栈操作）：</p>
+<pre><code>(gdb) disassemble flap
 Dump of assembler code for function flap:
    0x0000000000010730 &lt;+0&gt;:     addi    sp,sp,-16    // 唯一入口
    0x0000000000010732 &lt;+2&gt;:     sd      ra,8(sp)
@@ -208,7 +401,10 @@ Dump of assembler code for function flip:
    0x0000000000010768 &lt;+22&gt;:    ret                  // 唯一出口
    ...
    0x0000000000010772 &lt;+32&gt;:    j       0x10764 &lt;flip+18&gt;
-End of assembler dump.</code></pre><p>启动这个程序，在运行的时候的某个状态将其打断。此时的 pc, sp, ra 寄存器的值如下所示。此外，下面还给出了栈顶的部分内容。（为阅读方便，栈上的一些未初始化的垃圾数据用 <code>???</code> 代替。）</p><pre><code>(gdb) p $pc
+End of assembler dump.
+</code></pre>
+<p>启动这个程序，在运行的时候的某个状态将其打断。此时的 pc, sp, ra 寄存器的值如下所示。此外，下面还给出了栈顶的部分内容。（为阅读方便，栈上的一些未初始化的垃圾数据用 <code>???</code> 代替。）</p>
+<pre><code>(gdb) p $pc
 $1 = (void (*)()) 0x10752 &lt;flip&gt;
 
 (gdb) p $sp
@@ -220,67 +416,102 @@ $3 = (void (*)()) 0x10742 &lt;flap+18&gt;
 (gdb) x/6a $sp
 0x40007f1310:   ???     0x10750 &lt;flap+32&gt;
 0x40007f1320:   ???     0x10772 &lt;flip+32&gt;
-0x40007f1330:   ???     0x10764 &lt;flip+18&gt;</code></pre><p>根据给出这些信息，调试器可以如何复原出最顶层的几个调用栈信息？假设调试器可以理解编译器生成的汇编代码。</p><ul><li>pc 寄存器的值（0x10752）指向了当前正在执行的指令地址，即 flip 函数的入口地址。这意味着当前的调用栈帧对应于 flip 函数的调用栈帧。</li><li>sp 寄存器的值（0x40007f1310）指向了当前栈帧的栈顶地址，即栈的最高地址。这意味着 flip 函数的栈帧在这个地址以下，而最顶层的调用栈信息应该在这个栈帧中。</li><li>ra 寄存器的值（0x10742）指向了 flap 函数的地址，它是 flip 函数的调用者。这意味着 flip 函数在执行时调用了 flap 函数，所以 flip 函数的栈帧应该保存了 flap 函数的返回地址。</li><li>根据反汇编信息，可以看到 flip 函数的栈帧在入口处（0x10752）保存了 ra 寄存器的值（0x10742），即 flap 函数的返回地址。</li><li>根据栈上的数据（0x40007f1310）可以看到栈帧中保存了一些未初始化的垃圾数据，而根据反汇编信息，栈帧的大小为 16 字节（0x10），因此可以通过栈顶地址向下偏移 16 字节，找到栈帧中保存的上一层调用栈帧的信息。</li></ul><h2>实验练习</h2><h3>实验作业：彩色化 LOG</h3><p>在 <code>logging.rs</code> 中的如下代码提供彩色 LOG 输出功能：</p><pre><code class="lang-rust">use log::{self, Level, LevelFilter, Log, Metadata, Record};
+0x40007f1330:   ???     0x10764 &lt;flip+18&gt;
+</code></pre>
+<p>根据给出这些信息，调试器可以如何复原出最顶层的几个调用栈信息？假设调试器可以理解编译器生成的汇编代码。</p>
+<ul>
+<li>pc 寄存器的值（0x10752）指向了当前正在执行的指令地址，即 flip 函数的入口地址。这意味着当前的调用栈帧对应于 flip 函数的调用栈帧。</li>
+<li>sp 寄存器的值（0x40007f1310）指向了当前栈帧的栈顶地址，即栈的最高地址。这意味着 flip 函数的栈帧在这个地址以下，而最顶层的调用栈信息应该在这个栈帧中。</li>
+<li>ra 寄存器的值（0x10742）指向了 flap 函数的地址，它是 flip 函数的调用者。这意味着 flip 函数在执行时调用了 flap 函数，所以 flip 函数的栈帧应该保存了 flap 函数的返回地址。</li>
+<li>根据反汇编信息，可以看到 flip 函数的栈帧在入口处（0x10752）保存了 ra 寄存器的值（0x10742），即 flap 函数的返回地址。</li>
+<li>根据栈上的数据（0x40007f1310）可以看到栈帧中保存了一些未初始化的垃圾数据，而根据反汇编信息，栈帧的大小为 16 字节（0x10），因此可以通过栈顶地址向下偏移 16 字节，找到栈帧中保存的上一层调用栈帧的信息。</li>
+</ul>
+<h2><a id="实验练习" class="heading-anchor"></a>实验练习</h2>
+<h3><a id="实验作业彩色化-log" class="heading-anchor"></a>实验作业：彩色化 LOG</h3>
+<p>在 <code>logging.rs</code> 中的如下代码提供彩色 LOG 输出功能：</p>
+<pre><code class="language-rust"><span class="hljs-keyword">use</span> log::{<span class="hljs-keyword">self</span>, Level, LevelFilter, Log, Metadata, Record};
 
-struct SimpleLogger;
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">SimpleLogger</span>;
 
-impl Log for SimpleLogger {
-    fn enabled(&amp;self, _metadata: &amp;Metadata) -&gt; bool {
-        true
+<span class="hljs-keyword">impl</span> <span class="hljs-title class_">Log</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">SimpleLogger</span> {
+    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">enabled</span>(&amp;<span class="hljs-keyword">self</span>, _metadata: &amp;Metadata) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">bool</span> {
+        <span class="hljs-literal">true</span>
     }
-    fn log(&amp;self, record: &amp;Record) {
-        if !self.enabled(record.metadata()) {
-            return;
+    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">log</span>(&amp;<span class="hljs-keyword">self</span>, record: &amp;Record) {
+        <span class="hljs-keyword">if</span> !<span class="hljs-keyword">self</span>.<span class="hljs-title function_ invoke__">enabled</span>(record.<span class="hljs-title function_ invoke__">metadata</span>()) {
+            <span class="hljs-keyword">return</span>;
         }
-        let color = match record.level() {
-            Level::Error =&gt; 31, // Red
-            Level::Warn =&gt; 93,  // BrightYellow
-            Level::Info =&gt; 34,  // Blue
-            Level::Debug =&gt; 32, // Green
-            Level::Trace =&gt; 90, // BrightBlack
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">color</span> = <span class="hljs-keyword">match</span> record.<span class="hljs-title function_ invoke__">level</span>() {
+            Level::Error =&gt; <span class="hljs-number">31</span>, <span class="hljs-comment">// Red</span>
+            Level::Warn =&gt; <span class="hljs-number">93</span>,  <span class="hljs-comment">// BrightYellow</span>
+            Level::Info =&gt; <span class="hljs-number">34</span>,  <span class="hljs-comment">// Blue</span>
+            Level::<span class="hljs-built_in">Debug</span> =&gt; <span class="hljs-number">32</span>, <span class="hljs-comment">// Green</span>
+            Level::Trace =&gt; <span class="hljs-number">90</span>, <span class="hljs-comment">// BrightBlack</span>
         };
-        println!(
-            &quot;\u{1B}[{}m[{:&gt;5}] {}\u{1B}[0m&quot;,
+        <span class="hljs-built_in">println!</span>(
+            <span class="hljs-string">&quot;\u{1B}[{}m[{:&gt;5}] {}\u{1B}[0m&quot;</span>,
             color,
-            record.level(),
-            record.args(),
+            record.<span class="hljs-title function_ invoke__">level</span>(),
+            record.<span class="hljs-title function_ invoke__">args</span>(),
         );
     }
-    fn flush(&amp;self) {}
+    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">flush</span>(&amp;<span class="hljs-keyword">self</span>) {}
 }
 
-pub fn init() {
-    static LOGGER: SimpleLogger = SimpleLogger;
-    log::set_logger(&amp;LOGGER).unwrap();
-    log::set_max_level(match option_env!(&quot;LOG&quot;) {
-        Some(&quot;ERROR&quot;) =&gt; LevelFilter::Error,
-        Some(&quot;WARN&quot;) =&gt; LevelFilter::Warn,
-        Some(&quot;INFO&quot;) =&gt; LevelFilter::Info,
-        Some(&quot;DEBUG&quot;) =&gt; LevelFilter::Debug,
-        Some(&quot;TRACE&quot;) =&gt; LevelFilter::Trace,
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">init</span>() {
+    <span class="hljs-keyword">static</span> LOGGER: SimpleLogger = SimpleLogger;
+    log::<span class="hljs-title function_ invoke__">set_logger</span>(&amp;LOGGER).<span class="hljs-title function_ invoke__">unwrap</span>();
+    log::<span class="hljs-title function_ invoke__">set_max_level</span>(<span class="hljs-keyword">match</span> <span class="hljs-built_in">option_env!</span>(<span class="hljs-string">&quot;LOG&quot;</span>) {
+        <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;ERROR&quot;</span>) =&gt; LevelFilter::Error,
+        <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;WARN&quot;</span>) =&gt; LevelFilter::Warn,
+        <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;INFO&quot;</span>) =&gt; LevelFilter::Info,
+        <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;DEBUG&quot;</span>) =&gt; LevelFilter::<span class="hljs-built_in">Debug</span>,
+        <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-string">&quot;TRACE&quot;</span>) =&gt; LevelFilter::Trace,
         _ =&gt; LevelFilter::Off,
     });
-}</code></pre><p>可以看到，在 <code>init()</code> 函数中，程序根据传入的 LOG 环境变量的值（可能为 <code>ERROR</code>、<code>WARN</code> 等）设置了 LevelFilter。当进行输出时调用 <code>log</code> 函数，根据输出的记录类型选择不同的颜色。</p><p>在 <code>main.rs</code> 中如下代码调用了彩色输出：</p><pre><code class="lang-rust">logging::init();
-//...
+}
+</code></pre>
+<p>可以看到，在 <code>init()</code> 函数中，程序根据传入的 LOG 环境变量的值（可能为 <code>ERROR</code>、<code>WARN</code> 等）设置了 LevelFilter。当进行输出时调用 <code>log</code> 函数，根据输出的记录类型选择不同的颜色。</p>
+<p>在 <code>main.rs</code> 中如下代码调用了彩色输出：</p>
+<pre><code class="language-rust">logging::<span class="hljs-title function_ invoke__">init</span>();
+<span class="hljs-comment">//...</span>
 trace!(
-    &quot;[kernel] .text [{:#x}, {:#x})&quot;,
-    stext as usize,
-    etext as usize
+    <span class="hljs-string">&quot;[kernel] .text [{:#x}, {:#x})&quot;</span>,
+    stext <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>,
+    etext <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>
 );
 debug!(
-    &quot;[kernel] .rodata [{:#x}, {:#x})&quot;,
-    srodata as usize, erodata as usize
+    <span class="hljs-string">&quot;[kernel] .rodata [{:#x}, {:#x})&quot;</span>,
+    srodata <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>, erodata <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>
 );
 info!(
-    &quot;[kernel] .data [{:#x}, {:#x})&quot;,
-    sdata as usize, edata as usize
+    <span class="hljs-string">&quot;[kernel] .data [{:#x}, {:#x})&quot;</span>,
+    sdata <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>, edata <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>
 );
 warn!(
-    &quot;[kernel] boot_stack top=bottom={:#x}, lower_bound={:#x}&quot;,
-    boot_stack_top as usize, boot_stack_lower_bound as usize
+    <span class="hljs-string">&quot;[kernel] boot_stack top=bottom={:#x}, lower_bound={:#x}&quot;</span>,
+    boot_stack_top <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>, boot_stack_lower_bound <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>
 );
-error!(&quot;[kernel] .bss [{:#x}, {:#x})&quot;, sbss as usize, ebss as usize);</code></pre><p>在运行我们的操作系统内核时传递 LOG 参数，设定输出级别，如设定为 trace 输出从 trace 到 error 的全部级别：</p><pre><code>make run LOG=trace</code></pre><p>可以看到终端彩色的输出：</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" alt="终端的彩色信息输出" title="终端的彩色信息输出"></p><h3>问答作业</h3><p><strong>请学习 gdb 调试工具的使用（这对后续调试很重要），并通过 gdb 简单跟踪从机器加电到跳转到 0x80200000 的简单过程。只需要描述重要的跳转即可，只需要描述在 qemu 上的情况。</strong></p><p>由于我们的内核运行在 QEMU 里，我们没法直接通过原生的 gdb 像调试寻常的程序一样对它进行调试。不过，QEMU 提供了一些接口，可以通过网络（1234 端口）与 QEMU 之外的 gdb 对接（这个功能设计之初是为了方便网络调试），在 <code>os/Makefile</code> 里，已经为我们写好了使用 gdb 开启调试的命令。</p><p>由于我使用 docker 运行本实验的环境，在容器中开启 tmux 并不方便（使用预置的 <code>make debug</code> 会卡住）。但是，我们可以在容器外的多个终端都进入容器，等同于在容器内用了 tmux。<br>进行了 <code>make docker</code> 建立了 docker 环境之后，再开一个终端（可以在容器外用 tmux），同时进入相应的容器：</p><pre><code class="lang-shell">docker exec -it &lt;container_name&gt; /bin/bash</code></pre><p>在容器内，根据<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/5setup-devel-env.html#gdb">这段介绍</a>下载 Risc-V GCC 工具链。为了使用 riscv64-unknown-elf-gdb。方便起见，我们直接将解压后 <code>bin</code> 目录下的可执行文件复制到 <code>os</code> 目录下，然后修改一下 Makefile，将第 75 行改为运行当前目录下的 riscv64-unknown-elf-gdb 可执行文件：</p><pre><code class="lang-shell">gdbclient:
-        @./riscv64-unknown-elf-gdb -ex 'file $(KERNEL_ELF)' -ex 'set arch riscv:rv64' -ex 'target remote localhost:1234'</code></pre><p>然后在一个终端里 <code>make gdbserver</code>，另一个终端里 <code>make gdbclient</code>（两个终端都在容器内，等同于 tmux），就可以开始调试啦。</p><pre><code>(gdb) x/10i $pc
+error!(<span class="hljs-string">&quot;[kernel] .bss [{:#x}, {:#x})&quot;</span>, sbss <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>, ebss <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>);
+</code></pre>
+<p>在运行我们的操作系统内核时传递 LOG 参数，设定输出级别，如设定为 trace 输出从 trace 到 error 的全部级别：</p>
+<pre><code>make run LOG=trace
+</code></pre>
+<p>可以看到终端彩色的输出：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" alt="终端的彩色信息输出" title="" /></a></p>
+<h3><a id="问答作业" class="heading-anchor"></a>问答作业</h3>
+<p><strong>请学习 gdb 调试工具的使用（这对后续调试很重要），并通过 gdb 简单跟踪从机器加电到跳转到 0x80200000 的简单过程。只需要描述重要的跳转即可，只需要描述在 qemu 上的情况。</strong></p>
+<p>由于我们的内核运行在 QEMU 里，我们没法直接通过原生的 gdb 像调试寻常的程序一样对它进行调试。不过，QEMU 提供了一些接口，可以通过网络（1234 端口）与 QEMU 之外的 gdb 对接（这个功能设计之初是为了方便网络调试），在 <code>os/Makefile</code> 里，已经为我们写好了使用 gdb 开启调试的命令。</p>
+<p>由于我使用 docker 运行本实验的环境，在容器中开启 tmux 并不方便（使用预置的 <code>make debug</code> 会卡住）。但是，我们可以在容器外的多个终端都进入容器，等同于在容器内用了 tmux。<br>
+进行了 <code>make docker</code> 建立了 docker 环境之后，再开一个终端（可以在容器外用 tmux），同时进入相应的容器：</p>
+<pre><code class="language-shell">docker exec -it &lt;container_name&gt; /bin/bash
+</code></pre>
+<p>在容器内，根据<a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/5setup-devel-env.html#gdb">这段介绍</a>下载 Risc-V GCC 工具链。为了使用 riscv64-unknown-elf-gdb。方便起见，我们直接将解压后 <code>bin</code> 目录下的可执行文件复制到 <code>os</code> 目录下，然后修改一下 Makefile，将第 75 行改为运行当前目录下的 riscv64-unknown-elf-gdb 可执行文件：</p>
+<pre><code class="language-shell">gdbclient:
+        @./riscv64-unknown-elf-gdb -ex &#x27;file $(KERNEL_ELF)&#x27; -ex &#x27;set arch riscv:rv64&#x27; -ex &#x27;target remote localhost:1234&#x27;
+</code></pre>
+<p>然后在一个终端里 <code>make gdbserver</code>，另一个终端里 <code>make gdbclient</code>（两个终端都在容器内，等同于 tmux），就可以开始调试啦。</p>
+<pre><code>(gdb) x/10i $pc
 =&gt; 0x1000:      auipc   t0,0x0
    0x1004:      addi    a2,t0,40
    0x1008:      csrr    a0,mhartid
@@ -290,7 +521,11 @@ error!(&quot;[kernel] .bss [{:#x}, {:#x})&quot;, sbss as usize, ebss as usize);<
    0x1018:      unimp
    0x101a:      0x8000
    0x101c:      unimp
-   0x101e:      unimp</code></pre><p>可以看到 QEMU 启动后，PC 初始化为 0x1000。查看前几条指令，与我们之前看到的 QEMU 源码中的相关内容一致。0x1018 及之后似乎就不是指令了，所以这一部分就是 QEMU 启动的 Step 1，最后由 0x1014 这一行跳转到 0x80000000。<br>我们逐步运行这个程序，可以发现在跳转之前，t0 寄存器被设置为 0x80000000。</p><pre><code>(gdb) si
+   0x101e:      unimp
+</code></pre>
+<p>可以看到 QEMU 启动后，PC 初始化为 0x1000。查看前几条指令，与我们之前看到的 QEMU 源码中的相关内容一致。0x1018 及之后似乎就不是指令了，所以这一部分就是 QEMU 启动的 Step 1，最后由 0x1014 这一行跳转到 0x80000000。<br>
+我们逐步运行这个程序，可以发现在跳转之前，t0 寄存器被设置为 0x80000000。</p>
+<pre><code>(gdb) si
 0x0000000000001004 in ?? ()
 (gdb) si
 0x0000000000001008 in ?? ()
@@ -301,7 +536,11 @@ error!(&quot;[kernel] .bss [{:#x}, {:#x})&quot;, sbss as usize, ebss as usize);<
 (gdb) p/x $t0
 1 = 0x80000000
 (gdb) si
-0x0000000080000000 in ?? ()</code></pre><p>根据之前学习的 QEMU 启动流程，跳转到 0x80000000 之后进入了 bootloader，在我们的程序中也就是 RustSBI。在其中进行初始化之后，程序应该会跳转到 0x80200000 进入我们的 OS 内核。<br>在 0x80200000 打上断点，输入 <code>c</code> 让程序运行至停留在这条指令，可以看到内核的最初几行代码：</p><pre><code>(gdb) b *0x80200000
+0x0000000080000000 in ?? ()
+</code></pre>
+<p>根据之前学习的 QEMU 启动流程，跳转到 0x80000000 之后进入了 bootloader，在我们的程序中也就是 RustSBI。在其中进行初始化之后，程序应该会跳转到 0x80200000 进入我们的 OS 内核。<br>
+在 0x80200000 打上断点，输入 <code>c</code> 让程序运行至停留在这条指令，可以看到内核的最初几行代码：</p>
+<pre><code>(gdb) b *0x80200000
 Breakpoint 1 at 0x80200000
 (gdb) c
 Continuing.
@@ -317,7 +556,11 @@ Breakpoint 1, 0x0000000080200000 in stext ()
    0x80200014 &lt;os::rust_main+4&gt;:        sd      s0,144(sp)
    0x80200016 &lt;os::rust_main+6&gt;:        sd      s1,136(sp)
    0x80200018 &lt;os::rust_main+8&gt;:        sd      s2,128(sp)
-   0x8020001a &lt;os::rust_main+10&gt;:       sd      s3,120(sp)</code></pre><p>看来此时，PC 已经进入了内核。<br>至此，我们用 gdb 看到了 QEMU 启动流程中的几次跳转。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="161Grt" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;rcore-tutorial-chapter-1&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/rcore-tutorial-chapter-1&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+   0x8020001a &lt;os::rust_main+10&gt;:       sd      s3,120(sp)
+</code></pre>
+<p>看来此时，PC 已经进入了内核。<br>
+至此，我们用 gdb 看到了 QEMU 启动流程中的几次跳转。</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1txsus" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;rcore-tutorial-chapter-1&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -344,4 +587,4 @@ rCore Tutorial Chapter 1 练习 </span> </div> <div class="m-2"> <ul data-astro-
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

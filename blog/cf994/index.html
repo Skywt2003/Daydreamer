@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces Round #488 Div2 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CodeForces Round #488 Div2 题解</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ CodeForces Round #488 Div2 题解 </span> </h5> <div class="m-2 secondary-color"
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,212 +72,277 @@ CodeForces Round #488 Div2 题解 </span> </h5> <div class="m-2 secondary-color"
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces Round #488 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 03 月 19 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/cf994" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>这是我的博客发布的第 100 篇文章！:tada:</p><h2>D - Open Communication</h2><h3>Description</h3><p>有两个玩家，给出分别 n 和 m 个数对，$1\leq n,m\leq 12$，所有数字都 $\in [0,9]$，并且一个数对里的数字不相同，不会有重复的数对。现在有一个“共享数字”，这个数字在 A 玩家的数对里和 B 玩家的数对里都至少出现一次。如果你可以推断出这个数字，输出这个数字；如果你无法推断出这个数字，但是你确信两个玩家都知道这个数字，输出 0；如果连玩家也不知道，输出 -1。</p><!--more--><p>（题意难以解释，建议参考原题样例：<a href="https://codeforces.com/problemset/problem/994/D">Link</a>）</p><h3>Tags</h3><p><code>卡题意</code></p><h3>Analysis</h3><p>其实是个非常简单的题，两两枚举数对，如果发现 A 中某一个数对与 B 中多个数对都有恰好一个相同的数字就是 -1，如果每次枚举到 A 中一个数对，B 中与其有相同数字的都只有一个，则可以确定双方知道，输出 0；如果总是同一个数字，则确定这个数字。</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;vector&gt;
-#include&lt;algorithm&gt;
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CodeForces Round #488 Div2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2019 年 3 月 19 日 08:12</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#d---open-communication">D - Open Communication</a>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#tags">Tags</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code">Code</a></li>
+</ul></li>
+<li><a href="#e---careful-maneuvering">E - Careful Maneuvering</a>
+<ul>
+<li><a href="#description-1">Description</a></li>
+<li><a href="#tags-1">Tags</a></li>
+<li><a href="#analysis-1">Analysis</a></li>
+<li><a href="#code-1">Code</a></li>
+</ul></li>
+<li><a href="#f---compute-power">F - Compute Power</a>
+<ul>
+<li><a href="#description-2">Description</a></li>
+<li><a href="#tags-2">Tags</a></li>
+<li><a href="#analysis-2">Analysis</a></li>
+<li><a href="#code-2">Code</a></li>
+</ul></li>
+</ul>
+<p>这是我的博客发布的第 100 篇文章！:tada:</p>
+<h2><a id="d---open-communication" class="heading-anchor"></a>D - Open Communication</h2>
+<h3><a id="description" class="heading-anchor"></a>Description</h3>
+<p>有两个玩家，给出分别 n 和 m 个数对，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">1\leq n,m\leq 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span>，所有数字都 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>9</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\in [0,9]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">9</span><span class="mclose">]</span></span></span></span>，并且一个数对里的数字不相同，不会有重复的数对。现在有一个“共享数字”，这个数字在 A 玩家的数对里和 B 玩家的数对里都至少出现一次。如果你可以推断出这个数字，输出这个数字；如果你无法推断出这个数字，但是你确信两个玩家都知道这个数字，输出 0；如果连玩家也不知道，输出 -1。</p>
+<p>（题意难以解释，建议参考原题样例：<a href="https://codeforces.com/problemset/problem/994/D">Link</a>）</p>
+<h3><a id="tags" class="heading-anchor"></a>Tags</h3>
+<p><code>卡题意</code></p>
+<h3><a id="analysis" class="heading-anchor"></a>Analysis</h3>
+<p>其实是个非常简单的题，两两枚举数对，如果发现 A 中某一个数对与 B 中多个数对都有恰好一个相同的数字就是 -1，如果每次枚举到 A 中一个数对，B 中与其有相同数字的都只有一个，则可以确定双方知道，输出 0；如果总是同一个数字，则确定这个数字。</p>
+<h3><a id="code" class="heading-anchor"></a>Code</h3>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span>
 
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
-const int maxn=20;
-int n,m,ans=1;
-pair &lt;int,int&gt; a[maxn],b[maxn];
-bool is[15];
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">20</span>;
+<span class="hljs-type">int</span> n,m,ans=<span class="hljs-number">1</span>;
+pair &lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; a[maxn],b[maxn];
+<span class="hljs-type">bool</span> is[<span class="hljs-number">15</span>];
 
-inline int read(){
-    int ret=0,f=1;char ch=getchar();
-    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
-    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
-    return ret*f;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>) {<span class="hljs-keyword">if</span> (ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;ch=<span class="hljs-built_in">getchar</span>();}
+    <span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>) ret=ret*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">return</span> ret*f;
 }
 
-inline int have_same(pair&lt;int,int&gt; aa, pair&lt;int,int&gt; bb){
-    // cout&lt;&lt;aa.first&lt;&lt;&quot;,&quot;&lt;&lt;aa.second&lt;&lt;&quot;  &quot;&lt;&lt;bb.first&lt;&lt;&quot;,&quot;&lt;&lt;bb.second&lt;&lt;endl;
-    if (aa.first==bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second!=bb.second) return aa.first;
-    if (aa.first!=bb.first &amp;&amp; aa.first==bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second!=bb.second) return aa.first;
-    if (aa.first!=bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second==bb.first &amp;&amp; aa.second!=bb.second) return aa.second;
-    if (aa.first!=bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second==bb.second) return aa.second;
-    // cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-    return -1;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">have_same</span><span class="hljs-params">(pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; aa, pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; bb)</span></span>{
+    <span class="hljs-comment">// cout&lt;&lt;aa.first&lt;&lt;&quot;,&quot;&lt;&lt;aa.second&lt;&lt;&quot;  &quot;&lt;&lt;bb.first&lt;&lt;&quot;,&quot;&lt;&lt;bb.second&lt;&lt;endl;</span>
+    <span class="hljs-keyword">if</span> (aa.first==bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second!=bb.second) <span class="hljs-keyword">return</span> aa.first;
+    <span class="hljs-keyword">if</span> (aa.first!=bb.first &amp;&amp; aa.first==bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second!=bb.second) <span class="hljs-keyword">return</span> aa.first;
+    <span class="hljs-keyword">if</span> (aa.first!=bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second==bb.first &amp;&amp; aa.second!=bb.second) <span class="hljs-keyword">return</span> aa.second;
+    <span class="hljs-keyword">if</span> (aa.first!=bb.first &amp;&amp; aa.first!=bb.second &amp;&amp; aa.second!=bb.first &amp;&amp; aa.second==bb.second) <span class="hljs-keyword">return</span> aa.second;
+    <span class="hljs-comment">// cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
 }
 
-signed main(){
-    n=read();m=read();
-    for (int i=1;i&lt;=n;i++){
-        int x=read(),y=read();
-        a[i]=make_pair(x,y);
+<span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    n=<span class="hljs-built_in">read</span>();m=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++){
+        <span class="hljs-type">int</span> x=<span class="hljs-built_in">read</span>(),y=<span class="hljs-built_in">read</span>();
+        a[i]=<span class="hljs-built_in">make_pair</span>(x,y);
     }
-    for (int i=1;i&lt;=m;i++){
-        int x=read(),y=read();
-        b[i]=make_pair(x,y);
-    }
-
-    bool tmp[15];
-    for (int i=1;i&lt;=n;i++){
-        int cnt=0;
-        memset(tmp,0,sizeof(tmp));
-        for (int j=1;j&lt;=m;j++){
-            int now=have_same(a[i],b[j]);
-            is[now]=true;tmp[now]=true;
-        }
-        for (int j=1;j&lt;=9;j++) cnt+=tmp[j];
-        if (cnt&gt;1){
-            cout&lt;&lt;-1&lt;&lt;endl;
-            return 0;
-        }
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++){
+        <span class="hljs-type">int</span> x=<span class="hljs-built_in">read</span>(),y=<span class="hljs-built_in">read</span>();
+        b[i]=<span class="hljs-built_in">make_pair</span>(x,y);
     }
 
-    for (int i=1;i&lt;=m;i++){
-        int cnt=0;
-        memset(tmp,0,sizeof(tmp));
-        for (int j=1;j&lt;=n;j++){
-            int now=have_same(a[j],b[i]);
-            tmp[now]=true;
+    <span class="hljs-type">bool</span> tmp[<span class="hljs-number">15</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++){
+        <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">memset</span>(tmp,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(tmp));
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++){
+            <span class="hljs-type">int</span> now=<span class="hljs-built_in">have_same</span>(a[i],b[j]);
+            is[now]=<span class="hljs-literal">true</span>;tmp[now]=<span class="hljs-literal">true</span>;
         }
-        for (int j=1;j&lt;=9;j++) cnt+=tmp[j];
-        if (cnt&gt;1){
-            cout&lt;&lt;-1&lt;&lt;endl;
-            return 0;
-        }
-    }
-
-    int all_cnt=0;
-    for (int i=1;i&lt;=9;i++) {all_cnt+=is[i];if (is[i]) ans=i;}
-    if (all_cnt&gt;1) cout&lt;&lt;0&lt;&lt;endl; else cout&lt;&lt;ans&lt;&lt;endl;
-    return 0;
-}</code></pre><h2>E - Careful Maneuvering</h2><h3>Description</h3><p>一个平面上有 n 艘飞船位于 $(-100,y_{1,i})$，另外有 m 艘飞船位于 $(100,y_{2,i})$，现在需要让你确定两个点 $(0,y_1)$ 和 $(0,y_2)$，每艘宇宙飞船同时向两个点发射激光，射中其他飞船即摧毁，需要使得最后能摧毁的宇宙飞船数量尽量多。输出最多被摧毁的飞船数量。$1\leq n,m\leq 60, |y_{1,i}|,|y_{2,i}| \leq 10000$。</p><h3>Tags</h3><p><code>贪心</code> <code>暴力</code> <code>压位存储</code></p><h3>Analysis</h3><p>注意到 n 和 m 最大 60，那么完全可以对于左边和右边能被炸掉的小飞机压位存储一下。直接暴力枚举，对于左右一对小飞机，累计于把它们一次性轰掉的点放置位置，这样会形成 n×m 个点，那么最后再 $\Theta(n^2)$ 枚举点即可。<br>需要注意的坑：有飞船坐标重复情况，压位的时候需要判断某一位为 0 再累计！否则很容易爆出去……</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;vector&gt;
-
-using namespace std;
-#define int long long
-
-const int maxn=65;
-const int maxx=40005,zero=20001;
-
-inline int read(){
-    int ret=0,f=1;char ch=getchar();
-    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
-    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
-    return ret*f;
-}
-
-int n,m,INF;
-int x[maxn],y[maxn];
-int ans=0;
-
-pair&lt;int,int&gt; s[maxx]; // mid 扩展两倍
-int nxt[maxx];
-
-int pop_count(int x){
-    int ret=0;
-    while (x) ret+=x&amp;1,x&gt;&gt;=1;
-    return ret;
-}
-
-signed main(){
-    n=read();m=read();
-    for (int i=0;i&lt;n;i++) x[i]=read();
-    for (int i=0;i&lt;m;i++) y[i]=read();
-    sort(x,x+n);sort(y,y+m);
-    // for (int i=0;i&lt;n;i++) printf(&quot;%lld &quot;,x[i]);printf(&quot;\n&quot;);
-    // for (int i=0;i&lt;m;i++) printf(&quot;%lld &quot;,y[i]);printf(&quot;\n&quot;);
-    for (int i=0;i&lt;n;i++){
-        for (int j=0;j&lt;m;j++){
-            int mid=(x[i]+y[j])+zero;
-            if ((s[mid].first&amp;(1LL&lt;&lt;i))==0)  s[mid].first +=1LL&lt;&lt;i;
-            if ((s[mid].second&amp;(1LL&lt;&lt;j))==0) s[mid].second+=1LL&lt;&lt;j;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">9</span>;j++) cnt+=tmp[j];
+        <span class="hljs-keyword">if</span> (cnt&gt;<span class="hljs-number">1</span>){
+            cout&lt;&lt;<span class="hljs-number">-1</span>&lt;&lt;endl;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         }
     }
-    memset(nxt,63,sizeof(nxt));
-    INF=nxt[0];
-    int st=INF,lst=INF;
-    for (int i=-20000;i&lt;=20000;i++) if (s[i+zero].first!=0){
-        if (st==INF) st=i+zero,lst=i; else nxt[lst+zero]=i+zero,lst=i;
-    }
-    for (int i=st;i!=INF;i=nxt[i]){
-        for (int j=st;j!=INF;j=nxt[j]){
-            int num1=s[i].first  | s[j].first;
-            int num2=s[i].second | s[j].second;
-            // ans=max(ans,(int)__builtin_popcountll(num1)+__builtin_popcountll(num2));
-            ans=max(ans,(int)pop_count(num1)+(int)pop_count(num2));
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++){
+        <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">memset</span>(tmp,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(tmp));
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++){
+            <span class="hljs-type">int</span> now=<span class="hljs-built_in">have_same</span>(a[j],b[i]);
+            tmp[now]=<span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">9</span>;j++) cnt+=tmp[j];
+        <span class="hljs-keyword">if</span> (cnt&gt;<span class="hljs-number">1</span>){
+            cout&lt;&lt;<span class="hljs-number">-1</span>&lt;&lt;endl;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         }
     }
-    printf(&quot;%lld\n&quot;,ans);
-    return 0;
+
+    <span class="hljs-type">int</span> all_cnt=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">9</span>;i++) {all_cnt+=is[i];<span class="hljs-keyword">if</span> (is[i]) ans=i;}
+    <span class="hljs-keyword">if</span> (all_cnt&gt;<span class="hljs-number">1</span>) cout&lt;&lt;<span class="hljs-number">0</span>&lt;&lt;endl; <span class="hljs-keyword">else</span> cout&lt;&lt;ans&lt;&lt;endl;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
-</code></pre><h2>F - Compute Power</h2><h3>Description</h3><p>有 n 个任务，每个任务需要计算机 $a_i$ 的功率，并且要启用 $b_i$ 个处理器。你有足够的无限处理器计算机，每台计算机可以执行 1 个或 2 个任务，但是第二个任务的功率不能超过第一个任务。你需要安排一下，使得最后所有计算机的第一个任务<strong>平均功率</strong>最小。“平均功率”定义为：功率总和除以处理器总和。输出平均功率乘以 1000 <strong>向上取整</strong>。$1\leq n\leq 50, 1\leq a_i\leq 10^8, 1\leq b_i\leq 100$。</p><h3>Tags</h3><p><code>DP</code> <code>二分</code></p><h3>Analysis</h3><p>这题就是 0/1 分数规划的变形题，同样是选出 m 个物品使得 $\frac {\sum a_i} {\sum b_i}$ 尽量小。不同之处在于需要考虑第二个任务，这个直接排序即可解决：$a_i$ 先从小到大排序，可以定义 <code>F[i][j]</code> 表示前 i 个任务剩余 j 个未处理（这 j 个任务可以被接下来的计算机“认领”为第二个任务，既然 $a_i$ 为升序）。<br>但是又会出现一个问题：有很多 $a_i$ 是相同的。第一个任务功率必须严格大于第二个，不能相同。可以改一下这个 DP 定义：<code>F[i][j][k]</code> 表示前 i 个任务，剩余 j 个和 $a_i$ 不一样的和 k 个和 $a_i$ 一样的。状态转移很容易得到。<br>注意向上取整（C++ 函数是 <code>ceil()</code>）……</p><h3>Code</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;vector&gt;
-#include&lt;cmath&gt;
+</code></pre>
+<h2><a id="e---careful-maneuvering" class="heading-anchor"></a>E - Careful Maneuvering</h2>
+<h3><a id="description-1" class="heading-anchor"></a>Description</h3>
+<p>一个平面上有 n 艘飞船位于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>100</mn><mo separator="true">,</mo><msub><mi>y</mi><mrow><mn>1</mn><mo separator="true">,</mo><mi>i</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-100,y_{1,i})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">100</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，另外有 m 艘飞船位于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>100</mn><mo separator="true">,</mo><msub><mi>y</mi><mrow><mn>2</mn><mo separator="true">,</mo><mi>i</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(100,y_{2,i})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mopen">(</span><span class="mord">100</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，现在需要让你确定两个点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,y_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,y_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，每艘宇宙飞船同时向两个点发射激光，射中其他飞船即摧毁，需要使得最后能摧毁的宇宙飞船数量尽量多。输出最多被摧毁的飞船数量。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>60</mn><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><msub><mi>y</mi><mrow><mn>1</mn><mo separator="true">,</mo><mi>i</mi></mrow></msub><mi mathvariant="normal">∣</mi><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><msub><mi>y</mi><mrow><mn>2</mn><mo separator="true">,</mo><mi>i</mi></mrow></msub><mi mathvariant="normal">∣</mi><mo>≤</mo><mn>10000</mn></mrow><annotation encoding="application/x-tex">1\leq n,m\leq 60, |y_{1,i}|,|y_{2,i}| \leq 10000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">60</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10000</span></span></span></span>。</p>
+<h3><a id="tags-1" class="heading-anchor"></a>Tags</h3>
+<p><code>贪心</code> <code>暴力</code> <code>压位存储</code></p>
+<h3><a id="analysis-1" class="heading-anchor"></a>Analysis</h3>
+<p>注意到 n 和 m 最大 60，那么完全可以对于左边和右边能被炸掉的小飞机压位存储一下。直接暴力枚举，对于左右一对小飞机，累计于把它们一次性轰掉的点放置位置，这样会形成 n×m 个点，那么最后再 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 枚举点即可。<br>
+需要注意的坑：有飞船坐标重复情况，压位的时候需要判断某一位为 0 再累计！否则很容易爆出去……</p>
+<h3><a id="code-1" class="heading-anchor"></a>Code</h3>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span>
 
-#define int long long
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span>
 
-inline int read(){
-    int ret=0,f=1;char ch=getchar();
-    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
-    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
-    return ret*f;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">65</span>;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxx=<span class="hljs-number">40005</span>,zero=<span class="hljs-number">20001</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>) {<span class="hljs-keyword">if</span> (ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;ch=<span class="hljs-built_in">getchar</span>();}
+    <span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>) ret=ret*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">return</span> ret*f;
 }
 
-const int maxn=55;
-const double eps=1e-5,INF=1.0e9;
-int n;
-double ans=-1.0;
-double f[maxn][maxn][maxn];
+<span class="hljs-type">int</span> n,m,INF;
+<span class="hljs-type">int</span> x[maxn],y[maxn];
+<span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>;
 
-//f[i][j][k]: 前 i 个任务，剩余 j 个和 a[i] 不一样的和 k 个和 a[i] 一样的
+pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; s[maxx]; <span class="hljs-comment">// mid 扩展两倍</span>
+<span class="hljs-type">int</span> nxt[maxx];
 
-pair&lt;int,int&gt; tasks[maxn];
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop_count</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>{
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (x) ret+=x&amp;<span class="hljs-number">1</span>,x&gt;&gt;=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> ret;
+}
 
-bool check(double now){
-    for (int i=0;i&lt;=n;i++) for (int j=0;j&lt;=n;j++) for (int k=0;k&lt;=n;k++) f[i][j][k]=INF;
-    f[0][0][0]=0.0;
-    for (int i=1;i&lt;=n;i++)
-    for (int j=0;j&lt;=i;j++)
-    for (int k=0;k&lt;=i;k++) if (f[i-1][j][k]!=INF){
-        double delta=(double)tasks[i].first-now*(double)tasks[i].second;
-        if (tasks[i-1].first==tasks[i].first || i==1){
-            f[i][j][k]=min(f[i][j][k],f[i-1][j][k]+delta);
-            if (j-1&gt;=0) f[i][j-1][k]=min(f[i][j-1][k],f[i-1][j][k]+delta);
-            f[i][j][k+1]=min(f[i][j][k+1],f[i-1][j][k]);
-        } else {
-            if (j+k&lt;=n) f[i][j+k][0]=min(f[i][j+k][0],f[i-1][j][k]+delta);
-            if (j+k-1&gt;=0 &amp;&amp; j+k-1&lt;=n) f[i][j+k-1][0]=min(f[i][j+k-1][0],f[i-1][j][k]+delta);
-            if (j+k&lt;=n) f[i][j+k][1]=min(f[i][j+k][1],f[i-1][j][k]);
+<span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    n=<span class="hljs-built_in">read</span>();m=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) x[i]=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++) y[i]=<span class="hljs-built_in">read</span>();
+    <span class="hljs-built_in">sort</span>(x,x+n);<span class="hljs-built_in">sort</span>(y,y+m);
+    <span class="hljs-comment">// for (int i=0;i&lt;n;i++) printf(&quot;%lld &quot;,x[i]);printf(&quot;\n&quot;);</span>
+    <span class="hljs-comment">// for (int i=0;i&lt;m;i++) printf(&quot;%lld &quot;,y[i]);printf(&quot;\n&quot;);</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++){
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;m;j++){
+            <span class="hljs-type">int</span> mid=(x[i]+y[j])+zero;
+            <span class="hljs-keyword">if</span> ((s[mid].first&amp;(<span class="hljs-number">1LL</span>&lt;&lt;i))==<span class="hljs-number">0</span>)  s[mid].first +=<span class="hljs-number">1LL</span>&lt;&lt;i;
+            <span class="hljs-keyword">if</span> ((s[mid].second&amp;(<span class="hljs-number">1LL</span>&lt;&lt;j))==<span class="hljs-number">0</span>) s[mid].second+=<span class="hljs-number">1LL</span>&lt;&lt;j;
         }
     }
-    return f[n][0][0]&lt;0.0;
-}
-
-bool cmp(pair&lt;int,int&gt; aa,pair&lt;int,int&gt; bb){
-    return aa.first&lt;bb.first;
-}
-
-signed main(){
-    n=read();
-    for (int i=1;i&lt;=n;i++) tasks[i].first=read();
-    for (int i=1;i&lt;=n;i++) tasks[i].second=read();
-    sort(tasks+1,tasks+1+n,cmp);
-    double L=0.0001,R=1.0e8;
-    while (L&lt;=R){
-        double mid=(L+R)/2.0;
-        if (check(mid)) R=mid-eps; else ans=mid,L=mid+eps;
+    <span class="hljs-built_in">memset</span>(nxt,<span class="hljs-number">63</span>,<span class="hljs-built_in">sizeof</span>(nxt));
+    INF=nxt[<span class="hljs-number">0</span>];
+    <span class="hljs-type">int</span> st=INF,lst=INF;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">-20000</span>;i&lt;=<span class="hljs-number">20000</span>;i++) <span class="hljs-keyword">if</span> (s[i+zero].first!=<span class="hljs-number">0</span>){
+        <span class="hljs-keyword">if</span> (st==INF) st=i+zero,lst=i; <span class="hljs-keyword">else</span> nxt[lst+zero]=i+zero,lst=i;
     }
-    // printf(&quot;%.16f\n&quot;,ans);
-    printf(&quot;%lld\n&quot;,(int)ceil(ans*1000.0));
-    return 0;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z27l9YF" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;cf994&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/cf994&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=st;i!=INF;i=nxt[i]){
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=st;j!=INF;j=nxt[j]){
+            <span class="hljs-type">int</span> num1=s[i].first  | s[j].first;
+            <span class="hljs-type">int</span> num2=s[i].second | s[j].second;
+            <span class="hljs-comment">// ans=max(ans,(int)__builtin_popcountll(num1)+__builtin_popcountll(num2));</span>
+            ans=<span class="hljs-built_in">max</span>(ans,(<span class="hljs-type">int</span>)<span class="hljs-built_in">pop_count</span>(num1)+(<span class="hljs-type">int</span>)<span class="hljs-built_in">pop_count</span>(num2));
+        }
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>,ans);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+</code></pre>
+<h2><a id="f---compute-power" class="heading-anchor"></a>F - Compute Power</h2>
+<h3><a id="description-2" class="heading-anchor"></a>Description</h3>
+<p>有 n 个任务，每个任务需要计算机 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的功率，并且要启用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个处理器。你有足够的无限处理器计算机，每台计算机可以执行 1 个或 2 个任务，但是第二个任务的功率不能超过第一个任务。你需要安排一下，使得最后所有计算机的第一个任务<strong>平均功率</strong>最小。“平均功率”定义为：功率总和除以处理器总和。输出平均功率乘以 1000 <strong>向上取整</strong>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>50</mn><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>8</mn></msup><mo separator="true">,</mo><mn>1</mn><mo>≤</mo><msub><mi>b</mi><mi>i</mi></msub><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">1\leq n\leq 50, 1\leq a_i\leq 10^8, 1\leq b_i\leq 100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">50</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span>。</p>
+<h3><a id="tags-2" class="heading-anchor"></a>Tags</h3>
+<p><code>DP</code> <code>二分</code></p>
+<h3><a id="analysis-2" class="heading-anchor"></a>Analysis</h3>
+<p>这题就是 0/1 分数规划的变形题，同样是选出 m 个物品使得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo>∑</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><mrow><mo>∑</mo><msub><mi>b</mi><mi>i</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac {\sum a_i} {\sum b_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 尽量小。不同之处在于需要考虑第二个任务，这个直接排序即可解决：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 先从小到大排序，可以定义 <code>F[i][j]</code> 表示前 i 个任务剩余 j 个未处理（这 j 个任务可以被接下来的计算机“认领”为第二个任务，既然 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 为升序）。<br>
+但是又会出现一个问题：有很多 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是相同的。第一个任务功率必须严格大于第二个，不能相同。可以改一下这个 DP 定义：<code>F[i][j][k]</code> 表示前 i 个任务，剩余 j 个和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 不一样的和 k 个和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 一样的。状态转移很容易得到。<br>
+注意向上取整（C++ 函数是 <code>ceil()</code>）……</p>
+<h3><a id="code-2" class="heading-anchor"></a>Code</h3>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cmath&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>) {<span class="hljs-keyword">if</span> (ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;ch=<span class="hljs-built_in">getchar</span>();}
+    <span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>) ret=ret*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">return</span> ret*f;
+}
+
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">55</span>;
+<span class="hljs-type">const</span> <span class="hljs-type">double</span> eps=<span class="hljs-number">1e-5</span>,INF=<span class="hljs-number">1.0e9</span>;
+<span class="hljs-type">int</span> n;
+<span class="hljs-type">double</span> ans=<span class="hljs-number">-1.0</span>;
+<span class="hljs-type">double</span> f[maxn][maxn][maxn];
+
+<span class="hljs-comment">//f[i][j][k]: 前 i 个任务，剩余 j 个和 a[i] 不一样的和 k 个和 a[i] 一样的</span>
+
+pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; tasks[maxn];
+
+<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> now)</span></span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++) <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=n;j++) <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;=n;k++) f[i][j][k]=INF;
+    f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">0.0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;j++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;=i;k++) <span class="hljs-keyword">if</span> (f[i<span class="hljs-number">-1</span>][j][k]!=INF){
+        <span class="hljs-type">double</span> delta=(<span class="hljs-type">double</span>)tasks[i].first-now*(<span class="hljs-type">double</span>)tasks[i].second;
+        <span class="hljs-keyword">if</span> (tasks[i<span class="hljs-number">-1</span>].first==tasks[i].first || i==<span class="hljs-number">1</span>){
+            f[i][j][k]=<span class="hljs-built_in">min</span>(f[i][j][k],f[i<span class="hljs-number">-1</span>][j][k]+delta);
+            <span class="hljs-keyword">if</span> (j<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">0</span>) f[i][j<span class="hljs-number">-1</span>][k]=<span class="hljs-built_in">min</span>(f[i][j<span class="hljs-number">-1</span>][k],f[i<span class="hljs-number">-1</span>][j][k]+delta);
+            f[i][j][k+<span class="hljs-number">1</span>]=<span class="hljs-built_in">min</span>(f[i][j][k+<span class="hljs-number">1</span>],f[i<span class="hljs-number">-1</span>][j][k]);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> (j+k&lt;=n) f[i][j+k][<span class="hljs-number">0</span>]=<span class="hljs-built_in">min</span>(f[i][j+k][<span class="hljs-number">0</span>],f[i<span class="hljs-number">-1</span>][j][k]+delta);
+            <span class="hljs-keyword">if</span> (j+k<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">0</span> &amp;&amp; j+k<span class="hljs-number">-1</span>&lt;=n) f[i][j+k<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>]=<span class="hljs-built_in">min</span>(f[i][j+k<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>],f[i<span class="hljs-number">-1</span>][j][k]+delta);
+            <span class="hljs-keyword">if</span> (j+k&lt;=n) f[i][j+k][<span class="hljs-number">1</span>]=<span class="hljs-built_in">min</span>(f[i][j+k][<span class="hljs-number">1</span>],f[i<span class="hljs-number">-1</span>][j][k]);
+        }
+    }
+    <span class="hljs-keyword">return</span> f[n][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]&lt;<span class="hljs-number">0.0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; aa,pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; bb)</span></span>{
+    <span class="hljs-keyword">return</span> aa.first&lt;bb.first;
+}
+
+<span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    n=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) tasks[i].first=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) tasks[i].second=<span class="hljs-built_in">read</span>();
+    <span class="hljs-built_in">sort</span>(tasks+<span class="hljs-number">1</span>,tasks+<span class="hljs-number">1</span>+n,cmp);
+    <span class="hljs-type">double</span> L=<span class="hljs-number">0.0001</span>,R=<span class="hljs-number">1.0e8</span>;
+    <span class="hljs-keyword">while</span> (L&lt;=R){
+        <span class="hljs-type">double</span> mid=(L+R)/<span class="hljs-number">2.0</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) R=mid-eps; <span class="hljs-keyword">else</span> ans=mid,L=mid+eps;
+    }
+    <span class="hljs-comment">// printf(&quot;%.16f\n&quot;,ans);</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>,(<span class="hljs-type">int</span>)<span class="hljs-built_in">ceil</span>(ans*<span class="hljs-number">1000.0</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z9bftW" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;cf994&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -304,4 +369,4 @@ CodeForces Round #488 Div2 题解 </span> </div> <div class="m-2"> <ul data-astr
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

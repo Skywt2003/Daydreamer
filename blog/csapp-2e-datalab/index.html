@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CSAPP 2e Datalab 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CSAPP 2e Datalab 题解</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ CSAPP 2e Datalab 题解 </span> </h5> <div class="m-2 secondary-color" data-astr
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,255 +72,387 @@ CSAPP 2e Datalab 题解 </span> </h5> <div class="m-2 secondary-color" data-astr
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CSAPP 2e Datalab 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 03 月 20 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 4 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/csapp-2e-datalab" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>CSAPP 是 CMU 享誉全球的课程，尤其以其 lab 难度之高著称。这是课程的第一个 lab：datalab，为了让我们熟练掌握计算机中的数据存储而设计。</p><!--more--><h2>前言：什么是 cheating</h2><p>之前在 B 站上 CSAPP 第一节课，教授就说了在 CMU，作弊的定义是什么，说实话有点 shocked：</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/03/708355136.png" alt="Cheating: Description" title="Cheating: Description"></p><p><img src="https://blog.skywt.cn/usr/uploads/2023/03/3491785294.png" alt="Cheating: Consequence" title="Cheating: Consequence"></p><p>CMU CSAPP 的规定是，完成 lab 的时候不可以上网查资料，只要上网搜索了，不管有没有找结果，搜索的这个过程就算作 cheating（这只是课程实验！）。<br>一个学期有 25 人因为 cheating 受到惩罚，而且后果十分严重。看看我们的 HNU，至今没听说过有谁因为作弊而受到处分……</p><p>按照这个要求，lab 做得真的非常痛苦。有些题目要想很久还想不出来。而且说实话还是有一两个题目不会做，去网上看了别人的 solution。但是这样做完的 datalab，相比直接上网一通搜索抄来的代码，确实更加有成就感，也对自己的「二进制思维」能力有更大的锻炼。这也正是这几个 lab 的意义所在吧。</p><p>所以，如果你在做 datalab 而上网搜索看到了这里，在继续看下去之前，不妨再继续独立思考一下吧。</p><h2>本实验的一些坑</h2><ul><li><code>dlc</code> 这个语法检查器按照 C89/C90（ANSI C）的标准，这个标准规定<strong>所有局部变量都要在代码块的开头定义</strong>。所以如果在函数中途定义一个局部变量，虽然用 <code>make</code> 可以正常编译（现在的编译器很少还用 ANSI C 标准），但是用 <code>dlc</code> 检查则会提示 <code>parse error</code> 的错误。</li><li>实验环境必须是旧版本的 Linux 环境（如 Ubuntu 12.04 LTS）。使用较新的发行版可能会导致无法通过 fitsBits 这一关。（目前暂不清楚是编译器还是内核等的问题，据说是本 lab 本身的一个 bug）</li></ul><h2>用 docker 创建运行环境</h2><p>在 x86 的主机上使用 docker 创建 Ubuntu 12.04 LTS 的容器，指定将容器内 <code>/home</code> 目录映射到容器外的目录，然后进入容器，安装相关软件：</p><pre><code class="lang-bash"># 将容器内 /home 映射到容器外 /root/Lab/HNU-CSAPP/ex2/docker-env/home，这两个目录也可以自己指定
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CSAPP 2e Datalab 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 3 月 20 日 10:37</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80%E4%BB%80%E4%B9%88%E6%98%AF-cheating">前言：什么是 cheating</a></li>
+<li><a href="#%E6%9C%AC%E5%AE%9E%E9%AA%8C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91">本实验的一些坑</a></li>
+<li><a href="#%E7%94%A8-docker-%E5%88%9B%E5%BB%BA%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83">用 docker 创建运行环境</a></li>
+<li><a href="#bitand">bitAnd</a></li>
+<li><a href="#getbyte">getByte</a></li>
+<li><a href="#logicalshift">logicalShift</a></li>
+<li><a href="#bitcount">bitCount</a></li>
+<li><a href="#bang">bang</a></li>
+<li><a href="#tmin">tmin</a></li>
+<li><a href="#fitsbits">fitsBits</a></li>
+<li><a href="#divpwr2">divpwr2</a></li>
+<li><a href="#negate">negate</a></li>
+<li><a href="#ispositive">isPositive</a></li>
+<li><a href="#islessorequal">isLessOrEqual</a></li>
+<li><a href="#ilog2">ilog2</a></li>
+<li><a href="#float_neg">float_neg</a></li>
+<li><a href="#float_i2f">float_i2f</a></li>
+<li><a href="#float_twice">float_twice</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E5%8F%82%E8%80%83">完整代码参考</a></li>
+</ul>
+<p>CSAPP 是 CMU 享誉全球的课程，尤其以其 lab 难度之高著称。这是课程的第一个 lab：datalab，为了让我们熟练掌握计算机中的数据存储而设计。</p>
+<h2><a id="前言什么是-cheating" class="heading-anchor"></a>前言：什么是 cheating</h2>
+<p>之前在 B 站上 CSAPP 第一节课，教授就说了在 CMU，作弊的定义是什么，说实话有点 shocked：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/03/708355136.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/03/708355136.png" alt="Cheating: Description" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/03/3491785294.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/03/3491785294.png" alt="Cheating: Consequence" title="" /></a></p>
+<p>CMU CSAPP 的规定是，完成 lab 的时候不可以上网查资料，只要上网搜索了，不管有没有找结果，搜索的这个过程就算作 cheating（这只是课程实验！）。<br>
+一个学期有 25 人因为 cheating 受到惩罚，而且后果十分严重。看看我们的 HNU，至今没听说过有谁因为作弊而受到处分……</p>
+<p>按照这个要求，lab 做得真的非常痛苦。有些题目要想很久还想不出来。而且说实话还是有一两个题目不会做，去网上看了别人的 solution。但是这样做完的 datalab，相比直接上网一通搜索抄来的代码，确实更加有成就感，也对自己的「二进制思维」能力有更大的锻炼。这也正是这几个 lab 的意义所在吧。</p>
+<p>所以，如果你在做 datalab 而上网搜索看到了这里，在继续看下去之前，不妨再继续独立思考一下吧。</p>
+<h2><a id="本实验的一些坑" class="heading-anchor"></a>本实验的一些坑</h2>
+<ul>
+<li><code>dlc</code> 这个语法检查器按照 C89/C90（ANSI C）的标准，这个标准规定<strong>所有局部变量都要在代码块的开头定义</strong>。所以如果在函数中途定义一个局部变量，虽然用 <code>make</code> 可以正常编译（现在的编译器很少还用 ANSI C 标准），但是用 <code>dlc</code> 检查则会提示 <code>parse error</code> 的错误。</li>
+<li>实验环境必须是旧版本的 Linux 环境（如 Ubuntu 12.04 LTS）。使用较新的发行版可能会导致无法通过 fitsBits 这一关。（目前暂不清楚是编译器还是内核等的问题，据说是本 lab 本身的一个 bug）</li>
+</ul>
+<h2><a id="用-docker-创建运行环境" class="heading-anchor"></a>用 docker 创建运行环境</h2>
+<p>在 x86 的主机上使用 docker 创建 Ubuntu 12.04 LTS 的容器，指定将容器内 <code>/home</code> 目录映射到容器外的目录，然后进入容器，安装相关软件：</p>
+<pre><code class="language-bash"><span class="hljs-comment"># 将容器内 /home 映射到容器外 /root/Lab/HNU-CSAPP/ex2/docker-env/home，这两个目录也可以自己指定</span>
 docker run -itd --name datalab -v /root/Lab/HNU-CSAPP/ex2/docker-env/home:/home ubuntu:12.04
-# 进入容器内的 shell
-docker exec -it datalab /bin/bash
-# 12.04 年代久远，需要将 sources 里 archive.ubuntu.com 改为 old-reloease.ubuntu.com 才能 apt-get update
-sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
-# 获取软件包列表
+<span class="hljs-comment"># 进入容器内的 shell</span>
+docker <span class="hljs-built_in">exec</span> -it datalab /bin/bash
+<span class="hljs-comment"># 12.04 年代久远，需要将 sources 里 archive.ubuntu.com 改为 old-reloease.ubuntu.com 才能 apt-get update</span>
+sed -i -e <span class="hljs-string">&#x27;s/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g&#x27;</span> /etc/apt/sources.list
+<span class="hljs-comment"># 获取软件包列表</span>
 apt-get update
-# 安装本实验必要的软件包
-apt-get install gcc make gcc-multilib</code></pre><p>回到容器外，将文件移进指定的目录（<code>/root/Lab/HNU-CSAPP/ex2/docker-env/home</code>），编辑好后再进入容器测试。<br>可以用 tmux 半屏开 vim 写代码，半屏进容器终端测试。</p><p>注意如果在容器外测试过了，进入容器要 <code>make clean</code> 再重新 <code>make</code>，因为不同环境编译生成的二进制可执行文件可能不兼容。</p><h2>bitAnd</h2><p>用或和非实现与，用直接取反的方法即可：x and y = not ((not x) or (not y))。</p><h2>getByte</h2><p>很显然答案是 <code>(x &gt;&gt; n*8) &amp; 0xFF</code>。但是不允许使用乘法，如何获得 <code>n*8</code> 呢？<br>答案是直接用加法。8 个 n 相加会超过 ops 数量限制，我们可以先加出 2n、4n。</p><h2>logicalShift</h2><p>要求实现 logical shift，因为默认的 shift 是 arithmetic shift。本质的区别在于负数的 shr，前者左边出来的是 0 而右者出来的是 1。</p><p>很容易想到可以 and 上一个 keeper，这个 keeper 的值是 <code>0000111...11</code>，右边的 1 就是要保留的那些位。这样可以去掉左边产生的 1。<br>如何得到这个 keeper？显然 keeper = <code>0x7FFFFFFF</code> &gt;&gt; (n-1)。</p><p>有两个问题。首先是如何产生 <code>0x7FFFFFFF</code> 这个数字呢？因为游戏规则规定立即数赋值不能超过 2 Byte。答案是 <code>~(1 &lt;&lt; 31)</code>。</p><p>接下来是如何处理 n = 0 的情况。好在这关允许我们用 <code>!</code> 运算符，可以实现类似选择赋值的语句。<br>具体来说，我们需要这样一个 flag 变量，当 n 为 0 时它是 <code>0x00000000</code>，当 n 非 0 时它是 <code>0xFFFFFFFF</code>。<br>试试用 <code>!</code> 运算符，直接对 n 取逻辑非 notn，这样 n 为 0 时我们得到 1，n 非 0 时我们得到 0。<br>很显然，flag = notn - 1。<br>现在我们分别计算出 n 为 0 和不为 0 的两种情况 result1 和 result2，则最后只需要返回 <code>((!flag) &amp; result1) | (flag &amp; result2)</code>。是不是有点像数电里的「多路复用」呢。<br><strong>这种对 n = 0 特判的方法，在后面的关卡中会多次遇到。</strong></p><p>最后，这关不能用 <code>-</code> 减法，如何实现 -1 呢？直接用加上 <code>0xFFFFFFFF</code> 就行啦。</p><h2>bitCount</h2><p>（这题有点难想 😨）</p><p>要求统计二进制中 1 的个数（就是 popcount）。其实对于每一位是 0 是 1 我们都可以通过 and 得知，最难的就是如何累加。<br>累加的部分可以考虑分治，要累加 32 位的结果，我们假设得到了两个 16 位的结果，只考虑这两个如何相加；要计算 16 位的结果只考虑两个 8 位的结果如何相加，以此类推。<br>那么两个 16 位的结果如何相加呢？我们假设两个结果分别存储在 32 位 int 的高 16 位和低 16 位，只要把两个部分取出来，前者右移 16 位相加即可。下面的也类似。</p><p>除此之外，题目要求使用的立即数大小不超过 0xFF，需要用一些 tricky 的手段获得我们要的立即数，以免超出符号数量限制。可以参阅代码。</p><h2>bang</h2><p>要求计算逻辑反，也就是我们要返回这样一个值，当 x 为全 0 时其为 1，x 任何一位为 1 时其为 0。<br>理所当然地可以想到应该把 x 每一位 or 起来（或者把 ~x 每一位 and 起来），结果放在最低位，得到 1 或 0。<br>然而如果真的取出 32 位每一位进行 or，ops 会超过限制。可以用分治的方法，先将 [0,15] 和 [16,31] 这两段按位处理放入低的一段，再处理 [0,7] 和 [8,15]，以此类推，可以在 ops 数量限制内完成。</p><h2>tmin</h2><p>返回最小的 int，就是 1 &lt;&lt; 31。</p><h2>fitsBits</h2><p>第一种方法是一开始想的奇怪方法，至少需要用到 19 个 ops，超过题目限制，其实不能通过。</p><p>要我们返回 0 或 1 表示 x 是否能被 n 位补码表示，实际上就是返回是否 $-2^{n-1} \le x \le 2^{n-1}-1$。<br>也就是 $-2^{n-1} \le x \lt 0$ 或 $0 \le x \le 2^{n-1}-1$。<br>再变换一下，就是：$0 \le x+2^{n-1} &lt; 2^{n-1}$ 或 $-2^{n-1} \le x-2^{n-1} \le -1$。<br>也就是如果 $x &lt; 0$ 则要满足 $x+2^{n-1} \ge 0$；如果 $x \ge 0$ 则要满足 $x-2^{n-1} \le -1$。依然根据 x 的符号位选择一个结果返回。</p><p>第二种方法则是可以通过的正解：</p><p>根据算数移位的性质。假设给我们一个 n 位补码表示的数，我们直接将其左移至与 32 位 int 符号位对齐，然后再移回去，得到的结果应该是和原来一样的。据此即可判断。</p><p><strong>⚠️ 这题使用较新版本的环境测试是无法通过的</strong>，目前暂不清楚与什么因素有关。在 Ubuntu 12.04 LTS x86_64 中测试可以通过。详见开头「用 docker 创建运行环境」。</p><h2>divpwr2</h2><p>要求返回 $\frac{x}{2^n}$，向 0 取整。<br>对于正数当然就是 &gt;&gt; n 即可，对于负数就有些复杂，因为 &gt;&gt; 运算默认向下取整，需要进行修正。<br>对于负数，列表可以发现，每个数字在计算之前要加上 $2^n-1$ 的偏移才能得到正确答案。<br>因为出现了 n - 1，所以还要特别考虑 n = 0 的情况。使用 logicalShift 一样的「多路复用」方法即可。</p><h2>negate</h2><p>取负数，就是 (~x)+1，很简单。</p><h2>isPositive</h2><p>根据符号位，可以轻易判断出这个数是否 &gt;= 0。既然本题要求判断 &gt; 0，也就是 0 是特殊情况，依然可以根据前面的方法特殊判断。</p><h2>isLessOrEqual</h2><p>判断 $x \le y$，不能直接判断 $y-x \ge 0$，因为会 overflow。<br>可以发现如果 x 和 y 同号，肯定不会 overflow。所以只需要对异号的情况进行判断。<br>为了更加清晰，列出一个真值表：</p><table><thead><tr><th>x 符号位</th><th>y 符号位</th><th>返回值</th></tr></thead><tbody><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>y-x 的符号位取反</td></tr><tr><td>1</td><td>1</td><td>y-x 的符号位取反</td></tr></tbody></table><p>依然是个分类讨论（「多路复用」）的思路，根据 x xor y 的值返回答案，如果为 1 答案是 x 的符号位，如果为 0 答案为 y-x 的符号位取反。</p><h2>ilog2</h2><p>要求返回 log2(x) 向下取整。很显然答案就是 x 的二进制中最左边的 1（最高位）在从右往左第几位。<br>首先通过将 x 按位或 x &gt;&gt; k 的手段（k 分别等于 1、2、4……），可以将 x = 0001xxxxx 变为 x = 000111111，也就是最高位之后全都变成 1。然后可以做一遍之前的 bitCount，将结果减去 1 即可。</p><h2>float_neg</h2><p>这部分终于可以用 if 了。只要判断 NaN 的情况原封不动返回，否则修改符号位返回就行。<br>对符号位取反可以对 <code>1&lt;&lt;31</code> 取异或。<br>可以构造两个变量 get_exp 和 get_frac 分别用于和一个数按位与，从而取出这个数中的 exp 或 frac 片段。exp 就是 <code>0xFF</code> &lt;&lt; 23，frac 则是 ~exp 再对符号位取反。</p><h2>float_i2f</h2><p>要将提供的 int 值 x 转换为 float。<br>int 和 float 关于负数的概念是截然不同的，所以我们必须对 int 的绝对值进行处理。所以首先要对于 x &lt; 0 的情况设置符号位后直接取相反数。（此时注意特判 tmin 的情况！它没有能由 int 表示的相反数）设置好 sign 后，只要处理 exp 和 frac 即可。<br>假设 x 是个 n 位的二进制数，exp 就等于 n - 1 + bias。<br>frac 就是右边的 n - 1 位（左对齐）。要考虑进位问题。将 frac 被截掉的部分拿出来（最多有 8 位），如果「大于 0x80」或者「等于 0x80 且frac 末位为 1」（round to even 的情况）则要进一位，frac 连续进位。注意到 frac 有可能进位进到 exp 里，但是我们的代码里不用判断，因为 frac 最高位之前就是 exp 最低位。（在这里是不是再次感到了 IEEE 浮点数设计的精妙？）<br>最后注意这题 0 也要特判，因为 0 属于 denomilized。</p><p>这题写起来很容易超过 ops 数量限制。需要省着点用。</p><h2>float_twice</h2><p>将给出的 float 翻两倍，要分别考虑 nomalized、denomolized 和 special 的情况。<br>nomolized 很简单，直接修改 exp 部分即可。注意可能有 nomolized 进入 infinity 的情况。<br>denomolized 只需要修改 frac 即可。注意可能有从 denomolized 进入 nomolized 的情况，要修改 exp。<br>最后 infinity、NaN 这两种值都原样返回，需要特判。</p><h2>完整代码参考</h2><pre><code class="lang-cpp">/* 
+<span class="hljs-comment"># 安装本实验必要的软件包</span>
+apt-get install gcc make gcc-multilib
+</code></pre>
+<p>回到容器外，将文件移进指定的目录（<code>/root/Lab/HNU-CSAPP/ex2/docker-env/home</code>），编辑好后再进入容器测试。<br>
+可以用 tmux 半屏开 vim 写代码，半屏进容器终端测试。</p>
+<p>注意如果在容器外测试过了，进入容器要 <code>make clean</code> 再重新 <code>make</code>，因为不同环境编译生成的二进制可执行文件可能不兼容。</p>
+<h2><a id="bitand" class="heading-anchor"></a>bitAnd</h2>
+<p>用或和非实现与，用直接取反的方法即可：x and y = not ((not x) or (not y))。</p>
+<h2><a id="getbyte" class="heading-anchor"></a>getByte</h2>
+<p>很显然答案是 <code>(x &gt;&gt; n*8) &amp; 0xFF</code>。但是不允许使用乘法，如何获得 <code>n*8</code> 呢？<br>
+答案是直接用加法。8 个 n 相加会超过 ops 数量限制，我们可以先加出 2n、4n。</p>
+<h2><a id="logicalshift" class="heading-anchor"></a>logicalShift</h2>
+<p>要求实现 logical shift，因为默认的 shift 是 arithmetic shift。本质的区别在于负数的 shr，前者左边出来的是 0 而右者出来的是 1。</p>
+<p>很容易想到可以 and 上一个 keeper，这个 keeper 的值是 <code>0000111...11</code>，右边的 1 就是要保留的那些位。这样可以去掉左边产生的 1。<br>
+如何得到这个 keeper？显然 keeper = <code>0x7FFFFFFF</code> &gt;&gt; (n-1)。</p>
+<p>有两个问题。首先是如何产生 <code>0x7FFFFFFF</code> 这个数字呢？因为游戏规则规定立即数赋值不能超过 2 Byte。答案是 <code>~(1 &lt;&lt; 31)</code>。</p>
+<p>接下来是如何处理 n = 0 的情况。好在这关允许我们用 <code>!</code> 运算符，可以实现类似选择赋值的语句。<br>
+具体来说，我们需要这样一个 flag 变量，当 n 为 0 时它是 <code>0x00000000</code>，当 n 非 0 时它是 <code>0xFFFFFFFF</code>。<br>
+试试用 <code>!</code> 运算符，直接对 n 取逻辑非 notn，这样 n 为 0 时我们得到 1，n 非 0 时我们得到 0。<br>
+很显然，flag = notn - 1。<br>
+现在我们分别计算出 n 为 0 和不为 0 的两种情况 result1 和 result2，则最后只需要返回 <code>((!flag) &amp; result1) | (flag &amp; result2)</code>。是不是有点像数电里的「多路复用」呢。<br>
+<strong>这种对 n = 0 特判的方法，在后面的关卡中会多次遇到。</strong></p>
+<p>最后，这关不能用 <code>-</code> 减法，如何实现 -1 呢？直接用加上 <code>0xFFFFFFFF</code> 就行啦。</p>
+<h2><a id="bitcount" class="heading-anchor"></a>bitCount</h2>
+<p>（这题有点难想 😨）</p>
+<p>要求统计二进制中 1 的个数（就是 popcount）。其实对于每一位是 0 是 1 我们都可以通过 and 得知，最难的就是如何累加。<br>
+累加的部分可以考虑分治，要累加 32 位的结果，我们假设得到了两个 16 位的结果，只考虑这两个如何相加；要计算 16 位的结果只考虑两个 8 位的结果如何相加，以此类推。<br>
+那么两个 16 位的结果如何相加呢？我们假设两个结果分别存储在 32 位 int 的高 16 位和低 16 位，只要把两个部分取出来，前者右移 16 位相加即可。下面的也类似。</p>
+<p>除此之外，题目要求使用的立即数大小不超过 0xFF，需要用一些 tricky 的手段获得我们要的立即数，以免超出符号数量限制。可以参阅代码。</p>
+<h2><a id="bang" class="heading-anchor"></a>bang</h2>
+<p>要求计算逻辑反，也就是我们要返回这样一个值，当 x 为全 0 时其为 1，x 任何一位为 1 时其为 0。<br>
+理所当然地可以想到应该把 x 每一位 or 起来（或者把 ~x 每一位 and 起来），结果放在最低位，得到 1 或 0。<br>
+然而如果真的取出 32 位每一位进行 or，ops 会超过限制。可以用分治的方法，先将 [0,15] 和 [16,31] 这两段按位处理放入低的一段，再处理 [0,7] 和 [8,15]，以此类推，可以在 ops 数量限制内完成。</p>
+<h2><a id="tmin" class="heading-anchor"></a>tmin</h2>
+<p>返回最小的 int，就是 1 &lt;&lt; 31。</p>
+<h2><a id="fitsbits" class="heading-anchor"></a>fitsBits</h2>
+<p>第一种方法是一开始想的奇怪方法，至少需要用到 19 个 ops，超过题目限制，其实不能通过。</p>
+<p>要我们返回 0 或 1 表示 x 是否能被 n 位补码表示，实际上就是返回是否 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>x</mi><mo>≤</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-2^{n-1} \le x \le 2^{n-1}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。<br>
+也就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">-2^{n-1} \le x \lt 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 2^{n-1}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。<br>
+再变换一下，就是：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>+</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>&lt;</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">0 \le x+2^{n-1} &lt; 2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8532em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>x</mi><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-2^{n-1} \le x-2^{n-1} \le -1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。<br>
+也就是如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &lt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 则要满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x+2^{n-1} \ge 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>；如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ge 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 则要满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x-2^{n-1} \le -1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。依然根据 x 的符号位选择一个结果返回。</p>
+<p>第二种方法则是可以通过的正解：</p>
+<p>根据算数移位的性质。假设给我们一个 n 位补码表示的数，我们直接将其左移至与 32 位 int 符号位对齐，然后再移回去，得到的结果应该是和原来一样的。据此即可判断。</p>
+<p><strong>⚠️ 这题使用较新版本的环境测试是无法通过的</strong>，目前暂不清楚与什么因素有关。在 Ubuntu 12.04 LTS x86_64 中测试可以通过。详见开头「用 docker 创建运行环境」。</p>
+<h2><a id="divpwr2" class="heading-anchor"></a>divpwr2</h2>
+<p>要求返回 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>x</mi><msup><mn>2</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{x}{2^n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0404em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5935em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，向 0 取整。<br>
+对于正数当然就是 &gt;&gt; n 即可，对于负数就有些复杂，因为 &gt;&gt; 运算默认向下取整，需要进行修正。<br>
+对于负数，列表可以发现，每个数字在计算之前要加上 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的偏移才能得到正确答案。<br>
+因为出现了 n - 1，所以还要特别考虑 n = 0 的情况。使用 logicalShift 一样的「多路复用」方法即可。</p>
+<h2><a id="negate" class="heading-anchor"></a>negate</h2>
+<p>取负数，就是 (~x)+1，很简单。</p>
+<h2><a id="ispositive" class="heading-anchor"></a>isPositive</h2>
+<p>根据符号位，可以轻易判断出这个数是否 &gt;= 0。既然本题要求判断 &gt; 0，也就是 0 是特殊情况，依然可以根据前面的方法特殊判断。</p>
+<h2><a id="islessorequal" class="heading-anchor"></a>isLessOrEqual</h2>
+<p>判断 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x \le y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>，不能直接判断 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y-x \ge 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>，因为会 overflow。<br>
+可以发现如果 x 和 y 同号，肯定不会 overflow。所以只需要对异号的情况进行判断。<br>
+为了更加清晰，列出一个真值表：</p>
+<table>
+<thead>
+<tr><th>x 符号位</th><th>y 符号位</th><th>返回值</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>0</td><td>0</td><td>y-x 的符号位取反</td></tr>
+<tr><td>1</td><td>1</td><td>y-x 的符号位取反</td></tr>
+</tbody>
+</table>
+<p>依然是个分类讨论（「多路复用」）的思路，根据 x xor y 的值返回答案，如果为 1 答案是 x 的符号位，如果为 0 答案为 y-x 的符号位取反。</p>
+<h2><a id="ilog2" class="heading-anchor"></a>ilog2</h2>
+<p>要求返回 log2(x) 向下取整。很显然答案就是 x 的二进制中最左边的 1（最高位）在从右往左第几位。<br>
+首先通过将 x 按位或 x &gt;&gt; k 的手段（k 分别等于 1、2、4……），可以将 x = 0001xxxxx 变为 x = 000111111，也就是最高位之后全都变成 1。然后可以做一遍之前的 bitCount，将结果减去 1 即可。</p>
+<h2><a id="float_neg" class="heading-anchor"></a>float_neg</h2>
+<p>这部分终于可以用 if 了。只要判断 NaN 的情况原封不动返回，否则修改符号位返回就行。<br>
+对符号位取反可以对 <code>1&lt;&lt;31</code> 取异或。<br>
+可以构造两个变量 get_exp 和 get_frac 分别用于和一个数按位与，从而取出这个数中的 exp 或 frac 片段。exp 就是 <code>0xFF</code> &lt;&lt; 23，frac 则是 ~exp 再对符号位取反。</p>
+<h2><a id="float_i2f" class="heading-anchor"></a>float_i2f</h2>
+<p>要将提供的 int 值 x 转换为 float。<br>
+int 和 float 关于负数的概念是截然不同的，所以我们必须对 int 的绝对值进行处理。所以首先要对于 x &lt; 0 的情况设置符号位后直接取相反数。（此时注意特判 tmin 的情况！它没有能由 int 表示的相反数）设置好 sign 后，只要处理 exp 和 frac 即可。<br>
+假设 x 是个 n 位的二进制数，exp 就等于 n - 1 + bias。<br>
+frac 就是右边的 n - 1 位（左对齐）。要考虑进位问题。将 frac 被截掉的部分拿出来（最多有 8 位），如果「大于 0x80」或者「等于 0x80 且frac 末位为 1」（round to even 的情况）则要进一位，frac 连续进位。注意到 frac 有可能进位进到 exp 里，但是我们的代码里不用判断，因为 frac 最高位之前就是 exp 最低位。（在这里是不是再次感到了 IEEE 浮点数设计的精妙？）<br>
+最后注意这题 0 也要特判，因为 0 属于 denomilized。</p>
+<p>这题写起来很容易超过 ops 数量限制。需要省着点用。</p>
+<h2><a id="float_twice" class="heading-anchor"></a>float_twice</h2>
+<p>将给出的 float 翻两倍，要分别考虑 nomalized、denomolized 和 special 的情况。<br>
+nomolized 很简单，直接修改 exp 部分即可。注意可能有 nomolized 进入 infinity 的情况。<br>
+denomolized 只需要修改 frac 即可。注意可能有从 denomolized 进入 nomolized 的情况，要修改 exp。<br>
+最后 infinity、NaN 这两种值都原样返回，需要特判。</p>
+<h2><a id="完整代码参考" class="heading-anchor"></a>完整代码参考</h2>
+<pre><code class="language-cpp"><span class="hljs-comment">/* 
  * bitAnd - x&amp;y using only ~ and | 
  *   Example: bitAnd(6, 5) = 4
  *   Legal ops: ~ |
  *   Max ops: 8
  *   Rating: 1
- */
-int bitAnd(int x, int y) {
-  return ~((~x) | (~y));
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bitAnd</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> </span>{
+  <span class="hljs-keyword">return</span> ~((~x) | (~y));
 }
-/* 
+<span class="hljs-comment">/* 
  * getByte - Extract byte n from word x
  *   Bytes numbered from 0 (LSB) to 3 (MSB)
  *   Examples: getByte(0x12345678,1) = 0x56
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 6
  *   Rating: 2
- */
-int getByte(int x, int n) {
-  int n2 = n + n;
-  int n4 = n2 + n2;
-  int n8 = n4 + n4;
-  return (x &gt;&gt; n8) &amp; 0xFF;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getByte</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+  <span class="hljs-type">int</span> n2 = n + n;
+  <span class="hljs-type">int</span> n4 = n2 + n2;
+  <span class="hljs-type">int</span> n8 = n4 + n4;
+  <span class="hljs-keyword">return</span> (x &gt;&gt; n8) &amp; <span class="hljs-number">0xFF</span>;
 }
-/* 
+<span class="hljs-comment">/* 
  * logicalShift - shift x to the right by n, using a logical shift
  *   Can assume that 0 &lt;= n &lt;= 31
  *   Examples: logicalShift(0x87654321,4) = 0x08765432
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 20
  *   Rating: 3 
- */
-int logicalShift(int x, int n) {
-  int sub1 = ~0;
-  int keeper = ~(1 &lt;&lt; 31);
-  int result = (x &gt;&gt; n) &amp; (keeper &gt;&gt; (n + sub1));
-  int notn = !n;
-  int flag = notn + sub1;
- return ((~flag) &amp; x) | (flag &amp; result);
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">logicalShift</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+  <span class="hljs-type">int</span> sub1 = ~<span class="hljs-number">0</span>;
+  <span class="hljs-type">int</span> keeper = ~(<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>);
+  <span class="hljs-type">int</span> result = (x &gt;&gt; n) &amp; (keeper &gt;&gt; (n + sub1));
+  <span class="hljs-type">int</span> notn = !n;
+  <span class="hljs-type">int</span> flag = notn + sub1;
+ <span class="hljs-keyword">return</span> ((~flag) &amp; x) | (flag &amp; result);
 }
-/*
- * bitCount - returns count of number of 1's in word
+<span class="hljs-comment">/*
+ * bitCount - returns count of number of 1&#x27;s in word
  *   Examples: bitCount(5) = 2, bitCount(7) = 3
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 40
  *   Rating: 4
- */
-int bitCount(int x) {
-  int ret = x;
-  int mask = 0;
-  // 0x55555555
-  mask = 0x55 + (0x55 &lt;&lt; 8);
-  mask = mask + (mask &lt;&lt; 16);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;1) &amp; mask);
-  // 0x33333333
-  mask = 0x33 + (0x33 &lt;&lt; 8);
-  mask = mask + (mask &lt;&lt; 16);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;2) &amp; mask);
-  // 0x0f0f0f0f
-  mask = 0x0f + (0x0f &lt;&lt; 8) + (0x0f &lt;&lt; 16) + (0x0f &lt;&lt; 24);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;4) &amp; mask);
-  // 0x00ff00ff
-  mask = 0xff + (0xff &lt;&lt; 16);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;8) &amp; mask);
-  // 0x0000ffff
-  mask = 0xff + (0xff &lt;&lt; 8);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;16) &amp; mask);
-  return ret;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bitCount</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> ret = x;
+  <span class="hljs-type">int</span> mask = <span class="hljs-number">0</span>;
+  <span class="hljs-comment">// 0x55555555</span>
+  mask = <span class="hljs-number">0x55</span> + (<span class="hljs-number">0x55</span> &lt;&lt; <span class="hljs-number">8</span>);
+  mask = mask + (mask &lt;&lt; <span class="hljs-number">16</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">1</span>) &amp; mask);
+  <span class="hljs-comment">// 0x33333333</span>
+  mask = <span class="hljs-number">0x33</span> + (<span class="hljs-number">0x33</span> &lt;&lt; <span class="hljs-number">8</span>);
+  mask = mask + (mask &lt;&lt; <span class="hljs-number">16</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">2</span>) &amp; mask);
+  <span class="hljs-comment">// 0x0f0f0f0f</span>
+  mask = <span class="hljs-number">0x0f</span> + (<span class="hljs-number">0x0f</span> &lt;&lt; <span class="hljs-number">8</span>) + (<span class="hljs-number">0x0f</span> &lt;&lt; <span class="hljs-number">16</span>) + (<span class="hljs-number">0x0f</span> &lt;&lt; <span class="hljs-number">24</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">4</span>) &amp; mask);
+  <span class="hljs-comment">// 0x00ff00ff</span>
+  mask = <span class="hljs-number">0xff</span> + (<span class="hljs-number">0xff</span> &lt;&lt; <span class="hljs-number">16</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">8</span>) &amp; mask);
+  <span class="hljs-comment">// 0x0000ffff</span>
+  mask = <span class="hljs-number">0xff</span> + (<span class="hljs-number">0xff</span> &lt;&lt; <span class="hljs-number">8</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">16</span>) &amp; mask);
+  <span class="hljs-keyword">return</span> ret;
 }
-/* 
+<span class="hljs-comment">/* 
  * bang - Compute !x without using !
  *   Examples: bang(3) = 0, bang(0) = 1
  *   Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 12
  *   Rating: 4 
- */
-int bang(int x) {
-  int ret = ~x;
-  ret = ret &amp; (ret &gt;&gt; 16);
-  ret = ret &amp; (ret &gt;&gt; 8);
-  ret = ret &amp; (ret &gt;&gt; 4);
-  ret = ret &amp; (ret &gt;&gt; 2);
-  ret = ret &amp; (ret &gt;&gt; 1);
-  return ret&amp;1;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bang</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> ret = ~x;
+  ret = ret &amp; (ret &gt;&gt; <span class="hljs-number">16</span>);
+  ret = ret &amp; (ret &gt;&gt; <span class="hljs-number">8</span>);
+  ret = ret &amp; (ret &gt;&gt; <span class="hljs-number">4</span>);
+  ret = ret &amp; (ret &gt;&gt; <span class="hljs-number">2</span>);
+  ret = ret &amp; (ret &gt;&gt; <span class="hljs-number">1</span>);
+  <span class="hljs-keyword">return</span> ret&amp;<span class="hljs-number">1</span>;
 }
-/* 
- * tmin - return minimum two's complement integer 
+<span class="hljs-comment">/* 
+ * tmin - return minimum two&#x27;s complement integer 
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 4
  *   Rating: 1
- */
-int tmin(void) {
-  return 1 &lt;&lt; 31;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">tmin</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>;
 }
-/* 
+<span class="hljs-comment">/* 
  * fitsBits - return 1 if x can be represented as an 
- *  n-bit, two's complement integer.
+ *  n-bit, two&#x27;s complement integer.
  *   1 &lt;= n &lt;= 32
  *   Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 15
  *   Rating: 2
- */
-int fitsBits(int x, int n) {
-//  int sub1 = ~0;
-//  int get_sign = 1&lt;&lt;31;
-//  int sign = x &amp; get_sign;
-//  int not_sign = !sign;
-//  int power = 1 &lt;&lt; (n + sub1);
-//  int sub_power = (~power) + 1;
-//  int result1 = !(((x + power) &amp; get_sign) &gt;&gt; 31);
-//  int result2 = ((x + sub_power) &amp; get_sign) &gt;&gt; 31;
-//  sign = !not_sign;
-//  return (sign &amp; result1) | (not_sign &amp; result2);
-  int subn = (~n) + 1;
-  int to_shl = 32 + subn;
-  int x_fix = (x &lt;&lt; to_shl) &gt;&gt; to_shl;
-  int not_ans = x ^ x_fix;
-  return !not_ans;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fitsBits</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+<span class="hljs-comment">//  int sub1 = ~0;</span>
+<span class="hljs-comment">//  int get_sign = 1&lt;&lt;31;</span>
+<span class="hljs-comment">//  int sign = x &amp; get_sign;</span>
+<span class="hljs-comment">//  int not_sign = !sign;</span>
+<span class="hljs-comment">//  int power = 1 &lt;&lt; (n + sub1);</span>
+<span class="hljs-comment">//  int sub_power = (~power) + 1;</span>
+<span class="hljs-comment">//  int result1 = !(((x + power) &amp; get_sign) &gt;&gt; 31);</span>
+<span class="hljs-comment">//  int result2 = ((x + sub_power) &amp; get_sign) &gt;&gt; 31;</span>
+<span class="hljs-comment">//  sign = !not_sign;</span>
+<span class="hljs-comment">//  return (sign &amp; result1) | (not_sign &amp; result2);</span>
+  <span class="hljs-type">int</span> subn = (~n) + <span class="hljs-number">1</span>;
+  <span class="hljs-type">int</span> to_shl = <span class="hljs-number">32</span> + subn;
+  <span class="hljs-type">int</span> x_fix = (x &lt;&lt; to_shl) &gt;&gt; to_shl;
+  <span class="hljs-type">int</span> not_ans = x ^ x_fix;
+  <span class="hljs-keyword">return</span> !not_ans;
 }
-/* 
+<span class="hljs-comment">/* 
  * divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30
  *  Round toward zero
  *   Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 15
  *   Rating: 2
- */
-int divpwr2(int x, int n) {
-    // Round to zero is the difficult part
-    int sub1 = ~0;
-    int super2sub1 = (1&lt;&lt;n) + sub1;
-    int notn = !n;
-    int flag = notn + sub1;
-    int result = (x + ((x &gt;&gt; 31) &amp; super2sub1)) &gt;&gt; n;
-    return ((~flag) &amp; x) | (flag &amp; result);
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">divpwr2</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+    <span class="hljs-comment">// Round to zero is the difficult part</span>
+    <span class="hljs-type">int</span> sub1 = ~<span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> super2sub1 = (<span class="hljs-number">1</span>&lt;&lt;n) + sub1;
+    <span class="hljs-type">int</span> notn = !n;
+    <span class="hljs-type">int</span> flag = notn + sub1;
+    <span class="hljs-type">int</span> result = (x + ((x &gt;&gt; <span class="hljs-number">31</span>) &amp; super2sub1)) &gt;&gt; n;
+    <span class="hljs-keyword">return</span> ((~flag) &amp; x) | (flag &amp; result);
 }
-/* 
+<span class="hljs-comment">/* 
  * negate - return -x 
  *   Example: negate(1) = -1.
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 5
  *   Rating: 2
- */
-int negate(int x) {
-  return (~x) + 1;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">negate</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-keyword">return</span> (~x) + <span class="hljs-number">1</span>;
 }
-/* 
+<span class="hljs-comment">/* 
  * isPositive - return 1 if x &gt; 0, return 0 otherwise 
  *   Example: isPositive(-1) = 0.
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 8
  *   Rating: 3
- */
-int isPositive(int x) {
-  int sub1 = ~0;
-  int notx = !x;
-  int flag = notx + sub1;
-  int result = !(x &gt;&gt; 31);
-  return flag &amp; result;
-  // return ((~flag) &amp; 0) | (flag &amp; result);
-  // the first part isn't necessary
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">isPositive</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> sub1 = ~<span class="hljs-number">0</span>;
+  <span class="hljs-type">int</span> notx = !x;
+  <span class="hljs-type">int</span> flag = notx + sub1;
+  <span class="hljs-type">int</span> result = !(x &gt;&gt; <span class="hljs-number">31</span>);
+  <span class="hljs-keyword">return</span> flag &amp; result;
+  <span class="hljs-comment">// return ((~flag) &amp; 0) | (flag &amp; result);</span>
+  <span class="hljs-comment">// the first part isn&#x27;t necessary</span>
 }
-/* 
+<span class="hljs-comment">/* 
  * isLessOrEqual - if x &lt;= y  then return 1, else return 0 
  *   Example: isLessOrEqual(4,5) = 1.
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 24
  *   Rating: 3
- */
-int isLessOrEqual(int x, int y) {
-  int xxory = (x &gt;&gt; 31) ^ (y &gt;&gt; 31);
-  int subx = (~x) + 1;
-  int ysubx = y + subx;
-  int result_1 = (x &gt;&gt; 31) &amp; 1;
-  int result_2 = !(ysubx &gt;&gt; 31);
-  return (xxory &amp; result_1) | ((~xxory) &amp; result_2);
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">isLessOrEqual</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> </span>{
+  <span class="hljs-type">int</span> xxory = (x &gt;&gt; <span class="hljs-number">31</span>) ^ (y &gt;&gt; <span class="hljs-number">31</span>);
+  <span class="hljs-type">int</span> subx = (~x) + <span class="hljs-number">1</span>;
+  <span class="hljs-type">int</span> ysubx = y + subx;
+  <span class="hljs-type">int</span> result_1 = (x &gt;&gt; <span class="hljs-number">31</span>) &amp; <span class="hljs-number">1</span>;
+  <span class="hljs-type">int</span> result_2 = !(ysubx &gt;&gt; <span class="hljs-number">31</span>);
+  <span class="hljs-keyword">return</span> (xxory &amp; result_1) | ((~xxory) &amp; result_2);
 }
-/*
+<span class="hljs-comment">/*
  * ilog2 - return floor(log base 2 of x), where x &gt; 0
  *   Example: ilog2(16) = 4
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
  *   Max ops: 90
  *   Rating: 4
- */
-int ilog2(int x) {
-  int sub1 = ~0;
-  int x_fill = x;
-  int ret, mask;
-  x_fill |= x_fill &gt;&gt; 1;
-  x_fill |= x_fill &gt;&gt; 2;
-  x_fill |= x_fill &gt;&gt; 4;
-  x_fill |= x_fill &gt;&gt; 8;
-  x_fill |= x_fill &gt;&gt; 16;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">ilog2</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> sub1 = ~<span class="hljs-number">0</span>;
+  <span class="hljs-type">int</span> x_fill = x;
+  <span class="hljs-type">int</span> ret, mask;
+  x_fill |= x_fill &gt;&gt; <span class="hljs-number">1</span>;
+  x_fill |= x_fill &gt;&gt; <span class="hljs-number">2</span>;
+  x_fill |= x_fill &gt;&gt; <span class="hljs-number">4</span>;
+  x_fill |= x_fill &gt;&gt; <span class="hljs-number">8</span>;
+  x_fill |= x_fill &gt;&gt; <span class="hljs-number">16</span>;
 
-  // perform bitCount
+  <span class="hljs-comment">// perform bitCount</span>
   ret = x_fill;
-  mask = 0;
-  // 0x55555555
-  mask = 0x55 + (0x55 &lt;&lt; 8);
-  mask = mask + (mask &lt;&lt; 16);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;1) &amp; mask);
-  // 0x33333333
-  mask = 0x33 + (0x33 &lt;&lt; 8);
-  mask = mask + (mask &lt;&lt; 16);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;2) &amp; mask);
-  // 0x0f0f0f0f
-  mask = 0x0f + (0x0f &lt;&lt; 8) + (0x0f &lt;&lt; 16) + (0x0f &lt;&lt; 24);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;4) &amp; mask);
-  // 0x00ff00ff
-  mask = 0xff + (0xff &lt;&lt; 16);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;8) &amp; mask);
-  // 0x0000ffff
-  mask = 0xff + (0xff &lt;&lt; 8);
-  ret = (ret &amp; mask) + ((ret&gt;&gt;16) &amp; mask);
-  return ret + sub1;
+  mask = <span class="hljs-number">0</span>;
+  <span class="hljs-comment">// 0x55555555</span>
+  mask = <span class="hljs-number">0x55</span> + (<span class="hljs-number">0x55</span> &lt;&lt; <span class="hljs-number">8</span>);
+  mask = mask + (mask &lt;&lt; <span class="hljs-number">16</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">1</span>) &amp; mask);
+  <span class="hljs-comment">// 0x33333333</span>
+  mask = <span class="hljs-number">0x33</span> + (<span class="hljs-number">0x33</span> &lt;&lt; <span class="hljs-number">8</span>);
+  mask = mask + (mask &lt;&lt; <span class="hljs-number">16</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">2</span>) &amp; mask);
+  <span class="hljs-comment">// 0x0f0f0f0f</span>
+  mask = <span class="hljs-number">0x0f</span> + (<span class="hljs-number">0x0f</span> &lt;&lt; <span class="hljs-number">8</span>) + (<span class="hljs-number">0x0f</span> &lt;&lt; <span class="hljs-number">16</span>) + (<span class="hljs-number">0x0f</span> &lt;&lt; <span class="hljs-number">24</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">4</span>) &amp; mask);
+  <span class="hljs-comment">// 0x00ff00ff</span>
+  mask = <span class="hljs-number">0xff</span> + (<span class="hljs-number">0xff</span> &lt;&lt; <span class="hljs-number">16</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">8</span>) &amp; mask);
+  <span class="hljs-comment">// 0x0000ffff</span>
+  mask = <span class="hljs-number">0xff</span> + (<span class="hljs-number">0xff</span> &lt;&lt; <span class="hljs-number">8</span>);
+  ret = (ret &amp; mask) + ((ret&gt;&gt;<span class="hljs-number">16</span>) &amp; mask);
+  <span class="hljs-keyword">return</span> ret + sub1;
 }
-/* 
+<span class="hljs-comment">/* 
  * float_neg - Return bit-level equivalent of expression -f for
  *   floating point argument f.
- *   Both the argument and result are passed as unsigned int's, but
+ *   Both the argument and result are passed as unsigned int&#x27;s, but
  *   they are to be interpreted as the bit-level representations of
  *   single-precision floating point values.
  *   When argument is NaN, return argument.
  *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
  *   Max ops: 10
  *   Rating: 2
- */
-unsigned float_neg(unsigned uf) {
-  unsigned change_sign = 1 &lt;&lt; 31;
-  unsigned get_exp = 0xFF &lt;&lt; 23;
-  unsigned get_frac = (~get_exp) ^ change_sign;
-  if ((uf &amp; get_exp) == get_exp &amp;&amp; (uf &amp; get_frac) != 0) return uf;
-  return uf ^ change_sign;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">unsigned</span> <span class="hljs-title">float_neg</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> uf)</span> </span>{
+  <span class="hljs-type">unsigned</span> change_sign = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>;
+  <span class="hljs-type">unsigned</span> get_exp = <span class="hljs-number">0xFF</span> &lt;&lt; <span class="hljs-number">23</span>;
+  <span class="hljs-type">unsigned</span> get_frac = (~get_exp) ^ change_sign;
+  <span class="hljs-keyword">if</span> ((uf &amp; get_exp) == get_exp &amp;&amp; (uf &amp; get_frac) != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> uf;
+  <span class="hljs-keyword">return</span> uf ^ change_sign;
 }
-/* 
+<span class="hljs-comment">/* 
  * float_i2f - Return bit-level equivalent of expression (float) x
  *   Result is returned as unsigned int, but
  *   it is to be interpreted as the bit-level representation of a
@@ -328,86 +460,88 @@ unsigned float_neg(unsigned uf) {
  *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
  *   Max ops: 30
  *   Rating: 4
- */
-unsigned float_i2f(int x) {
-  int bias = 127;
-  unsigned get_frac = 0x007fffff;
-  unsigned get_frac_cut = 0x000000ff;
-  unsigned tminf = 0xcf000000;
-  int fix_x, n, nsub1, temp;
-  unsigned sign, exp, frac, frac_cut;
+ */</span>
+<span class="hljs-function"><span class="hljs-type">unsigned</span> <span class="hljs-title">float_i2f</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> bias = <span class="hljs-number">127</span>;
+  <span class="hljs-type">unsigned</span> get_frac = <span class="hljs-number">0x007fffff</span>;
+  <span class="hljs-type">unsigned</span> get_frac_cut = <span class="hljs-number">0x000000ff</span>;
+  <span class="hljs-type">unsigned</span> tminf = <span class="hljs-number">0xcf000000</span>;
+  <span class="hljs-type">int</span> fix_x, n, nsub1, temp;
+  <span class="hljs-type">unsigned</span> sign, exp, frac, frac_cut;
 
-  // special cases
-  if (x == 0x80000000) return tminf;
-  if (x == 0) return 0;
+  <span class="hljs-comment">// special cases</span>
+  <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0x80000000</span>) <span class="hljs-keyword">return</span> tminf;
+  <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
-  // get abs / get sign
+  <span class="hljs-comment">// get abs / get sign</span>
   fix_x = x;
-  sign = 0;
-  if (fix_x &lt; 0) fix_x = -fix_x, sign = 0x80000000;
+  sign = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">if</span> (fix_x &lt; <span class="hljs-number">0</span>) fix_x = -fix_x, sign = <span class="hljs-number">0x80000000</span>;
 
-  // get count
-  n = 0;
+  <span class="hljs-comment">// get count</span>
+  n = <span class="hljs-number">0</span>;
   temp = fix_x;
-  while (temp) n++, temp&gt;&gt;=1;
-  nsub1 = n - 1;
-  //printf(&quot;count=%d\n&quot;,count);
+  <span class="hljs-keyword">while</span> (temp) n++, temp&gt;&gt;=<span class="hljs-number">1</span>;
+  nsub1 = n - <span class="hljs-number">1</span>;
+  <span class="hljs-comment">//printf(&quot;count=%d\n&quot;,count);</span>
 
-  // get exp
-  exp = ((nsub1 + bias) &lt;&lt; 23);
+  <span class="hljs-comment">// get exp</span>
+  exp = ((nsub1 + bias) &lt;&lt; <span class="hljs-number">23</span>);
 
-  // get frac
-  if (nsub1 &lt;= 23){
-    frac = (fix_x &lt;&lt; (23 - nsub1)) &amp; get_frac;
-  } else {
-    frac = (fix_x &gt;&gt; (nsub1 - 23)) &amp; get_frac;
-    frac_cut = (fix_x &lt;&lt; (31 - nsub1)) &amp; get_frac_cut;
-    if ((frac_cut &gt; 0x80) || (frac_cut == 0x80 &amp;&amp; (frac &amp; 1))) frac++; // carry
+  <span class="hljs-comment">// get frac</span>
+  <span class="hljs-keyword">if</span> (nsub1 &lt;= <span class="hljs-number">23</span>){
+    frac = (fix_x &lt;&lt; (<span class="hljs-number">23</span> - nsub1)) &amp; get_frac;
+  } <span class="hljs-keyword">else</span> {
+    frac = (fix_x &gt;&gt; (nsub1 - <span class="hljs-number">23</span>)) &amp; get_frac;
+    frac_cut = (fix_x &lt;&lt; (<span class="hljs-number">31</span> - nsub1)) &amp; get_frac_cut;
+    <span class="hljs-keyword">if</span> ((frac_cut &gt; <span class="hljs-number">0x80</span>) || (frac_cut == <span class="hljs-number">0x80</span> &amp;&amp; (frac &amp; <span class="hljs-number">1</span>))) frac++; <span class="hljs-comment">// carry</span>
   }
 
-  return sign + exp + frac;
+  <span class="hljs-keyword">return</span> sign + exp + frac;
 }
-/* 
+<span class="hljs-comment">/* 
  * float_twice - Return bit-level equivalent of expression 2*f for
  *   floating point argument f.
- *   Both the argument and result are passed as unsigned int's, but
+ *   Both the argument and result are passed as unsigned int&#x27;s, but
  *   they are to be interpreted as the bit-level representation of
  *   single-precision floating point values.
  *   When argument is NaN, return argument
  *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
  *   Max ops: 30
  *   Rating: 4
- */
-unsigned float_twice(unsigned uf) {
-  unsigned neg_inf = 0xff800000;
-  unsigned pos_inf = 0x7f800000;
-  unsigned get_exp = 0x7f800000;
-  unsigned get_frac = 0x007fffff;
-  unsigned exp = (uf &amp; get_exp) &gt;&gt; 23;
-  unsigned frac = uf &amp; get_frac;
-  unsigned ret = uf;
-  if (exp == 0xff) return uf;
-  if (exp == 0){ // denomolized
-    if (frac &amp; (1&lt;&lt;23)){ // de -&gt; no
-      ret = ret | (1 &lt;&lt; 23);
-      return ret;
-    } else {
+ */</span>
+<span class="hljs-function"><span class="hljs-type">unsigned</span> <span class="hljs-title">float_twice</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> uf)</span> </span>{
+  <span class="hljs-type">unsigned</span> neg_inf = <span class="hljs-number">0xff800000</span>;
+  <span class="hljs-type">unsigned</span> pos_inf = <span class="hljs-number">0x7f800000</span>;
+  <span class="hljs-type">unsigned</span> get_exp = <span class="hljs-number">0x7f800000</span>;
+  <span class="hljs-type">unsigned</span> get_frac = <span class="hljs-number">0x007fffff</span>;
+  <span class="hljs-type">unsigned</span> exp = (uf &amp; get_exp) &gt;&gt; <span class="hljs-number">23</span>;
+  <span class="hljs-type">unsigned</span> frac = uf &amp; get_frac;
+  <span class="hljs-type">unsigned</span> ret = uf;
+  <span class="hljs-keyword">if</span> (exp == <span class="hljs-number">0xff</span>) <span class="hljs-keyword">return</span> uf;
+  <span class="hljs-keyword">if</span> (exp == <span class="hljs-number">0</span>){ <span class="hljs-comment">// denomolized</span>
+    <span class="hljs-keyword">if</span> (frac &amp; (<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">23</span>)){ <span class="hljs-comment">// de -&gt; no</span>
+      ret = ret | (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">23</span>);
+      <span class="hljs-keyword">return</span> ret;
+    } <span class="hljs-keyword">else</span> {
       ret = ret - frac;
-      frac = frac &lt;&lt; 1;
+      frac = frac &lt;&lt; <span class="hljs-number">1</span>;
       ret = ret + frac;
-      return ret;
+      <span class="hljs-keyword">return</span> ret;
     }
-  } else { // nomolized
-    ret = ret - (exp &lt;&lt; 23);
+  } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// nomolized</span>
+    ret = ret - (exp &lt;&lt; <span class="hljs-number">23</span>);
     exp++;
-    if (exp &gt; 0xff) { // no -&gt; inf
-      if (uf &amp; (1&lt;&lt;31)) return neg_inf;
-      else return pos_inf;
+    <span class="hljs-keyword">if</span> (exp &gt; <span class="hljs-number">0xff</span>) { <span class="hljs-comment">// no -&gt; inf</span>
+      <span class="hljs-keyword">if</span> (uf &amp; (<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">31</span>)) <span class="hljs-keyword">return</span> neg_inf;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> pos_inf;
     }
-    ret = ret + (exp &lt;&lt; 23);
-    return ret;
+    ret = ret + (exp &lt;&lt; <span class="hljs-number">23</span>);
+    <span class="hljs-keyword">return</span> ret;
   }
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="15BDLN" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;csapp-2e-datalab&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/csapp-2e-datalab&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+}
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="VmRNF" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;csapp-2e-datalab&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -434,4 +568,4 @@ CSAPP 2e Datalab 题解 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcn
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

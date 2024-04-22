@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 616 Div2 T3 TwoLLogo 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 616 Div2 T3 TwoLLogo 题解</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ Topcoder SRM 616 Div2 T3 TwoLLogo 题解 </span> </h5> <div class="m-2 secondary
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,15 +72,78 @@ Topcoder SRM 616 Div2 T3 TwoLLogo 题解 </span> </h5> <div class="m-2 secondary
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 616 Div2 T3 TwoLLogo 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 31 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-616-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 616 Div 2 T3 题解</p><!--more--><hr><h2>题目大意</h2><p>给你一个 N×M 的字符矩阵，代表 N 行 M 列的点。每个点可能是 <code>#</code> 或者 <code>.</code> （“障碍”与“空白”）。现在你要从中选出一些空白点使得它们构成两个 “L” 形状（即选出两条只有一个交点的线段组成）。有如下规定：</p><ul><li>必须是严格的 "L" 形状，不可以旋转；原图也不能旋转；</li><li>两条“线段”必须有正长度，并且长度要大于等于 2；</li><li>并且线段经过的所有点都必须是白色的。</li></ul><p>最后你需要在一幅图里找出两个 “L” 形状，<strong>并且这两个 "L" 不能有任何相交（即不可以占用公共的点）</strong>。问你有多少种方案。</p><p>题目里的字符矩阵以 <code>vector &lt;string&gt; grid</code> 给出。注意本题的时限是 3 秒。</p><blockquote><ul><li>grid will contain between 2 and 30 elements, inclusive.</li><li>All elements of grid will contain the same number of characters.</li><li>Each element of grid will contain between 2 and 30 characters, inclusive.</li><li>Each character of grid will be either '.' or '#'.</li><li>Time limit (s): 3.000</li><li>Memory limit (MB): 256</li></ul></blockquote><hr><h2>题目原文</h2><blockquote><p><em>Please note that this problem has a non-standard time limit: 3 seconds.</em></p><p>A yet unknown "LL Company" wants to design a logo. After a long discussion, company designers decided that the logo should consist of two letters L drawn in some way.</p><p>To start with something, designers drew N rows of M points each, one under another, so that these points form a rectangular grid. They also painted each point either white or black. Here is an example of what they could get for N = 4 and M = 5:</p><p><img src="http://www.topcoder.com/contest/problem/TwoLLogo/1.png" alt="" title=""></p><p>Designers agreed to draw each letter L as a union of a horizontal and a vertical line segment intersecting at their left and bottom ends, respectively. The segments must have positive lengths, and their endpoints must be white grid points. All grid points that lie on the segments must be white as well. For example, here are two valid placements of a letter:</p><p><img src="http://www.topcoder.com/contest/problem/TwoLLogo/2.png" alt="" title="">  233333 <img src="http://www.topcoder.com/contest/problem/TwoLLogo/3.png" alt="" title=""></p><p>Note that neither the letters nor the grid can be rotated.</p><p>The final requirement is that the two letters should be disjoint. That is, no white point should lie on two segments belonging to different letters.</p><p>You are given the grid with N rows and M columns, encoded as a vector <string> grid with N elements, each containing M characters. Each character is either '.' or '#', meaning that the corresponding point is either white or black, respectively. </p><p>Return the number of different possible logos with two L's drawn on them according to the requirements. Two logos are considered different if there is a pair of points that is connected by a line segment in exactly one of the logos.</p></blockquote><hr><h2>样例解释</h2><p>样例零：</p><pre><code>{&quot;....&quot;,
- &quot;....&quot;}</code></pre><p>Returns: <code>1</code><br><img src="http://www.topcoder.com/contest/problem/TwoLLogo/4.png" alt="" title=""></p><p>样例一：</p><pre><code>{&quot;.##..&quot;,
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 616 Div2 T3 TwoLLogo 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 8 月 31 日 13:21</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F">题目大意</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE%E5%8E%9F%E6%96%87">题目原文</a></li>
+<li><a href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A">样例解释</a></li>
+<li><a href="#%E5%88%86%E6%9E%90">分析</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+<p>Topcoder Single Round Match 616 Div 2 T3 题解</p>
+<hr>
+<h2><a id="题目大意" class="heading-anchor"></a>题目大意</h2>
+<p>给你一个 N×M 的字符矩阵，代表 N 行 M 列的点。每个点可能是 <code>#</code> 或者 <code>.</code> （“障碍”与“空白”）。现在你要从中选出一些空白点使得它们构成两个 “L” 形状（即选出两条只有一个交点的线段组成）。有如下规定：</p>
+<ul>
+<li>必须是严格的 &quot;L&quot; 形状，不可以旋转；原图也不能旋转；</li>
+<li>两条“线段”必须有正长度，并且长度要大于等于 2；</li>
+<li>并且线段经过的所有点都必须是白色的。</li>
+</ul>
+<p>最后你需要在一幅图里找出两个 “L” 形状，<strong>并且这两个 &quot;L&quot; 不能有任何相交（即不可以占用公共的点）</strong>。问你有多少种方案。</p>
+<p>题目里的字符矩阵以 <code>vector &lt;string&gt; grid</code> 给出。注意本题的时限是 3 秒。</p>
+<blockquote>
+<ul>
+<li>grid will contain between 2 and 30 elements, inclusive.</li>
+<li>All elements of grid will contain the same number of characters.</li>
+<li>Each element of grid will contain between 2 and 30 characters, inclusive.</li>
+<li>Each character of grid will be either '.' or '#'.</li>
+<li>Time limit (s): 3.000</li>
+<li>Memory limit (MB): 256</li>
+</ul>
+</blockquote>
+<hr>
+<h2><a id="题目原文" class="heading-anchor"></a>题目原文</h2>
+<blockquote>
+<p><em>Please note that this problem has a non-standard time limit: 3 seconds.</em></p>
+<p>A yet unknown &quot;LL Company&quot; wants to design a logo. After a long discussion, company designers decided that the logo should consist of two letters L drawn in some way.</p>
+<p>To start with something, designers drew N rows of M points each, one under another, so that these points form a rectangular grid. They also painted each point either white or black. Here is an example of what they could get for N = 4 and M = 5:</p>
+<p><a href="http://www.topcoder.com/contest/problem/TwoLLogo/1.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/1.png" alt="" title="" /></a></p>
+<p>Designers agreed to draw each letter L as a union of a horizontal and a vertical line segment intersecting at their left and bottom ends, respectively. The segments must have positive lengths, and their endpoints must be white grid points. All grid points that lie on the segments must be white as well. For example, here are two valid placements of a letter:</p>
+<p><a href="http://www.topcoder.com/contest/problem/TwoLLogo/2.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/2.png" alt="" title="" /></a>  233333 <a href="http://www.topcoder.com/contest/problem/TwoLLogo/3.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/3.png" alt="" title="" /></a></p>
+<p>Note that neither the letters nor the grid can be rotated.</p>
+<p>The final requirement is that the two letters should be disjoint. That is, no white point should lie on two segments belonging to different letters.</p>
+<p>You are given the grid with N rows and M columns, encoded as a vector <string> grid with N elements, each containing M characters. Each character is either '.' or '#', meaning that the corresponding point is either white or black, respectively.</p>
+<p>Return the number of different possible logos with two L's drawn on them according to the requirements. Two logos are considered different if there is a pair of points that is connected by a line segment in exactly one of the logos.</p>
+</blockquote>
+<hr>
+<h2><a id="样例解释" class="heading-anchor"></a>样例解释</h2>
+<p>样例零：</p>
+<pre><code>{&quot;....&quot;,
+ &quot;....&quot;}
+</code></pre>
+<p>Returns: <code>1</code><br>
+<a href="http://www.topcoder.com/contest/problem/TwoLLogo/4.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/4.png" alt="" title="" /></a></p>
+<p>样例一：</p>
+<pre><code>{&quot;.##..&quot;,
  &quot;...#.&quot;,
  &quot;.#.#.&quot;,
- &quot;#...#&quot;}</code></pre><p>Returns: <code>3</code><br>This is the example from the problem statement. The three possible logos look as follows:</p><p><img src="http://www.topcoder.com/contest/problem/TwoLLogo/5.png" alt="" title="">  <img src="http://www.topcoder.com/contest/problem/TwoLLogo/6.png" alt="" title="">  <img src="http://www.topcoder.com/contest/problem/TwoLLogo/7.png" alt="" title=""></p><p>样例五：</p><pre><code>{&quot;##############&quot;,
+ &quot;#...#&quot;}
+</code></pre>
+<p>Returns: <code>3</code><br>
+This is the example from the problem statement. The three possible logos look as follows:</p>
+<p><a href="http://www.topcoder.com/contest/problem/TwoLLogo/5.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/5.png" alt="" title="" /></a>  <a href="http://www.topcoder.com/contest/problem/TwoLLogo/6.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/6.png" alt="" title="" /></a>  <a href="http://www.topcoder.com/contest/problem/TwoLLogo/7.png" data-fancybox data-caption=""><img src="http://www.topcoder.com/contest/problem/TwoLLogo/7.png" alt="" title="" /></a></p>
+<p>样例五：</p>
+<pre><code>{&quot;##############&quot;,
  &quot;##############&quot;,
  &quot;#.############&quot;,
  &quot;#.############&quot;,
@@ -100,64 +163,91 @@ Topcoder SRM 616 Div2 T3 TwoLLogo 题解 </span> </h5> <div class="m-2 secondary
  &quot;#######.######&quot;,
  &quot;#######......#&quot;,
  &quot;##############&quot;}
-</code></pre><p>Returns: <code>1350</code></p><p>这幅图里只有两个 L 形状的“基准点”（即拐角），所以方案数量就是几条线段长度可能数量之乘积。<br><code>9×3×10×5=1350</code>。</p><p>……</p><hr><h2>分析</h2><p>一开始我们肯定可以想到一个 $\Theta (N^4\ast M^4)$ 的想法：枚举第一个 L 的左下角的点（以下我们称之为“基准点”），然后向上、向右枚举，累计所有情况。</p><p>然后我们可以发现，“向上、向右枚举”的过程可以免去，可以先构造数组 <code>up[i][j]</code> 和 <code>rght[i][j]</code>，分别表示点 (i,j) 向上、向右有几个白色的点。对于两个基准点 (i,j) 与 (k,t)，方案数就是 <code>up[i][j]*right[i][j]*up[k][t]*right[k][t]</code>……是吗？</p><p>但是我们又发现了问题：如何判断两个 L 是否相交呢？在刚才直接向上、向右枚举的时候我们可以方便地判断相交，但是现在我们这样的方式，就需要分以下几种情况讨论了：</p><ul><li>第一种，坠简单的情况，直接累加（懒得画图，直接用公式了……）：</li></ul><pre><code class="lang-math">XOXOX \\
+
+</code></pre>
+<p>Returns: <code>1350</code></p>
+<p>这幅图里只有两个 L 形状的“基准点”（即拐角），所以方案数量就是几条线段长度可能数量之乘积。<br>
+<code>9×3×10×5=1350</code>。</p>
+<p>……</p>
+<hr>
+<h2><a id="分析" class="heading-anchor"></a>分析</h2>
+<p>一开始我们肯定可以想到一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>4</mn></msup><mo>∗</mo><msup><mi>M</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta (N^4\ast M^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的想法：枚举第一个 L 的左下角的点（以下我们称之为“基准点”），然后向上、向右枚举，累计所有情况。</p>
+<p>然后我们可以发现，“向上、向右枚举”的过程可以免去，可以先构造数组 <code>up[i][j]</code> 和 <code>rght[i][j]</code>，分别表示点 (i,j) 向上、向右有几个白色的点。对于两个基准点 (i,j) 与 (k,t)，方案数就是 <code>up[i][j]*right[i][j]*up[k][t]*right[k][t]</code>……是吗？</p>
+<p>但是我们又发现了问题：如何判断两个 L 是否相交呢？在刚才直接向上、向右枚举的时候我们可以方便地判断相交，但是现在我们这样的方式，就需要分以下几种情况讨论了：</p>
+<ul>
+<li>第一种，坠简单的情况，直接累加（懒得画图，直接用公式了……）：</li>
+</ul>
+<pre><code class="language-math">XOXOX \\
 XOXOO \\
 XOXXX \\
 XOOOX \\
-XXXXX</code></pre><ul><li>然后就是分类讨论几种特殊情况，也就是存在交集的，以以下这种为例：</li></ul><pre><code class="lang-math">XXXXXX \\
+XXXXX
+</code></pre>
+<ul>
+<li>然后就是分类讨论几种特殊情况，也就是存在交集的，以以下这种为例：</li>
+</ul>
+<pre><code class="language-math">XXXXXX \\
 XOXXXX \\
 XOXOXX \\
 XOOOOX \\
 XXXOXX \\
-XXXOOO</code></pre><p>如果按前面两个 L 分别相乘计算势必会有重复，这时只要减去相交的一部分的重复情况就可以了。</p><p>复杂度 $\Theta (N^2\ast M^2)$，考虑细节有点麻烦。</p><hr><h2>代码</h2><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-#define CLEAR(_) memset(_,0,sizeof(_))
-#define CLEAR_MAX(_) memset(_,0x3f,sizeof(_))
-#define CLEAR_MIN(_) memset(_,0x80,sizeof(_))
-#define CLEAR_REG(_) memset(_,255,sizeof(_))
+XXXOOO
+</code></pre>
+<p>如果按前面两个 L 分别相乘计算势必会有重复，这时只要减去相交的一部分的重复情况就可以了。</p>
+<p>复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>∗</mo><msup><mi>M</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta (N^2\ast M^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，考虑细节有点麻烦。</p>
+<hr>
+<h2><a id="代码" class="heading-anchor"></a>代码</h2>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> CLEAR(_) memset(_,0,sizeof(_))</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> CLEAR_MAX(_) memset(_,0x3f,sizeof(_))</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> CLEAR_MIN(_) memset(_,0x80,sizeof(_))</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> CLEAR_REG(_) memset(_,255,sizeof(_))</span>
 
-using namespace std;
-const long long maxn=35;
-long long n,m;
-long long rght[maxn][maxn],up[maxn][maxn],ans;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> maxn=<span class="hljs-number">35</span>;
+<span class="hljs-type">long</span> <span class="hljs-type">long</span> n,m;
+<span class="hljs-type">long</span> <span class="hljs-type">long</span> rght[maxn][maxn],up[maxn][maxn],ans;
 vector &lt;string&gt; a;
 
-template&lt;class T&gt; void checkmin(T &amp;a,const T &amp;b) { if (b&lt;a) a=b; } 
-template&lt;class T&gt; void checkmax(T &amp;a,const T &amp;b) { if (b&gt;a) a=b; }
-class TwoLLogo {
-public:
-    long long countWays( vector &lt;string&gt; grid ) ;
+<span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-type">void</span> <span class="hljs-title">checkmin</span><span class="hljs-params">(T &amp;a,<span class="hljs-type">const</span> T &amp;b)</span> </span>{ <span class="hljs-keyword">if</span> (b&lt;a) a=b; } 
+<span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-type">void</span> <span class="hljs-title">checkmax</span><span class="hljs-params">(T &amp;a,<span class="hljs-type">const</span> T &amp;b)</span> </span>{ <span class="hljs-keyword">if</span> (b&gt;a) a=b; }
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">TwoLLogo</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">countWays</span><span class="hljs-params">( vector &lt;string&gt; grid )</span> </span>;
 };
 
-inline void init(){
-    ans=0;
-    CLEAR_REG(up);CLEAR_REG(rght);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
+    ans=<span class="hljs-number">0</span>;
+    <span class="hljs-built_in">CLEAR_REG</span>(up);<span class="hljs-built_in">CLEAR_REG</span>(rght);
 }
-inline void Build(){
-    for (long long i=0;i&lt;n;i++)
-    for (long long j=m-1;j&gt;=0;j--) if (a[i][j]=='.'){
-        up[i][j]=i==0?0:up[i-1][j]+1;
-        rght[i][j]=rght[i][j+1]+1;
-    } else up[i][j]=rght[i][j]=-1;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Build</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> j=m<span class="hljs-number">-1</span>;j&gt;=<span class="hljs-number">0</span>;j--) <span class="hljs-keyword">if</span> (a[i][j]==<span class="hljs-string">&#x27;.&#x27;</span>){
+        up[i][j]=i==<span class="hljs-number">0</span>?<span class="hljs-number">0</span>:up[i<span class="hljs-number">-1</span>][j]+<span class="hljs-number">1</span>;
+        rght[i][j]=rght[i][j+<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>;
+    } <span class="hljs-keyword">else</span> up[i][j]=rght[i][j]=<span class="hljs-number">-1</span>;
 }
-long long TwoLLogo::countWays(vector &lt;string&gt; grid) {
-    init();a=grid;
-    n=grid.size();m=grid[0].length();
-    Build();
-    for (long long i=0;i&lt;n;i++)
-    for (long long j=0;j&lt;m;j++) if (a[i][j]=='.')
-    for (long long k=0;k&lt;n;k++)
-    for (long long t=0;t&lt;m;t++) if ((a[k][t]=='.')&amp;&amp;((i!=k)||(j!=t))){
-        if ((up[i][j]==0)||(rght[i][j]==0)||(up[k][t]==0)||(rght[k][t]==0)) continue;
-        if ((i&lt;k)&amp;&amp;(j&gt;t)) ans+=rght[i][j]*up[i][j]*rght[k][t]*up[k][t]; else
-        if ((i&lt;k)&amp;&amp;(j&lt;t)) ans+=max((long long)0,
-            up[i][j]*rght[i][j]*min(up[k][t],k-i-1)*rght[k][t]+
-            up[i][j]*min(rght[i][j],t-j-1)*up[k][t]*rght[k][t]-
-            up[i][j]*min(up[k][t],k-i-1)*min(rght[i][j],t-j-1)*rght[k][t]); else
-        if ((i&lt;k)&amp;&amp;(j==t)) ans+=up[i][j]*rght[i][j]*min(up[k][t],k-i-1)*rght[k][t];
-        if ((i==k)&amp;&amp;(j&lt;t)) ans+=up[i][j]*up[k][t]*min(rght[i][j],t-j-1)*rght[k][t];
+<span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">TwoLLogo::countWays</span><span class="hljs-params">(vector &lt;string&gt; grid)</span> </span>{
+    <span class="hljs-built_in">init</span>();a=grid;
+    n=grid.<span class="hljs-built_in">size</span>();m=grid[<span class="hljs-number">0</span>].<span class="hljs-built_in">length</span>();
+    <span class="hljs-built_in">Build</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> j=<span class="hljs-number">0</span>;j&lt;m;j++) <span class="hljs-keyword">if</span> (a[i][j]==<span class="hljs-string">&#x27;.&#x27;</span>)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> k=<span class="hljs-number">0</span>;k&lt;n;k++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> t=<span class="hljs-number">0</span>;t&lt;m;t++) <span class="hljs-keyword">if</span> ((a[k][t]==<span class="hljs-string">&#x27;.&#x27;</span>)&amp;&amp;((i!=k)||(j!=t))){
+        <span class="hljs-keyword">if</span> ((up[i][j]==<span class="hljs-number">0</span>)||(rght[i][j]==<span class="hljs-number">0</span>)||(up[k][t]==<span class="hljs-number">0</span>)||(rght[k][t]==<span class="hljs-number">0</span>)) <span class="hljs-keyword">continue</span>;
+        <span class="hljs-keyword">if</span> ((i&lt;k)&amp;&amp;(j&gt;t)) ans+=rght[i][j]*up[i][j]*rght[k][t]*up[k][t]; <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">if</span> ((i&lt;k)&amp;&amp;(j&lt;t)) ans+=<span class="hljs-built_in">max</span>((<span class="hljs-type">long</span> <span class="hljs-type">long</span>)<span class="hljs-number">0</span>,
+            up[i][j]*rght[i][j]*<span class="hljs-built_in">min</span>(up[k][t],k-i<span class="hljs-number">-1</span>)*rght[k][t]+
+            up[i][j]*<span class="hljs-built_in">min</span>(rght[i][j],t-j<span class="hljs-number">-1</span>)*up[k][t]*rght[k][t]-
+            up[i][j]*<span class="hljs-built_in">min</span>(up[k][t],k-i<span class="hljs-number">-1</span>)*<span class="hljs-built_in">min</span>(rght[i][j],t-j<span class="hljs-number">-1</span>)*rght[k][t]); <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">if</span> ((i&lt;k)&amp;&amp;(j==t)) ans+=up[i][j]*rght[i][j]*<span class="hljs-built_in">min</span>(up[k][t],k-i<span class="hljs-number">-1</span>)*rght[k][t];
+        <span class="hljs-keyword">if</span> ((i==k)&amp;&amp;(j&lt;t)) ans+=up[i][j]*up[k][t]*<span class="hljs-built_in">min</span>(rght[i][j],t-j<span class="hljs-number">-1</span>)*rght[k][t];
     }
-    return ans;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="9TsEK" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;tc-616-div2-t3&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/tc-616-div2-t3&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-keyword">return</span> ans;
+}
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="sa1MV" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;tc-616-div2-t3&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -184,4 +274,4 @@ Topcoder SRM 616 Div2 T3 TwoLLogo 题解 </span> </div> <div class="m-2"> <ul da
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

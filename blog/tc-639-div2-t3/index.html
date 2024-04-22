@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解 </span> </h5> <div class="m-2 s
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,109 +72,183 @@ Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解 </span> </h5> <div class="m-2 s
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 26 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tc-639-div2-t3" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>Topcoder Single Round Match 639 DIv2 T3 BoardFoldingDiv2 题解</p><p>这是我博客的第 66 篇文章，庆祝一下 :tada:</p><!--more--><hr><h2>Translation</h2><p>有一个 n 行 m 列的矩阵，每个元素都是 0 或 1；现在你可以沿着平行于矩阵边缘的直线“翻折”，必须保证翻折后重合的两个面上的对应元素相同。问你经过一系列翻折操作后，可能产生多少不同的矩阵。如果两个矩阵大小、元素相同，但是对于最初大矩阵左上角坐标不同，则这两个矩阵不同。<br>数据范围 $1\leqslant n,m \leqslant 50$。</p><blockquote><ul><li>paper will contain between 1 and 50 elements, inclusive.</li><li>Each element of paper will contain between 1 and 50 elements, inclusive.</li><li>All elements of paper will have the same length.</li><li>paper will contain only characters '0' and '1'.</li><li>Time limit (s): 2.000</li><li>Memory limit (MB): 256</li><li>Stack limit (MB): 256</li></ul></blockquote><h2>Examples</h2><p>样例零：</p><pre><code>{&quot;10&quot;,
- &quot;11&quot;}</code></pre><p>Returns: <code>1</code></p><p>这张纸根本没法折。</p><blockquote>There is no valid way to fold this paper, so there is just one possible outcome.</blockquote><p>样例一：</p><pre><code>{&quot;1111111&quot;,
- &quot;1111111&quot;}</code></pre><p>Returns: <code>84</code></p><p>这张纸可以随便折。一共有 84 种方案。</p><blockquote>We can fold it into any of the 84 possible subrectangles of the original rectangle.</blockquote><p>样例三：</p><pre><code>{&quot;0110&quot;,
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 8 月 26 日 11:58</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#translation">Translation</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#original">Original</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+<p>Topcoder Single Round Match 639 DIv2 T3 BoardFoldingDiv2 题解</p>
+<p>这是我博客的第 66 篇文章，庆祝一下 :tada:</p>
+<hr>
+<h2><a id="translation" class="heading-anchor"></a>Translation</h2>
+<p>有一个 n 行 m 列的矩阵，每个元素都是 0 或 1；现在你可以沿着平行于矩阵边缘的直线“翻折”，必须保证翻折后重合的两个面上的对应元素相同。问你经过一系列翻折操作后，可能产生多少不同的矩阵。如果两个矩阵大小、元素相同，但是对于最初大矩阵左上角坐标不同，则这两个矩阵不同。<br>
+数据范围 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⩽</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>⩽</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">1\leqslant n,m \leqslant 50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8311em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">50</span></span></span></span>。</p>
+<blockquote>
+<ul>
+<li>paper will contain between 1 and 50 elements, inclusive.</li>
+<li>Each element of paper will contain between 1 and 50 elements, inclusive.</li>
+<li>All elements of paper will have the same length.</li>
+<li>paper will contain only characters '0' and '1'.</li>
+<li>Time limit (s): 2.000</li>
+<li>Memory limit (MB): 256</li>
+<li>Stack limit (MB): 256</li>
+</ul>
+</blockquote>
+<h2><a id="examples" class="heading-anchor"></a>Examples</h2>
+<p>样例零：</p>
+<pre><code>{&quot;10&quot;,
+ &quot;11&quot;}
+</code></pre>
+<p>Returns: <code>1</code></p>
+<p>这张纸根本没法折。</p>
+<blockquote>
+<p>There is no valid way to fold this paper, so there is just one possible outcome.</p>
+</blockquote>
+<p>样例一：</p>
+<pre><code>{&quot;1111111&quot;,
+ &quot;1111111&quot;}
+</code></pre>
+<p>Returns: <code>84</code></p>
+<p>这张纸可以随便折。一共有 84 种方案。</p>
+<blockquote>
+<p>We can fold it into any of the 84 possible subrectangles of the original rectangle.</p>
+</blockquote>
+<p>样例三：</p>
+<pre><code>{&quot;0110&quot;,
  &quot;1001&quot;,
  &quot;1001&quot;,
- &quot;0110&quot;}</code></pre><p>Returns: <code>9</code></p><p>横着、竖着都可以沿中线对折，共 9 种方案。</p><h2>Original</h2><blockquote>Little Petya likes puzzles a lot. Recently he has received one as a gift from his mother. The puzzle has the form of a rectangular sheet of paper that is divided into N rows by M columns of unit square cells. Rows are numbered 0 through N-1 from top to bottom, and columns 0 through M-1 from left to right. Each cell is colored either black or white. You are given a description of the paper, the exact format is specified at the end of this problem statement.  The goal of the puzzle is to fold the paper. This has to be done in a sequence of turns. In each turn, Petya has to fold the paper according to the rules below. He can end the process after any number of turns (including zero), even if there are still valid ways to fold the paper.  In each turn, Petya must follow these steps: To start folding, he must choose a line that is parallel to one of the sides of the paper and passes between two rows/columns of cells. He can then take the smaller part of the paper and fold it on top of the larger part. (If the line divides the current paper in half, he can fold either half on top of the other.) There is one additional restriction: Petya may only perform the fold if all cells of the part that is being folded land on equally-colored cells of the part that remains in place.  For example, consider the following paper (with 0 and 1 representing white and black):<br>10010101<br>11110100<br>00000000<br>01101110<br>Here, Petya could choose the vertical line that goes between the two leftmost columns and the rest of the paper. Note that this is a valid choice: as he makes the fold, the cells from the leftmost two columns will all match their counterparts in the right part of the paper. This is how the paper looks like after the fold (with periods representing empty spaces):<br>..010101<br>..110100<br>..000000<br>..101110<br>Clearly, even after multiple folds the paper will always look like a subrectangle of the original paper. Two states of the game are considered the same if that rectangle has the same dimensions and the same offset with respect to the original top left corner of the paper. (Note that folding order does not matter. Two different sequences of folding may produce the same final state.)  You are given a description of the original state of the paper as a vector <string> paper. Here N is the number of elements in paper and M is the length of its each element. For each i and j, the character paperi is either '0' (meaning that the cell (i,j) is white) or '1' (the cell is black). Compute and return the number of possible final states of the game.</blockquote><h2>Analysis</h2><p>首先必须想明白一个很重要的结论（其实原题题目里都提示你了）：<strong>横向翻折与纵向翻折是独立的</strong>。也就是说我们可以先处理横向翻折的情况，得出方案数，再处理纵向翻折，<strong>最后两者相乘就是答案</strong>。<br>有了这个结论，问题就很简单了。我们直接做一次区间 DP 就可以方便地得出翻折方案数，累计即可。</p><h2>Code</h2><p>代码实现起来有点复杂，但是只要思路清晰其实并不难。</p><pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=55;
-int n,m,ans1,ans2;
-bool vis[maxn][maxn]; // vis[i][j]: 第i个cell开始的一段长度为j的闭区间能否与i+j+1开始的一段等长的闭区间匹配
-// 即[i,i+j]与[i+j+1,i+2*j+1]两段区间的cells是否对称
-// 注意j是整个区间半长
-bool f[maxn][maxn]; // F[i][j]: 能否折叠得只剩[i,j]区间
-class BoardFoldingDiv2 {
-public:
-    int howMany( vector &lt;string&gt; paper );
+ &quot;0110&quot;}
+</code></pre>
+<p>Returns: <code>9</code></p>
+<p>横着、竖着都可以沿中线对折，共 9 种方案。</p>
+<h2><a id="original" class="heading-anchor"></a>Original</h2>
+<blockquote>
+<p>Little Petya likes puzzles a lot. Recently he has received one as a gift from his mother. The puzzle has the form of a rectangular sheet of paper that is divided into N rows by M columns of unit square cells. Rows are numbered 0 through N-1 from top to bottom, and columns 0 through M-1 from left to right. Each cell is colored either black or white. You are given a description of the paper, the exact format is specified at the end of this problem statement.  The goal of the puzzle is to fold the paper. This has to be done in a sequence of turns. In each turn, Petya has to fold the paper according to the rules below. He can end the process after any number of turns (including zero), even if there are still valid ways to fold the paper.  In each turn, Petya must follow these steps: To start folding, he must choose a line that is parallel to one of the sides of the paper and passes between two rows/columns of cells. He can then take the smaller part of the paper and fold it on top of the larger part. (If the line divides the current paper in half, he can fold either half on top of the other.) There is one additional restriction: Petya may only perform the fold if all cells of the part that is being folded land on equally-colored cells of the part that remains in place.  For example, consider the following paper (with 0 and 1 representing white and black):<br>
+10010101<br>
+11110100<br>
+00000000<br>
+01101110<br>
+Here, Petya could choose the vertical line that goes between the two leftmost columns and the rest of the paper. Note that this is a valid choice: as he makes the fold, the cells from the leftmost two columns will all match their counterparts in the right part of the paper. This is how the paper looks like after the fold (with periods representing empty spaces):<br>
+..010101<br>
+..110100<br>
+..000000<br>
+..101110<br>
+Clearly, even after multiple folds the paper will always look like a subrectangle of the original paper. Two states of the game are considered the same if that rectangle has the same dimensions and the same offset with respect to the original top left corner of the paper. (Note that folding order does not matter. Two different sequences of folding may produce the same final state.)  You are given a description of the original state of the paper as a vector <string> paper. Here N is the number of elements in paper and M is the length of its each element. For each i and j, the character paper[i][j] is either '0' (meaning that the cell (i,j) is white) or '1' (the cell is black). Compute and return the number of possible final states of the game.</p>
+</blockquote>
+<h2><a id="analysis" class="heading-anchor"></a>Analysis</h2>
+<p>首先必须想明白一个很重要的结论（其实原题题目里都提示你了）：<strong>横向翻折与纵向翻折是独立的</strong>。也就是说我们可以先处理横向翻折的情况，得出方案数，再处理纵向翻折，<strong>最后两者相乘就是答案</strong>。<br>
+有了这个结论，问题就很简单了。我们直接做一次区间 DP 就可以方便地得出翻折方案数，累计即可。</p>
+<h2><a id="code" class="heading-anchor"></a>Code</h2>
+<p>代码实现起来有点复杂，但是只要思路清晰其实并不难。</p>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">55</span>;
+<span class="hljs-type">int</span> n,m,ans1,ans2;
+<span class="hljs-type">bool</span> vis[maxn][maxn]; <span class="hljs-comment">// vis[i][j]: 第i个cell开始的一段长度为j的闭区间能否与i+j+1开始的一段等长的闭区间匹配</span>
+<span class="hljs-comment">// 即[i,i+j]与[i+j+1,i+2*j+1]两段区间的cells是否对称</span>
+<span class="hljs-comment">// 注意j是整个区间半长</span>
+<span class="hljs-type">bool</span> f[maxn][maxn]; <span class="hljs-comment">// F[i][j]: 能否折叠得只剩[i,j]区间</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BoardFoldingDiv2</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">howMany</span><span class="hljs-params">( vector &lt;string&gt; paper )</span></span>;
 };
-inline bool Check(int x,int y,bool mode,vector &lt;string&gt; paper){ // 验证两行/两列是否相同的函数
-    // mode: 竖向验证(true)(||)或横向验证(false)(=)
-    if (mode){
-        for (int i=0;i&lt;n;i++) if (paper[i][x]!=paper[i][y]) return false;
-        // printf(&quot;Check Succesful: %d %d\n&quot;,x,y);
-        return true;
-    } else {
-        for (int i=0;i&lt;m;i++) if (paper[x][i]!=paper[y][i]) return false;
-        return true;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">Check</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y,<span class="hljs-type">bool</span> mode,vector &lt;string&gt; paper)</span></span>{ <span class="hljs-comment">// 验证两行/两列是否相同的函数</span>
+    <span class="hljs-comment">// mode: 竖向验证(true)(||)或横向验证(false)(=)</span>
+    <span class="hljs-keyword">if</span> (mode){
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) <span class="hljs-keyword">if</span> (paper[i][x]!=paper[i][y]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-comment">// printf(&quot;Check Succesful: %d %d\n&quot;,x,y);</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++) <span class="hljs-keyword">if</span> (paper[x][i]!=paper[y][i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
-    return false;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 }
-int BoardFoldingDiv2::howMany(vector &lt;string&gt; paper) {
-    n=paper.size();
-    if (n==0) return 0;
-    m=paper[0].length();
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">BoardFoldingDiv2::howMany</span><span class="hljs-params">(vector &lt;string&gt; paper)</span> </span>{
+    n=paper.<span class="hljs-built_in">size</span>();
+    <span class="hljs-keyword">if</span> (n==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    m=paper[<span class="hljs-number">0</span>].<span class="hljs-built_in">length</span>();
 
-    // Part 1: build ans1 -------------------------------
+    <span class="hljs-comment">// Part 1: build ans1 -------------------------------</span>
 
-    memset(vis,0,sizeof(vis));
-    for (int i=0;i&lt;m-1;i++) vis[i][1]=Check(i,i+1,true,paper);
-    for (int L=3;L&lt;=m;L+=2)
-    for (int i=0;i&lt;m-L;i++){
-        int j=i+L;
-        if ((j&gt;=m)||(!vis[i+1][L/2])) continue;
-        vis[i][(L+1)/2]=Check(i,j,true,paper);
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m<span class="hljs-number">-1</span>;i++) vis[i][<span class="hljs-number">1</span>]=<span class="hljs-built_in">Check</span>(i,i+<span class="hljs-number">1</span>,<span class="hljs-literal">true</span>,paper);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> L=<span class="hljs-number">3</span>;L&lt;=m;L+=<span class="hljs-number">2</span>)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m-L;i++){
+        <span class="hljs-type">int</span> j=i+L;
+        <span class="hljs-keyword">if</span> ((j&gt;=m)||(!vis[i+<span class="hljs-number">1</span>][L/<span class="hljs-number">2</span>])) <span class="hljs-keyword">continue</span>;
+        vis[i][(L+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>]=<span class="hljs-built_in">Check</span>(i,j,<span class="hljs-literal">true</span>,paper);
     }
 
-    memset(f,0,sizeof(f));
-    f[0][m-1]=true;
-    for (int L=m-1;L&gt;=0;L--)
-    for (int i=0;i&lt;m-L;i++){
-        int j=i+L;
-        if (j&gt;=m) continue;
-        for (int k=i;(k&lt;=j)&amp;&amp;(!f[i][j]);k++){
-            if ((j+(j-k+1)&lt;m)&amp;&amp;(vis[k][j-k+1])){ // 先考虑右边一块向左边折叠情况
-                f[i][j]|=f[i][j+(j-k+1)];
+    <span class="hljs-built_in">memset</span>(f,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(f));
+    f[<span class="hljs-number">0</span>][m<span class="hljs-number">-1</span>]=<span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> L=m<span class="hljs-number">-1</span>;L&gt;=<span class="hljs-number">0</span>;L--)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m-L;i++){
+        <span class="hljs-type">int</span> j=i+L;
+        <span class="hljs-keyword">if</span> (j&gt;=m) <span class="hljs-keyword">continue</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k=i;(k&lt;=j)&amp;&amp;(!f[i][j]);k++){
+            <span class="hljs-keyword">if</span> ((j+(j-k+<span class="hljs-number">1</span>)&lt;m)&amp;&amp;(vis[k][j-k+<span class="hljs-number">1</span>])){ <span class="hljs-comment">// 先考虑右边一块向左边折叠情况</span>
+                f[i][j]|=f[i][j+(j-k+<span class="hljs-number">1</span>)];
             }
-            if ((i-(k-i+1)&gt;=0)&amp;&amp;(vis[i-(k-i+1)][k-i+1])){ // 左边一块向右折叠
-                f[i][j]|=f[i-(k-i+1)][j];
-            }
-        }
-    }
-    ans1=0;
-    for (int i=0;i&lt;m;i++)
-    for (int j=i;j&lt;m;j++) ans1+=f[i][j];
-    if (m==1) ans1=1;
-
-    // Part 2: build ans2 -------------------------------
-
-    memset(vis,0,sizeof(vis));
-    for (int i=0;i&lt;n-1;i++) vis[i][1]=Check(i,i+1,false,paper);
-    for (int L=3;L&lt;=n;L+=2)
-    for (int i=0;i&lt;n-L;i++){
-        int j=i+L;
-        if ((j&gt;=n)||(!vis[i+1][L/2])) continue;
-        vis[i][(L+1)/2]=Check(i,j,false,paper);
-    }
-
-    memset(f,0,sizeof(f));
-    f[0][n-1]=true;
-    for (int L=n-1;L&gt;=0;L--)
-    for (int i=0;i&lt;n-L;i++){
-        int j=i+L;
-        if (j&gt;=n) continue;
-        for (int k=i;(k&lt;=j)&amp;&amp;(!f[i][j]);k++){
-            if ((j+(j-k+1)&lt;n)&amp;&amp;(vis[k][j-k+1])){ // 先考虑下面一块向上边折叠情况
-                f[i][j]|=f[i][j+(j-k+1)];
-            }
-            if ((i-(k-i+1)&gt;=0)&amp;&amp;(vis[i-(k-i+1)][k-i+1])){ // 上面一块向下折叠
-                f[i][j]|=f[i-(k-i+1)][j];
+            <span class="hljs-keyword">if</span> ((i-(k-i+<span class="hljs-number">1</span>)&gt;=<span class="hljs-number">0</span>)&amp;&amp;(vis[i-(k-i+<span class="hljs-number">1</span>)][k-i+<span class="hljs-number">1</span>])){ <span class="hljs-comment">// 左边一块向右折叠</span>
+                f[i][j]|=f[i-(k-i+<span class="hljs-number">1</span>)][j];
             }
         }
     }
-    ans2=0;
-    for (int i=0;i&lt;n;i++)
-    for (int j=i;j&lt;n;j++) ans2+=f[i][j];
-    if (n==1) ans2=1;
+    ans1=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=i;j&lt;m;j++) ans1+=f[i][j];
+    <span class="hljs-keyword">if</span> (m==<span class="hljs-number">1</span>) ans1=<span class="hljs-number">1</span>;
 
-    // printf(&quot;ANS1=%d  ANS2=%d\n&quot;,ans1,ans2);
-    return ans1*ans2;
-}</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZlWOIt" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;tc-639-div2-t3&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/tc-639-div2-t3&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-comment">// Part 2: build ans2 -------------------------------</span>
+
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++) vis[i][<span class="hljs-number">1</span>]=<span class="hljs-built_in">Check</span>(i,i+<span class="hljs-number">1</span>,<span class="hljs-literal">false</span>,paper);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> L=<span class="hljs-number">3</span>;L&lt;=n;L+=<span class="hljs-number">2</span>)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n-L;i++){
+        <span class="hljs-type">int</span> j=i+L;
+        <span class="hljs-keyword">if</span> ((j&gt;=n)||(!vis[i+<span class="hljs-number">1</span>][L/<span class="hljs-number">2</span>])) <span class="hljs-keyword">continue</span>;
+        vis[i][(L+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>]=<span class="hljs-built_in">Check</span>(i,j,<span class="hljs-literal">false</span>,paper);
+    }
+
+    <span class="hljs-built_in">memset</span>(f,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(f));
+    f[<span class="hljs-number">0</span>][n<span class="hljs-number">-1</span>]=<span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> L=n<span class="hljs-number">-1</span>;L&gt;=<span class="hljs-number">0</span>;L--)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n-L;i++){
+        <span class="hljs-type">int</span> j=i+L;
+        <span class="hljs-keyword">if</span> (j&gt;=n) <span class="hljs-keyword">continue</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k=i;(k&lt;=j)&amp;&amp;(!f[i][j]);k++){
+            <span class="hljs-keyword">if</span> ((j+(j-k+<span class="hljs-number">1</span>)&lt;n)&amp;&amp;(vis[k][j-k+<span class="hljs-number">1</span>])){ <span class="hljs-comment">// 先考虑下面一块向上边折叠情况</span>
+                f[i][j]|=f[i][j+(j-k+<span class="hljs-number">1</span>)];
+            }
+            <span class="hljs-keyword">if</span> ((i-(k-i+<span class="hljs-number">1</span>)&gt;=<span class="hljs-number">0</span>)&amp;&amp;(vis[i-(k-i+<span class="hljs-number">1</span>)][k-i+<span class="hljs-number">1</span>])){ <span class="hljs-comment">// 上面一块向下折叠</span>
+                f[i][j]|=f[i-(k-i+<span class="hljs-number">1</span>)][j];
+            }
+        }
+    }
+    ans2=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=i;j&lt;n;j++) ans2+=f[i][j];
+    <span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>) ans2=<span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">// printf(&quot;ANS1=%d  ANS2=%d\n&quot;,ans1,ans2);</span>
+    <span class="hljs-keyword">return</span> ans1*ans2;
+}
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Zp88Eu" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;tc-639-div2-t3&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -201,4 +275,4 @@ Topcoder SRM 639 Div2 T3 BoardFoldingDiv2 题解 </span> </div> <div class="m-2"
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

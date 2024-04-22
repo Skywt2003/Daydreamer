@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>二分图匹配问题与匈牙利算法</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>二分图匹配问题与匈牙利算法</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,79 +72,165 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>二分图匹配问题与匈牙利算法</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 09 月 01 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/bipartite-matching" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>所谓<strong>二分图（Bipartite Graph）</strong>就是这样的一个图：</p><p><center><img width="260" height="260" src="https://skywt.cn/wp-content/uploads/600px-Simple-bipartite-graph.svg_.png" /></center></p><p>简单地说，就是一张图里的所有点可以分为两组（如上图），并且每条边都跨越两组。这样的图就是二分图。</p><!--more--><h2>二分图的定义</h2><p>说得严谨一点：</p><blockquote><strong>二分图</strong>又称双分图、二部图、偶图，指顶点可以分成两个不相交的集 $U$和 $V$ （$U$ 与 $V$ 皆为<strong>独立集（Independent Sets）</strong>），使得在同一个集内的顶点不相邻（没有共同边）的图。</blockquote><p>一个图为二分图仅当：</p><ul><li>没有奇数圈；</li><li>点色数为 2。</li></ul><h3>相关的几个概念</h3><ul><li><strong>匹配</strong>：二分图的一个“匹配”是指一些边的集合，任意两条边没有公共点。</li><li><strong>最大匹配</strong>：二分图的“最大匹配”，指的是二分图的所有匹配中边数最多的匹配。</li><li><strong>完美匹配</strong>：二分图的一个“完美匹配”，是指所有点都在这个匹配中的一个匹配。也就是说这个匹配里的所有边刚好经过所有点一次。多完美！</li><li><strong>匹配边/点</strong>：在一个匹配中的边/点（匹配点又叫做盖点，非匹配点叫做未盖点（所谓“盖”指的是被一条边盖住））。</li></ul><h2>二分图的最大匹配：匈牙利算法</h2><p>如何求解二分图的最大匹配呢？可以用<strong>匈牙利算法（Hungary Algorithm）</strong>解决。</p><blockquote>匈牙利算法是一种在多项式时间内求解任务分配问题的组合优化算法，并推动了后来的原始对偶方法。美国数学家哈罗德·库恩于1955年提出该算法。此算法之所以被称作匈牙利算法，是因为算法很大一部分是基于以前匈牙利数学家 Dénes Kőnig 和 Jenő Egerváry 的工作之上创建起来的。<br>詹姆士·芒克勒斯在 1957 年回顾了该算法，并发现（强）多项式时间的。此后该算法被称为 Kuhn–Munkres 算法或 Munkres 分配算法。原始算法的时间复杂度为 $O(n^{4}) $，但 Edmonds 与卡普发现可以修改算法达到 $O(n^{3})$ 运行时间，富泽也独立发现了这一点。Ford 和 Fulkerson 将该方法推广到了一般运输问题。2006 年发现卡尔·雅可比在 19 世纪就解决了指派问题，该解法在他死后在 1890 年以拉丁文发表。<br>——Wikipedia</blockquote><p>这段文字为我们讲述匈牙利算法的历史姻缘……</p><h3>几个概念和定理</h3><ul><li><strong>交替路</strong>（也叫交错路）：从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边……形成的路径叫交替路。</li><li><strong>增广路</strong>：从一个未匹配点出发，走交替路，以另一个未匹配点为结尾（出发的点不算），则这条交替路称为增广路（Agumenting Path）。（很熟悉？在 <a href="https://skywt.cn/posts/network-flows/" title="网络流最大流算法总结">网络流最大流算法总结</a> 里出现过增广路的概念。）</li><li><strong>增广路定理：</strong>任意一个非最大匹配的匹配一定存在增广路。</li></ul><h3>算法基本原理</h3><p>注意前面增广路的定义：“<strong>从一个未匹配点出发</strong>，走交替路，<strong>以另一个未匹配点为结尾</strong>”，首尾都是未匹配点，说明首尾的边都是非匹配边。而又是<strong>交替路</strong>，也就是说<strong>非匹配边比匹配边多一条</strong>。那么我们完全可以把这条增广路里的匹配边和非匹配边互换（称为“交换匹配”），那么匹配边就会多出 1 条，实现了<strong>“增广”</strong>的意义。并且这样做并不会对其他边造成影响，也不破坏二分图的性质。</p><p>那么我们就可以一直找增广路，不断交换匹配。根据增广路定理，<strong>如果找不到了，就说明已经达到最大匹配。</strong><br>同样可以证明，<strong>已经匹配的点永远不会退出匹配，只会更换匹配</strong>。</p><p>这就是<strong>匈牙利算法</strong>最核心的部分了：<strong>一直找增广路，不断交换匹配。</strong></p><h4>另一种较为变态的解释</h4><p>出自上课的 PPT：</p><blockquote><ul><li>假设你有了一个匹配P，我们比较这个匹配与最大匹配M。</li><li>如果M里面有匹配边是P里面没有的而且匹配边对应的两个匹配点在当前也是未盖点，那就把这些边直接连上，得到Q。</li><li>现在的Q已经没法再通过单独增加一个与之前毫不相关的匹配边来扩大匹配了。</li><li>也就是说任意一个M里面的匹配边在Q里面都会覆盖Q的某个匹配点。</li><li>假设Q还不是最大匹配，那么我们要将Q变成M的方法就是将Q中的边替换成M中的边。</li><li>这个替换的前提就是边集X（M - M交Q）与边集Y（Q - M交Q），我们称之为对称差，一定会形成x-y-x...-x-y-x这样交错的路径，属于X边集的边会比属于Y边集的边多一条，如果不存在这样的路径，说明M的匹配数不比Q多。</li><li>因此我们可以将交错路径的匹配边与非匹配边互换。</li></ul></blockquote><h3>核心代码实现</h3><pre><code class="lang-cpp">inline bool DFS(int s){
-    for (int i=lnk[s];i;i=nxt[i]) if (!vis[son[i]]){
-        vis[son[i]]=true;int t=son[i];
-        if ((con_y[t]==-1)||(DFS(con_y[t]))){ // 如果右边的点是未匹配点，或者继续能找到增广路
-            con_x[s]=t; // 就愉快地交换匹配一番
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>二分图匹配问题与匈牙利算法</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 9 月 1 日 10:45</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E4%BA%8C%E5%88%86%E5%9B%BE%E7%9A%84%E5%AE%9A%E4%B9%89">二分图的定义</a>
+<ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5">相关的几个概念</a></li>
+</ul></li>
+<li><a href="#%E4%BA%8C%E5%88%86%E5%9B%BE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95">二分图的最大匹配：匈牙利算法</a>
+<ul>
+<li><a href="#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E7%90%86">几个概念和定理</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86">算法基本原理</a>
+<ul>
+<li><a href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E8%BE%83%E4%B8%BA%E5%8F%98%E6%80%81%E7%9A%84%E8%A7%A3%E9%87%8A">另一种较为变态的解释</a></li>
+</ul></li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">核心代码实现</a></li>
+</ul></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+<p>所谓<strong>二分图（Bipartite Graph）</strong>就是这样的一个图：</p>
+<p><center><img width="260" height="260" src="https://skywt.cn/wp-content/uploads/600px-Simple-bipartite-graph.svg_.png" /></center></p>
+<p>简单地说，就是一张图里的所有点可以分为两组（如上图），并且每条边都跨越两组。这样的图就是二分图。</p>
+<h2><a id="二分图的定义" class="heading-anchor"></a>二分图的定义</h2>
+<p>说得严谨一点：</p>
+<blockquote>
+<p><strong>二分图</strong>又称双分图、二部图、偶图，指顶点可以分成两个不相交的集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span>和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> （<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> 皆为<strong>独立集（Independent Sets）</strong>），使得在同一个集内的顶点不相邻（没有共同边）的图。</p>
+</blockquote>
+<p>一个图为二分图仅当：</p>
+<ul>
+<li>没有奇数圈；</li>
+<li>点色数为 2。</li>
+</ul>
+<h3><a id="相关的几个概念" class="heading-anchor"></a>相关的几个概念</h3>
+<ul>
+<li><p><strong>匹配</strong>：二分图的一个“匹配”是指一些边的集合，任意两条边没有公共点。</p></li>
+<li><p><strong>最大匹配</strong>：二分图的“最大匹配”，指的是二分图的所有匹配中边数最多的匹配。</p></li>
+<li><p><strong>完美匹配</strong>：二分图的一个“完美匹配”，是指所有点都在这个匹配中的一个匹配。也就是说这个匹配里的所有边刚好经过所有点一次。多完美！</p></li>
+<li><p><strong>匹配边/点</strong>：在一个匹配中的边/点（匹配点又叫做盖点，非匹配点叫做未盖点（所谓“盖”指的是被一条边盖住））。</p></li>
+</ul>
+<h2><a id="二分图的最大匹配匈牙利算法" class="heading-anchor"></a>二分图的最大匹配：匈牙利算法</h2>
+<p>如何求解二分图的最大匹配呢？可以用<strong>匈牙利算法（Hungary Algorithm）</strong>解决。</p>
+<blockquote>
+<p>匈牙利算法是一种在多项式时间内求解任务分配问题的组合优化算法，并推动了后来的原始对偶方法。美国数学家哈罗德·库恩于1955年提出该算法。此算法之所以被称作匈牙利算法，是因为算法很大一部分是基于以前匈牙利数学家 Dénes Kőnig 和 Jenő Egerváry 的工作之上创建起来的。<br>
+詹姆士·芒克勒斯在 1957 年回顾了该算法，并发现（强）多项式时间的。此后该算法被称为 Kuhn–Munkres 算法或 Munkres 分配算法。原始算法的时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^{4})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，但 Edmonds 与卡普发现可以修改算法达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^{3})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 运行时间，富泽也独立发现了这一点。Ford 和 Fulkerson 将该方法推广到了一般运输问题。2006 年发现卡尔·雅可比在 19 世纪就解决了指派问题，该解法在他死后在 1890 年以拉丁文发表。<br>
+——Wikipedia</p>
+</blockquote>
+<p>这段文字为我们讲述匈牙利算法的历史姻缘……</p>
+<h3><a id="几个概念和定理" class="heading-anchor"></a>几个概念和定理</h3>
+<ul>
+<li><p><strong>交替路</strong>（也叫交错路）：从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边……形成的路径叫交替路。</p></li>
+<li><p><strong>增广路</strong>：从一个未匹配点出发，走交替路，以另一个未匹配点为结尾（出发的点不算），则这条交替路称为增广路（Agumenting Path）。（很熟悉？在 <a href="https://skywt.cn/posts/network-flows/" title="网络流最大流算法总结">网络流最大流算法总结</a> 里出现过增广路的概念。）</p></li>
+<li><p><strong>增广路定理：</strong>任意一个非最大匹配的匹配一定存在增广路。</p></li>
+</ul>
+<h3><a id="算法基本原理" class="heading-anchor"></a>算法基本原理</h3>
+<p>注意前面增广路的定义：“<strong>从一个未匹配点出发</strong>，走交替路，<strong>以另一个未匹配点为结尾</strong>”，首尾都是未匹配点，说明首尾的边都是非匹配边。而又是<strong>交替路</strong>，也就是说<strong>非匹配边比匹配边多一条</strong>。那么我们完全可以把这条增广路里的匹配边和非匹配边互换（称为“交换匹配”），那么匹配边就会多出 1 条，实现了<strong>“增广”</strong>的意义。并且这样做并不会对其他边造成影响，也不破坏二分图的性质。</p>
+<p>那么我们就可以一直找增广路，不断交换匹配。根据增广路定理，<strong>如果找不到了，就说明已经达到最大匹配。</strong><br>
+同样可以证明，<strong>已经匹配的点永远不会退出匹配，只会更换匹配</strong>。</p>
+<p>这就是<strong>匈牙利算法</strong>最核心的部分了：<strong>一直找增广路，不断交换匹配。</strong></p>
+<h4><a id="另一种较为变态的解释" class="heading-anchor"></a>另一种较为变态的解释</h4>
+<p>出自上课的 PPT：</p>
+<blockquote>
+<ul>
+<li>假设你有了一个匹配P，我们比较这个匹配与最大匹配M。</li>
+<li>如果M里面有匹配边是P里面没有的而且匹配边对应的两个匹配点在当前也是未盖点，那就把这些边直接连上，得到Q。</li>
+<li>现在的Q已经没法再通过单独增加一个与之前毫不相关的匹配边来扩大匹配了。</li>
+<li>也就是说任意一个M里面的匹配边在Q里面都会覆盖Q的某个匹配点。</li>
+<li>假设Q还不是最大匹配，那么我们要将Q变成M的方法就是将Q中的边替换成M中的边。</li>
+<li>这个替换的前提就是边集X（M - M交Q）与边集Y（Q - M交Q），我们称之为对称差，一定会形成x-y-x...-x-y-x这样交错的路径，属于X边集的边会比属于Y边集的边多一条，如果不存在这样的路径，说明M的匹配数不比Q多。</li>
+<li>因此我们可以将交错路径的匹配边与非匹配边互换。</li>
+</ul>
+</blockquote>
+<h3><a id="核心代码实现" class="heading-anchor"></a>核心代码实现</h3>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-type">int</span> s)</span></span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=lnk[s];i;i=nxt[i]) <span class="hljs-keyword">if</span> (!vis[son[i]]){
+        vis[son[i]]=<span class="hljs-literal">true</span>;<span class="hljs-type">int</span> t=son[i];
+        <span class="hljs-keyword">if</span> ((con_y[t]==<span class="hljs-number">-1</span>)||(<span class="hljs-built_in">DFS</span>(con_y[t]))){ <span class="hljs-comment">// 如果右边的点是未匹配点，或者继续能找到增广路</span>
+            con_x[s]=t; <span class="hljs-comment">// 就愉快地交换匹配一番</span>
             con_y[t]=s;
-            return true;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
         }
     }
-    return false;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 }
-inline int max_match(){
-    memset(con_x,-1,sizeof(con_x));
-    memset(con_y,-1,sizeof(con_y));
-    int ret=0;
-    for (int i=1;i&lt;=n;i++){
-        memset(vis,0,sizeof(vis));
-        ret+=DFS(i);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">max_match</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">memset</span>(con_x,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(con_x));
+    <span class="hljs-built_in">memset</span>(con_y,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(con_y));
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++){
+        <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
+        ret+=<span class="hljs-built_in">DFS</span>(i);
     }
-    return ret;
-}</code></pre><h2>完整代码</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-using namespace std;
-const int maxn=1005,maxe=1000005;
-int n,m,e,con_x[maxn],con_y[maxn];
-int tot=0,lnk[maxn],nxt[maxe],son[maxe];
-bool vis[maxe];
-
-inline int read(){
-    int ret=0,f=1;char ch=getchar();
-    while (ch&lt;'0'||ch&gt;'9') {if (ch=='-') f=-1;ch=getchar();}
-    while (ch&gt;='0'&amp;&amp;ch&lt;='9') ret=ret*10+ch-'0',ch=getchar();
-    return ret*f;
+    <span class="hljs-keyword">return</span> ret;
 }
-inline void add(int x,int y){
+</code></pre>
+<h2><a id="完整代码" class="heading-anchor"></a>完整代码</h2>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1005</span>,maxe=<span class="hljs-number">1000005</span>;
+<span class="hljs-type">int</span> n,m,e,con_x[maxn],con_y[maxn];
+<span class="hljs-type">int</span> tot=<span class="hljs-number">0</span>,lnk[maxn],nxt[maxe],son[maxe];
+<span class="hljs-type">bool</span> vis[maxe];
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>) {<span class="hljs-keyword">if</span> (ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;ch=<span class="hljs-built_in">getchar</span>();}
+    <span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>) ret=ret*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();
+    <span class="hljs-keyword">return</span> ret*f;
+}
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span></span>{
     tot++;son[tot]=y;nxt[tot]=lnk[x];lnk[x]=tot;
 }
-inline bool DFS(int s){
-    for (int i=lnk[s];i;i=nxt[i]) if (!vis[son[i]]){
-        vis[son[i]]=true;int t=son[i];
-        if ((con_y[t]==-1)||(DFS(con_y[t]))){
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-type">int</span> s)</span></span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=lnk[s];i;i=nxt[i]) <span class="hljs-keyword">if</span> (!vis[son[i]]){
+        vis[son[i]]=<span class="hljs-literal">true</span>;<span class="hljs-type">int</span> t=son[i];
+        <span class="hljs-keyword">if</span> ((con_y[t]==<span class="hljs-number">-1</span>)||(<span class="hljs-built_in">DFS</span>(con_y[t]))){
             con_x[s]=t;
             con_y[t]=s;
-            return true;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
         }
     }
-    return false;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 }
-inline int max_match(){
-    memset(con_x,-1,sizeof(con_x));
-    memset(con_y,-1,sizeof(con_y));
-    int ret=0;
-    for (int i=1;i&lt;=n;i++){
-        memset(vis,0,sizeof(vis));
-        ret+=DFS(i);
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">max_match</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">memset</span>(con_x,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(con_x));
+    <span class="hljs-built_in">memset</span>(con_y,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(con_y));
+    <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++){
+        <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
+        ret+=<span class="hljs-built_in">DFS</span>(i);
     }
-    return ret;
+    <span class="hljs-keyword">return</span> ret;
 }
-int main(){
-    n=read();m=read();e=read();
-    for (int i=1;i&lt;=e;i++){
-        int x=read(),y=read();
-        if (x&gt;n||y&gt;m||x&lt;1||y&lt;1) continue;
-        add(x,y);
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    n=<span class="hljs-built_in">read</span>();m=<span class="hljs-built_in">read</span>();e=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=e;i++){
+        <span class="hljs-type">int</span> x=<span class="hljs-built_in">read</span>(),y=<span class="hljs-built_in">read</span>();
+        <span class="hljs-keyword">if</span> (x&gt;n||y&gt;m||x&lt;<span class="hljs-number">1</span>||y&lt;<span class="hljs-number">1</span>) <span class="hljs-keyword">continue</span>;
+        <span class="hljs-built_in">add</span>(x,y);
     }
-    printf(&quot;%d\n&quot;,max_match());
-    return 0;
-}</code></pre><h2>参考</h2><p><a href="https://www.renfei.org/blog/bipartite-matching.html" title="二分图的最大匹配、完美匹配和匈牙利算法 - Blog - Renfei Song">二分图的最大匹配、完美匹配和匈牙利算法 - Blog - Renfei Song</a><br><a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E5%9B%BE" title="二分图 - 维基百科，自由的百科全书">二分图 - 维基百科，自由的百科全书</a><br><a href="https://www.cnblogs.com/justPassBy/p/5369930.html" title="有向无环图（DAG）的最小路径覆盖 - justPassBy - 博客园">有向无环图（DAG）的最小路径覆盖 - justPassBy - 博客园</a></p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z2u1Hgi" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;bipartite-matching&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/bipartite-matching&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,<span class="hljs-built_in">max_match</span>());
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2><a id="参考" class="heading-anchor"></a>参考</h2>
+<p><a href="https://www.renfei.org/blog/bipartite-matching.html" title="二分图的最大匹配、完美匹配和匈牙利算法 - Blog - Renfei Song">二分图的最大匹配、完美匹配和匈牙利算法 - Blog - Renfei Song</a><br>
+<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E5%9B%BE" title="二分图 - 维基百科，自由的百科全书">二分图 - 维基百科，自由的百科全书</a><br>
+<a href="https://www.cnblogs.com/justPassBy/p/5369930.html" title="有向无环图（DAG）的最小路径覆盖 - justPassBy - 博客园">有向无环图（DAG）的最小路径覆盖 - justPassBy - 博客园</a></p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="KcXmQ" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;bipartite-matching&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -171,4 +257,4 @@ int main(){
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

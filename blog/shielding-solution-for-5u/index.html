@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>「无忧乐行」切后台检测、随机验证码屏蔽方案</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>「无忧乐行」切后台检测、随机验证码屏蔽方案</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,226 +72,298 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>「无忧乐行」切后台检测、随机验证码屏蔽方案</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 07 月 10 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 11 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/shielding-solution-for-5u" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>学车学到科目三，要我们在<a href="https://5u5u5u5u.com/">无忧乐行</a>平台上看满 9 小时课程之后才能预约考试。这个平台非常恶心，不仅 UI 丑得没法看，而且在看视频的时候每隔一定时间会弹出验证码窗口，必须在指定时间之内完成验证；把网站标签页或窗口切到后台就会停止记录学时，必须保证前台观看。</p><p>魔高一尺，道高一丈，既然都是前端的小把戏，我们自然可以找到前端的解决方法。</p><!--more--><h2>TL；DR</h2><p>最终解决方案非常简单，就三行代码……</p><pre><code class="lang-js">window.inspect = function(){};
-$(document).off('hide');
-$(document).off('visibilitychange');</code></pre><p>估计这是最简单的方案了。看到这里的你是不是有点智商被侮辱的感觉 😅……</p><p>已经上传 Greasy Fork 啦：<a href="https://greasyfork.org/zh-CN/scripts/447680-%E6%97%A0%E5%BF%A7%E4%B9%90%E8%A1%8C%E5%88%B7%E5%AD%A6%E6%97%B6">无忧乐行刷学时</a>。虽然这么简单可能没啥必要上传……</p><p>以下记录一下对这个网页的探索过程。</p><h2>现存其他方案</h2><p>最开始在 Greasy Fork 上找了一下，比较有用的是这个脚本：<a href="https://greasyfork.org/zh-CN/scripts/395005-%E5%88%B7%E5%AD%A6%E6%97%B6-%E6%9D%AD%E5%B7%9E%E7%A7%91%E7%9B%AE%E9%A9%BE%E9%A9%B6%E5%9F%B9%E8%AE%AD%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B">【刷学时】杭州科目驾驶培训网络课程</a>。它的功能是「在任意切换窗口、浏览其他页面时会自动计时；如果有验证弹窗，发送桌面通知」。</p><p>然而在我使用的时候，时不时的弹窗验证通知还是让人非常不爽，而且这个脚本屏蔽「切换窗口停止计时」的手段好像是高频率地检测，这样会导致记录的学时少于实际的时间。总之不太理想。</p><p>于是晚上就开始研究了一下这个网站……</p><h2>网站技术初探</h2><p>这个网站后端是 JSP，估计是很 low 的外包公司，主要业务逻辑的 JS 代码都内联在 HTML 里。还有诸如 <code>FuckInternetExplorer</code> 这样的暴躁函数名（这搁 NOI 不得被禁赛几年）（虽然 IE 确实 👎），甚至锁进混用 Tab 和空格！</p><p>前端用了 jQuery，代码可以说非常杂乱（好在留了注释）。我以为这垃圾网站估计是十年前的，没想到代码里记录的最近更新日期是 2021-6-1……</p><h2>探索「模拟请求」的方案</h2><p>这种方法的探索失败了（或者说由于过于麻烦而放弃了）。可以跳过不看。</p><p>由于大量的业务逻辑放在前端，一开始我尝试研究了一下直接用前端发请求计学时的可能性。因为之前用过<a href="https://greasyfork.org/zh-CN/scripts/443122-%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E5%B0%8F%E5%8A%A9%E6%89%8B-%E8%A7%86%E9%A2%91%E4%B8%93%E7%89%88">超星学习通小助手-视频专版</a>这个脚本，这种直接发请求挂机的方式给我留下了深刻印象。</p><pre><code class="lang-js">//签退 num为1时 强制  //随机验证
-var todayEnd;
-function signOut(type){
-    //判断是否在自动上传，如果在，则延后0.5S,防止同时进行后台自动屏蔽学时
-    if(!automaticUpload) {
-        //失败则跳转到课件列表页面
-        $(&quot;.tt_p&quot;).focus();
-        isInspect =true;
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>「无忧乐行」切后台检测、随机验证码屏蔽方案</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 7 月 10 日 15:35</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#tldr">TL；DR</a></li>
+<li><a href="#%E7%8E%B0%E5%AD%98%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88">现存其他方案</a></li>
+<li><a href="#%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E5%88%9D%E6%8E%A2">网站技术初探</a></li>
+<li><a href="#%E6%8E%A2%E7%B4%A2%E6%A8%A1%E6%8B%9F%E8%AF%B7%E6%B1%82%E7%9A%84%E6%96%B9%E6%A1%88">探索「模拟请求」的方案</a></li>
+<li><a href="#%E5%B1%8F%E8%94%BD%E9%9A%8F%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81">屏蔽「随机验证码」</a></li>
+<li><a href="#%E5%B1%8F%E8%94%BD%E5%88%87%E5%90%8E%E5%8F%B0%E6%A3%80%E6%B5%8B">屏蔽「切后台检测」</a></li>
+<li><a href="#%E9%81%97%E7%95%99%E9%97%AE%E9%A2%98">遗留问题</a></li>
+</ul>
+<p>学车学到科目三，要我们在<a href="https://5u5u5u5u.com/">无忧乐行</a>平台上看满 9 小时课程之后才能预约考试。这个平台非常恶心，不仅 UI 丑得没法看，而且在看视频的时候每隔一定时间会弹出验证码窗口，必须在指定时间之内完成验证；把网站标签页或窗口切到后台就会停止记录学时，必须保证前台观看。</p>
+<p>魔高一尺，道高一丈，既然都是前端的小把戏，我们自然可以找到前端的解决方法。</p>
+<h2><a id="tldr" class="heading-anchor"></a>TL；DR</h2>
+<p>最终解决方案非常简单，就三行代码……</p>
+<pre><code class="language-js"><span class="hljs-variable language_">window</span>.<span class="hljs-property">inspect</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){};
+$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;hide&#x27;</span>);
+$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;visibilitychange&#x27;</span>);
+</code></pre>
+<p>估计这是最简单的方案了。看到这里的你是不是有点智商被侮辱的感觉 😅……</p>
+<p>已经上传 Greasy Fork 啦：<a href="https://greasyfork.org/zh-CN/scripts/447680-%E6%97%A0%E5%BF%A7%E4%B9%90%E8%A1%8C%E5%88%B7%E5%AD%A6%E6%97%B6">无忧乐行刷学时</a>。虽然这么简单可能没啥必要上传……</p>
+<p>以下记录一下对这个网页的探索过程。</p>
+<h2><a id="现存其他方案" class="heading-anchor"></a>现存其他方案</h2>
+<p>最开始在 Greasy Fork 上找了一下，比较有用的是这个脚本：<a href="https://greasyfork.org/zh-CN/scripts/395005-%E5%88%B7%E5%AD%A6%E6%97%B6-%E6%9D%AD%E5%B7%9E%E7%A7%91%E7%9B%AE%E9%A9%BE%E9%A9%B6%E5%9F%B9%E8%AE%AD%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B">【刷学时】杭州科目驾驶培训网络课程</a>。它的功能是「在任意切换窗口、浏览其他页面时会自动计时；如果有验证弹窗，发送桌面通知」。</p>
+<p>然而在我使用的时候，时不时的弹窗验证通知还是让人非常不爽，而且这个脚本屏蔽「切换窗口停止计时」的手段好像是高频率地检测，这样会导致记录的学时少于实际的时间。总之不太理想。</p>
+<p>于是晚上就开始研究了一下这个网站……</p>
+<h2><a id="网站技术初探" class="heading-anchor"></a>网站技术初探</h2>
+<p>这个网站后端是 JSP，估计是很 low 的外包公司，主要业务逻辑的 JS 代码都内联在 HTML 里。还有诸如 <code>FuckInternetExplorer</code> 这样的暴躁函数名（这搁 NOI 不得被禁赛几年）（虽然 IE 确实 👎），甚至锁进混用 Tab 和空格！</p>
+<p>前端用了 jQuery，代码可以说非常杂乱（好在留了注释）。我以为这垃圾网站估计是十年前的，没想到代码里记录的最近更新日期是 2021-6-1……</p>
+<h2><a id="探索模拟请求的方案" class="heading-anchor"></a>探索「模拟请求」的方案</h2>
+<p>这种方法的探索失败了（或者说由于过于麻烦而放弃了）。可以跳过不看。</p>
+<p>由于大量的业务逻辑放在前端，一开始我尝试研究了一下直接用前端发请求计学时的可能性。因为之前用过<a href="https://greasyfork.org/zh-CN/scripts/443122-%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E5%B0%8F%E5%8A%A9%E6%89%8B-%E8%A7%86%E9%A2%91%E4%B8%93%E7%89%88">超星学习通小助手-视频专版</a>这个脚本，这种直接发请求挂机的方式给我留下了深刻印象。</p>
+<pre><code class="language-js"><span class="hljs-comment">//签退 num为1时 强制  //随机验证</span>
+<span class="hljs-keyword">var</span> todayEnd;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">signOut</span>(<span class="hljs-params">type</span>){
+    <span class="hljs-comment">//判断是否在自动上传，如果在，则延后0.5S,防止同时进行后台自动屏蔽学时</span>
+    <span class="hljs-keyword">if</span>(!automaticUpload) {
+        <span class="hljs-comment">//失败则跳转到课件列表页面</span>
+        $(<span class="hljs-string">&quot;.tt_p&quot;</span>).<span class="hljs-title function_">focus</span>();
+        isInspect =<span class="hljs-literal">true</span>;
         todayEnd=type;
-        suspend();
-        if(courseware.ruleDto.automatic == 1) {
-            validate(1,3);
-        }else {
-            interfaceForStu(3);   //签退记录
+        <span class="hljs-title function_">suspend</span>();
+        <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">automatic</span> == <span class="hljs-number">1</span>) {
+            <span class="hljs-title function_">validate</span>(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>);
+        }<span class="hljs-keyword">else</span> {
+            <span class="hljs-title function_">interfaceForStu</span>(<span class="hljs-number">3</span>);   <span class="hljs-comment">//签退记录</span>
         }
-    }else {
-        setTimeout(&quot;signOut(&quot;+type+&quot;)&quot;, 500);
+    }<span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-string">&quot;signOut(&quot;</span>+type+<span class="hljs-string">&quot;)&quot;</span>, <span class="hljs-number">500</span>);
     }
 }
 
-//视频验证接口 num: 1-签到 2-中间验证 3-签退
-function interfaceForStu(num){
-    //获取验证方式
+<span class="hljs-comment">//视频验证接口 num: 1-签到 2-中间验证 3-签退</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">interfaceForStu</span>(<span class="hljs-params">num</span>){
+    <span class="hljs-comment">//获取验证方式</span>
         styleType = num;
-        // 20200728:视频验证是通过配置来选择走的海景还是云从，故这边代码无需改造
-        if(courseware.ruleDto.autoVerifyStyle==1){ //海景
-            //...
-        }else if(courseware.ruleDto.autoVerifyStyle==6){//2017.09.26 云从人脸识别
-            //...
-        }else if(courseware.ruleDto.autoVerifyStyle==3){ //回答问题
-            window.scrollTo(0,0);//滚动到顶部
-            page=$.layer({
-                //...
+        <span class="hljs-comment">// 20200728:视频验证是通过配置来选择走的海景还是云从，故这边代码无需改造</span>
+        <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span>==<span class="hljs-number">1</span>){ <span class="hljs-comment">//海景</span>
+            <span class="hljs-comment">//...</span>
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span>==<span class="hljs-number">6</span>){<span class="hljs-comment">//2017.09.26 云从人脸识别</span>
+            <span class="hljs-comment">//...</span>
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span>==<span class="hljs-number">3</span>){ <span class="hljs-comment">//回答问题</span>
+            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">scrollTo</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);<span class="hljs-comment">//滚动到顶部</span>
+            page=$.<span class="hljs-title function_">layer</span>({
+                <span class="hljs-comment">//...</span>
                 iframe : {
-                    src : 'https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type='+num+'&amp;frequency='+courseware.ruleDto.verifyTimes+'&amp;time='+courseware.ruleDto.verifyValidTime+'&amp;verifyNotPassStyle='+courseware.ruleDto.verifyNotPassStyle+'&amp;timeoutStyle='+courseware.ruleDto.timeoutStyle+'&amp;resType='+courseware.resType
+                    src : <span class="hljs-string">&#x27;https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type=&#x27;</span>+num+<span class="hljs-string">&#x27;&amp;frequency=&#x27;</span>+courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">verifyTimes</span>+<span class="hljs-string">&#x27;&amp;time=&#x27;</span>+courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">verifyValidTime</span>+<span class="hljs-string">&#x27;&amp;verifyNotPassStyle=&#x27;</span>+courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">verifyNotPassStyle</span>+<span class="hljs-string">&#x27;&amp;timeoutStyle=&#x27;</span>+courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">timeoutStyle</span>+<span class="hljs-string">&#x27;&amp;resType=&#x27;</span>+courseware.<span class="hljs-property">resType</span>
                 }
             });
-        }else if(courseware.ruleDto.autoVerifyStyle==5) { //不用了
-            //...
-        }else if(courseware.ruleDto.autoVerifyStyle == 4) {   //拍照
-            //...
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span>==<span class="hljs-number">5</span>) { <span class="hljs-comment">//不用了</span>
+            <span class="hljs-comment">//...</span>
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span> == <span class="hljs-number">4</span>) {   <span class="hljs-comment">//拍照</span>
+            <span class="hljs-comment">//...</span>
         }
-}</code></pre><p><code>interfaceForStu</code> 这个函数就是弹出点击验证码的。可以看到点击签退时，弹出了一个浮层，尝试构造一个 <code>src</code> 去看看，比如 <code>https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type=2&amp;frequency=3&amp;time=3&amp;verifyNotPassStyle=1&amp;timeoutStyle=1&amp;resType=1</code>。可以看到这个 iframe 内部的验证码页面：</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" alt="“无忧乐行”的验证码" title="“无忧乐行”的验证码"></p><p>形式是向后端请求一个图片，要求用户在指定时间内按照顺序用鼠标点击四个汉字的位置。</p><p>F12 审阅这个页面的代码。还是一样的风格，JS 内联在 HTML 里……（看第五行和第八行，一个 type 字段写了两遍，单双引号、空格风格还不统一…… 🤮）</p><pre><code class="lang-js">//后台验证
-function InpectvalidateCode(result){
-    $.ajax({
-        url:&quot;/learning_json/inpectvalidateCode.action&quot;, //url需重定义
-        type : &quot;post&quot;,
-        data : &quot;result=&quot;+result,
-        async:false,
-        type:'post',
-        success:function(json){
-            if(json.msg !=&quot;success&quot;){
-                   nextInpect();
-            }else{
-                countFlag=false;
-                parent.validate(1,validateType,null, json.code);
-                try {
-                    window.parent.closeCur();
-                }catch(e) {
+}
+</code></pre>
+<p><code>interfaceForStu</code> 这个函数就是弹出点击验证码的。可以看到点击签退时，弹出了一个浮层，尝试构造一个 <code>src</code> 去看看，比如 <code>https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type=2&amp;frequency=3&amp;time=3&amp;verifyNotPassStyle=1&amp;timeoutStyle=1&amp;resType=1</code>。可以看到这个 iframe 内部的验证码页面：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" alt="“无忧乐行”的验证码" title="" /></a></p>
+<p>形式是向后端请求一个图片，要求用户在指定时间内按照顺序用鼠标点击四个汉字的位置。</p>
+<p>F12 审阅这个页面的代码。还是一样的风格，JS 内联在 HTML 里……（看第五行和第八行，一个 type 字段写了两遍，单双引号、空格风格还不统一…… 🤮）</p>
+<pre><code class="language-js"><span class="hljs-comment">//后台验证</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">InpectvalidateCode</span>(<span class="hljs-params">result</span>){
+    $.<span class="hljs-title function_">ajax</span>({
+        <span class="hljs-attr">url</span>:<span class="hljs-string">&quot;/learning_json/inpectvalidateCode.action&quot;</span>, <span class="hljs-comment">//url需重定义</span>
+        type : <span class="hljs-string">&quot;post&quot;</span>,
+        data : <span class="hljs-string">&quot;result=&quot;</span>+result,
+        <span class="hljs-attr">async</span>:<span class="hljs-literal">false</span>,
+        <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;post&#x27;</span>,
+        <span class="hljs-attr">success</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>){
+            <span class="hljs-keyword">if</span>(json.<span class="hljs-property">msg</span> !=<span class="hljs-string">&quot;success&quot;</span>){
+                <span class="hljs-title function_">nextInpect</span>();
+            }<span class="hljs-keyword">else</span>{
+                countFlag=<span class="hljs-literal">false</span>;
+                parent.<span class="hljs-title function_">validate</span>(<span class="hljs-number">1</span>,validateType,<span class="hljs-literal">null</span>, json.<span class="hljs-property">code</span>);
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-property">parent</span>.<span class="hljs-title function_">closeCur</span>();
+                }<span class="hljs-keyword">catch</span>(e) {
                 }
             }
         }
     });
 }
 
-//获取点击位置
-function getSelPic() {
-    //...
+<span class="hljs-comment">//获取点击位置</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getSelPic</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">//...</span>
 }
 
-$(function(){
-    //...
-    $(&quot;.queding_btn&quot;).click(function(){
-        countFlag = false;
-        var result = getSelPic();
-        InpectvalidateCode(result);
+$(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+    <span class="hljs-comment">//...</span>
+    $(<span class="hljs-string">&quot;.queding_btn&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+        countFlag = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">var</span> result = <span class="hljs-title function_">getSelPic</span>();
+        <span class="hljs-title class_">InpectvalidateCode</span>(result);
     });
-    //...
-});</code></pre><p>点击「确定」按钮后，向后端发送了用户点击的坐标，然后拿到了后端返回的一个 code，传给 <code>parent</code>（也就是 iframe 外层的 document）的 <code>validate</code> 函数，这个函数应该就是用来增加有效学时的。</p><p>回到视频播放页面：</p><pre><code class="lang-js">//验证回调方法  validateType:1-签到  2-随机 3-中间验证
-function validate(result,validateType,image, code){
-    //...
-    if(validateType==1){
-        //...
-    }else if(validateType==3){
-        layer.closeAll();
-        var valid=getValidTime();
-        var newVideoTime=getVideoTime();
-        //...
-        $.ajax({
-            url:&quot;/learning_json/signOut.action?ttm=&quot; + (new Date()).getTime(),
-            async:false,
-            data:&quot;id=&quot;+courseware.id+&quot;&amp;result=&quot;+result+&quot;&amp;videoTime=&quot;+newVideoTime+&quot;&amp;valid=&quot;+valid+&quot;&amp;type=&quot;+todayEnd+&quot;&amp;lecturePage=&quot;+pageNo+&quot;&amp;verifyType=&quot;+courseware.ruleDto.autoVerifyStyle+&quot;&amp;stageId=&quot;+stageId+&quot;&amp;photoUrl=&quot;+image+&quot;&amp;stageEnd=&quot;+stageEnd+&quot;&amp;tag=&quot;+tag+&quot;&amp;code=&quot;+code+&quot;&amp;videoid=&quot;+videoid,
-            type:&quot;post&quot;,
-            success:function(json){
-                if(result==-1){
-                    faultMessage();
-                    return ;
+    <span class="hljs-comment">//...</span>
+});
+</code></pre>
+<p>点击「确定」按钮后，向后端发送了用户点击的坐标，然后拿到了后端返回的一个 code，传给 <code>parent</code>（也就是 iframe 外层的 document）的 <code>validate</code> 函数，这个函数应该就是用来增加有效学时的。</p>
+<p>回到视频播放页面：</p>
+<pre><code class="language-js"><span class="hljs-comment">//验证回调方法  validateType:1-签到  2-随机 3-中间验证</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">validate</span>(<span class="hljs-params">result,validateType,image, code</span>){
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-keyword">if</span>(validateType==<span class="hljs-number">1</span>){
+        <span class="hljs-comment">//...</span>
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(validateType==<span class="hljs-number">3</span>){
+        layer.<span class="hljs-title function_">closeAll</span>();
+        <span class="hljs-keyword">var</span> valid=<span class="hljs-title function_">getValidTime</span>();
+        <span class="hljs-keyword">var</span> newVideoTime=<span class="hljs-title function_">getVideoTime</span>();
+        <span class="hljs-comment">//...</span>
+        $.<span class="hljs-title function_">ajax</span>({
+            <span class="hljs-attr">url</span>:<span class="hljs-string">&quot;/learning_json/signOut.action?ttm=&quot;</span> + (<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()).<span class="hljs-title function_">getTime</span>(),
+            <span class="hljs-attr">async</span>:<span class="hljs-literal">false</span>,
+            <span class="hljs-attr">data</span>:<span class="hljs-string">&quot;id=&quot;</span>+courseware.<span class="hljs-property">id</span>+<span class="hljs-string">&quot;&amp;result=&quot;</span>+result+<span class="hljs-string">&quot;&amp;videoTime=&quot;</span>+newVideoTime+<span class="hljs-string">&quot;&amp;valid=&quot;</span>+valid+<span class="hljs-string">&quot;&amp;type=&quot;</span>+todayEnd+<span class="hljs-string">&quot;&amp;lecturePage=&quot;</span>+pageNo+<span class="hljs-string">&quot;&amp;verifyType=&quot;</span>+courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span>+<span class="hljs-string">&quot;&amp;stageId=&quot;</span>+stageId+<span class="hljs-string">&quot;&amp;photoUrl=&quot;</span>+image+<span class="hljs-string">&quot;&amp;stageEnd=&quot;</span>+stageEnd+<span class="hljs-string">&quot;&amp;tag=&quot;</span>+tag+<span class="hljs-string">&quot;&amp;code=&quot;</span>+code+<span class="hljs-string">&quot;&amp;videoid=&quot;</span>+videoid,
+            <span class="hljs-attr">type</span>:<span class="hljs-string">&quot;post&quot;</span>,
+            <span class="hljs-attr">success</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>){
+                <span class="hljs-keyword">if</span>(result==-<span class="hljs-number">1</span>){
+                    <span class="hljs-title function_">faultMessage</span>();
+                    <span class="hljs-keyword">return</span> ;
                 }
-                if(json==&quot;success&quot;){
-                    endSucAlert();
-                }else if(json ){
-                    //入库失败
-                    //...
-                }else {
-                    toLessonList();
+                <span class="hljs-keyword">if</span>(json==<span class="hljs-string">&quot;success&quot;</span>){
+                    <span class="hljs-title function_">endSucAlert</span>();
+                }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(json ){
+                    <span class="hljs-comment">//入库失败</span>
+                    <span class="hljs-comment">//...</span>
+                }<span class="hljs-keyword">else</span> {
+                    <span class="hljs-title function_">toLessonList</span>();
                 }
 
             }
         });
-    }else if(validateType==2){ //随机验证
-        var _flag = true;
-        var valid=getValidTime();
-        var newVideoTime=getVideoTime();
-        //同步方法 async:false,
-        $.ajax({
-            url:&quot;/learning_json/inspect.action?ttm=&quot; + (new Date()).getTime(),
-            async:false,
-            data:&quot;id=&quot;+courseware.id+&quot;&amp;result=&quot;+result+&quot;&amp;videoTime=&quot;+newVideoTime+&quot;&amp;valid=&quot;+valid+&quot;&amp;lecturePage=&quot;+pageNo+&quot;&amp;verifyType=&quot;+courseware.ruleDto.autoVerifyStyle+&quot;&amp;stageId=&quot;+stageId+&quot;&amp;photoUrl=&quot;+image+&quot;&amp;stageEnd=&quot;+stageEnd+&quot;&amp;tag=&quot;+tag+&quot;&amp;code=&quot;+code+&quot;&amp;videoid=&quot;+videoid,
-            type:&quot;post&quot;,
-            success:function(json){
-                if(sucRedirect) {
-                    endSucAlert();
-                    return;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(validateType==<span class="hljs-number">2</span>){ <span class="hljs-comment">//随机验证</span>
+        <span class="hljs-keyword">var</span> _flag = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">var</span> valid=<span class="hljs-title function_">getValidTime</span>();
+        <span class="hljs-keyword">var</span> newVideoTime=<span class="hljs-title function_">getVideoTime</span>();
+        <span class="hljs-comment">//同步方法 async:false,</span>
+        $.<span class="hljs-title function_">ajax</span>({
+            <span class="hljs-attr">url</span>:<span class="hljs-string">&quot;/learning_json/inspect.action?ttm=&quot;</span> + (<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()).<span class="hljs-title function_">getTime</span>(),
+            <span class="hljs-attr">async</span>:<span class="hljs-literal">false</span>,
+            <span class="hljs-attr">data</span>:<span class="hljs-string">&quot;id=&quot;</span>+courseware.<span class="hljs-property">id</span>+<span class="hljs-string">&quot;&amp;result=&quot;</span>+result+<span class="hljs-string">&quot;&amp;videoTime=&quot;</span>+newVideoTime+<span class="hljs-string">&quot;&amp;valid=&quot;</span>+valid+<span class="hljs-string">&quot;&amp;lecturePage=&quot;</span>+pageNo+<span class="hljs-string">&quot;&amp;verifyType=&quot;</span>+courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerifyStyle</span>+<span class="hljs-string">&quot;&amp;stageId=&quot;</span>+stageId+<span class="hljs-string">&quot;&amp;photoUrl=&quot;</span>+image+<span class="hljs-string">&quot;&amp;stageEnd=&quot;</span>+stageEnd+<span class="hljs-string">&quot;&amp;tag=&quot;</span>+tag+<span class="hljs-string">&quot;&amp;code=&quot;</span>+code+<span class="hljs-string">&quot;&amp;videoid=&quot;</span>+videoid,
+            <span class="hljs-attr">type</span>:<span class="hljs-string">&quot;post&quot;</span>,
+            <span class="hljs-attr">success</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>){
+                <span class="hljs-keyword">if</span>(sucRedirect) {
+                    <span class="hljs-title function_">endSucAlert</span>();
+                    <span class="hljs-keyword">return</span>;
                 }
-                if(result==-1){
-                    faultMessage();
-                    return ;
+                <span class="hljs-keyword">if</span>(result==-<span class="hljs-number">1</span>){
+                    <span class="hljs-title function_">faultMessage</span>();
+                    <span class="hljs-keyword">return</span> ;
                 }
-                if(json &amp;&amp; json !=&quot;success&quot;){
-                    //...
+                <span class="hljs-keyword">if</span>(json &amp;&amp; json !=<span class="hljs-string">&quot;success&quot;</span>){
+                    <span class="hljs-comment">//...</span>
                 }
             }
         });
-        if(result==1 &amp;&amp; !sucRedirect &amp;&amp; _flag){//验证结果返回成功
+        <span class="hljs-keyword">if</span>(result==<span class="hljs-number">1</span> &amp;&amp; !sucRedirect &amp;&amp; _flag){<span class="hljs-comment">//验证结果返回成功</span>
             curState = cast;
-            validTime=validTime+valid;//随机验证已经有效的学习时间
-            setRandomTime();
-            goon();
+            validTime=validTime+valid;<span class="hljs-comment">//随机验证已经有效的学习时间</span>
+            <span class="hljs-title function_">setRandomTime</span>();
+            <span class="hljs-title function_">goon</span>();
         }
 
     }
-    //...
+    <span class="hljs-comment">//...</span>
 }
-</code></pre><p>尝试修改 cast 变量，会发现右上角的计时器时间也会更改；假设改为 2 小时，点击签退，验证之后会发现弹窗显示「有效学时 2 小时」，然而进入课程列表刷新会发现实际更新的时间并不是 2 小时，而是实际进入页面的时间。</p><p>尝试了多种方式，用 BS 修改请求啥的，结果记录的时间永远是我实际打开视频页面的时间……看来后端有某种不太好搞的验证方式。暂时懒得研究了。</p><h2>屏蔽「随机验证码」</h2><p>接下来还是关注一下比较简单的前端 tricks 了。</p><p>首先是这个不定时弹出的「随机验证码」，可以找到这段代码：</p><pre><code class="lang-js">//随机验证
-function inspect(){
-    if(!automaticUpload) {
-        $(&quot;.tt_p&quot;).focus();
-        inspectUpload = true;
-        isInspect =true;
-        suspend();
-        interfaceForStu(2);   //视频验证
-    }else {
-        setTimeout(&quot;inspect()&quot;, 500);
+
+</code></pre>
+<p>尝试修改 cast 变量，会发现右上角的计时器时间也会更改；假设改为 2 小时，点击签退，验证之后会发现弹窗显示「有效学时 2 小时」，然而进入课程列表刷新会发现实际更新的时间并不是 2 小时，而是实际进入页面的时间。</p>
+<p>尝试了多种方式，用 BS 修改请求啥的，结果记录的时间永远是我实际打开视频页面的时间……看来后端有某种不太好搞的验证方式。暂时懒得研究了。</p>
+<h2><a id="屏蔽随机验证码" class="heading-anchor"></a>屏蔽「随机验证码」</h2>
+<p>接下来还是关注一下比较简单的前端 tricks 了。</p>
+<p>首先是这个不定时弹出的「随机验证码」，可以找到这段代码：</p>
+<pre><code class="language-js"><span class="hljs-comment">//随机验证</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">inspect</span>(<span class="hljs-params"></span>){
+    <span class="hljs-keyword">if</span>(!automaticUpload) {
+        $(<span class="hljs-string">&quot;.tt_p&quot;</span>).<span class="hljs-title function_">focus</span>();
+        inspectUpload = <span class="hljs-literal">true</span>;
+        isInspect =<span class="hljs-literal">true</span>;
+        <span class="hljs-title function_">suspend</span>();
+        <span class="hljs-title function_">interfaceForStu</span>(<span class="hljs-number">2</span>);   <span class="hljs-comment">//视频验证</span>
+    }<span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-string">&quot;inspect()&quot;</span>, <span class="hljs-number">500</span>);
     }
 }
 
 
-//显示计时时间
-function startCount(){
-    //只有讲义
-    if(courseware.type==2){
-        //...
+<span class="hljs-comment">//显示计时时间</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">startCount</span>(<span class="hljs-params"></span>){
+    <span class="hljs-comment">//只有讲义</span>
+    <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">type</span>==<span class="hljs-number">2</span>){
+        <span class="hljs-comment">//...</span>
     }
-    //非讲义
-    //alert(flag);
-    if(flag){
-        if(courseware.type!=2){
-        //按消耗时间计时
-        if(courseware.recordType==3){
-            operation(cast);
-            setStuTime(cast);
-            if(courseware.ruleDto.autoVerify==1)
-                if(randomTime==cast&amp;&amp;flag&amp;&amp;!endFlag){
-                    inspect();
-                }else if(randomTime&amp;&amp;randomTime&lt;cast){
-                    setRandomTime();
+    <span class="hljs-comment">//非讲义</span>
+    <span class="hljs-comment">//alert(flag);</span>
+    <span class="hljs-keyword">if</span>(flag){
+        <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">type</span>!=<span class="hljs-number">2</span>){
+        <span class="hljs-comment">//按消耗时间计时</span>
+        <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">recordType</span>==<span class="hljs-number">3</span>){
+            <span class="hljs-title function_">operation</span>(cast);
+            <span class="hljs-title function_">setStuTime</span>(cast);
+            <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerify</span>==<span class="hljs-number">1</span>)
+                <span class="hljs-keyword">if</span>(randomTime==cast&amp;&amp;flag&amp;&amp;!endFlag){
+                    <span class="hljs-title function_">inspect</span>();
+                }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(randomTime&amp;&amp;randomTime&lt;cast){
+                    <span class="hljs-title function_">setRandomTime</span>();
                 }
-            if(courseware.ruleDto.autoVerify==3){
-                if(randomTime==cast&amp;&amp;flag&amp;&amp;!endFlag&amp;&amp;!validone){
-                    inspect();
-                    validone=true;
-                }else if(randomTime&amp;&amp;randomTime&lt;cast){
-                    setRandomTime();
+            <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerify</span>==<span class="hljs-number">3</span>){
+                <span class="hljs-keyword">if</span>(randomTime==cast&amp;&amp;flag&amp;&amp;!endFlag&amp;&amp;!validone){
+                    <span class="hljs-title function_">inspect</span>();
+                    validone=<span class="hljs-literal">true</span>;
+                }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(randomTime&amp;&amp;randomTime&lt;cast){
+                    <span class="hljs-title function_">setRandomTime</span>();
                 }
             }
-            if(courseware.ruleDto.autoVerify==2){
-                if(validonetime&gt;73 &amp;&amp; !validone){
-                    inspect();
-                    validone=true;
-                }else {
+            <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">ruleDto</span>.<span class="hljs-property">autoVerify</span>==<span class="hljs-number">2</span>){
+                <span class="hljs-keyword">if</span>(validonetime&gt;<span class="hljs-number">73</span> &amp;&amp; !validone){
+                    <span class="hljs-title function_">inspect</span>();
+                    validone=<span class="hljs-literal">true</span>;
+                }<span class="hljs-keyword">else</span> {
                     validonetime++;
                 }
             }
-        }else if(courseware.recordType==2){
-            //...
-        }else if(courseware.recordType==1){
-            //...
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">recordType</span>==<span class="hljs-number">2</span>){
+            <span class="hljs-comment">//...</span>
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(courseware.<span class="hljs-property">recordType</span>==<span class="hljs-number">1</span>){
+            <span class="hljs-comment">//...</span>
             }
         }
     }
-    //...
-     ds = window.setTimeout(function(){startCount();},1000);
-}</code></pre><p>看来这是个周期函数。如果 <code>cast</code>（学时）达到 <code>randomTime</code> 就调用 <code>inspect()</code> 进行验证。经过实测 <code>flag</code> 变量如果为 <code>false</code> 则不会再计时……</p><p>那么，我们直接把 <code>inspect()</code> 函数弄成空，让它什么都不做不就好了。也就是：</p><pre><code class="lang-js">window.inspect = function(){};</code></pre><p>（足够简单粗暴……）</p><h2>屏蔽「切后台检测」</h2><p>继续看代码，发现这一段：</p><pre><code class="lang-js">//笔记  评价  窗口最小化暂停视频播放
-$(function(){
-     $('.xubox_close').css('display','none');
-    //最小化窗口暂停视频播放
-    $(document).on('hide', function() {
-        //...
-        layer.alert('您已离开当前页面,计时停止.', 8,function(index){
-            //...
+    <span class="hljs-comment">//...</span>
+     ds = <span class="hljs-variable language_">window</span>.<span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){<span class="hljs-title function_">startCount</span>();},<span class="hljs-number">1000</span>);
+}
+</code></pre>
+<p>看来这是个周期函数。如果 <code>cast</code>（学时）达到 <code>randomTime</code> 就调用 <code>inspect()</code> 进行验证。经过实测 <code>flag</code> 变量如果为 <code>false</code> 则不会再计时……</p>
+<p>那么，我们直接把 <code>inspect()</code> 函数弄成空，让它什么都不做不就好了。也就是：</p>
+<pre><code class="language-js"><span class="hljs-variable language_">window</span>.<span class="hljs-property">inspect</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){};
+</code></pre>
+<p>（足够简单粗暴……）</p>
+<h2><a id="屏蔽切后台检测" class="heading-anchor"></a>屏蔽「切后台检测」</h2>
+<p>继续看代码，发现这一段：</p>
+<pre><code class="language-js"><span class="hljs-comment">//笔记  评价  窗口最小化暂停视频播放</span>
+$(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+     $(<span class="hljs-string">&#x27;.xubox_close&#x27;</span>).<span class="hljs-title function_">css</span>(<span class="hljs-string">&#x27;display&#x27;</span>,<span class="hljs-string">&#x27;none&#x27;</span>);
+    <span class="hljs-comment">//最小化窗口暂停视频播放</span>
+    $(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;hide&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">//...</span>
+        layer.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;您已离开当前页面,计时停止.&#x27;</span>, <span class="hljs-number">8</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>){
+            <span class="hljs-comment">//...</span>
         });
     });
-});</code></pre><p>很简单，只要把绑定在 document 上 <code>hide</code> 事件的监听器取消掉就好了。</p><p>然而其实还有另一个监听器（虽然没找到代码在哪里）：<code>visibilitychange</code>，通过 Chrome 的 F12 可以找到：</p><p><img src="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" alt="Chrome 的 F12 工具可以看到监听器" title="Chrome 的 F12 工具可以看到监听器"></p><p>用 jQuery 的 <code>off()</code> 可以解绑这俩监听器：</p><pre><code class="lang-js">$(document).off('hide');
-$(document).off('visibilitychange');</code></pre><p>大功告成！</p><h2>遗留问题</h2><p>好像如果把页面放在后台，这个学习时间的计时会慢一点，过了 15min 它好像只记了 9min。猜测可能和 Chrome 的后台节省内存的机制有关？</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZKCCU0" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;shielding-solution-for-5u&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/shielding-solution-for-5u&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+});
+</code></pre>
+<p>很简单，只要把绑定在 document 上 <code>hide</code> 事件的监听器取消掉就好了。</p>
+<p>然而其实还有另一个监听器（虽然没找到代码在哪里）：<code>visibilitychange</code>，通过 Chrome 的 F12 可以找到：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" alt="Chrome 的 F12 工具可以看到监听器" title="" /></a></p>
+<p>用 jQuery 的 <code>off()</code> 可以解绑这俩监听器：</p>
+<pre><code class="language-js">$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;hide&#x27;</span>);
+$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;visibilitychange&#x27;</span>);
+</code></pre>
+<p>大功告成！</p>
+<h2><a id="遗留问题" class="heading-anchor"></a>遗留问题</h2>
+<p>好像如果把页面放在后台，这个学习时间的计时会慢一点，过了 15min 它好像只记了 9min。猜测可能和 Chrome 的后台节省内存的机制有关？</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1FJCmc" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;shielding-solution-for-5u&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -318,4 +390,4 @@ $(document).off('visibilitychange');</code></pre><p>大功告成！</p><h2>遗�
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

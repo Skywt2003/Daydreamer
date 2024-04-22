@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>七大私有化部署笔记&amp;amp;知识库系统横评</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>七大私有化部署笔记&amp;amp;知识库系统横评</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,85 +72,255 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>七大私有化部署笔记&amp;amp;知识库系统横评</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 01 月 15 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 19 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/seven-notes-and-wiki-systems-evaluation" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>故事的起源是一个由于线性代数期末考几道计算题卡住算不出来折腾半天而考后看某课代表提前交卷又感觉人均 AK 了以致十分 emo 想要暂时逃避学习的下午。</p><!--more--><h2>TL;DR</h2><p>思源笔记最好。快去用。</p><h2>传统方案</h2><p>一直以来我记笔记的方案都是本地 Typora + Git 用 Markdown 写各种笔记，然后服务器上部署 Docsify 用 Crontab 设置每天定时 <code>git pull</code> 一次，展示在 <a href="https://wiki.skywt.cn">wiki.skywt.cn</a>。不过长此以往，渐渐觉得这种方案难以满足我的需求：</p><ul><li><p><strong>Git 与笔记的需求不相适应。</strong>Git 本质上是一个「版本管理工具」，而我们<del>为了白嫖 Github 而</del>纯粹把它作为一个文件上传工具来使用。</p><ul><li>表现之一就是经常看以前的笔记的时候改了某处的标点符号，这个小改动单独 commit 一下吧，感觉没必要；和其他改动一起 commit 吧，又会导致整个 commit 逻辑的混乱。以至于到最后干脆自暴自弃，一大堆一起 commit 了。可以说 commit 这种方式和记笔记的应用场景非常不适应。</li><li>表现之二是，<del>历经这么多思想斗争</del>搞成的版本管理，实际上一次都没有发挥过作用。在自己的笔记上我从来没有回滚过版本。</li></ul></li><li><strong>纯文本的 Markdown 功能不足。</strong>观摩了 Obsidian 开创性的双链功能，才感觉这种近乎纯文本的记笔记方式可能的确不能更好地组织知识网络。并且文档树完全是以文件名排序的，也不利于自己的整理。</li></ul><h2>从 Notion 而来的需求</h2><p><img src="https://skywt.cn/usr/uploads/2022/01/3923025903.png" alt="Notion 界面" title="Notion 界面"></p><p>Notion 可以是非常优秀的知识库软件，界面美观、功能强大、理念先进，但是存在一些问题：</p><ul><li><p><strong>无法私有化部署。</strong>数据只能存储在 Notion 的服务器上。这就导致：</p><ul><li><strong>特殊时期网络环境问题。</strong>由于 Notion 并没有在国内开设子公司，服务器也在境外，在某些特殊时期（比如即将到来的 20big）很容易无端被 ban。</li><li><strong>数据安全性问题。</strong>数据导出不便。</li><li><strong>数据私密性问题。</strong></li><li><strong>商业公司的不确定性。</strong>参考 Notability，要是没有 AppStore 的管制，某天突然宣布改变商业策略，数据又不在我们自己手里，想导出都找不着门。百度云盘某种程度上也是一例。</li></ul></li><li><strong>必须联网使用。</strong></li></ul><p>于是我的需求大概是：</p><ul><li><p><strong>私有化部署。</strong>必须能够完全掌控数据。</p><ul><li><strong>部署方便。</strong>加分项，不过至少要能自己部署（Outline 即为反例）。</li></ul></li><li><strong>文件格式开放。</strong>不能是各种不可读的私有格式。或是可读格式（如 json）存储，或是将文件转换工具开源（点名表扬思源笔记），以便于这个软件由于不可抗力因素无法使用后数据不会丢失。</li><li><strong>Markdown 友好。</strong>Markdown 或者半兼容 Markdown 语法，至少要支持数学公式。</li><li><strong>功能强大。</strong>希望支持 Mermaid，同时有类似 Obisidian 的双链、关系图等等功能。</li><li><strong>界面美观。</strong>尝试了 Trilium 你就会知道颜值观感对一个应用的印象影响多大了 =_=</li><li><strong>学习成本低。</strong>至少设计上要符合人类的逻辑，学习成本要低于带来的使用效率收益。</li></ul><h2>概览</h2><p>是的，在这个无聊的下午，我找到了六款 Notion 的 Alternative，逐一安装尝试了一番。</p><p>以下简单列出了我的一些体验感受。加粗的是直接劝退条件。</p><ul><li><strong>Notion</strong>：功能完美 · 颜值完美 · <strong>无法私有化部署</strong> · 网络环境有时不佳 · 半 Markdown · <strong>数据难导出</strong></li><li><strong>Outline</strong>：颜值高 · <strong>部署异常困难</strong></li><li><strong>Trilium</strong>：功能强大繁多 · 偏 Geek · <strong>太丑</strong> · 部署方便 · 半 Markdown · 数据可导出</li><li><strong>AppFlowy</strong>：功能不完善 · 颜值高 · <strong>不完善</strong> · <strong>只支持本地</strong></li><li><strong>为知笔记</strong>：<strong>功能简陋</strong> · 颜值高 · 支持 Docker 私有化部署 · 不开源 · <strong>私有格式不支持且不兼容 Markdown</strong></li><li><strong>AnyType</strong>：功能强大 · 颜值高 · 理念先进 · <strong>还没发布</strong></li><li><strong>思源笔记</strong>：功能强大 · 颜值高 · 私有部署不支持多用户 · json 格式数据可导出</li></ul><p>注意：本文仅针对建立「学习笔记&知识库系统」这一方面对这些应用测评，很多应用（如 Notion）除此之外还有团队协作、项目规划以至于建立 GTD 系统等等用途，而其他应用（如思源笔记）则没有，不代表各个方面某应用绝对的优胜性。</p><h2>Outline：这是想给人部署的吗？？</h2><p>Outline 的定位是「团队知识库」，我正是被这优雅的界面设计打动的。</p><p><img src="https://skywt.cn/usr/uploads/2022/01/2662116183.png" alt="Outline 官方 demo 截图" title="Outline 官方 demo 截图"></p><p>和大多数开源软件的商业模式一样，Outline 提供了收费的在线版（30 天免费体验，而且不支持个人用户）和可以自己部署的开源版本。自己部署就是「折腾而白嫖」的一种方式，说得好听点就叫做「技术变现」吧……</p><p>然而这个软件好像设计之初就根本没有考虑个人私有化部署，吐血。</p><ul><li>文件存储只支持 AWS S3 标准，而不支持直接本地文件存储；而 Amazon 在中国不支持个人用户注册。为此，我们要用 MinIO 自己搭建一个兼容 S3 标准的服务器；</li><li>用户登录不支持直接的验证，只支持第三方的 SSO，我们要么配置 Google/Microsoft/Slack 的 SSO，要么自己搭一个 OIDC 服务器；</li><li>不支持直接的附件上传，为此我们要自己搭一个附件上传的程序，例如 Linx；</li><li>只支持 PostgreSQL 数据库，还有 Redis，所以……</li></ul><p>算下来，除了 outline 的容器，还得整上 minio，linx-server，postgres，redis，和一个 SSO 服务器。主要是我根本没接触过 AWS S3，也没接触过 SSO，这俩玩意足够折腾死我了。</p><p>逛了一圈，有大佬提供了 <a href="https://soulteary.com/2021/09/05/opensource-documentation-wiki-software-outline-part-1.html">docker-compose 的版本</a>，但是没搞清楚这些问题之前感觉整个程序就是一个黑箱，出了问题都不知道咋办，不太舒服。</p><p>220203 Upd：终于成功部署了 Outline。总体感觉是：这个软件更加适合服务于「团队协作」或者用来写「产品文档」，而用来作为「笔记」或者「个人知识库」则不是那么完美</p><ul><li>不支持双链。</li><li>不支持 LaTeX 数学公式。</li><li>支持很多富文本的嵌入块，但大多都是国内用不了的 404 服务……</li><li>并没有插件之类的平台，很难实现功能的拓展。</li></ul><p>不过这个多人协作的确非常酷，UI 也非常简洁漂亮……总之，作为「知识库」，这个软件不是最佳选择。</p><h2>Trilium：<del>直男</del> Geek 的最爱</h2><p><strong>总评：★★★★☆</strong></p><p>说实话，一开始 Trilium 给了我惊喜。</p><p>没有什么依赖的服务，直接 <code>docker run</code> 一下就可以跑起来：</p><pre><code class="lang-sh">docker run -d \
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>七大私有化部署笔记&amp;amp;知识库系统横评</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 1 月 15 日 08:41</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#tldr">TL;DR</a></li>
+<li><a href="#%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%A1%88">传统方案</a></li>
+<li><a href="#%E4%BB%8E-notion-%E8%80%8C%E6%9D%A5%E7%9A%84%E9%9C%80%E6%B1%82">从 Notion 而来的需求</a></li>
+<li><a href="#%E6%A6%82%E8%A7%88">概览</a></li>
+<li><a href="#outline%E8%BF%99%E6%98%AF%E6%83%B3%E7%BB%99%E4%BA%BA%E9%83%A8%E7%BD%B2%E7%9A%84%E5%90%97">Outline：这是想给人部署的吗？？</a></li>
+<li><a href="#trilium%E7%9B%B4%E7%94%B7-geek-%E7%9A%84%E6%9C%80%E7%88%B1">Trilium：<del>直男</del> Geek 的最爱</a></li>
+<li><a href="#appflowy%E4%B8%BA%E5%8F%96%E4%BB%A3-notion-%E8%80%8C%E7%94%9F%E7%9A%84%E6%96%B0%E7%A7%80">AppFlowy：为取代 Notion 而生的新秀</a></li>
+<li><a href="#%E4%B8%BA%E7%9F%A5%E7%AC%94%E8%AE%B0%E7%AE%80%E9%99%8B%E5%88%B0%E4%B8%8D%E5%A4%9F%E7%94%A8">为知笔记：简陋到不够用</a></li>
+<li><a href="#anytype%E5%80%BC%E5%BE%97%E6%9C%9F%E5%BE%85%E7%9A%84%E9%A2%A0%E8%A6%86">AnyType：值得期待的颠覆</a></li>
+<li><a href="#%E6%80%9D%E6%BA%90%E7%AC%94%E8%AE%B0%E6%9C%80%E7%BB%88%E7%9A%84%E5%BD%92%E5%AE%BF">思源笔记：最终的归宿</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+<p>故事的起源是一个由于线性代数期末考几道计算题卡住算不出来折腾半天而考后看某课代表提前交卷又感觉人均 AK 了以致十分 emo 想要暂时逃避学习的下午。</p>
+<h2><a id="tldr" class="heading-anchor"></a>TL;DR</h2>
+<p>思源笔记最好。快去用。</p>
+<h2><a id="传统方案" class="heading-anchor"></a>传统方案</h2>
+<p>一直以来我记笔记的方案都是本地 Typora + Git 用 Markdown 写各种笔记，然后服务器上部署 Docsify 用 Crontab 设置每天定时 <code>git pull</code> 一次，展示在 <a href="https://wiki.skywt.cn">wiki.skywt.cn</a>。不过长此以往，渐渐觉得这种方案难以满足我的需求：</p>
+<ul>
+<li><strong>Git 与笔记的需求不相适应。</strong>Git 本质上是一个「版本管理工具」，而我们<del>为了白嫖 Github 而</del>纯粹把它作为一个文件上传工具来使用。
+<ul>
+<li>表现之一就是经常看以前的笔记的时候改了某处的标点符号，这个小改动单独 commit 一下吧，感觉没必要；和其他改动一起 commit 吧，又会导致整个 commit 逻辑的混乱。以至于到最后干脆自暴自弃，一大堆一起 commit 了。可以说 commit 这种方式和记笔记的应用场景非常不适应。</li>
+<li>表现之二是，<del>历经这么多思想斗争</del>搞成的版本管理，实际上一次都没有发挥过作用。在自己的笔记上我从来没有回滚过版本。</li>
+</ul></li>
+<li><strong>纯文本的 Markdown 功能不足。</strong>观摩了 Obsidian 开创性的双链功能，才感觉这种近乎纯文本的记笔记方式可能的确不能更好地组织知识网络。并且文档树完全是以文件名排序的，也不利于自己的整理。</li>
+</ul>
+<h2><a id="从-notion-而来的需求" class="heading-anchor"></a>从 Notion 而来的需求</h2>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/3923025903.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/3923025903.png" alt="Notion 界面" title="" /></a></p>
+<p>Notion 可以是非常优秀的知识库软件，界面美观、功能强大、理念先进，但是存在一些问题：</p>
+<ul>
+<li><strong>无法私有化部署。</strong>数据只能存储在 Notion 的服务器上。这就导致：
+<ul>
+<li><strong>特殊时期网络环境问题。</strong>由于 Notion 并没有在国内开设子公司，服务器也在境外，在某些特殊时期（比如即将到来的 20big）很容易无端被 ban。</li>
+<li><strong>数据安全性问题。</strong>数据导出不便。</li>
+<li><strong>数据私密性问题。</strong></li>
+<li><strong>商业公司的不确定性。</strong>参考 Notability，要是没有 AppStore 的管制，某天突然宣布改变商业策略，数据又不在我们自己手里，想导出都找不着门。百度云盘某种程度上也是一例。</li>
+</ul></li>
+<li><strong>必须联网使用。</strong></li>
+</ul>
+<p>于是我的需求大概是：</p>
+<ul>
+<li><strong>私有化部署。</strong>必须能够完全掌控数据。
+<ul>
+<li><strong>部署方便。</strong>加分项，不过至少要能自己部署（Outline 即为反例）。</li>
+</ul></li>
+<li><strong>文件格式开放。</strong>不能是各种不可读的私有格式。或是可读格式（如 json）存储，或是将文件转换工具开源（点名表扬思源笔记），以便于这个软件由于不可抗力因素无法使用后数据不会丢失。</li>
+<li><strong>Markdown 友好。</strong>Markdown 或者半兼容 Markdown 语法，至少要支持数学公式。</li>
+<li><strong>功能强大。</strong>希望支持 Mermaid，同时有类似 Obisidian 的双链、关系图等等功能。</li>
+<li><strong>界面美观。</strong>尝试了 Trilium 你就会知道颜值观感对一个应用的印象影响多大了 =_=</li>
+<li><strong>学习成本低。</strong>至少设计上要符合人类的逻辑，学习成本要低于带来的使用效率收益。</li>
+</ul>
+<h2><a id="概览" class="heading-anchor"></a>概览</h2>
+<p>是的，在这个无聊的下午，我找到了六款 Notion 的 Alternative，逐一安装尝试了一番。</p>
+<p>以下简单列出了我的一些体验感受。加粗的是直接劝退条件。</p>
+<ul>
+<li><strong>Notion</strong>：功能完美 · 颜值完美 · <strong>无法私有化部署</strong> · 网络环境有时不佳 · 半 Markdown · <strong>数据难导出</strong></li>
+<li><strong>Outline</strong>：颜值高 · <strong>部署异常困难</strong></li>
+<li><strong>Trilium</strong>：功能强大繁多 · 偏 Geek · <strong>太丑</strong> · 部署方便 · 半 Markdown · 数据可导出</li>
+<li><strong>AppFlowy</strong>：功能不完善 · 颜值高 · <strong>不完善</strong> · <strong>只支持本地</strong></li>
+<li><strong>为知笔记</strong>：<strong>功能简陋</strong> · 颜值高 · 支持 Docker 私有化部署 · 不开源 · <strong>私有格式不支持且不兼容 Markdown</strong></li>
+<li><strong>AnyType</strong>：功能强大 · 颜值高 · 理念先进 · <strong>还没发布</strong></li>
+<li><strong>思源笔记</strong>：功能强大 · 颜值高 · 私有部署不支持多用户 · json 格式数据可导出</li>
+</ul>
+<p>注意：本文仅针对建立「学习笔记&amp;知识库系统」这一方面对这些应用测评，很多应用（如 Notion）除此之外还有团队协作、项目规划以至于建立 GTD 系统等等用途，而其他应用（如思源笔记）则没有，不代表各个方面某应用绝对的优胜性。</p>
+<h2><a id="outline这是想给人部署的吗" class="heading-anchor"></a>Outline：这是想给人部署的吗？？</h2>
+<p>Outline 的定位是「团队知识库」，我正是被这优雅的界面设计打动的。</p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/2662116183.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/2662116183.png" alt="Outline 官方 demo 截图" title="" /></a></p>
+<p>和大多数开源软件的商业模式一样，Outline 提供了收费的在线版（30 天免费体验，而且不支持个人用户）和可以自己部署的开源版本。自己部署就是「折腾而白嫖」的一种方式，说得好听点就叫做「技术变现」吧……</p>
+<p>然而这个软件好像设计之初就根本没有考虑个人私有化部署，吐血。</p>
+<ul>
+<li>文件存储只支持 AWS S3 标准，而不支持直接本地文件存储；而 Amazon 在中国不支持个人用户注册。为此，我们要用 MinIO 自己搭建一个兼容 S3 标准的服务器；</li>
+<li>用户登录不支持直接的验证，只支持第三方的 SSO，我们要么配置 Google/Microsoft/Slack 的 SSO，要么自己搭一个 OIDC 服务器；</li>
+<li>不支持直接的附件上传，为此我们要自己搭一个附件上传的程序，例如 Linx；</li>
+<li>只支持 PostgreSQL 数据库，还有 Redis，所以……</li>
+</ul>
+<p>算下来，除了 outline 的容器，还得整上 minio，linx-server，postgres，redis，和一个 SSO 服务器。主要是我根本没接触过 AWS S3，也没接触过 SSO，这俩玩意足够折腾死我了。</p>
+<p>逛了一圈，有大佬提供了 <a href="https://soulteary.com/2021/09/05/opensource-documentation-wiki-software-outline-part-1.html">docker-compose 的版本</a>，但是没搞清楚这些问题之前感觉整个程序就是一个黑箱，出了问题都不知道咋办，不太舒服。</p>
+<p>220203 Upd：终于成功部署了 Outline。总体感觉是：这个软件更加适合服务于「团队协作」或者用来写「产品文档」，而用来作为「笔记」或者「个人知识库」则不是那么完美</p>
+<ul>
+<li>不支持双链。</li>
+<li>不支持 LaTeX 数学公式。</li>
+<li>支持很多富文本的嵌入块，但大多都是国内用不了的 404 服务……</li>
+<li>并没有插件之类的平台，很难实现功能的拓展。</li>
+</ul>
+<p>不过这个多人协作的确非常酷，UI 也非常简洁漂亮……总之，作为「知识库」，这个软件不是最佳选择。</p>
+<h2><a id="trilium直男-geek-的最爱" class="heading-anchor"></a>Trilium：<del>直男</del> Geek 的最爱</h2>
+<p><strong>总评：★★★★☆</strong></p>
+<p>说实话，一开始 Trilium 给了我惊喜。</p>
+<p>没有什么依赖的服务，直接 <code>docker run</code> 一下就可以跑起来：</p>
+<pre><code class="language-sh">docker run -d \
   --name trilium \
   -p 8081:8080 \
   -v /data/trilium:/home/node/trilium-data \
-  zadam/trilium:0.48-latest</code></pre><p>逻辑和 Notion 类似，功能非常强大，对于每个文档可以自定义若干属性（一些归属于文档的键值对），也有不同的文档类型（文本、关系图、Mermaid 图、代码等），可以定义特殊的文档存放一些 js 脚本，通过属性可以调用这些脚本实现特定的功能。</p><p>例如，按下左边的 Today 按钮可以立即在 root &gt; Journal &gt; 年份 &gt; 月份 文件夹下用每日模板创建一个页面并自动填好日期，而这一切都是在一个叫做 Today 的文档中的脚本实现的，由于这个文档设置了书签而会显示在左边侧栏。</p><p>所谓的「插件」统统可以通过文档内 js 实现。例如这个字数统计插件：</p><p><img src="https://skywt.cn/usr/uploads/2022/01/1372974204.png" alt="Trilium 的字数统计插件" title="Trilium 的字数统计插件"></p><p>有了这个文档，只要在文章属性中加上 <code>#wordCount</code> 标签，就会执行这里面的脚本显示文章的字数统计。</p><p>官方样例还给出了各种脚本建立 Todo List、可视化体重追踪程序等等一系列强大的用途。</p><p>只是，这个 UI……</p><p><img src="https://skywt.cn/usr/uploads/2022/01/76241332.png" alt="Trilium 的默认主题界面" title="Trilium 的默认主题界面"></p><p>太丑了……（吐血）</p><p>这诡异的字体，这生硬的交互，这令人窒息的圆角矩形……这就叫做「直男审美」吧……<br>真的，开发者难道没有用过 Notion 吗？就不能学学吗？？？</p><p>好在 Trilium 支持自定义主题，只要建立一个文档，设置属性 <code>#appTheme=themeName</code> 就可以在 config 里看到名为 themeName 的主题了。</p><p>搞来 Notion 的配色，尝试调整了一下默认的主题：</p><p><img src="https://skywt.cn/usr/uploads/2022/01/3885939585.png" alt="Trilium 自定义主题后的界面" title="Trilium 自定义主题后的界面"></p><pre><code class="lang-css">:root {
-    --main-font-family: serif !important;
-    --tree-font-family: serif !important;
-    --detail-font-family: serif !important;
-    --detail-font-size: 1.1rem !important;
-    --detail-text-font-family: serif !important;
-    --monospace-font-family: monospace !important;
+  zadam/trilium:0.48-latest
+</code></pre>
+<p>逻辑和 Notion 类似，功能非常强大，对于每个文档可以自定义若干属性（一些归属于文档的键值对），也有不同的文档类型（文本、关系图、Mermaid 图、代码等），可以定义特殊的文档存放一些 js 脚本，通过属性可以调用这些脚本实现特定的功能。</p>
+<p>例如，按下左边的 Today 按钮可以立即在 root &gt; Journal &gt; 年份 &gt; 月份 文件夹下用每日模板创建一个页面并自动填好日期，而这一切都是在一个叫做 Today 的文档中的脚本实现的，由于这个文档设置了书签而会显示在左边侧栏。</p>
+<p>所谓的「插件」统统可以通过文档内 js 实现。例如这个字数统计插件：</p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/1372974204.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/1372974204.png" alt="Trilium 的字数统计插件" title="" /></a></p>
+<p>有了这个文档，只要在文章属性中加上 <code>#wordCount</code> 标签，就会执行这里面的脚本显示文章的字数统计。</p>
+<p>官方样例还给出了各种脚本建立 Todo List、可视化体重追踪程序等等一系列强大的用途。</p>
+<p>只是，这个 UI……</p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/76241332.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/76241332.png" alt="Trilium 的默认主题界面" title="" /></a></p>
+<p>太丑了……（吐血）</p>
+<p>这诡异的字体，这生硬的交互，这令人窒息的圆角矩形……这就叫做「直男审美」吧……<br>
+真的，开发者难道没有用过 Notion 吗？就不能学学吗？？？</p>
+<p>好在 Trilium 支持自定义主题，只要建立一个文档，设置属性 <code>#appTheme=themeName</code> 就可以在 config 里看到名为 themeName 的主题了。</p>
+<p>搞来 Notion 的配色，尝试调整了一下默认的主题：</p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/3885939585.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/3885939585.png" alt="Trilium 自定义主题后的界面" title="" /></a></p>
+<pre><code class="language-css"><span class="hljs-selector-pseudo">:root</span> {
+    <span class="hljs-attr">--main-font-family</span>: serif <span class="hljs-meta">!important</span>;
+    <span class="hljs-attr">--tree-font-family</span>: serif <span class="hljs-meta">!important</span>;
+    <span class="hljs-attr">--detail-font-family</span>: serif <span class="hljs-meta">!important</span>;
+    <span class="hljs-attr">--detail-font-size</span>: <span class="hljs-number">1.1rem</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attr">--detail-text-font-family</span>: serif <span class="hljs-meta">!important</span>;
+    <span class="hljs-attr">--monospace-font-family</span>: monospace <span class="hljs-meta">!important</span>;
 }
 
-.note-tab-wrapper {
-    border-radius: 0 !important;
-    background-color: inherit !important;
-    border-bottom: 1px rgba(55, 53, 47, 0.4) solid;
+<span class="hljs-selector-class">.note-tab-wrapper</span> {
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">background-color</span>: inherit <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">55</span>, <span class="hljs-number">53</span>, <span class="hljs-number">47</span>, <span class="hljs-number">0.4</span>) solid;
 }
 
-span.fancytree-node:hover{
-    background-color: rgba(55, 53, 47, 0.16) !important;
-    border: none !important;
-    border-radius: 0 !important;
+<span class="hljs-selector-tag">span</span><span class="hljs-selector-class">.fancytree-node</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">55</span>, <span class="hljs-number">53</span>, <span class="hljs-number">47</span>, <span class="hljs-number">0.16</span>) <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">border</span>: none <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
 }
 
-span.fancytree-active, span.fancytree-active.fancytree-selected{
-    background-color: rgba(55, 53, 47, 0.08) !important;
-    border: none !important;
-    border-radius: 0 !important;
+<span class="hljs-selector-tag">span</span><span class="hljs-selector-class">.fancytree-active</span>, <span class="hljs-selector-tag">span</span><span class="hljs-selector-class">.fancytree-active</span><span class="hljs-selector-class">.fancytree-selected</span>{
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">55</span>, <span class="hljs-number">53</span>, <span class="hljs-number">47</span>, <span class="hljs-number">0.08</span>) <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">border</span>: none <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
 }
 
-.fancytree-node:hover .bx.tree-item-button {
-    position: absolute;
-    right: 15px;
+<span class="hljs-selector-class">.fancytree-node</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.bx</span><span class="hljs-selector-class">.tree-item-button</span> {
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">15px</span>;
 }
 
-#left-pane , #launcher-pane{
-    background-color: rgb(247, 246, 243) !important;
+<span class="hljs-selector-id">#left-pane</span> , <span class="hljs-selector-id">#launcher-pane</span>{
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">247</span>, <span class="hljs-number">246</span>, <span class="hljs-number">243</span>) <span class="hljs-meta">!important</span>;
 }
 
-.gutter {
-    background: inherit !important;
-    width: 4px !important;
-    transition: 0.3s;
+<span class="hljs-selector-class">.gutter</span> {
+    <span class="hljs-attribute">background</span>: inherit <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">4px</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.3s</span>;
 }
-.gutter:hover {
-    background: rgba(25, 23, 17, 0.6) !important;
-}
-
-.note-title-widget input.note-title {
-    outline: none;
+<span class="hljs-selector-class">.gutter</span><span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">25</span>, <span class="hljs-number">23</span>, <span class="hljs-number">17</span>, <span class="hljs-number">0.6</span>) <span class="hljs-meta">!important</span>;
 }
 
-.include-note, .note-book-card {
-    border-radius: 0 !important;
+<span class="hljs-selector-class">.note-title-widget</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-class">.note-title</span> {
+    <span class="hljs-attribute">outline</span>: none;
 }
 
-.note-split {
-    max-width: 1000px;
-}</code></pre><p>然而最后我还是放弃了 Trilium。</p><ul><li>关于「属性」的功能属实是比较冗余，很难找到使用场景。毕竟作为一个笔记&知识库系统，不需要这么多自动化的流程吧。</li><li>这个 UI 真的没救了，改 CSS 也改不了整体的布局，和 Notion 相比就有一种莫名压抑感。</li><li>半 Markdown 支持，就是实际上不是 Markdown 文件，只是输入 <code>##</code> 会自动变成二级标题，输入 <code>$</code> 会自动进入数学公式输入。</li><li>对于导入文件的转化不是特别好，导入的 codeforces 题解里的数学公式全都没法转化。</li><li>居然不支持代码块高亮。</li></ul><p>总之，虽然不是特别适合我自己，Trilium 还是值得尝试的。</p><h2>AppFlowy：为取代 Notion 而生的新秀</h2><p>AppFlowy 似乎就是为了取代 Notion 而生的。</p><p><img src="https://skywt.cn/usr/uploads/2022/01/785568134.png" alt="AppFlowy 官方 demo 截图" title="AppFlowy 官方 demo 截图"></p><p>试用了一下，还是放弃了。</p><ul><li>不支持网页端，只有本地客户端。</li><li>只是个本地的编辑器。不支持服务器同步。</li><li>功能不完善，还在开发初期。目前还是 0.0.2 版本。</li></ul><p>目前看来完全无法达到取代 Notion 的标准。可能未来会比较有潜力，不过目前还是不考虑了。</p><h2>为知笔记：简陋到不够用</h2><p>虽然为知笔记本身不是开源的，但是其提供了<a href="https://www.wiz.cn/zh-cn/docker">可以自托管的 Docker 镜像</a>。</p><pre><code class="lang-sh"> docker run -itd \
-   --name wiz \
-   --restart=always \
-   -v /data/wiz:/wiz/storage \
-   -v /etc/localtime:/etc/localtime \
-   -p 8085:80 \
-   -p 9269:9269/udp \
-   wiznote/wizserver</code></pre><ul><li>非常简陋！！！和官网注册登录使用的不是一个版本。功能很少。没有双链。数学公式都没有。</li><li>笔记的排列逻辑很迷，不是树状图的逻辑，而是一种二级菜单，不太适合建立知识库。</li><li>完全不兼容 Markdown。从类 Word 的文本编辑就可以看出。文档导出甚至只支持导出 .docx 格式。</li><li>严重依赖官方服务器。即使自己部署，很多功能都需要官方服务器。</li></ul><h2>AnyType：值得期待的颠覆</h2><p>虽然这玩意还没发布，但是去看了下<a href="https://anytype.io/">官网</a>，感觉这个官网的设计就挺有意思的。</p><p>AnyType 提出了「对象」的概念，文档中每个页面或者段落、块都可以看成「对象」，在对象之间可以建立连接，贴近人的思维模式。这个理念比较有开创性。</p><p>不过第一个正式的版本还没发布。可以留个邮箱成为内测用户。我还是懒得折腾了。</p><h2>思源笔记：最终的归宿</h2><p>最后找到了「思源笔记」，在我看来是比较完美的解决方案了。</p><pre><code class="lang-sh"> docker run -itd \
-   --name siyuan \
-   -v /data/siyuan:/siyuan/workspace \
-   -p 6806:6806 \
-   -u 1000:1000 \
-   b3log/siyuan \
-   --workspace=/siyuan/workspace \
-   --servePath=docs.skywt.cn \
-   --ssl=true</code></pre><p>注意如果用 Nginx/Caddy 反代走 https 则需要加上后面的 <code>--servePath=docs.skywt.cn --ssl=true</code>，否则不需要。</p><p><img src="https://skywt.cn/usr/uploads/2022/01/1016182864.png" alt="思源笔记界面" title="思源笔记界面"></p><p>其实看得出来基本上这个软件的很多功能甚至有些 UI 都是仿 Obsidian 的。不过在某些方面比 Obsidian 更加优秀。<br>总体来说这个体验还是比较完美的。</p><ul><li><strong>私有化部署。</strong>部署还比较方便。</li><li><strong>文件格式开放。</strong>数据都会以 json 格式明文存储在本地指定的文件夹下，还开源了数据转换的工具。</li><li><strong>Markdown 友好。</strong>半兼容 Markdown 语法，支持 Markdown 导出。导入我原来的 Markdown 也非常完美。而且和 Notion 一样有「内容块」的概念，「内容块」和「文章块」是同级的，这个逻辑我还是比较喜欢的。</li><li><strong>功能强大。</strong>支持双链、Mermaid、关系图等等。甚至支持 SQL 语句查询！</li><li><strong>界面美观。</strong>自定义也很方便，甚至可以找到高仿 Notion 的主题……</li><li><strong>入门成本低。</strong>不过如果要进阶使用还是有一定成本的。</li></ul><p>缺点也不是没有：</p><ul><li><strong>Docker 服务器版不支持多用户。</strong>实际上没有用户管理机制，只有一个密码鉴权。</li><li><strong>不能很好地兼容 Firefox。</strong>由于本身是针对 Electron 开发的，好像只能在 Chromium 内核下得到完美体验。Firefox 使用问题就是在光标只能被限定在一个块里，必须配合鼠标。非常不爽！</li></ul><h2>总结</h2><p>「工欲善其事，必先利其器」，虽然笔记软件只是工具，但是从纯文本到 Markdown，到块级双链的知识库系统，善用笔记软件有机会颠覆我们的思考方式和学习效率。</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z2j61jT" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;seven-notes-and-wiki-systems-evaluation&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/seven-notes-and-wiki-systems-evaluation&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+<span class="hljs-selector-class">.include-note</span>, <span class="hljs-selector-class">.note-book-card</span> {
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
+}
+
+<span class="hljs-selector-class">.note-split</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1000px</span>;
+}
+</code></pre>
+<p>然而最后我还是放弃了 Trilium。</p>
+<ul>
+<li>关于「属性」的功能属实是比较冗余，很难找到使用场景。毕竟作为一个笔记&amp;知识库系统，不需要这么多自动化的流程吧。</li>
+<li>这个 UI 真的没救了，改 CSS 也改不了整体的布局，和 Notion 相比就有一种莫名压抑感。</li>
+<li>半 Markdown 支持，就是实际上不是 Markdown 文件，只是输入 <code>##</code> 会自动变成二级标题，输入 <code>$</code> 会自动进入数学公式输入。</li>
+<li>对于导入文件的转化不是特别好，导入的 codeforces 题解里的数学公式全都没法转化。</li>
+<li>居然不支持代码块高亮。</li>
+</ul>
+<p>总之，虽然不是特别适合我自己，Trilium 还是值得尝试的。</p>
+<h2><a id="appflowy为取代-notion-而生的新秀" class="heading-anchor"></a>AppFlowy：为取代 Notion 而生的新秀</h2>
+<p>AppFlowy 似乎就是为了取代 Notion 而生的。</p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/785568134.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/785568134.png" alt="AppFlowy 官方 demo 截图" title="" /></a></p>
+<p>试用了一下，还是放弃了。</p>
+<ul>
+<li>不支持网页端，只有本地客户端。</li>
+<li>只是个本地的编辑器。不支持服务器同步。</li>
+<li>功能不完善，还在开发初期。目前还是 0.0.2 版本。</li>
+</ul>
+<p>目前看来完全无法达到取代 Notion 的标准。可能未来会比较有潜力，不过目前还是不考虑了。</p>
+<h2><a id="为知笔记简陋到不够用" class="heading-anchor"></a>为知笔记：简陋到不够用</h2>
+<p>虽然为知笔记本身不是开源的，但是其提供了<a href="https://www.wiz.cn/zh-cn/docker">可以自托管的 Docker 镜像</a>。</p>
+<pre><code class="language-sh"> docker run -itd \
+   --name wiz \
+   --restart=always \
+   -v /data/wiz:/wiz/storage \
+   -v /etc/localtime:/etc/localtime \
+   -p 8085:80 \
+   -p 9269:9269/udp \
+   wiznote/wizserver
+</code></pre>
+<ul>
+<li>非常简陋！！！和官网注册登录使用的不是一个版本。功能很少。没有双链。数学公式都没有。</li>
+<li>笔记的排列逻辑很迷，不是树状图的逻辑，而是一种二级菜单，不太适合建立知识库。</li>
+<li>完全不兼容 Markdown。从类 Word 的文本编辑就可以看出。文档导出甚至只支持导出 .docx 格式。</li>
+<li>严重依赖官方服务器。即使自己部署，很多功能都需要官方服务器。</li>
+</ul>
+<h2><a id="anytype值得期待的颠覆" class="heading-anchor"></a>AnyType：值得期待的颠覆</h2>
+<p>虽然这玩意还没发布，但是去看了下<a href="https://anytype.io/">官网</a>，感觉这个官网的设计就挺有意思的。</p>
+<p>AnyType 提出了「对象」的概念，文档中每个页面或者段落、块都可以看成「对象」，在对象之间可以建立连接，贴近人的思维模式。这个理念比较有开创性。</p>
+<p>不过第一个正式的版本还没发布。可以留个邮箱成为内测用户。我还是懒得折腾了。</p>
+<h2><a id="思源笔记最终的归宿" class="heading-anchor"></a>思源笔记：最终的归宿</h2>
+<p>最后找到了「思源笔记」，在我看来是比较完美的解决方案了。</p>
+<pre><code class="language-sh"> docker run -itd \
+   --name siyuan \
+   -v /data/siyuan:/siyuan/workspace \
+   -p 6806:6806 \
+   -u 1000:1000 \
+   b3log/siyuan \
+   --workspace=/siyuan/workspace \
+   --servePath=docs.skywt.cn \
+   --ssl=<span class="hljs-literal">true</span>
+</code></pre>
+<p>注意如果用 Nginx/Caddy 反代走 https 则需要加上后面的 <code>--servePath=docs.skywt.cn --ssl=true</code>，否则不需要。</p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/1016182864.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/1016182864.png" alt="思源笔记界面" title="" /></a></p>
+<p>其实看得出来基本上这个软件的很多功能甚至有些 UI 都是仿 Obsidian 的。不过在某些方面比 Obsidian 更加优秀。<br>
+总体来说这个体验还是比较完美的。</p>
+<ul>
+<li><strong>私有化部署。</strong>部署还比较方便。</li>
+<li><strong>文件格式开放。</strong>数据都会以 json 格式明文存储在本地指定的文件夹下，还开源了数据转换的工具。</li>
+<li><strong>Markdown 友好。</strong>半兼容 Markdown 语法，支持 Markdown 导出。导入我原来的 Markdown 也非常完美。而且和 Notion 一样有「内容块」的概念，「内容块」和「文章块」是同级的，这个逻辑我还是比较喜欢的。</li>
+<li><strong>功能强大。</strong>支持双链、Mermaid、关系图等等。甚至支持 SQL 语句查询！</li>
+<li><strong>界面美观。</strong>自定义也很方便，甚至可以找到高仿 Notion 的主题……</li>
+<li><strong>入门成本低。</strong>不过如果要进阶使用还是有一定成本的。</li>
+</ul>
+<p>缺点也不是没有：</p>
+<ul>
+<li><strong>Docker 服务器版不支持多用户。</strong>实际上没有用户管理机制，只有一个密码鉴权。</li>
+<li><strong>不能很好地兼容 Firefox。</strong>由于本身是针对 Electron 开发的，好像只能在 Chromium 内核下得到完美体验。Firefox 使用问题就是在光标只能被限定在一个块里，必须配合鼠标。非常不爽！</li>
+</ul>
+<h2><a id="总结" class="heading-anchor"></a>总结</h2>
+<p>「工欲善其事，必先利其器」，虽然笔记软件只是工具，但是从纯文本到 Markdown，到块级双链的知识库系统，善用笔记软件有机会颠覆我们的思考方式和学习效率。</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZoBzWJ" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;seven-notes-and-wiki-systems-evaluation&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -177,4 +347,4 @@ span.fancytree-active, span.fancytree-active.fancytree-selected{
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

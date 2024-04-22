@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>部署 Memos 接入 QQ 机器人</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>部署 Memos 接入 QQ 机器人</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,36 +72,88 @@
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>部署 Memos 接入 QQ 机器人</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 01 月 07 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 6 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/deploy-memos-to-qq-robot" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>前几天部署了开源的浮墨笔记（flomo）替代品：<a href="https://github.com/usememos/memos">Memos</a>。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。</p><!--more--><h2>前置准备</h2><ul><li>服务器，最好是境内的。</li><li>搭建好的 Memos 实例（我的实例：<a href="https://memos.skywt.cn/">memos.skywt.cn</a>）。</li><li>一个可登录的闲置 QQ 账号。</li></ul><h2>运行 go-cqhttp</h2><p>我们的机器人在服务端分为两个组件，这两个组件都要部署在我们的服务器上。</p><ul><li><strong>go-cqhttp</strong> 负责与腾讯 QQ 服务器通信，管理我们的账号登录、消息收发等过程；</li><li><strong>NoneBot</strong> 负责将 go-cqhttp 收到的消息进行处理，控制发送消息的内容，运行我们想要的业务逻辑。</li></ul><p>首先部署 go-cqhttp。前往 GitHub 上的 <a href="https://github.com/Mrs4s/go-cqhttp/releases">release</a> 下载最新适合服务器架构的版本，下载解压之后是一个单文件程序。第一次运行，在提示选择通信方式时，选择「反向 Websocket 通信」，之后程序就会在相同目录下生成配置文件。</p><p>编辑配置文件，根据提示将 uin 和 password 字段分别改为自己的 QQ 和密码。虽然配置文件中说「密码为空时可以使用扫码登录」，但是经过实测只有在同一网络环境下 QQ 才会允许扫码登录。部署在服务器上扫码是无法登录的，只能使用密码。<br>除此之外，修改文件底部 servers 部分 ws-reverse 中 universal 的地址。我设定的是 <code>ws://127.0.0.1:8989/ws/</code>。这个地址告诉 go-cqhttp，该从哪里与后端的 NoneBot 通信。</p><p>修改完毕后，再次启动 go-cqhttp，可能会提示需要扫码、滑块验证、手机验证之类，跟着程序的提示进行即可。<br>程序会提示，对于腾讯云的服务器需要修改 DNS 为 <code>114.114.114.114</code>。编辑 <code>/etc/resolv.conf</code> 并修改就行。<br>出现以下消息就表明登录成功：</p><pre><code class="lang-bash">[INFO]: 登录成功 欢迎使用: SkyWT</code></pre><p>此时可能会出现大量的「Connection Refused」消息，这是因为我们还没启动后端的 NoneBot。忽略他们即可。</p><pre><code>[WARNING]: 连接到反向 WebSocket Universal 服务器 ws://127.0.0.1:8989/ws/ 时出现错误: dial tcp 127.0.0.1:8989: connect: connection refused</code></pre><p>接下来，要将 go-cqhttp 放到后台运行，开始编写 NoneBot 的主程序。</p><h2>编写运行 NoneBot</h2><p>参阅 NoneBot 的<a href="https://docs.nonebot.dev/guide/getting-started.html">官方指南</a>编写主要的代码，包括 <code>bot.py</code> 和 <code>config.py</code>。在后者中要指定与 go-cqhttp 的 <code>config.yml</code> 中配置一致的 HOST 和 PORT。我的配置分别是 <code>127.0.0.1</code> 和 <code>8989</code>。</p><p>接下来，我们可以通过编写插件的方式使 QQ 机器人实现 Memo 备忘录的功能。<br>其实直接根据文档里的插件修改一下就可以了：</p><pre><code class="lang-python">from nonebot import on_command, CommandSession
-import requests
-import json
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>部署 Memos 接入 QQ 机器人</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 1 月 7 日 08:12</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87">前置准备</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C-go-cqhttp">运行 go-cqhttp</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E8%BF%90%E8%A1%8C-nonebot">编写运行 NoneBot</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+<p>前几天部署了开源的浮墨笔记（flomo）替代品：<a href="https://github.com/usememos/memos">Memos</a>。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。</p>
+<h2><a id="前置准备" class="heading-anchor"></a>前置准备</h2>
+<ul>
+<li>服务器，最好是境内的。</li>
+<li>搭建好的 Memos 实例（我的实例：<a href="https://memos.skywt.cn/">memos.skywt.cn</a>）。</li>
+<li>一个可登录的闲置 QQ 账号。</li>
+</ul>
+<h2><a id="运行-go-cqhttp" class="heading-anchor"></a>运行 go-cqhttp</h2>
+<p>我们的机器人在服务端分为两个组件，这两个组件都要部署在我们的服务器上。</p>
+<ul>
+<li><strong>go-cqhttp</strong> 负责与腾讯 QQ 服务器通信，管理我们的账号登录、消息收发等过程；</li>
+<li><strong>NoneBot</strong> 负责将 go-cqhttp 收到的消息进行处理，控制发送消息的内容，运行我们想要的业务逻辑。</li>
+</ul>
+<p>首先部署 go-cqhttp。前往 GitHub 上的 <a href="https://github.com/Mrs4s/go-cqhttp/releases">release</a> 下载最新适合服务器架构的版本，下载解压之后是一个单文件程序。第一次运行，在提示选择通信方式时，选择「反向 Websocket 通信」，之后程序就会在相同目录下生成配置文件。</p>
+<p>编辑配置文件，根据提示将 uin 和 password 字段分别改为自己的 QQ 和密码。虽然配置文件中说「密码为空时可以使用扫码登录」，但是经过实测只有在同一网络环境下 QQ 才会允许扫码登录。部署在服务器上扫码是无法登录的，只能使用密码。<br>
+除此之外，修改文件底部 servers 部分 ws-reverse 中 universal 的地址。我设定的是 <code>ws://127.0.0.1:8989/ws/</code>。这个地址告诉 go-cqhttp，该从哪里与后端的 NoneBot 通信。</p>
+<p>修改完毕后，再次启动 go-cqhttp，可能会提示需要扫码、滑块验证、手机验证之类，跟着程序的提示进行即可。<br>
+程序会提示，对于腾讯云的服务器需要修改 DNS 为 <code>114.114.114.114</code>。编辑 <code>/etc/resolv.conf</code> 并修改就行。<br>
+出现以下消息就表明登录成功：</p>
+<pre><code class="language-bash">[INFO]: 登录成功 欢迎使用: SkyWT
+</code></pre>
+<p>此时可能会出现大量的「Connection Refused」消息，这是因为我们还没启动后端的 NoneBot。忽略他们即可。</p>
+<pre><code>[WARNING]: 连接到反向 WebSocket Universal 服务器 ws://127.0.0.1:8989/ws/ 时出现错误: dial tcp 127.0.0.1:8989: connect: connection refused
+</code></pre>
+<p>接下来，要将 go-cqhttp 放到后台运行，开始编写 NoneBot 的主程序。</p>
+<h2><a id="编写运行-nonebot" class="heading-anchor"></a>编写运行 NoneBot</h2>
+<p>参阅 NoneBot 的<a href="https://docs.nonebot.dev/guide/getting-started.html">官方指南</a>编写主要的代码，包括 <code>bot.py</code> 和 <code>config.py</code>。在后者中要指定与 go-cqhttp 的 <code>config.yml</code> 中配置一致的 HOST 和 PORT。我的配置分别是 <code>127.0.0.1</code> 和 <code>8989</code>。</p>
+<p>接下来，我们可以通过编写插件的方式使 QQ 机器人实现 Memo 备忘录的功能。<br>
+其实直接根据文档里的插件修改一下就可以了：</p>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> nonebot <span class="hljs-keyword">import</span> on_command, CommandSession
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">import</span> json
 
-__plugin_name__ = 'Memos'
-__plugin_usage__ = r&quot;&quot;&quot;
+__plugin_name__ = <span class="hljs-string">&#x27;Memos&#x27;</span>
+__plugin_usage__ = <span class="hljs-string">r&quot;&quot;&quot;
 memo [需要添加的 Memo 内容]
-&quot;&quot;&quot;
-MEMOS_API = 'https://memos.skywt.cn/api/memo?openId=************'
+&quot;&quot;&quot;</span>
+MEMOS_API = <span class="hljs-string">&#x27;https://memos.skywt.cn/api/memo?openId=************&#x27;</span>
 
-@on_command('memo', aliases=('note'))
-async def memo(session: CommandSession):
+<span class="hljs-meta">@on_command(<span class="hljs-params"><span class="hljs-string">&#x27;memo&#x27;</span>, aliases=(<span class="hljs-params"><span class="hljs-string">&#x27;note&#x27;</span></span>)</span>)</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">memo</span>(<span class="hljs-params">session: CommandSession</span>):
     memo_text = session.current_arg_text.strip()
-    if not memo_text:
-        await session.send('Memo 内容不能为空！')
-        return
-    ret = await send_memo(memo_text)
-    await session.send(ret)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> memo_text:
+        <span class="hljs-keyword">await</span> session.send(<span class="hljs-string">&#x27;Memo 内容不能为空！&#x27;</span>)
+        <span class="hljs-keyword">return</span>
+    ret = <span class="hljs-keyword">await</span> send_memo(memo_text)
+    <span class="hljs-keyword">await</span> session.send(ret)
 
-async def send_memo(memo_text: str) -&gt; str:
-    data_to_send = {'content': memo_text}
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">send_memo</span>(<span class="hljs-params">memo_text: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:
+    data_to_send = {<span class="hljs-string">&#x27;content&#x27;</span>: memo_text}
     r = requests.post(MEMOS_API, data=json.dumps(data_to_send))
-    if r.status_code == 200:
-        return '添加成功'
-    else:
-        return '添加失败，请查阅日志'</code></pre><p>回到 NoneBot 的主目录启动 bot.py 并放在后台，发送消息 <code>memo 这是一条测试笔记</code>，可以看到正确的输出。<br>进入 Memos 可以看到成功添加了一条 memo。</p><p><img src="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" alt="聊天界面，机器人回复添加成功" title="聊天界面，机器人回复添加成功"></p><h2>参考资料</h2><ul><li><a href="https://docs.go-cqhttp.org/guide">go-cqhttp 使用指南</a></li><li><a href="https://docs.nonebot.dev/guide">NoneBot 使用指南</a>：文档通俗易懂，强烈推荐</li></ul> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="ZVx9sT" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;deploy-memos-to-qq-robot&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/deploy-memos-to-qq-robot&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+    <span class="hljs-keyword">if</span> r.status_code == <span class="hljs-number">200</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;添加成功&#x27;</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;添加失败，请查阅日志&#x27;</span>
+</code></pre>
+<p>回到 NoneBot 的主目录启动 bot.py 并放在后台，发送消息 <code>memo 这是一条测试笔记</code>，可以看到正确的输出。<br>
+进入 Memos 可以看到成功添加了一条 memo。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" alt="聊天界面，机器人回复添加成功" title="" /></a></p>
+<h2><a id="参考资料" class="heading-anchor"></a>参考资料</h2>
+<ul>
+<li><a href="https://docs.go-cqhttp.org/guide">go-cqhttp 使用指南</a></li>
+<li><a href="https://docs.nonebot.dev/guide">NoneBot 使用指南</a>：文档通俗易懂，强烈推荐</li>
+</ul>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="LcL6G" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;deploy-memos-to-qq-robot&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -128,4 +180,4 @@ async def send_memo(memo_text: str) -&gt; str:
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

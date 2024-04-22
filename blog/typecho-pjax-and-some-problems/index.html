@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Typecho 主题 PJAX 无刷新以及遇到的一些问题</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Typecho 主题 PJAX 无刷新以及遇到的一些问题</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ Typecho 主题 PJAX 无刷新以及遇到的一些问题 </span> </h5> <div clas
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,101 +72,155 @@ Typecho 主题 PJAX 无刷新以及遇到的一些问题 </span> </h5> <div clas
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Typecho 主题 PJAX 无刷新以及遇到的一些问题</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 10 月 18 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 3 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/typecho-pjax-and-some-problems" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>最近给 Typecho 主题 <a href="https://github.com/Skywt2003/Daydream">Daydream</a> 加上了 PJAX 无刷新。本以为加一段代码就好，结果遇到了一大堆问题，无法提交评论、插件无效、数学公式没法渲染……特此记录一下。</p><!--more--><h2>什么是 PJAX</h2><blockquote>pjax = pushState + ajax</blockquote><p>对于传统的 Typecho 主题，实际上就是<strong>服务端渲染</strong>（SSR）的代表，用户每请求一个页面，服务器（php）就渲染好这个页面的内容（包括文章、评论之类的动态内容），渲染好一个静态的 HTML 然后传给浏览器。这样虽然方便，但是不难发现传输数据量其实不小。在加载不同的页面的时候，有不少部分是重复渲染的，比如页面的页眉、页脚，每个页面都是一样的，但是加载每个页面都要重新加载一次。这就会降低访问体验。</p><p>而以调用 Restful 接口等方式进行<strong>客户端渲染</strong>（CSR）的<strong>单页应用程序</strong>（SPA）则是与之对立的另一个典型。用户第一次访问只加载一个页面框架，其中的 js 代码通过接口向服务器请求数据，然后在客户端进行渲染。进入新的页面链接时只刷新需要更新的部分（一般是通过 DOM 操作）。这样每次只需要修改页面中很少的信息量，可以加快加载的速度。这称为<strong>无刷新技术</strong>。然而 Typecho 并不是以这种 CSR 的思路构建的。<br>（我之前开过的一个坑 <a href="https://github.com/Skywt2003/vuecho">Vuecho</a> 其实就是这种尝试，这是一个 demo：<a href="https://alpha.skywt.cn/">alpha.skywt.cn</a>）</p><p>那么 PJAX 实际上就是以上两者的「折中方案」。通过这段神奇的 js 代码，它可以自己判断哪些部分刷新了，然后在刷新（或者进入新的页面）时通过 DOM 操作更新要更新的部分。虽然后端的实现完全是服务器端渲染，但是前端看起来就好像是客户端渲染一样，实现<strong>全站无刷新</strong>，可以获得非常迅捷的体验。</p><h2>给 Typecho 主题加上 PJAX</h2><p>⚠️ 本文使用的是 <a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a>。</p><p>这一步其实非常简单（麻烦的在后面），<br>首先把博客的动态内容（即从一个页面进入另一个页面要更新的内容）用一个 <code>&lt;div&gt;</code> 之类的标签包裹起来，并将 id 设置为 <code>pjax-container</code>。这个容器就叫做 PJAX 容器。<br>在这个容器外部，是刷新页面不需要更新的部分，如每个页面都一样的页眉、导航栏、页脚。<br>在这个容器内部，是刷新页面需要重新加载的部分，比如从文章列表进入一篇文章，容器中的内容由「文章列表」改变为「文章内容」。</p><p>一般主题的结构包含 <code>header.php</code>、<code>footer.php</code>，只要在 <code>header.php</code> 的末尾加上容器的开放 tag，在 <code>footer.php</code> 的开头加上容器的封闭 tag 即可。最后渲染出来的页面应该像是这样：</p><pre><code class="lang-html">&lt;html&gt;
-    &lt;head&gt;
-        &lt;!-- ... --&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;header&gt;&lt;!-- 页眉，标题什么的 --&gt;&lt;/header&gt;
-        &lt;nav&gt;&lt;!-- 导航栏什么的 --&gt;&lt;/nav&gt;
-        &lt;main id=&quot;pjax-container&quot;&gt;
-            &lt;!-- 网站主体内容，文章列表 / 文章内容 / 评论什么的 --&gt;
-        &lt;/main&gt;
-        &lt;script&gt;
-            // 下面要加上的代码
-        &lt;/script&gt;
-        &lt;footer&gt;&lt;!-- 页脚什么的 --&gt;&lt;/footer&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre><p>在 footer.php 或者其他地方（PJAX 容器的后面，就是上面这段代码的 <code>&lt;script&gt;</code> 部分）加上这段代码：</p><pre><code class="lang-js">$(document).pjax('a[href^=&quot;&lt;?php $this-&gt;options-&gt;siteUrl()?&gt;&quot;]:not(a[target=&quot;_blank&quot;])', {
-    container: '#pjax-container',
-    fragment: '#pjax-container'
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Typecho 主题 PJAX 无刷新以及遇到的一些问题</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 10 月 18 日 08:32</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-pjax">什么是 PJAX</a></li>
+<li><a href="#%E7%BB%99-typecho-%E4%B8%BB%E9%A2%98%E5%8A%A0%E4%B8%8A-pjax">给 Typecho 主题加上 PJAX</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E8%AF%84%E8%AE%BA%E9%97%AE%E9%A2%98">解决评论问题</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98">解决插件问题</a></li>
+</ul>
+<p>最近给 Typecho 主题 <a href="https://github.com/Skywt2003/Daydream">Daydream</a> 加上了 PJAX 无刷新。本以为加一段代码就好，结果遇到了一大堆问题，无法提交评论、插件无效、数学公式没法渲染……特此记录一下。</p>
+<h2><a id="什么是-pjax" class="heading-anchor"></a>什么是 PJAX</h2>
+<blockquote>
+<p>pjax = pushState + ajax</p>
+</blockquote>
+<p>对于传统的 Typecho 主题，实际上就是<strong>服务端渲染</strong>（SSR）的代表，用户每请求一个页面，服务器（php）就渲染好这个页面的内容（包括文章、评论之类的动态内容），渲染好一个静态的 HTML 然后传给浏览器。这样虽然方便，但是不难发现传输数据量其实不小。在加载不同的页面的时候，有不少部分是重复渲染的，比如页面的页眉、页脚，每个页面都是一样的，但是加载每个页面都要重新加载一次。这就会降低访问体验。</p>
+<p>而以调用 Restful 接口等方式进行<strong>客户端渲染</strong>（CSR）的<strong>单页应用程序</strong>（SPA）则是与之对立的另一个典型。用户第一次访问只加载一个页面框架，其中的 js 代码通过接口向服务器请求数据，然后在客户端进行渲染。进入新的页面链接时只刷新需要更新的部分（一般是通过 DOM 操作）。这样每次只需要修改页面中很少的信息量，可以加快加载的速度。这称为<strong>无刷新技术</strong>。然而 Typecho 并不是以这种 CSR 的思路构建的。<br>
+（我之前开过的一个坑 <a href="https://github.com/Skywt2003/vuecho">Vuecho</a> 其实就是这种尝试，这是一个 demo：<a href="https://alpha.skywt.cn/">alpha.skywt.cn</a>）</p>
+<p>那么 PJAX 实际上就是以上两者的「折中方案」。通过这段神奇的 js 代码，它可以自己判断哪些部分刷新了，然后在刷新（或者进入新的页面）时通过 DOM 操作更新要更新的部分。虽然后端的实现完全是服务器端渲染，但是前端看起来就好像是客户端渲染一样，实现<strong>全站无刷新</strong>，可以获得非常迅捷的体验。</p>
+<h2><a id="给-typecho-主题加上-pjax" class="heading-anchor"></a>给 Typecho 主题加上 PJAX</h2>
+<p>⚠️ 本文使用的是 <a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a>。</p>
+<p>这一步其实非常简单（麻烦的在后面），<br>
+首先把博客的动态内容（即从一个页面进入另一个页面要更新的内容）用一个 <code>&lt;div&gt;</code> 之类的标签包裹起来，并将 id 设置为 <code>pjax-container</code>。这个容器就叫做 PJAX 容器。<br>
+在这个容器外部，是刷新页面不需要更新的部分，如每个页面都一样的页眉、导航栏、页脚。<br>
+在这个容器内部，是刷新页面需要重新加载的部分，比如从文章列表进入一篇文章，容器中的内容由「文章列表」改变为「文章内容」。</p>
+<p>一般主题的结构包含 <code>header.php</code>、<code>footer.php</code>，只要在 <code>header.php</code> 的末尾加上容器的开放 tag，在 <code>footer.php</code> 的开头加上容器的封闭 tag 即可。最后渲染出来的页面应该像是这样：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><span class="hljs-comment">&lt;!-- 页眉，标题什么的 --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span><span class="hljs-comment">&lt;!-- 导航栏什么的 --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pjax-container&quot;</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 网站主体内容，文章列表 / 文章内容 / 评论什么的 --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+            <span class="hljs-comment">// 下面要加上的代码</span>
+        </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><span class="hljs-comment">&lt;!-- 页脚什么的 --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>在 footer.php 或者其他地方（PJAX 容器的后面，就是上面这段代码的 <code>&lt;script&gt;</code> 部分）加上这段代码：</p>
+<pre><code class="language-js">$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">pjax</span>(<span class="hljs-string">&#x27;a[href^=&quot;&lt;?php $this-&gt;options-&gt;siteUrl()?&gt;&quot;]:not(a[target=&quot;_blank&quot;])&#x27;</span>, {
+    <span class="hljs-attr">container</span>: <span class="hljs-string">&#x27;#pjax-container&#x27;</span>,
+    <span class="hljs-attr">fragment</span>: <span class="hljs-string">&#x27;#pjax-container&#x27;</span>
 });
-$(document).on('pjax:send',function() {
-    // alert('开始加载');
-    // 开始加载时要运行的代码（如显示加载动画）
+$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;pjax:send&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// alert(&#x27;开始加载&#x27;);</span>
+    <span class="hljs-comment">// 开始加载时要运行的代码（如显示加载动画）</span>
 });
-$(document).on('pjax:complete', function() {   
-    // alert('加载完成');
-    // 加载完成后要运行的代码（如去除加载动画）
-});</code></pre><p>传入 pjax 函数的第一个参数是 selector，它告诉 PJAX，只对于目标为本站内的且没有设置在新页面打开（<code>target=&quot;_blank&quot;</code>）的链接进行无刷新加载，其他链接（如站外链接）则会正常加载。<br>第二个参数是 container，指定 id 为 <code>pjax-container</code> 的元素作为 PJAX 容器，当然也可以任意修改。可以查阅<a href="https://github.com/defunkt/jquery-pjax">文档</a>修改更多参数。</p><p><code>on</code> 和 <code>complete</code> 都是 PJAX 事件，文档里也列举了更多事件。可以用这个测试一下 PJAX 开启成功了没有。</p><p>经过以上步骤（应该）可以发现页面之间的切换明显变快了。</p><h2>解决评论问题</h2><p>启用 PJAX 后，如果从一个页面进入另一个页面（比如从首页进入某个文章页面），提交评论会发现页面刷新了一下（或者 Safari 干脆显示无法加载），没法正常发表评论。必须手动刷新这个页面才能发评论。</p><p>这是因为 Typecho 提交评论的 js 脚本放在 <code>&lt;head&gt;</code> 里（F12 可以看到），而当我们刷新页面，<code>&lt;head&gt;</code> 中的脚本并不会更新（因为其在 PJAX 容器之外）。所以只有第一次进入页面可以正常提交评论，进入其他页面后就不行。</p><p>解决方法也很简单。在评论区加上这段从 <code>&lt;head&gt;</code> 里 copy 出来的代码：</p><pre><code class="lang-js">(function() {
-    window.TypechoComment = {
-        dom: function(id) {
-            return document.getElementById(id);
+$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;pjax:complete&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {   
+    <span class="hljs-comment">// alert(&#x27;加载完成&#x27;);</span>
+    <span class="hljs-comment">// 加载完成后要运行的代码（如去除加载动画）</span>
+});
+</code></pre>
+<p>传入 pjax 函数的第一个参数是 selector，它告诉 PJAX，只对于目标为本站内的且没有设置在新页面打开（<code>target=&quot;_blank&quot;</code>）的链接进行无刷新加载，其他链接（如站外链接）则会正常加载。<br>
+第二个参数是 container，指定 id 为 <code>pjax-container</code> 的元素作为 PJAX 容器，当然也可以任意修改。可以查阅<a href="https://github.com/defunkt/jquery-pjax">文档</a>修改更多参数。</p>
+<p><code>on</code> 和 <code>complete</code> 都是 PJAX 事件，文档里也列举了更多事件。可以用这个测试一下 PJAX 开启成功了没有。</p>
+<p>经过以上步骤（应该）可以发现页面之间的切换明显变快了。</p>
+<h2><a id="解决评论问题" class="heading-anchor"></a>解决评论问题</h2>
+<p>启用 PJAX 后，如果从一个页面进入另一个页面（比如从首页进入某个文章页面），提交评论会发现页面刷新了一下（或者 Safari 干脆显示无法加载），没法正常发表评论。必须手动刷新这个页面才能发评论。</p>
+<p>这是因为 Typecho 提交评论的 js 脚本放在 <code>&lt;head&gt;</code> 里（F12 可以看到），而当我们刷新页面，<code>&lt;head&gt;</code> 中的脚本并不会更新（因为其在 PJAX 容器之外）。所以只有第一次进入页面可以正常提交评论，进入其他页面后就不行。</p>
+<p>解决方法也很简单。在评论区加上这段从 <code>&lt;head&gt;</code> 里 copy 出来的代码：</p>
+<pre><code class="language-js">(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">window</span>.<span class="hljs-property">TypechoComment</span> = {
+        <span class="hljs-attr">dom</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">id</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(id);
         },
-        create: function(tag, attr) {
-            var el = document.createElement(tag);
-            for (var key in attr) {
-                el.setAttribute(key, attr[key]);
+        <span class="hljs-attr">create</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">tag, attr</span>) {
+            <span class="hljs-keyword">var</span> el = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(tag);
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> attr) {
+                el.<span class="hljs-title function_">setAttribute</span>(key, attr[key]);
             }
-            return el;
+            <span class="hljs-keyword">return</span> el;
         },
-        reply: function(cid, coid) {
-            var comment = this.dom(cid),
-                parent = comment.parentNode,
-                response = this.dom('&lt;?php echo $this-&gt;respondId; ?&gt;'),
-                input = this.dom('comment-parent'),
-                form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
-                textarea = response.getElementsByTagName('textarea')[0];
-            if (null == input) {
-                input = this.create('input', {
-                    'type': 'hidden',
-                    'name': 'parent',
-                    'id': 'comment-parent'
+        <span class="hljs-attr">reply</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">cid, coid</span>) {
+            <span class="hljs-keyword">var</span> comment = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(cid),
+                parent = comment.<span class="hljs-property">parentNode</span>,
+                response = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;&lt;?php echo $this-&gt;respondId; ?&gt;&#x27;</span>),
+                input = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;comment-parent&#x27;</span>),
+                form = <span class="hljs-string">&#x27;form&#x27;</span> == response.<span class="hljs-property">tagName</span> ? response : response.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;form&#x27;</span>)[<span class="hljs-number">0</span>],
+                textarea = response.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;textarea&#x27;</span>)[<span class="hljs-number">0</span>];
+            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> == input) {
+                input = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;input&#x27;</span>, {
+                    <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;hidden&#x27;</span>,
+                    <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;parent&#x27;</span>,
+                    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;comment-parent&#x27;</span>
                 });
-                form.appendChild(input);
+                form.<span class="hljs-title function_">appendChild</span>(input);
             }
-            input.setAttribute('value', coid);
-            if (null == this.dom('comment-form-place-holder')) {
-                var holder = this.create('div', {
-                    'id': 'comment-form-place-holder'
+            input.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;value&#x27;</span>, coid);
+            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> == <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;comment-form-place-holder&#x27;</span>)) {
+                <span class="hljs-keyword">var</span> holder = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;div&#x27;</span>, {
+                    <span class="hljs-string">&#x27;id&#x27;</span>: <span class="hljs-string">&#x27;comment-form-place-holder&#x27;</span>
                 });
-                response.parentNode.insertBefore(holder, response);
+                response.<span class="hljs-property">parentNode</span>.<span class="hljs-title function_">insertBefore</span>(holder, response);
             }
-            comment.appendChild(response);
-            this.dom('cancel-comment-reply-link').style.display = '';
-            if (null != textarea &amp;&amp; 'text' == textarea.name) {
-                textarea.focus();
+            comment.<span class="hljs-title function_">appendChild</span>(response);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;cancel-comment-reply-link&#x27;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != textarea &amp;&amp; <span class="hljs-string">&#x27;text&#x27;</span> == textarea.<span class="hljs-property">name</span>) {
+                textarea.<span class="hljs-title function_">focus</span>();
             }
-            return false;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
         },
-        cancelReply: function() {
-            var response = this.dom('&lt;?php echo $this-&gt;respondId; ?&gt;'),
-                holder = this.dom('comment-form-place-holder'),
-                input = this.dom('comment-parent');
-            if (null != input) {
-                input.parentNode.removeChild(input);
+        <span class="hljs-attr">cancelReply</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> response = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;&lt;?php echo $this-&gt;respondId; ?&gt;&#x27;</span>),
+                holder = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;comment-form-place-holder&#x27;</span>),
+                input = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;comment-parent&#x27;</span>);
+            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != input) {
+                input.<span class="hljs-property">parentNode</span>.<span class="hljs-title function_">removeChild</span>(input);
             }
-            if (null == holder) {
-                return true;
+            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> == holder) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
             }
-            this.dom('cancel-comment-reply-link').style.display = 'none';
-            holder.parentNode.insertBefore(response, holder);
-            return false;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dom</span>(<span class="hljs-string">&#x27;cancel-comment-reply-link&#x27;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>;
+            holder.<span class="hljs-property">parentNode</span>.<span class="hljs-title function_">insertBefore</span>(response, holder);
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
         }
     };
-})();</code></pre><p>注意其中的 <code>&lt;?php echo $this-&gt;respondId; ?&gt;</code>，这就是前文评论失败的原因——每个页面的 <code>respondId</code> 不一样，所以这个是需要刷新的。</p><p>除此之外，需要关闭 Typecho 后台的「设置」-「评论」-「评论提交」中取消勾选「开启反垃圾保护」。这个选项实际上是开启反 CSRF 攻击的防护，即每次加载页面服务器会传一个每次不同的随机字符串（在页面里表单最后面一个名为 <code>_</code> 的 hidden input 元素），提交评论时表单里会带上它，而用 PJAX 的方式去拿这个字符串非常麻烦，索性关闭了。最好加上一些反垃圾评论的插件，因为没有了反 CSRF 防护，可以用脚本轻易多次提交评论。</p><p>经过以上的修改，应该可以正常提交评论了。</p><h2>解决插件问题</h2><p>KaTeX 数学公式没法渲染（第一次加载能渲染，进入新页面没法渲染），也是和评论类似的问题。渲染 KaTeX 公式的这段 js 代码：</p><pre><code class="lang-js">renderMathInElement(
-    document.body,
+})();
+</code></pre>
+<p>注意其中的 <code>&lt;?php echo $this-&gt;respondId; ?&gt;</code>，这就是前文评论失败的原因——每个页面的 <code>respondId</code> 不一样，所以这个是需要刷新的。</p>
+<p>除此之外，需要关闭 Typecho 后台的「设置」-「评论」-「评论提交」中取消勾选「开启反垃圾保护」。这个选项实际上是开启反 CSRF 攻击的防护，即每次加载页面服务器会传一个每次不同的随机字符串（在页面里表单最后面一个名为 <code>_</code> 的 hidden input 元素），提交评论时表单里会带上它，而用 PJAX 的方式去拿这个字符串非常麻烦，索性关闭了。最好加上一些反垃圾评论的插件，因为没有了反 CSRF 防护，可以用脚本轻易多次提交评论。</p>
+<p>经过以上的修改，应该可以正常提交评论了。</p>
+<h2><a id="解决插件问题" class="heading-anchor"></a>解决插件问题</h2>
+<p>KaTeX 数学公式没法渲染（第一次加载能渲染，进入新页面没法渲染），也是和评论类似的问题。渲染 KaTeX 公式的这段 js 代码：</p>
+<pre><code class="language-js"><span class="hljs-title function_">renderMathInElement</span>(
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>,
     {
-        delimiters: [
-            {left: &quot;$$&quot;, right: &quot;$$&quot;, display: true},
-            {left: &quot;$&quot;, right: &quot;$&quot;, display: false},
+        <span class="hljs-attr">delimiters</span>: [
+            {<span class="hljs-attr">left</span>: <span class="hljs-string">&quot;$$&quot;</span>, <span class="hljs-attr">right</span>: <span class="hljs-string">&quot;$$&quot;</span>, <span class="hljs-attr">display</span>: <span class="hljs-literal">true</span>},
+            {<span class="hljs-attr">left</span>: <span class="hljs-string">&quot;$&quot;</span>, <span class="hljs-attr">right</span>: <span class="hljs-string">&quot;$&quot;</span>, <span class="hljs-attr">display</span>: <span class="hljs-literal">false</span>},
         ]
     }
-);</code></pre><p>放在 PJAX 容器之外，所以只会在最初加载页面的时候执行一次。它涉及到 DOM 操作，我们希望它每次都能执行。解决方法是放在 PJAX 容器内部，或者在 <code>complete</code> 事件中也执行一次。</p><p>除此之外，包括 aplayer 插件、fancybox 图片灯箱、代码高亮等等都是类似的问题，只要把 DOM 操作的代码放到 PJAX 容器内部即可。</p><p>经过以上的操作，基本上网站的 PJAX 就没问题啦。享受极速的响应吧～</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="2of8tg" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;typecho-pjax-and-some-problems&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/typecho-pjax-and-some-problems&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+);
+</code></pre>
+<p>放在 PJAX 容器之外，所以只会在最初加载页面的时候执行一次。它涉及到 DOM 操作，我们希望它每次都能执行。解决方法是放在 PJAX 容器内部，或者在 <code>complete</code> 事件中也执行一次。</p>
+<p>除此之外，包括 aplayer 插件、fancybox 图片灯箱、代码高亮等等都是类似的问题，只要把 DOM 操作的代码放到 PJAX 容器内部即可。</p>
+<p>经过以上的操作，基本上网站的 PJAX 就没问题啦。享受极速的响应吧～</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="XKUtH" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;typecho-pjax-and-some-problems&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -193,4 +247,4 @@ Typecho 主题 PJAX 无刷新以及遇到的一些问题 </span> </div> <div cla
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

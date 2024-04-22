@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CSAPP Bomblab 题解</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>CSAPP Bomblab 题解</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ CSAPP Bomblab 题解 </span> </h5> <div class="m-2 secondary-color" data-astro-c
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,12 +72,36 @@ CSAPP Bomblab 题解 </span> </h5> <div class="m-2 secondary-color" data-astro-c
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CSAPP Bomblab 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 04 月 21 日</span>   <br data-astro-cid-4sn4zg3r> <i class="ri-discuss-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>共 2 条评论</span>  </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/csapp-bomblab" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>这应该是我写过最长的实验报告了……</p><p>做的时候就感觉到，不愧是 CMU 的镇系神课，游戏化的关卡设计和埋藏的彩蛋都给人做下去的动力。所以虽然有点难（富有挑战性），但是很有意思。</p><!--more--><h2>实验环境</h2><p>我个人进行本实验的环境是 Kali GNU/Linux Rolling x86_64。</p><p>HNU 课程组的老师给每个同学都生成了不同的 bomb，所以以下只是我的 bomb 的答案与解析。</p><pre><code class="lang-cpp">/***************************************************************************
- * Dr. Evil's Insidious Bomb, Version 1.1
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>CSAPP Bomblab 题解</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 4 月 21 日 06:32</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83">实验环境</a></li>
+<li><a href="#phase_1%E5%AD%97%E7%AC%A6%E4%B8%B2">phase_1：字符串</a></li>
+<li><a href="#phase_2%E5%BE%AA%E7%8E%AF">phase_2：循环</a></li>
+<li><a href="#phase_3%E8%B7%B3%E8%BD%AC%E8%A1%A8">phase_3：跳转表</a></li>
+<li><a href="#phase_4%E9%80%92%E5%BD%92">phase_4：递归</a></li>
+<li><a href="#phase_5%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8">phase_5：简单链表</a></li>
+<li><a href="#phase_6%E4%BA%8C%E9%87%8D%E5%BE%AA%E7%8E%AF%E4%B8%8E%E9%93%BE%E8%A1%A8">phase_6：二重循环与链表</a></li>
+<li><a href="#%E8%BF%9B%E5%85%A5-secret_phase">进入 secret_phase</a></li>
+<li><a href="#secret_phase%E9%80%92%E5%BD%92%E4%B8%8E%E9%93%BE%E8%A1%A8">secret_phase：递归与链表</a></li>
+<li><a href="#%E7%AD%94%E6%A1%88">答案</a></li>
+</ul>
+<p>这应该是我写过最长的实验报告了……</p>
+<p>做的时候就感觉到，不愧是 CMU 的镇系神课，游戏化的关卡设计和埋藏的彩蛋都给人做下去的动力。所以虽然有点难（富有挑战性），但是很有意思。</p>
+<h2><a id="实验环境" class="heading-anchor"></a>实验环境</h2>
+<p>我个人进行本实验的环境是 Kali GNU/Linux Rolling x86_64。</p>
+<p>HNU 课程组的老师给每个同学都生成了不同的 bomb，所以以下只是我的 bomb 的答案与解析。</p>
+<pre><code class="language-cpp"><span class="hljs-comment">/***************************************************************************
+ * Dr. Evil&#x27;s Insidious Bomb, Version 1.1
  * Copyright 2011, Dr. Evil Incorporated. All rights reserved.
  *
  * LICENSE:
@@ -93,10 +117,14 @@ CSAPP Bomblab 题解 </span> </h5> <div class="m-2 secondary-color" data-astro-c
  * reverse-engineer, run &quot;strings&quot; on, decompile, decrypt, or use any
  * other technique to gain knowledge of and defuse the BOMB.  BOMB
  * proof clothing may not be worn when handling this program.  The
- * PERPETRATOR will not apologize for the PERPETRATOR's poor sense of
+ * PERPETRATOR will not apologize for the PERPETRATOR&#x27;s poor sense of
  * humor.  This license is null and void where the BOMB is prohibited
  * by law.
- ***************************************************************************/</code></pre><h2>phase_1：字符串</h2><p>使用 objdump 反编译后，审计这段 phase_1 的汇编代码：</p><pre><code>00000000000015e7 &lt;phase_1&gt;:
+ ***************************************************************************/</span>
+</code></pre>
+<h2><a id="phase_1字符串" class="heading-anchor"></a>phase_1：字符串</h2>
+<p>使用 objdump 反编译后，审计这段 phase_1 的汇编代码：</p>
+<pre><code>00000000000015e7 &lt;phase_1&gt;:
     15e7:       f3 0f 1e fa             endbr64
     15eb:       48 83 ec 08             sub    $0x8,%rsp
     15ef:       48 8d 35 56 1b 00 00    lea    0x1b56(%rip),%rsi        # 314c &lt;_IO_stdin_used+0x14c&gt;
@@ -106,275 +134,364 @@ CSAPP Bomblab 题解 </span> </h5> <div class="m-2 secondary-color" data-astro-c
     15ff:       48 83 c4 08             add    $0x8,%rsp
     1603:       c3                      ret
     1604:       e8 c5 06 00 00          call   1cce &lt;explode_bomb&gt;
-    1609:       eb f4                   jmp    15ff &lt;phase_1+0x18&gt;</code></pre><p>可以看到调用了 <code>strings_not_equal</code> 函数，通过函数名可以猜测这个函数是用来比较两个字符串是否相等的。同时可以看到之后的代码，根据其结果 eax 寄存器的值进行了跳转，离开了 phase_1 函数。<br>那么，比较的两个对象（也就是传入 <code>strings_not_equal</code> 的两个字符串参数），一个是我们之前输入的字符串，一个是 bomb1 的答案。再看 15ef 这一行的 <code>lea</code> 语句，算出了一个地址放在 rsi 寄存器中，作为 <code>strings_not_equal</code> 的参数之一，显然这是 bomb1 的答案字符串存放的地址。</p><p>那么在运行的时候，只要看看 rsi 存放的地址对应的内存存放的字符串，就能得到答案了。<br>使用 gdb 运行，在 phase_1 打断点，然后不断 <code>ni</code> 直到 15f6 这一行，然后：</p><pre><code>(gdb) i r rsi
+    1609:       eb f4                   jmp    15ff &lt;phase_1+0x18&gt;
+</code></pre>
+<p>可以看到调用了 <code>strings_not_equal</code> 函数，通过函数名可以猜测这个函数是用来比较两个字符串是否相等的。同时可以看到之后的代码，根据其结果 eax 寄存器的值进行了跳转，离开了 phase_1 函数。<br>
+那么，比较的两个对象（也就是传入 <code>strings_not_equal</code> 的两个字符串参数），一个是我们之前输入的字符串，一个是 bomb1 的答案。再看 15ef 这一行的 <code>lea</code> 语句，算出了一个地址放在 rsi 寄存器中，作为 <code>strings_not_equal</code> 的参数之一，显然这是 bomb1 的答案字符串存放的地址。</p>
+<p>那么在运行的时候，只要看看 rsi 存放的地址对应的内存存放的字符串，就能得到答案了。<br>
+使用 gdb 运行，在 phase_1 打断点，然后不断 <code>ni</code> 直到 15f6 这一行，然后：</p>
+<pre><code>(gdb) i r rsi
 rsi            0x55555555714c      93824992244044
 (gdb) x/4bs $rsi
 0x55555555714c: &quot;Crikey! I have lost my mojo!&quot;
 0x555555557169: &quot;%d %c %d&quot;
 0x555555557172: &quot;&quot;
-0x555555557173: &quot;&quot;</code></pre><p>得到答案：<code>Crikey! I have lost my mojo!</code>。</p><p>事实上，rdi 存储函数的第一个参数，rsi 存储第二个，rdx 则是第三个，rcx 是第四个。如果我们查看此时 rdi 存储的地址处的内存存放的字符串，就能看见我们输入的内容：</p><pre><code>(gdb) i r rdi
+0x555555557173: &quot;&quot;
+</code></pre>
+<p>得到答案：<code>Crikey! I have lost my mojo!</code>。</p>
+<p>事实上，rdi 存储函数的第一个参数，rsi 存储第二个，rdx 则是第三个，rcx 是第四个。如果我们查看此时 rdi 存储的地址处的内存存放的字符串，就能看见我们输入的内容：</p>
+<pre><code>(gdb) i r rdi
 rdi            0x555555559700      93824992253696
 (gdb) x/4bs $rdi
 0x555555559700 &lt;input_strings&gt;: &quot;test input&quot;
 0x55555555970b &lt;input_strings+11&gt;:      &quot;&quot;
 0x55555555970c &lt;input_strings+12&gt;:      &quot;&quot;
-0x55555555970d &lt;input_strings+13&gt;:      &quot;&quot;</code></pre><h2>phase_2：循环</h2><pre><code>000000000000160b &lt;phase_2&gt;:
-    160b:    f3 0f 1e fa              endbr64
-    160f:    55                       push   %rbp
-    1610:    53                       push   %rbx
-    1611:    48 83 ec 28              sub    $0x28,%rsp
-    1615:    64 48 8b 04 25 28 00     mov    %fs:0x28,%rax
-    161c:    00 00 
-    161e:    48 89 44 24 18           mov    %rax,0x18(%rsp)
-    1623:    31 c0                    xor    %eax,%eax
-    1625:    48 89 e6                 mov    %rsp,%rsi
-    1628:    e8 cd 06 00 00           call   1cfa &lt;read_six_numbers&gt;
-    162d:    83 3c 24 00              cmpl   $0x0,(%rsp)
-    1631:    78 0a                    js     163d &lt;phase_2+0x32&gt;
-    1633:    48 89 e5                 mov    %rsp,%rbp
-    1636:    bb 01 00 00 00           mov    $0x1,%ebx
-    163b:    eb 13                    jmp    1650 &lt;phase_2+0x45&gt;
-    163d:    e8 8c 06 00 00           call   1cce &lt;explode_bomb&gt;
-    1642:    eb ef                    jmp    1633 &lt;phase_2+0x28&gt;
-    1644:    83 c3 01                 add    $0x1,%ebx
-    1647:    48 83 c5 04              add    $0x4,%rbp
-    164b:    83 fb 06                 cmp    $0x6,%ebx
-    164e:    74 11                    je     1661 &lt;phase_2+0x56&gt;
-    1650:    89 d8                    mov    %ebx,%eax
-    1652:    03 45 00                 add    0x0(%rbp),%eax
-    1655:    39 45 04                 cmp    %eax,0x4(%rbp)
-    1658:    74 ea                    je     1644 &lt;phase_2+0x39&gt;
-    165a:    e8 6f 06 00 00           call   1cce &lt;explode_bomb&gt;
-    165f:    eb e3                    jmp    1644 &lt;phase_2+0x39&gt;
-    1661:    48 8b 44 24 18           mov    0x18(%rsp),%rax
-    1666:    64 48 2b 04 25 28 00     sub    %fs:0x28,%rax
-    166d:    00 00 
-    166f:    75 07                    jne    1678 &lt;phase_2+0x6d&gt;
-    1671:    48 83 c4 28              add    $0x28,%rsp
-    1675:    5b                       pop    %rbx
-    1676:    5d                       pop    %rbp
-    1677:    c3                       ret
-    1678:    e8 d3 fb ff ff           call   1250 &lt;__stack_chk_fail@plt&gt;</code></pre><p>可以猜到 <code>read_six_numbers</code> 这个函数用于读取 6 个数字。根据使用 gdb 时的调用追踪情况，它调用了 <code>sscanf</code> 等函数从输入的字符串中读取了数字。<br>这些数字依次放在 rsp 到 rsp + 0x18 的位置，使用 <code>x/6wd</code> 就可以看见（这里我们依次输入的是 5、6、7、8、9、10）：</p><pre><code>(gdb) x/16wd $rsp
+0x55555555970d &lt;input_strings+13&gt;:      &quot;&quot;
+</code></pre>
+<h2><a id="phase_2循环" class="heading-anchor"></a>phase_2：循环</h2>
+<pre><code>000000000000160b &lt;phase_2&gt;:
+    160b:   f3 0f 1e fa             endbr64
+    160f:   55                      push   %rbp
+    1610:   53                      push   %rbx
+    1611:   48 83 ec 28             sub    $0x28,%rsp
+    1615:   64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    161c:   00 00 
+    161e:   48 89 44 24 18          mov    %rax,0x18(%rsp)
+    1623:   31 c0                   xor    %eax,%eax
+    1625:   48 89 e6                mov    %rsp,%rsi
+    1628:   e8 cd 06 00 00          call   1cfa &lt;read_six_numbers&gt;
+    162d:   83 3c 24 00             cmpl   $0x0,(%rsp)
+    1631:   78 0a                   js     163d &lt;phase_2+0x32&gt;
+    1633:   48 89 e5                mov    %rsp,%rbp
+    1636:   bb 01 00 00 00          mov    $0x1,%ebx
+    163b:   eb 13                   jmp    1650 &lt;phase_2+0x45&gt;
+    163d:   e8 8c 06 00 00          call   1cce &lt;explode_bomb&gt;
+    1642:   eb ef                   jmp    1633 &lt;phase_2+0x28&gt;
+    1644:   83 c3 01                add    $0x1,%ebx
+    1647:   48 83 c5 04             add    $0x4,%rbp
+    164b:   83 fb 06                cmp    $0x6,%ebx
+    164e:   74 11                   je     1661 &lt;phase_2+0x56&gt;
+    1650:   89 d8                   mov    %ebx,%eax
+    1652:   03 45 00                add    0x0(%rbp),%eax
+    1655:   39 45 04                cmp    %eax,0x4(%rbp)
+    1658:   74 ea                   je     1644 &lt;phase_2+0x39&gt;
+    165a:   e8 6f 06 00 00          call   1cce &lt;explode_bomb&gt;
+    165f:   eb e3                   jmp    1644 &lt;phase_2+0x39&gt;
+    1661:   48 8b 44 24 18          mov    0x18(%rsp),%rax
+    1666:   64 48 2b 04 25 28 00    sub    %fs:0x28,%rax
+    166d:   00 00 
+    166f:   75 07                   jne    1678 &lt;phase_2+0x6d&gt;
+    1671:   48 83 c4 28             add    $0x28,%rsp
+    1675:   5b                      pop    %rbx
+    1676:   5d                      pop    %rbp
+    1677:   c3                      ret
+    1678:   e8 d3 fb ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+</code></pre>
+<p>可以猜到 <code>read_six_numbers</code> 这个函数用于读取 6 个数字。根据使用 gdb 时的调用追踪情况，它调用了 <code>sscanf</code> 等函数从输入的字符串中读取了数字。<br>
+这些数字依次放在 rsp 到 rsp + 0x18 的位置，使用 <code>x/6wd</code> 就可以看见（这里我们依次输入的是 5、6、7、8、9、10）：</p>
+<pre><code>(gdb) x/16wd $rsp
 0x7fffffffe080: 5       6       7       8
 0x7fffffffe090: 9       10      867141120       645910443
 0x7fffffffe0a0: 0       0       -7720   32767
-0x7fffffffe0b0: 1       0       1431655691      21845</code></pre><p>汇编代码的可读性很低，因为它是从机器的角度编写的，而现在我们要从人的角度来审视。所以可以对汇编代码进行改写，先将每一步的含义用可以看懂的人话写出来，然后将其中发现的条件判断和循环抽出来，我们就得到了类似高级语言的伪代码（从 162d 开始）：</p><pre><code class="lang-cpp">if (a[0] &lt; 0) boom();
+0x7fffffffe0b0: 1       0       1431655691      21845
+</code></pre>
+<p>汇编代码的可读性很低，因为它是从机器的角度编写的，而现在我们要从人的角度来审视。所以可以对汇编代码进行改写，先将每一步的含义用可以看懂的人话写出来，然后将其中发现的条件判断和循环抽出来，我们就得到了类似高级语言的伪代码（从 162d 开始）：</p>
+<pre><code class="language-cpp"><span class="hljs-keyword">if</span> (a[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span>) <span class="hljs-built_in">boom</span>();
 
 rbp = rsp;
-ebx = 0x1;
-eax = ebx = 0x1;
-eax += a[0] (= a[0] + 1);
-if (eax != a[1]) boom();
+ebx = <span class="hljs-number">0x1</span>;
+eax = ebx = <span class="hljs-number">0x1</span>;
+eax += a[<span class="hljs-number">0</span>] (= a[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>);
+<span class="hljs-keyword">if</span> (eax != a[<span class="hljs-number">1</span>]) <span class="hljs-built_in">boom</span>();
 
-// ebx is 0x1 now
-for (;;){
+<span class="hljs-comment">// ebx is 0x1 now</span>
+<span class="hljs-keyword">for</span> (;;){
     ebx++;
-    rbp += 0x4;
-    if (ebx == 0x06) break;
+    rbp += <span class="hljs-number">0x4</span>;
+    <span class="hljs-keyword">if</span> (ebx == <span class="hljs-number">0x06</span>) <span class="hljs-keyword">break</span>;
     eax = ebx;
     eax += a[rbp] (eax = a[rbp] + ebx);
-    if (eax != a[rbp+4]) bomb();
+    <span class="hljs-keyword">if</span> (eax != a[rbp+<span class="hljs-number">4</span>]) <span class="hljs-built_in">bomb</span>();
 }
 
-rax = (rsp + 0x18); // = a[5]</code></pre><p>没错，这里 jump 来 jump 去的代码实现了循环。</p><p>根据以上代码的分析，我们输入的六个数（从 0 到 5 编号）必须满足这样的关系：<code>a[0]+1=a[1]</code>，<code>a[1]+2=a[2]</code>，<code>a[2]+3=a[3]</code>，……</p><p>一个可能的答案是：</p><pre><code>1 2 4 7 11 16</code></pre><p>这段代码中出现了几次形如 <code>sub %fs:0x28,%rax</code> 的代码，这些代码是干什么用的呢？</p><pre><code>    1615:    64 48 8b 04 25 28 00     mov    %fs:0x28,%rax
+rax = (rsp + <span class="hljs-number">0x18</span>); <span class="hljs-comment">// = a[5]</span>
+</code></pre>
+<p>没错，这里 jump 来 jump 去的代码实现了循环。</p>
+<p>根据以上代码的分析，我们输入的六个数（从 0 到 5 编号）必须满足这样的关系：<code>a[0]+1=a[1]</code>，<code>a[1]+2=a[2]</code>，<code>a[2]+3=a[3]</code>，……</p>
+<p>一个可能的答案是：</p>
+<pre><code>1 2 4 7 11 16
+</code></pre>
+<p>这段代码中出现了几次形如 <code>sub %fs:0x28,%rax</code> 的代码，这些代码是干什么用的呢？</p>
+<pre><code>    1615:   64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
     ...
-    1666:    64 48 2b 04 25 28 00     sub    %fs:0x28,%rax
-    166d:    00 00 
-    166f:    75 07                    jne    1678 &lt;phase_2+0x6d&gt;
+    1666:   64 48 2b 04 25 28 00    sub    %fs:0x28,%rax
+    166d:   00 00 
+    166f:   75 07                   jne    1678 &lt;phase_2+0x6d&gt;
     ...
-    1678:    e8 d3 fb ff ff           call   1250 &lt;__stack_chk_fail@plt&gt;</code></pre><p>根据最后一行的调用可以猜到，这是某种栈保护的机制。事实上 <code>%fs:0x28</code> 这个位置存的是一个随机数（gdb 的时候查看 rax 就能看到一个乱七八糟的数），在主体部分代码运行完之后再次检查这个值是否改变，以此判断是否遭受了缓冲区溢出。没错，这就是传说中的 <strong>Canary 机制</strong>。</p><h2>phase_3：跳转表</h2><pre><code>000000000000167d &lt;phase_3&gt;:
-    167d:    f3 0f 1e fa              endbr64
-    1681:    48 83 ec 28              sub    $0x28,%rsp
-    1685:    64 48 8b 04 25 28 00     mov    %fs:0x28,%rax
-    168c:    00 00 
-    168e:    48 89 44 24 18           mov    %rax,0x18(%rsp)
-    1693:    31 c0                    xor    %eax,%eax
-    1695:    48 8d 4c 24 0f           lea    0xf(%rsp),%rcx
-    169a:    48 8d 54 24 10           lea    0x10(%rsp),%rdx
-    169f:    4c 8d 44 24 14           lea    0x14(%rsp),%r8
-    16a4:    48 8d 35 be 1a 00 00     lea    0x1abe(%rip),%rsi        # 3169 &lt;_IO_stdin_used+0x169&gt;
-    16ab:    e8 50 fc ff ff           call   1300 &lt;__isoc99_sscanf@plt&gt;
-    ...</code></pre><p>首先看 16a4 开始的这两行，调用了 <code>sscanf</code>，而显然这个 rsi 存放的是其参数。<br>查看 rsi 的地址存放的内存，发现是 <code>%d %c %d</code>。看来，读入的是一个 int、一个 char、一个 int。以下方便起见，计为 d1、c、d2。</p><p>重新运行这个程序到 phase_3，输入符合要求的读入数据（例如 <code>12 k 34</code>，事实上这个输入会爆炸），查看栈，可以看到我们输入的第一个数字被放在 rsp + 16 位置，第二个数字放在 rsp + 20 位置，而这个 char（k 是 0x6b）则放在 rsp+15 位置。</p><pre><code>(gdb) x/8wd $rsp
+    1678:   e8 d3 fb ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+</code></pre>
+<p>根据最后一行的调用可以猜到，这是某种栈保护的机制。事实上 <code>%fs:0x28</code> 这个位置存的是一个随机数（gdb 的时候查看 rax 就能看到一个乱七八糟的数），在主体部分代码运行完之后再次检查这个值是否改变，以此判断是否遭受了缓冲区溢出。没错，这就是传说中的 <strong>Canary 机制</strong>。</p>
+<h2><a id="phase_3跳转表" class="heading-anchor"></a>phase_3：跳转表</h2>
+<pre><code>000000000000167d &lt;phase_3&gt;:
+    167d:   f3 0f 1e fa             endbr64
+    1681:   48 83 ec 28             sub    $0x28,%rsp
+    1685:   64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    168c:   00 00 
+    168e:   48 89 44 24 18          mov    %rax,0x18(%rsp)
+    1693:   31 c0                   xor    %eax,%eax
+    1695:   48 8d 4c 24 0f          lea    0xf(%rsp),%rcx
+    169a:   48 8d 54 24 10          lea    0x10(%rsp),%rdx
+    169f:   4c 8d 44 24 14          lea    0x14(%rsp),%r8
+    16a4:   48 8d 35 be 1a 00 00    lea    0x1abe(%rip),%rsi        # 3169 &lt;_IO_stdin_used+0x169&gt;
+    16ab:   e8 50 fc ff ff          call   1300 &lt;__isoc99_sscanf@plt&gt;
+    ...
+</code></pre>
+<p>首先看 16a4 开始的这两行，调用了 <code>sscanf</code>，而显然这个 rsi 存放的是其参数。<br>
+查看 rsi 的地址存放的内存，发现是 <code>%d %c %d</code>。看来，读入的是一个 int、一个 char、一个 int。以下方便起见，计为 d1、c、d2。</p>
+<p>重新运行这个程序到 phase_3，输入符合要求的读入数据（例如 <code>12 k 34</code>，事实上这个输入会爆炸），查看栈，可以看到我们输入的第一个数字被放在 rsp + 16 位置，第二个数字放在 rsp + 20 位置，而这个 char（k 是 0x6b）则放在 rsp+15 位置。</p>
+<pre><code>(gdb) x/8wd $rsp
 0x7fffffffe090: 1       0       1431657851      1795183957
 0x7fffffffe0a0: 12      34      771968000       926201343
 (gdb) x/32bx $rsp
 0x7fffffffe090: 0x01    0x00    0x00    0x00    0x00    0x00    0x00    0x00
 0x7fffffffe098: 0x7b    0x5d    0x55    0x55    0x55    0x55    0x00    0x6b
 0x7fffffffe0a0: 0x0c    0x00    0x00    0x00    0x22    0x00    0x00    0x00
-0x7fffffffe0a8: 0x00    0x4c    0x03    0x2e    0xff    0xb5    0x34    0x37</code></pre><p>接下来注意看这几行代码：</p><pre><code>000000000000167d &lt;phase_3&gt;:
+0x7fffffffe0a8: 0x00    0x4c    0x03    0x2e    0xff    0xb5    0x34    0x37
+</code></pre>
+<p>接下来注意看这几行代码：</p>
+<pre><code>000000000000167d &lt;phase_3&gt;:
     ...
-    16c0:    8b 44 24 10              mov    0x10(%rsp),%eax
-    16c4:    48 8d 15 b5 1a 00 00     lea    0x1ab5(%rip),%rdx        # 3180 &lt;_IO_stdin_used+0x180&gt;
-    16cb:    48 63 04 82              movslq (%rdx,%rax,4),%rax
-    16cf:    48 01 d0                 add    %rdx,%rax
-    16d2:    3e ff e0                 notrack jmp *%rax
-    ...</code></pre><p>显然从 3180 开始是一个跳转表，跳转的依据是 d1（所以要判断 d1 不大于 7！）。gdb 运行时 3180 位置分配的是 <code>0x555555557180</code> 这个地址（rdx 寄存器存放的地址）。查看这个跳转表：</p><pre><code>(gdb) x/16wx 0x555555557180
+    16c0:   8b 44 24 10             mov    0x10(%rsp),%eax
+    16c4:   48 8d 15 b5 1a 00 00    lea    0x1ab5(%rip),%rdx        # 3180 &lt;_IO_stdin_used+0x180&gt;
+    16cb:   48 63 04 82             movslq (%rdx,%rax,4),%rax
+    16cf:   48 01 d0                add    %rdx,%rax
+    16d2:   3e ff e0                notrack jmp *%rax
+    ...
+</code></pre>
+<p>显然从 3180 开始是一个跳转表，跳转的依据是 d1（所以要判断 d1 不大于 7！）。gdb 运行时 3180 位置分配的是 <code>0x555555557180</code> 这个地址（rdx 寄存器存放的地址）。查看这个跳转表：</p>
+<pre><code>(gdb) x/16wx 0x555555557180
 0x555555557180: 0xffffe55c      0xffffe57e      0xffffe5a0      0xffffe5c2
 0x555555557190: 0xffffe5e1      0xffffe5fc      0xffffe617      0xffffe632
 0x5555555571a0 &lt;array.0&gt;:       0x0000000a      0x00000002      0x0000000e      0x00000007
-0x5555555571b0 &lt;array.0+16&gt;:    0x00000008      0x0000000c      0x0000000f      0x0000000b</code></pre><p>rdx 这个基址运行时是 <code>0x555555557180</code>，在 objdump 中是 3180，它加上跳转表某一项的内容就是跳转的实际目标地址。<br>将所有表项加上 3180 并截断，可以得到我们的跳转表：</p><pre><code>0: 16dc
+0x5555555571b0 &lt;array.0+16&gt;:    0x00000008      0x0000000c      0x0000000f      0x0000000b
+</code></pre>
+<p>rdx 这个基址运行时是 <code>0x555555557180</code>，在 objdump 中是 3180，它加上跳转表某一项的内容就是跳转的实际目标地址。<br>
+将所有表项加上 3180 并截断，可以得到我们的跳转表：</p>
+<pre><code>0: 16dc
 1: 16fe
 2: 1720
 3: 1742
 4: 1761
 5: 177c
 6: 1797
-7: 17b2</code></pre><p>接下来的代码就都是由跳转的方式进入的。我们将每个入口标出来，每块分别进行分析：</p><pre><code>000000000000167d &lt;phase_3&gt;:
+7: 17b2
+</code></pre>
+<p>接下来的代码就都是由跳转的方式进入的。我们将每个入口标出来，每块分别进行分析：</p>
+<pre><code>000000000000167d &lt;phase_3&gt;:
     ...
-0   16dc:    b8 62 00 00 00           mov    $0x62,%eax // al = 'b'
-    16e1:    81 7c 24 14 70 02 00     cmpl   $0x270,0x14(%rsp) // 0x270 = 624 == d2
-    16e8:    00 
-    16e9:    0f 84 e8 00 00 00        je     17d7 &lt;phase_3+0x15a&gt;
-    16ef:    e8 da 05 00 00           call   1cce &lt;explode_bomb&gt;
-    16f4:    b8 62 00 00 00           mov    $0x62,%eax
-    16f9:    e9 d9 00 00 00           jmp    17d7 &lt;phase_3+0x15a&gt;
-1   16fe:    b8 78 00 00 00           mov    $0x78,%eax // al = 'x'
-    1703:    81 7c 24 14 2d 03 00     cmpl   $0x32d,0x14(%rsp) // 0x32d = 813 == d2
-    170a:    00 
-    170b:    0f 84 c6 00 00 00        je     17d7 &lt;phase_3+0x15a&gt;
-    1711:    e8 b8 05 00 00           call   1cce &lt;explode_bomb&gt;
-    1716:    b8 78 00 00 00           mov    $0x78,%eax
-    171b:    e9 b7 00 00 00           jmp    17d7 &lt;phase_3+0x15a&gt;
-2   1720:    b8 75 00 00 00           mov    $0x75,%eax // al = 'u'
-    1725:    81 7c 24 14 8c 00 00     cmpl   $0x8c,0x14(%rsp) // 0x8c = 140 == d2
-    172c:    00 
-    172d:    0f 84 a4 00 00 00        je     17d7 &lt;phase_3+0x15a&gt;
-    1733:    e8 96 05 00 00           call   1cce &lt;explode_bomb&gt;
-    1738:    b8 75 00 00 00           mov    $0x75,%eax
-    173d:    e9 95 00 00 00           jmp    17d7 &lt;phase_3+0x15a&gt;
-3   1742:    b8 70 00 00 00           mov    $0x70,%eax // al = 'p'
-    1747:    81 7c 24 14 09 01 00     cmpl   $0x109,0x14(%rsp) // 0x109 = 265 == d2
-    174e:    00 
-    174f:    0f 84 82 00 00 00        je     17d7 &lt;phase_3+0x15a&gt;
-    1755:    e8 74 05 00 00           call   1cce &lt;explode_bomb&gt;
-    175a:    b8 70 00 00 00           mov    $0x70,%eax
-    175f:    eb 76                    jmp    17d7 &lt;phase_3+0x15a&gt;
-4   1761:    b8 71 00 00 00           mov    $0x71,%eax // al = 'q'
-    1766:    81 7c 24 14 5f 03 00     cmpl   $0x35f,0x14(%rsp) // 0x35f = 863 == d2
-    176d:    00 
-    176e:    74 67                    je     17d7 &lt;phase_3+0x15a&gt;
-    1770:    e8 59 05 00 00           call   1cce &lt;explode_bomb&gt;
-    1775:    b8 71 00 00 00           mov    $0x71,%eax
-    177a:    eb 5b                    jmp    17d7 &lt;phase_3+0x15a&gt;
-5   177c:    b8 6f 00 00 00           mov    $0x6f,%eax // al = `o`
-    1781:    81 7c 24 14 e5 03 00     cmpl   $0x3e5,0x14(%rsp) // 0x3e5 = 997 == d2
-    1788:    00 
-    1789:    74 4c                    je     17d7 &lt;phase_3+0x15a&gt;
-    178b:    e8 3e 05 00 00           call   1cce &lt;explode_bomb&gt;
-    1790:    b8 6f 00 00 00           mov    $0x6f,%eax
-    1795:    eb 40                    jmp    17d7 &lt;phase_3+0x15a&gt;
-6   1797:    b8 71 00 00 00           mov    $0x71,%eax // al = `q`
-    179c:    81 7c 24 14 e0 00 00     cmpl   $0xe0,0x14(%rsp) // 0xe0 = 224 == d2
-    17a3:    00 
-    17a4:    74 31                    je     17d7 &lt;phase_3+0x15a&gt;
-    17a6:    e8 23 05 00 00           call   1cce &lt;explode_bomb&gt;
-    17ab:    b8 71 00 00 00           mov    $0x71,%eax
-    17b0:    eb 25                    jmp    17d7 &lt;phase_3+0x15a&gt;
-7   17b2:    b8 64 00 00 00           mov    $0x64,%eax // al = `d`
-    17b7:    81 7c 24 14 48 03 00     cmpl   $0x348,0x14(%rsp)  // 0x348 = 840 == d2
-    17be:    00 
-    17bf:    74 16                    je     17d7 &lt;phase_3+0x15a&gt;
-    17c1:    e8 08 05 00 00           call   1cce &lt;explode_bomb&gt;
-    17c6:    b8 64 00 00 00           mov    $0x64,%eax
-    17cb:    eb 0a                    jmp    17d7 &lt;phase_3+0x15a&gt;
-    17cd:    e8 fc 04 00 00           call   1cce &lt;explode_bomb&gt;
-    17d2:    b8 6d 00 00 00           mov    $0x6d,%eax
-x   17d7:    38 44 24 0f              cmp    %al,0xf(%rsp) // rax == c
-    17db:    75 15                    jne    17f2 &lt;phase_3+0x175&gt;
-    17dd:    48 8b 44 24 18           mov    0x18(%rsp),%rax
-    17e2:    64 48 2b 04 25 28 00     sub    %fs:0x28,%rax
-    17e9:    00 00 
-    17eb:    75 0c                    jne    17f9 &lt;phase_3+0x17c&gt;
-    17ed:    48 83 c4 28              add    $0x28,%rsp
-    17f1:    c3                       ret
-    17f2:    e8 d7 04 00 00           call   1cce &lt;explode_bomb&gt;
-    17f7:    eb e4                    jmp    17dd &lt;phase_3+0x160&gt;
-    17f9:    e8 52 fa ff ff           call   1250 &lt;__stack_chk_fail@plt&gt;</code></pre><p>可以看到，每个块都一开始将 eax 赋值（其实只动了 al），然后每一块对于 d2 有不同的要求，满足要求后跳转到最后的 17d7。<br>进入 17d7 后再判断 al 是否和 c 相等，如果是则可以成功 return 了。</p><p>所以正确答案有七个：</p><pre><code>0 b 624
+0   16dc:   b8 62 00 00 00          mov    $0x62,%eax // al = &#x27;b&#x27;
+    16e1:   81 7c 24 14 70 02 00    cmpl   $0x270,0x14(%rsp) // 0x270 = 624 == d2
+    16e8:   00 
+    16e9:   0f 84 e8 00 00 00       je     17d7 &lt;phase_3+0x15a&gt;
+    16ef:   e8 da 05 00 00          call   1cce &lt;explode_bomb&gt;
+    16f4:   b8 62 00 00 00          mov    $0x62,%eax
+    16f9:   e9 d9 00 00 00          jmp    17d7 &lt;phase_3+0x15a&gt;
+1   16fe:   b8 78 00 00 00          mov    $0x78,%eax // al = &#x27;x&#x27;
+    1703:   81 7c 24 14 2d 03 00    cmpl   $0x32d,0x14(%rsp) // 0x32d = 813 == d2
+    170a:   00 
+    170b:   0f 84 c6 00 00 00       je     17d7 &lt;phase_3+0x15a&gt;
+    1711:   e8 b8 05 00 00          call   1cce &lt;explode_bomb&gt;
+    1716:   b8 78 00 00 00          mov    $0x78,%eax
+    171b:   e9 b7 00 00 00          jmp    17d7 &lt;phase_3+0x15a&gt;
+2   1720:   b8 75 00 00 00          mov    $0x75,%eax // al = &#x27;u&#x27;
+    1725:   81 7c 24 14 8c 00 00    cmpl   $0x8c,0x14(%rsp) // 0x8c = 140 == d2
+    172c:   00 
+    172d:   0f 84 a4 00 00 00       je     17d7 &lt;phase_3+0x15a&gt;
+    1733:   e8 96 05 00 00          call   1cce &lt;explode_bomb&gt;
+    1738:   b8 75 00 00 00          mov    $0x75,%eax
+    173d:   e9 95 00 00 00          jmp    17d7 &lt;phase_3+0x15a&gt;
+3   1742:   b8 70 00 00 00          mov    $0x70,%eax // al = &#x27;p&#x27;
+    1747:   81 7c 24 14 09 01 00    cmpl   $0x109,0x14(%rsp) // 0x109 = 265 == d2
+    174e:   00 
+    174f:   0f 84 82 00 00 00       je     17d7 &lt;phase_3+0x15a&gt;
+    1755:   e8 74 05 00 00          call   1cce &lt;explode_bomb&gt;
+    175a:   b8 70 00 00 00          mov    $0x70,%eax
+    175f:   eb 76                   jmp    17d7 &lt;phase_3+0x15a&gt;
+4   1761:   b8 71 00 00 00          mov    $0x71,%eax // al = &#x27;q&#x27;
+    1766:   81 7c 24 14 5f 03 00    cmpl   $0x35f,0x14(%rsp) // 0x35f = 863 == d2
+    176d:   00 
+    176e:   74 67                   je     17d7 &lt;phase_3+0x15a&gt;
+    1770:   e8 59 05 00 00          call   1cce &lt;explode_bomb&gt;
+    1775:   b8 71 00 00 00          mov    $0x71,%eax
+    177a:   eb 5b                   jmp    17d7 &lt;phase_3+0x15a&gt;
+5   177c:   b8 6f 00 00 00          mov    $0x6f,%eax // al = `o`
+    1781:   81 7c 24 14 e5 03 00    cmpl   $0x3e5,0x14(%rsp) // 0x3e5 = 997 == d2
+    1788:   00 
+    1789:   74 4c                   je     17d7 &lt;phase_3+0x15a&gt;
+    178b:   e8 3e 05 00 00          call   1cce &lt;explode_bomb&gt;
+    1790:   b8 6f 00 00 00          mov    $0x6f,%eax
+    1795:   eb 40                   jmp    17d7 &lt;phase_3+0x15a&gt;
+6   1797:   b8 71 00 00 00          mov    $0x71,%eax // al = `q`
+    179c:   81 7c 24 14 e0 00 00    cmpl   $0xe0,0x14(%rsp) // 0xe0 = 224 == d2
+    17a3:   00 
+    17a4:   74 31                   je     17d7 &lt;phase_3+0x15a&gt;
+    17a6:   e8 23 05 00 00          call   1cce &lt;explode_bomb&gt;
+    17ab:   b8 71 00 00 00          mov    $0x71,%eax
+    17b0:   eb 25                   jmp    17d7 &lt;phase_3+0x15a&gt;
+7   17b2:   b8 64 00 00 00          mov    $0x64,%eax // al = `d`
+    17b7:   81 7c 24 14 48 03 00    cmpl   $0x348,0x14(%rsp)  // 0x348 = 840 == d2
+    17be:   00 
+    17bf:   74 16                   je     17d7 &lt;phase_3+0x15a&gt;
+    17c1:   e8 08 05 00 00          call   1cce &lt;explode_bomb&gt;
+    17c6:   b8 64 00 00 00          mov    $0x64,%eax
+    17cb:   eb 0a                   jmp    17d7 &lt;phase_3+0x15a&gt;
+    17cd:   e8 fc 04 00 00          call   1cce &lt;explode_bomb&gt;
+    17d2:   b8 6d 00 00 00          mov    $0x6d,%eax
+x   17d7:   38 44 24 0f             cmp    %al,0xf(%rsp) // rax == c
+    17db:   75 15                   jne    17f2 &lt;phase_3+0x175&gt;
+    17dd:   48 8b 44 24 18          mov    0x18(%rsp),%rax
+    17e2:   64 48 2b 04 25 28 00    sub    %fs:0x28,%rax
+    17e9:   00 00 
+    17eb:   75 0c                   jne    17f9 &lt;phase_3+0x17c&gt;
+    17ed:   48 83 c4 28             add    $0x28,%rsp
+    17f1:   c3                      ret
+    17f2:   e8 d7 04 00 00          call   1cce &lt;explode_bomb&gt;
+    17f7:   eb e4                   jmp    17dd &lt;phase_3+0x160&gt;
+    17f9:   e8 52 fa ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+</code></pre>
+<p>可以看到，每个块都一开始将 eax 赋值（其实只动了 al），然后每一块对于 d2 有不同的要求，满足要求后跳转到最后的 17d7。<br>
+进入 17d7 后再判断 al 是否和 c 相等，如果是则可以成功 return 了。</p>
+<p>所以正确答案有七个：</p>
+<pre><code>0 b 624
 1 x 813
 2 u 140
 3 p 265
 4 q 863
 5 o 997
 6 q 224
-7 d 840</code></pre><h2>phase_4：递归</h2><pre><code>0000000000001839 &lt;phase_4&gt;:
-    1839:    f3 0f 1e fa              endbr64
-    183d:    48 83 ec 18              sub    $0x18,%rsp
-    1841:    64 48 8b 04 25 28 00     mov    %fs:0x28,%rax
-    1848:    00 00 
-    184a:    48 89 44 24 08           mov    %rax,0x8(%rsp)
-    184f:    31 c0                    xor    %eax,%eax
-    1851:    48 89 e1                 mov    %rsp,%rcx
-    1854:    48 8d 54 24 04           lea    0x4(%rsp),%rdx
-    1859:    48 8d 35 b7 1a 00 00     lea    0x1ab7(%rip),%rsi        # 3317 &lt;array.0+0x177&gt;
-    1860:    e8 9b fa ff ff           call   1300 &lt;__isoc99_sscanf@plt&gt;
-    1865:    83 f8 02                 cmp    $0x2,%eax
-    1868:    75 0b                    jne    1875 &lt;phase_4+0x3c&gt;
-    ...</code></pre><p>看到这个函数的开头依然是和 phase_3 类似用 <code>sscanf</code> 处理数据，则同样查看 rsi 存的地址位置的字符串，发现是 <code>%d %d</code>。说明该程序读入两个 int。<br>接下来又是典型的判断，如果读到的 int 不等于两个则爆炸。</p><p>此时查看栈，和上一题类似，读入的 d1 和 d2 依此放在 (rsp + 4)、(rsp)。</p><p>接下来的代码是这样的：</p><pre><code>0000000000001839 &lt;phase_4&gt;:
+7 d 840
+</code></pre>
+<h2><a id="phase_4递归" class="heading-anchor"></a>phase_4：递归</h2>
+<pre><code>0000000000001839 &lt;phase_4&gt;:
+    1839:   f3 0f 1e fa             endbr64
+    183d:   48 83 ec 18             sub    $0x18,%rsp
+    1841:   64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    1848:   00 00 
+    184a:   48 89 44 24 08          mov    %rax,0x8(%rsp)
+    184f:   31 c0                   xor    %eax,%eax
+    1851:   48 89 e1                mov    %rsp,%rcx
+    1854:   48 8d 54 24 04          lea    0x4(%rsp),%rdx
+    1859:   48 8d 35 b7 1a 00 00    lea    0x1ab7(%rip),%rsi        # 3317 &lt;array.0+0x177&gt;
+    1860:   e8 9b fa ff ff          call   1300 &lt;__isoc99_sscanf@plt&gt;
+    1865:   83 f8 02                cmp    $0x2,%eax
+    1868:   75 0b                   jne    1875 &lt;phase_4+0x3c&gt;
     ...
-    186a:    8b 04 24                 mov    (%rsp),%eax // eax = d2
-    186d:    83 e8 02                 sub    $0x2,%eax // eax = d2-2
-    1870:    83 f8 02                 cmp    $0x2,%eax // eax &lt;&gt; 2?
-    1873:    76 05                    jbe    187a &lt;phase_4+0x41&gt; // if eax &lt;= 2 (d2 &lt;= 4) jump
-    1875:    e8 54 04 00 00           call   1cce &lt;explode_bomb&gt; // else boom!
-    ...</code></pre><p>上面这段从 186a 到 1875 的部分将 d2 减去 2 后与 2 进行无符号比较，实际上实现的是判断 d2 是否属于 $[2, 4]$，如果不在此范围则爆炸。</p><pre><code>0000000000001839 &lt;phase_4&gt;:
+</code></pre>
+<p>看到这个函数的开头依然是和 phase_3 类似用 <code>sscanf</code> 处理数据，则同样查看 rsi 存的地址位置的字符串，发现是 <code>%d %d</code>。说明该程序读入两个 int。<br>
+接下来又是典型的判断，如果读到的 int 不等于两个则爆炸。</p>
+<p>此时查看栈，和上一题类似，读入的 d1 和 d2 依此放在 (rsp + 4)、(rsp)。</p>
+<p>接下来的代码是这样的：</p>
+<pre><code>0000000000001839 &lt;phase_4&gt;:
     ...
-    187a:    8b 34 24                 mov    (%rsp),%esi // esi = d2 (argument 2)
-    187d:    bf 07 00 00 00           mov    $0x7,%edi // edi = 7 (argument 1)
-    1882:    e8 77 ff ff ff           call   17fe &lt;func4&gt; 
-    1887:    39 44 24 04              cmp    %eax,0x4(%rsp)
-    188b:    75 15                    jne    18a2 &lt;phase_4+0x69&gt;
-    188d:    48 8b 44 24 08           mov    0x8(%rsp),%rax
-    1892:    64 48 2b 04 25 28 00     sub    %fs:0x28,%rax
-    1899:    00 00 
-    189b:    75 0c                    jne    18a9 &lt;phase_4+0x70&gt;
-    189d:    48 83 c4 18              add    $0x18,%rsp
-    18a1:    c3                       ret
-    18a2:    e8 27 04 00 00           call   1cce &lt;explode_bomb&gt;
-    18a7:    eb e4                    jmp    188d &lt;phase_4+0x54&gt;
-    18a9:    e8 a2 f9 ff ff           call   1250 &lt;__stack_chk_fail@plt&gt;
-    ...</code></pre><p>上面这一部分调用了 <code>func4</code> 函数（代码如下），将其返回值（eax）和 d1 进行比较，如果相等就正常结束（拆除炸弹）。</p><p>调用 <code>func4</code> 函数时，其第一个参数 edi 是 7，第二个参数 esi 是 d2。我们查看 <code>func4</code> 函数：</p><pre><code>00000000000017fe &lt;func4&gt;:
-    17fe:    f3 0f 1e fa              endbr64
-    1802:    b8 00 00 00 00           mov    $0x0,%eax
-    1807:    85 ff                    test   %edi,%edi // if edi &lt;= 0
-    1809:    7e 2d                    jle    1838 &lt;func4+0x3a&gt; // return 0
-    180b:    41 54                    push   %r12
-    180d:    55                       push   %rbp
-    180e:    53                       push   %rbx
-    180f:    89 fb                    mov    %edi,%ebx // ebx = a1 = 7
-    1811:    89 f5                    mov    %esi,%ebp // save esi
-    1813:    89 f0                    mov    %esi,%eax // eax = a2 = d2
-    1815:    83 ff 01                 cmp    $0x1,%edi // edi == 1?
-    1818:    74 19                    je     1833 &lt;func4+0x35&gt; // return d2
-    181a:    8d 7f ff                 lea    -0x1(%rdi),%edi // edi -= 1
-    181d:    e8 dc ff ff ff           call   17fe &lt;func4&gt;
-    1822:    44 8d 24 28              lea    (%rax,%rbp,1),%r12d // r12d = rax + esi
-    1826:    8d 7b fe                 lea    -0x2(%rbx),%edi // edi = rbx - 2
-    1829:    89 ee                    mov    %ebp,%esi // restore esi
-    182b:    e8 ce ff ff ff           call   17fe &lt;func4&gt;
-    1830:    44 01 e0                 add    %r12d,%eax // eax += r12d = 2eax + esi
-    1833:    5b                       pop    %rbx
-    1834:    5d                       pop    %rbp
-    1835:    41 5c                    pop    %r12
-    1837:    c3                       ret
-    1838:    c3                       ret</code></pre><p>对 r12、rbp、rbx 压栈，是因为这三个寄存器是 callee-saved。<br>注意到 1811 行把 esi 复制到了 ebp，1829 行又将 ebp 放回了 esi。不难猜测，这是在调用 <code>func4</code> 前后保存 esi，esi 是 caller-saved。</p><p>接下来就是递归调用 <code>func4</code> 函数。这一部分如果手动模拟非常复杂（并且每个 <code>func4</code> 里最多调用了两次 <code>func4</code>）。我们可以先通过将汇编代码转换为逻辑伪代码的方式，尝试一下「复原」C 代码（差不多就是人肉 IDA）。</p><pre><code class="lang-cpp">auto func4(int x, int y){ // x:edi; y:esi; z:edx; w:r12
-    if (x &lt;= 0) return 0;
-    int z = x;
-    if (x == 1) return y;
+    186a:   8b 04 24                mov    (%rsp),%eax // eax = d2
+    186d:   83 e8 02                sub    $0x2,%eax // eax = d2-2
+    1870:   83 f8 02                cmp    $0x2,%eax // eax &lt;&gt; 2?
+    1873:   76 05                   jbe    187a &lt;phase_4+0x41&gt; // if eax &lt;= 2 (d2 &lt;= 4) jump
+    1875:   e8 54 04 00 00          call   1cce &lt;explode_bomb&gt; // else boom!
+    ...
+</code></pre>
+<p>上面这段从 186a 到 1875 的部分将 d2 减去 2 后与 2 进行无符号比较，实际上实现的是判断 d2 是否属于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo separator="true">,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2, 4]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mclose">]</span></span></span></span>，如果不在此范围则爆炸。</p>
+<pre><code>0000000000001839 &lt;phase_4&gt;:
+    ...
+    187a:   8b 34 24                mov    (%rsp),%esi // esi = d2 (argument 2)
+    187d:   bf 07 00 00 00          mov    $0x7,%edi // edi = 7 (argument 1)
+    1882:   e8 77 ff ff ff          call   17fe &lt;func4&gt; 
+    1887:   39 44 24 04             cmp    %eax,0x4(%rsp)
+    188b:   75 15                   jne    18a2 &lt;phase_4+0x69&gt;
+    188d:   48 8b 44 24 08          mov    0x8(%rsp),%rax
+    1892:   64 48 2b 04 25 28 00    sub    %fs:0x28,%rax
+    1899:   00 00 
+    189b:   75 0c                   jne    18a9 &lt;phase_4+0x70&gt;
+    189d:   48 83 c4 18             add    $0x18,%rsp
+    18a1:   c3                      ret
+    18a2:   e8 27 04 00 00          call   1cce &lt;explode_bomb&gt;
+    18a7:   eb e4                   jmp    188d &lt;phase_4+0x54&gt;
+    18a9:   e8 a2 f9 ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+    ...
+</code></pre>
+<p>上面这一部分调用了 <code>func4</code> 函数（代码如下），将其返回值（eax）和 d1 进行比较，如果相等就正常结束（拆除炸弹）。</p>
+<p>调用 <code>func4</code> 函数时，其第一个参数 edi 是 7，第二个参数 esi 是 d2。我们查看 <code>func4</code> 函数：</p>
+<pre><code>00000000000017fe &lt;func4&gt;:
+    17fe:   f3 0f 1e fa             endbr64
+    1802:   b8 00 00 00 00          mov    $0x0,%eax
+    1807:   85 ff                   test   %edi,%edi // if edi &lt;= 0
+    1809:   7e 2d                   jle    1838 &lt;func4+0x3a&gt; // return 0
+    180b:   41 54                   push   %r12
+    180d:   55                      push   %rbp
+    180e:   53                      push   %rbx
+    180f:   89 fb                   mov    %edi,%ebx // ebx = a1 = 7
+    1811:   89 f5                   mov    %esi,%ebp // save esi
+    1813:   89 f0                   mov    %esi,%eax // eax = a2 = d2
+    1815:   83 ff 01                cmp    $0x1,%edi // edi == 1?
+    1818:   74 19                   je     1833 &lt;func4+0x35&gt; // return d2
+    181a:   8d 7f ff                lea    -0x1(%rdi),%edi // edi -= 1
+    181d:   e8 dc ff ff ff          call   17fe &lt;func4&gt;
+    1822:   44 8d 24 28             lea    (%rax,%rbp,1),%r12d // r12d = rax + esi
+    1826:   8d 7b fe                lea    -0x2(%rbx),%edi // edi = rbx - 2
+    1829:   89 ee                   mov    %ebp,%esi // restore esi
+    182b:   e8 ce ff ff ff          call   17fe &lt;func4&gt;
+    1830:   44 01 e0                add    %r12d,%eax // eax += r12d = 2eax + esi
+    1833:   5b                      pop    %rbx
+    1834:   5d                      pop    %rbp
+    1835:   41 5c                   pop    %r12
+    1837:   c3                      ret
+    1838:   c3                      ret
+</code></pre>
+<p>对 r12、rbp、rbx 压栈，是因为这三个寄存器是 callee-saved。<br>
+注意到 1811 行把 esi 复制到了 ebp，1829 行又将 ebp 放回了 esi。不难猜测，这是在调用 <code>func4</code> 前后保存 esi，esi 是 caller-saved。</p>
+<p>接下来就是递归调用 <code>func4</code> 函数。这一部分如果手动模拟非常复杂（并且每个 <code>func4</code> 里最多调用了两次 <code>func4</code>）。我们可以先通过将汇编代码转换为逻辑伪代码的方式，尝试一下「复原」C 代码（差不多就是人肉 IDA）。</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">func4</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span>{ <span class="hljs-comment">// x:edi; y:esi; z:edx; w:r12</span>
+    <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> z = x;
+    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> y;
     x--;
-    int w = func4(x, y) + y;
-    x = z - 2;
-    return func4(x, y) + w;
+    <span class="hljs-type">int</span> w = <span class="hljs-built_in">func4</span>(x, y) + y;
+    x = z - <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">func4</span>(x, y) + w;
 }
 
-// simplify futher: 
+<span class="hljs-comment">// simplify futher: </span>
 
-auto func4(int x, int y){
-    if (x &lt;= 0) return 0;
-    if (x == 1) return y;
-    return func4(x-2, y) + func4(x-1, y) + y;
-}</code></pre><p>复原出这个代码，<code>func4</code> 的函数逻辑就很清晰了。可以递推计算出 <code>func4(7, y) = 33y</code>。</p><p>别忘了我们最初的目标，我们是要输入这样的 d1 和 d2：</p><ul><li>d2 为 2、3 或 4；</li><li>func4(7, d2) = 33 * d2 = d1。</li></ul><p>所以可能的答案有如下几种：</p><pre><code>66 2
+<span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">func4</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span>{
+    <span class="hljs-keyword">if</span> (x &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> y;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">func4</span>(x<span class="hljs-number">-2</span>, y) + <span class="hljs-built_in">func4</span>(x<span class="hljs-number">-1</span>, y) + y;
+}
+</code></pre>
+<p>复原出这个代码，<code>func4</code> 的函数逻辑就很清晰了。可以递推计算出 <code>func4(7, y) = 33y</code>。</p>
+<p>别忘了我们最初的目标，我们是要输入这样的 d1 和 d2：</p>
+<ul>
+<li>d2 为 2、3 或 4；</li>
+<li>func4(7, d2) = 33 * d2 = d1。</li>
+</ul>
+<p>所以可能的答案有如下几种：</p>
+<pre><code>66 2
 99 3
-132 4</code></pre><h2>phase_5：简单链表</h2><p>直接看 phase_5 函数，依然先看读入数据的部分：</p><pre><code>00000000000018ae &lt;phase_5&gt;:
+132 4
+</code></pre>
+<h2><a id="phase_5简单链表" class="heading-anchor"></a>phase_5：简单链表</h2>
+<p>直接看 phase_5 函数，依然先看读入数据的部分：</p>
+<pre><code>00000000000018ae &lt;phase_5&gt;:
     18ae:       f3 0f 1e fa             endbr64
     18b2:       48 83 ec 18             sub    $0x18,%rsp
     18b6:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
@@ -387,14 +504,23 @@ auto func4(int x, int y){
     18d5:       e8 26 fa ff ff          call   1300 &lt;__isoc99_sscanf@plt&gt;
     18da:       83 f8 01                cmp    $0x1,%eax
     18dd:       7e 5a                   jle    1939 &lt;phase_5+0x8b&gt;
-    ...</code></pre><p>phase_5 函数的开头还是和前面一样用到了 <code>sscanf</code>，读取 rsi 处的内存可以看到格式字符串是 <code>%d %d</code>，也就是读入两个 int。接下来一样判断如果读入的数字不足 2 个就爆炸。<br>读入的两个数字计为 d1、d2，查看栈可以得知它们分别存在 (rsp) 和 (rsp + 4)。</p><p>接下来：</p><pre><code>00000000000018ae &lt;phase_5&gt;:
+    ...
+</code></pre>
+<p>phase_5 函数的开头还是和前面一样用到了 <code>sscanf</code>，读取 rsi 处的内存可以看到格式字符串是 <code>%d %d</code>，也就是读入两个 int。接下来一样判断如果读入的数字不足 2 个就爆炸。<br>
+读入的两个数字计为 d1、d2，查看栈可以得知它们分别存在 (rsp) 和 (rsp + 4)。</p>
+<p>接下来：</p>
+<pre><code>00000000000018ae &lt;phase_5&gt;:
     ...
     18df:       8b 04 24                mov    (%rsp),%eax // eax = d1
     18e2:       83 e0 0f                and    $0xf,%eax // eax = d1 &amp; 0xf
     18e5:       89 04 24                mov    %eax,(%rsp) // d1 &amp;= 0xf
     18e8:       83 f8 0f                cmp    $0xf,%eax
     18eb:       74 32                   je     191f &lt;phase_5+0x71&gt;
-    ...</code></pre><p>这一小段代码将 d1 取出来 and 上一个 0xf 再放回去，再判断其是否等于 0xf，如果等于就爆炸。所以，<code>d1 &amp; 0xf</code> 不能等于 15。<br>此时 <code>d1 &amp; 0xf</code> 存放在 eax 里。继续看下面的代码：</p><pre><code>00000000000018ae &lt;phase_5&gt;:
+    ...
+</code></pre>
+<p>这一小段代码将 d1 取出来 and 上一个 0xf 再放回去，再判断其是否等于 0xf，如果等于就爆炸。所以，<code>d1 &amp; 0xf</code> 不能等于 15。<br>
+此时 <code>d1 &amp; 0xf</code> 存放在 eax 里。继续看下面的代码：</p>
+<pre><code>00000000000018ae &lt;phase_5&gt;:
     ...
     18ed:       b9 00 00 00 00          mov    $0x0,%ecx
     18f2:       ba 00 00 00 00          mov    $0x0,%edx
@@ -420,7 +546,10 @@ auto func4(int x, int y){
     1938:       c3                      ret
     1939:       e8 90 03 00 00          call   1cce &lt;explode_bomb&gt;
     193e:       eb 9f                   jmp    18df &lt;phase_5+0x31&gt;
-    1940:       e8 0b f9 ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;</code></pre><p>似乎 rsi 开始存放的是一个常量数组（有点类似之前的跳转表）。打印出来是这样的：</p><pre><code>(gdb) x/32wx 0x5555555571a0
+    1940:       e8 0b f9 ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+</code></pre>
+<p>似乎 rsi 开始存放的是一个常量数组（有点类似之前的跳转表）。打印出来是这样的：</p>
+<pre><code>(gdb) x/32wx 0x5555555571a0
 0x5555555571a0 &lt;array.0&gt;:       0x0000000a      0x00000002      0x0000000e      0x00000007
 0x5555555571b0 &lt;array.0+16&gt;:    0x00000008      0x0000000c      0x0000000f      0x0000000b
 0x5555555571c0 &lt;array.0+32&gt;:    0x00000000      0x00000004      0x00000001      0x0000000d
@@ -428,7 +557,10 @@ auto func4(int x, int y){
 0x5555555571e0: 0x21776f57      0x756f5920      0x20657627      0x75666564
 0x5555555571f0: 0x20646573      0x20656874      0x72636573      0x73207465
 0x555555557200: 0x65676174      0x00000021      0x79206f53      0x7420756f
-0x555555557210: 0x6b6e6968      0x756f7920      0x6e616320      0x6f747320</code></pre><p>把这个表 key-value 列出来，内容是这样的：</p><pre><code>0: 10
+0x555555557210: 0x6b6e6968      0x756f7920      0x6e616320      0x6f747320
+</code></pre>
+<p>把这个表 key-value 列出来，内容是这样的：</p>
+<pre><code>0: 10
 1: 2
 2: 14
 3: 7
@@ -443,134 +575,177 @@ auto func4(int x, int y){
 12: 3
 13: 9
 14: 6
-15: 5</code></pre><p>上面的代码 190b 行跳转回了 18fe，说明这又是一个类似循环的东西。我们还是尝试将 C 代码复原出来：</p><pre><code class="lang-cpp">// x:ecx; y:edx; t:eax;
-x = y = 0;
-t = d1 &amp; 0xf;
+15: 5
+</code></pre>
+<p>上面的代码 190b 行跳转回了 18fe，说明这又是一个类似循环的东西。我们还是尝试将 C 代码复原出来：</p>
+<pre><code class="language-cpp"><span class="hljs-comment">// x:ecx; y:edx; t:eax;</span>
+x = y = <span class="hljs-number">0</span>;
+t = d1 &amp; <span class="hljs-number">0xf</span>;
 
-do {
+<span class="hljs-keyword">do</span> {
     y++;
     t = a[t];
     x += t;
-} while (t != 0xf);
+} <span class="hljs-keyword">while</span> (t != <span class="hljs-number">0xf</span>);
 
-d1 = 0xf;
-if (y != 0xf) boom();
-if (x != d2) boom();
-ret = (rsp+8);
-return;</code></pre><p>不难发现这个表项内容是 0 到 15 的一个排列，其实这是一个单向链表！<br>而 while 循环停下的条件是 t 为 0xf，也就是出口为 15。其中累计跳转次数（y）必须是 15，并且累积的 x 必须最终和 d2 相等。</p><p>经过反向的查找（倒着走 15 步），可以得知链表的入口为 5。<br>走 15 步，只有 (15, 5) 这条边没有经过，可算得总和是 115。所以这一关的答案是：</p><pre><code>5 115</code></pre><h2>phase_6：二重循环与链表</h2><p>看这题的函数汇编代码非常长，直接一起阅读令人望而生畏。所以，将这个函数的代码分成几块（部分）来阅读是一个好方法。<br>代码之间有很多 jump 的跳转关系，如何将代码分块呢？首先当然是逻辑上凭感觉分块，其次分块之后尽量让函数在每块之内跳来跳去，每块只有一个入口和出口。这样就可以说将函数分为了几个子函数，只有子函数内部存在循环等复杂结构。</p><p>依然首先看看读入数据的部分：</p><pre><code>0000000000001945 &lt;phase_6&gt;:
-    1945:    f3 0f 1e fa              endbr64
-    1949:    41 56                    push   %r14
-    194b:    41 55                    push   %r13
-    194d:    41 54                    push   %r12
-    194f:    55                       push   %rbp
-    1950:    53                       push   %rbx
-    1951:    48 83 ec 60              sub    $0x60,%rsp
-    1955:    64 48 8b 04 25 28 00     mov    %fs:0x28,%rax
-    195c:    00 00 
-    195e:    48 89 44 24 58           mov    %rax,0x58(%rsp)
-    1963:    31 c0                    xor    %eax,%eax
-    1965:    49 89 e5                 mov    %rsp,%r13
-    1968:    4c 89 ee                 mov    %r13,%rsi
-    196b:    e8 8a 03 00 00           call   1cfa &lt;read_six_numbers&gt;
-    ...</code></pre><p>这一部分是开头工作，没什么特别重要的。一上来就保存了 r14、r13、r12、rbp、rbx 一大堆寄存器（说明在下面这些寄存器都用到了），然后开了挺大的一个栈空间。<br>接下来依然是 Canary 机制，不同之处在于后面 rax 也要被用到，所以将 Canary 存进 rax 又将 rax 暂存了起来，然后将 eax 清零了。</p><p>接下来，将 rsp 存放到 rsi 作为 <code>read_six_numbers</code> 的参数，这个参数并不是标示传入的字符串，而是标示读到的数据存储的位置。读取六个数字之后，它们会被依次存放在栈中 rsp、rsp + 4、rsp + 8……的位置。</p><pre><code>0000000000001945 &lt;phase_6&gt;:
+d1 = <span class="hljs-number">0xf</span>;
+<span class="hljs-keyword">if</span> (y != <span class="hljs-number">0xf</span>) <span class="hljs-built_in">boom</span>();
+<span class="hljs-keyword">if</span> (x != d2) <span class="hljs-built_in">boom</span>();
+ret = (rsp+<span class="hljs-number">8</span>);
+<span class="hljs-keyword">return</span>;
+</code></pre>
+<p>不难发现这个表项内容是 0 到 15 的一个排列，其实这是一个单向链表！<br>
+而 while 循环停下的条件是 t 为 0xf，也就是出口为 15。其中累计跳转次数（y）必须是 15，并且累积的 x 必须最终和 d2 相等。</p>
+<p>经过反向的查找（倒着走 15 步），可以得知链表的入口为 5。<br>
+走 15 步，只有 (15, 5) 这条边没有经过，可算得总和是 115。所以这一关的答案是：</p>
+<pre><code>5 115
+</code></pre>
+<h2><a id="phase_6二重循环与链表" class="heading-anchor"></a>phase_6：二重循环与链表</h2>
+<p>看这题的函数汇编代码非常长，直接一起阅读令人望而生畏。所以，将这个函数的代码分成几块（部分）来阅读是一个好方法。<br>
+代码之间有很多 jump 的跳转关系，如何将代码分块呢？首先当然是逻辑上凭感觉分块，其次分块之后尽量让函数在每块之内跳来跳去，每块只有一个入口和出口。这样就可以说将函数分为了几个子函数，只有子函数内部存在循环等复杂结构。</p>
+<p>依然首先看看读入数据的部分：</p>
+<pre><code>0000000000001945 &lt;phase_6&gt;:
+    1945:   f3 0f 1e fa             endbr64
+    1949:   41 56                   push   %r14
+    194b:   41 55                   push   %r13
+    194d:   41 54                   push   %r12
+    194f:   55                      push   %rbp
+    1950:   53                      push   %rbx
+    1951:   48 83 ec 60             sub    $0x60,%rsp
+    1955:   64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    195c:   00 00 
+    195e:   48 89 44 24 58          mov    %rax,0x58(%rsp)
+    1963:   31 c0                   xor    %eax,%eax
+    1965:   49 89 e5                mov    %rsp,%r13
+    1968:   4c 89 ee                mov    %r13,%rsi
+    196b:   e8 8a 03 00 00          call   1cfa &lt;read_six_numbers&gt;
     ...
-    1970:    41 be 01 00 00 00        mov    $0x1,%r14d
-    1976:    49 89 e4                 mov    %rsp,%r12
-    1979:    eb 28                    jmp    19a3 &lt;phase_6+0x5e&gt;--------------.
-    197b:    e8 4e 03 00 00           call   1cce &lt;explode_bomb&gt;              |
-    1980:    eb 30                    jmp    19b2 &lt;phase_6+0x6d&gt;              |
+</code></pre>
+<p>这一部分是开头工作，没什么特别重要的。一上来就保存了 r14、r13、r12、rbp、rbx 一大堆寄存器（说明在下面这些寄存器都用到了），然后开了挺大的一个栈空间。<br>
+接下来依然是 Canary 机制，不同之处在于后面 rax 也要被用到，所以将 Canary 存进 rax 又将 rax 暂存了起来，然后将 eax 清零了。</p>
+<p>接下来，将 rsp 存放到 rsi 作为 <code>read_six_numbers</code> 的参数，这个参数并不是标示传入的字符串，而是标示读到的数据存储的位置。读取六个数字之后，它们会被依次存放在栈中 rsp、rsp + 4、rsp + 8……的位置。</p>
+<pre><code>0000000000001945 &lt;phase_6&gt;:
+    ...
+    1970:   41 be 01 00 00 00       mov    $0x1,%r14d
+    1976:   49 89 e4                mov    %rsp,%r12
+    1979:   eb 28                   jmp    19a3 &lt;phase_6+0x5e&gt;--------------.
+    197b:   e8 4e 03 00 00          call   1cce &lt;explode_bomb&gt;              |
+    1980:   eb 30                   jmp    19b2 &lt;phase_6+0x6d&gt;              |
         :                                                                     |
-    1982:    48 83 c3 01              add    $0x1,%rbx &lt;--------------.       |
-    1986:    83 fb 05                 cmp    $0x5,%ebx                |       |
-    1989:    7f 10                    jg     199b &lt;phase_6+0x56&gt;--.   |       |
-    198b:    41 8b 04 9c              mov    (%r12,%rbx,4),%eax &lt;-+---+---.   |
-    198f:    39 45 00                 cmp    %eax,0x0(%rbp)       |   |   |   |
-    1992:    75 ee                    jne    1982 &lt;phase_6+0x3d&gt;--+---`   |   |
-    1994:    e8 35 03 00 00           call   1cce &lt;explode_bomb&gt;  |       |   |
-    1999:    eb e7                    jmp    1982 &lt;phase_6+0x3d&gt;  |       |   |
+    1982:   48 83 c3 01             add    $0x1,%rbx &lt;--------------.       |
+    1986:   83 fb 05                cmp    $0x5,%ebx                |       |
+    1989:   7f 10                   jg     199b &lt;phase_6+0x56&gt;--.   |       |
+    198b:   41 8b 04 9c             mov    (%r12,%rbx,4),%eax &lt;-+---+---.   |
+    198f:   39 45 00                cmp    %eax,0x0(%rbp)       |   |   |   |
+    1992:   75 ee                   jne    1982 &lt;phase_6+0x3d&gt;--+---`   |   |
+    1994:   e8 35 03 00 00          call   1cce &lt;explode_bomb&gt;  |       |   |
+    1999:   eb e7                   jmp    1982 &lt;phase_6+0x3d&gt;  |       |   |
         :                                                         |       |   |
-    199b:    49 83 c6 01              add    $0x1,%r14 &lt;----------`       |   |
-    199f:    49 83 c5 04              add    $0x4,%r13                    |   |
+    199b:   49 83 c6 01             add    $0x1,%r14 &lt;----------`       |   |
+    199f:   49 83 c5 04             add    $0x4,%r13                    |   |
         :                                                                 |   |
-    19a3:    4c 89 ed                 mov    %r13,%rbp &lt;------------------+---`
-    19a6:    41 8b 45 00              mov    0x0(%r13),%eax               |
-    19aa:    83 e8 01                 sub    $0x1,%eax                    |
-    19ad:    83 f8 05                 cmp    $0x5,%eax                    |
-    19b0:    77 c9                    ja     197b &lt;phase_6+0x36&gt;---&gt;boom  |
-    19b2:    41 83 fe 05              cmp    $0x5,%r14d                   |
-    19b6:    7f 05                    jg     19bd &lt;phase_6+0x78&gt;---.      |
-    19b8:    4c 89 f3                 mov    %r14,%rbx             |      |
-    19bb:    eb ce                    jmp    198b &lt;phase_6+0x46&gt;---+------`
-    ...</code></pre><p>还是试试人肉 IDA 大法。对于复杂的循环，我们可以一律视为无限循环，将判断条件写为其中的 if break。<br>需要注意，从 1982 行开始的这个循环入口是 198b 行，所以 C 代码中循环的代码块逻辑上是从 198b 行开始的。按照这样写下来，会发现复原出来的代码比汇编代码看起来逻辑清晰很多（比如 1982 行不知所云的突然 <code>add</code>）。<br>按照汇编代码的流程走，如果遇到了重复执行，就可以感觉到进入了下一轮循环。</p><p>在人肉 IDA 的时候，我们可以先对着汇编代码写出一个初步的伪代码，将循环分支等结构表示出来，保留寄存器当作变量使用；第二步再将其抽象成真正的 C 代码，将变量等都进行一定的抽象，最后就可以得到一个类似我们自己写的代码的源码。</p><pre><code class="lang-cpp">// 之前 r13 存放的是 rsp
-r14 = 1;
+    19a3:   4c 89 ed                mov    %r13,%rbp &lt;------------------+---`
+    19a6:   41 8b 45 00             mov    0x0(%r13),%eax               |
+    19aa:   83 e8 01                sub    $0x1,%eax                    |
+    19ad:   83 f8 05                cmp    $0x5,%eax                    |
+    19b0:   77 c9                   ja     197b &lt;phase_6+0x36&gt;---&gt;boom  |
+    19b2:   41 83 fe 05             cmp    $0x5,%r14d                   |
+    19b6:   7f 05                   jg     19bd &lt;phase_6+0x78&gt;---.      |
+    19b8:   4c 89 f3                mov    %r14,%rbx             |      |
+    19bb:   eb ce                   jmp    198b &lt;phase_6+0x46&gt;---+------`
+    ...
+</code></pre>
+<p>还是试试人肉 IDA 大法。对于复杂的循环，我们可以一律视为无限循环，将判断条件写为其中的 if break。<br>
+需要注意，从 1982 行开始的这个循环入口是 198b 行，所以 C 代码中循环的代码块逻辑上是从 198b 行开始的。按照这样写下来，会发现复原出来的代码比汇编代码看起来逻辑清晰很多（比如 1982 行不知所云的突然 <code>add</code>）。<br>
+按照汇编代码的流程走，如果遇到了重复执行，就可以感觉到进入了下一轮循环。</p>
+<p>在人肉 IDA 的时候，我们可以先对着汇编代码写出一个初步的伪代码，将循环分支等结构表示出来，保留寄存器当作变量使用；第二步再将其抽象成真正的 C 代码，将变量等都进行一定的抽象，最后就可以得到一个类似我们自己写的代码的源码。</p>
+<pre><code class="language-cpp"><span class="hljs-comment">// 之前 r13 存放的是 rsp</span>
+r14 = <span class="hljs-number">1</span>;
 r12 = rsp;
 
-for (;;){
+<span class="hljs-keyword">for</span> (;;){
     rbp = r13;
     eax = (r13);
     eax--;
-    if eax &gt; 5 boom();
-    if r14 &gt; 5 break;
+    <span class="hljs-keyword">if</span> eax &gt; <span class="hljs-number">5</span> <span class="hljs-built_in">boom</span>();
+    <span class="hljs-keyword">if</span> r14 &gt; <span class="hljs-number">5</span> <span class="hljs-keyword">break</span>;
     rbx = r14;
-    for (;;){
-        eax = (r12 + 4*rbx);
-        if eax == (rbp) boom();
+    <span class="hljs-keyword">for</span> (;;){
+        eax = (r12 + <span class="hljs-number">4</span>*rbx);
+        <span class="hljs-keyword">if</span> eax == (rbp) <span class="hljs-built_in">boom</span>();
         rbx++;
-        if ebx &gt; 5 break;
+        <span class="hljs-keyword">if</span> ebx &gt; <span class="hljs-number">5</span> <span class="hljs-keyword">break</span>;
     }
     r14++;
-    r13 += 4;
+    r13 += <span class="hljs-number">4</span>;
 }
 
-// 进一步简化
-// i:r14; j:rbx;
-// a：输入的六个数字组成的数组
-// r13 = rbp
-i = 1;
+<span class="hljs-comment">// 进一步简化</span>
+<span class="hljs-comment">// i:r14; j:rbx;</span>
+<span class="hljs-comment">// a：输入的六个数字组成的数组</span>
+<span class="hljs-comment">// r13 = rbp</span>
+i = <span class="hljs-number">1</span>;
 
-for (;;){
-    if (*r13 &gt; 6) boom();
-    if (i &gt; 5) break;
+<span class="hljs-keyword">for</span> (;;){
+    <span class="hljs-keyword">if</span> (*r13 &gt; <span class="hljs-number">6</span>) <span class="hljs-built_in">boom</span>();
+    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">5</span>) <span class="hljs-keyword">break</span>;
     j = i;
-    for (;;){
-        if (a[j] == *r13) boom(); // 其实这里 *r13 就是 a[i-1]
+    <span class="hljs-keyword">for</span> (;;){
+        <span class="hljs-keyword">if</span> (a[j] == *r13) <span class="hljs-built_in">boom</span>(); <span class="hljs-comment">// 其实这里 *r13 就是 a[i-1]</span>
         j++;
-        if (j &gt; 5) break;
+        <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">5</span>) <span class="hljs-keyword">break</span>;
     }
     i++;
-    r13++; // 4 Byte 指针的 ++ 相当于 +4
-}</code></pre><p>简化到这一步，这个双层循环的代码逻辑就很清晰了。我们输入的六个数字 a1 到 a5 要满足：</p><ul><li>任意 ai 不大于 6；</li><li>任意 ai、aj 两两不相等。</li></ul><p>注意这里 i、j 从 1 开始，这意味着我们不管 a0。<br>终于解决了魔鬼双重循环，继续看下一段汇编：</p><pre><code>0000000000001945 &lt;phase_6&gt;:
+    r13++; <span class="hljs-comment">// 4 Byte 指针的 ++ 相当于 +4</span>
+}
+</code></pre>
+<p>简化到这一步，这个双层循环的代码逻辑就很清晰了。我们输入的六个数字 a1 到 a5 要满足：</p>
+<ul>
+<li>任意 ai 不大于 6；</li>
+<li>任意 ai、aj 两两不相等。</li>
+</ul>
+<p>注意这里 i、j 从 1 开始，这意味着我们不管 a0。<br>
+终于解决了魔鬼双重循环，继续看下一段汇编：</p>
+<pre><code>0000000000001945 &lt;phase_6&gt;:
     ...
-    19bd:    be 00 00 00 00           mov    $0x0,%esi
-    19c2:    8b 0c b4                 mov    (%rsp,%rsi,4),%ecx &lt;-------------.
-    19c5:    b8 01 00 00 00           mov    $0x1,%eax                        |
-    19ca:    48 8d 15 3f 38 00 00     lea    0x383f(%rip),%rdx        # 5210 &lt;|node1&gt;
-    19d1:    83 f9 01                 cmp    $0x1,%ecx                        |
-    19d4:    7e 0b                    jle    19e1 &lt;phase_6+0x9c&gt;----------.   |
-    19d6:    48 8b 52 08              mov    0x8(%rdx),%rdx &lt;---------.   |   |
-    19da:    83 c0 01                 add    $0x1,%eax                |   |   |
-    19dd:    39 c8                    cmp    %ecx,%eax                |   |   |
-    19df:    75 f5                    jne    19d6 &lt;phase_6+0x91&gt;------`   |   |
-    19e1:    48 89 54 f4 20           mov    %rdx,0x20(%rsp,%rsi,8) &lt;-----`   |
-    19e6:    48 83 c6 01              add    $0x1,%rsi                        |
-    19ea:    48 83 fe 06              cmp    $0x6,%rsi                        |
-    19ee:    75 d2                    jne    19c2 &lt;phase_6+0x7d&gt;--------------`
-    ...</code></pre><p>肯定还有循环，还是人肉 IDA 一下吧：</p><pre><code class="lang-cpp">esi = 0;
-for (;;){
+    19bd:   be 00 00 00 00          mov    $0x0,%esi
+    19c2:   8b 0c b4                mov    (%rsp,%rsi,4),%ecx &lt;-------------.
+    19c5:   b8 01 00 00 00          mov    $0x1,%eax                        |
+    19ca:   48 8d 15 3f 38 00 00    lea    0x383f(%rip),%rdx        # 5210 &lt;|node1&gt;
+    19d1:   83 f9 01                cmp    $0x1,%ecx                        |
+    19d4:   7e 0b                   jle    19e1 &lt;phase_6+0x9c&gt;----------.   |
+    19d6:   48 8b 52 08             mov    0x8(%rdx),%rdx &lt;---------.   |   |
+    19da:   83 c0 01                add    $0x1,%eax                |   |   |
+    19dd:   39 c8                   cmp    %ecx,%eax                |   |   |
+    19df:   75 f5                   jne    19d6 &lt;phase_6+0x91&gt;------`   |   |
+    19e1:   48 89 54 f4 20          mov    %rdx,0x20(%rsp,%rsi,8) &lt;-----`   |
+    19e6:   48 83 c6 01             add    $0x1,%rsi                        |
+    19ea:   48 83 fe 06             cmp    $0x6,%rsi                        |
+    19ee:   75 d2                   jne    19c2 &lt;phase_6+0x7d&gt;--------------`
+    ...
+</code></pre>
+<p>肯定还有循环，还是人肉 IDA 一下吧：</p>
+<pre><code class="language-cpp">esi = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (;;){
     ecx = a[rsi];
-    eax = 1;
-    rdx = 5210;
-    if (ecx &gt; 1){
-        for (;;){
-            rdx = (rdx + 8);
+    eax = <span class="hljs-number">1</span>;
+    rdx = <span class="hljs-number">5210</span>;
+    <span class="hljs-keyword">if</span> (ecx &gt; <span class="hljs-number">1</span>){
+        <span class="hljs-keyword">for</span> (;;){
+            rdx = (rdx + <span class="hljs-number">8</span>);
             eax++;
-            if (eax == ecx) break;
+            <span class="hljs-keyword">if</span> (eax == ecx) <span class="hljs-keyword">break</span>;
         }
     }
-    (rsp + 0x20 + 8*rsi) = rdx;
+    (rsp + <span class="hljs-number">0x20</span> + <span class="hljs-number">8</span>*rsi) = rdx;
     rsi++;
-    if (rsi == 6) break;
-}</code></pre><p>注意这段代码里的 <code>rdx = (rdx + 8)</code>。这里可以看出 rdx 本身存的是一个内存地址，它指向 8 Byte 内存（的起始位置）。紧跟这段内存之后的，是 8 Byte 的 next 指针，指向下一个 rdx。没错，这就是一个链表。<br>我们可以想象成这样一个结构：每个指针指向的是一个结构体（的内存起始位置），每个结构体中，第一个元素是 8 Byte 的某个东西，第二个元素是 next，一个 8 Byte 的指针。</p><p>这一步 <code>lea 0x383f(%rip),%rdx</code> 得到的地址是什么呢？objdump 反汇编出来的注释显示的是「node1」。我们直接用 gdb 运行，然后查看这一部分的内容：</p><pre><code>(gdb) x/16gx 0x555555559210
+    <span class="hljs-keyword">if</span> (rsi == <span class="hljs-number">6</span>) <span class="hljs-keyword">break</span>;
+}
+</code></pre>
+<p>注意这段代码里的 <code>rdx = (rdx + 8)</code>。这里可以看出 rdx 本身存的是一个内存地址，它指向 8 Byte 内存（的起始位置）。紧跟这段内存之后的，是 8 Byte 的 next 指针，指向下一个 rdx。没错，这就是一个链表。<br>
+我们可以想象成这样一个结构：每个指针指向的是一个结构体（的内存起始位置），每个结构体中，第一个元素是 8 Byte 的某个东西，第二个元素是 next，一个 8 Byte 的指针。</p>
+<p>这一步 <code>lea 0x383f(%rip),%rdx</code> 得到的地址是什么呢？objdump 反汇编出来的注释显示的是「node1」。我们直接用 gdb 运行，然后查看这一部分的内容：</p>
+<pre><code>(gdb) x/16gx 0x555555559210
 0x555555559210 &lt;node1&gt;: 0x0000000100000336      0x0000555555559220
 0x555555559220 &lt;node2&gt;: 0x000000020000013e      0x0000555555559230
 0x555555559230 &lt;node3&gt;: 0x0000000300000217      0x0000555555559240
@@ -578,203 +753,258 @@ for (;;){
 0x555555559250 &lt;node5&gt;: 0x00000005000001a8      0x0000555555559110
 0x555555559260 &lt;host_table&gt;:    0x0000555555557371      0x0000000000000000
 0x555555559270 &lt;host_table+16&gt;: 0x0000000000000000      0x0000000000000000
-0x555555559280 &lt;host_table+32&gt;: 0x0000000000000000      0x0000000000000000</code></pre><p>看来我们的猜测没错！这部分内存里静态地存了五个 node，每个 node 是 16 字节，前 8 字节存了值，后 8 字节存了 next 指针。<br>node5 指向的 <code>0x0000555555559110</code> 地址其实是 node6：</p><pre><code>(gdb) x/4gx 0x555555559110
+0x555555559280 &lt;host_table+32&gt;: 0x0000000000000000      0x0000000000000000
+</code></pre>
+<p>看来我们的猜测没错！这部分内存里静态地存了五个 node，每个 node 是 16 字节，前 8 字节存了值，后 8 字节存了 next 指针。<br>
+node5 指向的 <code>0x0000555555559110</code> 地址其实是 node6：</p>
+<pre><code>(gdb) x/4gx 0x555555559110
 0x555555559110 &lt;node6&gt;: 0x00000006000000bc      0x0000000000000000
-0x555555559120 &lt;bomb_id&gt;:       0x00000000000001e3      0x0000000000000000</code></pre><p>既然有了指针和结构体的抽象，我们可以进一步简化这个代码：</p><pre><code class="lang-cpp">// 进一步简化：
-// i:rsi
-i = 0;
-for (;;){
+0x555555559120 &lt;bomb_id&gt;:       0x00000000000001e3      0x0000000000000000
+</code></pre>
+<p>既然有了指针和结构体的抽象，我们可以进一步简化这个代码：</p>
+<pre><code class="language-cpp"><span class="hljs-comment">// 进一步简化：</span>
+<span class="hljs-comment">// i:rsi</span>
+i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (;;){
     p = node1;
-    if (a[i] &gt; 1){
-        j = 1;
-        for (;;){
+    <span class="hljs-keyword">if</span> (a[i] &gt; <span class="hljs-number">1</span>){
+        j = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span> (;;){
             p = p-&gt;next;
             j++;
-            if (j == a[i]) break;
+            <span class="hljs-keyword">if</span> (j == a[i]) <span class="hljs-keyword">break</span>;
         }
     }
-    (rsp + 0x20 + 8*i) = p;
+    (rsp + <span class="hljs-number">0x20</span> + <span class="hljs-number">8</span>*i) = p;
     i++;
-    if (i == 6) break;
-}</code></pre><p>这时候代码逻辑就非常简单了。对于每个 ai，从 node1 开始走 ai-1 次（所以任何 ai 不呢大于 6），停在的 node 指针存入栈上 rsp + 0x20 开始的位置。</p><p>接下来，可以看到一堆看起来很整齐的 <code>mov</code> 操作：</p><pre><code>0000000000001945 &lt;phase_6&gt;:
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">6</span>) <span class="hljs-keyword">break</span>;
+}
+</code></pre>
+<p>这时候代码逻辑就非常简单了。对于每个 ai，从 node1 开始走 ai-1 次（所以任何 ai 不呢大于 6），停在的 node 指针存入栈上 rsp + 0x20 开始的位置。</p>
+<p>接下来，可以看到一堆看起来很整齐的 <code>mov</code> 操作：</p>
+<pre><code>0000000000001945 &lt;phase_6&gt;:
     ...
-    19f0:    48 8b 5c 24 20           mov    0x20(%rsp),%rbx
-    19f5:    48 8b 44 24 28           mov    0x28(%rsp),%rax
-    19fa:    48 89 43 08              mov    %rax,0x8(%rbx)
-    19fe:    48 8b 54 24 30           mov    0x30(%rsp),%rdx
-    1a03:    48 89 50 08              mov    %rdx,0x8(%rax)
-    1a07:    48 8b 44 24 38           mov    0x38(%rsp),%rax
-    1a0c:    48 89 42 08              mov    %rax,0x8(%rdx)
-    1a10:    48 8b 54 24 40           mov    0x40(%rsp),%rdx
-    1a15:    48 89 50 08              mov    %rdx,0x8(%rax)
-    1a19:    48 8b 44 24 48           mov    0x48(%rsp),%rax
-    1a1e:    48 89 42 08              mov    %rax,0x8(%rdx)
-    1a22:    48 c7 40 08 00 00 00     movq   $0x0,0x8(%rax)
-    1a29:    00 
-    ...</code></pre><p>上面这一段代码，把之前链表的关系重写了。<br>记从 rsp + 0x20 开始，每 8 个字节存的指针依次计为 ptr0、ptr1、ptr2……经过这段代码的处理，我们有 *(ptr0 + 8) = ptr1，*(ptr1 + 8) = ptr2……<br>也就是说，将存入栈的指针顺序覆盖了之前 node 的边关系，重写了 node 的 next 指针，使其按照栈中节点排列的顺序相连。</p><p>接下来，我们终于来到了这个 phase 的核心判断：</p><pre><code>0000000000001945 &lt;phase_6&gt;:
+    19f0:   48 8b 5c 24 20          mov    0x20(%rsp),%rbx
+    19f5:   48 8b 44 24 28          mov    0x28(%rsp),%rax
+    19fa:   48 89 43 08             mov    %rax,0x8(%rbx)
+    19fe:   48 8b 54 24 30          mov    0x30(%rsp),%rdx
+    1a03:   48 89 50 08             mov    %rdx,0x8(%rax)
+    1a07:   48 8b 44 24 38          mov    0x38(%rsp),%rax
+    1a0c:   48 89 42 08             mov    %rax,0x8(%rdx)
+    1a10:   48 8b 54 24 40          mov    0x40(%rsp),%rdx
+    1a15:   48 89 50 08             mov    %rdx,0x8(%rax)
+    1a19:   48 8b 44 24 48          mov    0x48(%rsp),%rax
+    1a1e:   48 89 42 08             mov    %rax,0x8(%rdx)
+    1a22:   48 c7 40 08 00 00 00    movq   $0x0,0x8(%rax)
+    1a29:   00 
     ...
-    1a2a:    bd 05 00 00 00           mov    $0x5,%ebp
-    1a2f:    eb 09                    jmp    1a3a &lt;phase_6+0xf5&gt;---.
-    1a31:    48 8b 5b 08              mov    0x8(%rbx),%rbx &lt;------+---.
-    1a35:    83 ed 01                 sub    $0x1,%ebp             |   |
-    1a38:    74 11                    je     1a4b &lt;phase_6+0x106&gt;--+---+---.
-    1a3a:    48 8b 43 08              mov    0x8(%rbx),%rax  &lt;-----`   |   |
-    1a3e:    8b 00                    mov    (%rax),%eax               |   |
-    1a40:    39 03                    cmp    %eax,(%rbx)               |   |
-    1a42:    7d ed                    jge    1a31 &lt;phase_6+0xec&gt;-------`   |
-    1a44:    e8 85 02 00 00           call   1cce &lt;explode_bomb&gt;           |
-    1a49:    eb e6                    jmp    1a31 &lt;phase_6+0xec&gt;           |
-    ...</code></pre><p>和之前一样的人肉 IDA 思路，将其改写成 C 代码，大概是这样的：</p><pre><code class="lang-cpp">// 在之前，rbx 被置为 ptr0，即 (rsp + 0x20)
-ebp = 5;
-for (;;) {
+</code></pre>
+<p>上面这一段代码，把之前链表的关系重写了。<br>
+记从 rsp + 0x20 开始，每 8 个字节存的指针依次计为 ptr0、ptr1、ptr2……经过这段代码的处理，我们有 *(ptr0 + 8) = ptr1，*(ptr1 + 8) = ptr2……<br>
+也就是说，将存入栈的指针顺序覆盖了之前 node 的边关系，重写了 node 的 next 指针，使其按照栈中节点排列的顺序相连。</p>
+<p>接下来，我们终于来到了这个 phase 的核心判断：</p>
+<pre><code>0000000000001945 &lt;phase_6&gt;:
+    ...
+    1a2a:   bd 05 00 00 00          mov    $0x5,%ebp
+    1a2f:   eb 09                   jmp    1a3a &lt;phase_6+0xf5&gt;---.
+    1a31:   48 8b 5b 08             mov    0x8(%rbx),%rbx &lt;------+---.
+    1a35:   83 ed 01                sub    $0x1,%ebp             |   |
+    1a38:   74 11                   je     1a4b &lt;phase_6+0x106&gt;--+---+---.
+    1a3a:   48 8b 43 08             mov    0x8(%rbx),%rax  &lt;-----`   |   |
+    1a3e:   8b 00                   mov    (%rax),%eax               |   |
+    1a40:   39 03                   cmp    %eax,(%rbx)               |   |
+    1a42:   7d ed                   jge    1a31 &lt;phase_6+0xec&gt;-------`   |
+    1a44:   e8 85 02 00 00          call   1cce &lt;explode_bomb&gt;           |
+    1a49:   eb e6                   jmp    1a31 &lt;phase_6+0xec&gt;           |
+    ...
+</code></pre>
+<p>和之前一样的人肉 IDA 思路，将其改写成 C 代码，大概是这样的：</p>
+<pre><code class="language-cpp"><span class="hljs-comment">// 在之前，rbx 被置为 ptr0，即 (rsp + 0x20)</span>
+ebp = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">for</span> (;;) {
     rax = rbx-&gt;next;
     eax = *rax;
-    if (*rbx &lt; eax) boom();
+    <span class="hljs-keyword">if</span> (*rbx &lt; eax) <span class="hljs-built_in">boom</span>();
     rbx = rbx-&gt;next;
     ebp--;
-    if (ebp == 0) break;
+    <span class="hljs-keyword">if</span> (ebp == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;
 }
 
-// 进一步抽象：
-cnt = 5;
-for (;;) {
-    if (p-&gt;value &lt; (p-&gt;next-&gt;value)) boom();
+<span class="hljs-comment">// 进一步抽象：</span>
+cnt = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (p-&gt;value &lt; (p-&gt;next-&gt;value)) <span class="hljs-built_in">boom</span>();
     p = p-&gt;next;
     cnt--;
-    if (cnt == 0) break;
-}</code></pre><p>这一部分就是真正的核心判断部分。<br>注意，<code>p-&gt;value</code> 这个值指的是指针开始的 8 Byte 内存（因为存放的寄存器是 eax），取出之后又放入 4 Byte 的 eax（高位 0 填充）。<br>简化成这样逻辑就简单了，不就是遍历这个链表嘛，正好 6 次经过 6 个节点，遍历时依次经过的六个值必须满足单调递减，否则 boom。<br>实际上这题是要我们对 node 从大到小重新排序，使其值单调减。回顾之前查看 node 时看到的值：</p><pre><code>node1: 0x336
+    <span class="hljs-keyword">if</span> (cnt == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;
+}
+</code></pre>
+<p>这一部分就是真正的核心判断部分。<br>
+注意，<code>p-&gt;value</code> 这个值指的是指针开始的 8 Byte 内存（因为存放的寄存器是 eax），取出之后又放入 4 Byte 的 eax（高位 0 填充）。<br>
+简化成这样逻辑就简单了，不就是遍历这个链表嘛，正好 6 次经过 6 个节点，遍历时依次经过的六个值必须满足单调递减，否则 boom。<br>
+实际上这题是要我们对 node 从大到小重新排序，使其值单调减。回顾之前查看 node 时看到的值：</p>
+<pre><code>node1: 0x336
 node2: 0x13e
 node3: 0x217
 node4: 0x31d
 node5: 0x1a8
-node6: 0x0bc</code></pre><p>从大到小排序，满足要求的排列是：<code>1 4 3 5 2 6</code>。这就是本题的答案。</p><p>接下来，这个函数就接近尾声了：</p><pre><code>0000000000001945 &lt;phase_6&gt;:
+node6: 0x0bc
+</code></pre>
+<p>从大到小排序，满足要求的排列是：<code>1 4 3 5 2 6</code>。这就是本题的答案。</p>
+<p>接下来，这个函数就接近尾声了：</p>
+<pre><code>0000000000001945 &lt;phase_6&gt;:
     ...
-    1a4b:    48 8b 44 24 58           mov    0x58(%rsp),%rax
-    1a50:    64 48 2b 04 25 28 00     sub    %fs:0x28,%rax
-    1a57:    00 00 
-    1a59:    75 0d                    jne    1a68 &lt;phase_6+0x123&gt;
-    1a5b:    48 83 c4 60              add    $0x60,%rsp
-    1a5f:    5b                       pop    %rbx
-    1a60:    5d                       pop    %rbp
-    1a61:    41 5c                    pop    %r12
-    1a63:    41 5d                    pop    %r13
-    1a65:    41 5e                    pop    %r14
-    1a67:    c3                       ret
-    1a68:    e8 e3 f7 ff ff           call   1250 &lt;__stack_chk_fail@plt&gt;
-    ...</code></pre><p>这一部分就是一些收尾工作。将之前 195e 行暂存起来的 rax 恢复，然后是 Canary 机制的判断，然后收栈、恢复寄存器、返回。</p><p>这题所有 node 的值都已经确定了，所以 <code>1 4 3 5 2 6</code> 应该是唯一的答案。</p><h2>进入 secret_phase</h2><p>在看反编译出来的代码的过程中，发现除了 phase_1 到 phase_6 以外，还有一个 secret_phase，算是作者隐藏的小彩蛋吧。其实 bomb.c 的最后也有暗示：</p><pre><code class="lang-cpp">    /* Wow, they got it!  But isn't something... missing?  Perhaps
-     * something they overlooked?  Mua ha ha ha ha! */
+    1a4b:   48 8b 44 24 58          mov    0x58(%rsp),%rax
+    1a50:   64 48 2b 04 25 28 00    sub    %fs:0x28,%rax
+    1a57:   00 00 
+    1a59:   75 0d                   jne    1a68 &lt;phase_6+0x123&gt;
+    1a5b:   48 83 c4 60             add    $0x60,%rsp
+    1a5f:   5b                      pop    %rbx
+    1a60:   5d                      pop    %rbp
+    1a61:   41 5c                   pop    %r12
+    1a63:   41 5d                   pop    %r13
+    1a65:   41 5e                   pop    %r14
+    1a67:   c3                      ret
+    1a68:   e8 e3 f7 ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+    ...
+</code></pre>
+<p>这一部分就是一些收尾工作。将之前 195e 行暂存起来的 rax 恢复，然后是 Canary 机制的判断，然后收栈、恢复寄存器、返回。</p>
+<p>这题所有 node 的值都已经确定了，所以 <code>1 4 3 5 2 6</code> 应该是唯一的答案。</p>
+<h2><a id="进入-secret_phase" class="heading-anchor"></a>进入 secret_phase</h2>
+<p>在看反编译出来的代码的过程中，发现除了 phase_1 到 phase_6 以外，还有一个 secret_phase，算是作者隐藏的小彩蛋吧。其实 bomb.c 的最后也有暗示：</p>
+<pre><code class="language-cpp">    <span class="hljs-comment">/* Wow, they got it!  But isn&#x27;t something... missing?  Perhaps
+     * something they overlooked?  Mua ha ha ha ha! */</span>
     
-    return 0;</code></pre><p>然而在寻常地完成六个 phase 的时候，并不会进入 secret_phase。</p><p>在反编译出来的代码中搜索，发现只有 phase_defused 函数调用了 secret_phase。审计这个函数代码：</p><pre><code>0000000000001e77 &lt;phase_defused&gt;:
-    1e77:    f3 0f 1e fa              endbr64
-    1e7b:    48 83 ec 78              sub    $0x78,%rsp
-    1e7f:    64 48 8b 04 25 28 00     mov    %fs:0x28,%rax
-    1e86:    00 00 
-    1e88:    48 89 44 24 68           mov    %rax,0x68(%rsp)
-    1e8d:    31 c0                    xor    %eax,%eax
-    1e8f:    83 3d 5a 38 00 00 06     cmpl   $0x6,0x385a(%rip)        # 56f0 &lt;num_input_strings&gt;
-    1e96:    74 15                    je     1ead &lt;phase_defused+0x36&gt;
-    1e98:    48 8b 44 24 68           mov    0x68(%rsp),%rax
-    1e9d:    64 48 2b 04 25 28 00     sub    %fs:0x28,%rax
-    1ea4:    00 00 
-    1ea6:    75 73                    jne    1f1b &lt;phase_defused+0xa4&gt;
-    1ea8:    48 83 c4 78              add    $0x78,%rsp
-    1eac:    c3                       ret
-    ...</code></pre><p>上面这段代码，最关键的是：判断如果 (rip + 0x385a) 也就是 (56f0) 内存中存放的值等于 6 则跳转进下面的代码，否则函数正常返回，不会进入之后的代码。进入 secret_phase 的入口其实在后面的代码里。<br>记住这个地址：56f0。搜索反编译出来的汇编代码全文，可以找到 <code>read_line</code> 函数里有涉及写入 (56f0) 的代码：</p><pre><code>0000000000001d3f &lt;read_line&gt;:
-    1d3f:    f3 0f 1e fa              endbr64
-    1d43:    55                       push   %rbp
-    1d44:    53                       push   %rbx
-    1d45:    48 83 ec 08              sub    $0x8,%rsp
-    1d49:    b8 00 00 00 00           mov    $0x0,%eax
-    1d4e:    e8 29 ff ff ff           call   1c7c &lt;skip&gt;
-    1d53:    48 85 c0                 test   %rax,%rax
-    1d56:    74 5d                    je     1db5 &lt;read_line+0x76&gt;
-    1d58:    8b 2d 92 39 00 00        mov    0x3992(%rip),%ebp        # 56f0 &lt;num_input_strings&gt;
-    1d5e:    48 63 c5                 movslq %ebp,%rax
-    1d61:    48 8d 1c 80              lea    (%rax,%rax,4),%rbx
-    1d65:    48 c1 e3 04              shl    $0x4,%rbx
-    1d69:    48 8d 05 90 39 00 00     lea    0x3990(%rip),%rax        # 5700 &lt;input_strings&gt;
-    1d70:    48 01 c3                 add    %rax,%rbx
-    1d73:    48 89 df                 mov    %rbx,%rdi
-    1d76:    e8 c5 f4 ff ff           call   1240 &lt;strlen@plt&gt;
-    1d7b:    83 f8 4e                 cmp    $0x4e,%eax
-    1d7e:    0f 8f a9 00 00 00        jg     1e2d &lt;read_line+0xee&gt;
-    1d84:    83 e8 01                 sub    $0x1,%eax
-    1d87:    48 98                    cltq
-    1d89:    48 63 d5                 movslq %ebp,%rdx
-    1d8c:    48 8d 0c 92              lea    (%rdx,%rdx,4),%rcx
-    1d90:    48 c1 e1 04              shl    $0x4,%rcx
-    1d94:    48 8d 15 65 39 00 00     lea    0x3965(%rip),%rdx        # 5700 &lt;input_strings&gt;
-    1d9b:    48 01 ca                 add    %rcx,%rdx
-    1d9e:    c6 04 02 00              movb   $0x0,(%rdx,%rax,1)
-    1da2:    83 c5 01                 add    $0x1,%ebp
-    1da5:    89 2d 45 39 00 00        mov    %ebp,0x3945(%rip)        # 56f0 &lt;num_input_strings&gt;
-    1dab:    48 89 d8                 mov    %rbx,%rax
-    1dae:    48 83 c4 08              add    $0x8,%rsp
-    1db2:    5b                       pop    %rbx
-    1db3:    5d                       pop    %rbp
-    1db4:    c3                       ret
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+</code></pre>
+<p>然而在寻常地完成六个 phase 的时候，并不会进入 secret_phase。</p>
+<p>在反编译出来的代码中搜索，发现只有 phase_defused 函数调用了 secret_phase。审计这个函数代码：</p>
+<pre><code>0000000000001e77 &lt;phase_defused&gt;:
+    1e77:   f3 0f 1e fa             endbr64
+    1e7b:   48 83 ec 78             sub    $0x78,%rsp
+    1e7f:   64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    1e86:   00 00 
+    1e88:   48 89 44 24 68          mov    %rax,0x68(%rsp)
+    1e8d:   31 c0                   xor    %eax,%eax
+    1e8f:   83 3d 5a 38 00 00 06    cmpl   $0x6,0x385a(%rip)        # 56f0 &lt;num_input_strings&gt;
+    1e96:   74 15                   je     1ead &lt;phase_defused+0x36&gt;
+    1e98:   48 8b 44 24 68          mov    0x68(%rsp),%rax
+    1e9d:   64 48 2b 04 25 28 00    sub    %fs:0x28,%rax
+    1ea4:   00 00 
+    1ea6:   75 73                   jne    1f1b &lt;phase_defused+0xa4&gt;
+    1ea8:   48 83 c4 78             add    $0x78,%rsp
+    1eac:   c3                      ret
+    ...
+</code></pre>
+<p>上面这段代码，最关键的是：判断如果 (rip + 0x385a) 也就是 (56f0) 内存中存放的值等于 6 则跳转进下面的代码，否则函数正常返回，不会进入之后的代码。进入 secret_phase 的入口其实在后面的代码里。<br>
+记住这个地址：56f0。搜索反编译出来的汇编代码全文，可以找到 <code>read_line</code> 函数里有涉及写入 (56f0) 的代码：</p>
+<pre><code>0000000000001d3f &lt;read_line&gt;:
+    1d3f:   f3 0f 1e fa             endbr64
+    1d43:   55                      push   %rbp
+    1d44:   53                      push   %rbx
+    1d45:   48 83 ec 08             sub    $0x8,%rsp
+    1d49:   b8 00 00 00 00          mov    $0x0,%eax
+    1d4e:   e8 29 ff ff ff          call   1c7c &lt;skip&gt;
+    1d53:   48 85 c0                test   %rax,%rax
+    1d56:   74 5d                   je     1db5 &lt;read_line+0x76&gt;
+    1d58:   8b 2d 92 39 00 00       mov    0x3992(%rip),%ebp        # 56f0 &lt;num_input_strings&gt;
+    1d5e:   48 63 c5                movslq %ebp,%rax
+    1d61:   48 8d 1c 80             lea    (%rax,%rax,4),%rbx
+    1d65:   48 c1 e3 04             shl    $0x4,%rbx
+    1d69:   48 8d 05 90 39 00 00    lea    0x3990(%rip),%rax        # 5700 &lt;input_strings&gt;
+    1d70:   48 01 c3                add    %rax,%rbx
+    1d73:   48 89 df                mov    %rbx,%rdi
+    1d76:   e8 c5 f4 ff ff          call   1240 &lt;strlen@plt&gt;
+    1d7b:   83 f8 4e                cmp    $0x4e,%eax
+    1d7e:   0f 8f a9 00 00 00       jg     1e2d &lt;read_line+0xee&gt;
+    1d84:   83 e8 01                sub    $0x1,%eax
+    1d87:   48 98                   cltq
+    1d89:   48 63 d5                movslq %ebp,%rdx
+    1d8c:   48 8d 0c 92             lea    (%rdx,%rdx,4),%rcx
+    1d90:   48 c1 e1 04             shl    $0x4,%rcx
+    1d94:   48 8d 15 65 39 00 00    lea    0x3965(%rip),%rdx        # 5700 &lt;input_strings&gt;
+    1d9b:   48 01 ca                add    %rcx,%rdx
+    1d9e:   c6 04 02 00             movb   $0x0,(%rdx,%rax,1)
+    1da2:   83 c5 01                add    $0x1,%ebp
+    1da5:   89 2d 45 39 00 00       mov    %ebp,0x3945(%rip)        # 56f0 &lt;num_input_strings&gt;
+    1dab:   48 89 d8                mov    %rbx,%rax
+    1dae:   48 83 c4 08             add    $0x8,%rsp
+    1db2:   5b                      pop    %rbx
+    1db3:   5d                      pop    %rbp
+    1db4:   c3                      ret
 
-    1db5:    48 8b 05 b4 38 00 00     mov    0x38b4(%rip),%rax        # 5670 &lt;stdin@GLIBC_2.2.5&gt;
-    1dbc:    48 39 05 cd 38 00 00     cmp    %rax,0x38cd(%rip)        # 5690 &lt;infile&gt;
-    1dc3:    74 1b                    je     1de0 &lt;read_line+0xa1&gt;
-    1dc5:    48 8d 3d 6f 15 00 00     lea    0x156f(%rip),%rdi        # 333b &lt;array.0+0x19b&gt;
-    1dcc:    e8 1f f4 ff ff           call   11f0 &lt;getenv@plt&gt;
-    1dd1:    48 85 c0                 test   %rax,%rax
-    1dd4:    74 20                    je     1df6 &lt;read_line+0xb7&gt;
-    1dd6:    bf 00 00 00 00           mov    $0x0,%edi
-    1ddb:    e8 50 f5 ff ff           call   1330 &lt;exit@plt&gt;
-    1de0:    48 8d 3d 36 15 00 00     lea    0x1536(%rip),%rdi        # 331d &lt;array.0+0x17d&gt;
-    1de7:    e8 34 f4 ff ff           call   1220 &lt;puts@plt&gt;
-    1dec:    bf 08 00 00 00           mov    $0x8,%edi
-    1df1:    e8 3a f5 ff ff           call   1330 &lt;exit@plt&gt;
-    1df6:    48 8b 05 73 38 00 00     mov    0x3873(%rip),%rax        # 5670 &lt;stdin@GLIBC_2.2.5&gt;
-    1dfd:    48 89 05 8c 38 00 00     mov    %rax,0x388c(%rip)        # 5690 &lt;infile&gt;
-    1e04:    b8 00 00 00 00           mov    $0x0,%eax
-    1e09:    e8 6e fe ff ff           call   1c7c &lt;skip&gt;
-    1e0e:    48 85 c0                 test   %rax,%rax
-    1e11:    0f 85 41 ff ff ff        jne    1d58 &lt;read_line+0x19&gt;
-    1e17:    48 8d 3d ff 14 00 00     lea    0x14ff(%rip),%rdi        # 331d &lt;array.0+0x17d&gt;
-    1e1e:    e8 fd f3 ff ff           call   1220 &lt;puts@plt&gt;
-    1e23:    bf 00 00 00 00           mov    $0x0,%edi
-    1e28:    e8 03 f5 ff ff           call   1330 &lt;exit@plt&gt;
-    1e2d:    48 8d 3d 12 15 00 00     lea    0x1512(%rip),%rdi        # 3346 &lt;array.0+0x1a6&gt;
-    1e34:    e8 e7 f3 ff ff           call   1220 &lt;puts@plt&gt;
-    1e39:    8b 05 b1 38 00 00        mov    0x38b1(%rip),%eax        # 56f0 &lt;num_input_strings&gt;
-    1e3f:    8d 50 01                 lea    0x1(%rax),%edx
-    1e42:    89 15 a8 38 00 00        mov    %edx,0x38a8(%rip)        # 56f0 &lt;num_input_strings&gt;
-    1e48:    48 98                    cltq
-    1e4a:    48 6b c0 50              imul   $0x50,%rax,%rax
-    1e4e:    48 8d 15 ab 38 00 00     lea    0x38ab(%rip),%rdx        # 5700 &lt;input_strings&gt;
-    1e55:    48 be 2a 2a 2a 74 72     movabs $0x636e7572742a2a2a,%rsi
-    1e5c:    75 6e 63 
-    1e5f:    48 bf 61 74 65 64 2a     movabs $0x2a2a2a64657461,%rdi
-    1e66:    2a 2a 00 
-    1e69:    48 89 34 02              mov    %rsi,(%rdx,%rax,1)
-    1e6d:    48 89 7c 02 08           mov    %rdi,0x8(%rdx,%rax,1)
-    1e72:    e8 57 fe ff ff           call   1cce &lt;explode_bomb&gt;</code></pre><p>先粗略地看一看上面的这段代码，发现它主要分为两个部分，如果调用 skip 函数返回 0 就进入第二个部分（1db5 开始的行），否则继续第一个部分。第一个部分最后 ret，第二个部分最后 explode_bomb。我们可以先不管它做了什么，只需要看哪里修改了 56f0。</p><p>上面这段代码主要修改 56f0 这个位置的有两处：</p><pre><code>0000000000001d3f &lt;read_line&gt;:
+    1db5:   48 8b 05 b4 38 00 00    mov    0x38b4(%rip),%rax        # 5670 &lt;stdin@GLIBC_2.2.5&gt;
+    1dbc:   48 39 05 cd 38 00 00    cmp    %rax,0x38cd(%rip)        # 5690 &lt;infile&gt;
+    1dc3:   74 1b                   je     1de0 &lt;read_line+0xa1&gt;
+    1dc5:   48 8d 3d 6f 15 00 00    lea    0x156f(%rip),%rdi        # 333b &lt;array.0+0x19b&gt;
+    1dcc:   e8 1f f4 ff ff          call   11f0 &lt;getenv@plt&gt;
+    1dd1:   48 85 c0                test   %rax,%rax
+    1dd4:   74 20                   je     1df6 &lt;read_line+0xb7&gt;
+    1dd6:   bf 00 00 00 00          mov    $0x0,%edi
+    1ddb:   e8 50 f5 ff ff          call   1330 &lt;exit@plt&gt;
+    1de0:   48 8d 3d 36 15 00 00    lea    0x1536(%rip),%rdi        # 331d &lt;array.0+0x17d&gt;
+    1de7:   e8 34 f4 ff ff          call   1220 &lt;puts@plt&gt;
+    1dec:   bf 08 00 00 00          mov    $0x8,%edi
+    1df1:   e8 3a f5 ff ff          call   1330 &lt;exit@plt&gt;
+    1df6:   48 8b 05 73 38 00 00    mov    0x3873(%rip),%rax        # 5670 &lt;stdin@GLIBC_2.2.5&gt;
+    1dfd:   48 89 05 8c 38 00 00    mov    %rax,0x388c(%rip)        # 5690 &lt;infile&gt;
+    1e04:   b8 00 00 00 00          mov    $0x0,%eax
+    1e09:   e8 6e fe ff ff          call   1c7c &lt;skip&gt;
+    1e0e:   48 85 c0                test   %rax,%rax
+    1e11:   0f 85 41 ff ff ff       jne    1d58 &lt;read_line+0x19&gt;
+    1e17:   48 8d 3d ff 14 00 00    lea    0x14ff(%rip),%rdi        # 331d &lt;array.0+0x17d&gt;
+    1e1e:   e8 fd f3 ff ff          call   1220 &lt;puts@plt&gt;
+    1e23:   bf 00 00 00 00          mov    $0x0,%edi
+    1e28:   e8 03 f5 ff ff          call   1330 &lt;exit@plt&gt;
+    1e2d:   48 8d 3d 12 15 00 00    lea    0x1512(%rip),%rdi        # 3346 &lt;array.0+0x1a6&gt;
+    1e34:   e8 e7 f3 ff ff          call   1220 &lt;puts@plt&gt;
+    1e39:   8b 05 b1 38 00 00       mov    0x38b1(%rip),%eax        # 56f0 &lt;num_input_strings&gt;
+    1e3f:   8d 50 01                lea    0x1(%rax),%edx
+    1e42:   89 15 a8 38 00 00       mov    %edx,0x38a8(%rip)        # 56f0 &lt;num_input_strings&gt;
+    1e48:   48 98                   cltq
+    1e4a:   48 6b c0 50             imul   $0x50,%rax,%rax
+    1e4e:   48 8d 15 ab 38 00 00    lea    0x38ab(%rip),%rdx        # 5700 &lt;input_strings&gt;
+    1e55:   48 be 2a 2a 2a 74 72    movabs $0x636e7572742a2a2a,%rsi
+    1e5c:   75 6e 63 
+    1e5f:   48 bf 61 74 65 64 2a    movabs $0x2a2a2a64657461,%rdi
+    1e66:   2a 2a 00 
+    1e69:   48 89 34 02             mov    %rsi,(%rdx,%rax,1)
+    1e6d:   48 89 7c 02 08          mov    %rdi,0x8(%rdx,%rax,1)
+    1e72:   e8 57 fe ff ff          call   1cce &lt;explode_bomb&gt;
+</code></pre>
+<p>先粗略地看一看上面的这段代码，发现它主要分为两个部分，如果调用 skip 函数返回 0 就进入第二个部分（1db5 开始的行），否则继续第一个部分。第一个部分最后 ret，第二个部分最后 explode_bomb。我们可以先不管它做了什么，只需要看哪里修改了 56f0。</p>
+<p>上面这段代码主要修改 56f0 这个位置的有两处：</p>
+<pre><code>0000000000001d3f &lt;read_line&gt;:
     ...
-    1d58:    8b 2d 92 39 00 00        mov    0x3992(%rip),%ebp        # 56f0 &lt;num_input_strings&gt;
+    1d58:   8b 2d 92 39 00 00       mov    0x3992(%rip),%ebp        # 56f0 &lt;num_input_strings&gt;
     ...
-    1da2:    83 c5 01                 add    $0x1,%ebp
-    1da5:    89 2d 45 39 00 00        mov    %ebp,0x3945(%rip)        # 56f0 &lt;num_input_strings&gt;
+    1da2:   83 c5 01                add    $0x1,%ebp
+    1da5:   89 2d 45 39 00 00       mov    %ebp,0x3945(%rip)        # 56f0 &lt;num_input_strings&gt;
     ...
     ...
-    1e39:    8b 05 b1 38 00 00        mov    0x38b1(%rip),%eax        # 56f0 &lt;num_input_strings&gt;
-    1e3f:    8d 50 01                 lea    0x1(%rax),%edx
-    1e42:    89 15 a8 38 00 00        mov    %edx,0x38a8(%rip)        # 56f0 &lt;num_input_strings&gt;
-    ...</code></pre><p>不管是哪一处，做的事情都是将 56f0 中存的数加一。也就是说，每调用一次 <code>read_line</code> 函数，这个位置记录的数字会加一。所以只有拆完最后一个 phase，这个地方会变成 6，能够进入下一部分。</p><p>继续看下面的代码：</p><pre><code>0000000000001e77 &lt;phase_defused&gt;:
+    1e39:   8b 05 b1 38 00 00       mov    0x38b1(%rip),%eax        # 56f0 &lt;num_input_strings&gt;
+    1e3f:   8d 50 01                lea    0x1(%rax),%edx
+    1e42:   89 15 a8 38 00 00       mov    %edx,0x38a8(%rip)        # 56f0 &lt;num_input_strings&gt;
     ...
-    1ead:    48 8d 4c 24 0c           lea    0xc(%rsp),%rcx
-    1eb2:    48 8d 54 24 08           lea    0x8(%rsp),%rdx
-    1eb7:    4c 8d 44 24 10           lea    0x10(%rsp),%r8
-    1ebc:    48 8d 35 9e 14 00 00     lea    0x149e(%rip),%rsi        # 3361 &lt;array.0+0x1c1&gt;
-    1ec3:    48 8d 3d 26 39 00 00     lea    0x3926(%rip),%rdi        # 57f0 &lt;input_strings+0xf0&gt;
-    1eca:    e8 31 f4 ff ff           call   1300 &lt;__isoc99_sscanf@plt&gt;
-    1ecf:    83 f8 03                 cmp    $0x3,%eax
-    1ed2:    74 0e                    je     1ee2 &lt;phase_defused+0x6b&gt;
-    1ed4:    48 8d 3d c5 13 00 00     lea    0x13c5(%rip),%rdi        # 32a0 &lt;array.0+0x100&gt;
-    1edb:    e8 40 f3 ff ff           call   1220 &lt;puts@plt&gt;
-    1ee0:    eb b6                    jmp    1e98 &lt;phase_defused+0x21&gt;</code></pre><p>上面这段里，传入 <code>sscanf</code> 的两个参数 rsi 和 rdi，分别是 phase_4 输入的字符串，和 <code>%d %d %s</code>。也就是说，这里除了读入 phase_4 输入的两个数字之外，还读入后面的一个字符串！</p><pre><code>(gdb) x/4bs $rdi
+</code></pre>
+<p>不管是哪一处，做的事情都是将 56f0 中存的数加一。也就是说，每调用一次 <code>read_line</code> 函数，这个位置记录的数字会加一。所以只有拆完最后一个 phase，这个地方会变成 6，能够进入下一部分。</p>
+<p>继续看下面的代码：</p>
+<pre><code>0000000000001e77 &lt;phase_defused&gt;:
+    ...
+    1ead:   48 8d 4c 24 0c          lea    0xc(%rsp),%rcx
+    1eb2:   48 8d 54 24 08          lea    0x8(%rsp),%rdx
+    1eb7:   4c 8d 44 24 10          lea    0x10(%rsp),%r8
+    1ebc:   48 8d 35 9e 14 00 00    lea    0x149e(%rip),%rsi        # 3361 &lt;array.0+0x1c1&gt;
+    1ec3:   48 8d 3d 26 39 00 00    lea    0x3926(%rip),%rdi        # 57f0 &lt;input_strings+0xf0&gt;
+    1eca:   e8 31 f4 ff ff          call   1300 &lt;__isoc99_sscanf@plt&gt;
+    1ecf:   83 f8 03                cmp    $0x3,%eax
+    1ed2:   74 0e                   je     1ee2 &lt;phase_defused+0x6b&gt;
+    1ed4:   48 8d 3d c5 13 00 00    lea    0x13c5(%rip),%rdi        # 32a0 &lt;array.0+0x100&gt;
+    1edb:   e8 40 f3 ff ff          call   1220 &lt;puts@plt&gt;
+    1ee0:   eb b6                   jmp    1e98 &lt;phase_defused+0x21&gt;
+</code></pre>
+<p>上面这段里，传入 <code>sscanf</code> 的两个参数 rsi 和 rdi，分别是 phase_4 输入的字符串，和 <code>%d %d %s</code>。也就是说，这里除了读入 phase_4 输入的两个数字之外，还读入后面的一个字符串！</p>
+<pre><code>(gdb) x/4bs $rdi
 0x5555555597f0 &lt;input_strings+240&gt;:     &quot;66 2&quot;
 0x5555555597f5 &lt;input_strings+245&gt;:     &quot;&quot;
 0x5555555597f6 &lt;input_strings+246&gt;:     &quot;&quot;
@@ -783,21 +1013,28 @@ node6: 0x0bc</code></pre><p>从大到小排序，满足要求的排列是：<cod
 0x555555557361: &quot;%d %d %s&quot;
 0x55555555736a: &quot;DrEvil&quot;
 0x555555557371: &quot;liu-virtual-machine&quot;
-0x555555557385: &quot;&quot;</code></pre><p>如果读出来的个数是 3 个（读到了字符串）则跳转后面 1ee2 执行，否则就 <code>puts</code> 客套话。查看 1ed4 行的 32a0 存的字符串，是 <code>Congratulations! You've defused the bomb!</code>。</p><p>看来在 phase_4 的输入里，除了两个数字，还应该输入一个字符串，才能进入下面的代码。</p><pre><code>0000000000001e77 &lt;phase_defused&gt;:
+0x555555557385: &quot;&quot;
+</code></pre>
+<p>如果读出来的个数是 3 个（读到了字符串）则跳转后面 1ee2 执行，否则就 <code>puts</code> 客套话。查看 1ed4 行的 32a0 存的字符串，是 <code>Congratulations! You've defused the bomb!</code>。</p>
+<p>看来在 phase_4 的输入里，除了两个数字，还应该输入一个字符串，才能进入下面的代码。</p>
+<pre><code>0000000000001e77 &lt;phase_defused&gt;:
     ...
-    1ee2:    48 8d 7c 24 10           lea    0x10(%rsp),%rdi
-    1ee7:    48 8d 35 7c 14 00 00     lea    0x147c(%rip),%rsi        # 336a &lt;array.0+0x1ca&gt;
-    1eee:    e8 c7 fc ff ff           call   1bba &lt;strings_not_equal&gt;
-    1ef3:    85 c0                    test   %eax,%eax
-    1ef5:    75 dd                    jne    1ed4 &lt;phase_defused+0x5d&gt;
-    1ef7:    48 8d 3d 42 13 00 00     lea    0x1342(%rip),%rdi        # 3240 &lt;array.0+0xa0&gt;
-    1efe:    e8 1d f3 ff ff           call   1220 &lt;puts@plt&gt;
-    1f03:    48 8d 3d 5e 13 00 00     lea    0x135e(%rip),%rdi        # 3268 &lt;array.0+0xc8&gt;
-    1f0a:    e8 11 f3 ff ff           call   1220 &lt;puts@plt&gt;
-    1f0f:    b8 00 00 00 00           mov    $0x0,%eax
-    1f14:    e8 95 fb ff ff           call   1aae &lt;secret_phase&gt;
-    1f19:    eb b9                    jmp    1ed4 &lt;phase_defused+0x5d&gt;
-    1f1b:    e8 30 f3 ff ff           call   1250 &lt;__stack_chk_fail@plt&gt;</code></pre><p>又见到了熟悉的 <code>strings_not_equal</code> 函数。我们试试输入 phase_4 的时候加上一个字符串 <code>test</code>，在这个函数之前，看看 rdi、rsi 两个参数是啥：</p><pre><code>(gdb) x/4bs $rdi
+    1ee2:   48 8d 7c 24 10          lea    0x10(%rsp),%rdi
+    1ee7:   48 8d 35 7c 14 00 00    lea    0x147c(%rip),%rsi        # 336a &lt;array.0+0x1ca&gt;
+    1eee:   e8 c7 fc ff ff          call   1bba &lt;strings_not_equal&gt;
+    1ef3:   85 c0                   test   %eax,%eax
+    1ef5:   75 dd                   jne    1ed4 &lt;phase_defused+0x5d&gt;
+    1ef7:   48 8d 3d 42 13 00 00    lea    0x1342(%rip),%rdi        # 3240 &lt;array.0+0xa0&gt;
+    1efe:   e8 1d f3 ff ff          call   1220 &lt;puts@plt&gt;
+    1f03:   48 8d 3d 5e 13 00 00    lea    0x135e(%rip),%rdi        # 3268 &lt;array.0+0xc8&gt;
+    1f0a:   e8 11 f3 ff ff          call   1220 &lt;puts@plt&gt;
+    1f0f:   b8 00 00 00 00          mov    $0x0,%eax
+    1f14:   e8 95 fb ff ff          call   1aae &lt;secret_phase&gt;
+    1f19:   eb b9                   jmp    1ed4 &lt;phase_defused+0x5d&gt;
+    1f1b:   e8 30 f3 ff ff          call   1250 &lt;__stack_chk_fail@plt&gt;
+</code></pre>
+<p>又见到了熟悉的 <code>strings_not_equal</code> 函数。我们试试输入 phase_4 的时候加上一个字符串 <code>test</code>，在这个函数之前，看看 rdi、rsi 两个参数是啥：</p>
+<pre><code>(gdb) x/4bs $rdi
 0x7fffffffe050: &quot;test&quot;
 0x7fffffffe055: &quot;U&quot;
 0x7fffffffe057: &quot;&quot;
@@ -806,127 +1043,169 @@ node6: 0x0bc</code></pre><p>从大到小排序，满足要求的排列是：<cod
 0x55555555736a: &quot;DrEvil&quot;
 0x555555557371: &quot;liu-virtual-machine&quot;
 0x555555557385: &quot;&quot;
-0x555555557386: &quot;&quot;</code></pre><p>显然，要求输入的字符串是 <code>DrEvil</code>，<code>strings_not_equal</code> 函数 eax 返回 0，才会进入下面的部分，否则就回到上面输出客套话和正常退出的代码。<br>经过重重困难，我们终于走到了 <code>call secret_phase</code>。</p><h2>secret_phase：递归与链表</h2><p>我们先来看 secret_phase 里调用的 <code>fun7</code> 函数。这个函数接受两个参数 rdi 和 rsi。</p><pre><code>0000000000001a6d &lt;fun7&gt;:
-    1a6d:    f3 0f 1e fa              endbr64
-    1a71:    48 85 ff                 test   %rdi,%rdi
-    1a74:    74 32                    je     1aa8 &lt;fun7+0x3b&gt;-------------.
-    1a76:    48 83 ec 08              sub    $0x8,%rsp                    |
-    1a7a:    8b 17                    mov    (%rdi),%edx                  |
-    1a7c:    39 f2                    cmp    %esi,%edx                    |
-    1a7e:    7f 0c                    jg     1a8c &lt;fun7+0x1f&gt;---.         |
-    1a80:    b8 00 00 00 00           mov    $0x0,%eax          |         |
-    1a85:    75 12                    jne    1a99 &lt;fun7+0x2c&gt;---+---.     |
-    1a87:    48 83 c4 08              add    $0x8,%rsp &lt;--------+---+-----+----.
-    1a8b:    c3                       ret                       |   |     |    |
-    1a8c:    48 8b 7f 08              mov    0x8(%rdi),%rdi &lt;---`   |     |    |
-    1a90:    e8 d8 ff ff ff           call   1a6d &lt;fun7&gt;            |     |    |
-    1a95:    01 c0                    add    %eax,%eax              |     |    |
-    1a97:    eb ee                    jmp    1a87 &lt;fun7+0x1a&gt;-------+-----+----+
-    1a99:    48 8b 7f 10              mov    0x10(%rdi),%rdi &lt;------`     |    |
-    1a9d:    e8 cb ff ff ff           call   1a6d &lt;fun7&gt;                  |    |
-    1aa2:    8d 44 00 01              lea    0x1(%rax,%rax,1),%eax        |    |
-    1aa6:    eb df                    jmp    1a87 &lt;fun7+0x1a&gt;-------------+----+
-    1aa8:    b8 ff ff ff ff           mov    $0xffffffff,%eax &lt;-----------`
-    1aad:    c3                       ret</code></pre><p>还是人肉 IDA 出来：</p><pre><code class="lang-cpp">if (rdi == 0) return -1;
+0x555555557386: &quot;&quot;
+</code></pre>
+<p>显然，要求输入的字符串是 <code>DrEvil</code>，<code>strings_not_equal</code> 函数 eax 返回 0，才会进入下面的部分，否则就回到上面输出客套话和正常退出的代码。<br>
+经过重重困难，我们终于走到了 <code>call secret_phase</code>。</p>
+<h2><a id="secret_phase递归与链表" class="heading-anchor"></a>secret_phase：递归与链表</h2>
+<p>我们先来看 secret_phase 里调用的 <code>fun7</code> 函数。这个函数接受两个参数 rdi 和 rsi。</p>
+<pre><code>0000000000001a6d &lt;fun7&gt;:
+    1a6d:   f3 0f 1e fa             endbr64
+    1a71:   48 85 ff                test   %rdi,%rdi
+    1a74:   74 32                   je     1aa8 &lt;fun7+0x3b&gt;-------------.
+    1a76:   48 83 ec 08             sub    $0x8,%rsp                    |
+    1a7a:   8b 17                   mov    (%rdi),%edx                  |
+    1a7c:   39 f2                   cmp    %esi,%edx                    |
+    1a7e:   7f 0c                   jg     1a8c &lt;fun7+0x1f&gt;---.         |
+    1a80:   b8 00 00 00 00          mov    $0x0,%eax          |         |
+    1a85:   75 12                   jne    1a99 &lt;fun7+0x2c&gt;---+---.     |
+    1a87:   48 83 c4 08             add    $0x8,%rsp &lt;--------+---+-----+----.
+    1a8b:   c3                      ret                       |   |     |    |
+    1a8c:   48 8b 7f 08             mov    0x8(%rdi),%rdi &lt;---`   |     |    |
+    1a90:   e8 d8 ff ff ff          call   1a6d &lt;fun7&gt;            |     |    |
+    1a95:   01 c0                   add    %eax,%eax              |     |    |
+    1a97:   eb ee                   jmp    1a87 &lt;fun7+0x1a&gt;-------+-----+----+
+    1a99:   48 8b 7f 10             mov    0x10(%rdi),%rdi &lt;------`     |    |
+    1a9d:   e8 cb ff ff ff          call   1a6d &lt;fun7&gt;                  |    |
+    1aa2:   8d 44 00 01             lea    0x1(%rax,%rax,1),%eax        |    |
+    1aa6:   eb df                   jmp    1a87 &lt;fun7+0x1a&gt;-------------+----+
+    1aa8:   b8 ff ff ff ff          mov    $0xffffffff,%eax &lt;-----------`
+    1aad:   c3                      ret
+</code></pre>
+<p>还是人肉 IDA 出来：</p>
+<pre><code class="language-cpp"><span class="hljs-keyword">if</span> (rdi == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
 edx = (rdi);
-if (edx &gt; esi){
-    rdi = (rdi + 8);
+<span class="hljs-keyword">if</span> (edx &gt; esi){
+    rdi = (rdi + <span class="hljs-number">8</span>);
     fun7;
-    eax *= 2;
-    return;
-} else {
-    eax = 0;
-    if (edx == esi) return;
-    rdi = (rdi + 10);
+    eax *= <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">return</span>;
+} <span class="hljs-keyword">else</span> {
+    eax = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (edx == esi) <span class="hljs-keyword">return</span>;
+    rdi = (rdi + <span class="hljs-number">10</span>);
     fun7;
-    eax = 2*rax + 1;
-    return;
+    eax = <span class="hljs-number">2</span>*rax + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span>;
 }
 
-// 进一步抽象和简化
-// x:rdi; y:rsi; ret:eax;
-auto fun7(auto x, auto y){
-    if (x == 0) return -1;
-    if (*x == y) return 0;
-    if (*x &gt; y){
-        x = *(x + 8); // 不同于 C 标准语法，此处 +8 指八个字节，下同理
-        return 2 * fun7(x, y);
-    } else {
-        x = *(x + 16);
-        return 2 * fun7(x, y) + 1;
+<span class="hljs-comment">// 进一步抽象和简化</span>
+<span class="hljs-comment">// x:rdi; y:rsi; ret:eax;</span>
+<span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">fun7</span><span class="hljs-params">(<span class="hljs-keyword">auto</span> x, <span class="hljs-keyword">auto</span> y)</span></span>{
+    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">if</span> (*x == y) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (*x &gt; y){
+        x = *(x + <span class="hljs-number">8</span>); <span class="hljs-comment">// 不同于 C 标准语法，此处 +8 指八个字节，下同理</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * <span class="hljs-built_in">fun7</span>(x, y);
+    } <span class="hljs-keyword">else</span> {
+        x = *(x + <span class="hljs-number">16</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * <span class="hljs-built_in">fun7</span>(x, y) + <span class="hljs-number">1</span>;
     }
-}</code></pre><p>接下来看看 secret_phase 的主函数，这基本上是一个顺序执行的函数，没什么 jump。<br>开头和结尾，因为 <code>main</code> 里没有为它提供输入输出，这个函数里自己做了 <code>read_line</code> 和 <code>puts</code>。</p><pre><code>0000000000001aae &lt;secret_phase&gt;:
-    1aae:    f3 0f 1e fa              endbr64
-    1ab2:    53                       push   %rbx
-    1ab3:    e8 87 02 00 00           call   1d3f &lt;read_line&gt;
-    1ab8:    48 89 c7                 mov    %rax,%rdi
-    1abb:    ba 0a 00 00 00           mov    $0xa,%edx
-    1ac0:    be 00 00 00 00           mov    $0x0,%esi
-    1ac5:    e8 16 f8 ff ff           call   12e0 &lt;strtol@plt&gt;
-    1aca:    89 c3                    mov    %eax,%ebx
-    1acc:    83 e8 01                 sub    $0x1,%eax
-    1acf:    3d e8 03 00 00           cmp    $0x3e8,%eax
-    1ad4:    77 26                    ja     1afc &lt;secret_phase+0x4e&gt;
-    1ad6:    89 de                    mov    %ebx,%esi
-    1ad8:    48 8d 3d 51 36 00 00     lea    0x3651(%rip),%rdi        # 5130 &lt;n1&gt;
-    1adf:    e8 89 ff ff ff           call   1a6d &lt;fun7&gt;
-    1ae4:    83 f8 03                 cmp    $0x3,%eax
-    1ae7:    75 1a                    jne    1b03 &lt;secret_phase+0x55&gt;
-    1ae9:    48 8d 3d f0 16 00 00     lea    0x16f0(%rip),%rdi        # 31e0 &lt;array.0+0x40&gt;
-    1af0:    e8 2b f7 ff ff           call   1220 &lt;puts@plt&gt;
-    1af5:    e8 7d 03 00 00           call   1e77 &lt;phase_defused&gt;
-    1afa:    5b                       pop    %rbx
-    1afb:    c3                       ret
-    1afc:    e8 cd 01 00 00           call   1cce &lt;explode_bomb&gt;
-    1b01:    eb d3                    jmp    1ad6 &lt;secret_phase+0x28&gt;
-    1b03:    e8 c6 01 00 00           call   1cce &lt;explode_bomb&gt;
-    1b08:    eb df                    jmp    1ae9 &lt;secret_phase+0x3b&gt;</code></pre><p>调用了 <code>strtol</code> 这个函数，这是标准库里的函数，定义如下（<a href="https://cplusplus.com/reference/cstdlib/strtol/">参考</a>）：</p><pre><code class="lang-cpp">long int strtol (const char* str, char** endptr, int base);</code></pre><p>将这段汇编代码改编成 C，因为没什么 jump，逻辑非常简单：</p><pre><code class="lang-cpp">read_line();
+}
+</code></pre>
+<p>接下来看看 secret_phase 的主函数，这基本上是一个顺序执行的函数，没什么 jump。<br>
+开头和结尾，因为 <code>main</code> 里没有为它提供输入输出，这个函数里自己做了 <code>read_line</code> 和 <code>puts</code>。</p>
+<pre><code>0000000000001aae &lt;secret_phase&gt;:
+    1aae:   f3 0f 1e fa             endbr64
+    1ab2:   53                      push   %rbx
+    1ab3:   e8 87 02 00 00          call   1d3f &lt;read_line&gt;
+    1ab8:   48 89 c7                mov    %rax,%rdi
+    1abb:   ba 0a 00 00 00          mov    $0xa,%edx
+    1ac0:   be 00 00 00 00          mov    $0x0,%esi
+    1ac5:   e8 16 f8 ff ff          call   12e0 &lt;strtol@plt&gt;
+    1aca:   89 c3                   mov    %eax,%ebx
+    1acc:   83 e8 01                sub    $0x1,%eax
+    1acf:   3d e8 03 00 00          cmp    $0x3e8,%eax
+    1ad4:   77 26                   ja     1afc &lt;secret_phase+0x4e&gt;
+    1ad6:   89 de                   mov    %ebx,%esi
+    1ad8:   48 8d 3d 51 36 00 00    lea    0x3651(%rip),%rdi        # 5130 &lt;n1&gt;
+    1adf:   e8 89 ff ff ff          call   1a6d &lt;fun7&gt;
+    1ae4:   83 f8 03                cmp    $0x3,%eax
+    1ae7:   75 1a                   jne    1b03 &lt;secret_phase+0x55&gt;
+    1ae9:   48 8d 3d f0 16 00 00    lea    0x16f0(%rip),%rdi        # 31e0 &lt;array.0+0x40&gt;
+    1af0:   e8 2b f7 ff ff          call   1220 &lt;puts@plt&gt;
+    1af5:   e8 7d 03 00 00          call   1e77 &lt;phase_defused&gt;
+    1afa:   5b                      pop    %rbx
+    1afb:   c3                      ret
+    1afc:   e8 cd 01 00 00          call   1cce &lt;explode_bomb&gt;
+    1b01:   eb d3                   jmp    1ad6 &lt;secret_phase+0x28&gt;
+    1b03:   e8 c6 01 00 00          call   1cce &lt;explode_bomb&gt;
+    1b08:   eb df                   jmp    1ae9 &lt;secret_phase+0x3b&gt;
+</code></pre>
+<p>调用了 <code>strtol</code> 这个函数，这是标准库里的函数，定义如下（<a href="https://cplusplus.com/reference/cstdlib/strtol/">参考</a>）：</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">int</span> <span class="hljs-title">strtol</span> <span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* str, <span class="hljs-type">char</span>** endptr, <span class="hljs-type">int</span> base)</span></span>;
+</code></pre>
+<p>将这段汇编代码改编成 C，因为没什么 jump，逻辑非常简单：</p>
+<pre><code class="language-cpp"><span class="hljs-built_in">read_line</span>();
 rdi = rax;
-edx = 0xa;
-esi = 0x0;
-strtol();
+edx = <span class="hljs-number">0xa</span>;
+esi = <span class="hljs-number">0x0</span>;
+<span class="hljs-built_in">strtol</span>();
 ebx = eax;
 eax--;
-if (eax &gt; 0x3e8) boom();
+<span class="hljs-keyword">if</span> (eax &gt; <span class="hljs-number">0x3e8</span>) <span class="hljs-built_in">boom</span>();
 esi = ebx;
-rdi = 5130;
-fun7();
-if (eax != 0x3) boom();
-puts();
-phase_defused();
+rdi = <span class="hljs-number">5130</span>;
+<span class="hljs-built_in">fun7</span>();
+<span class="hljs-keyword">if</span> (eax != <span class="hljs-number">0x3</span>) <span class="hljs-built_in">boom</span>();
+<span class="hljs-built_in">puts</span>();
+<span class="hljs-built_in">phase_defused</span>();
 
-// 简化后
-int y = strtol(read_line(), 0xa, 0x0);
-if (y-1 &gt; 0x3e8) boom();
-ret = fun7(5130, y);
-if (ret != 0x3) boom();</code></pre><p>这里 <code>strtol</code> 函数的三个参数就分别是 rdi、esi、edx。也就是说，将读入的这一行前 10 个字符转为 int，作为 <code>fun7</code> 的第二个参数。这个数字不能大于 1001（0x3e9）。</p><p>接下来调用 <code>fun7</code>，它的第一个参数是内存中存放的一个部分 <code>0x3651(%rip),%rdi</code>，我们用 gdb 看看这里存着啥：</p><pre><code>(gdb) x/32gx 0x555555559130
-0x555555559130 &lt;n1&gt;:    0x0000000000000024    0x0000555555559150
-0x555555559140 &lt;n1+16&gt;:    0x0000555555559170    0x0000000000000000
-0x555555559150 &lt;n21&gt;:    0x0000000000000008    0x00005555555591d0
-0x555555559160 &lt;n21+16&gt;:    0x0000555555559190    0x0000000000000000
-0x555555559170 &lt;n22&gt;:    0x0000000000000032    0x00005555555591b0
-0x555555559180 &lt;n22+16&gt;:    0x00005555555591f0    0x0000000000000000
-0x555555559190 &lt;n32&gt;:    0x0000000000000016    0x00005555555590b0
-0x5555555591a0 &lt;n32+16&gt;:    0x0000555555559070    0x0000000000000000
-0x5555555591b0 &lt;n33&gt;:    0x000000000000002d    0x0000555555559010
-0x5555555591c0 &lt;n33+16&gt;:    0x00005555555590d0    0x0000000000000000
-0x5555555591d0 &lt;n31&gt;:    0x0000000000000006    0x0000555555559030
-0x5555555591e0 &lt;n31+16&gt;:    0x0000555555559090    0x0000000000000000
-0x5555555591f0 &lt;n34&gt;:    0x000000000000006b    0x0000555555559050
-0x555555559200 &lt;n34+16&gt;:    0x00005555555590f0    0x0000000000000000
-0x555555559210 &lt;node1&gt;:    0x0000000100000336    0x0000555555559240
-0x555555559220 &lt;node2&gt;:    0x000000020000013e    0x0000555555559110</code></pre><p>看起来可能还是链表。<code>fun7</code> 返回值必须是 3 才算炸弹拆除，我们可以试试看按照 <code>fun7</code> 函数主体部分一层层模拟：</p><ul><li><code>fun7(n1, y) = 3</code> 意味着 <code>fun7(*(n1+16), y) = 1</code>；得到的 <code>n1' = 555555559170</code>。</li><li><code>fun7(n1', y) = 1</code> 意味着 <code>fun7(*(n1'+16), y) = 0</code>；得到的 <code>n1'' = 0x5555555591f0</code>。</li><li><p><code>fun7(n1'', y) = 0</code> 意味着 <code>*n1'' = y</code> 或者 <code>fun7(*(n1''+8), y) = 0</code></p><ul><li>使 y 为 0x6b 即可，不用继续搜索了。（当然如果继续搜索可能找到其他解）</li></ul></li></ul><p>所以，secret_phase 的答案是 107。</p><h2>答案</h2><p>一组不包含 secret_phase 的一组答案如下：</p><pre><code>Crikey! I have lost my mojo!
+<span class="hljs-comment">// 简化后</span>
+<span class="hljs-type">int</span> y = <span class="hljs-built_in">strtol</span>(<span class="hljs-built_in">read_line</span>(), <span class="hljs-number">0xa</span>, <span class="hljs-number">0x0</span>);
+<span class="hljs-keyword">if</span> (y<span class="hljs-number">-1</span> &gt; <span class="hljs-number">0x3e8</span>) <span class="hljs-built_in">boom</span>();
+ret = <span class="hljs-built_in">fun7</span>(<span class="hljs-number">5130</span>, y);
+<span class="hljs-keyword">if</span> (ret != <span class="hljs-number">0x3</span>) <span class="hljs-built_in">boom</span>();
+</code></pre>
+<p>这里 <code>strtol</code> 函数的三个参数就分别是 rdi、esi、edx。也就是说，将读入的这一行前 10 个字符转为 int，作为 <code>fun7</code> 的第二个参数。这个数字不能大于 1001（0x3e9）。</p>
+<p>接下来调用 <code>fun7</code>，它的第一个参数是内存中存放的一个部分 <code>0x3651(%rip),%rdi</code>，我们用 gdb 看看这里存着啥：</p>
+<pre><code>(gdb) x/32gx 0x555555559130
+0x555555559130 &lt;n1&gt;:    0x0000000000000024  0x0000555555559150
+0x555555559140 &lt;n1+16&gt;: 0x0000555555559170  0x0000000000000000
+0x555555559150 &lt;n21&gt;:   0x0000000000000008  0x00005555555591d0
+0x555555559160 &lt;n21+16&gt;:    0x0000555555559190  0x0000000000000000
+0x555555559170 &lt;n22&gt;:   0x0000000000000032  0x00005555555591b0
+0x555555559180 &lt;n22+16&gt;:    0x00005555555591f0  0x0000000000000000
+0x555555559190 &lt;n32&gt;:   0x0000000000000016  0x00005555555590b0
+0x5555555591a0 &lt;n32+16&gt;:    0x0000555555559070  0x0000000000000000
+0x5555555591b0 &lt;n33&gt;:   0x000000000000002d  0x0000555555559010
+0x5555555591c0 &lt;n33+16&gt;:    0x00005555555590d0  0x0000000000000000
+0x5555555591d0 &lt;n31&gt;:   0x0000000000000006  0x0000555555559030
+0x5555555591e0 &lt;n31+16&gt;:    0x0000555555559090  0x0000000000000000
+0x5555555591f0 &lt;n34&gt;:   0x000000000000006b  0x0000555555559050
+0x555555559200 &lt;n34+16&gt;:    0x00005555555590f0  0x0000000000000000
+0x555555559210 &lt;node1&gt;: 0x0000000100000336  0x0000555555559240
+0x555555559220 &lt;node2&gt;: 0x000000020000013e  0x0000555555559110
+</code></pre>
+<p>看起来可能还是链表。<code>fun7</code> 返回值必须是 3 才算炸弹拆除，我们可以试试看按照 <code>fun7</code> 函数主体部分一层层模拟：</p>
+<ul>
+<li><code>fun7(n1, y) = 3</code> 意味着 <code>fun7(*(n1+16), y) = 1</code>；得到的 <code>n1' = 555555559170</code>。</li>
+<li><code>fun7(n1', y) = 1</code> 意味着 <code>fun7(*(n1'+16), y) = 0</code>；得到的 <code>n1'' = 0x5555555591f0</code>。</li>
+<li><code>fun7(n1'', y) = 0</code> 意味着 <code>*n1'' = y</code> 或者 <code>fun7(*(n1''+8), y) = 0</code>
+<ul>
+<li>使 y 为 0x6b 即可，不用继续搜索了。（当然如果继续搜索可能找到其他解）</li>
+</ul></li>
+</ul>
+<p>所以，secret_phase 的答案是 107。</p>
+<h2><a id="答案" class="heading-anchor"></a>答案</h2>
+<p>一组不包含 secret_phase 的一组答案如下：</p>
+<pre><code>Crikey! I have lost my mojo!
 1 2 4 7 11 16
 0 b 624
 66 2
 5 115
-1 4 3 5 2 6</code></pre><p>包含 sccret_phase 的一组答案如下：</p><pre><code>Crikey! I have lost my mojo!
+1 4 3 5 2 6
+</code></pre>
+<p>包含 sccret_phase 的一组答案如下：</p>
+<pre><code>Crikey! I have lost my mojo!
 1 2 4 7 11 16
 0 b 624
 66 2 DrEvil
 5 115
 1 4 3 5 2 6
-107</code></pre> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1lnqUt" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;csapp-bomblab&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/csapp-bomblab&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+107
+</code></pre>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="2aq3SB" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;csapp-bomblab&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -953,4 +1232,4 @@ CSAPP Bomblab 题解 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjm
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  

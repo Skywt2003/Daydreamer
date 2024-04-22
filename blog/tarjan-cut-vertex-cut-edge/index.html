@@ -1,4 +1,4 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Tarjan 算法求解无向图的割点与割边</title><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.1.1"><title>Tarjan 算法求解无向图的割点与割边</title><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +23,10 @@
         },
         { once: false }
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.IRO33uA2.css" />
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.B43sGgpW.css" />
+<link rel="stylesheet" href="/_astro/friends.BS9m3_2e.css" />
 <style>img[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style>
-<link rel="stylesheet" href="/_astro/friends.0bZnSjYD.css" /><script type="module" src="/_astro/hoisted.-OpaiJNX.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.DnddI8c6.js"></script></head> <body> <header class="mt-12 wide-container" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -64,7 +64,7 @@ Tarjan 算法求解无向图的割点与割边 </span> </h5> <div class="m-2 sec
     () => {
       addNavObserver();
     },
-    { once: false },
+    { once: false }
   );
 
   document.addEventListener(
@@ -72,136 +72,231 @@ Tarjan 算法求解无向图的割点与割边 </span> </h5> <div class="m-2 sec
     () => {
       removeNavObserver();
     },
-    { once: false },
+    { once: false }
   );
-</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Tarjan 算法求解无向图的割点与割边</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 08 月 05 日</span>   </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <p class="card p-2 my-8" data-astro-cid-4sn4zg3r>
-⚙️ 全新博客前端仍在测试中。如果文章显示不正常，可以尝试访问<a href="https://blog.skywt.cn/posts/tarjan-cut-vertex-cut-edge" class="link underline" data-astro-cid-4sn4zg3r>原博客的这篇文章</a>。
-</p> <article class="content" data-astro-cid-4sn4zg3r> <p>在一幅无向图中，如果删除了一个点，导致图分成了两个或多个联通块（强连通分量），那么这个点就是割点。怎么求这样的点呢？最原始暴力的方法就是每次枚举一个点，删除，跑一遍最短路。今天我们可以用更高级的 Tarjan 算法 $ \displaystyle \Theta (N)$ 求解。</p><!--more--><h2>割点与割边</h2><h3>割点的定义</h3><blockquote>在一个无向图中，如果有一个顶点集合，删除这个顶点集合以及这个集合中所有顶点相关联的边以后，图的连通分量增多，就称这个点集为割点集合。</blockquote><p>也就是前文所述：如果删除了一个点，导致图分成了两个或多个联通块（强连通分量），那么这个点就是割点（也叫作割顶）。说得再通俗点，去掉割点，图会不连通。</p><h3>割边的定义</h3><p>与割点类似：</p><blockquote>假设有连通图 G，e 是其中一条边，如果 G-e 是不连通的，则边 e 是图 G 的一条割边。</blockquote><p>就是说如果把这条边删除，图分为两个强连通分量，这条边就称为割边（也称为桥）。</p><h3>暴力求解</h3><p>以割点为例：前面也提到了，最原始的暴力方法：就是每次枚举一个点，删除，跑一遍最短路，看看结点 1 是否还可以到达除了删除点之外的所有点，如果不能则说明删除点是割点。如果跑最稳的 Dijkstra+Heap，复杂度也要 $\Theta (N\ast M \ast log_2(M))$……</p><h2>Tarjan 算法</h2><p>求解割点和割边，用 Tarjan 算法会十分优秀。在此之前我们要先学习下什么是 DFS 树。</p><h3>DFS 树</h3><p>所谓 DFS 树，就是对一幅图进行 DFS 按照 DFS 顺序得到的一棵生成树。可以从任意点开始 DFS（一般从 1 开始），并不影响答案。在这幅图中，在 DFS 树中的边称为树边，不在 DFS 树中的边称为非树边。</p><h4>返祖边</h4><p>这里我们只研究无向图。在无向图中，非树边只会以返祖边的形式存在。也就是说非树边会从当前点指向某个祖先。例如下图中，D 指向 A 的边就是返祖边。（这张图其实是无向图，为了便于理解，按照 DFS 的顺序标出方向）</p><pre><code class="lang-mermaid">graph TB
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="primary-color leading-relaxed" data-astro-cid-4sn4zg3r>Tarjan 算法求解无向图的割点与割边</h1> <p class="mt-4 secondary-color leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2018 年 8 月 5 日 09:47</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E5%89%B2%E7%82%B9%E4%B8%8E%E5%89%B2%E8%BE%B9">割点与割边</a>
+<ul>
+<li><a href="#%E5%89%B2%E7%82%B9%E7%9A%84%E5%AE%9A%E4%B9%89">割点的定义</a></li>
+<li><a href="#%E5%89%B2%E8%BE%B9%E7%9A%84%E5%AE%9A%E4%B9%89">割边的定义</a></li>
+<li><a href="#%E6%9A%B4%E5%8A%9B%E6%B1%82%E8%A7%A3">暴力求解</a></li>
+</ul></li>
+<li><a href="#tarjan-%E7%AE%97%E6%B3%95">Tarjan 算法</a>
+<ul>
+<li><a href="#dfs-%E6%A0%91">DFS 树</a>
+<ul>
+<li><a href="#%E8%BF%94%E7%A5%96%E8%BE%B9">返祖边</a></li>
+</ul></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86">算法原理</a>
+<ul>
+<li><a href="#%E5%89%B2%E7%82%B9%E7%9A%84%E6%B1%82%E8%A7%A3">割点的求解</a></li>
+<li><a href="#%E5%89%B2%E8%BE%B9%E7%9A%84%E6%B1%82%E8%A7%A3">割边的求解</a></li>
+<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#%E4%BE%8B%E9%A2%98">例题</a>
+<ul>
+<li><a href="#%E5%89%B2%E7%82%B9%E6%A8%A1%E6%9D%BF%E9%A2%98">割点模板题</a></li>
+<li><a href="#%E5%89%B2%E8%BE%B9%E6%A8%A1%E6%9D%BF%E9%A2%98">割边模板题</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81">参考代码</a></li>
+</ul></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+<p>在一幅无向图中，如果删除了一个点，导致图分成了两个或多个联通块（强连通分量），那么这个点就是割点。怎么求这样的点呢？最原始暴力的方法就是每次枚举一个点，删除，跑一遍最短路。今天我们可以用更高级的 Tarjan 算法 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \Theta (N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 求解。</p>
+<h2><a id="割点与割边" class="heading-anchor"></a>割点与割边</h2>
+<h3><a id="割点的定义" class="heading-anchor"></a>割点的定义</h3>
+<blockquote>
+<p>在一个无向图中，如果有一个顶点集合，删除这个顶点集合以及这个集合中所有顶点相关联的边以后，图的连通分量增多，就称这个点集为割点集合。</p>
+</blockquote>
+<p>也就是前文所述：如果删除了一个点，导致图分成了两个或多个联通块（强连通分量），那么这个点就是割点（也叫作割顶）。说得再通俗点，去掉割点，图会不连通。</p>
+<h3><a id="割边的定义" class="heading-anchor"></a>割边的定义</h3>
+<p>与割点类似：</p>
+<blockquote>
+<p>假设有连通图 G，e 是其中一条边，如果 G-e 是不连通的，则边 e 是图 G 的一条割边。</p>
+</blockquote>
+<p>就是说如果把这条边删除，图分为两个强连通分量，这条边就称为割边（也称为桥）。</p>
+<h3><a id="暴力求解" class="heading-anchor"></a>暴力求解</h3>
+<p>以割点为例：前面也提到了，最原始的暴力方法：就是每次枚举一个点，删除，跑一遍最短路，看看结点 1 是否还可以到达除了删除点之外的所有点，如果不能则说明删除点是割点。如果跑最稳的 Dijkstra+Heap，复杂度也要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>N</mi><mo>∗</mo><mi>M</mi><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta (N\ast M \ast log_2(M))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">))</span></span></span></span>……</p>
+<h2><a id="tarjan-算法" class="heading-anchor"></a>Tarjan 算法</h2>
+<p>求解割点和割边，用 Tarjan 算法会十分优秀。在此之前我们要先学习下什么是 DFS 树。</p>
+<h3><a id="dfs-树" class="heading-anchor"></a>DFS 树</h3>
+<p>所谓 DFS 树，就是对一幅图进行 DFS 按照 DFS 顺序得到的一棵生成树。可以从任意点开始 DFS（一般从 1 开始），并不影响答案。在这幅图中，在 DFS 树中的边称为树边，不在 DFS 树中的边称为非树边。</p>
+<h4><a id="返祖边" class="heading-anchor"></a>返祖边</h4>
+<p>这里我们只研究无向图。在无向图中，非树边只会以返祖边的形式存在。也就是说非树边会从当前点指向某个祖先。例如下图中，D 指向 A 的边就是返祖边。（这张图其实是无向图，为了便于理解，按照 DFS 的顺序标出方向）</p>
+<pre><code class="language-mermaid">graph TB
     A((A))--&gt;B((B))
     B((B))--&gt;C((C))
     B((B))--&gt;D((D))
-    D((D))--&gt;A</code></pre><h3>算法原理</h3><h4>割点的求解</h4><p>可以把割点分为两种情况：</p><ol><li>根节点在 DFS 树中有多于一个子节点，那么根节点就是割点；</li><li>对于非根节点 u，它至少有一棵子树没有返祖边可以到达 u 的祖先。</li></ol><p>第一种情况很好理解；对于第二种情况，如果 u 有一个子树中有一个结点 x 有返祖边可以到达 u 的祖先，那么把 u 删除后，由于原来的树是联通的，那么我们找出的 x 仍然有边可以到达 u 以上的所有点，又因为那个点在 u 的一棵子树里，那么这棵子树就可以到达 u 以上的所有点！</p><h4>割边的求解</h4><p>割边甚至更加简单，忽略第一种情况，如果一条边是割边，当且仅当其子树均没有跨过这条边。</p><h4>具体实现</h4><p>以求割点为例，每个节点维护几个信息：</p><ul><li>$dfn(x)$ 表示点 x 的标号，即<strong>它是第几个被遍历到的点</strong>。维护这一信息十分有用，因为如果点 a 是点 b 的祖先，那么 $dfn(a) \lt dfn(b)$ 。</li><li>$low(x)$ 表示 x 点不经过其的父节点，能通过返祖边到达的 $dfn$ 最小的祖先的 $dfn$ 值。初始值为 $dfn(x)$ 。</li><li>$fa(x)$ 表示 x 的父节点。在求割边时，我们记录的 $fa(x)$ 表示 x 与其祖先之间的边的标号。</li></ul><p>在 DFS 的同时可以维护这几个信息，回溯时判断如果 $low(v)&gt;dfn(x)$ （v 是 x 的儿子）说明 x 是割点。</p><p>核心代码如下：</p><pre><code class="lang-cpp">inline void DFS(int x){
-    vis[x]=1;dfn[x]=low[x]=++acnt;
-    int nowson=0;
-    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+    D((D))--&gt;A
+</code></pre>
+<h3><a id="算法原理" class="heading-anchor"></a>算法原理</h3>
+<h4><a id="割点的求解" class="heading-anchor"></a>割点的求解</h4>
+<p>可以把割点分为两种情况：</p>
+<ol>
+<li>根节点在 DFS 树中有多于一个子节点，那么根节点就是割点；</li>
+<li>对于非根节点 u，它至少有一棵子树没有返祖边可以到达 u 的祖先。</li>
+</ol>
+<p>第一种情况很好理解；对于第二种情况，如果 u 有一个子树中有一个结点 x 有返祖边可以到达 u 的祖先，那么把 u 删除后，由于原来的树是联通的，那么我们找出的 x 仍然有边可以到达 u 以上的所有点，又因为那个点在 u 的一棵子树里，那么这棵子树就可以到达 u 以上的所有点！</p>
+<h4><a id="割边的求解" class="heading-anchor"></a>割边的求解</h4>
+<p>割边甚至更加简单，忽略第一种情况，如果一条边是割边，当且仅当其子树均没有跨过这条边。</p>
+<h4><a id="具体实现" class="heading-anchor"></a>具体实现</h4>
+<p>以求割点为例，每个节点维护几个信息：</p>
+<ul>
+<li><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dfn(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 表示点 x 的标号，即<strong>它是第几个被遍历到的点</strong>。维护这一信息十分有用，因为如果点 a 是点 b 的祖先，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mi>d</mi><mi>f</mi><mi>n</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dfn(a) \lt dfn(b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span> 。</p></li>
+<li><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">low(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 表示 x 点不经过其的父节点，能通过返祖边到达的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">dfn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span></span></span></span> 最小的祖先的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">dfn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span></span></span></span> 值。初始值为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dfn(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 。</p></li>
+<li><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">fa(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 表示 x 的父节点。在求割边时，我们记录的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">fa(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 表示 x 与其祖先之间的边的标号。</p></li>
+</ul>
+<p>在 DFS 的同时可以维护这几个信息，回溯时判断如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mi>d</mi><mi>f</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">low(v)&gt;dfn(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> （v 是 x 的儿子）说明 x 是割点。</p>
+<p>核心代码如下：</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>{
+    vis[x]=<span class="hljs-number">1</span>;dfn[x]=low[x]=++acnt;
+    <span class="hljs-type">int</span> nowson=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=lnk[x];i;i=nxt[i]) <span class="hljs-keyword">if</span> (!vis[son[i]]){
         nowson++;
         fa[son[i]]=x;
-        DFS(son[i]);
-        low[x]=min(low[x],low[son[i]]);
-        if (x!=1&amp;&amp;low[son[i]]&gt;dfn[x]) ans[x]=true;
-        if (x==1&amp;&amp;nowson&gt;=2) ans[x]=true;
-    } else if (son[i]!=fa[x]) low[x]=min(dfn[son[i]],low[x]);
-}</code></pre><h2>例题</h2><h3>割点模板题</h3><p><a href="http://poj.org/problem?id=1144" title="POJ1144 Network">POJ1144 Network</a></p><h3>割边模板题</h3><p><a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2588" title="ZOJ2588 Burning Bridges">ZOJ2588 Burning Bridges</a></p><h3>参考代码</h3><p>割点（POJ1144）</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-using namespace std;
-const int maxn=105,maxe=1000005;
-int n,fa[maxn];
-int tot=0,acnt=0,dfn[maxn],low[maxn];
-int lnk[maxn],nxt[maxe],son[maxe];
-bool vis[maxn],ans[maxn];
-inline void add(int x,int y){
+        <span class="hljs-built_in">DFS</span>(son[i]);
+        low[x]=<span class="hljs-built_in">min</span>(low[x],low[son[i]]);
+        <span class="hljs-keyword">if</span> (x!=<span class="hljs-number">1</span>&amp;&amp;low[son[i]]&gt;dfn[x]) ans[x]=<span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">if</span> (x==<span class="hljs-number">1</span>&amp;&amp;nowson&gt;=<span class="hljs-number">2</span>) ans[x]=<span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (son[i]!=fa[x]) low[x]=<span class="hljs-built_in">min</span>(dfn[son[i]],low[x]);
+}
+</code></pre>
+<h2><a id="例题" class="heading-anchor"></a>例题</h2>
+<h3><a id="割点模板题" class="heading-anchor"></a>割点模板题</h3>
+<p><a href="http://poj.org/problem?id=1144" title="POJ1144 Network">POJ1144 Network</a></p>
+<h3><a id="割边模板题" class="heading-anchor"></a>割边模板题</h3>
+<p><a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2588" title="ZOJ2588 Burning Bridges">ZOJ2588 Burning Bridges</a></p>
+<h3><a id="参考代码" class="heading-anchor"></a>参考代码</h3>
+<p>割点（POJ1144）</p>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">105</span>,maxe=<span class="hljs-number">1000005</span>;
+<span class="hljs-type">int</span> n,fa[maxn];
+<span class="hljs-type">int</span> tot=<span class="hljs-number">0</span>,acnt=<span class="hljs-number">0</span>,dfn[maxn],low[maxn];
+<span class="hljs-type">int</span> lnk[maxn],nxt[maxe],son[maxe];
+<span class="hljs-type">bool</span> vis[maxn],ans[maxn];
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span></span>{
     tot++;son[tot]=y;nxt[tot]=lnk[x];lnk[x]=tot;
 }
-inline void Init(){
-    tot=0;acnt=0;
-    memset(fa,0,sizeof(fa));
-    memset(lnk,0,sizeof(lnk));
-    memset(nxt,0,sizeof(nxt));
-    memset(son,0,sizeof(son));
-    memset(vis,0,sizeof(vis));
-    memset(dfn,0,sizeof(dfn));
-    memset(ans,0,sizeof(ans));
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Init</span><span class="hljs-params">()</span></span>{
+    tot=<span class="hljs-number">0</span>;acnt=<span class="hljs-number">0</span>;
+    <span class="hljs-built_in">memset</span>(fa,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(fa));
+    <span class="hljs-built_in">memset</span>(lnk,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(lnk));
+    <span class="hljs-built_in">memset</span>(nxt,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(nxt));
+    <span class="hljs-built_in">memset</span>(son,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(son));
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
+    <span class="hljs-built_in">memset</span>(dfn,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(dfn));
+    <span class="hljs-built_in">memset</span>(ans,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(ans));
 }
-inline void DFS(int x){
-    vis[x]=1;dfn[x]=low[x]=++acnt;
-    int nowson=0;
-    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>{
+    vis[x]=<span class="hljs-number">1</span>;dfn[x]=low[x]=++acnt;
+    <span class="hljs-type">int</span> nowson=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=lnk[x];i;i=nxt[i]) <span class="hljs-keyword">if</span> (!vis[son[i]]){
         nowson++;
         fa[son[i]]=x;
-        DFS(son[i]);
-        low[x]=min(low[x],low[son[i]]);
-        if (x!=1&amp;&amp;low[son[i]]&gt;=dfn[x]) ans[x]=true;
-        if (x==1&amp;&amp;nowson&gt;=2) ans[x]=true;
-    } else if (son[i]!=fa[x]) low[x]=min(dfn[son[i]],low[x]);
+        <span class="hljs-built_in">DFS</span>(son[i]);
+        low[x]=<span class="hljs-built_in">min</span>(low[x],low[son[i]]);
+        <span class="hljs-keyword">if</span> (x!=<span class="hljs-number">1</span>&amp;&amp;low[son[i]]&gt;=dfn[x]) ans[x]=<span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">if</span> (x==<span class="hljs-number">1</span>&amp;&amp;nowson&gt;=<span class="hljs-number">2</span>) ans[x]=<span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (son[i]!=fa[x]) low[x]=<span class="hljs-built_in">min</span>(dfn[son[i]],low[x]);
 }
-int main(){
-    for (;;){
-        scanf(&quot;%d&quot;,&amp;n);if (n==0) break;
-        Init();int ans_cnt=0;
-        int x;scanf(&quot;%d&quot;,&amp;x);
-        while (x!=0){
-            int now=0;char ch=getchar();
-            while (ch!=10&amp;&amp;ch!=13){
-                while ((ch&lt;'0'||ch&gt;'9')&amp;&amp;ch!=10&amp;&amp;ch!=13) ch=getchar();
-                if (ch==10||ch==13) break;
-                while (ch&gt;='0'&amp;&amp;ch&lt;='9') now=now*10+ch-'0',ch=getchar();
-                add(x,now);add(now,x);
-                now=0;
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">for</span> (;;){
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<span class="hljs-keyword">if</span> (n==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;
+        <span class="hljs-built_in">Init</span>();<span class="hljs-type">int</span> ans_cnt=<span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> x;<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;x);
+        <span class="hljs-keyword">while</span> (x!=<span class="hljs-number">0</span>){
+            <span class="hljs-type">int</span> now=<span class="hljs-number">0</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();
+            <span class="hljs-keyword">while</span> (ch!=<span class="hljs-number">10</span>&amp;&amp;ch!=<span class="hljs-number">13</span>){
+                <span class="hljs-keyword">while</span> ((ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)&amp;&amp;ch!=<span class="hljs-number">10</span>&amp;&amp;ch!=<span class="hljs-number">13</span>) ch=<span class="hljs-built_in">getchar</span>();
+                <span class="hljs-keyword">if</span> (ch==<span class="hljs-number">10</span>||ch==<span class="hljs-number">13</span>) <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>) now=now*<span class="hljs-number">10</span>+ch-<span class="hljs-string">&#x27;0&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();
+                <span class="hljs-built_in">add</span>(x,now);<span class="hljs-built_in">add</span>(now,x);
+                now=<span class="hljs-number">0</span>;
             }
-            scanf(&quot;%d&quot;,&amp;x);
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;x);
         }
-        DFS(1);
-        for (int i=1;i&lt;=n;i++) ans_cnt+=ans[i];
-        printf(&quot;%d\n&quot;,ans_cnt);
+        <span class="hljs-built_in">DFS</span>(<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) ans_cnt+=ans[i];
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,ans_cnt);
     }
-    return 0;
-}</code></pre><p>割边（ZOJ2588）</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;vector&gt;
-using namespace std;
-const int maxn=10005,maxe=200005;
-int T,n,m,fa[maxn];
-int tot=0,acnt=0,dfn[maxn],low[maxn];
-int lnk[maxn],nxt[maxe],son[maxe],id[maxe];
-bool vise[maxe],ans[maxe],vis[maxn];
-vector&lt;int&gt; que_ans;
-inline void add(int x,int y,int z){
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>割边（ZOJ2588）</p>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">10005</span>,maxe=<span class="hljs-number">200005</span>;
+<span class="hljs-type">int</span> T,n,m,fa[maxn];
+<span class="hljs-type">int</span> tot=<span class="hljs-number">0</span>,acnt=<span class="hljs-number">0</span>,dfn[maxn],low[maxn];
+<span class="hljs-type">int</span> lnk[maxn],nxt[maxe],son[maxe],id[maxe];
+<span class="hljs-type">bool</span> vise[maxe],ans[maxe],vis[maxn];
+vector&lt;<span class="hljs-type">int</span>&gt; que_ans;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y,<span class="hljs-type">int</span> z)</span></span>{
     tot++;son[tot]=y;id[tot]=z;nxt[tot]=lnk[x];lnk[x]=tot;
 }
-inline void Init(){
-    tot=0;acnt=0;que_ans.clear();
-    memset(fa,0,sizeof(fa));
-    memset(id,0,sizeof(id));
-    memset(lnk,0,sizeof(lnk));
-    memset(nxt,0,sizeof(nxt));
-    memset(son,0,sizeof(son));
-    memset(dfn,0,sizeof(dfn));
-    memset(low,0,sizeof(low));
-    memset(ans,1,sizeof(ans));
-    memset(vis,0,sizeof(vis));
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Init</span><span class="hljs-params">()</span></span>{
+    tot=<span class="hljs-number">0</span>;acnt=<span class="hljs-number">0</span>;que_ans.<span class="hljs-built_in">clear</span>();
+    <span class="hljs-built_in">memset</span>(fa,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(fa));
+    <span class="hljs-built_in">memset</span>(id,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(id));
+    <span class="hljs-built_in">memset</span>(lnk,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(lnk));
+    <span class="hljs-built_in">memset</span>(nxt,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(nxt));
+    <span class="hljs-built_in">memset</span>(son,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(son));
+    <span class="hljs-built_in">memset</span>(dfn,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(dfn));
+    <span class="hljs-built_in">memset</span>(low,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(low));
+    <span class="hljs-built_in">memset</span>(ans,<span class="hljs-number">1</span>,<span class="hljs-built_in">sizeof</span>(ans));
+    <span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));
 }
-inline void DFS(int x){
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>{
     dfn[x]=low[x]=++acnt;
-    for (int i=lnk[x];i;i=nxt[i]) if (!vis[son[i]]){
-        fa[son[i]]=id[i];vis[son[i]]=true;
-        DFS(son[i]);
-        if (low[son[i]]&lt;=dfn[x]) ans[id[i]]=false;
-        low[x]=min(low[x],low[son[i]]);
-    } else if (id[i]!=fa[x]) low[x]=min(dfn[son[i]],low[x]),ans[id[i]]=false;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=lnk[x];i;i=nxt[i]) <span class="hljs-keyword">if</span> (!vis[son[i]]){
+        fa[son[i]]=id[i];vis[son[i]]=<span class="hljs-literal">true</span>;
+        <span class="hljs-built_in">DFS</span>(son[i]);
+        <span class="hljs-keyword">if</span> (low[son[i]]&lt;=dfn[x]) ans[id[i]]=<span class="hljs-literal">false</span>;
+        low[x]=<span class="hljs-built_in">min</span>(low[x],low[son[i]]);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (id[i]!=fa[x]) low[x]=<span class="hljs-built_in">min</span>(dfn[son[i]],low[x]),ans[id[i]]=<span class="hljs-literal">false</span>;
 }
-int main(){
-    scanf(&quot;%d&quot;,&amp;T);
-    while (T--){
-        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-        Init();
-        for (int i=1;i&lt;=m;i++){
-            int x,y;scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
-            add(x,y,i);add(y,x,i);
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;T);
+    <span class="hljs-keyword">while</span> (T--){
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);
+        <span class="hljs-built_in">Init</span>();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++){
+            <span class="hljs-type">int</span> x,y;<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;x,&amp;y);
+            <span class="hljs-built_in">add</span>(x,y,i);<span class="hljs-built_in">add</span>(y,x,i);
         }
-        vis[1]=true;DFS(1);
+        vis[<span class="hljs-number">1</span>]=<span class="hljs-literal">true</span>;<span class="hljs-built_in">DFS</span>(<span class="hljs-number">1</span>);
         
-        for (int i=1;i&lt;=m;i++) if (ans[i]) que_ans.push_back(i);
-        int nn=que_ans.size();printf(&quot;%d\n&quot;,nn);
-        for (int i=0;i&lt;nn-1;i++) printf(&quot;%d &quot;,que_ans[i]);
-        if (nn!=0) printf(&quot;%d\n&quot;,que_ans[nn-1]);
-        // printf(&quot;LOW: &quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,low[i]);printf(&quot;\n&quot;);
-        // printf(&quot;DFN: &quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,dfn[i]);printf(&quot;\n&quot;);
-        if (T&gt;0) printf(&quot;\n&quot;);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++) <span class="hljs-keyword">if</span> (ans[i]) que_ans.<span class="hljs-built_in">push_back</span>(i);
+        <span class="hljs-type">int</span> nn=que_ans.<span class="hljs-built_in">size</span>();<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,nn);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;nn<span class="hljs-number">-1</span>;i++) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,que_ans[i]);
+        <span class="hljs-keyword">if</span> (nn!=<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,que_ans[nn<span class="hljs-number">-1</span>]);
+        <span class="hljs-comment">// printf(&quot;LOW: &quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,low[i]);printf(&quot;\n&quot;);</span>
+        <span class="hljs-comment">// printf(&quot;DFN: &quot;);for (int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,dfn[i]);printf(&quot;\n&quot;);</span>
+        <span class="hljs-keyword">if</span> (T&gt;<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
     }
-    return 0;
-}</code></pre><h2>参考</h2><p><a href="https://baike.baidu.com/item/%E5%89%B2%E7%82%B9" title="割点_百度百科">割点_百度百科</a><br><a href="https://baike.baidu.com/item/%E5%89%B2%E8%BE%B9" title="割边_百度百科">割边_百度百科</a></p><p>吐槽一下，POJ1144 调代码一直调不对，然后去 discuss 区搞了组数据，用 Mermaid 生成图，我以为会很清晰，结果是这样的……</p><pre><code class="lang-mermaid">graph TB;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2><a id="参考" class="heading-anchor"></a>参考</h2>
+<p><a href="https://baike.baidu.com/item/%E5%89%B2%E7%82%B9" title="割点_百度百科">割点_百度百科</a><br>
+<a href="https://baike.baidu.com/item/%E5%89%B2%E8%BE%B9" title="割边_百度百科">割边_百度百科</a></p>
+<p>吐槽一下，POJ1144 调代码一直调不对，然后去 discuss 区搞了组数据，用 Mermaid 生成图，我以为会很清晰，结果是这样的……</p>
+<pre><code class="language-mermaid">graph TB;
 17---4
 17---18
 1---11
@@ -228,7 +323,10 @@ int main(){
 11---3
 4---15
 10---3
-21---3</code></pre><p>吐血……</p> </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="Z1HXkJC" prefix="r0" component-url="/_astro/Comments.Ix56OY2D.js" component-export="default" renderer-url="/_astro/client.Th_ss2k4.js" props="{&quot;slug&quot;:[0,&quot;tarjan-cut-vertex-cut-edge&quot;],&quot;permalink&quot;:[0,&quot;https://blog.skywt.cn/posts/tarjan-cut-vertex-cut-edge&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+21---3
+</code></pre>
+<p>吐血……</p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var b=Object.defineProperty;var f=(c,o,i)=>o in c?b(c,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):c[o]=i;var l=(c,o,i)=>(f(c,typeof o!="symbol"?o+"":o,i),i);var p;{let c={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[e,r]=t;return e in c?c[e](r):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,r])=>[e,o(r)]));customElements.get("astro-island")||customElements.define("astro-island",(p=class extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var d;if(!this.hydrator||!this.isConnected)return;let e=(d=this.parentElement)==null?void 0:d.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),a={},h=this.querySelectorAll("template[data-astro-template]");for(let n of h){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("data-astro-template")||"default"]=n.innerHTML,n.remove())}for(let n of r){let s=n.closest(this.tagName);s!=null&&s.isSameNode(this)&&(a[n.getAttribute("name")||"default"]=n.innerHTML)}let u;try{u=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(n){let s=this.getAttribute("component-url")||"<unknown>",y=this.getAttribute("component-export");throw y&&(s+=` (export ${y})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),n),n}await this.hydrator(this)(this.Component,u,a,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var a;((a=this.lastChild)==null?void 0:a.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}Astro[r](async()=>{let a=this.getAttribute("renderer-url"),[h,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),a?import(a):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=h[d];else{this.Component=h;for(let n of d.split("."))this.Component=this.Component[n]}return this.hydrator=u,this.hydrate},e,this)}attributeChangedCallback(){this.hydrate()}},l(p,"observedAttributes",["props"]),p))}})();</script><astro-island uid="zrY1t" prefix="r0" component-url="/_astro/Comments.DNe12sm4.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;tarjan-cut-vertex-cut-edge&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 primary-color card p-2"><i class="ri-information-line"></i> <b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。<br/>评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～</p><form class="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"><input placeholder="你的名字" type="text" required="" value=""/><input placeholder="邮箱" type="email" required="" value=""/><input placeholder="网址" type="url" value=""/><textarea rows="8" class="sm:col-span-3" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3">提交</button></form><p class="mt-4 secondary-color text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900"> <div class="wide-container secondary-color text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客</a> </span><span>
 /
@@ -255,4 +353,4 @@ Tarjan 算法求解无向图的割点与割边 </span> </div> <div class="m-2"> 
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html> 
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
