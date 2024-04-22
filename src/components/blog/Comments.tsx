@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { CookiesProvider } from "react-cookie";
 import Comment from "@components/blog/Comment.tsx";
 import CommentForm from "@components/blog/CommentForm.tsx";
-import { api } from "@scripts/functions.ts";
+import api from "@scripts/api.ts";
 
 interface Props {
   slug: string;

@@ -1,6 +1,6 @@
 import { default as CommentCopy } from "@components/blog/Comment.tsx";
 import CommentForm from "@components/blog/CommentForm.tsx";
-import { utils } from "@scripts/functions.ts";
+import utils from "@scripts/utils.ts";
 
 interface Props {
   comment: ArticleComment;

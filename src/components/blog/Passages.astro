@@ -1,5 +1,5 @@
 ---
-import { markdown } from "@scripts/functions";
+import markdown from "@scripts/markdown";
 interface Props {
   posts: ArticleInTimeline[];
 }
@@ -48,3 +48,4 @@ const { posts } = Astro.props;
     { once: false }
   );
 </script>
+@scripts/markdown

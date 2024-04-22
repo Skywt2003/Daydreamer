@@ -4,7 +4,7 @@ import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 import Layout from "@layouts/Layout.astro";
 import Passages from "@components/blog/Passages.astro";
 import Subscribe from "@components/blog/Subscribe.astro";
-import { api } from "@scripts/functions";
+import api from "@scripts/api";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: ArticleInTimeline[] = await api.getTimeline(1, 10000);
@@ -74,3 +74,4 @@ const { page } = Astro.props;
     @apply leading-normal;
   }
 </style>
+@scripts/markdown

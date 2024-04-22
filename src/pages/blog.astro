@@ -4,7 +4,7 @@ import Passages from "@components/blog/Passages.astro";
 import Subscribe from "@components/blog/Subscribe.astro";
 import Selection from "@components/blog/Selection.astro";
 import selections_yml from "@configs/selections.yml";
-import { api } from "@scripts/functions";
+import api from "@scripts/api";
 
 const posts = await api.getTimeline(1, 10);
 ---
@@ -49,3 +49,4 @@ const posts = await api.getTimeline(1, 10);
     <Subscribe />
   </main>
 </Layout>
+@scripts/markdown

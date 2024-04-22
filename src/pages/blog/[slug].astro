@@ -1,7 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Comments from "@components/blog/Comments.tsx";
-import { api, markdown, utils } from "@scripts/functions";
+import api from "@scripts/api";
+import utils from "@scripts/utils";
+import markdown from "@scripts/markdown";
 
 export async function getStaticPaths() {
   const posts = await api.getTimeline(1, 10000);
@@ -86,3 +88,4 @@ const post = await api.getArticle(slug);
     { once: false }
   );
 </script>
+@scripts/markdown
