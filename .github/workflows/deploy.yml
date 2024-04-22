@@ -13,6 +13,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment: production
+    env:
+      PUBLIC_API_ENDPOINT: ${{vars.PUBLIC_API_ENDPOINT}}
+      PUBLIC_COOKIE_DOMAIN: ${{vars.PUBLIC_COOKIE_DOMAIN}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
