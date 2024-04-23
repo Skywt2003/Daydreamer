@@ -24,24 +24,16 @@ groups:
       - name: CV
         app: WebCV 在线简历
         url: https://cv.skywt.cn
-        method: Vercel
-  - name: 👨‍💻 开发与工具
+        method: Vercel, DogeCloud
+  - name: 👨‍💻 效率工具
     services:
-      - name: Git
-        app: Gitea 代码仓库
-        url: https://git.skywt.cn
-        method: Docker
-      - name: Code
-        app: Code-server 编辑器
-        url: https://code.skywt.cn
+      - name: Memos
+        app: memos 卡片笔记
+        url: https://memos.skywt.cn
         method: Docker
       - name: Password
         app: VaultWarden 密码管理
         url: https://pass.skywt.cn
-        method: Docker
-      - name: Memos
-        app: memos 卡片笔记
-        url: https://memos.skywt.cn
         method: Docker
       - name: Chat
         app: NextChat GPT 客户端
@@ -51,14 +43,6 @@ groups:
         app: Better ChatGPT 客户端
         url: https://chatgpt.skywt.cn
         method: Vercel
-      - name: Docs
-        app: Outline 在线文档
-        url: https://docs.skywt.cn
-        method: Docker
-      # - name: Papers
-      #   app: Paperless-ngx
-      #   url: https://paper.skywt.cn
-      #   method: Docker
       - name: RSS
         app: FreshRSS 在线阅读器
         url: https://rss.skywt.cn
@@ -68,29 +52,31 @@ groups:
         url: https://rsshub.skywt.cn
         method: Docker
       - name: WeRSS
-        app: WeWe RSS
+        app: 微信公众号 RSS
         url: https://werss.skywt.cn
         method: Docker
-      - name: Reading List
-        app: Wallabag 文章收藏
-        url: https://mark.skywt.cn
-        method: Docker
+      # - name: Reading List
+      #   app: Wallabag 文章收藏
+      #   url: https://mark.skywt.cn
+      #   method: Docker
       - name: Archive
         app: ArchiveBox 网页存档
         url: https://archive.skywt.cn
         method: Docker
-      - name: Analytics
-        app: Matomo 访客统计
-        url: https://analytics.skywt.cn
+  - name: 🛠️ 开发与运维
+    services:
+      - name: Git
+        app: Gitea 代码仓库
+        url: https://git.skywt.cn
         method: Docker
-      - name: Subscriptions
-        app: Wallos 订阅管理
-        url: https://subs.skywt.cn
+      - name: Code
+        app: Code-server 编辑器
+        url: https://code.skywt.cn
         method: Docker
-      - name: Auth
-        app: Keycloak 单点登录平台
-        url: https://auth.skywt.cn
-        method: Docker
+      # - name: Auth
+      #   app: Keycloak 单点登录平台
+      #   url: https://auth.skywt.cn
+      #   method: Docker
       - name: Frp
         app: Frp 内网穿透
         url: https://frp.skywt.cn
@@ -98,6 +84,10 @@ groups:
       - name: VPN
         app: Headscale 虚拟专用网络
         url: https://vpn.skywt.cn
+        method: Docker
+      - name: Push
+        app: Bark iOS 推送服务
+        url: https://push.skywt.cn
         method: Docker
       - name: Minecraft
         app: Minecraft 服务器
@@ -118,21 +108,25 @@ groups:
         app: WebDAV
         url: https://webdav.skywt.cn
         method: Docker
-      - name: Object Storage
-        app: MinIO 对象存储
-        url: https://os.skywt.cn
-        method: Docker
+      # - name: Object Storage
+      #   app: MinIO 对象存储
+      #   url: https://os.skywt.cn
+      #   method: Docker
   - name: ⚙️ 管理工具
     services:
+      - name: Analytics
+        app: Matomo 访客统计
+        url: https://analytics.skywt.cn
+        method: Docker
       - name: Console
         app: Cockpit 控制面板
         url: https://console.skywt.cn
         method: Systemd
-      - name: pgAdmin
-        app: pgAdmin
-        url: https://pgadmin.skywt.cn
-        method: Docker 💤
-        status: stopped
+      # - name: pgAdmin
+      #   app: pgAdmin
+      #   url: https://pgadmin.skywt.cn
+      #   method: Docker 💤
+      #   status: stopped
       - name: phpMyAdmin
         app: phpMyAdmin
         url: https://phpmyadmin.skywt.cn
@@ -145,7 +139,7 @@ groups:
         app: Netdata 服务器监控
         url: https://status.skywt.cn
         method: Systemd
-      - name: Dashboard
-        app: Grafana 数据面板
-        url: https://dash.skywt.cn
-        method: Docker
+      # - name: Dashboard
+      #   app: Grafana 数据面板
+      #   url: https://dash.skywt.cn
+      #   method: Docker
