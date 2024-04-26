@@ -38,6 +38,13 @@ const { title, includeHeader = true, path = [] } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="博客文章 RSS 订阅"
+      href={`${Astro.site}rss.xml`}
+    />
+
     <script is:inline>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);

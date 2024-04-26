@@ -75,5 +75,5 @@ export default {
     });
 
     return parser.render(text);
-  }
-}
+  },
+};

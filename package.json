@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/react": "^3.2.0",
+    "@astrojs/rss": "^4.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "@fancyapps/ui": "^5.0.36",
     "@fontsource/noto-serif-sc": "^5.0.11",

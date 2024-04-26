@@ -2,10 +2,13 @@
 
 export default {
   getTimeline: async (page: number, pageSize: number) => {
-    const url = new URL("timeline", import.meta.env.PUBLIC_API_ENDPOINT as string);
+    const url = new URL(
+      "timeline",
+      import.meta.env.PUBLIC_API_ENDPOINT as string,
+    );
     url.search = new URLSearchParams({
       page: page.toString(),
-      pageSize: pageSize.toString()
+      pageSize: pageSize.toString(),
     }).toString();
 
     const response = await fetch(url);
@@ -16,7 +19,7 @@ export default {
   getArticle: async (slug: string) => {
     const url = new URL(
       `article/${slug}`,
-      import.meta.env.PUBLIC_API_ENDPOINT as string
+      import.meta.env.PUBLIC_API_ENDPOINT as string,
     );
     const response = await fetch(url);
     const data = await response.json();
@@ -42,7 +45,7 @@ export default {
     url: string,
     text: string,
     receiveMail: boolean,
-    parent: ArticleComment | null
+    parent: ArticleComment | null,
   ) => {
     const api = new URL(
       `article/${slug}/comments`,
@@ -54,7 +57,7 @@ export default {
       mail,
       url,
       receiveMail,
-      parent: parent ? parent.coid : 0
+      parent: parent ? parent.coid : 0,
     };
     const response = await fetch(api, {
       method: "POST",
@@ -65,11 +68,8 @@ export default {
       body: JSON.stringify(data),
     });
     if (response.ok === false)
-      throw Error(
-        "HTTP Error " + response.status + " " + response.statusText,
-      );
+      throw Error("HTTP Error " + response.status + " " + response.statusText);
     const res = await response.json();
     return res as ArticleComment;
-  }
-}
-
+  },
+};
