@@ -60,7 +60,7 @@ const { items, path = [] } = Astro.props;
     () => {
       addNavObserver();
     },
-    { once: false }
+    { once: false },
   );
 
   document.addEventListener(
@@ -68,7 +68,7 @@ const { items, path = [] } = Astro.props;
     () => {
       removeNavObserver();
     },
-    { once: false }
+    { once: false },
   );
 </script>
 

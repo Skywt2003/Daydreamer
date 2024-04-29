@@ -1,3 +1,4 @@
+/// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
 interface MenuItem {
@@ -9,7 +10,7 @@ interface MenuItem {
 declare module "@configs/menu.yml" {
   const value: {
     items: MenuItems[];
-  }
+  };
   export default value;
 }
 
@@ -63,7 +64,7 @@ interface Selection {
 declare module "@configs/selections.yml" {
   const value: {
     selections: Selection[];
-  }
+  };
   export default value;
 }
 
@@ -76,7 +77,7 @@ interface Project {
 declare module "@configs/projects.yml" {
   const value: {
     projects: Project[];
-  }
+  };
   export default value;
 }
 
@@ -96,7 +97,7 @@ interface ServicesGroup {
 declare module "@configs/services.yml" {
   const value: {
     groups: ServicesGroup[];
-  }
+  };
   export default value;
 }
 
@@ -118,10 +119,10 @@ interface FriendsGroup {
 declare module "@configs/friends.yml" {
   const value: {
     groups: FriendsGroup[];
-  }
+  };
   export default value;
 }
 
-declare module 'remarkable';
-declare module 'remarkable-katex';
-declare module 'markdown-toc';
+declare module "remarkable";
+declare module "remarkable-katex";
+declare module "markdown-toc";

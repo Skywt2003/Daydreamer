@@ -40,7 +40,7 @@ import menu_yml from "@configs/menu.yml";
                 }
               }, 5000);
             },
-            { once: false }
+            { once: false },
           );
           document.addEventListener(
             "astro:before-swap",
@@ -48,7 +48,7 @@ import menu_yml from "@configs/menu.yml";
               clearTimeout(hintTimer);
               hintTimer = null;
             },
-            { once: false }
+            { once: false },
           );
         </script>
         <p id="too-small-hint" class="mt-2">

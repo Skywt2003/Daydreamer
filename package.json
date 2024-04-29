@@ -9,14 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.4.1",
-    "@astrojs/react": "^3.2.0",
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/react": "^3.3.1",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/tailwind": "^5.1.0",
     "@fancyapps/ui": "^5.0.36",
     "@fontsource/noto-serif-sc": "^5.0.11",
-    "astro": "^4.1.1",
+    "astro": "^4.7.0",
     "highlight.js": "^11.9.0",
     "katex": "^0.16.10",
     "markdown-toc": "github:Skywt2003/markdown-toc",
