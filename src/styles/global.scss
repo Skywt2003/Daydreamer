@@ -1,50 +1,19 @@
-/*
- * Colors 通用颜色定义
+@import "@styles/mixins.scss";
+
+/* 
+ * Mixins 定义为 class
  */
 
-@mixin text-primary {
-  @apply text-gray-700 dark:text-neutral-300;
-}
 .text-primary {
-  @apply text-gray-700 dark:text-neutral-300;
+  @include text-primary;
 }
 
-@mixin text-secondary {
-  @apply text-gray-500 dark:text-neutral-400;
-}
 .text-secondary {
-  @apply text-gray-500 dark:text-neutral-400;
+  @include text-secondary;
 }
 
-@mixin text-tertiary {
-  @apply text-gray-400 dark:text-neutral-600;
-}
 .text-tertiary {
-  @apply text-gray-400 dark:text-neutral-600;
-}
-
-@mixin bg-back {
-  @apply bg-gray-100 dark:bg-neutral-900;
-}
-
-@mixin bg-front {
-  @apply bg-white dark:bg-neutral-800;
-}
-
-@mixin shadow-front {
-  @apply shadow-gray-200 dark:shadow-neutral-800;
-}
-
-@mixin border-front {
-  @apply border-gray-200 dark:border-neutral-800;
-}
-
-@mixin hover-front {
-  @apply bg-gray-200 dark:bg-neutral-950 dark:shadow-neutral-950;
-}
-
-@mixin active-front {
-  @apply bg-gray-300 dark:bg-neutral-950;
+  @include text-tertiary;
 }
 
 /*
@@ -201,7 +170,7 @@ h5 {
 }
 
 hr {
-  @include border-front;
+  @include border-back;
 }
 
 // 应用 typography 的样式，并进行一些微调
@@ -267,7 +236,7 @@ hr {
     @include bg-back;
 
     @apply border outline-0;
-    @include border-front;
+    @include border-back;
 
     @apply shadow-inner;
     @include shadow-front;
@@ -296,7 +265,7 @@ hr {
     }
     &:disabled {
       @apply shadow-none border;
-      @include border-front;
+      @include border-back;
       @include bg-back; // 待修改
       @include text-tertiary;
     }

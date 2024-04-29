@@ -1,0 +1,46 @@
+/*
+ * Colors 通用颜色定义
+ */
+
+@mixin text-primary {
+  @apply text-gray-700 dark:text-neutral-300;
+}
+
+@mixin text-secondary {
+  @apply text-gray-500 dark:text-neutral-400;
+}
+
+@mixin text-tertiary {
+  @apply text-gray-400 dark:text-neutral-600;
+}
+
+@mixin bg-back {
+  @apply bg-gray-100 dark:bg-neutral-900;
+}
+
+@mixin bg-front {
+  @apply bg-white dark:bg-neutral-800;
+}
+
+// bg-front 为前景，bg-back 为后景，显示出的 shadow
+@mixin shadow-front {
+  @apply shadow-gray-200 dark:shadow-neutral-800;
+}
+
+// 在 bg-back 上显示出的 border
+@mixin border-back {
+  @apply border-gray-200 dark:border-neutral-800;
+}
+
+// 在 bg-front 上显示出的 border
+@mixin border-front {
+  @apply border-gray-200 dark:border-neutral-700;
+}
+
+@mixin hover-front {
+  @apply bg-gray-200 dark:bg-neutral-950 dark:shadow-neutral-950;
+}
+
+@mixin active-front {
+  @apply bg-gray-300 dark:bg-neutral-950;
+}
