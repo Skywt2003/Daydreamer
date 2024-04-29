@@ -44,8 +44,8 @@ const post = await api.getArticle(slug);
           </a>
         )
       }
-      <h1 class="primary-color leading-relaxed">{post.title}</h1>
-      <p class="mt-4 secondary-color leading-relaxed">
+      <h1 class="leading-relaxed">{post.title}</h1>
+      <p class="mt-4 text-secondary leading-relaxed">
         <i class="ri-calendar-line"></i>
         <span>{utils.formatTimestamp(post.created)}</span>
         <!-- {
@@ -74,7 +74,7 @@ const post = await api.getArticle(slug);
 
 <style lang="scss">
   img {
-    @apply shadow-lg rounded;
+    @apply shadow-lg rounded-lg;
   }
 </style>
 

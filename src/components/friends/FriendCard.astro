@@ -15,18 +15,18 @@ const { name, desc, slogan, url, avatar } = Astro.props;
 <LinkCard url={url}>
   <img
     src={avatar}
-    class="w-12 m-2 rounded-full"
+    class="w-12 rounded-full"
     onerror="this.src='/visitor.png'"
   />
-  <div class="m-2">
-    <h5 class="primary-color">{name}</h5>
+  <div class="ml-4">
+    <h5>{name}</h5>
     {
       slogan && (
-        <p class="mt-2 secondary-color font-bold text-sm">
+        <p class="mt-2 text-secondary font-bold text-sm">
           <i class="ri-chat-quote-line" />「{slogan}」
         </p>
       )
     }
-    {desc && <p class="mt-1 secondary-color text-sm">{desc}</p>}
+    {desc && <p class="mt-1 text-secondary text-sm">{desc}</p>}
   </div>
 </LinkCard>

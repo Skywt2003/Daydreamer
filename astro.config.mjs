@@ -3,17 +3,19 @@ import tailwind from "@astrojs/tailwind";
 import yaml from "@rollup/plugin-yaml";
 import react from "@astrojs/react";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react()],
+  integrations: [tailwind(), react(), sitemap()],
   server: {
-    host: true,
+    host: true
   },
   vite: {
-    plugins: [yaml()],
+    plugins: [yaml()]
   },
   redirects: {
-    "/blog/1": "/blog",
+    "/blog/1": "/blog"
   },
-  site: "https://skywt.cn",
+  site: "https://skywt.cn"
 });

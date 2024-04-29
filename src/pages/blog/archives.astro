@@ -38,8 +38,8 @@ function groupByYear(posts: ArticleInTimeline[]): GroupedPosts {
 >
   <main>
     <section class="container mt-32">
-      <h1 class="primary-color">文章归档</h1>
-      <p class="mt-4 primary-color">共发布 {posts.length} 篇文章。</p>
+      <h1>文章归档</h1>
+      <p class="mt-4">共发布 {posts.length} 篇文章。</p>
       <hr class="my-8" />
       <article class="content">
         {
@@ -63,7 +63,7 @@ function groupByYear(posts: ArticleInTimeline[]): GroupedPosts {
                           </a>
                           {
                             //   post.commentsNum > 0 && (
-                            //   <span class="tertiary-color text-sm">
+                            //   <span class="text-tertiary text-sm">
                             //     <i class="ml-2 ri-message-2-line" />{" "}
                             //     {post.commentsNum}
                             //   </span>

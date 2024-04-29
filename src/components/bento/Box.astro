@@ -1,37 +1,36 @@
 ---
-// Box 本身是一个 flexbox，默认 direction: column 且 justify-content: center
-// 可以传入额外的 class，比如 items-center
-// 如果要文字居中，相比之下，使其中元素 text-center 更好。统一使用此方式
 interface Props {
   url?: string;
+  bg_image?: string;
   lg: [number, number, number, number];
   sm: [number, number, number, number];
-  class?: string;
+  align?: "start" | "center";
+  class?: string[];
 }
 
-const { url, lg, sm, class: className } = Astro.props;
+const {
+  url,
+  bg_image,
+  lg,
+  sm,
+  align = "left",
+  class: className = [],
+} = Astro.props;
+
+const classes = className;
+classes.push("card card--bento");
+if (url) classes.push("card--clickable");
+if (bg_image) classes.push("card--with-image");
+if (align === "center") classes.push("card--align-center");
 ---
 
 {
   url ? (
-    <a
-      href={url}
-      id="box-wrapper"
-      class={
-        "bento-border bento-bg clickable primary-color" +
-        (className ? " " + className : "")
-      }
-    >
+    <a href={url} class:list={classes}>
       <slot />
     </a>
   ) : (
-    <div
-      id="box-wrapper"
-      class={
-        "bento-border bento-bg primary-color" +
-        (className ? " " + className : "")
-      }
-    >
+    <div class:list={classes}>
       <slot />
     </div>
   )
@@ -39,16 +38,20 @@ const { url, lg, sm, class: className } = Astro.props;
 
 <style
   define:vars={{
+    bg_image,
     lg: lg.join(" / "),
     sm: sm.join(" / "),
   }}
   lang="scss"
 >
-  #box-wrapper {
-    @apply flex flex-col justify-center p-4 relative;
+  .card {
     grid-area: var(--sm);
     @screen lg {
       grid-area: var(--lg);
     }
+  }
+
+  .card--with-image {
+    background-image: var(--bg_image);
   }
 </style>

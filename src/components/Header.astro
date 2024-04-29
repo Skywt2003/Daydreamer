@@ -10,8 +10,8 @@ interface Props {
 const { items, path = [] } = Astro.props;
 ---
 
-<header class="mt-12 wide-container">
-  <h5 class="mt-4 mx-4 secondary-color sm:hidden text-center">
+<header class="mt-12 container container--wide">
+  <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center">
     <Path path={path} />
   </h5>
 </header>
@@ -20,11 +20,13 @@ const { items, path = [] } = Astro.props;
   class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all"
   id="navbar-wrapper"
 >
-  <div class="wide-container flex justify-center sm:justify-between flex-wrap">
-    <h5 class="m-2 hidden sm:block secondary-color">
+  <div
+    class="container container--wide flex justify-center sm:justify-between flex-wrap"
+  >
+    <h5 class="m-2 hidden sm:block text-secondary">
       <Path path={path} />
     </h5>
-    <div class="m-2 secondary-color">
+    <div class="m-2 text-secondary">
       <Menu items={items} />
     </div>
   </div>

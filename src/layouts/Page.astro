@@ -13,15 +13,15 @@ const { title, heading, caption } = Astro.props;
 <Layout title={title} path={[{ title: title, url: "" }]}>
   <main>
     <section class="mt-8">
-      <div class="bg-white dark:bg-neutral-800 h-[30rem]">
+      <div class="page-heading">
         <div
-          class="wide-container h-full px-4 flex flex-col justify-center items-center sm:items-start"
+          class="container container--wide h-full px-4 flex flex-col justify-center items-center sm:items-start"
         >
           <h1 class="mt-4">{heading}</h1>
-          <h5 class="mt-4 secondary-color">{caption}</h5>
+          <h5 class="mt-4 text-secondary">{caption}</h5>
         </div>
       </div>
-      <div class="wide-container">
+      <div class="container container--wide">
         <slot />
       </div>
     </section>

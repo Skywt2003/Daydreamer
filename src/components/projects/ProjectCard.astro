@@ -11,9 +11,9 @@ const { name, desc, url } = Astro.props;
 ---
 
 <li>
-  <div class="card p-4 h-full flex flex-col">
-    <h5 class="primary-color">{name}</h5>
-    <p class="mt-2 secondary-color flex-grow">{desc}</p>
+  <div class="card h-full flex flex-col">
+    <h5>{name}</h5>
+    <p class="mt-2 flex-grow">{desc}</p>
     <div class="mt-4">
       <GithubButton type="star" target={url} />
     </div>

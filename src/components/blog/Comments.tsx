@@ -90,7 +90,7 @@ export default function Comments(props: Props) {
             <i className="ri-discuss-line"></i>
             {" 评论"}
           </h2>
-          <p className="primary-color card my-4 p-2">🚧 抱歉，获取评论失败。</p>
+          <p className="card card--in-content my-4">🚧 抱歉，获取评论失败。</p>
         </>
       ) : (
         <>
@@ -125,7 +125,7 @@ export default function Comments(props: Props) {
       ) : (
         <div className="mt-4">
           <span
-            className="link underline primary-color"
+            className="link underline"
             onClick={() => {
               setSelected(null);
             }}

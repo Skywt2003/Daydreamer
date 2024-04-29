@@ -7,15 +7,11 @@ interface Props {
 const { lg, sm } = Astro.props;
 ---
 
-<div
-  id="box-wrapper"
-  class="flex flex-col justify-center bento-border primary-color relative"
-  onclick=""
->
+<div class="card card--bento" onclick="">
   <p class="absolute top-4 left-4 text-sm z-10">
     <i class="ri-map-pin-line"></i> 现居
   </p>
-  <div id="address" class="absolute p-4">
+  <div id="address" class="absolute">
     <h3 class="text-white">
       湖南省<br />长沙市<br />岳麓区
     </h3>
@@ -37,7 +33,7 @@ const { lg, sm } = Astro.props;
     display: none;
   }
 
-  #box-wrapper {
+  .card {
     grid-area: var(--sm);
     @screen lg {
       grid-area: var(--lg);

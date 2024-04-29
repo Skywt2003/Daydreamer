@@ -1,27 +1,59 @@
-:root {
-  @apply font-serif;
-  font-family: "Noto Serif SC", serif;
+/*
+ * Colors 通用颜色定义
+ */
+
+@mixin text-primary {
+  @apply text-gray-700 dark:text-neutral-300;
+}
+.text-primary {
+  @apply text-gray-700 dark:text-neutral-300;
 }
 
-html {
-  @apply bg-gray-100;
-  @media (prefers-color-scheme: dark) {
-    @apply bg-neutral-900;
-  }
-  @apply scroll-smooth;
+@mixin text-secondary {
+  @apply text-gray-500 dark:text-neutral-400;
+}
+.text-secondary {
+  @apply text-gray-500 dark:text-neutral-400;
+}
+
+@mixin text-tertiary {
+  @apply text-gray-400 dark:text-neutral-600;
+}
+.text-tertiary {
+  @apply text-gray-400 dark:text-neutral-600;
+}
+
+@mixin bg-back {
+  @apply bg-gray-100 dark:bg-neutral-900;
+}
+
+@mixin bg-front {
+  @apply bg-white dark:bg-neutral-800;
+}
+
+@mixin shadow-front {
+  @apply shadow-gray-200 dark:shadow-neutral-800;
+}
+
+@mixin border-front {
+  @apply border-gray-200 dark:border-neutral-800;
+}
+
+@mixin hover-front {
+  @apply bg-gray-200 dark:bg-neutral-950 dark:shadow-neutral-950;
+}
+
+@mixin active-front {
+  @apply bg-gray-300 dark:bg-neutral-950;
 }
 
 /*
-0 - 320 no
-320 - 640 xs
-640 - 768 sm
-768 - 1024 md
-1024 - 1280 lg
-1280 - 1536 xl
-1536 - inf 2xl
-*/
+ * 根元素定义
+ */
 
 :root {
+  @apply font-serif;
+  font-family: "Noto Serif SC", serif;
   font-size: 16px;
   @screen sm {
     font-size: 16px;
@@ -34,8 +66,18 @@ html {
   }
 }
 
+html {
+  @include bg-back;
+  @apply scroll-smooth;
+}
+
+/*
+ * BEM Block 定义
+ */
+
 .container {
   @apply mx-auto px-4;
+
   @apply max-w-md;
   @screen sm {
     @apply max-w-lg;
@@ -49,123 +91,124 @@ html {
   @screen xl {
     @apply max-w-3xl;
   }
-}
 
-.wide-container {
-  @apply mx-auto px-4;
-  @apply max-w-lg;
-  @screen sm {
-    @apply max-w-xl;
+  &--wide {
+    @apply max-w-lg;
+    @screen sm {
+      @apply max-w-xl;
+    }
+    @screen md {
+      @apply max-w-2xl;
+    }
+    @screen lg {
+      @apply max-w-3xl;
+    }
+    @screen xl {
+      @apply max-w-5xl;
+    }
   }
-  @screen md {
-    @apply max-w-2xl;
-  }
-  @screen lg {
-    @apply max-w-3xl;
-  }
-  @screen xl {
-    @apply max-w-5xl;
-  }
 }
 
-.primary-color {
-  @apply text-gray-700 dark:text-neutral-300;
+header,
+nav,
+main,
+footer {
+  @include text-primary;
 }
 
-.secondary-color {
-  @apply text-gray-500 dark:text-neutral-400;
-}
-
-.tertiary-color {
-  @apply text-gray-400 dark:text-neutral-600;
-}
-
-.border-color {
-  @apply border border-gray-200 dark:border-neutral-800;
-}
-
-hr {
-  @apply border-gray-200 dark:border-neutral-800;
-}
-
-.link {
-  @apply transition-all cursor-pointer;
-  &:hover {
-    @apply underline text-gray-700 dark:text-neutral-300;
-  }
+// 诸如「实验室」这样的页面，显示标题的部分
+.page-heading {
+  @include bg-front;
+  @apply h-[30rem];
 }
 
 .card {
-  @apply primary-color;
-  @apply bg-white dark:bg-neutral-800;
-  @apply rounded-xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
+  @include bg-front;
 
-  &.clickable {
+  @apply rounded-xl p-4;
+
+  @apply shadow-md;
+  // 注意：apply shadow-md 时，Tailwind 设置了默认的颜色
+  // 诸如 shadow-gray-200 这样的 util 通过变量覆盖上述颜色
+  // 但是，如果使用 extend，则被 extend 的变量反而会被覆盖（优先级更低）
+  // 所以，不要使用 extend，全部使用 mixin / include
+  @include shadow-front;
+
+  // 在一段文字中插入信息的 card 组件
+  &--in-content {
+    @apply p-2 leading-loose;
+  }
+
+  // 专门用于 Bento 的 card 组件
+  &--bento {
+    @apply flex flex-col justify-center relative;
+    @apply rounded-2xl;
+  }
+  &--align-center {
+    @apply items-center;
+  }
+  &--with-image {
+    @apply bg-center bg-cover bg-no-repeat bg-blend-overlay text-white;
+    background-color: rgb(100, 100, 100);
+  }
+
+  &--clickable {
     @apply cursor-pointer transition-all;
-    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
+    &:hover {
+      @include hover-front;
+    }
     &:active {
+      @apply shadow-none;
+      @include active-front;
       transform: scale(0.98);
     }
   }
 }
 
-.bento-border {
-  @apply rounded-2xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
-
-  &.clickable {
-    @apply cursor-pointer transition-all;
-    @apply hover:bg-gray-200 dark:hover:bg-neutral-600;
-    &:active {
-      transform: scale(0.98);
-    }
+// 严格来说，这不是 block
+.link {
+  @apply transition-all cursor-pointer;
+  @apply underline decoration-transparent;
+  &--with-underline {
+    @apply decoration-inherit;
   }
-}
-
-.bento-bg {
-  @apply bg-white dark:bg-neutral-800;
+  &:hover {
+    @apply decoration-inherit;
+  }
 }
 
 /* 页面主标题 */
 h1 {
   @apply text-5xl font-black leading-tight drop-shadow-xl;
-  @apply primary-color;
 }
 
 /* 分节标题 */
 h2 {
   @apply text-4xl font-black leading-snug drop-shadow-xl;
-  @apply primary-color;
 }
 
 /* 展示信息 */
 h3 {
   @apply text-3xl font-bold leading-snug drop-shadow-lg;
-  @apply primary-color;
 }
 
 h4 {
   @apply text-xl font-bold leading-snug;
-  @apply primary-color;
 }
 
 h5 {
   @apply text-lg font-bold leading-snug;
-  @apply primary-color;
 }
 
-.font-kai {
-  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", "Noto Serif SC", serif;
-}
-
-.all-0 {
-  @apply left-0 right-0 top-0 bottom-0;
+hr {
+  @include border-front;
 }
 
 // 应用 typography 的样式，并进行一些微调
 .content {
   @apply prose dark:prose-neutral dark:prose-invert max-w-none;
   img {
-    @apply shadow-lg rounded;
+    @apply shadow-lg rounded-lg;
   }
   blockquote {
     @apply not-italic;
@@ -180,15 +223,29 @@ h5 {
       content: "";
     }
   }
-}
 
-// typography 默认将所有 a 都加上下划线
-// 虽然这可以很好地提示用户超链接，但是：
-// 1）当应用于标题时不美观
-// 2）当应用于大量超链接列表时，无必要（因为用户已知道都是超链接）
-// 所以添加此属性，消除默认下划线，改为 hover 下划线
-.no-underline-by-default {
-  @apply decoration-transparent hover:decoration-inherit transition-all;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply relative;
+  }
+
+  .heading-anchor {
+    @apply absolute;
+    @apply -top-20;
+  }
+
+  // typography 默认将所有 a 都加上下划线
+  // 虽然这可以很好地提示用户超链接，但是：
+  // 1）当应用于标题时不美观
+  // 2）当应用于大量超链接列表时，无必要（因为用户已知道都是超链接）
+  // 所以添加此属性，消除默认下划线，改为 hover 下划线
+  .no-underline-by-default {
+    @apply decoration-transparent hover:decoration-inherit transition-all;
+  }
 }
 
 .summary {
@@ -202,50 +259,50 @@ h5 {
   }
 }
 
-input[type="text"],
-input[type="url"],
-input[type="email"],
-textarea {
-  @apply p-2 rounded-xl transition-all;
-  @apply bg-gray-100 dark:bg-neutral-900;
-  @apply border border-gray-300 dark:border-neutral-700;
-  @apply text-black dark:text-white;
-  @apply shadow-inner shadow-gray-200 dark:shadow-neutral-800 outline-0;
+// 网站中只存在提交评论的表单，所以该 form 只指 comment-form
+.form {
+  @apply grid gap-4 grid-cols-1 sm:grid-cols-3;
+  &__input {
+    @apply p-2 rounded-xl transition-all;
+    @include bg-back;
+
+    @apply border outline-0;
+    @include border-front;
+
+    @apply shadow-inner;
+    @include shadow-front;
+
+    @include text-primary;
+  }
+
+  &__checkbox {
+    @apply appearance-none;
+  }
+
+  &__button {
+    @apply p-2 rounded-xl transition-all;
+    @include bg-front;
+
+    @apply shadow-md;
+    @include shadow-front;
+
+    &:hover {
+      @include hover-front;
+    }
+    &:active {
+      @apply shadow-none;
+      @include active-front;
+      transform: scale(0.98);
+    }
+    &:disabled {
+      @apply shadow-none border;
+      @include border-front;
+      @include bg-back; // 待修改
+      @include text-tertiary;
+    }
+  }
 }
 
-input[type="checkbox"] {
-  @apply appearance-none;
-  @apply w-4 h-4 rounded transition-all;
-  @apply bg-gray-100 dark:bg-neutral-900;
-  @apply checked:bg-gray-500 dark:checked:bg-neutral-500;
-  @apply border border-gray-300 dark:border-neutral-700;
-  @apply text-black dark:text-white;
-  @apply shadow-inner shadow-gray-200 dark:shadow-neutral-800 outline-0;
-  @apply checked:shadow-none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  @apply transition-all;
-  @apply p-2 rounded-xl shadow-md shadow-gray-200 dark:shadow-neutral-800;
-  @apply bg-white dark:bg-neutral-800;
-  @apply hover:bg-gray-200 hover:dark:bg-black hover:shadow-none;
-  @apply text-gray-900 dark:text-neutral-100;
-  @apply disabled:shadow-none disabled:bg-gray-100 disabled:dark:bg-neutral-900 text-gray-500;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply relative;
-}
-
-.heading-anchor {
-  @apply absolute;
-  @apply -top-20;
+.font-kai {
+  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", "Noto Serif SC", serif;
 }

@@ -32,7 +32,7 @@ export default function CommentForm(props: Props) {
     <>
       {props.selected !== null && (
         <div className="mt-4 flex justify-between">
-          <p className="primary-color font-bold">
+          <p className="font-bold">
             <i className="ri-reply-line"></i> 回复 @{props.selected.author}{" "}
             的评论：
           </p>
@@ -48,12 +48,9 @@ export default function CommentForm(props: Props) {
           </p>
         </div>
       )}
-      <p className="mt-4 primary-color card p-2">
-        <i className="ri-information-line"></i>{" "}
+      <p className="mt-4 card card--in-content">
         <b>所有评论都将经过博主审核。</b>
         请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。
-        <br />
-        评论提交组件是最近刚写的，如果遇到 bug 欢迎向博主反馈～
       </p>
       <form
         onSubmit={(e) => {
@@ -61,14 +58,12 @@ export default function CommentForm(props: Props) {
           setText("");
           e.preventDefault();
         }}
-        className="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-3 relative"
+        className="mt-4 form"
       >
-        {/* <div className="absolute -top-2 -left-2 -bottom-2 -right-2 backdrop-blur-sm z-10 rounded-xl flex justify-center items-center">
-          <p className="primary-color">评论已提交，等待审核中。</p>
-        </div> */}
         <input
           placeholder="你的名字"
           type="text"
+          className="form__input"
           required={true}
           value={author}
           onChange={(e) => {
@@ -78,6 +73,7 @@ export default function CommentForm(props: Props) {
         <input
           placeholder="邮箱"
           type="email"
+          className="form__input"
           required={true}
           value={mail}
           onChange={(e) => {
@@ -87,6 +83,7 @@ export default function CommentForm(props: Props) {
         <input
           placeholder="网址"
           type="url"
+          className="form__input"
           value={url}
           onChange={(e) => {
             setUrl((e.target as HTMLInputElement).value);
@@ -94,7 +91,7 @@ export default function CommentForm(props: Props) {
         />
         <textarea
           rows={8}
-          className="sm:col-span-3"
+          className="sm:col-span-3 form__input"
           placeholder="说点什么吧……"
           required={true}
           value={text}
@@ -104,7 +101,7 @@ export default function CommentForm(props: Props) {
         ></textarea>
         <button
           type="submit"
-          className="sm:col-span-3"
+          className="sm:col-span-3 form__button"
           disabled={props.sending}
         >
           {props.sending ? "提交中……" : "提交"}
@@ -120,13 +117,13 @@ export default function CommentForm(props: Props) {
               setReceiveMail((e.target as HTMLInputElement).checked);
             }}
           />
-          <label htmlFor="receiveMail" className="secondary-color ml-2">
+          <label htmlFor="receiveMail" className="text-secondary ml-2">
             当有人回复我时，接收邮件通知
           </label>
         </div> */}
       </form>
       {firstComment && (
-        <p className="mt-4 secondary-color text-sm leading-normal">
+        <p className="mt-4 text-secondary text-sm leading-normal">
           提交评论即表明你同意本网站使用
           Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。
           <br />

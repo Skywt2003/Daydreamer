@@ -12,7 +12,7 @@ interface Props {
 
 export default function Comment(props: Props) {
   return (
-    <div className="primary-color my-4">
+    <div className="my-4">
       <div className="flex items-center">
         <img src={props.comment.avatar} className="rounded-full w-12 mr-2" />
         <div className="m-2">
@@ -24,12 +24,12 @@ export default function Comment(props: Props) {
             <h4>{props.comment.author}</h4>
           )}
           <p className="mt-1">
-            <span className="secondary-color">
+            <span className="text-secondary">
               {utils.formatTimestamp(props.comment.created)}
             </span>
             {props.comment.status === "approved" ? (
               <span
-                className="link ml-2 primary-color"
+                className="link ml-2"
                 onClick={() => {
                   props.setSelected(props.comment);
                 }}
@@ -37,7 +37,7 @@ export default function Comment(props: Props) {
                 <i className="ri-reply-line"></i> 回复
               </span>
             ) : (
-              <span className="ml-2 primary-color">
+              <span className="ml-2">
                 <i className="ri-admin-line"></i> 待审核
               </span>
             )}

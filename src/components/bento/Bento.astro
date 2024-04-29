@@ -1,10 +1,9 @@
 ---
 import Box from "./Box.astro";
-import BgBox from "./BgBox.astro";
 import Map from "./Map.astro";
 ---
 
-<div id="too-small-hint" class="text-center secondary-color mt-4">
+<div id="too-small-hint" class="text-center text-secondary mt-4">
   <i class="ri-alert-line text-4xl"></i>
   <p class="mt-2">您的屏幕太小，这一部分的自我介绍 Bento 组件无法正常显示。</p>
   <p class="mt-2">
@@ -58,7 +57,7 @@ import Map from "./Map.astro";
     </div>
   </Box>
 
-  <BgBox
+  <Box
     lg={[3, 1, 7, 3]}
     sm={[7, 1, 11, 3]}
     bg_image="url('/quzhou_tower.jpeg')"
@@ -69,19 +68,19 @@ import Map from "./Map.astro";
     <h3 class="text-white text-center">
       浙<br />江<br />衢<br />州
     </h3>
-  </BgBox>
+  </Box>
 
-  <BgBox lg={[3, 3, 5, 5]} sm={[7, 3, 9, 5]} bg_image="url('/hnu.jpg')">
+  <Box lg={[3, 3, 5, 5]} sm={[7, 3, 9, 5]} bg_image="url('/hnu.jpg')">
     <p class="absolute text-sm top-4 left-4">
       <i class="ri-graduation-cap-line"></i> 本科在读
     </p>
     <h3 class="mt-2 text-center text-white">湖南大学</h3>
     <p class="mt-2 font-bold text-center">Hunan University</p>
-  </BgBox>
+  </Box>
 
   <Map lg={[3, 5, 5, 9]} sm={[5, 1, 7, 5]} />
 
-  <BgBox lg={[5, 7, 7, 9]} sm={[9, 3, 11, 5]} bg_image="url('/changsha.jpg')" />
+  <Box lg={[5, 7, 7, 9]} sm={[9, 3, 11, 5]} bg_image="url('/changsha.jpg')" />
 
   <Box lg={[5, 3, 9, 7]} sm={[11, 1, 15, 5]}>
     <h1 class="text-center text-8xl">👨‍💻</h1>
@@ -91,7 +90,7 @@ import Map from "./Map.astro";
       <span>全栈工程师</span>
     </h3>
 
-    <div class="mt-1 text-lg text-center w-2/3 mx-auto secondary-color">
+    <div class="mt-1 text-lg text-center w-2/3 mx-auto text-secondary">
       <i class="ri-html5-line"></i>
       <i class="ri-css3-line"></i>
       <i class="ri-javascript-line"></i>
@@ -122,7 +121,7 @@ import Map from "./Map.astro";
     </div>
   </Box>
 
-  <Box lg={[7, 1, 9, 3]} sm={[15, 1, 17, 3]} class="items-center">
+  <Box lg={[7, 1, 9, 3]} sm={[15, 1, 17, 3]} align="center">
     <img src="/avatar.png" alt="My Avatar" class="rounded-full w-24 h-24" />
   </Box>
 
@@ -165,7 +164,13 @@ import Map from "./Map.astro";
   <Box
     lg={[9, 7, 11, 9]}
     sm={[19, 3, 21, 5]}
-    class="items-center hover:border-8 hover:border-dotted border-gray-300 dark:border-neutral-500"
+    align="center"
+    class={[
+      "hover:border-8",
+      "hover:border-dotted",
+      "border-gray-300",
+      "dark:border-neutral-500",
+    ]}
     url="/about"
   >
     <h3>了🤔解<br />更多👉<br />🌟<i class="ri-external-link-line"></i>👀</h3>

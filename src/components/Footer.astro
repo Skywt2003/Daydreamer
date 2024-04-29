@@ -12,8 +12,8 @@ interface Props {
 const { items, path } = Astro.props;
 ---
 
-<footer class="mt-16 py-8 bg-gray-100 dark:bg-neutral-900">
-  <div class="wide-container secondary-color text-sm">
+<footer class="mt-16 py-8 text-secondary">
+  <div class="container container--wide text-sm">
     <div class="flex justify-between flex-wrap">
       <div class="m-2">
         <Path path={path} />
@@ -27,7 +27,7 @@ const { items, path } = Astro.props;
       <p class="m-2">
         &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
         |
-        <a href="/sitemap.xml" class="link">站点地图</a>
+        <a href="/sitemap-index.xml" class="link">站点地图</a>
         |
         <a href="/friends" class="link">友情链接</a>
         |

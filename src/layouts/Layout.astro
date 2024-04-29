@@ -34,7 +34,7 @@ const { title, includeHeader = true, path = [] } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
@@ -44,6 +44,8 @@ const { title, includeHeader = true, path = [] } = Astro.props;
       title="博客文章 RSS 订阅"
       href={`${Astro.site}rss.xml`}
     />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <script is:inline>
       function addMatomo() {
