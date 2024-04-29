@@ -25,56 +25,19 @@ slug: about
 
 ## 关于本站
 
-<p class="card p-2">
+<p class="card card--in-content">
   ⚙️ 这个网站目前还在开发测试阶段，只上线了部分功能，并且可能会出现奇怪的 bug。
 </p>
 
 这是我「信息汪洋里的一个家」。会发一些技术/题解/折腾记录/生活日常，不定期更新。
 
-几乎每年，我都会使用新的技术重新设计我的网站。你现在看到的是 2024 版。这一版本由 Astro、TypeScript、Tailwind.css 等技术驱动，由 ChatGPT、Copilot 等协助编写。感谢这些技术让开发体验变得如此优雅和美妙。
+我从 2017 年建立这个网站开始，曾经先后用过 WordPress、Typecho 等 PHP 博客系统，博客主题也换过很多，也自己设计开发过博客主题。
 
-这个网站的整套程序，命名为 Daydreamer。我将其定义为一个持续开发的 playground，之后将会尝试陆续添加各种好玩的功能。
+现在，这个博客使用我自己开发的后端，前端则由 Astro、React 等框架和技术驱动。这个网站的整套程序，命名为 Daydreamer。我将其定义为一个持续开发的 playground，之后将会尝试陆续添加各种好玩的功能。
 
-新的网站集成了博客系统。[原博客](https://blog.skywt.cn)由 Typecho 驱动，使用的是我自己设计的 Typecho 主题 Daydream。
-
-由于觉得自己目前正处于如饥似渴的学习期，还没有足够的实力做有质量的内容产出……所以博客更新频率不会特别高。
+由于觉得自己目前正处于如饥似渴的学习期，还没有足够的实力做有质量的内容产出……所以博客文章更新频率不会特别高。
 
 ### 时间轴
-
-<!-- 从创建至今，这个网站已运行 <span id="uptime"></span>。 -->
-
-<!-- <script is:inline>
-  const uptime = document.getElementById("uptime");
-  const now = new Date();
-  const grt = new Date("12/11/2017 11:00:00");
-  const getUptime = () => {
-    now.setTime(now.getTime() + 250);
-    const diff = now.getTime() - grt.getTime();
-    const dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
-    const hnum = Math.floor(diff / 1000 / 60 / 60 - 24 * dnum);
-    const mnum = Math.floor(
-      diff / 1000 / 60 - 24 * 60 * dnum - 60 * hnum,
-    );
-    const snum = Math.round(
-      diff / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum,
-    );
-
-    uptime.innerText =
-      (dnum ? dnum.toString() + " 天 " : "") +
-      (hnum ? hnum.toString() + " 小时 " : "") +
-      (mnum ? mnum.toString() + " 分 " : "") +
-      (snum ? snum.toString() + " 秒" : "");
-  };
-  let timer = setInterval(getUptime, 250);
-
-  document.addEventListener(
-    "astro:before-swap",
-    () => {
-      clearInterval(timer);
-    },
-    { once: false },
-  );
-</script> -->
 
 - 2017.10.29 注册域名 skywt.top（现已注销）。
 - 2017.11.12 网站正式开始运行。由 WordPress 驱动。
@@ -106,6 +69,7 @@ slug: about
 - 2024.02.06 启用基于 Astro.js 开发的全新个人主页 Daydreamer。
 - 2024.03.02 个人主页集成 Typecho 博客，逐步从 blog.skywt.cn 迁移。
 - 2024.03.03 开始使用多吉云 CDN 加速。
+- 2024.04.19 全面迁移至自己开发的后端，弃用 Typecho 博客系统。
 - ……
 
 ## 联系
