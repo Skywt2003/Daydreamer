@@ -23,8 +23,48 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.C8zHEL7M.css">
-<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css"><script type="module" src="/_astro/hoisted.BMqMAa2A.js"></script></head> <body>   <div class="container min-h-screen flex flex-col justify-center"> <h1>404 Not Found.</h1> <div class="mt-12 text-secondary"> <p> <a href="/" class="link"><i class="ri-home-line"></i> 返回首页</a> </p> <p class="mt-2"> <ul data-astro-cid-tfcnbjmv>  <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </p> </div> </div>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a>  </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.C1P3jhYu.css">
+<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css"><script type="module" src="/_astro/hoisted.BMqMAa2A.js"></script></head> <body> <header class="mt-12 container container--wide" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a>  </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="container container--wide flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block text-secondary" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a>  </h5> <div class="m-2 text-secondary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("header");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) {
+        headerEl.classList.add("sticked");
+      } else {
+        headerEl.classList.remove("sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>   <main> <div class="container my-8 sm:my-32 flex flex-col justify-center"> <h1>404 Not Found.</h1> <div class="mt-12 text-secondary"> <p> <a href="/" class="link"><i class="ri-home-line"></i> 返回首页</a> </p> <p class="mt-2"> <ul data-astro-cid-tfcnbjmv>  <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </p> </div> </div> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a>  </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
