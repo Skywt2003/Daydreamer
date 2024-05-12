@@ -4,16 +4,18 @@ import Menu from "@components/menu/Menu.astro";
 import menu_yml from "@configs/menu.yml";
 ---
 
-<Layout title="404 Not Found" includeHeader={false}>
-  <div class="container min-h-screen flex flex-col justify-center">
-    <h1>404 Not Found.</h1>
-    <div class="mt-12 text-secondary">
-      <p>
-        <a href="/" class="link"><i class="ri-home-line"></i> 返回首页</a>
-      </p>
-      <p class="mt-2">
-        <Menu includeHome={false} items={menu_yml.items} />
-      </p>
+<Layout title="404 Not Found" includeHeader={true}>
+  <main>
+    <div class="container my-8 sm:my-32 flex flex-col justify-center">
+      <h1>404 Not Found.</h1>
+      <div class="mt-12 text-secondary">
+        <p>
+          <a href="/" class="link"><i class="ri-home-line"></i> 返回首页</a>
+        </p>
+        <p class="mt-2">
+          <Menu includeHome={false} items={menu_yml.items} />
+        </p>
+      </div>
     </div>
-  </div>
+  </main>
 </Layout>
