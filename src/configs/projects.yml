@@ -20,6 +20,3 @@ projects:
   - name: WebCV
     desc: 简洁的 Web 简历生成器。
     url: Skywt2003/WebCV
-  - name: vuecho
-    desc: 使用 Vue 实现的 Typecho 博客前端。
-    url: Skywt2003/vuecho

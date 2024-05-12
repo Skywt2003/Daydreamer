@@ -55,10 +55,6 @@ groups:
         app: 微信公众号 RSS
         url: https://werss.skywt.cn
         method: Docker
-      # - name: Reading List
-      #   app: Wallabag 文章收藏
-      #   url: https://mark.skywt.cn
-      #   method: Docker
       - name: Archive
         app: ArchiveBox 网页存档
         url: https://archive.skywt.cn
@@ -73,10 +69,6 @@ groups:
         app: Code-server 编辑器
         url: https://code.skywt.cn
         method: Docker
-      # - name: Auth
-      #   app: Keycloak 单点登录平台
-      #   url: https://auth.skywt.cn
-      #   method: Docker
       - name: Frp
         app: Frp 内网穿透
         url: https://frp.skywt.cn
@@ -114,6 +106,10 @@ groups:
       #   method: Docker
   - name: ⚙️ 管理工具
     services:
+      - name: Auth
+        app: Keycloak 单点登录
+        url: https://auth.skywt.cn
+        method: Docker
       - name: Analytics
         app: Matomo 访客统计
         url: https://analytics.skywt.cn
