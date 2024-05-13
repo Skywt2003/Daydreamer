@@ -44,7 +44,7 @@ export default function Comment(props: Props) {
           </p>
         </div>
       </div>
-      <p className="mt-2 break-all">{props.comment.text}</p>
+      <p className="mt-2 break-all whitespace-pre-wrap">{props.comment.text}</p>
       {props.comment === props.selected && (
         <CommentForm
           selected={props.selected}
