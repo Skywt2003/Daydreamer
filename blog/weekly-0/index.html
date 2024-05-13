@@ -1,0 +1,182 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta name="generator" content="Astro v4.7.0"><title>Weekly #0：每个平凡的日子，都在闪闪发光</title><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.BOuuljwl.css">
+<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css">
+<style>img[data-astro-cid-4sn4zg3r]{border-radius:.5rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
+</style><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="mt-12 container container--wide" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #0：每个平凡的日子，都在闪闪发光 </span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="container container--wide flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block text-secondary" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #0：每个平凡的日子，都在闪闪发光 </span> </h5> <div class="m-2 text-secondary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("header");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) {
+        headerEl.classList.add("sticked");
+      } else {
+        headerEl.classList.remove("sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>   <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="leading-relaxed" data-astro-cid-4sn4zg3r>Weekly #0：每个平凡的日子，都在闪闪发光</h1> <p class="mt-4 text-secondary leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2024 年 5 月 12 日 08:30</span> <!-- {
+          post.commentsNum > 0 && (
+            <>
+              <br />
+              <i class="ri-discuss-line" />
+              <span>共 {post.commentsNum} 条评论</span>
+            </>
+          )
+        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%93%B0-%E5%8F%91%E5%88%8A%E8%AF%8D%E6%AF%8F%E4%B8%AA%E5%B9%B3%E5%87%A1%E7%9A%84%E6%97%A5%E5%AD%90%E9%83%BD%E5%9C%A8%E9%97%AA%E9%97%AA%E5%8F%91%E5%85%89">📰 发刊词：每个平凡的日子，都在闪闪发光</a></li>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E4%B8%80%E7%BC%95%E6%99%A8%E5%85%89">🌆 封面图：一缕晨光</a></li>
+<li><a href="#%F0%9F%94%AC-%E4%BA%BA%E6%96%87%E7%A4%BE%E7%A7%91%E4%B8%AD%E7%9A%84%E7%A7%91%E5%AD%A6%E7%B2%BE%E7%A5%9E">🔬 人文社科中的科学精神</a></li>
+<li><a href="#%F0%9F%83%8F-%E4%B8%80%E8%B5%B7%E4%BC%98%E8%AF%BAuno-%E7%BA%B8%E7%89%8C%E7%9A%84%E9%AD%85%E5%8A%9B">🃏 一起优诺！UNO 纸牌的魅力</a></li>
+<li><a href="#%F0%9F%8E%9B%EF%B8%8F-%E6%97%A0%E7%8A%B6%E6%80%81-stateless-%E7%9A%84%E4%BC%98%E9%9B%85%E6%80%A7">🎛️ 无状态 Stateless 的优雅性</a></li>
+<li><a href="#%E2%9A%99%EF%B8%8F-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84-pve-%E6%8A%98%E8%85%BE%E4%B9%8B%E6%97%85">⚙️ 从零开始的 PVE 折腾之旅</a></li>
+<li><a href="#%F0%9F%94%90-%E4%BD%BF%E7%94%A8-keycloak-%E6%90%AD%E5%BB%BA%E7%BB%9F%E4%B8%80%E7%99%BB%E5%BD%95%E5%B9%B3%E5%8F%B0">🔐 使用 Keycloak 搭建统一登录平台</a></li>
+<li><a href="#%E2%8C%9A%EF%B8%8F-%E8%A7%A6%E5%8F%91%E4%BA%86-apple-watch-%E6%91%94%E5%80%92%E6%A3%80%E6%B5%8B-%F0%9F%98%85">⌚️ 触发了 Apple Watch 摔倒检测 😅</a></li>
+<li><a href="#%E2%9C%A8-%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97">✨ 博客系统更新日志</a></li>
+</ul>
+<h2><a id="📰-发刊词每个平凡的日子都在闪闪发光" class="heading-anchor"></a>📰 发刊词：每个平凡的日子，都在闪闪发光</h2>
+<p>这是我博客的一个新的系列。之前类似的内容发在 whisper.skywt.cn，不过后来由于某些原因没有再更新了。然而，我还是觉得生活中经常有些有意思的事情，值得记录和分享。所以，现在打算以周记的形式发布。</p>
+<p><strong>我们的青春岁月如同列车呼啸而过。我们每一天的所听、所见、所思、所想，都在让我们一点点增进对这个世界的了解。我认为这一切都非常值得被记录下来。</strong></p>
+<blockquote>
+<p>每个平凡的日子，都在闪闪发光。</p>
+</blockquote>
+<p>目前这个周记的定位并非提供知识的周刊 / 周报 / Newsletter，所以对内容价值没有任何保证。可能是技术相关的，可能是最近发生的有趣的事情，也可能是各种天马行空的想法。本来，是想给每期划定各个模块的，比如「学习」、「阅读」、「见闻」之类。不过觉得这种内容框架过于死板了，因为每周都有不一样的安排。只有唯一相同的是，每周都有值得记录的事情。所以，现在的内容规范是：想说什么就说什么。</p>
+<p>这个系列还没想好一个好听的名字，暂时就叫做「Weekly」。不过我也不能保证每周都能更新。总之作为一个长期的全新系列，希望能坚持记录。</p>
+<p>（注：本节标题「发刊词」带有比喻意义，该文章系列仅为个人博客文章，并非正式出版物）</p>
+<h2><a id="🌆-封面图一缕晨光" class="heading-anchor"></a>🌆 封面图：一缕晨光</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/1318381461.jpg" data-fancybox data-caption="封面图：一缕晨光"><img src="https://blog.skywt.cn/usr/uploads/2024/05/1318381461.jpg" alt="封面图：一缕晨光" style="width:60%;" /></a></p>
+<p>阳光灿烂的早晨，在中楼拍的。</p>
+<h2><a id="🔬-人文社科中的科学精神" class="heading-anchor"></a>🔬 人文社科中的科学精神</h2>
+<p>本学期选了一门法学院的专业选修课，高中老师的《西方法律思想史》。大学里上的所有课里，真正让我感觉有很大收获的课其实非常少，但是这门课是其中之一。能上到这样的课，感觉还是挺幸运的。</p>
+<p>高老师说了这样一个观点：我们（他们）法律人实际上是 <strong>social engineer</strong>，即「<strong>社会工程师</strong>」。法律人是通过法律建构出这个社会的形态。</p>
+<p>仔细想想，其实这和我们「软件工程师」很像！只是我们构建软件的工具是代码，他们构建社会的工具是法律。纵观整个西方法律思想史，从一种观点发展到另一种观点，理性总是法律思想发展的工具。从这个角度看，怎么能说法学这类是「文科」呢？明明和我们软件开发一样，需要严谨的逻辑思维和表达。</p>
+<p>进一步想想，法律条文不也是一种接近于形式化的语言吗？相比自然语言，法律条文似乎更像代码：晦涩但严谨清晰。这么看来，制定法律条文这一过程，甚至和我们写代码也有些相似。</p>
+<p>所以，是谁一直散播「人文社科不需要逻辑思维，更需要感性思维」这类的观点的？对于文学一类的专业或许成立，但是对社科这类的专业而言，这类观点甚至对这个专业的人才输送产生了非常不好的影响。联想到最近看到马督工的《<a href="https://www.bilibili.com/video/BV1GN4y1h7Ex">【睡前消息682】支持张雪峰批文科，没有独立性哪有尊严</a>》，他认为，近来在文科领域盛行脱离科学的风气，对科学精神的重视严重不足。会想我们高中时期，确实是家长和老师都认为「理科学不好的才去学文科」。而马督工认为，这才是反过来导致文科整体走向低端，被歧视的原因。</p>
+<h2><a id="🃏-一起优诺uno-纸牌的魅力" class="heading-anchor"></a>🃏 一起优诺！UNO 纸牌的魅力</h2>
+<p>五一期间逛 App Store 看到「<strong>一起优诺</strong>」这个游戏，就是我们小学玩的 UNO 纸牌的官方手游。于是心血来潮下载体验了一下。</p>
+<p>相比我们小时候玩的纸牌版本，游戏的「经典模式」加入了两条规则：1）每局限时 3 分钟，每次出牌限时 10 秒；2）玩家打出 +4 牌，下家可以选择「质疑」。如果玩家出 +4 之前其实有同色的牌可出而不出，则质疑成功，玩家拿六张牌，下家不加牌；如果质疑失败，下家拿六张牌。如果不质疑，下家拿四张牌。</p>
+<p>而游戏推出的「欢乐场模式」则更加刺激，添加的规则是：1）增加「同色全出」牌，出此牌即可一次全出同色所有牌；2）上家出 +2 或 +4 牌，玩家可以出 +2/+4 牌叠加给下家。</p>
+<p>这个游戏还有金币系统，一局结束后，输家将给赢家金币。在不同倍率的场次，输赢金币数量不同。</p>
+<p>在多轮体验之后，感觉这个游戏规则有一个显著特点：<strong>非常看牌运，决策空间其实很小。</strong>玩家初始只有 7 张牌，由于有上家的 +2/+4 牌、禁止牌等等的存在，很容易出现连续几轮没有出牌机会或者被一直加牌的情况，能够导致有强力牌的玩家连续掌控牌权；单人模式中能攻击的只有下家，所以决策的唯一选择是：<strong>永远对下家造成最大的伤害</strong>。决策空间小，就导致随机变数大，即使再技术高超的玩家也无法保证高胜率。（所以，我多次累积到 1w+ 金币，又多次破产 😭）</p>
+<p>那为何这种缺乏决策空间的游戏能够风靡全球呢？我认为主要是由于其游戏规则带来的牌局的<strong>戏剧性和刺激感</strong>。和传统纸牌游戏不同的是玩家能够被动增加手牌，只剩一两张牌的玩家可以突然被加上六张牌。特别是在「欢乐场模式」中，同色全出牌和 +2/+4 可叠加两条规则，让出牌和加牌的规模都增加了，相当于增加了持牌数量的方差，使牌局更加戏剧化。所以，在玩的过程中会非常欢乐。比如下图，我出了一张 +4，结果在场每个玩家都跟了 +4，轮到我成了 +16，我一下拿了 16 张牌，手牌已经叠得看不清了 😭</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/3541340898.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/3541340898.png" alt="被加了十六张牌的我" title="" /></a></p>
+<p>事实上，<strong>手游加入的两条规则，是在为游戏增添策略元素</strong>。1）通过「质疑」，玩家可以怀疑此次 +4 是否是为提供对手出牌条件而「战略性」出牌；2）限时规则中，当 3 分钟时间到时，如果没有牌出完的获胜方，则根据所有玩家持牌扣分，普通牌扣排面数字对应的分值，而功能牌则扣分幅度大得多（印象中 +4 牌一张扣 50 分），这导致在牌没出完的情况下<strong>优势逆转</strong>（如果此时继续出牌，显然功能牌多的玩家更更可能赢），所以在牌局中玩家需要决策当前是否可能出完手牌，如果时间内已经不可能则要优先出功能牌（这可能又会被「质疑」）；甚至到快结束的时候玩家可以战略性地减慢出牌速度（拖时间），减少对方的机会……不过相比其他纸牌游戏，即使加入了规则，决策空间依然很小。</p>
+<p>以前一直认为，一种游戏长盛不衰的原因一般是由于其<strong>为高端玩家提供了足够的决策空间</strong>，即在竞技性方面有很高的上限，比如围棋。然而，很多游戏更多提供的是<strong>社交属性</strong>，例如 UNO 纸牌这种戏剧性和刺激感的特点，非常适合好友聚会的欢乐氛围。这或许才是它能够风靡全球的原因，</p>
+<h2><a id="🎛️-无状态-stateless-的优雅性" class="heading-anchor"></a>🎛️ 无状态 Stateless 的优雅性</h2>
+<p>周六被桂总狠狠地传教了 NixOS。在面对其陡峭的学习曲线望而却步的同时，确实被它的优雅性所深深折服。</p>
+<p>本质上 NixOS 的理念有点像 Docker，即<strong>将每个软件本身视为无状态的，通过外部的配置文件显式地管理其状态</strong>。每次启动计算机，所有软件都处于被用户控制的初始状态。</p>
+<p>这种感觉实在是太酷了！在以前，我们使用计算机的时候往往觉得这是一个巨大的黑盒，比如在 Firefox 中登录了账户，相比没有登录账户，存储部分产生了什么变化呢？我们根本不知道。这导致我们无法随心所欲地控制软件的状态，比如我们希望这次启动 Firefox 是在未登录状态下启动的，我们只能使用 Firefox 软件提供的接口（在设置中退出登录），而没有一种统一的接口控制这一状态。</p>
+<p>而有了外部的状态管理，就可以在一个配置文件中管理 Firefox 的状态。根据类似的原理，能够通过配置文件管理整个系统的状态。使用的软件包、启动的选项，等等。没错，NixOS 中整个系统的状态都是由一个配置文件表示的。这样，每次系统启动时，各个组件是什么样子，我们都能够控制了。<strong>计算机对于我们来说再也不是一个黑盒了。</strong></p>
+<p>React 之前推出的「函数式组件」也使用了「组件无状态」的思想。</p>
+<p>正由于这种优雅性，我很早就将服务器上所有部署的服务容器化，使用 Docker Compose，通过将数据挂载到外部，实现全面的「容器无状态」。然而，NixOS 能将这种状态管理做到如此的极致，以及其提供的强大简洁的工具链，着实震撼了我。</p>
+<h2><a id="⚙️-从零开始的-pve-折腾之旅" class="heading-anchor"></a>⚙️ 从零开始的 PVE 折腾之旅</h2>
+<p>上学期入手的零刻 Ser6 Pro Vest 迷你主机，一直装着 Windows 11 和 Kali 双系统，因为我既有使用 Windows 软件和玩游戏的需求，又有用 Linux 的需求。然而，这样只能同时运行一个系统，这意味着任何一个系统不能 24 小时在线，不能用来跑 NAS 或者其他服务。</p>
+<p>最近决定入这个大坑：<strong>Proxmox Virtual Environment</strong>。这是一个开源的 Linux 发行版，提供了面向企业运维的虚拟化环境。在上面能够方便地配置 Windows 虚拟机和 Linux 容器，达到同时运行两个系统的目的。</p>
+<p>然而，我作为硬件方面的小白（在此之前连 PCI 是什么都不知道），折腾 PVE 真的能用名副其实的「折腾」作为动词。因为文档充斥着大量我不了解的概念，大多教程也只告诉你怎么做，没有过多的解释；不同硬件的情况也千差万别（比如 AMD Radeon 存在的 <a href="https://github.com/inga-lovinde/RadeonResetBugFix">reset bug</a>），遇到了无数的坑。之后一定要写一篇博客记录一下。😭</p>
+<p>昨天终于配置好了核显直通。现在可以直接外接显示器玩 Minecraft 和 Cities: Skylines 之类的游戏了。之后打算尝试一下黑群晖，还要选购一块硬盘来存 NAS 的数据。这样或许可以逐渐抛弃 iCloud 云上贵州。或许还可以将服务器上一些非常耗费资源的 self-hosted 服务迁移到这台主机上。</p>
+<p>这种 all-in-one 的感觉真好。</p>
+<h2><a id="🔐-使用-keycloak-搭建统一登录平台" class="heading-anchor"></a>🔐 使用 Keycloak 搭建统一登录平台</h2>
+<p>很多软件都需要用户登录鉴权。然而对于开发者来说，开发这样一个登录功能，不仅需要额外的数据模型，也有一堆安全方面的坑；对用户来说，同一个组织可能存在很多应用，如果他们都有独立的登录系统，用户的使用负担不小。</p>
+<p>所以就有了 SSO，即单点登录。对开发者，相当于将登录流程「外包出去」；对用户则是多个网站只要同一个账号密码即可登录。这是非常优雅的解决方案。</p>
+<p>本周我在服务器上部署了 Keycloak，这是 Red Hat 开发的开源的 SSO 软件，兼容 OIDC 等多种协议。非常好用，除了 UI 有点丑。</p>
+<p>部署地址在这里：<a href="https://auth.skywt.cn">auth.skywt.cn</a>。现在，我自部署的 <a href="https://memos.skywt.cn">Memos</a>、<a href="https://cloud.skywt.cn">Nextcloud</a>、<a href="https://drive.skywt.cn">Cloudreve</a>、<a href="https://vpn.skywt.cn">Headscale</a> 等等服务都已经配置接入了 SSO，可以用统一的账号登录。之后开发需要用户登录功能的软件，也可以「外包出去」了。</p>
+<p>很喜欢这种「大一统」的感觉。😁</p>
+<h2><a id="⌚️-触发了-apple-watch-摔倒检测-😅" class="heading-anchor"></a>⌚️ 触发了 Apple Watch 摔倒检测 😅</h2>
+<p>本周三，在骑共享单车经过信息院门口的时候，路边有一道高约 5cm 的路沿。我打算骑车冲上路沿，但是车的前进方向和路沿的夹角过小。于是自行车发生了侧翻……（不过只是膝盖擦破了一点皮，没啥事）</p>
+<p><strong>这居然触发了 Apple Watch 的摔倒检测。</strong>这是我第一次真正体验这个功能。自行车侧翻之后我在地上坐了一会，经过了大概十多秒，手表提示「你似乎摔得很厉害」，显示了一个 SOS 滑块和一个「我没事」按钮。如果一定时间没有响应，手表就会帮我紧急呼救。</p>
+<p>点击「我没事」按钮，会给出进一步的选项：「我摔倒了，但是没事」或者「我没有摔倒」。选择前者之后，此次摔倒会记入健康 App，通过统计图表展示……</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/1824891469.jpg" data-fancybox data-caption="Apple 健康 App 中的摔倒次数"><img src="https://blog.skywt.cn/usr/uploads/2024/05/1824891469.jpg" alt="Apple 健康 App 中的摔倒次数" style="width:60%;" /></a></p>
+<p>希望大家体验不到这个功能 😇。</p>
+<h2><a id="✨-博客系统更新日志" class="heading-anchor"></a>✨ 博客系统更新日志</h2>
+<p>自从 4 月 19 日起，我上线了自己开发的博客后端。现在，这个 skywt.cn 使用的博客系统已经完全脱离了 Typecho。</p>
+<p>（不过，还没有做内容管理相关的 API，所以现在发文章和管理评论都是直接去数据库里用 SQL……）</p>
+<p>后续会将 blog.skywt.cn 这个旧的博客完全重定向到新的博客，包括 RSS 地址。</p>
+<p><strong>Typecho，感谢你陪我走过的路。再见啦。</strong></p>
+ </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z2iXrD5" prefix="r0" component-url="/_astro/Comments.DAE8LkK5.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;weekly-0&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #0：每个平凡的日子，都在闪闪发光 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a>
+|
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
+        <a href="https://github.com/Skywt2003/Daydreamer" class="link"
+          >Daydreamer</a
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="flex justify-between flex-wrap"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
