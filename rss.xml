@@ -1,4 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #0：每个平凡的日子，都在闪闪发光</title><link>https://skywt.cn/blog/weekly-0/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-0/</guid><description>## 📰 发刊词：每个平凡的日子，都在闪闪发光
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #1：一半科学，一半艺术</title><link>https://skywt.cn/blog/weekly-1/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-1/</guid><description>以后这个周记就统一每周一发布吧。因为周末的时间安排无法控制……
+
+</description><pubDate>Mon, 20 May 2024 07:00:00 GMT</pubDate><content:encoded>&lt;p&gt;以后这个周记就统一每周一发布吧。因为周末的时间安排无法控制……&lt;/p&gt;
+&lt;h2&gt;🌆 封面图：夏天的早晨&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/1068344980.jpg&quot; alt=&quot;夏天的早晨&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我太喜欢复临舍的玻璃幕墙了！也很喜欢夏天。也很喜欢早晨。&lt;/p&gt;
+&lt;h2&gt;🎨 构建 REST API：part art，part science&lt;/h2&gt;
+&lt;p&gt;在学习 &lt;a href=&quot;https://www.restapitutorial.com&quot;&gt;REST API Tutorial&lt;/a&gt; 的时候，教程提到：构建 RESTful 网络服务是&lt;strong&gt;「part art，part science」&lt;/strong&gt;，即「一半科学，一半艺术」。我认为这不仅适用于形容 RESTful API，也适合形容技术世界里的一切。&lt;/p&gt;
+&lt;p&gt;许多人对艺术的印象就是需要动用感性的人文领域，似乎和计算机这个需要极强理性的科学领域不太搭边。然而，很多时候，当我设计一个优雅的程序架构的时候，当我用更简洁的方式重构代码的时候，当我实践 stateless 的理念来管理容器的时候，或者当我设计诸如 RESTful API 的时候，我是真真切切能够感觉到这是一门艺术。很多时候，当我了解到一些新的理念、设计和实践，会在心里默默感叹：「太优雅了！」&lt;/p&gt;
+&lt;p&gt;我们学了很多「计算机科学」，但是似乎很少专门地去学&lt;strong&gt;「计算机艺术」&lt;/strong&gt;。事实上，我认为在技术的庞大世界里，科学和艺术同样重要。&lt;/p&gt;
+&lt;p&gt;或许是由于我强烈的感性思维，我突然觉得，「计算机艺术」似乎就是一直以来令我深深着迷的那一部分。&lt;/p&gt;
+&lt;h2&gt;🌐 Tailscale 的 NAT 穿透原理&lt;/h2&gt;
+&lt;p&gt;本周更新了 Tailscale 的配置。将其接入了之前部署的 Keycloak SSO，并开启了 DERP 等功能，尽量发挥 Headscale 的全部功能。&lt;/p&gt;
+&lt;p&gt;本来还希望配置一个 all-in-one 的 VPN，集成网络代理和自己的 DNS。可惜没有我理想中的 fancy 的方案。改天也要写一篇博客文章讲一讲我的配置。（可恶，挖的坑越来越多了……）&lt;/p&gt;
+&lt;p&gt;以前一直以为 Tailscale 是通过服务器中转流量，所以一直对其性能不抱希望。今天看了官方的文档，才知道原来并不是。Tailscale（在大多数情况下）&lt;strong&gt;直接建立主机之间的点对点连接&lt;/strong&gt;。其核心就是 NAT 穿透技术。&lt;/p&gt;
+&lt;p&gt;官方的这两篇科普文章，质量非常高。尤其是讲 NAT 穿透的第二篇，用非常风趣和通俗易懂的语言讲清楚了 NAT 穿透基本的原理、应对种种复杂的网络环境的解决方案。非常推荐阅读！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tailscale.com/blog/how-tailscale-works&quot;&gt;How Tailscale works&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tailscale.com/blog/how-nat-traversal-works&quot;&gt;How NAT traversal works&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单来说，为了穿透 stateful 防火墙，Tailscale 设立 &lt;strong&gt;coordinate 服务器&lt;/strong&gt;，协调两个主机几乎同时向对方发包，并定时维持、重新建立连接；为了穿透 NAT，向外部的 &lt;strong&gt;STUN 服务器&lt;/strong&gt;查询，获取本机 NAT 后的 source；为了解决所谓的 hard NAT，即某些 NAT 对不同目的地分配不同的 source 的问题，使用&lt;strong&gt;生日悖论&lt;/strong&gt;的原理一次发起多个连接并查找我们要的连接，或者配置&lt;strong&gt;端口映射&lt;/strong&gt;，或者使用 &lt;strong&gt;DERP 服务器&lt;/strong&gt;；为了解决某些网络完全禁止 UDP 的问题，或者对于无法配置端口映射的多级 NAT 或运营商 NAT，使用 &lt;strong&gt;DERP 服务器&lt;/strong&gt;用 HTTP 协议中转流量；同时还要解决 hairpinning 和 IPv6 带来的问题……最后使用 &lt;strong&gt;ICE 协议&lt;/strong&gt;，尝试上述所有方法，使用表现最佳的方法。&lt;/p&gt;
+&lt;p&gt;在第一篇文章开头，文章提出「读完本文后，你也可以自己实现一个 Tailscale 的替代品！」然而真正读完之后，本文成功地使人打消了这个念头。😇&lt;/p&gt;
+&lt;p&gt;在这个方面，国内的大厂似乎很少发布像这样高质量的技术文章。Google、Cloudflare、Tailscale 都有多少高质量的技术文章，而纵使阿里云、腾讯云都在大张旗鼓地建立所谓的社区，但基本都成了内容农场，其中 99% 的文章质量还不如 CSDN。推荐阅读：《&lt;a href=&quot;https://mp.weixin.qq.com/s/XZqe4tbJ9lgf8a6PWj7vjw&quot;&gt;牙膏云？您可别吹捧云厂商了&lt;/a&gt;》。好骂！&lt;/p&gt;
+&lt;h2&gt;🤖 GPT4o：AI 带来的情绪价值&lt;/h2&gt;
+&lt;p&gt;这次 GPT4o 的更新，给我带来最大震撼的是 GPT 的语音合成。至于更新的图像识别功能，我认为随着计算机视觉的发展，早晚会有的；但是 GPT4o 语音加入的语气、情绪和笑声，给了我很大惊喜。这一切都太真实了。&lt;/p&gt;
+&lt;p&gt;特别是这个视频：&lt;a href=&quot;https://vimeo.com/945587911&quot;&gt;Happy Birthday&lt;/a&gt;。GPT4o 唱生日歌庆祝用户的生日，它的这种情绪，就好像用户是在和一个很要好的朋友视频通话。这狠狠地戳中了我的情绪价值 🥲。&lt;/p&gt;
+&lt;p&gt;或许可以说，又一个科幻电影里的场景成真了。说实话，这种情绪效果，之前任何人机交互中，我从未体验到过。不管是 Siri、小爱同学还是各类其他语音助手，或者是 ChatGPT 等等各类以文字交互的 AI，从来只是更新了传递信息的方式，&lt;strong&gt;从来没有成功地传达过感情&lt;/strong&gt;。可是 GPT4o 成功地做到了。&lt;/p&gt;
+&lt;h2&gt;📚 有好的译者，是书籍的幸运&lt;/h2&gt;
+&lt;p&gt;我必须强烈推荐一下 HNU 读书馆的&lt;strong&gt;「新书闪借」&lt;/strong&gt;服务！在一个类似网店的地方下单新书，直接快递发货寄到填的地址（宿舍或者家里），图书馆出钱，连运费都不用我们出。只要 30 天内归还给图书馆或者续借即可。相比传统的「图书荐购」，新书闪借的方式反馈快，新书一两天就能到我们手上。非常适合借阅出版社新出的书。通过这种方式，我已经借了《JavaScript 高级程序设计（第 4 版）》《计算》《我看见的世界》三本书。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;《我看见的世界》&lt;/strong&gt;（The Worlds I See）是华裔科学家李飞飞的自传，最近新出的中文版。李飞飞女士在青少年时代随家人移民美国，经历了艰苦的求学道路，最终成长为计算机视觉领域顶尖的科学家。她的经历非常传奇。&lt;/p&gt;
+&lt;p&gt;在看这本书的豆瓣页面的时候，发现本书译者赵灿女士的评论《&lt;a href=&quot;https://book.douban.com/review/15864705/&quot;&gt;如何翻译一本女性传记&lt;/a&gt;》。点进她的个人主页一看，原来之前我看的《乔布斯传》和《纳瓦尔宝典》都是她翻译的！对这两本书，她分别发表了《&lt;a href=&quot;https://book.douban.com/review/15457189/&quot;&gt;如何翻译一本传世之作&lt;/a&gt;》《&lt;a href=&quot;https://book.douban.com/review/14896096/&quot;&gt;如何翻译一本思想盛宴&lt;/a&gt;》两篇评论，讲述她翻译过程中的一些经历和体会。从中可以体会到，高水平译者带来的好的翻译，对于书籍内容的传播有多么重要。&lt;/p&gt;
+&lt;p&gt;对于这一点，更深的体会其实发生在阅读大量的翻译非常烂的外文书籍过程中。赵灿女士提到：「（《乔布斯传》）当年为了中英文版本同时上市，中信通过『海选』的方式找了 5 名译者，用 1 个月的时间完成了中文版，由于各种限制条件，这一版在准确度、流畅性、一致性等各方面均有改进空间。」而相比之下更加不负责任的出版社比比皆是。之前在读《掌控谈话》这本书的时候就狠狠地吐槽过，有些句子我不得不去找来英文原版去看才能 get 到表达的意思。其实很多时候，我们读译书觉得读不下去、晦涩难懂，都是翻译的锅。&lt;/p&gt;
+&lt;p&gt;不禁想起《岳麓讲坛》每学期第一期，陈飞虎老师在介绍建筑艺术的时候，都会说这样一句话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个缺乏艺术修养的建筑设计师，&lt;strong&gt;其作品所造成的文化损失绝对不亚于一般的经济犯罪和刑事犯罪&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我很喜欢这句话。在此处，我也认为：&lt;strong&gt;一个缺乏翻译素养的译者，其作品所造成的文化损失绝对不亚于一般的经济犯罪和刑事犯罪。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;希望能有更多像赵灿女士这样高水平且负责的译者。这些优秀的书籍能由他们翻译出版，真的非常幸运。&lt;/p&gt;
+&lt;h2&gt;🛠️「君子不器」：不要成为「器」&lt;/h2&gt;
+&lt;p&gt;本周去听了《大麓开讲》系列讲座第二期，主题是「君子不器：从『工具人』到『创造者』」。&lt;/p&gt;
+&lt;p&gt;第一次来岳麓书院内部的教室里听讲座。岳麓书院每天的游客络绎不绝，我们之前都很难想象这居然真的是咱们的一个学院。当游客在门口忙着扫码填信息购票、找身份证入园的时候，我们直接刷校园卡，潇洒地进入了景区 😎。&lt;/p&gt;
+&lt;p&gt;本次主讲嘉宾是岳麓书院的陈仁仁教授、物电院院长文双春教授。&lt;/p&gt;
+&lt;p&gt;我们高中学《论语》的时候就学过：&lt;strong&gt;「子曰：『君子不器。』」&lt;/strong&gt;对「器」这个字，比较通行的解释是「拘泥于一物」，可以理解为不能拘泥于特定的专业领域。按照我的理解，具体来说：1）不能拘泥于自己所学专业的狭窄知识，要学习更多通识性的、可迁移的知识技能；2）不能只限于具体知识的学习，也应该注重品德修养。&lt;/p&gt;
+&lt;p&gt;确实，当前社会越来越「卷」的趋势下，竞争越来越激烈，&lt;strong&gt;社会越来越要求人成为「器」&lt;/strong&gt;。要保研或者考研，只关心你这几门课考试成绩排名，读研只要你能干活、发论文，没有人关心你对科学的理解、敬仰和热爱；要找工作面试，只问你 React 的原理，没有人关心你渴望创造产品的满腔热情，以及从技术中体会到的那些精神。这正是马克思所说的：在工作中，&lt;strong&gt;人被异化成了物&lt;/strong&gt;，也就是孔子所说的「器」，也就是所谓的「工具人」。&lt;/p&gt;
+&lt;p&gt;诚然，这是经济发展、社会分工的必然，也是社会资源不足、分配不合理的结果。然而，这都是我们无法改变的现状，我们只能改变自己应对这个世界的方式。我们不能单单顺应社会的要求，真的只把自己培养成工具人。&lt;strong&gt;这个世界有更多东西值得我们去探索。&lt;/strong&gt;我认为这就是「君子不器」在当下的指导意义。&lt;/p&gt;
+&lt;p&gt;这让我想起宫崎骏的&lt;strong&gt;《千与千寻》&lt;/strong&gt;。千寻被夺走了名字（进大厂要取花名），小白说：「不要忘记自己的名字。忘记了自己的名字，就会忘记自己的过去。」很难想象，多年之后的我，会成为所谓的「器」吗？我还会记得曾经青春的激情、热爱和梦想吗？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;曾经发生过的事情是不可能忘记的，只是一时想不起来罢了……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;🌸《繁花》中的极致 BE 美学&lt;/h2&gt;
+&lt;p&gt;前段时间重温了之前看过的&lt;strong&gt;《繁花》&lt;/strong&gt;。实在是太喜欢这部剧里极致的 BE 美学了！（名词解释：BE：Bad Ending；HE：Happy Ending）&lt;/p&gt;
+&lt;p&gt;我最喜欢的一幕之一，是 29 集里阿宝和玲子在医院见面并告别的那一幕。不同于一般剧里感情戏的扭扭捏捏，当玲子说出那句「不讲了」，她个性中的坚强充分展现。但最后玲子的欲言又止，加上配乐和葛老师的画外音，却又非常令人触动。王导你太会了！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/1969235801.png&quot; alt=&quot;她心里永远会记得……&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我是过来人，其实感情这样东西，是这样。譬如讲两个人讲好一起去逛庙会，两个人讲好的，长夜漫漫，一直游玩到天亮。结果这个朋友有事情走掉了，他也找了另外一个同伴，继续游玩下去。但是，他心里厢永远会记得，和前头那个人一道，看过，讲过，笑过……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;（上海话属于吴语方言，和我老家的方言很像，比如我们说「里面」经常会说「里厢」，看了《繁花》字幕才知道原来这个词是这么写的）&lt;/p&gt;
+&lt;p&gt;正如一些点评所说的那样，&lt;strong&gt;《繁花》这部剧讲的不是小情小爱&lt;/strong&gt;。它展现的是那个时代的人物群像。如果关注感情线，可以发现剧中全部都是 BE，从最初主角们坐在一张桌子前吃饭唱歌，到最后人走茶凉，各奔东西，实在令人唏嘘。我实在太喜欢这种凄美的 BE 设定了，这种设定更加深刻地揭示了人物成长。（相比之下，如果是最终 X 和 Y 在一起了的 HE 大团圆结局，显然会降低整部剧的深度）&lt;/p&gt;
+&lt;p&gt;这种 BE 美学，让我想到新海诚的&lt;strong&gt;《秒速五厘米》&lt;/strong&gt;：男主和女主长大了，都有了自己的人生，然而年少时的爱恋埋藏在他们的心底，终其一生都无法忘怀。是呀，人生的旅途里有多少擦肩而过的遗憾。然而曾经有某个人和我们一道看过，讲过，笑过，留在我们的记忆中，这就足够了。&lt;/p&gt;
+&lt;h2&gt;⚙️ CloudBeaver：可自托管的在线数据库管理&lt;/h2&gt;
+&lt;p&gt;每个月逛一次 &lt;a href=&quot;https://github.com/awesome-selfhosted/awesome-selfhosted&quot;&gt;Awesome Self-hosted&lt;/a&gt;，每次都有新感觉！&lt;/p&gt;
+&lt;p&gt;本周部署了基于 Web 的数据库管理软件 &lt;strong&gt;CloudBeaver&lt;/strong&gt;，它是 DBeaver 同一个公司做的 Web 版本，官网上免费的 community 版本入口隐藏很深。它支持多种数据库，因此可以全面取代 phpMyAdmin、pgAdmin 等专门的数据库管理软件。部署在 &lt;a href=&quot;https://dbms.skywt.cn&quot;&gt;dbms.skywt.cn&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;以及我发现，如果要设计博客系统管理员用的后端 API，需要的只有文章和评论的 CURD，这和在数据库里直接编辑数据不是一样么……所以目前直接去数据库里发博客了。😁&lt;/p&gt;
+&lt;p&gt;下周见～&lt;/p&gt;
+</content:encoded><author>me@skywt.cn</author></item><item><title>Weekly #0：每个平凡的日子，都在闪闪发光</title><link>https://skywt.cn/blog/weekly-0/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-0/</guid><description>## 📰 发刊词：每个平凡的日子，都在闪闪发光
 
 这是我博客的一个新的系列。之前类似的内容发在 whisper.skywt.cn，不过后来由于某些原因没有再更新了。然而，我还是觉得生活中经常有些有意思的事情，值得记录和分享。所以，现在打算以周记的形式发布。
 
@@ -23,7 +87,7 @@
 &lt;p&gt;高老师说了这样一个观点：我们（他们）法律人实际上是 &lt;strong&gt;social engineer&lt;/strong&gt;，即「&lt;strong&gt;社会工程师&lt;/strong&gt;」。法律人是通过法律建构出这个社会的形态。&lt;/p&gt;
 &lt;p&gt;仔细想想，其实这和我们「软件工程师」很像！只是我们构建软件的工具是代码，他们构建社会的工具是法律。纵观整个西方法律思想史，从一种观点发展到另一种观点，理性总是法律思想发展的工具。从这个角度看，怎么能说法学这类是「文科」呢？明明和我们软件开发一样，需要严谨的逻辑思维和表达。&lt;/p&gt;
 &lt;p&gt;进一步想想，法律条文不也是一种接近于形式化的语言吗？相比自然语言，法律条文似乎更像代码：晦涩但严谨清晰。这么看来，制定法律条文这一过程，甚至和我们写代码也有些相似。&lt;/p&gt;
-&lt;p&gt;所以，是谁一直散播「人文社科不需要逻辑思维，更需要感性思维」这类的观点的？对于文学一类的专业或许成立，但是对社科这类的专业而言，这类观点甚至对这个专业的人才输送产生了非常不好的影响。联想到最近看到马督工的《&lt;a href=&quot;https://www.bilibili.com/video/BV1GN4y1h7Ex&quot;&gt;【睡前消息682】支持张雪峰批文科，没有独立性哪有尊严&lt;/a&gt;》，他认为，近来在文科领域盛行脱离科学的风气，对科学精神的重视严重不足。会想我们高中时期，确实是家长和老师都认为「理科学不好的才去学文科」。而马督工认为，这才是反过来导致文科整体走向低端，被歧视的原因。&lt;/p&gt;
+&lt;p&gt;所以，是谁一直散播「人文社科不需要逻辑思维，更需要感性思维」这类的观点的？对于文学一类的专业或许成立，但是对社科这类的专业而言，这类观点甚至对这个专业的人才输送产生了非常不好的影响。联想到最近看到马督工的《&lt;a href=&quot;https://www.bilibili.com/video/BV1GN4y1h7Ex&quot;&gt;【睡前消息682】支持张雪峰批文科，没有独立性哪有尊严&lt;/a&gt;》，他认为，近来在文科领域盛行脱离科学的风气，对科学精神的重视严重不足。回想我们高中时期，确实是家长和老师都认为「理科学不好的才去学文科」。而马督工认为，这才是反过来导致文科整体走向低端，被歧视的原因。&lt;/p&gt;
 &lt;h2&gt;🃏 一起优诺！UNO 纸牌的魅力&lt;/h2&gt;
 &lt;p&gt;五一期间逛 App Store 看到「&lt;strong&gt;一起优诺&lt;/strong&gt;」这个游戏，就是我们小学玩的 UNO 纸牌的官方手游。于是心血来潮下载体验了一下。&lt;/p&gt;
 &lt;p&gt;相比我们小时候玩的纸牌版本，游戏的「经典模式」加入了两条规则：1）每局限时 3 分钟，每次出牌限时 10 秒；2）玩家打出 +4 牌，下家可以选择「质疑」。如果玩家出 +4 之前其实有同色的牌可出而不出，则质疑成功，玩家拿六张牌，下家不加牌；如果质疑失败，下家拿六张牌。如果不质疑，下家拿四张牌。&lt;/p&gt;
@@ -4516,90 +4580,6 @@ $(document).on(&apos;pjax:complete&apos;, function() {
 &lt;p&gt;放在 PJAX 容器之外，所以只会在最初加载页面的时候执行一次。它涉及到 DOM 操作，我们希望它每次都能执行。解决方法是放在 PJAX 容器内部，或者在 &lt;code&gt;complete&lt;/code&gt; 事件中也执行一次。&lt;/p&gt;
 &lt;p&gt;除此之外，包括 aplayer 插件、fancybox 图片灯箱、代码高亮等等都是类似的问题，只要把 DOM 操作的代码放到 PJAX 容器内部即可。&lt;/p&gt;
 &lt;p&gt;经过以上的操作，基本上网站的 PJAX 就没问题啦。享受极速的响应吧～&lt;/p&gt;
-</content:encoded><author>me@skywt.cn</author></item><item><title>配置一个舒适的 zsh 环境</title><link>https://skywt.cn/blog/configure-a-comfortable-zsh-environment/</link><guid isPermaLink="true">https://skywt.cn/blog/configure-a-comfortable-zsh-environment/</guid><description>作为 *nix（指 macOS）重度用户，也作为 VPS 玩家，每天接触最多的就是终端。一个高效、美观的终端可以显著提升日常作业的效率和幸福感。
-
-</description><pubDate>Wed, 12 Oct 2022 10:22:00 GMT</pubDate><content:encoded>&lt;p&gt;作为 *nix（指 macOS）重度用户，也作为 VPS 玩家，每天接触最多的就是终端。一个高效、美观的终端可以显著提升日常作业的效率和幸福感。&lt;/p&gt;
-&lt;h2&gt;安装使用 zsh&lt;/h2&gt;
-&lt;p&gt;一般的 Linux 发行版，默认 Shell 大多是 bash，可能需要自己安装 zsh。macOS 的默认 Shell 就是 zsh。&lt;br&gt;
-通过 &lt;code&gt;echo $SHELL&lt;/code&gt; 可以查看当前使用的 Shell。&lt;br&gt;
-通过 &lt;code&gt;cat /etc/shells&lt;/code&gt; 可以查看系统安装的所有 Shell。&lt;/p&gt;
-&lt;p&gt;安装后，在终端输入 &lt;code&gt;zsh&lt;/code&gt; 就可以进入 zsh。&lt;/p&gt;
-&lt;p&gt;运行 &lt;code&gt;chsh -s /bin/zsh&lt;/code&gt; 可以将默认 Shell 换成 zsh，这样打开终端或者用 SSH 登录，默认就会使用 zsh。&lt;/p&gt;
-&lt;p&gt;如果没有进行配置，刚打开 zsh，可能感觉和 bash 的区别并不大。事实上，zsh 最强大之处就在于其可拓展性以及插件生态。配置下面这些主题 / 插件，使用体验就可以吊打 bash 了！&lt;/p&gt;
-&lt;p&gt;（我并不喜欢 oh-my-zsh，原因之一是启动有点慢。这里我还是用原生 zsh 配置了）&lt;/p&gt;
-&lt;h2&gt;Powerlevel10k&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Powerlevel10k 是一套 zsh 主题，强调速度、灵活性以及开箱即用的体验。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/romkatv/powerlevel10k&quot;&gt;Github 项目地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这个主题非常强大，第一次使用就惊艳到了我。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2022/10/1018271782.png&quot; alt=&quot;Powerlevel10k 初始配置&quot;&gt;&lt;/p&gt;
-&lt;p&gt;首先第一次使用就有一个非常友好的 configuration wizard 引导你进行「傻瓜式」的配置。这个主题也提供了相当多的样式，可以根据偏好自己选择。不管是简洁还是炫酷的风格都有……&lt;/p&gt;
-&lt;p&gt;而且它还支持集成 git。当进入一个 git 仓库，当前输入行前就会显示对应的信息，包括有多少更改未提交、分支名等等。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2022/10/1288509120.png&quot; alt=&quot;Powerlevel10k 会显示 git 仓库的信息&quot;&gt;&lt;/p&gt;
-&lt;p&gt;p10k 本身提供了丰富的插件（这好像是插件的插件）。一切都是可以自定义的。如果不满足于引导式配置程序简单的配置，也可以自己修改相应的配置文件（如图中右边显示的 &lt;code&gt;127.0.0.1:10800&lt;/code&gt; 就是我配置了终端显示当前代理）。支持在终端显示时间、网络甚至内存等等各种信息。&lt;/p&gt;
-&lt;p&gt;这个主题的安装也非常方便（其实本质上是 zsh 插件），先 clone 这个 git 仓库（我自己一般都 clone 到 &lt;code&gt;~/.zsh&lt;/code&gt; 目录下），然后在 &lt;code&gt;.zshrc&lt;/code&gt; 中引入即可：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;重启终端，应该就能看到 configuration wizard。&lt;/p&gt;
-&lt;p&gt;建议配套使用它提供的字体：&lt;a href=&quot;https://github.com/romkatv/powerlevel10k/blob/master/font.md&quot;&gt;MesloLGS&lt;/a&gt;。这是一个特制的等宽字体，内置了各种小图标，可以显示在终端里。如果不使用这个字体，许多图标就无法显示，当然 wizard 会询问你图标显示是否正常，若回答不正常，配置后就不会显示图标。&lt;/p&gt;
-&lt;h2&gt;zsh 插件推荐&lt;/h2&gt;
-&lt;h3&gt;zsh-autosuggestions&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;zsh 上像 fish shell（另一种功能丰富的 Shell）一样快速且低调的自动建议插件。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/zsh-users/zsh-autosuggestions&quot;&gt;Github 项目地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这个插件可以根据历史记录等对当前的输入提供建议，建议会以浅灰色的背景显示于当前输入文本「下方」：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2022/10/3275320390.png&quot; alt=&quot;zsh-autosuggestions 提供了 echo 的建议&quot;&gt;&lt;/p&gt;
-&lt;p&gt;像这张图中一样，只要输入 &lt;code&gt;ec&lt;/code&gt; 两个字符，这个插件就会建议 &lt;code&gt;echo $SHELL&lt;/code&gt;（由于我刚刚输入过这个命令），并以灰色显示。我可以照着输入，也可以按方向右键直接自动补全。&lt;/p&gt;
-&lt;p&gt;（是不是有点 Copilot 的感觉 🙃）&lt;/p&gt;
-&lt;p&gt;安装方法类似，clone 仓库后在 &lt;code&gt;.zshrc&lt;/code&gt; 里加入：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;重启终端即可生效。（官方的安装指南也介绍了用包管理器安装的方法，可以参考）&lt;/p&gt;
-&lt;h3&gt;zsh-autocomplete&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;zsh-autocomplete 为 zsh 终端添加了实时预输入自动补全功能。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/marlonrichert/zsh-autocomplete&quot;&gt;Github 项目地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这是我最喜欢的一个插件！&lt;/p&gt;
-&lt;p&gt;之前使用过 &lt;a href=&quot;https://fig.io/&quot;&gt;Fig&lt;/a&gt; 这个软件，这是一个终端的拓展程序，可以在输入的时候实时提供一个小下拉列表，显示自动补全的各个候选项。然而劝退我的是这个软件需要登录才能使用，而且随着商业化也变得愈发臃肿。于是我找到了更优秀、更原生的平替，就是 zsh-autocomplete。&lt;/p&gt;
-&lt;p&gt;这个插件和 Fig 一样可以在输入的时候实时提供自动补全，而且是在终端内实时更新的。这被称为「实时预输入自动补全」（real-time type-ahead autocompletion）。即每多输入一个字符，补全列表就会发生变化，根据用户的输入实时更新。&lt;/p&gt;
-&lt;p&gt;更舒服的是它可以实时显示常用命令各种选项的解释文本，有了这个插件基本可以不需要 &lt;code&gt;man&lt;/code&gt; 了，也不再需要死记硬背各种 arguments 是什么意思。这个功能大大提高了终端的操作效率。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2022/10/2096228329.png&quot; alt=&quot;zsh-autocomplete 可以实时显示各种选项的解释&quot;&gt;&lt;/p&gt;
-&lt;p&gt;和其他插件的用法一样，clone 到本地之后只要在 &lt;code&gt;.zshrc&lt;/code&gt; 里 &lt;code&gt;source&lt;/code&gt; 即可：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这个插件对实时响应的要求比较高，所以如果是网速很慢的国外 VPS（输入一个字母都要等一下的那种）不建议使用，不然可能会非常卡。&lt;/p&gt;
-&lt;h3&gt;zsh-syntax-highlighting&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;zsh 上像 fish-shell 一样的语法高亮。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/zsh-users/zsh-syntax-highlighting&quot;&gt;Github 项目地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;安装这个插件后，终端中输入的合法的命令会显示为绿色，不合法的命令会显示为红色，不用回车运行即可检查输入是否正确。并且输入存在的文件地址时，其会自动显示下划线，也可以一目了然地检查文件地址是否输入正确。大大提升了效率。&lt;/p&gt;
-&lt;p&gt;安装也是 clone 后 &lt;code&gt;source&lt;/code&gt; 即可。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;Git 同步 zsh 配置&lt;/h2&gt;
-&lt;p&gt;最后介绍一个奇技淫巧，用 Git 同步 &lt;code&gt;$HOME&lt;/code&gt;（即 &lt;code&gt;~&lt;/code&gt; 表示的用户目录）下的配置文件。&lt;/p&gt;
-&lt;p&gt;由于我有不止一台 VPS，还有 macOS，平时折腾还经常装新的系统，每次都重新按如上配置 zsh 非常麻烦，所以我用一个 git 仓库存储了 &lt;code&gt;$HOME&lt;/code&gt; 目录下的配置文件，包括 zsh、vim 等的配置。具体是这些文件：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.vim/
-.zsh/
-.gitignore
-.p10k.zsh
-.tmux.conf
-.vimrc
-.zshrc
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;直接在 &lt;code&gt;$HOME&lt;/code&gt; 目录下 &lt;code&gt;git init&lt;/code&gt; 就可以初始化空 git 仓库。&lt;/p&gt;
-&lt;p&gt;然而 &lt;code&gt;$HOME&lt;/code&gt; 文件夹下有太多繁杂的文件，如何实现只跟踪这几个文件呢？秘诀就在于这个 &lt;code&gt;.gitignore&lt;/code&gt; 文件：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;*
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;没错，要求忽略所有文件。需要添加某个文件或文件夹的时候，可以使用 &lt;code&gt;--force&lt;/code&gt; 强制跟踪。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git add .zshrc --force
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这个地方的要求本质上是要用 &lt;code&gt;.gitignore&lt;/code&gt; 维护一个白名单（而不是通常的黑名单），我搜集了不少其他解决方案，但是都有不完美之处。忽略全部文件再用 &lt;code&gt;--force&lt;/code&gt; 添加，是我认为最简洁优雅的方案了。&lt;/p&gt;
-&lt;p&gt;现在添加 remote，就可以保持同步啦～&lt;/p&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>感谢订阅 SkyWT 的博客。</title><link>https://skywt.cn/blog/</link><guid isPermaLink="true">https://skywt.cn/blog/</guid><description>订阅成功。</description><pubDate>Wed, 01 Nov 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;订阅成功。该 RSS 源显示最近发布的 20 篇文章。当有新文章时，RSS 源会及时更新。&lt;/p&gt;
 &lt;p&gt;前往&lt;a href=&quot;https://skywt.cn/blog/archives&quot;&gt;文章归档&lt;/a&gt;页面即可一览全部文章。&lt;/p&gt;
 &lt;p&gt;RSS 真是个伟大的发明，用开放的标准将独立的内容连接在一起，也将我们连接在一起。&lt;/p&gt;

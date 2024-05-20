@@ -23,8 +23,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.BOuuljwl.css">
-<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css">
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
+<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
 <link rel="stylesheet" href="/_astro/index.C43joHLK.css"><script type="module" src="/_astro/hoisted.CjT2_jcw.js"></script></head> <body>   <main data-astro-cid-j7pv25f6> <section class="min-h-screen flex flex-col justify-center" data-astro-cid-j7pv25f6> <div class="container" data-astro-cid-j7pv25f6> <h1 class="drop-shadow-xl fade-in" data-astro-cid-j7pv25f6> <span data-astro-cid-j7pv25f6>✨ Passion <br data-astro-cid-j7pv25f6> Never Fails.</span> </h1> <h4 class="mt-4 font-bold drop-shadow-xl text-secondary fade-in" data-astro-cid-j7pv25f6>
 热爱与激情永不止息。
 </h4> <div class="mt-12 font-thin text-tertiary fade-in" data-astro-cid-j7pv25f6> <span class="mr-2" data-astro-cid-j7pv25f6>SkyWT</span> <ul data-astro-cid-tfcnbjmv>  <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> <p id="scroll-hint" class="mt-2 font-thin text-tertiary opacity-0" data-astro-cid-j7pv25f6> <i class="ri-scroll-to-bottom-line" data-astro-cid-j7pv25f6></i>
@@ -63,7 +63,47 @@
           style="clip-path: polygon(100% 0px, 90% 55%, 70% 100%, 50% 50%, 0px 20%, 50% 0px);"
         >
         </div>
-      </div> --> </section> <hr class="container" data-astro-cid-j7pv25f6> <section data-astro-cid-j7pv25f6> <h2 class="text-center" data-astro-cid-j7pv25f6>你好 👋 我是 SkyWT。</h2> <div id="too-small-hint" class="text-center text-secondary mt-4" data-astro-cid-grhrxugf> <i class="ri-alert-line text-4xl" data-astro-cid-grhrxugf></i> <p class="mt-2" data-astro-cid-grhrxugf>您的屏幕太小，这一部分的自我介绍 Bento 组件无法正常显示。</p> <p class="mt-2" data-astro-cid-grhrxugf>
+      </div> --> </section> <hr class="container" data-astro-cid-j7pv25f6> <div id="navbar-sentinal"></div> <nav class="navbar navbar--hidden" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a>  </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script> <section data-astro-cid-j7pv25f6> <h2 class="text-center" data-astro-cid-j7pv25f6>你好 👋 我是 SkyWT。</h2> <div id="too-small-hint" class="text-center text-secondary mt-4" data-astro-cid-grhrxugf> <i class="ri-alert-line text-4xl" data-astro-cid-grhrxugf></i> <p class="mt-2" data-astro-cid-grhrxugf>您的屏幕太小，这一部分的自我介绍 Bento 组件无法正常显示。</p> <p class="mt-2" data-astro-cid-grhrxugf>
 请尝试在浏览器选项中缩小页面字号，或者使用屏幕更大的设备浏览，
 </p> <p class="mt-2" data-astro-cid-grhrxugf> <a class="link underline" href="/about" data-astro-cid-grhrxugf>
 看看 <i class="ri-cup-line" data-astro-cid-grhrxugf></i> 关于 页面
@@ -100,11 +140,11 @@ me@skywt.cn
 现已支持 PJAX 全站无刷新。<br data-astro-cid-6bcnyueg> </p> <p class="mt-2 text-secondary" data-astro-cid-6bcnyueg> <a href="https://github.com/skywt2003/Daydream" class="link" target="_blank" data-astro-cid-6bcnyueg><i class="ri-github-line" data-astro-cid-6bcnyueg></i> GitHub</a> /
 <a href="https://beta.skywt.cn" class="link" target="_blank" data-astro-cid-6bcnyueg>体验 Demo <i class="ri-external-link-line" data-astro-cid-6bcnyueg></i></a> </p> <div class="mt-4" data-astro-cid-6bcnyueg> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/Daydream" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
 &nbsp;
-<span data-astro-cid-hfaw3eh5>Star</span></a><a class="github-button__count" href="https://github.com/Skywt2003/Daydream/stargazers" target="_blank" data-astro-cid-hfaw3eh5>75</a></div> </div> </div> <img src="/daydream_pc_dark.png" alt="Daydream Theme Screenshot" class="w-full md:w-1/2 grow-1 rounded-2xl shadow-lg shadow-neutral-900 border-8 border-neutral-900 hidden dark:block" data-astro-cid-6bcnyueg> <img src="/daydream_pc_light.png" alt="Daydream Theme Screenshot" class="box-border w-full md:w-1/2 rounded-2xl shadow-lg shadow-gray-200 border-8 border-gray-200 dark:hidden" data-astro-cid-6bcnyueg> </li> <li> <div class="card h-full flex flex-col"> <h5>Daydreamer</h5> <p class="mt-2 flex-grow">基于 Astro 打造的网站系统，即本网站。</p> <div class="mt-4"> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/Daydreamer" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
+<span data-astro-cid-hfaw3eh5>Star</span></a><a class="github-button__count" href="https://github.com/Skywt2003/Daydream/stargazers" target="_blank" data-astro-cid-hfaw3eh5>77</a></div> </div> </div> <img src="/daydream_pc_dark.png" alt="Daydream Theme Screenshot" class="w-full md:w-1/2 grow-1 rounded-2xl shadow-lg shadow-neutral-900 border-8 border-neutral-900 hidden dark:block" data-astro-cid-6bcnyueg> <img src="/daydream_pc_light.png" alt="Daydream Theme Screenshot" class="box-border w-full md:w-1/2 rounded-2xl shadow-lg shadow-gray-200 border-8 border-gray-200 dark:hidden" data-astro-cid-6bcnyueg> </li> <li> <div class="card h-full flex flex-col"> <h5>Daydreamer</h5> <p class="mt-2 flex-grow">基于 Astro 打造的网站系统，即本网站。</p> <div class="mt-4"> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/Daydreamer" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
 &nbsp;
 <span data-astro-cid-hfaw3eh5>Star</span></a><a class="github-button__count" href="https://github.com/Skywt2003/Daydreamer/stargazers" target="_blank" data-astro-cid-hfaw3eh5>4</a></div> </div> </div> </li><li> <div class="card h-full flex flex-col"> <h5>Writecho</h5> <p class="mt-2 flex-grow">纯手写的 Typecho 博客主题。</p> <div class="mt-4"> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/Writecho" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
 &nbsp;
-<span data-astro-cid-hfaw3eh5>Star</span></a><a class="github-button__count" href="https://github.com/Skywt2003/Writecho/stargazers" target="_blank" data-astro-cid-hfaw3eh5>62</a></div> </div> </div> </li><li> <div class="card h-full flex flex-col"> <h5>kindle-zhcn-clippings-to-json</h5> <p class="mt-2 flex-grow">Kindle 书摘解析器 npm 模块。</p> <div class="mt-4"> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/kindle-zhcn-clippings-to-json" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
+<span data-astro-cid-hfaw3eh5>Star</span></a><a class="github-button__count" href="https://github.com/Skywt2003/Writecho/stargazers" target="_blank" data-astro-cid-hfaw3eh5>63</a></div> </div> </div> </li><li> <div class="card h-full flex flex-col"> <h5>kindle-zhcn-clippings-to-json</h5> <p class="mt-2 flex-grow">Kindle 书摘解析器 npm 模块。</p> <div class="mt-4"> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/kindle-zhcn-clippings-to-json" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
 &nbsp;
 <span data-astro-cid-hfaw3eh5>Star</span></a><a class="github-button__count" href="https://github.com/Skywt2003/kindle-zhcn-clippings-to-json/stargazers" target="_blank" data-astro-cid-hfaw3eh5>2</a></div> </div> </div> </li><li> <div class="card h-full flex flex-col"> <h5>sky</h5> <p class="mt-2 flex-grow">基于 Argon 的 Typecho 博客主题。</p> <div class="mt-4"> <div class="github-button" data-astro-cid-hfaw3eh5><a class="github-button__action" href="https://github.com/Skywt2003/sky" target="_blank" data-astro-cid-hfaw3eh5><i class="ri-star-line" data-astro-cid-hfaw3eh5></i>
 &nbsp;

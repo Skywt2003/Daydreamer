@@ -23,20 +23,20 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.BOuuljwl.css">
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
 <style>h1[data-astro-cid-mtynfrjh]{line-height:1.625}
 </style>
-<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css">
+<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
 <style>.link[data-astro-cid-j3zk6p6w]{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.link[data-astro-cid-j3zk6p6w]:hover{text-decoration-line:underline}img[data-astro-cid-j3zk6p6w]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}h1[data-astro-cid-j3zk6p6w]{line-height:1.5}
-</style><script type="module" src="/_astro/hoisted.Chao4eaI.js"></script></head> <body> <header class="mt-12 container container--wide" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.Chao4eaI.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
-第 2 页 </span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="container container--wide flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block text-secondary" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+第 2 页 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
-第 2 页 </span> </h5> <div class="m-2 text-secondary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+第 2 页 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
   // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
@@ -44,13 +44,13 @@
   var observer;
   function addNavObserver() {
     const headerEl = document.querySelector("#navbar-wrapper");
-    const sentinalEl = document.querySelector("header");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
     if (!sentinalEl || !headerEl) return;
     observer = new window.IntersectionObserver((e) => {
-      if (!e[0].isIntersecting) {
-        headerEl.classList.add("sticked");
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
       } else {
-        headerEl.classList.remove("sticked");
+        headerEl.classList.remove("navbar--sticked");
       }
     });
     observer.observe(sentinalEl);
@@ -76,7 +76,8 @@
     },
     { once: false },
   );
-</script>   <main data-astro-cid-j3zk6p6w> <section class="container mt-8 sm:mt-32" data-astro-cid-j3zk6p6w> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/csapp-bomblab" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CSAPP Bomblab 题解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>这应该是我写过最长的实验报告了……</p>
+</script>  <main data-astro-cid-j3zk6p6w> <section class="container mt-8 sm:mt-32" data-astro-cid-j3zk6p6w> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/macbook-apple-silicon-survival-guide-in-hnu-csee" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>在 HNU 信息院的 Apple Silicon 生存指南</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>2020 年末，Apple M1 横空出世，2021 年刚高考完的我看着「吊打 Intel」的性能对比图，以及 MacBook Air 优雅又近乎极端的无风扇设计，毫不犹豫地入手了。虽然只能用 macOS，虽然是 arm 架构的芯片，但是「反正我本来就讨厌 Windows」，不管这么多了！那时候的我并没有意识到，这个选择会给大学学习带来怎样的麻烦。</p>
+</div><a href="/blog/macbook-apple-silicon-survival-guide-in-hnu-csee" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/csapp-bomblab" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CSAPP Bomblab 题解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>这应该是我写过最长的实验报告了……</p>
 <p>做的时候就感觉到，不愧是 CMU 的镇系神课，游戏化的关卡设计和埋藏的彩蛋都给人做下去的动力。所以虽然有点难（富有挑战性），但是很有意思。</p>
 </div><a href="/blog/csapp-bomblab" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/rcore-tutorial-chapter-1" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>rCore Tutorial Chapter 1 练习</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>这是 <a href="http://rcore-os.cn/rCore-Tutorial-Book-v3">rCore Tutorial Book</a> 第一章「应用程序与基本执行环境」的练习。</p>
 </div><a href="/blog/rcore-tutorial-chapter-1" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/twenty-years-old" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>✨ 二十岁。</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>20 岁，好像已经是大人了。</p>
@@ -86,8 +87,7 @@
 </div><a href="/blog/csapp-2e-datalab" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/yubikey-purchase" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>Yubikey 安全密钥折腾记（1）：购买、转运与开箱</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>Yubikey 是十分强大的硬件密钥，有点像早期银行的「U 盾」，不仅可以用于账号登陆时的双因素认证（2FA），还能存储 GPG 私钥、生成密码短语等等。作为信息安全专业的学子，自然是对这玩意垂涎已久，但是其高昂的价格（$45 起，国内高于 ¥300）让人望而却步。</p>
 </div><a href="/blog/yubikey-purchase" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/deploy-memos-to-qq-robot" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>部署 Memos 接入 QQ 机器人</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>前几天部署了开源的浮墨笔记（flomo）替代品：<a href="https://github.com/usememos/memos">Memos</a>。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。</p>
 </div><a href="/blog/deploy-memos-to-qq-robot" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/typecho-pjax-and-some-problems" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>Typecho 主题 PJAX 无刷新以及遇到的一些问题</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>最近给 Typecho 主题 <a href="https://github.com/Skywt2003/Daydream">Daydream</a> 加上了 PJAX 无刷新。本以为加一段代码就好，结果遇到了一大堆问题，无法提交评论、插件无效、数学公式没法渲染……特此记录一下。</p>
-</div><a href="/blog/typecho-pjax-and-some-problems" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/configure-a-comfortable-zsh-environment" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>配置一个舒适的 zsh 环境</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>作为 *nix（指 macOS）重度用户，也作为 VPS 玩家，每天接触最多的就是终端。一个高效、美观的终端可以显著提升日常作业的效率和幸福感。</p>
-</div><a href="/blog/configure-a-comfortable-zsh-environment" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> <div class="text-secondary flex" data-astro-cid-j3zk6p6w> <div class="basis-1/3" data-astro-cid-j3zk6p6w> <a href="/blog" class="link" data-astro-cid-j3zk6p6w>
+</div><a href="/blog/typecho-pjax-and-some-problems" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> <div class="text-secondary flex" data-astro-cid-j3zk6p6w> <div class="basis-1/3" data-astro-cid-j3zk6p6w> <a href="/blog" class="link" data-astro-cid-j3zk6p6w>
 上一页
 </a> </div> <div class="basis-1/3 text-center" data-astro-cid-j3zk6p6w> <span data-astro-cid-j3zk6p6w>第 2 页</span> </div> <div class="basis-1/3 text-right" data-astro-cid-j3zk6p6w> <a href="/blog/3" class="link" data-astro-cid-j3zk6p6w>
 下一页

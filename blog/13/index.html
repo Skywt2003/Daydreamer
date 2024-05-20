@@ -23,20 +23,20 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.BOuuljwl.css">
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
 <style>h1[data-astro-cid-mtynfrjh]{line-height:1.625}
 </style>
-<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css">
+<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
 <style>.link[data-astro-cid-j3zk6p6w]{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.link[data-astro-cid-j3zk6p6w]:hover{text-decoration-line:underline}img[data-astro-cid-j3zk6p6w]{border-radius:.25rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}h1[data-astro-cid-j3zk6p6w]{line-height:1.5}
-</style><script type="module" src="/_astro/hoisted.Chao4eaI.js"></script></head> <body> <header class="mt-12 container container--wide" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.Chao4eaI.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
-第 13 页 </span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="container container--wide flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block text-secondary" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+第 13 页 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
-第 13 页 </span> </h5> <div class="m-2 text-secondary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+第 13 页 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
   // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
@@ -44,13 +44,13 @@
   var observer;
   function addNavObserver() {
     const headerEl = document.querySelector("#navbar-wrapper");
-    const sentinalEl = document.querySelector("header");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
     if (!sentinalEl || !headerEl) return;
     observer = new window.IntersectionObserver((e) => {
-      if (!e[0].isIntersecting) {
-        headerEl.classList.add("sticked");
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
       } else {
-        headerEl.classList.remove("sticked");
+        headerEl.classList.remove("navbar--sticked");
       }
     });
     observer.observe(sentinalEl);
@@ -76,7 +76,12 @@
     },
     { once: false },
   );
-</script>   <main data-astro-cid-j3zk6p6w> <section class="container mt-8 sm:mt-32" data-astro-cid-j3zk6p6w> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/changeswap" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>Linux 服务器如何更改 swap 分区大小、优化内存</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>继安装了 WP Super Cache 插件后，我的服务器又双叒叕崩坏了……仍然一样的 MySQL 停止运行，看日志居然<a href="https://skywt.cn/posts/beng/" title="前一次崩坏">前一次崩坏</a>出现的两个症状同时出现了！（可怕）这次我决定采取终极方案：改变 swap 分区大小！（其实早就应该用的……）</p>
+</script>  <main data-astro-cid-j3zk6p6w> <section class="container mt-8 sm:mt-32" data-astro-cid-j3zk6p6w> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/stirling" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>斯特林数与放球问题</h1></a><div class="summary" data-astro-cid-mtynfrjh><ul>
+<li>你有 n 个不同的小球，现在你想用这些小球拼成 k 个环，一共有多少种拼法？</li>
+<li>你有 n 个不同的小球，现在你想将这些小球分成 k 个非空的集合，一共有多少种分法？</li>
+</ul>
+<p>这两个问题就是最典型的<strong>斯特林数</strong>（Stirling Number）了。</p>
+</div><a href="/blog/stirling" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/changeswap" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>Linux 服务器如何更改 swap 分区大小、优化内存</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>继安装了 WP Super Cache 插件后，我的服务器又双叒叕崩坏了……仍然一样的 MySQL 停止运行，看日志居然<a href="https://skywt.cn/posts/beng/" title="前一次崩坏">前一次崩坏</a>出现的两个症状同时出现了！（可怕）这次我决定采取终极方案：改变 swap 分区大小！（其实早就应该用的……）</p>
 </div><a href="/blog/changeswap" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cf740d" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CodeForces 740D Alyona and a tree 题解：DFS + 二分</h1></a><div class="summary" data-astro-cid-mtynfrjh><p><a href="http://codeforces.com/contest/740/problem/D" title="题目链接">题目链接</a><br>
 vector 真的好用～</p>
 </div><a href="/blog/cf740d" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/beng" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>记一次服务器 MySQL 服务崩坏经历…</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>今天打开我博客突然再次出现了 database error 的信息……显然 MySQL 服务再次崩坏了。上次崩坏已经尝试过跳大系统栈的方法，这次的崩坏仿佛是另一种错误（吐血……）。</p>
@@ -95,8 +100,7 @@ vector 在C++ 标准模板库中的部分内容，它是一个多功能的，能
 </div><a href="/blog/phinplus" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cppint128" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>C++中的128位整型 __int128</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>C++里有普通的 32 位整数类型 int 和 64 位整数类型 long long，但是如果我们要存一个128位的整数，前两个似乎就无能为力了。这时候我们就要用到 __int128这种类型了。</p>
 </div><a href="/blog/cppint128" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cf510d" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CodeForces 510D Fox And Jumping：DP + 数论 + 离散</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>很伤心，为什么NOIP不能用 C++11……</p>
 <p>CodeForces 510D Fox And Jumping：<a href="https://codeforces.com/problemset/problem/510/D" title="510D">510D</a></p>
-</div><a href="/blog/cf510d" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/dinkelbach" class="no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>0/1 分数规划与 Dinkelbach 迭代法</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>0/1 分数规划是一种常见的模型：给你 n 个价值 $a_i$ 与 n 个代价 $b_i$，让你选出 m 个数字，使得 $ \sum \frac {a_i} {b_i} $ 最大。显然这种题目可以用二分，但是有一种更优秀的方法：Dinkelbach 迭代法。</p>
-</div><a href="/blog/dinkelbach" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> <div class="text-secondary flex" data-astro-cid-j3zk6p6w> <div class="basis-1/3" data-astro-cid-j3zk6p6w> <a href="/blog/12" class="link" data-astro-cid-j3zk6p6w>
+</div><a href="/blog/cf510d" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> <div class="text-secondary flex" data-astro-cid-j3zk6p6w> <div class="basis-1/3" data-astro-cid-j3zk6p6w> <a href="/blog/12" class="link" data-astro-cid-j3zk6p6w>
 上一页
 </a> </div> <div class="basis-1/3 text-center" data-astro-cid-j3zk6p6w> <span data-astro-cid-j3zk6p6w>第 13 页</span> </div> <div class="basis-1/3 text-right" data-astro-cid-j3zk6p6w> <a href="/blog/14" class="link" data-astro-cid-j3zk6p6w>
 下一页

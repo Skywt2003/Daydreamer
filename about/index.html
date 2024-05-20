@@ -23,12 +23,12 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.BOuuljwl.css">
-<link rel="stylesheet" href="/_astro/friends.CyDDfFZO.css"><script type="module" src="/_astro/hoisted.BMqMAa2A.js"></script></head> <body> <header class="mt-12 container container--wide" data-astro-cid-3ef6ksr2> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
+<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css"><script type="module" src="/_astro/hoisted.BMqMAa2A.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
 /
-关于 </span> </h5> </header> <nav class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all" id="navbar-wrapper" data-astro-cid-3ef6ksr2> <div class="container container--wide flex justify-center sm:justify-between flex-wrap" data-astro-cid-3ef6ksr2> <h5 class="m-2 hidden sm:block text-secondary" data-astro-cid-3ef6ksr2> <a href="/" class="link">SkyWT</a> <span>
+关于 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
 /
-关于 </span> </h5> <div class="m-2 text-secondary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+关于 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
 主页
 </a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
   // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
@@ -36,13 +36,13 @@
   var observer;
   function addNavObserver() {
     const headerEl = document.querySelector("#navbar-wrapper");
-    const sentinalEl = document.querySelector("header");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
     if (!sentinalEl || !headerEl) return;
     observer = new window.IntersectionObserver((e) => {
-      if (!e[0].isIntersecting) {
-        headerEl.classList.add("sticked");
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
       } else {
-        headerEl.classList.remove("sticked");
+        headerEl.classList.remove("navbar--sticked");
       }
     });
     observer.observe(sentinalEl);
@@ -68,7 +68,7 @@
     },
     { once: false },
   );
-</script>   <main> <section class="container mt-8 sm:mt-32"> <h1 class="primary-color">关于</h1> <hr class="my-8"> <article class="content"> <h2 id="关于我">关于我</h2>
+</script>  <main> <section class="container mt-8 sm:mt-32"> <h1 class="primary-color">关于</h1> <hr class="my-8"> <article class="content"> <h2 id="关于我">关于我</h2>
 <p>你好 👋，我是 SkyWT。</p>
 <ul>
 <li>🧑 各种网名都是 SkyWT，来自浙江<ruby>衢<rt>qú</rt></ruby>州。现在是湖南大学的一名本科生。</li>
