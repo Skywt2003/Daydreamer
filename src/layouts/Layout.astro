@@ -77,8 +77,8 @@ const { title, includeHeader = true, path = [] } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    {includeHeader && <Header items={menu_yml.items} path={path} />}
+    {includeHeader && <Header pathItems={path} menuItems={menu_yml.items} />}
     <slot />
-    <Footer items={menu_yml.items} path={path} />
+    <Footer menuItems={menu_yml.items} pathItems={path} />
   </body>
 </html>

@@ -5,21 +5,21 @@ import Menu from "@components/menu/Menu.astro";
 import Path from "@components/Path.astro";
 
 interface Props {
-  items: MenuItem[];
-  path: PathItem[];
+  menuItems: MenuItem[];
+  pathItems: PathItem[];
 }
 
-const { items, path } = Astro.props;
+const { menuItems, pathItems } = Astro.props;
 ---
 
 <footer class="mt-16 py-8 text-secondary">
   <div class="container container--wide text-sm">
     <div class="flex justify-between flex-wrap">
       <div class="m-2">
-        <Path path={path} />
+        <Path items={pathItems} />
       </div>
       <div class="m-2">
-        <Menu showIcon={false} items={items} />
+        <Menu showIcon={false} items={menuItems} />
       </div>
     </div>
     <hr class="my-4" />

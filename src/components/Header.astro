@@ -1,80 +1,19 @@
 ---
-import Menu from "@components/menu/Menu.astro";
 import Path from "@components/Path.astro";
+import Navbar from "./Navbar.astro";
 
 interface Props {
-  items: MenuItem[];
-  path: PathItem[];
+  pathItems: PathItem[];
+  menuItems: MenuItem[];
 }
 
-const { items, path = [] } = Astro.props;
+const { pathItems, menuItems } = Astro.props;
 ---
 
 <header class="mt-12 container container--wide">
   <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center">
-    <Path path={path} />
+    <Path items={pathItems} />
   </h5>
 </header>
 
-<nav
-  class="py-2 font-thin sticky top-0 backdrop-blur-md z-10 transition-all"
-  id="navbar-wrapper"
->
-  <div
-    class="container container--wide flex justify-center sm:justify-between flex-wrap"
-  >
-    <h5 class="m-2 hidden sm:block text-secondary">
-      <Path path={path} />
-    </h5>
-    <div class="m-2 text-secondary">
-      <Menu items={items} />
-    </div>
-  </div>
-</nav>
-
-<script is:inline>
-  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
-  // 这里用了极不优雅的 var，有待改进
-  var observer;
-  function addNavObserver() {
-    const headerEl = document.querySelector("#navbar-wrapper");
-    const sentinalEl = document.querySelector("header");
-    if (!sentinalEl || !headerEl) return;
-    observer = new window.IntersectionObserver((e) => {
-      if (!e[0].isIntersecting) {
-        headerEl.classList.add("sticked");
-      } else {
-        headerEl.classList.remove("sticked");
-      }
-    });
-    observer.observe(sentinalEl);
-  }
-
-  function removeNavObserver() {
-    if (observer) observer.disconnect();
-    observer = null;
-  }
-
-  document.addEventListener(
-    "astro:page-load",
-    () => {
-      addNavObserver();
-    },
-    { once: false },
-  );
-
-  document.addEventListener(
-    "astro:before-swap",
-    () => {
-      removeNavObserver();
-    },
-    { once: false },
-  );
-</script>
-
-<style lang="scss">
-  .sticked {
-    @apply bg-white bg-opacity-50 dark:bg-neutral-800 dark:bg-opacity-50;
-    @apply shadow-lg;
-  }
-</style>
+<Navbar pathItems={pathItems} menuItems={menuItems} />

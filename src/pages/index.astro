@@ -6,6 +6,7 @@ import ProjectsCards from "@components/projects/ProjectsCards.astro";
 import Rating from "@components/Rating.astro";
 import projects_yml from "@configs/projects.yml";
 import menu_yml from "@configs/menu.yml";
+import Navbar from "@components/Navbar.astro";
 ---
 
 <Layout title="SkyWT" includeHeader={false}>
@@ -68,6 +69,8 @@ import menu_yml from "@configs/menu.yml";
     </section>
 
     <hr class="container" />
+
+    <Navbar pathItems={[]} menuItems={menu_yml.items} hidden={true} />
 
     <section>
       <h2 class="text-center">你好 👋 我是 SkyWT。</h2>

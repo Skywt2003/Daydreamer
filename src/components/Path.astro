@@ -1,14 +1,14 @@
 ---
 interface Props {
-  path: PathItem[];
+  items: PathItem[];
 }
 
-const { path } = Astro.props;
+const { items } = Astro.props;
 ---
 
 <a href="/" class="link">SkyWT</a>
 {
-  path.map((pathItem) => (
+  items.map((pathItem) => (
     <span>
       /
       {pathItem.url ? (

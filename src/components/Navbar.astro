@@ -1,0 +1,64 @@
+---
+import Path from "./Path.astro";
+import Menu from "./menu/Menu.astro";
+
+interface Props {
+  pathItems: PathItem[];
+  menuItems: MenuItem[];
+  hidden?: boolean;
+}
+
+const { pathItems, menuItems, hidden = false } = Astro.props;
+---
+
+<div id="navbar-sentinal"></div>
+<nav class:list={["navbar", { "navbar--hidden": hidden }]} id="navbar-wrapper">
+  <div class="navbar__content">
+    <h5 class="navbar__path">
+      <Path items={pathItems} />
+    </h5>
+    <div class="navbar__menu">
+      <Menu items={menuItems} />
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>

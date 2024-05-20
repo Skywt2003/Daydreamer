@@ -85,6 +85,32 @@ footer {
   @include text-primary;
 }
 
+.navbar {
+  @apply py-2 sticky top-0 backdrop-blur-md z-10 transition-all;
+  @apply font-thin;
+  @include text-secondary;
+  &--hidden {
+    @apply invisible opacity-0;
+  }
+  &--sticked {
+    @apply visible opacity-100;
+    @include bg-front;
+    @apply bg-opacity-50 dark:bg-opacity-50;
+    @apply shadow-lg;
+  }
+
+  &__content {
+    @extend .container, .container--wide;
+    @apply flex justify-center sm:justify-between flex-wrap;
+  }
+  &__path {
+    @apply m-2 hidden sm:block;
+  }
+  &__menu {
+    @apply m-2;
+  }
+}
+
 // 诸如「实验室」这样的页面，显示标题的部分
 .page-heading {
   @include bg-front;
