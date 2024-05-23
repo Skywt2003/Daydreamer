@@ -1,7 +1,9 @@
 ---
-layout: "../layouts/Post.astro"
+layout: "../layouts/MdArticle.astro"
 title: 关于
-slug: about
+id: 24
+description:
+keywords: 关于,SkyWT,博客
 ---
 
 ## 关于我

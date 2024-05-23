@@ -1,6 +1,37 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
+interface GotArticle {
+  id: number;
+  slug: string;
+  title: string;
+  created: Date;
+  modified: Date;
+  digest: string;
+  text?: string;
+  description: string | null;
+  keywords: string[] | null;
+  headPic: string | null;
+  inTimeline: boolean;
+  allowComment: boolean;
+  commentsNum: number;
+  comments?: GotComment[];
+}
+
+interface GotComment {
+  id: number;
+  created: Date;
+  author: string;
+  avatar: string;
+  url: string;
+  text: string;
+  isOwner: boolean;
+  status: "pending" | "approved";
+  articleId: number;
+  parentId: number | null;
+  children: GotComment[];
+}
+
 interface MenuItem {
   name: string;
   icon: string;
@@ -12,43 +43,6 @@ declare module "@configs/menu.yml" {
     items: MenuItems[];
   };
   export default value;
-}
-
-interface ArticleInTimeline {
-  slug: string;
-  title: string;
-  created: number;
-  modified: number;
-  digest: string;
-  headPic: string;
-}
-
-interface Article {
-  cid: number;
-  slug: string;
-  title: string;
-  created: number;
-  modified: number;
-  text: string;
-  inTimeline: boolean;
-  headPic: string;
-  allowComment: boolean;
-}
-
-// 此 interface 本应该叫做 Comment
-// 但是和 Comment 组件重名，故改此名
-interface ArticleComment {
-  coid: number;
-  cid: number;
-  created: number;
-  author: string;
-  url: string;
-  avatar: string;
-  status: "pending" | "approved";
-  text: string;
-  isOwner: boolean;
-  parent: number;
-  children: ArticleComment[];
 }
 
 interface PathItem {

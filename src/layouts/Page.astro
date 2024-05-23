@@ -10,7 +10,12 @@ interface Props {
 const { title, heading, caption } = Astro.props;
 ---
 
-<Layout title={title} path={[{ title: title, url: "" }]}>
+<Layout
+  title={title}
+  pathItems={[{ title: title, url: "" }]}
+  description=""
+  keywords={[]}
+>
   <main>
     <section class="mt-8">
       <div class="page-heading">

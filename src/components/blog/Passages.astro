@@ -1,28 +1,32 @@
 ---
 import markdown from "@scripts/markdown";
 interface Props {
-  posts: ArticleInTimeline[];
+  articles: GotArticle[];
 }
 
-const { posts } = Astro.props;
+const { articles } = Astro.props;
 ---
 
 {
-  posts.map((post) => (
+  articles.map((article) => (
     <>
       <article class="content">
-        {post.headPic && (
-          <a href={post.headPic} data-fancybox data-caption={post.title}>
-            <img src={post.headPic} alt={post.title} title={post.title} />
+        {article.headPic && (
+          <a href={article.headPic} data-fancybox data-caption={article.title}>
+            <img
+              src={article.headPic}
+              alt={article.title}
+              title={article.title}
+            />
           </a>
         )}
-        <a href={"/blog/" + post.slug} class="no-underline-by-default">
-          <h1>{post.title}</h1>
+        <a href={"/blog/" + article.slug} class="no-underline-by-default">
+          <h1>{article.title}</h1>
         </a>
         <div class="summary">
-          <Fragment set:html={markdown.parseContentSimple(post.digest)} />
+          <Fragment set:html={markdown.parseContentSimple(article.digest)} />
         </div>
-        <a href={"/blog/" + post.slug}>阅读更多</a>
+        <a href={"/blog/" + article.slug}>阅读更多</a>
       </article>
       <hr class="my-8" />
     </>
@@ -45,6 +49,6 @@ const { posts } = Astro.props;
     () => {
       Fancybox.bind("[data-fancybox]", {});
     },
-    { once: false }
+    { once: false },
   );
 </script>

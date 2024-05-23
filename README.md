@@ -1,3 +1,3 @@
 # Daydreamer
 
-(skywt.cn)[https://skywt.cn]
+[skywt.cn](https://skywt.cn)

@@ -4,7 +4,12 @@ import Menu from "@components/menu/Menu.astro";
 import menu_yml from "@configs/menu.yml";
 ---
 
-<Layout title="404 Not Found" includeHeader={true}>
+<Layout
+  title="404 Not Found"
+  includeHeader={true}
+  description="404: 页面未找到。"
+  keywords={[]}
+>
   <main>
     <div class="container my-8 sm:my-32 flex flex-col justify-center">
       <h1>404 Not Found.</h1>

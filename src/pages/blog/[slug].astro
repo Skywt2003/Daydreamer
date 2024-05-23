@@ -1,82 +1,73 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Comments from "@components/blog/Comments.tsx";
-import api from "@scripts/api";
+import apis from "@scripts/apis";
 import utils from "@scripts/utils";
 import markdown from "@scripts/markdown";
 
 export async function getStaticPaths() {
-  const posts = await api.getTimeline(1, 10000);
-  let ret: {
-    params: { slug: string };
-  }[] = posts.map((post) => {
-    return {
-      params: { slug: post.slug },
-    };
-  });
-  return ret;
+  const articles = await apis.getArticles(1, 10000);
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+  }));
 }
 
 const { slug } = Astro.params;
 
-const post = await api.getArticle(slug);
+const article = await apis.getArticle(slug);
 ---
 
 <Layout
-  title={post.title}
+  title={article.title}
   includeHeader={true}
-  path={[
+  pathItems={[
     { title: "博客", url: "/blog" },
-    { title: post.title, url: "" },
+    { title: article.title, url: "" },
   ]}
+  description={article.description ?? article.digest}
+  keywords={article.keywords ?? []}
 >
   <main>
     <section class="container mt-8 sm:mt-32">
       {
-        post.headPic && (
-          <a href={post.headPic} data-fancybox data-caption={post.title}>
+        article.headPic && (
+          <a href={article.headPic} data-fancybox data-caption={article.title}>
             <img
-              src={post.headPic}
-              alt={post.title}
-              title={post.title}
-              class="mb-8"
+              src={article.headPic}
+              alt={article.title}
+              title={article.title}
+              class="mb-8 shadow-lg rounded-lg"
             />
           </a>
         )
       }
-      <h1 class="leading-relaxed">{post.title}</h1>
+      <h1 class="leading-relaxed">{article.title}</h1>
       <p class="mt-4 text-secondary leading-relaxed">
         <i class="ri-calendar-line"></i>
-        <span>{utils.formatTimestamp(post.created)}</span>
-        <!-- {
-          post.commentsNum > 0 && (
+        <span>{utils.getFullDate(article.created)}</span>
+        {
+          article.commentsNum > 0 && (
             <>
               <br />
               <i class="ri-discuss-line" />
-              <span>共 {post.commentsNum} 条评论</span>
+              <span>共 {article.commentsNum} 条评论</span>
             </>
           )
-        } -->
+        }
       </p>
 
       <hr class="my-8" />
 
-      <article class="content">
-        <Fragment set:html={markdown.parseContent(post.text)} />
+      <article class="content content--slide-enter">
+        <Fragment set:html={markdown.parseContent(article.text ?? "")} />
       </article>
 
       <hr class="my-8" />
 
-      {post.allowComment && <Comments client:load slug={slug} />}
+      {article.allowComment && <Comments client:load articleId={article.id} />}
     </section>
   </main>
 </Layout>
-
-<style lang="scss">
-  img {
-    @apply shadow-lg rounded-lg;
-  }
-</style>
 
 <script>
   import { Fancybox } from "@fancyapps/ui";

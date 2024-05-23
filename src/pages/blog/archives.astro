@@ -1,28 +1,23 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import api from "@scripts/api";
+import apis from "@scripts/apis";
 import utils from "@scripts/utils";
 
-const posts = await api.getTimeline(1, 10000);
-const groupedPosts = groupByYear(posts);
+const articles = await apis.getArticles(1, 10000);
+const groupedArticles = groupByYear(articles);
 
-interface GroupedPosts {
-  [year: number]: ArticleInTimeline[];
+interface GroupedArticles {
+  [year: number]: GotArticle[];
 }
 
-function groupByYear(posts: ArticleInTimeline[]): GroupedPosts {
-  function getYear(timestamp: number) {
-    const date = new Date(timestamp);
-    return date.getFullYear();
-  }
-
-  const ret: GroupedPosts = {};
-  posts.forEach((post: ArticleInTimeline) => {
-    const year = getYear(post.created);
+function groupByYear(articles: GotArticle[]): GroupedArticles {
+  const ret: GroupedArticles = {};
+  articles.forEach((article) => {
+    const year = new Date(article.created).getFullYear();
     if (ret[year] === undefined) {
       ret[year] = [];
     }
-    ret[year].push(post);
+    ret[year].push(article);
   });
 
   return ret;
@@ -31,47 +26,43 @@ function groupByYear(posts: ArticleInTimeline[]): GroupedPosts {
 
 <Layout
   title="文章归档"
-  path={[
+  pathItems={[
     { title: "博客", url: "/blog" },
     { title: "文章归档", url: "" },
   ]}
+  description={"文章归档"}
+  keywords={[]}
 >
   <main>
     <section class="container mt-32">
       <h1>文章归档</h1>
-      <p class="mt-4">共发布 {posts.length} 篇文章。</p>
+      <p class="mt-4">共发布 {articles.length} 篇文章。</p>
       <hr class="my-8" />
       <article class="content">
         {
-          Object.entries(groupedPosts)
+          Object.entries(groupedArticles)
             .sort((a, b) => parseInt(b[0]) - parseInt(a[0]))
             .map((entry) => (
               <>
                 <h2>{entry[0]}</h2>
                 <ul>
-                  {entry[1].map(
-                    (post: ArticleInTimeline) =>
-                      post.title &&
-                      post.title !== " " && (
-                        <li>
-                          {utils.formatMonthDay(post.created)}
-                          <a
-                            href={"/blog/" + post.slug}
-                            class="no-underline-by-default"
-                          >
-                            {post.title}
-                          </a>
-                          {
-                            //   post.commentsNum > 0 && (
-                            //   <span class="text-tertiary text-sm">
-                            //     <i class="ml-2 ri-message-2-line" />{" "}
-                            //     {post.commentsNum}
-                            //   </span>
-                            // )
-                          }
-                        </li>
-                      ),
-                  )}
+                  {entry[1].map((article: GotArticle) => (
+                    <li>
+                      {utils.getMonthDay(article.created)}
+                      <a
+                        href={"/blog/" + article.slug}
+                        class="no-underline-by-default"
+                      >
+                        {article.title}
+                      </a>
+                      {article.commentsNum > 0 && (
+                        <span class="text-tertiary text-sm">
+                          <i class="ml-2 ri-message-2-line" />{" "}
+                          {article.commentsNum}
+                        </span>
+                      )}
+                    </li>
+                  ))}
                 </ul>
               </>
             ))

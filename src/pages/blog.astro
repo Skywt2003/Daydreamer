@@ -4,12 +4,17 @@ import Passages from "@components/blog/Passages.astro";
 import Subscribe from "@components/blog/Subscribe.astro";
 import Selection from "@components/blog/Selection.astro";
 import selections_yml from "@configs/selections.yml";
-import api from "@scripts/api";
+import apis from "@scripts/apis";
 
-const posts = await api.getTimeline(1, 10);
+const articles = await apis.getArticles(1, 10);
 ---
 
-<Layout title="博客" path={[{ title: "博客", url: "" }]}>
+<Layout
+  title="博客"
+  pathItems={[{ title: "博客", url: "" }]}
+  description="博客"
+  keywords={[]}
+>
   <main>
     <section class="container mt-8 sm:mt-32">
       <h1>文章精选</h1>
@@ -29,7 +34,7 @@ const posts = await api.getTimeline(1, 10);
       <hr class="my-16" />
       <h1>最新文章</h1>
       <div class="mt-16">
-        <Passages posts={posts} />
+        <Passages articles={articles} />
       </div>
 
       <div class="primary-color flex">

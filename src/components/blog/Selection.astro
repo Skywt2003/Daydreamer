@@ -1,5 +1,5 @@
 ---
-import api from "@scripts/api";
+import apis from "@scripts/apis";
 
 interface Props {
   selections: Selection[];
@@ -15,7 +15,7 @@ const { selections } = Astro.props;
         <h2>{selection.name}</h2>
         <ul>
           {selection.slugs.map(async (slug) => {
-            const post = await api.getArticle(slug);
+            const post = await apis.getArticle(slug);
             return (
               <li>
                 <a href={"/blog/" + slug} class="no-underline-by-default">

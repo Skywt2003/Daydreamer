@@ -1,8 +1,8 @@
 // utils
 
 export default {
-  formatTimestamp: function (timestamp: number) {
-    const date = new Date(timestamp);
+  getFullDate: (date: Date) => {
+    date = new Date(date);
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
@@ -11,8 +11,8 @@ export default {
     return `${year} 年 ${month} 月 ${day} 日 ${hours}:${minutes}`;
   },
 
-  formatMonthDay: function (timestamp: number) {
-    const date = new Date(timestamp);
+  getMonthDay: (date: Date) => {
+    date = new Date(date);
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     return `${month}-${day}`;

@@ -4,11 +4,11 @@ import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 import Layout from "@layouts/Layout.astro";
 import Passages from "@components/blog/Passages.astro";
 import Subscribe from "@components/blog/Subscribe.astro";
-import api from "@scripts/api";
+import apis from "@scripts/apis";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts: ArticleInTimeline[] = await api.getTimeline(1, 10000);
-  return paginate(posts, { pageSize: 10 });
+  const articles: GotArticle[] = await apis.getArticles(1, 10000);
+  return paginate(articles, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -17,15 +17,17 @@ const { page } = Astro.props;
 ---
 
 <Layout
-  title={"博客第 " + page.currentPage + " 页"}
-  path={[
+  title={`博客第 ${page.currentPage} 页`}
+  pathItems={[
     { title: "博客", url: "/blog" },
-    { title: "第 " + page.currentPage + " 页", url: "" },
+    { title: `第 ${page.currentPage} 页`, url: "" },
   ]}
+  description={`博客第 ${page.currentPage} 页`}
+  keywords={["博客"]}
 >
   <main>
     <section class="container mt-8 sm:mt-32">
-      <Passages posts={page.data} />
+      <Passages articles={page.data} />
       <div class="text-secondary flex">
         <div class="basis-1/3">
           {

@@ -8,7 +8,9 @@ const { frontmatter } = Astro.props;
 <Layout
   title={frontmatter.title}
   includeHeader={true}
-  path={[{ title: frontmatter.title, url: "" }]}
+  pathItems={[{ title: frontmatter.title, url: "" }]}
+  description={frontmatter.description}
+  keywords={frontmatter.keywords.split(",")}
 >
   <main>
     <section class="container mt-8 sm:mt-32">
@@ -18,10 +20,10 @@ const { frontmatter } = Astro.props;
         <slot />
       </article>
       {
-        frontmatter.slug && (
+        frontmatter.id && (
           <>
             <hr class="my-8" />
-            <Comments client:load slug={frontmatter.slug} />
+            <Comments client:load articleId={frontmatter.id} />
           </>
         )
       }

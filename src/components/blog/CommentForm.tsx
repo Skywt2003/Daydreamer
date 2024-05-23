@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 interface Props {
-  selected: ArticleComment | null;
+  selected: GotComment | null;
   setSelected: Function;
   submitComment: Function;
   sending: boolean;
@@ -125,9 +125,8 @@ export default function CommentForm(props: Props) {
       {firstComment && (
         <p className="mt-4 text-secondary text-sm leading-normal">
           提交评论即表明你同意本网站使用
-          Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。
-          <br />
-          （提交一次评论后，本提示将不再展示）
+          Cookie，并允许本站在后台记录你的邮箱、IP
+          地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）
         </p>
       )}
     </>

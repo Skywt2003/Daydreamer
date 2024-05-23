@@ -1,28 +1,26 @@
 import rss, { type RSSFeedItem } from "@astrojs/rss";
-import api from "@scripts/api";
+import apis from "@scripts/apis";
 import markdown from "@scripts/markdown";
 import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
-  const makeRssItem = async (blog: ArticleInTimeline) => {
-    const article = await api.getArticle(blog.slug);
-    const ret: RSSFeedItem = {
-      title: blog.title,
-      pubDate: new Date(blog.created),
-      description: blog.digest,
-      link: `/blog/${blog.slug}/`,
-      content: markdown.parseContentSimple(article.text),
+  const makeRssItem = async (article: GotArticle): Promise<RSSFeedItem> => {
+    const articleDetail = await apis.getArticle(article.slug);
+    return {
+      title: articleDetail.title,
+      pubDate: articleDetail.created,
+      description: articleDetail.digest,
+      link: `/blog/${articleDetail.slug}/`,
+      content: markdown.parseContentSimple(articleDetail.text ?? ""),
       author: "me@skywt.cn",
     };
-    return ret;
   };
 
-  const blogs = await api.getTimeline(1, 20);
-  const rssItems: RSSFeedItem[] = [];
-  for (const blog of blogs) {
-    const item = await makeRssItem(blog);
-    rssItems.push(item);
-  }
+  const articles = await apis.getArticles(1, 20);
+  const rssItemsPromises = articles.map(
+    async (article) => await makeRssItem(article),
+  );
+  const rssItems = await Promise.all(rssItemsPromises);
 
   rssItems.push({
     title: "感谢订阅 SkyWT 的博客。",

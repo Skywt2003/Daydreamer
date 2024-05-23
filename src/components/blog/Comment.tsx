@@ -3,8 +3,8 @@ import CommentForm from "@components/blog/CommentForm.tsx";
 import utils from "@scripts/utils.ts";
 
 interface Props {
-  comment: ArticleComment;
-  selected: ArticleComment | null;
+  comment: GotComment;
+  selected: GotComment | null;
   setSelected: Function;
   submitComment: Function;
   sending: boolean;
@@ -25,7 +25,7 @@ export default function Comment(props: Props) {
           )}
           <p className="mt-1">
             <span className="text-secondary">
-              {utils.formatTimestamp(props.comment.created)}
+              {utils.getFullDate(props.comment.created)}
             </span>
             {props.comment.status === "approved" ? (
               <span
@@ -54,13 +54,13 @@ export default function Comment(props: Props) {
         ></CommentForm>
       )}
       <div className="ml-8">
-        {props.comment.children.map((child: ArticleComment) => (
+        {props.comment.children.map((child: GotComment) => (
           <CommentCopy
             selected={props.selected}
             comment={child}
             setSelected={props.setSelected}
             submitComment={props.submitComment}
-            key={child.coid}
+            key={child.id}
             sending={props.sending}
           />
         ))}

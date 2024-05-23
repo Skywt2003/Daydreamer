@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import { CookiesProvider } from "react-cookie";
 import Comment from "@components/blog/Comment.tsx";
 import CommentForm from "@components/blog/CommentForm.tsx";
-import api from "@scripts/api.ts";
+import apis from "@scripts/apis";
 
 interface Props {
-  slug: string;
+  articleId: number;
 }
 
 export default function Comments(props: Props) {
-  const [comments, setComments] = useState<ArticleComment[]>([]);
+  const [comments, setComments] = useState<GotComment[]>([]);
   const [error, setError] = useState(false);
   const [count, setCount] = useState(0);
-  const [selected, setSelected] = useState<ArticleComment | null>(null);
+  const [selected, setSelected] = useState<GotComment | null>(null);
   const [sending, setSending] = useState(false);
 
   async function submitComment(
@@ -26,20 +26,20 @@ export default function Comments(props: Props) {
     setSending(true);
 
     try {
-      const data = await api.postComments(
-        props.slug,
+      const newComment = await apis.postComment(
         author,
         mail,
         url,
         text,
         receiveMail,
-        selected,
+        props.articleId,
+        selected === null ? null : selected.id,
       );
 
       if (selected !== null) {
-        selected.children.push(data);
+        selected.children.push(newComment);
       } else {
-        comments.push(data);
+        comments.push(newComment);
       }
 
       setComments([...comments]);
@@ -54,7 +54,7 @@ export default function Comments(props: Props) {
   }
 
   useEffect(() => {
-    function getCount(comments: ArticleComment[]): number {
+    function getCount(comments: GotComment[]): number {
       let count = 0;
       comments.forEach((comment) => {
         count++;
@@ -63,8 +63,8 @@ export default function Comments(props: Props) {
       return count;
     }
 
-    api
-      .getComments(props.slug)
+    apis
+      .getComments(props.articleId)
       .then((data) => {
         setComments(data);
         setCount(getCount(data));
@@ -104,7 +104,7 @@ export default function Comments(props: Props) {
               selected={selected}
               setSelected={setSelected}
               submitComment={submitComment}
-              key={comment.coid}
+              key={comment.id}
               sending={sending}
             ></Comment>
           ))}

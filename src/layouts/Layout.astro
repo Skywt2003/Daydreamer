@@ -19,24 +19,34 @@ import "@styles/global.scss";
 import { ViewTransitions } from "astro:transitions";
 import menu_yml from "@configs/menu.yml";
 
+import { SEO } from "astro-seo";
+
 interface Props {
   title: string;
   includeHeader?: boolean;
-  path?: PathItem[];
+  pathItems?: PathItem[];
+  description: string;
+  keywords: string[];
 }
 
-const { title, includeHeader = true, path = [] } = Astro.props;
+const {
+  title,
+  includeHeader = true,
+  pathItems = [],
+  description,
+  keywords,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
+
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
 
     <link
       rel="alternate"
@@ -46,6 +56,46 @@ const { title, includeHeader = true, path = [] } = Astro.props;
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "article",
+          image:
+            "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        },
+        optional: {
+          locale: "zh_CN",
+          localeAlternate: ["zh_TW", "en_US"],
+          siteName: "SkyWT",
+        },
+      }}
+      twitter={{
+        card: "summary",
+        site: "@skywt2003",
+        creator: "@skywt2003",
+        title: title,
+        image:
+          "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        imageAlt: "SkyWT",
+        description: description,
+      }}
+      extend={{
+        link: [
+          { rel: "shortcut icon", href: "/favicon.ico" },
+          { rel: "bookmark", href: "/favicon.ico" },
+          { rel: "apple-touch-icon", href: "/avatar.png" },
+        ],
+        meta: [
+          // { name: "description", content: description },
+          { name: "generator", content: Astro.generator },
+          { name: "keywords", content: keywords.join(",") },
+        ],
+      }}
+    />
 
     <script is:inline>
       function addMatomo() {
@@ -77,8 +127,12 @@ const { title, includeHeader = true, path = [] } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    {includeHeader && <Header pathItems={path} menuItems={menu_yml.items} />}
+    {
+      includeHeader && (
+        <Header pathItems={pathItems} menuItems={menu_yml.items} />
+      )
+    }
     <slot />
-    <Footer menuItems={menu_yml.items} pathItems={path} />
+    <Footer menuItems={menu_yml.items} pathItems={pathItems} />
   </body>
 </html>
