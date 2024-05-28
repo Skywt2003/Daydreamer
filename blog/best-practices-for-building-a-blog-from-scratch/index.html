@@ -1,4 +1,12 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta name="generator" content="Astro v4.7.0"><title>从零开始搭建博客的最佳实践</title><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>从零开始搭建博客的最佳实践</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>从零开始搭建博客的最佳实践</title><link rel="canonical" href="https://skywt.cn/blog/best-practices-for-building-a-blog-from-scratch/"><meta name="description" content="网上关于用自己的 VPS 搭博客的教程非常多，但是多半是一些非常陈旧和杂乱的实践。
+
+作为一个折腾博客五年多的「折腾达人」，本文汇总自己多年的折腾经验，形成一个我认为的「最佳实践」，希望能够作为参考。同时为了简化过程，这篇博客介绍的并不完全是我服务器上的部署方式，更加优化的一些地方在文末有列举。
+
+"><meta name="robots" content="index, follow"><meta property="og:title" content="从零开始搭建博客的最佳实践"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/best-practices-for-building-a-blog-from-scratch/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="从零开始搭建博客的最佳实践"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="网上关于用自己的 VPS 搭博客的教程非常多，但是多半是一些非常陈旧和杂乱的实践。
+
+作为一个折腾博客五年多的「折腾达人」，本文汇总自己多年的折腾经验，形成一个我认为的「最佳实践」，希望能够作为参考。同时为了简化过程，这篇博客介绍的并不完全是我服务器上的部署方式，更加优化的一些地方在文末有列举。
+
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +31,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
-<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
-<style>img[data-astro-cid-4sn4zg3r]{border-radius:.5rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -74,15 +80,7 @@
     },
     { once: false },
   );
-</script>  <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="leading-relaxed" data-astro-cid-4sn4zg3r>从零开始搭建博客的最佳实践</h1> <p class="mt-4 text-secondary leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 7 月 7 日 11:46</span> <!-- {
-          post.commentsNum > 0 && (
-            <>
-              <br />
-              <i class="ri-discuss-line" />
-              <span>共 {post.commentsNum} 条评论</span>
-            </>
-          )
-        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">从零开始搭建博客的最佳实践</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2022 年 7 月 7 日 11:46</span>  <br> <i class="ri-discuss-line"></i> <span>共 1 条评论</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
 <ul>
 <li><a href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">前置知识</a></li>
 <li><a href="#%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%9E%B6%E6%9E%84%E7%9A%84%E9%80%89%E6%8B%A9">部署环境架构的选择</a></li>
@@ -104,8 +102,9 @@
 </ul>
 <p>网上关于用自己的 VPS 搭博客的教程非常多，但是多半是一些非常陈旧和杂乱的实践。</p>
 <p>作为一个折腾博客五年多的「折腾达人」，本文汇总自己多年的折腾经验，形成一个我认为的「最佳实践」，希望能够作为参考。同时为了简化过程，这篇博客介绍的并不完全是我服务器上的部署方式，更加优化的一些地方在文末有列举。</p>
+<!--more-->
 <p>💡 这篇博客介绍的「最佳实践」的含义为「已经在别处产生显著效果并且能够适用于此处的优秀实践」，而不是「最优秀的实践」，并无「最」字面上「达到极点」的含义。无意否认存在比这篇博客的介绍更加简便、清晰、强大、优秀的实践。</p>
-<h2><a id="前置知识" class="heading-anchor"></a>前置知识</h2>
+<h2><a id="前置知识" class="content__heading-anchor"></a>前置知识</h2>
 <ul>
 <li>Linux 终端（Shell）的基本使用。</li>
 <li>容器化与 Docker 的相关概念。
@@ -115,14 +114,14 @@
 </ul></li>
 <li>MySQL 数据库的相关概念。</li>
 </ul>
-<h2><a id="部署环境架构的选择" class="heading-anchor"></a>部署环境架构的选择</h2>
+<h2><a id="部署环境架构的选择" class="content__heading-anchor"></a>部署环境架构的选择</h2>
 <p>如果用自己的 VPS 搭建博客，部署环境有几种常见的方式：</p>
 <ul>
 <li><strong>LNMP</strong>：Linux + Nginx + MySQL + PHP，是常见的传统架构。这种方式维护起来非常麻烦，虽然有类似「XX 面板」、「XX 一键安装包」之类的管理器 / 脚本，但是这种近乎「黑箱」的运维方式是不利于我们的学习研究的。</li>
 <li><strong>容器化</strong>，即全部使用 Docker 之类的容器工具进行部署。容器化对于我们博客部署和个人服务器运维的最大好处就是维护非常方便。</li>
 </ul>
 <p>容器化是近年的趋势，也是这篇博客介绍的方法。</p>
-<h2><a id="博客系统的选择" class="heading-anchor"></a>博客系统的选择</h2>
+<h2><a id="博客系统的选择" class="content__heading-anchor"></a>博客系统的选择</h2>
 <p>目前开源的博客系统五花八门，我也尝试过很多。从整体的架构上可以分为三类：</p>
 <ul>
 <li><strong>SSR</strong>（Server-side Render，服务器端渲染），就是各种 PHP、JSP 博客系统，代表为 <a href="https://wordpress.org/">WordPress</a>、<a href="https://typecho.org/">Typecho</a>。这类博客平台最为成熟。</li>
@@ -130,22 +129,22 @@
 <li><strong>CSR</strong>（Client-side Render，客户端渲染），就是前后端分离的架构，代表有 Ghost 等。</li>
 </ul>
 <p>我个人比较推荐的是 WordPress 或者 Typecho。</p>
-<h3><a id="wordpress" class="heading-anchor"></a>WordPress</h3>
+<h3><a id="wordpress" class="content__heading-anchor"></a>WordPress</h3>
 <p>WordPress 是一个十分成熟的 PHP 博客程序。据统计，整个互联网约有三分之一的网站使用 WordPress。</p>
 <p>新版本的 WordPress 内置的是 Gutenberg 编辑器，这是一个强大的“块编辑器”（区别于传统的文字编辑器）。这个编辑器比较现代化，对用户友好，但是实现比较复杂。如果你习惯使用 Markdown 来写文章，或者想要对博客系统进行一些二次开发，可能会比较麻烦，更推荐使用 Typecho。</p>
 <p>💡 <strong>注意：</strong>开源的 WordPress 博客程序项目的官网是 wordpress.org，而不是 wordpress.com！后者是 WordPress 的公司 Automatic 运营的线上博客服务，和前者没有直接关系。</p>
-<h3><a id="typecho" class="heading-anchor"></a>Typecho</h3>
+<h3><a id="typecho" class="content__heading-anchor"></a>Typecho</h3>
 <p>Typecho 是国人开发的 PHP 博客系统，非常简洁轻量，比 WordPress 更加轻量。Typecho 隔几年才更新一次，已经有十五年以上的历史了……我的这个博客就是用 Typecho 搭建的。</p>
 <p>Typecho 原生支持 Markdown，而且主题、插件的开发都比 WordPress 要容易地多。不过对于对 Markdown 不熟悉的用户来说，这个编辑器比 WordPress「简陋」地多。</p>
 <p>总结一句，<strong>WordPress 强大全面，Typecho 轻量简洁，</strong>看个人喜好选择。</p>
 <p>这篇博客以 Typecho 为例。</p>
-<h2><a id="安装-docker-和-compose" class="heading-anchor"></a>安装 Docker 和 Compose</h2>
+<h2><a id="安装-docker-和-compose" class="content__heading-anchor"></a>安装 Docker 和 Compose</h2>
 <p>Docker 是最常用的容器平台。</p>
 <p>首先我们要在服务器上安装 Docker（注意是安装 Docker Engine 不是 Docker Desktop），然后安装 Docker Compose。可以参考官方的<a href="https://docs.docker.com/engine/install/">安装文档</a>。</p>
 <pre><code class="language-bash">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 </code></pre>
 <p>Docker Compose 的安装文档在<a href="https://docs.docker.com/compose/install/">这里</a>。</p>
-<h2><a id="架构规划" class="heading-anchor"></a>架构规划</h2>
+<h2><a id="架构规划" class="content__heading-anchor"></a>架构规划</h2>
 <p>我们需要运行以下几个容器：</p>
 <ul>
 <li>Typecho-fpm，是部署好的 PHP 环境 + Typecho。</li>
@@ -153,14 +152,14 @@
 <li>phpMyAdmin，是管理 MySQL 数据库用的软件，有了这个我们就不用自己用数据库命令去创建管理数据库了（当然如果你比较熟悉 SQL 可以不用这个）。</li>
 </ul>
 <p>还需要安装 Caddy（或 Nginx），作为 Web Server。这个相当于作为整个服务器的「网关」，可以不以容器的方式安装（因为 Caddy 的 <code>caddy reload</code> 命令真的很爽）。</p>
-<h2><a id="创建容器网络" class="heading-anchor"></a>创建容器网络</h2>
+<h2><a id="创建容器网络" class="content__heading-anchor"></a>创建容器网络</h2>
 <p>为了让 Typecho 容器能够访问数据库，phpMyAdmin 能够管理数据库，我们要分别为他们创建网络，和数据库互联。假定这两个网络名为 <code>blog</code> 和 <code>db_admin</code>。</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2023/01/258955983.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/01/258955983.png" alt="容器网络" title="" /></a></p>
 <p>我们可以先创建网络，稍后在相关的 <code>docker-compose.yml</code> 中指定连接：</p>
 <pre><code class="language-bash">docker network create blog
 docker network create db_admin
 </code></pre>
-<h2><a id="安装启动数据库" class="heading-anchor"></a>安装启动数据库</h2>
+<h2><a id="安装启动数据库" class="content__heading-anchor"></a>安装启动数据库</h2>
 <p>Typecho 支持 MySQL 数据库。此处我们选用 MariaDB。</p>
 <p>💡 <strong>关于  MariaDB 与 MySQL：</strong>MariaDB 是 MySQL 关系数据库管理系统的一个 Fork，由社区开发，有商业支持，旨在继续保持在 GNU GPL 下开源。MariaDB 打算保持与 MySQL 的高度兼容性，确保具有库二进制奇偶校验的直接替换功能，以及与 MySQL API 和命令的精确匹配。感觉二者的关系如同 Rocky Linux 与 CentOS。我个人比较推荐使用前者。</p>
 <p>为了维护的方便，这篇博客介绍的容器运行均使用 Docker Compose。运行数据库的 <code>docker-compose.yml</code> 如下：</p>
@@ -196,7 +195,7 @@ docker network create db_admin
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/07/3536239266.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/3536239266.png" alt="Docker 启动了 mariadb 容器" title="" /></a></p>
 <p><strong>💡 Docker 镜像的来源：</strong>所有 Docker 镜像都可以在 <a href="https://hub.docker.com/">Dockerhub</a> 上找到，<code>docker pull</code> 的默认来源也是 Dockerhub。</p>
 <p>💡 运行 <code>docker-compose down</code> 会<strong>停止并删除</strong>容器。所以我们需要「容器无状态」，将带有状态的数据都可持久化存储，挂载到外部。</p>
-<h2><a id="用-phpmyadmin-管理数据库" class="heading-anchor"></a>用 phpMyAdmin 管理数据库</h2>
+<h2><a id="用-phpmyadmin-管理数据库" class="content__heading-anchor"></a>用 phpMyAdmin 管理数据库</h2>
 <p><strong>💡 可以直接用 SQL：</strong>如果你比较熟悉 SQL，可以直接用 <code>docker exec -it mariadb /bin/sh</code> 进入容器内部，用 SQL 操作数据库。phpMyAdmin 本质上只是封装了各种 SQL 语句的一个 Web 界面。</p>
 <p>为了方便管理我们的数据库，我们再运行一个 phpMyAdmin 容器。同样写一个 <code>docker-compose.yml</code>：</p>
 <pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span>
@@ -225,7 +224,7 @@ docker network create db_admin
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1458052255.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1458052255.png" alt="phpMyAdmin 创建用户和数据库" title="" /></a></p>
 <p>点击「执行」，我们就为 Typecho 创建了用户和数据库。</p>
 <p><strong>💡 为什么不使用 root 用户？</strong>root 用户拥有最高权限，任何时候使用 root 用户都是非常危险的。而我们创建的 typecho 用户则只有操作 typecho 这一个数据库的权限。</p>
-<h2><a id="安装-typechofpm容器" class="heading-anchor"></a>安装 Typecho（FPM）容器</h2>
+<h2><a id="安装-typechofpm容器" class="content__heading-anchor"></a>安装 Typecho（FPM）容器</h2>
 <p>💡 <strong>关于 typecho 与 typecho-fpm：</strong> 在 Dockerhub 上可以看到 Typecho 镜像有多个 tags：<code>typecho</code>、<code>typecho-apache</code>（同 <code>typecho</code>）和 <code>typecho-fpm</code>。<code>typecho</code> 镜像中自带了一个 Apache，启动容器后可以直接访问；而 <code>typecho-fpm</code> 只有 php 环境，并不带 Web 服务器，需要自己配置一个支持 php-fpm 的服务器提供访问。<br>
 为了使用 HTTPS，我们必须在外部配置一个 Web 服务器，所以如果使用前者，流量会经过两个 Web 服务器而拖慢速度。更推荐使用后者。WordPress 和 WordPress-fpm 镜像同理。原理图如下：</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2023/01/1750222524.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/01/1750222524.png" alt="Typecho FPM 原理示意" title="" /></a></p>
@@ -254,7 +253,7 @@ docker network create db_admin
 <li><code>volumes</code> 将网站数据挂载到 <code>/data/typecho</code>，这就是网站的根目录。</li>
 <li><code>ports</code> 将 php 解析器的 9000 端口暴露出来，供容器外的 Caddy 使用。启动容器后，直接访问 http://IP:9000 会显示 <code>Bad request</code>。</li>
 </ul>
-<h2><a id="安装-caddy-与配置" class="heading-anchor"></a>安装 Caddy 与配置</h2>
+<h2><a id="安装-caddy-与配置" class="content__heading-anchor"></a>安装 Caddy 与配置</h2>
 <p>为了方便使用，对于 Caddy，我们可以不用容器的安装方式，而是采用<a href="https://caddyserver.com/docs/install#debian-ubuntu-raspbian">官方文档的方法</a>直接安装。</p>
 <p>以 Ubuntu / Debian 为例：</p>
 <pre><code class="language-bash">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -282,14 +281,14 @@ sudo apt install caddy
 </ul>
 <p>保存 Caddyfile 后，启动 Caddy（<code>service caddy start</code>），在相同目录下 <code>caddy reload</code>。这时访问 example.com 就可以看到 Typecho 的初始化界面了！</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1696539037.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1696539037.png" alt="Typecho 容器运行成功" title="" /></a></p>
-<h2><a id="typecho-初始化" class="heading-anchor"></a>Typecho 初始化</h2>
+<h2><a id="typecho-初始化" class="content__heading-anchor"></a>Typecho 初始化</h2>
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1653221282.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1653221282.png" alt="Typecho 的初始化界面" title="" /></a></p>
 <p>数据库地址就是 mariadb 容器名，用户名、数据库名、密码就是刚才在 phpMyAdmin 里创建的。一切就绪后，点击「确认，开始安装」。</p>
 <p>然后设置好 Typecho 登录用的账号密码，不出意外，Typecho 博客就搭建完成啦！</p>
-<h2><a id="下一步" class="heading-anchor"></a>下一步</h2>
+<h2><a id="下一步" class="content__heading-anchor"></a>下一步</h2>
 <p>访问 <code>https://你的域名/admin</code> 进入 Typecho 的后台，可以定制主题、插件等等博客的一切。</p>
 <p>访问 <a href="http://docs.typecho.org/">Typecho 官方文档</a>了解更多信息。</p>
-<h2><a id="其他可选的优化" class="heading-anchor"></a>其他可选的优化</h2>
+<h2><a id="其他可选的优化" class="content__heading-anchor"></a>其他可选的优化</h2>
 <ul>
 <li><p>我的服务器上的 Caddy 也使用容器的方式部署。我使用的是 <a href="https://github.com/lucaslorentz/caddy-docker-proxy">Caddy-docker-proxy</a>，这个 Caddy 附加的插件有 Docker 服务探测的能力，在 <code>docker-compose.yml</code> 中写若干 <code>labels</code> 就可以自动反向代理。另一个好处是不需要暴露端口。</p></li>
 <li><p>如果 Caddy 不使用容器安装，<strong>强烈建议给服务器装上防火墙</strong>，因为将 Typecho 容器的 9000 端口暴露出来是非常危险的。防火墙推荐使用 RedHat 的 firewalld，与 Docker 集成。Ubuntu 的 UFW 是不兼容 Docker 的。</p></li>
@@ -299,13 +298,13 @@ sudo apt install caddy
 <p>这样网站的安全性才能符合 HSTS Preload List 的要求。可以前往 <a href="https://hstspreload.org">hstspreload.org</a> 提交自己的网站。</p></li>
 </ul>
 <p>在互联网环境逐渐恶化的今天，自己的博客就是一片属于自己的天地。希望我们都能在自己的精神花园里畅所欲言。</p>
- </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z2fgRf" prefix="r0" component-url="/_astro/Comments.DAE8LkK5.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;best-practices-for-building-a-blog-from-scratch&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HoXLG" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,139]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
 从零开始搭建博客的最佳实践 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
-</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
 |
 <a href="/sitemap-index.xml" class="link">站点地图</a>
@@ -315,7 +314,7 @@ sudo apt install caddy
 <a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
         <a href="https://github.com/Skywt2003/Daydreamer" class="link"
           >Daydreamer</a
-        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="flex justify-between flex-wrap"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
@@ -326,4 +325,4 @@ sudo apt install caddy
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 

@@ -1,4 +1,8 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta name="generator" content="Astro v4.7.0"><title>个人服务器运维杂谈</title><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>个人服务器运维杂谈</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>个人服务器运维杂谈</title><link rel="canonical" href="https://skywt.cn/blog/personal-server-maintenance/"><meta name="description" content="最早开始折腾服务器是在 2017 年，实在想不起来是什么原因了，我接触到了 AppNode 这个东西，从这里我走上了折腾的不归路。五年后，我的服务器从「容器暴露端口 + Caddy 反代」的模式全面转向「服务发现」的模式，和最开始的那个 AppNode 已经大大不同了。这过程中的摸索，回想起来还是感触颇深。
+
+"><meta name="robots" content="index, follow"><meta property="og:title" content="个人服务器运维杂谈"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/personal-server-maintenance/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="个人服务器运维杂谈"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="最早开始折腾服务器是在 2017 年，实在想不起来是什么原因了，我接触到了 AppNode 这个东西，从这里我走上了折腾的不归路。五年后，我的服务器从「容器暴露端口 + Caddy 反代」的模式全面转向「服务发现」的模式，和最开始的那个 AppNode 已经大大不同了。这过程中的摸索，回想起来还是感触颇深。
+
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +27,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
-<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
-<style>img[data-astro-cid-4sn4zg3r]{border-radius:.5rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -74,15 +76,7 @@
     },
     { once: false },
   );
-</script>  <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="leading-relaxed" data-astro-cid-4sn4zg3r>个人服务器运维杂谈</h1> <p class="mt-4 text-secondary leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2022 年 3 月 15 日 03:14</span> <!-- {
-          post.commentsNum > 0 && (
-            <>
-              <br />
-              <i class="ri-discuss-line" />
-              <span>共 {post.commentsNum} 条评论</span>
-            </>
-          )
-        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">个人服务器运维杂谈</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2022 年 3 月 15 日 03:14</span>  <br> <i class="ri-discuss-line"></i> <span>共 5 条评论</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
 <ul>
 <li><a href="#10appnode">1.0：AppNode</a></li>
 <li><a href="#15lnmporg">1.5：LNMP.org</a></li>
@@ -102,7 +96,8 @@
 <li><a href="#30kubernetes">3.0：Kubernetes</a></li>
 </ul>
 <p>最早开始折腾服务器是在 2017 年，实在想不起来是什么原因了，我接触到了 AppNode 这个东西，从这里我走上了折腾的不归路。五年后，我的服务器从「容器暴露端口 + Caddy 反代」的模式全面转向「服务发现」的模式，和最开始的那个 AppNode 已经大大不同了。这过程中的摸索，回想起来还是感触颇深。</p>
-<h2><a id="10appnode" class="heading-anchor"></a>1.0：AppNode</h2>
+<!--more-->
+<h2><a id="10appnode" class="content__heading-anchor"></a>1.0：AppNode</h2>
 <p>最早听说的就是「Linux 服务器流行用 CentOS」，于是在最早买的美国的 Bandwagon VPS 上装了 CentOS（当然主要用途不是搭网站，而是 emmmmm……）。</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/03/1945717048.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/1945717048.png" alt="AppNode 官网截图" title="" /></a></p>
 <p>想不起来是怎么接触到 AppNode 的。这真的是一个非常优秀的产品。</p>
@@ -112,7 +107,7 @@
 <p>AppNode 还集成了一大堆功能，所有功能都有对应的「管理面板」的组件，可视化控制，简直是神仙设计。<br>
 （和 AppNode 类似的还有一个「宝塔面板」（有个很 NB 的域名：bt.cn），虽然功能似乎更加强大，不过显然有更多收费功能和其他限制，似乎主打「提供服务」。个人认为对于个人服务器运维而言不如 AppNode）</p>
 <p>可惜 AppNode 很早就停更了。也由于很久没更新，时不时就有一些奇怪的 bug。这种过于「黑箱」的封装式设计，虽然利于生产环境的快速部署，但是显然是不利于我们的开发和学习研究的。所以我就去寻找了 AppNode 更「透明化」的替代品。</p>
-<h2><a id="15lnmporg" class="heading-anchor"></a>1.5：LNMP.org</h2>
+<h2><a id="15lnmporg" class="content__heading-anchor"></a>1.5：LNMP.org</h2>
 <p>「LNMP 一键安装包」这种东西其实是不少的，但是功能全面、持续更新的似乎不多。<a href="https://lnmp.org">LNMP.org</a> 是我找到的比较满意的选择。</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/03/3259393412.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/3259393412.png" alt="LNMP.org 的官网截图" title="" /></a></p>
 <p>不仅可选安装 LNMPA（Apache）、PureFTP 等等，还有 Let's Encrypt 自动获取证书的脚本（并会自动写入 crontab 自动续签），以及数据库备份、修复权限等等各种脚本。</p>
@@ -122,30 +117,30 @@
 <p>从 2009 年发布以来，开发者每年都会更新，最近几年的频率稳定在「一年两更」：每年 1 月 8 日发布新版测试版，6 月 1 日发布正式版。完全免费开源（因为只是一套 Shell 脚本），没有任何功能限制。实属良心！！</p>
 <p>LNMP.org 是我使用时间最长的一套运维软件了，陪我度过了大概两年时光。</p>
 <p>然而随着折腾越来越深入，我发现 LNMP 已经不是最流行和适用的环境，各种不同的软件，有 Nodejs 的，有 Python 的，有 Go 的……都需要不同的运行环境……于是，轮到 Docker 出场了。</p>
-<h2><a id="20docker--caddy" class="heading-anchor"></a>2.0：Docker + Caddy</h2>
-<h3><a id="an-ocean-of-docker" class="heading-anchor"></a>An Ocean of Docker</h3>
+<h2><a id="20docker--caddy" class="content__heading-anchor"></a>2.0：Docker + Caddy</h2>
+<h3><a id="an-ocean-of-docker" class="content__heading-anchor"></a>An Ocean of Docker</h3>
 <p>第一次「被迫」用 Docker 大概是安装 Plausible 还是 Overleaf，只提供了 Docker-compose 方式的安装。我也不知道之前为什么自己这么抗拒 Docker，可能是不知道这东西有多强大。所以会用了之后简直打开了新世界的大门。</p>
 <p>现在看来，更大的背景还是：在探索和部署越来越多的服务之后，发现 LNMP 只能是主流的架构「之一」，有诸多例如 Nodejs、Python 的软件服务涌现出来，由于环境、依赖等等的不同，手动部署根本不现实（特别是这个 Nodejs，就没几次安装啥东西不出错的）。</p>
 <p>最开始体验了一会 Portainer，这是一个可视化的 Docker 管理面板。但是最后还是选择了直接用 Docker 命令行。给我的感觉就好像 Portainer 是一个类似 AppNode 的东西，「专业人士」是不需要这种东西的 😎</p>
-<h3><a id="caddy-instead-of-nginx" class="heading-anchor"></a>Caddy instead of Nginx</h3>
+<h3><a id="caddy-instead-of-nginx" class="content__heading-anchor"></a>Caddy instead of Nginx</h3>
 <p>至于 Caddy，可以说是一个 Nginx 的替代品。她简洁优雅的配置曾经深深震撼了我。特别是反向代理，只需要 Caddyfile 中几行代码：</p>
 <pre><code>test.skywt.cn {
     reverse_proxy 127.0.0.1:8080
 }
 </code></pre>
 <p>Caddy 会自动申请 Let's Encrypt 证书，自动启用 HTTPS 并且默认能够达到 A 级的安全性，无需任何额外配置。当然如果要当作 Web 服务器来用，Caddy 也完全可以替代 Nginx，可以用更简洁的方式实现 Nginx 的所有功能。据说性能是略微逊色于 Nginx 的，但是与其带来的便利性相比，非常值得。</p>
-<h3><a id="build-up-firewall" class="heading-anchor"></a>Build up Firewall</h3>
+<h3><a id="build-up-firewall" class="content__heading-anchor"></a>Build up Firewall</h3>
 <p>为了方便访问文件和网络，Caddy 我没有用 Docker 部署。这阶段我的部署方案是每个容器开一个端口，Caddy 去反向代理到这个端口。但是这样实际上会有潜在的安全性问题。于是我安装了 FirewallD（RedHat 做的防火墙，其实是一个 iptables 的前端）。不过后来才听说了有个东西叫做 UFW（Uncomplicated Firewall，Ubuntu 的亲儿子），似乎也是个很好的选择。</p>
-<h3><a id="take-controlrestic-backup" class="heading-anchor"></a>Take control：Restic backup</h3>
+<h3><a id="take-controlrestic-backup" class="content__heading-anchor"></a>Take control：Restic backup</h3>
 <p>从这里开始，我的服务器不局限于部署博客、网站，而是利用 Docker 部署了各种各样的服务，从 bitWarden 密码管理到 Outline 在线文档，Overleaf 用来写 LaTeX，Tiny Tiny RSS 用来订阅 RSS，还有 Nextcloud、Code-server……在平常使用各种 SaaS 平台的时候我有时候都会去找找有没有开源的 Self-host 方案，然后尝试部署到自己的服务器上（Docker 的使用大大降低了这一步的难度）。</p>
 <p>像这样掌握自己数据的感觉很好。某次看到一个说法：在如今时代，我们都是「数据无产者」。我们以数据的形式生产了多种多样的劳动成果和智慧，最终数据都不在我们手中，而在各种商业公司的服务器里。</p>
 <p>那么如何做到「数据在自己的手中」呢？要得到这种踏实的感觉，我第一时间想到的就是本地备份：将服务器上的数据每天定期备份到我家里闲置的 2T 移动硬盘里。于是我用树莓派又搭建了个小服务器，用 frp 做了内网穿透，每天在服务器上用 Restic 自动备份 <code>/data</code> 目录（是 Docker 所有可持久化数据挂载的目录）。这样，自己手中的硬盘的数据和服务器上的数据最多只有 24h 的时间差。数据的确可以是现实生活中我的东西了。</p>
 <p>此外我还在树莓派上搭建了 MinIO，用于 Nextcloud 上的文件存储，这样我的 Nextcloud 网盘虽然由服务器提供服务（其实只运行了 Nextcloud-fpm，Web 服务器使用 Caddy，相比带 Apache 的镜像运行速度会更快），但是数据却存在本地的硬盘里。想想半年前还傻傻地尝试在树莓派上搭建整个 Nextcloud（得到奇慢的运行速度），感觉自己还是有进步的呢。</p>
-<h2><a id="25docker-compose" class="heading-anchor"></a>2.5：Docker-compose</h2>
+<h2><a id="25docker-compose" class="content__heading-anchor"></a>2.5：Docker-compose</h2>
 <p>容器多了，管理也是难事。在了解 Compose 之前，我的原始做法是在笔记本里开辟一个文档，记录各台服务器运行的各个容器的 Docker 启动命令（也就是 <code>docker run</code> 啥啥啥的）。渐渐就感觉每次手动复制、粘贴、回车的感觉非常不优雅。之后是将启动脚本迁移到服务器上，专门放个文件夹，每个容器都有个 <code>.sh</code> 文件来记录启动命令。但是在管理网络等等方面，还是感觉不优雅。</p>
 <p>于是轮到 Docker-compose 出场了。把启动脚本写成 <code>docker-compose.yml</code>，然后在目录下 <code>docker-compose up -d</code> 就会创建网络、创建容器、后台运行，<code>docker-compose down</code> 则会停止、删除容器，删除网络。不仅不需要自己管理网络（对于「启动容器时加入多个网络」，Docker run 命令就是无法做到的了……），更让人眼前一亮的是这种「停用即删除」的逻辑很符合真正的「容器无状态」的理念，感觉干净、优雅。所以我将服务器上的所有容器启动脚本都 Docker-compose 化了。</p>
-<h2><a id="27traefik--caddy-docker-proxy" class="heading-anchor"></a>2.7：Traefik / Caddy-docker-proxy</h2>
-<h3><a id="traefik-as-gateway" class="heading-anchor"></a>Traefik as Gateway</h3>
+<h2><a id="27traefik--caddy-docker-proxy" class="content__heading-anchor"></a>2.7：Traefik / Caddy-docker-proxy</h2>
+<h3><a id="traefik-as-gateway" class="content__heading-anchor"></a>Traefik as Gateway</h3>
 <p>随着服务器上运行的服务越来越多，运维的过程中也涌现了一个很大的问题：没有「服务发现」。每次启动一个新的服务都要去修改和 reload Caddyfile 来反代，搞得 Caddyfile 很长很混乱，非常不优雅。</p>
 <p>解决方案自然是有的。我发现了这个叫做 Traefik 的东西。</p>
 <p>通过在容器的 <code>docker-compose.yml</code> 中指定一些 <code>labels</code>，容器可以被 Traefik 探测到，并可以通过调整 <code>labels</code> 设置反向代理等等。Traefik 本身也作为一个容器（只是挂载了 <code>/var/run/docker.sock</code> 可以探测 Docker 的服务），只暴露 80/443 端口，而其他容器只须加入 Traefik 的网络，无需暴露任何端口。</p>
@@ -154,21 +149,21 @@
 <p>然而，Traefik 只能作为路由网关，而没有 Web 服务器的功能。如果我要搞一个静态的网站，还需要在它的后端部署上 Caddy/Nginx。</p>
 <p>尤其是，<a href="https://blog.skywt.cn/posts/gracefully-caddy-wildcard-certificates-and-404-page">这里提到的奇怪的需求</a>，很难用 Traefik 实现。虽然它也提供了自动申请、续签证书，Alidns 泛域名证书插件等等，但是我需要的是 Traefik 做一次路由，如果没有匹配则传给 Caddy 再做一次路由，这种思路非常不优雅。事实上我搜了一通资料也没有配置成功。</p>
 <p>然而我发现了另一个东西来替代 Traefik：Caddy-docker-proxy。</p>
-<h3><a id="caddy-docker-proxy-takes-both" class="heading-anchor"></a>Caddy-docker-proxy takes both</h3>
+<h3><a id="caddy-docker-proxy-takes-both" class="content__heading-anchor"></a>Caddy-docker-proxy takes both</h3>
 <p>这本质上只是一个 Caddy 的插件，为 Caddy 加上了服务探测的功能，使用之后我们既可以像 Traefik 一样通过 <code>labels</code> 设定配置而被服务发现，也可以用 Caddyfile 写自己特殊的配置（作为 Web 服务器使用），插件会自动在内存中生成一个完整的 Caddyfile。换句话说，对于我的需求来说它结合了 Caddy 和 Traefik 的优点。正合我意！</p>
 <p>关于这东西的安装，还是挺曲折的。Caddy-docker-proxy 的 Docker 镜像里 Caddy 主程序没有集成 Alidns 的插件，而这是我必需的。所以我用了一个有点骚的方法：在宿主机用 Xcaddy 编译好带 Caddy-docker-proxy 和 Alidns 两个插件的 Caddy 二进制文件，然后挂载到容器内的 <code>/bin/caddy</code>。</p>
 <p>所以现在是 Caddy 作为网关，也可以进行容器化部署了。这大概是本阶段的终极架构！</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2022/03/3605943964.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/3605943964.png" alt="最终架构示意图" title="" /></a></p>
-<h2><a id="30kubernetes" class="heading-anchor"></a>3.0：Kubernetes</h2>
+<h2><a id="30kubernetes" class="content__heading-anchor"></a>3.0：Kubernetes</h2>
 <p>这大概才是生产前沿真正应用的技术。但是我还不会。</p>
 <p><strong>未完待续……</strong></p>
- </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="2kmrf8" prefix="r0" component-url="/_astro/Comments.DAE8LkK5.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;personal-server-maintenance&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HoWtU" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,134]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
 个人服务器运维杂谈 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
-</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
 |
 <a href="/sitemap-index.xml" class="link">站点地图</a>
@@ -178,7 +173,7 @@
 <a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
         <a href="https://github.com/Skywt2003/Daydreamer" class="link"
           >Daydreamer</a
-        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="flex justify-between flex-wrap"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
@@ -189,4 +184,4 @@
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 

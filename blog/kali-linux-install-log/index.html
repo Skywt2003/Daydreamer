@@ -1,4 +1,10 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta name="generator" content="Astro v4.7.0"><title>Kali Linux 安装配置踩坑记录</title><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Kali Linux 安装配置踩坑记录</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Kali Linux 安装配置踩坑记录</title><link rel="canonical" href="https://skywt.cn/blog/kali-linux-install-log/"><meta name="description" content="寝室里新买了一台迷你主机，想要安装 Kali 和 Windows 双系统。之前只在 macOS 里跑过 Kali 的虚拟机，从来没有当作主力来使用，所以很少考虑个性化的配置问题，但是这次装了 Kali 作为宿主系统打算长期使用才感觉，配置一个舒适的 Linux 环境真的很折腾……
+
+
+"><meta name="robots" content="index, follow"><meta property="og:title" content="Kali Linux 安装配置踩坑记录"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/kali-linux-install-log/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Kali Linux 安装配置踩坑记录"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="寝室里新买了一台迷你主机，想要安装 Kali 和 Windows 双系统。之前只在 macOS 里跑过 Kali 的虚拟机，从来没有当作主力来使用，所以很少考虑个性化的配置问题，但是这次装了 Kali 作为宿主系统打算长期使用才感觉，配置一个舒适的 Linux 环境真的很折腾……
+
+
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +29,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
-<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
-<style>img[data-astro-cid-4sn4zg3r]{border-radius:.5rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -74,15 +78,7 @@ Kali Linux 安装配置踩坑记录 </span> </h5> <div class="navbar__menu"> <ul
     },
     { once: false },
   );
-</script>  <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r> <a href="https://blog.skywt.cn/usr/uploads/2023/04/1471291255.jpg" data-fancybox data-caption="Kali Linux 安装配置踩坑记录" data-astro-cid-4sn4zg3r> <img src="https://blog.skywt.cn/usr/uploads/2023/04/1471291255.jpg" alt="Kali Linux 安装配置踩坑记录" title="Kali Linux 安装配置踩坑记录" class="mb-8" data-astro-cid-4sn4zg3r> </a> <h1 class="leading-relaxed" data-astro-cid-4sn4zg3r>Kali Linux 安装配置踩坑记录</h1> <p class="mt-4 text-secondary leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 4 月 1 日 14:38</span> <!-- {
-          post.commentsNum > 0 && (
-            <>
-              <br />
-              <i class="ri-discuss-line" />
-              <span>共 {post.commentsNum} 条评论</span>
-            </>
-          )
-        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+</script>  <main class="page"> <section class="page__section page__section--at-top"> <a href="https://blog.skywt.cn/usr/uploads/2023/04/1471291255.jpg" data-fancybox data-caption="Kali Linux 安装配置踩坑记录"> <img src="https://blog.skywt.cn/usr/uploads/2023/04/1471291255.jpg" alt="Kali Linux 安装配置踩坑记录" title="Kali Linux 安装配置踩坑记录" class="page__headpic mb-8"> </a> <h1 class="page__heading">Kali Linux 安装配置踩坑记录</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2023 年 4 月 1 日 14:38</span>  <br> <i class="ri-discuss-line"></i> <span>共 2 条评论</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
 <ul>
 <li><a href="#keychron-%E9%94%AE%E7%9B%98%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98">Keychron 键盘蓝牙连接问题</a></li>
 <li><a href="#%E4%B8%AD%E6%96%87%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95%E9%85%8D%E7%BD%AE">中文拼音输入法配置</a>
@@ -97,8 +93,9 @@ Kali Linux 安装配置踩坑记录 </span> </h5> <div class="navbar__menu"> <ul
 <li><a href="#%E8%BF%98%E6%9C%89%E4%B8%80%E5%A4%A7%E5%A0%86%E9%97%AE%E9%A2%98">还有一大堆问题……</a></li>
 </ul>
 <p>寝室里新买了一台迷你主机，想要安装 Kali 和 Windows 双系统。之前只在 macOS 里跑过 Kali 的虚拟机，从来没有当作主力来使用，所以很少考虑个性化的配置问题，但是这次装了 Kali 作为宿主系统打算长期使用才感觉，配置一个舒适的 Linux 环境真的很折腾……</p>
+<!--more-->
 <p>（头图是 Kali 默认壁纸，很好看！）</p>
-<h2><a id="keychron-键盘蓝牙连接问题" class="heading-anchor"></a>Keychron 键盘蓝牙连接问题</h2>
+<h2><a id="keychron-键盘蓝牙连接问题" class="content__heading-anchor"></a>Keychron 键盘蓝牙连接问题</h2>
 <p>我使用的京东京造键盘（其实是 Keychron 贴牌）习惯使用蓝牙无线连接，但是在装好的 Kali 上蓝牙连接之后，虽然可以正常使用，但是只要断开一次，之后就没法自动重连，必须重新配对。键盘尝试自动重连的时候，一直连不上，蓝牙连接按钮一直闪；而在右上角蓝牙连接面板点击设备重连，则会弹出一个「Connected」通知后立马弹出「Disconnected」的通知。<br>
 记得之前用这个蓝牙键盘连接树霉派 Raspbian 也有一样的问题。而 macOS、Windows 蓝牙连接都没有问题。</p>
 <p>上网搜了一圈，似乎是 Keychron 用了独特的蓝牙连接方式。根据<a href="https://forum.manjaro.org/t/bluetooth-keyboard-keeps-connecting-and-disconnecting-after-rebooting/107772">这篇帖子</a>中的方法，只需要如下操作：</p>
@@ -110,8 +107,8 @@ Kali Linux 安装配置踩坑记录 </span> </h5> <div class="navbar__menu"> <ul
 <li>连接成功后，右键设置为「信任」。</li>
 </ul>
 <p>按照如上步骤操作，之后如果键盘断连就可以自动重连。</p>
-<h2><a id="中文拼音输入法配置" class="heading-anchor"></a>中文拼音输入法配置</h2>
-<h3><a id="fcitx-vs-ibus" class="heading-anchor"></a>Fcitx vs iBus</h3>
+<h2><a id="中文拼音输入法配置" class="content__heading-anchor"></a>中文拼音输入法配置</h2>
+<h3><a id="fcitx-vs-ibus" class="content__heading-anchor"></a>Fcitx vs iBus</h3>
 <p>Fcitx 和 iBus 是 Linux 下比较常见的两个输入法框架。在安装输入法之前，我们需要先安装二者其一。</p>
 <p>这两者有何区别呢？咨询了 new bing，大概的比较是：</p>
 <ul>
@@ -121,7 +118,7 @@ Kali Linux 安装配置踩坑记录 </span> </h5> <div class="navbar__menu"> <ul
 </ul>
 <p>面对 iBus 好几百个包依赖（new bing 说的），我毅然决然选择了简洁的 Fcitx。</p>
 <p>顺便好奇搜了一下这个奇怪的名字 Fcitx 是怎么来的：Free Chinese Input Tool of X，但也可以有其他的解释。中文名叫做“小企鹅输入法”。详情可以看看<a href="https://fcitx-im.org/wiki/History/zh-cn">这段历史</a>。</p>
-<h3><a id="安装配置-fcitx" class="heading-anchor"></a>安装配置 Fcitx</h3>
+<h3><a id="安装配置-fcitx" class="content__heading-anchor"></a>安装配置 Fcitx</h3>
 <p>Fcitx 本身只是一个输入法框架，但是它有自带的名为 pinyin 的拼音输入法。安装非常容易：</p>
 <pre><code class="language-shell">sudo apt-get install fcitx
 sudo apt-get install fcitx-pinyin
@@ -130,10 +127,10 @@ sudo apt-get install fcitx-pinyin
 <p>重启之后，进入设置选项就可以看到默认添加了拼音和双拼的输入法，默认是按 Ctrl + Space 切换。虽然这个输入法配色有点像搜狗，但是不用担心，这就是 Fcitx 自带的开源拼音输入法。</p>
 <p>除了这个输入法之外，如果你爱好折腾、定制化，或者要求各个平台极致的统一，可以试试跨平台的 <a href="https://rime.im/">RIME 中州韵输入法引擎</a>。</p>
 <p>（如果去网上找教程，大部分都会让我们全装 Google 拼音输入法，这是个最后更新于 2013 年的古董产品，个人觉得实在没有必要继续用了（虽然体验过 Android 上的 Google 拼音，n 年前的词频算法吊打如今的搜狗百度，确实很强））</p>
-<h3><a id="配置-mac-风格输入符号映射" class="heading-anchor"></a>配置 Mac 风格输入符号映射</h3>
+<h3><a id="配置-mac-风格输入符号映射" class="content__heading-anchor"></a>配置 Mac 风格输入符号映射</h3>
 <p>使用 Macbook 的同学都知道，Macbook 的键盘和一般笔记本是有些不一样的，我用起来感觉差别最大的就是右上角 P 按键右边的两个按键，在中文模式下，Macbook 键盘上标的是 <code>【】</code> 和 <code>「」</code>。实际上 <code>「」</code> 是台湾和日语风格的引号，我个人特别喜欢用这个，但是 Fcitx 默认并没有这样的配置。</p>
 <p><code>/usr/share/fcitx/data/punc.mb.zh_CN</code> 这个文件规定了中文输入法的符号映射，直接修改这个文件并重启 Fcitx 即可。值得一提的是，在修改这个文件之前我们是没法直接在键盘上输入 <code>【】</code> 这种符号的，所以编辑这个文件的时候也没法输入……可以使用 Ctrl + Shift + Alt + U 打开 Fcitx 自带的 Unicode 输入面板，搜索 LEFT/RIGHT BLACK LENTICULAR BRACKET，就是这俩符号。</p>
-<h2><a id="更改用户目录文件夹名" class="heading-anchor"></a>更改用户目录文件夹名</h2>
+<h2><a id="更改用户目录文件夹名" class="content__heading-anchor"></a>更改用户目录文件夹名</h2>
 <p>如果安装 Kali 的时候选择中文，会有个非常雷人的设置：用户主目录 <code>～</code> 下的各个文件夹，名称全都是中文：“桌面”、“下载”……这导致没安装输入法的时候甚至在终端里没法直接 cd 进入“下载”目录。（发现这个情况的时候血压高了）</p>
 <p>要改这个也很简单，先创建好想要的文件夹，然后编辑 <code>~/.config/user-dirs.dirs</code> 文件，将中文目录改为想要的英文目录即可。注意一定要先创建好文件夹，如果直接改这个配置文件就重启，所有文件夹路径都会变成 <code>$HOME</code>……网上许多抄來抄去的资料都没说清楚这一点。</p>
 <pre><code># This file is written by xdg-user-dirs-update
@@ -152,17 +149,17 @@ XDG_MUSIC_DIR=&quot;$HOME/Music&quot;
 XDG_PICTURES_DIR=&quot;$HOME/Pictures&quot;
 XDG_VIDEOS_DIR=&quot;$HOME/Videos&quot;
 </code></pre>
-<h2><a id="网卡问题" class="heading-anchor"></a>网卡问题</h2>
+<h2><a id="网卡问题" class="content__heading-anchor"></a>网卡问题</h2>
 <p>// 2023-04-06 更新。</p>
 <p>在不同的两个磁盘分区里安装好 Windows 和 Kali 的双系统后，Kali 知道 Windows 的存在，但是 Windows 是不知道 Kali 的存在的。所以我在 BIOS 里设置了从 Kali 启动系统，Kali 的启动界面会让我选择进入 Kali 还是 Windows。</p>
 <p>然而，有时候进入 Kali 后会无法使用无线网卡（但是能检测到设备），而在 Windows 里可以正常使用。我的迷你主机网卡是 Intel AX200，Kali 中的驱动程序一切完备。上网查了很多资料（<a href="https://askubuntu.com/questions/1382918/wireless-adapter-mediatek-mt7921-is-not-working-after-a-reboot-in-ubuntu-21-10">参考</a>），这个情况大概的原因是 Windows 由于一些关于 fastboot 的技术，在关机前把网卡设置成了一个 Kali 不认识的模式。但是不知道这个模式开关在哪里，毕竟我的 BIOS 里 Fastboot 和 Secure Boot 都关掉了。</p>
 <p>目前的解决方法是，Windows 关机前关闭 WiFi 开关。</p>
-<h2><a id="macos-风格键盘快捷键" class="heading-anchor"></a>macOS 风格键盘快捷键</h2>
+<h2><a id="macos-风格键盘快捷键" class="content__heading-anchor"></a>macOS 风格键盘快捷键</h2>
 <p>// 2023-04-18 更新</p>
 <p>如果用习惯了 macOS，转到其他主流操作系统使用快捷键会很不习惯。众所周知，macOS 里的 Command 按键相当于一般的 Control，而使用终端时 Control 又就是 Control。这意味着，这个键盘映射规则并不是简单的。<br>
 还好，有开源的方案可以在 Linux / Windows 上实现 macOS 风格快捷键：<a href="https://kinto.sh/">kinto.sh</a>。使用官网的脚本即可一键安装，非常方便。具体可以查看它的文档。</p>
 <p>美中不足的是 macOS 国行版使用 Caps Lock 按钮切换输入法的设定，似乎在其他操作系统里没有找到替代方案。</p>
-<h2><a id="还有一大堆问题" class="heading-anchor"></a>还有一大堆问题……</h2>
+<h2><a id="还有一大堆问题" class="content__heading-anchor"></a>还有一大堆问题……</h2>
 <p>其实现在这个 Kali 的使用体验上还有不少问题，比如这个应用程序菜单的管理，比如屏幕字体显示的问题……不过对整体的使用而言影响不大，都是一些细节上的问题。相比 macOS、Windows 这样的商业操作系统，可能这就是「集市与大教堂」的差异吧。慢慢折腾了。</p>
 <ul>
 <li>[ ] 屏幕字体显示优化</li>
@@ -170,13 +167,13 @@ XDG_VIDEOS_DIR=&quot;$HOME/Videos&quot;
 <li>[x] macOS 风格键盘 shortcut</li>
 <li>[ ] .……</li>
 </ul>
- </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="ZV3NG8" prefix="r0" component-url="/_astro/Comments.DAE8LkK5.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;kali-linux-install-log&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1Hp6M4" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,149]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
 Kali Linux 安装配置踩坑记录 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
-</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
 |
 <a href="/sitemap-index.xml" class="link">站点地图</a>
@@ -186,7 +183,7 @@ Kali Linux 安装配置踩坑记录 </span> </div> <div class="m-2"> <ul data-as
 <a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
         <a href="https://github.com/Skywt2003/Daydreamer" class="link"
           >Daydreamer</a
-        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="flex justify-between flex-wrap"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
@@ -197,4 +194,4 @@ Kali Linux 安装配置踩坑记录 </span> </div> <div class="m-2"> <ul data-as
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 

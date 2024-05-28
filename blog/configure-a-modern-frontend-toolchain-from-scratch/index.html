@@ -1,4 +1,16 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta name="generator" content="Astro v4.7.0"><title>从零开始，配置一套现代前端工具链</title><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>从零开始，配置一套现代前端工具链</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>从零开始，配置一套现代前端工具链</title><link rel="canonical" href="https://skywt.cn/blog/configure-a-modern-frontend-toolchain-from-scratch/"><meta name="description" content="现代前端应用框架（如 Next.js、Nuxt.js 等）都直接集成了完整的工具链，按照官方文档做，一行命令就可以配置完毕。这整套工具在我们调试和构建项目时，在背后做了大量工作。虽然这有助于快速上手，但是非常不利于我们了解其中的原理。
+
+然而，各种工具纷繁复杂，文档浩如烟海。由于工具之多，即使文档再友好、工具本身再易用，也很难快速入门。
+
+**本文将带你踏上一段旅程，从一个空文件夹开始，一步一步添加工具，最终配置一套完整的前端工具链。**在其中，我们可以对各个工具的概念、用途和原理有一个比较系统的认识。每个部分都列出了相关文档的链接，方便查阅。
+
+"><meta name="robots" content="index, follow"><meta property="og:title" content="从零开始，配置一套现代前端工具链"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/configure-a-modern-frontend-toolchain-from-scratch/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="从零开始，配置一套现代前端工具链"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="现代前端应用框架（如 Next.js、Nuxt.js 等）都直接集成了完整的工具链，按照官方文档做，一行命令就可以配置完毕。这整套工具在我们调试和构建项目时，在背后做了大量工作。虽然这有助于快速上手，但是非常不利于我们了解其中的原理。
+
+然而，各种工具纷繁复杂，文档浩如烟海。由于工具之多，即使文档再友好、工具本身再易用，也很难快速入门。
+
+**本文将带你踏上一段旅程，从一个空文件夹开始，一步一步添加工具，最终配置一套完整的前端工具链。**在其中，我们可以对各个工具的概念、用途和原理有一个比较系统的认识。每个部分都列出了相关文档的链接，方便查阅。
+
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +35,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
-<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
-<style>img[data-astro-cid-4sn4zg3r]{border-radius:.5rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -74,15 +84,7 @@
     },
     { once: false },
   );
-</script>  <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="leading-relaxed" data-astro-cid-4sn4zg3r>从零开始，配置一套现代前端工具链</h1> <p class="mt-4 text-secondary leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2024 年 3 月 16 日 07:31</span> <!-- {
-          post.commentsNum > 0 && (
-            <>
-              <br />
-              <i class="ri-discuss-line" />
-              <span>共 {post.commentsNum} 条评论</span>
-            </>
-          )
-        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">从零开始，配置一套现代前端工具链</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 3 月 16 日 07:31</span>  <br> <i class="ri-discuss-line"></i> <span>共 2 条评论</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
 <ul>
 <li><a href="#tldr">TL；DR</a></li>
 <li><a href="#%E4%BB%8E%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-npm-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%A7%8B">从创建一个 npm 项目开始</a></li>
@@ -137,11 +139,12 @@
 <p>现代前端应用框架（如 Next.js、Nuxt.js 等）都直接集成了完整的工具链，按照官方文档做，一行命令就可以配置完毕。这整套工具在我们调试和构建项目时，在背后做了大量工作。虽然这有助于快速上手，但是非常不利于我们了解其中的原理。</p>
 <p>然而，各种工具纷繁复杂，文档浩如烟海。由于工具之多，即使文档再友好、工具本身再易用，也很难快速入门。</p>
 <p><strong>本文将带你踏上一段旅程，从一个空文件夹开始，一步一步添加工具，最终配置一套完整的前端工具链。</strong>在其中，我们可以对各个工具的概念、用途和原理有一个比较系统的认识。每个部分都列出了相关文档的链接，方便查阅。</p>
+<!--more-->
 <p>我们使用 <strong>React.js</strong> 前端框架，使用 <strong>Tailwind</strong> 编写 CSS，使用 <strong>TypeScript</strong> 编写脚本，并使用 <strong>ESLint</strong> 进行代码检查。最终，希望达到和使用 create-react-app 工具创建的项目类似的开发体验。</p>
-<h2><a id="tldr" class="heading-anchor"></a>TL；DR</h2>
+<h2><a id="tldr" class="content__heading-anchor"></a>TL；DR</h2>
 <p><strong>配置完毕后，整套工具链的示意图如下：</strong></p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" alt="配置完毕后的工具链示意图" title="" /></a></p>
-<h2><a id="从创建一个-npm-项目开始" class="heading-anchor"></a>从创建一个 npm 项目开始</h2>
+<h2><a id="从创建一个-npm-项目开始" class="content__heading-anchor"></a>从创建一个 npm 项目开始</h2>
 <p>创建一个空目录（一般目录名就是项目名），进入其中执行 <code>npm init</code>，这个命令会交互式地让你填写该项目的元信息。</p>
 <p>我们将这个项目命名为 <strong>study-chain</strong>（意为 study frontend toolchain）：</p>
 <pre><code class="language-bash"><span class="hljs-built_in">mkdir</span> study-chain
@@ -167,7 +170,7 @@ npm init
 <pre><code class="language-bash">npm i moment
 </code></pre>
 <p>我们只使用这个模块的一个功能为例：将模块引入为 <code>moment</code> 之后，<code>moment().format()</code> 返回当前日期时间字符串。</p>
-<h2><a id="webpack" class="heading-anchor"></a>Webpack</h2>
+<h2><a id="webpack" class="content__heading-anchor"></a>Webpack</h2>
 <p>让我们先忘掉 React.js，从编写纯 HTML 和 JavaScript 开始。<strong>如何在这个项目里使用之前安装的 moment 模块呢？</strong></p>
 <p>考虑编写一个简单的 HTML 文件 <code>index.html</code>：</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
@@ -188,7 +191,7 @@ app.<span class="hljs-property">innerText</span> = <span class="hljs-title funct
 <p><strong>但是我们知道这个模块就在本地</strong>，它的源文件就在 <code>node_modules/moment</code> 路径下。我们需要一个工具<strong>获取这个模块，整合进这段 js 里</strong>。这种工具就叫做 <strong>bundler</strong>。有了 bundler，即使在用于前端的 js 中，我们也能引入模块了。</p>
 <p><strong>Webpack</strong> 就是其中之一。</p>
 <p><strong>类似的工具有：</strong>Rollup、Parcel。</p>
-<h3><a id="安装与使用" class="heading-anchor"></a>安装与使用</h3>
+<h3><a id="安装与使用" class="content__heading-anchor"></a>安装与使用</h3>
 <p>首先安装 webpack 和 webpack-cli。后者是配套的命令行工具。这两个工具都只是在开发阶段使用，所以使用 <code>--save-dev</code> 安装为开发环境依赖：</p>
 <pre><code class="language-bash">npm i webpack webpack-cli --save-dev
 </code></pre>
@@ -214,7 +217,7 @@ app.<span class="hljs-property">innerText</span> = <span class="hljs-title funct
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;moment&quot;</span>;
 <span class="hljs-comment">// ...</span>
 </code></pre>
-<h3><a id="配置文件-webpackconfigjs" class="heading-anchor"></a>配置文件 webpack.config.js</h3>
+<h3><a id="配置文件-webpackconfigjs" class="content__heading-anchor"></a>配置文件 webpack.config.js</h3>
 <p>使用 webpack 的配置文件，可以替代运行命令时传递的参数，让命令行的使用更简洁和灵活。（<a href="https://webpack.js.org/configuration/">相关文档</a>）</p>
 <p>在项目根目录创建名为 <code>webpack.config.js</code> 的文件，内容如下：</p>
 <pre><code class="language-js"><span class="hljs-comment">// webpack.config.js</span>
@@ -232,7 +235,7 @@ app.<span class="hljs-property">innerText</span> = <span class="hljs-title funct
 <pre><code class="language-bash">npx webpack
 npx webpack --watch
 </code></pre>
-<h3><a id="设置-npm-scripts" class="heading-anchor"></a>设置 npm scripts</h3>
+<h3><a id="设置-npm-scripts" class="content__heading-anchor"></a>设置 npm scripts</h3>
 <p>为了方便起见，可以将以上 webpack 命令设置为 <strong>npm scripts</strong>。</p>
 <p>编辑 <code>package.json</code> 文件，添加 scripts：</p>
 <pre><code class="language-json"><span class="hljs-comment">// package.json</span>
@@ -250,7 +253,7 @@ npx webpack --watch
 npm run watch
 </code></pre>
 <p>为了表述方便，下文将运行 <code>npm run build</code> 命令的这一操作简称为 build。</p>
-<h3><a id="生成-html" class="heading-anchor"></a>生成 HTML</h3>
+<h3><a id="生成-html" class="content__heading-anchor"></a>生成 HTML</h3>
 <p>现在，构建完成后，访问 <code>index.html</code> 就能看到我们的网站。然而可以发现，这个 HTML 中 <code>main.js</code> 需要我们手动引用。能否让 webpack 帮我们完成这件事情呢？</p>
 <p>这就需要让 webpack 为我们在 <code>dist</code> 目录中<strong>生成 HTML 文件</strong>。这可以通过 <strong>html-webpack-plugin</strong> 这个插件实现。没错，<strong>webpack 不仅是一个打包工具，其还拥有着丰富的插件生态</strong>。</p>
 <p>运行以下命令安装 html-webpack-plugin（<a href="https://webpack.js.org/plugins/html-webpack-plugin/">文档</a>）：</p>
@@ -277,7 +280,7 @@ npm run watch
 };
 </code></pre>
 <p>再次使用 build 构建，会发现 <code>dist</code> 目录下生成了 <code>index.html</code>，这个 HTML 引用了生成的 <code>main.js</code> 脚本。打开就能看见其实现了我们要的应用逻辑。</p>
-<h3><a id="使代码可以-import-css-文件" class="heading-anchor"></a>使代码可以 import CSS 文件</h3>
+<h3><a id="使代码可以-import-css-文件" class="content__heading-anchor"></a>使代码可以 import CSS 文件</h3>
 <p>现在，有了 webpack 的加持，我们的 js 代码已经可以导入 module 了。但是如果需要引入其他静态资源，比如 CSS 文件，还是无法直接完成。为了使代码能直接 import 其他类型的文件，<strong>webpack 中可以安装配置一种称为 loader 的模块</strong>。</p>
 <p>💡 <strong>Webpack 中的 loader 与 plugin：</strong>二者都是可以集成到 webpack 的模块，但是两个不同的概念。loader 一般用于处理特定类型的文件，而 plugin 可以提供更加广泛的功能。</p>
 <p>比如，为了引入 CSS 文件，可以安装 <strong>style-loader</strong> 和 <strong>css-loader</strong> 两个模块（<a href="https://webpack.js.org/guides/asset-management/#loading-css">相关文档</a>）：</p>
@@ -320,10 +323,10 @@ app.<span class="hljs-property">innerText</span> = <span class="hljs-title funct
 app.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;bg-gray&quot;</span>);
 </code></pre>
 <p>重新 build 后，打开 HTML 即可发现样式的变化。</p>
-<h2><a id="postcss" class="heading-anchor"></a>PostCSS</h2>
+<h2><a id="postcss" class="content__heading-anchor"></a>PostCSS</h2>
 <p>顾名思义。<strong>PostCSS</strong> 能够对 CSS 文件进行「后处理」（post-processing）。</p>
 <p>和之前提到的 style-loader 和 css-loader 一样，PostCSS 也可以作为 loader 集成到 webpack。</p>
-<h3><a id="集成到-webpack" class="heading-anchor"></a>集成到 webpack</h3>
+<h3><a id="集成到-webpack" class="content__heading-anchor"></a>集成到 webpack</h3>
 <p>首先还是安装 <strong>postcss-loader</strong>，同时安装 PostCSS 的一个插件 <strong>autoprefixer</strong>：</p>
 <pre><code class="language-bash">npm i postcss-loader autoprefixer --save-dev
 </code></pre>
@@ -353,7 +356,7 @@ app.<span class="hljs-property">classList</span>.<span class="hljs-title functio
 }
 </code></pre>
 <p>⚠️ <strong>注意：</strong>此处调用 css-loader 处添加了 options，将 <strong>importLoaders</strong> 设置为 1。这是考虑到 PostCSS 可能引入新的 <code>@import</code> 等语句，css-loader 要在其运行之后重新进行解析（<a href="https://webpack.js.org/loaders/css-loader/#importloaders">相关文档</a>）。如果确定 PostCSS 不会添加新的 <code>@import</code> 等语句，则此参数可不加。（可参考 <a href="https://github.com/webpack-contrib/css-loader/issues/228#issuecomment-312885975">GitHub 上的相关讨论</a>）</p>
-<h3><a id="配置文件-postcssconfigjs" class="heading-anchor"></a>配置文件 postcss.config.js</h3>
+<h3><a id="配置文件-postcssconfigjs" class="content__heading-anchor"></a>配置文件 postcss.config.js</h3>
 <p>接下来创建 PostCSS 的配置文件，项目根目录下的 <code>postcss.config.js</code> 文件（<a href="https://github.com/postcss/postcss?tab=readme-ov-file#webpack">文档</a>）：</p>
 <pre><code class="language-js"><span class="hljs-comment">// postcss.config.js</span>
 <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">import(&#x27;postcss-load-config&#x27;).Config</span>} */</span>
@@ -363,14 +366,14 @@ app.<span class="hljs-property">classList</span>.<span class="hljs-title functio
 </code></pre>
 <p>在以上的配置文件中，我们加载了 PostCSS 的 <strong>autoprefixer</strong> 插件（<a href="https://github.com/postcss/autoprefixer">文档</a>）。由于浏览器支持的差异，部分浏览器中使用某些样式需要加上特定的前缀，比如 <code>webkit</code> 或者 <code>moz</code>，这叫做 <strong>vendor prefix</strong>。这个插件会自动添加这种前缀，确保样式的兼容性。这里使用此插件只是为了演示 PostCSS 插件的使用，因为接下来我们将配置使用 Tailwind 插件。</p>
 <p>PostCSS 是 webpack 的插件，autoprefixer 又是 PostCSS 的插件，也就是 webpack 的插件的插件。接下来我们还可以安装 Tailwind 的插件，即 webpack 的插件的插件的插件。<strong>前端工具链就是如此。</strong></p>
-<h2><a id="tailwind-css" class="heading-anchor"></a>Tailwind CSS</h2>
+<h2><a id="tailwind-css" class="content__heading-anchor"></a>Tailwind CSS</h2>
 <p>使用过 Tailwind 之后，在开发任何前端项目时，我的心理状态：</p>
 <blockquote>
 <p>没有它我不能活！😭😭😭</p>
 </blockquote>
 <p>是的，之后在开发任何前端项目的时候，我<strong>没有一次</strong>离开过 Tailwind。即使是写纯 HTML 也要从 CDN 引入静态文件。因为它彻底改变了我们编写样式的方式。</p>
 <p>作为现代前端项目，Tailwind 当然是必备的工具。</p>
-<h3><a id="集成到-postcss" class="heading-anchor"></a>集成到 PostCSS</h3>
+<h3><a id="集成到-postcss" class="content__heading-anchor"></a>集成到 PostCSS</h3>
 <p>首先还是安装 Tailwind：</p>
 <pre><code class="language-bash">npm install tailwindcss --save-dev
 </code></pre>
@@ -384,7 +387,7 @@ app.<span class="hljs-property">classList</span>.<span class="hljs-title functio
   }
 };
 </code></pre>
-<h3><a id="配置文件-tailwindconfigjs" class="heading-anchor"></a>配置文件 tailwind.config.js</h3>
+<h3><a id="配置文件-tailwindconfigjs" class="content__heading-anchor"></a>配置文件 tailwind.config.js</h3>
 <p>下一步，使用以下命令创建 Tailwind 的配置文件：</p>
 <pre><code class="language-bash">npx tailwindcss init
 </code></pre>
@@ -419,10 +422,10 @@ app.<span class="hljs-property">classList</span>.<span class="hljs-title functio
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <p>（当然，集成到 PostCSS 并不是使用 Tailwind 的唯一方式。官方的<a href="https://tailwindcss.com/docs/installation">Get started</a> 中提供了大量框架、工具的集成指南）</p>
-<h3><a id="安装-tailwind-插件" class="heading-anchor"></a>安装 Tailwind 插件</h3>
+<h3><a id="安装-tailwind-插件" class="content__heading-anchor"></a>安装 Tailwind 插件</h3>
 <p>没错，Tailwind 也有插件生态，比如 <strong>tailwindcss-animated</strong>（<a href="https://www.tailwindcss-animated.com">文档</a>）和 <strong>typography</strong>（<a href="https://github.com/tailwindlabs/tailwindcss-typography">文档</a>），这两个插件我都比较常用。</p>
 <p>Tailwind 插件配置起来并不难，这里不再展开了，可以查阅相关文档。</p>
-<h2><a id="中场休息整理目录结构" class="heading-anchor"></a>中场休息：整理目录结构</h2>
+<h2><a id="中场休息整理目录结构" class="content__heading-anchor"></a>中场休息：整理目录结构</h2>
 <p>至此，CSS 相关的工具配置完了。在进行下一步之前，是时候整理一下我们项目的目录结构了。</p>
 <p>如前文所述，为了让项目目录更简洁，<strong>我们将所有源文件移动到新建的 <code>src</code> 文件夹内。</strong>移动之后，项目目录结构如下：</p>
 <pre><code>node_modules/
@@ -456,13 +459,13 @@ webpack.config.js
 };
 </code></pre>
 <p>这下，我们的项目目录就干净了很多。是时候进行下一步了！</p>
-<h2><a id="babel" class="heading-anchor"></a>Babel</h2>
+<h2><a id="babel" class="content__heading-anchor"></a>Babel</h2>
 <p>JavaScript 是浏览器原生支持的唯一语言，但：1）不同浏览器对该语言的新特性支持有所不同；2）许多人不喜欢 JavaScript 弱类型的特性，TypeScript 应运而生。但浏览器本身不支持 TypeScript。</p>
 <p>所以，需要这样一种工具：1）将 JavaScript 的新特性相关代码转换为使用旧特性的实现；2）将 TypeScript 翻译为 JavaScript。这个过程和 C++ 这类语言「编译」的过程有些相似，只是目标是 JavaScript 而非二进制。</p>
 <p>这种工具就叫做 <strong>transpiler</strong>（可以翻译成「转译器」）。它的作用是将一段代码「翻译」成另一段代码，但目标代码仍然是高级语言（一般是 JavaScript）。这个「翻译」和传统编程语言中的「Compile」概念不同，称为「<strong>Transpile</strong>」。</p>
 <p><strong>Babel</strong> 就是其中之一。</p>
 <p>（吐槽：既然都要 transpile 才能运行代码，不如直接 compile 成更低级的字节码，执行效率还会更高。<strong>Web Assembly</strong> 就这样诞生了。不过这里不介绍了）</p>
-<h3><a id="集成到-webpack-1" class="heading-anchor"></a>集成到 webpack</h3>
+<h3><a id="集成到-webpack-1" class="content__heading-anchor"></a>集成到 webpack</h3>
 <p>Babel 可以和 PostCSS 一样<strong>作为 loader 集成在 webpack 里</strong>。安装 Babel：</p>
 <pre><code class="language-bash">npm i babel-loader @babel/core --save-dev
 </code></pre>
@@ -486,7 +489,7 @@ webpack.config.js
 </code></pre>
 <p>（同样，集成到 webpack 也非安装 Babel 的唯一方式。<a href="https://babeljs.io/setup#installation">官方指南</a>提供了很多种配置方式）</p>
 <p>目前，重新 build 时，虽然会调用 babel-loader，但是 Babel 还什么事情都没做。这是因为我们没有为其指定任何规则。一般可以通过 <strong>preset</strong> 指定规则。</p>
-<h3><a id="presets" class="heading-anchor"></a>presets</h3>
+<h3><a id="presets" class="content__heading-anchor"></a>presets</h3>
 <p>Babel 中的 <strong>preset</strong> 这一概念，官方的定义是「可分享的一组插件和配置的集合」（<a href="https://babeljs.io/docs/presets">文档</a>）。</p>
 <p>官方提供了四种 preset：</p>
 <ul>
@@ -495,7 +498,7 @@ webpack.config.js
 <li><strong>typescript</strong>：用于转译 TypeScript。</li>
 <li><strong>flow</strong>：用于 <a href="https://flow.org/">flow</a> 工具，这是一个静态类型检查器。</li>
 </ul>
-<h3><a id="配置文件-babelconfigjson" class="heading-anchor"></a>配置文件 babel.config.json</h3>
+<h3><a id="配置文件-babelconfigjson" class="content__heading-anchor"></a>配置文件 babel.config.json</h3>
 <p>在项目根目录下创建配置文件 <code>babel.config.json</code>，其中可以添加 preset 指定规则。我们先添加一个 preser-env：</p>
 <pre><code class="language-json"><span class="hljs-comment">// babel.config.json</span>
 <span class="hljs-punctuation">{</span>
@@ -506,7 +509,7 @@ webpack.config.js
 <pre><code class="language-bash">npm i @babel/preset-env --save-dev
 </code></pre>
 <p>安装和配置完毕后，重新 build，就会使用 preset-env 指定的 transpile 规则。这套规则有什么用呢？</p>
-<h3><a id="preset-env" class="heading-anchor"></a>preset-env</h3>
+<h3><a id="preset-env" class="content__heading-anchor"></a>preset-env</h3>
 <p>ECMAScript 标准每一两年都推出新的版本，引入新的特性。而不同浏览器对其的实现难免会有所滞后。为了：1）能及时使用 ECMAScript 的新特性；2）确保我们的代码在所有浏览器环境中的表现一致，<strong>Babel 提供的 preset-env 可以将使用新特性的代码 transpile 为使用旧特性的实现。</strong>（<a href="https://babeljs.io/docs/babel-preset-env">文档</a>）（在 Babel 出现之前，许多应用引入一个静态的 js 脚本完成这一功能，这种脚本叫做「polyfill」）</p>
 <p>比如，ES6 引入了箭头函数和 const 关键字：</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
@@ -519,9 +522,9 @@ a.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">f
 });
 </code></pre>
 <p>可以在官网的 <a href="https://babeljs.io/repl">Try it out</a> 中尝试。</p>
-<h2><a id="typescript" class="heading-anchor"></a>TypeScript</h2>
+<h2><a id="typescript" class="content__heading-anchor"></a>TypeScript</h2>
 <p>TypeScript 也是开发现代 Web 应用的必备。如果 standalone 地安装，可以使用 <code>tsc</code> 命令将一个 .ts 文件 transpile 成一个 .js 文件。然而，为了使这一过程在 build 时自动完成，还是要将其集成到 Babel。</p>
-<h3><a id="集成到-babel" class="heading-anchor"></a>集成到 Babel</h3>
+<h3><a id="集成到-babel" class="content__heading-anchor"></a>集成到 Babel</h3>
 <p>如前所述，Babel 已经提供了 TypeScript 的 preset（<a href="https://babeljs.io/docs/babel-preset-typescript">文档</a>），其中包含了转译 TypeScript 的插件。只需直接安装：</p>
 <pre><code class="language-bash">npm i @babel/preset-typescript --save-dev
 </code></pre>
@@ -565,12 +568,12 @@ a.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">f
   app.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;bg-gray&quot;</span>);
 }
 </code></pre>
-<h3><a id="配置文件-tsconfigjson" class="heading-anchor"></a>配置文件 tsconfig.json</h3>
+<h3><a id="配置文件-tsconfigjson" class="content__heading-anchor"></a>配置文件 tsconfig.json</h3>
 <p>TypeScript 也有配置文件。在项目根目录下创建 <code>tsconfig.json</code> 即可。</p>
 <p>具体规则可参考<a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">官方文档</a>。当我们配置好 React 后会再来修改 TypeScript 的规则配置。</p>
-<h2><a id="reactjs" class="heading-anchor"></a>React.js</h2>
+<h2><a id="reactjs" class="content__heading-anchor"></a>React.js</h2>
 <p>使用 React 时我们会编写 <strong>JSX</strong>（或 TSX）语法的代码。JSX（或 TSX）全称 JavaScript（TypeScript）Extension，这是一种糅合了 HTML 和 JavaScript（TypeScript）语法的代码。当然，无论是浏览器还是 Node 都不支持这种代码，<strong>所以需要 Babel 为我们转译</strong>。其实，这样的代码中，类似 HTML 的那部分会被转译成 JavaScript 递归的函数调用的形式。</p>
-<h3><a id="集成到-babel-1" class="heading-anchor"></a>集成到 Babel</h3>
+<h3><a id="集成到-babel-1" class="content__heading-anchor"></a>集成到 Babel</h3>
 <p>Babel 也提供了 React 的 preset（<a href="https://babeljs.io/docs/babel-preset-react">文档</a>），包含了对应插件。只要安装：</p>
 <pre><code class="language-bash">npm i @babel/preset-react --save-dev
 </code></pre>
@@ -637,7 +640,7 @@ a.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">f
 <pre><code class="language-bash">npm i react react-dom --save
 npm i @types/react @types/react-dom --save-dev
 </code></pre>
-<h3><a id="编写-react-组件" class="heading-anchor"></a>编写 React 组件</h3>
+<h3><a id="编写-react-组件" class="content__heading-anchor"></a>编写 React 组件</h3>
 <p>现在，在 <code>src</code> 下创建 <code>App.tsx</code> 文件，我们可以在其中用 TSX 语法编写一个 React 组件了。</p>
 <p>将之前写的显示时间的组件写进这里面：</p>
 <pre><code class="language-tsx"><span class="hljs-comment">// App.tsx</span>
@@ -676,10 +679,10 @@ npm i @types/react @types/react-dom --save-dev
 }
 </code></pre>
 <p>现在，build 之后，打开生成的 HTML，可以看到我们用 React 写的组件了。</p>
-<h2><a id="eslint" class="heading-anchor"></a>ESLint</h2>
+<h2><a id="eslint" class="content__heading-anchor"></a>ESLint</h2>
 <p>ESLint 是一个代码检查工具。对于团队项目，统一代码风格十分重要，而 ESLint 可以方便地做到这一点：如果没有满足指定的代码风格，则显示警告或错误（如果在 IDE 中集成的话），或者拒绝提交或部署（如果在提交部署流程中集成的话）。</p>
 <p>为了使流程更加清晰，我们还是选择<strong>将 ESLint 作为一个插件集成到 webpack</strong>。</p>
-<h3><a id="集成到-webpack-2" class="heading-anchor"></a>集成到 webpack</h3>
+<h3><a id="集成到-webpack-2" class="content__heading-anchor"></a>集成到 webpack</h3>
 <p>安装 <strong>eslint-webpack-plugin</strong>（<a href="https://www.npmjs.com/package/eslint-webpack-plugin">相关文档</a>）：</p>
 <pre><code class="language-bash">npm i eslint-webpack-plugin --save-dev
 </code></pre>
@@ -699,7 +702,7 @@ npm i @types/react @types/react-dom --save-dev
 };
 </code></pre>
 <p>配置文件中 <code>new ESLintPlugin({})</code> 可以传入一个 options 对象，用于指定 <strong>ESLint 插件选项</strong>（<a href="https://www.npmjs.com/package/eslint-webpack-plugin">文档</a>）。这里我们指定了要 lint 的文件拓展名。</p>
-<h3><a id="配置文件-eslintrcjs" class="heading-anchor"></a>配置文件 .eslintrc.js</h3>
+<h3><a id="配置文件-eslintrcjs" class="content__heading-anchor"></a>配置文件 .eslintrc.js</h3>
 <p>可以使用 <code>@eslint/config</code> 创建配置文件（<a href="https://eslint.org/docs/latest/use/getting-started">文档</a>），这是一个友好的交互式命令：</p>
 <pre><code class="language-bash">npm init @eslint/config
 </code></pre>
@@ -778,17 +781,17 @@ npm i @types/react @types/react-dom --save-dev
 </code></pre>
 <p>💡 或许你同时在 IDE 中使用 <strong>Prettier</strong> 一类的<strong>代码格式化工具</strong>。其文档中 <a href="https://prettier.io/docs/en/comparison">Prettier vs. Linters</a> 介绍了这两种工具的区别；<a href="https://prettier.io/docs/en/integrating-with-linters.html">Integrating with Linters</a> 介绍了其与 linter 的集成指南。简而言之，在 ESLint 配置中应用 <a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a> 规则集即可自动关闭所有与 Prettier 冲突的规则。不过我更推荐的是在 IDE 中安装 ESLint 插件，对于 js 类文件直接使用 ESLint 作为代码格式化工具，这样能够确保遵循 eslintrc 中的规则。</p>
 <p>（ESLint 这部分配置起来还是挺麻烦的，尤其要集成到 VSCode，同时兼容 TypeScript，并考虑到其和 Prettier 的冲突。改天配置好了一个比较 fancy 的方案再单独写一篇）</p>
-<h2><a id="recap站在巨人的肩膀上" class="heading-anchor"></a>Recap：站在巨人的肩膀上</h2>
+<h2><a id="recap站在巨人的肩膀上" class="content__heading-anchor"></a>Recap：站在巨人的肩膀上</h2>
 <p>至此，一套比较完整的<strong>前端项目 starter</strong> 终于配置完毕了。完整的项目可以在<a href="https://github.com/Skywt2003/starter.git">这个仓库</a>查看。</p>
 <p>回顾一下，我们首先使用了 <strong>webpack</strong> 作为打包工具；其 <strong>PostCSS</strong> 插件能够对 CSS 进行处理；<strong>Tailwind</strong> 则可以作为 PostCSS 插件集成。我们使用 <strong>Babel</strong> 这个 transpiler 处理各种脚本文件，其中 <strong>env</strong> preset 将 ECMAScript 较先进的特性转译为旧特性的实现，确保兼容性；<strong>TypeScript</strong> 和 <strong>React JSX</strong> 两个 preset 则分别将它们各自的语法转译成 JavaScript。最后，我们使用 <strong>ESLint</strong> 作为代码质量检查工具，并配置其针对 TypeScript 和 JSX 的规则。</p>
 <p>使用的工具链关系示意图如下：</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" alt="配置完毕后的工具链示意图" title="" /></a></p>
 <p>相比从前，各种工具让开发的过程变得越来越优雅和美妙。然而每个工具背后，都有无数前人的辛勤付出，没有他们的这些努力，我们无法得到这样现代化的前端开发体验。</p>
 <p>现代前端开发，就是<strong>站在巨人的肩膀上</strong>。</p>
-<h3><a id="一点思考-🤔" class="heading-anchor"></a>一点思考 🤔</h3>
+<h3><a id="一点思考-🤔" class="content__heading-anchor"></a>一点思考 🤔</h3>
 <p>最后，还有一个我的疑问：<strong>相比其他领域，为什么 Web 前端开发的工具链会呈现如此复杂的形态呢？</strong>我体验过 iOS 开发，也了解过基于 Qt 等框架的客户端开发，我个人的感觉是没有一个领域的客户端开发像 Web 前端这样有如此庞大复杂的工具链：某个工具可以配置插件，插件又有插件，插件的插件又有插件……那么归根结底，Web 前端工具链这种复杂的形式，是历史发展的必然，是某种设计缺陷的后果，还是某种设计思想的体现？🤔</p>
 <p>欢迎分享你的思考。</p>
-<h2><a id="值得一读" class="heading-anchor"></a>值得一读</h2>
+<h2><a id="值得一读" class="content__heading-anchor"></a>值得一读</h2>
 <blockquote>
 <p>Web development used to be a great entry point for people new to programming precisely because it was so easy to get up and running; nowadays it can be quite daunting, especially because the various tools tend to change rapidly.</p>
 <p>—— Modern JavaScript Explained For Dinosaurs</p>
@@ -799,13 +802,13 @@ npm i @types/react @types/react-dom --save-dev
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Introducing_complete_toolchain">介绍完整的工具链 - 学习 Web 开发 | MDN</a></li>
 <li><a href="https://pomb.us/build-your-own-react/">Build your own React</a></li>
 </ul>
- </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="2653ru" prefix="r0" component-url="/_astro/Comments.DAE8LkK5.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;configure-a-modern-frontend-toolchain-from-scratch&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpeMr" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,159]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
 从零开始，配置一套现代前端工具链 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
-</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
 |
 <a href="/sitemap-index.xml" class="link">站点地图</a>
@@ -815,7 +818,7 @@ npm i @types/react @types/react-dom --save-dev
 <a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
         <a href="https://github.com/Skywt2003/Daydreamer" class="link"
           >Daydreamer</a
-        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="flex justify-between flex-wrap"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
@@ -826,4 +829,4 @@ npm i @types/react @types/react-dom --save-dev
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 

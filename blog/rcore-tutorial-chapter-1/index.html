@@ -1,4 +1,8 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><meta name="generator" content="Astro v4.7.0"><title>rCore Tutorial Chapter 1 练习</title><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><script>
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>rCore Tutorial Chapter 1 练习</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>rCore Tutorial Chapter 1 练习</title><link rel="canonical" href="https://skywt.cn/blog/rcore-tutorial-chapter-1/"><meta name="description" content="这是 [rCore Tutorial Book](http://rcore-os.cn/rCore-Tutorial-Book-v3) 第一章「应用程序与基本执行环境」的练习。
+
+"><meta name="robots" content="index, follow"><meta property="og:title" content="rCore Tutorial Chapter 1 练习"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/rcore-tutorial-chapter-1/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="rCore Tutorial Chapter 1 练习"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="这是 [rCore Tutorial Book](http://rcore-os.cn/rCore-Tutorial-Book-v3) 第一章「应用程序与基本执行环境」的练习。
+
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -23,10 +27,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.gCOBDJ9X.css">
-<link rel="stylesheet" href="/_astro/friends.CYYucEuo.css">
-<style>img[data-astro-cid-4sn4zg3r]{border-radius:.5rem;--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}
-</style><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="mt-12 container container--wide"> <h5 class="mt-4 mx-4 text-secondary sm:hidden text-center"> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -74,15 +76,7 @@ rCore Tutorial Chapter 1 练习 </span> </h5> <div class="navbar__menu"> <ul dat
     },
     { once: false },
   );
-</script>  <main data-astro-cid-4sn4zg3r> <section class="container mt-8 sm:mt-32" data-astro-cid-4sn4zg3r>  <h1 class="leading-relaxed" data-astro-cid-4sn4zg3r>rCore Tutorial Chapter 1 练习</h1> <p class="mt-4 text-secondary leading-relaxed" data-astro-cid-4sn4zg3r> <i class="ri-calendar-line" data-astro-cid-4sn4zg3r></i> <span data-astro-cid-4sn4zg3r>2023 年 4 月 10 日 13:29</span> <!-- {
-          post.commentsNum > 0 && (
-            <>
-              <br />
-              <i class="ri-discuss-line" />
-              <span>共 {post.commentsNum} 条评论</span>
-            </>
-          )
-        } --> </p> <hr class="my-8" data-astro-cid-4sn4zg3r> <article class="content" data-astro-cid-4sn4zg3r> <h2><a id="文章目录" class="heading-anchor"></a>文章目录</h2>
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">rCore Tutorial Chapter 1 练习</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2023 年 4 月 10 日 13:29</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
 <ul>
 <li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0">课后练习</a>
 <ul>
@@ -112,9 +106,10 @@ rCore Tutorial Chapter 1 练习 </span> </h5> <div class="navbar__menu"> <ul dat
 </ul></li>
 </ul>
 <p>这是 <a href="http://rcore-os.cn/rCore-Tutorial-Book-v3">rCore Tutorial Book</a> 第一章「应用程序与基本执行环境」的练习。</p>
-<h2><a id="课后练习" class="heading-anchor"></a>课后练习</h2>
-<h3><a id="编程题" class="heading-anchor"></a>编程题</h3>
-<h4><a id="program-1" class="heading-anchor"></a>Program 1</h4>
+<!--more-->
+<h2><a id="课后练习" class="content__heading-anchor"></a>课后练习</h2>
+<h3><a id="编程题" class="content__heading-anchor"></a>编程题</h3>
+<h4><a id="program-1" class="content__heading-anchor"></a>Program 1</h4>
 <p><strong>1. 实现一个 linux 应用程序 A，显示当前目录下的文件名。</strong></p>
 <pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;dirent.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
@@ -134,7 +129,7 @@ rCore Tutorial Chapter 1 练习 </span> </h5> <div class="navbar__menu"> <ul dat
 <li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/opendir.html">opendir</a> 函数打开一个目录流，返回的正是 <code>DIR</code> 对象。</li>
 <li><a href="https://pubs.opengroup.org/onlinepubs/7908799/xsh/readdir.html">readdir</a> 函数以一个 <code>DIR</code> 对象为参数，返回一个 <code>dirent</code> 类型结构体，它表示传入的 <code>DIR</code> 指针指向的条目；同时，会将指针指向下一个条目。</li>
 </ul>
-<h4><a id="program-2" class="heading-anchor"></a>Program 2</h4>
+<h4><a id="program-2" class="content__heading-anchor"></a>Program 2</h4>
 <p><strong>2. 实现一个 Linux 应用程序 B，能打印出调用栈链信息。</strong></p>
 <p>（前置知识：C 语言中内联汇编语句 asm 的用法）</p>
 <p>这里在 x86_64 环境下运行。我们直接内联汇编命令，将栈底指针寄存器 rbp 取出来，并不断根据寄存器的内容追溯上一个栈帧的 rbp。（注意我们是 64 位环境，所以最好使用 64 位的 rbp 而不是 ebp）<br>
@@ -187,11 +182,11 @@ Calling fact(0)
 == END CALL STACK INFO
 5! = 120
 </code></pre>
-<h4><a id="program-3" class="heading-anchor"></a>Program 3</h4>
+<h4><a id="program-3" class="content__heading-anchor"></a>Program 3</h4>
 <p><strong>3. 实现一个基于 rcore/ucore tutorial 的应用程序 C，用 sleep 系统调用睡眠 5 秒（in rcore/ucore tutorial v3: Branch ch1）</strong></p>
 <p>（超纲了，不会）</p>
-<h3><a id="问答题" class="heading-anchor"></a>问答题</h3>
-<h4><a id="problem-1" class="heading-anchor"></a>Problem 1</h4>
+<h3><a id="问答题" class="content__heading-anchor"></a>问答题</h3>
+<h4><a id="problem-1" class="content__heading-anchor"></a>Problem 1</h4>
 <p><strong>1. 应用程序在执行过程中，会占用哪些计算机资源？</strong></p>
 <ul>
 <li>CPU：应用程序的指令由 CPU 执行。</li>
@@ -201,7 +196,7 @@ Calling fact(0)
 <li>输入输出设备：程序通过鼠标、键盘等设备获得输入，通过显示器、扬声器等设备实现输出。</li>
 <li>GPU：某些程序可能使用 GPU 进行图形渲染。</li>
 </ul>
-<h4><a id="problem-2" class="heading-anchor"></a>Problem 2</h4>
+<h4><a id="problem-2" class="content__heading-anchor"></a>Problem 2</h4>
 <p><strong>2. 请用相关工具软件分析并给出应用程序 A 的代码段/数据段/堆/栈的地址空间范围。</strong></p>
 <p><strong>查看代码段、数据段信息：</strong></p>
 <p>为了查看完整代码段和数据段信息，需要对程序进行静态编译。否则，只能看到共享库的代码段和数据段信息，无法看到程序本身的代码段和数据段信息。</p>
@@ -280,7 +275,7 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 <li><code>&lt;pathname&gt;</code> 表示映射到内存中的文件路径，如果没有映射文件则为 <code>[anon]</code>。</li>
 </ul>
 <p>可以看到，堆（<code>[heap]</code>）的内存地址是 <code>55ad3438a000-55ad343ab000</code>，栈（<code>[stack]</code>）的内存地址是 <code>7ffe7709a000-7ffe770bb000</code>。</p>
-<h4><a id="problem-3" class="heading-anchor"></a>Problem 3</h4>
+<h4><a id="problem-3" class="content__heading-anchor"></a>Problem 3</h4>
 <p><strong>3. 请简要说明应用程序与操作系统的异同之处。</strong></p>
 <ul>
 <li>异：
@@ -297,7 +292,7 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 <li>都一般以二进制文件的形式保存在磁盘中。</li>
 </ul></li>
 </ul>
-<h4><a id="problem-4" class="heading-anchor"></a>Problem 4</h4>
+<h4><a id="problem-4" class="content__heading-anchor"></a>Problem 4</h4>
 <p><strong>4. 请基于 QEMU 模拟 RISC—V 的执行过程和 QEMU 源代码，说明 RISC-V 硬件加电后的几条指令在哪里？完成了哪些功能？</strong></p>
 <p>在 QEMU 源码中可以找到「上电」的时候刚执行的几条指令，如下：</p>
 <pre><code class="language-cpp"><span class="hljs-type">uint32_t</span> reset_vec[<span class="hljs-number">10</span>] = {
@@ -325,7 +320,7 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 <li>（我们还没有用到：将 FDT (Flatten device tree) 在物理内存中的地址写入 a1）。</li>
 <li>跳转到 start_addr ，在我们实验中是 RustSBI 的地址。</li>
 </ul>
-<h4><a id="problem-5" class="heading-anchor"></a>Problem 5</h4>
+<h4><a id="problem-5" class="content__heading-anchor"></a>Problem 5</h4>
 <p><strong>5. RISC-V 中的 SBI 的含义和功能是啥？</strong></p>
 <p><a href="https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc">RISC-V SBI 官方文档</a></p>
 <p>RISC-V 处理器有三种状态（特权级别），通过存储在 Control and Status Register CSR 中的特权位来控制：</p>
@@ -337,7 +332,7 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 <p>RISC-V SBI（Supervisor Binary Interface）是一套规范，定义了在 S 态下 OS 和硬件之间的接口。例如系统调用、中断控制接口、内存访问接口、I/O 设备访问接口等。<br>
 通过这些接口，OS 可以与硬件进行交互。当我们编写操作系统内核时，我们通过 SBI 规定的接口与模拟的硬件进行交互（如读入、输出字符等操作），而不是直接操作硬件。</p>
 <p>SBI 相当于硬件和 OS 内核之间的一层，对硬件进行抽象。</p>
-<h4><a id="problem-6" class="heading-anchor"></a>Problem 6</h4>
+<h4><a id="problem-6" class="content__heading-anchor"></a>Problem 6</h4>
 <p><strong>6. 为了让应用程序能在计算机上执行，操作系统与编译器之间需要达成哪些协议？</strong></p>
 <ul>
 <li>程序库、依赖库等文件信息：需要约定好 OS 中各种库存放的位置，以方便应用程序调用。</li>
@@ -348,7 +343,7 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 <li>文件系统协议：需要约定应用程序如何访问文件系统，编译器通过约定的方式生成汇编代码对文件系统进行访问。</li>
 <li>异常处理协议：需要约定如何处理应用程序运行时出现的各种异常。</li>
 </ul>
-<h4><a id="problem-7" class="heading-anchor"></a>Problem 7</h4>
+<h4><a id="problem-7" class="content__heading-anchor"></a>Problem 7</h4>
 <p><strong>7. 请简要说明从 QEMU 模拟的 RISC-V 计算机加电开始运行到执行应用程序的第一条指令这个阶段的执行过程。</strong></p>
 <p>加电开始运行后，QEMU 的启动流程：</p>
 <ul>
@@ -356,11 +351,11 @@ skywt     203257  0.0  0.0   6560  2264 pts/0    S+   21:00   0:00 grep --color=
 <li>Step2：载入从 0x80000000 开始的 bootloader，这里就是 RustSBI（实验目录 <code>/bootloader/</code> 下的 <code>rustsbi-qemu.bin</code> 文件）。RustSBI 进行一些硬件（如串口）初始化，并通过 mret 使 PC 跳转到 0x80200000，即内存起始地址。</li>
 <li>Step3：载入 0x80200000 开始的 OS 内核镜像，正式进入 OS 内核。内核进行部分初始化（如内存管理、进程初始化等），通过 sret 跳转到应用程序的第一行开始执行。</li>
 </ul>
-<h4><a id="problem-8" class="heading-anchor"></a>Problem 8</h4>
+<h4><a id="problem-8" class="content__heading-anchor"></a>Problem 8</h4>
 <p><strong>8. 为何应用程序员编写应用时不需要建立栈空间和指定地址空间？</strong></p>
 <p>应用程序访问的栈空间和地址空间需要由操作系统内核负责分配。对内存的访问需要通过 MMU 的地址翻译，使用的栈空间需要操作系统进行分配和管理。</p>
 <p>程序员编写应用程序时，无需考虑操作系统底层的栈分配和地址空间分配，只需要使用操作系统、编译器等共同提供的「变量」、「函数」等抽象。这种设计大大方便了应用程序开发人员的软件开发。</p>
-<h4><a id="problem-9" class="heading-anchor"></a>Problem 9</h4>
+<h4><a id="problem-9" class="content__heading-anchor"></a>Problem 9</h4>
 <p><strong>9. 现代的很多编译器生成的代码，默认情况下不再严格保存/恢复栈帧指针。在这个情况下，我们只要编译器提供足够的信息，也可以完成对调用栈的恢复。</strong><br>
 我们可以手动阅读汇编代码和栈上的数据，体验一下这个过程。例如，对如下两个互相递归调用的函数：</p>
 <pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">flip</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> n)</span> </span>{
@@ -426,8 +421,8 @@ $3 = (void (*)()) 0x10742 &lt;flap+18&gt;
 <li>根据反汇编信息，可以看到 flip 函数的栈帧在入口处（0x10752）保存了 ra 寄存器的值（0x10742），即 flap 函数的返回地址。</li>
 <li>根据栈上的数据（0x40007f1310）可以看到栈帧中保存了一些未初始化的垃圾数据，而根据反汇编信息，栈帧的大小为 16 字节（0x10），因此可以通过栈顶地址向下偏移 16 字节，找到栈帧中保存的上一层调用栈帧的信息。</li>
 </ul>
-<h2><a id="实验练习" class="heading-anchor"></a>实验练习</h2>
-<h3><a id="实验作业彩色化-log" class="heading-anchor"></a>实验作业：彩色化 LOG</h3>
+<h2><a id="实验练习" class="content__heading-anchor"></a>实验练习</h2>
+<h3><a id="实验作业彩色化-log" class="content__heading-anchor"></a>实验作业：彩色化 LOG</h3>
 <p>在 <code>logging.rs</code> 中的如下代码提供彩色 LOG 输出功能：</p>
 <pre><code class="language-rust"><span class="hljs-keyword">use</span> log::{<span class="hljs-keyword">self</span>, Level, LevelFilter, Log, Metadata, Record};
 
@@ -499,7 +494,7 @@ error!(<span class="hljs-string">&quot;[kernel] .bss [{:#x}, {:#x})&quot;</span>
 </code></pre>
 <p>可以看到终端彩色的输出：</p>
 <p><a href="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" alt="终端的彩色信息输出" title="" /></a></p>
-<h3><a id="问答作业" class="heading-anchor"></a>问答作业</h3>
+<h3><a id="问答作业" class="content__heading-anchor"></a>问答作业</h3>
 <p><strong>请学习 gdb 调试工具的使用（这对后续调试很重要），并通过 gdb 简单跟踪从机器加电到跳转到 0x80200000 的简单过程。只需要描述重要的跳转即可，只需要描述在 qemu 上的情况。</strong></p>
 <p>由于我们的内核运行在 QEMU 里，我们没法直接通过原生的 gdb 像调试寻常的程序一样对它进行调试。不过，QEMU 提供了一些接口，可以通过网络（1234 端口）与 QEMU 之外的 gdb 对接（这个功能设计之初是为了方便网络调试），在 <code>os/Makefile</code> 里，已经为我们写好了使用 gdb 开启调试的命令。</p>
 <p>由于我使用 docker 运行本实验的环境，在容器中开启 tmux 并不方便（使用预置的 <code>make debug</code> 会卡住）。但是，我们可以在容器外的多个终端都进入容器，等同于在容器内用了 tmux。<br>
@@ -560,13 +555,13 @@ Breakpoint 1, 0x0000000080200000 in stext ()
 </code></pre>
 <p>看来此时，PC 已经进入了内核。<br>
 至此，我们用 gdb 看到了 QEMU 启动流程中的几次跳转。</p>
- </article> <hr class="my-8" data-astro-cid-4sn4zg3r> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z1LVhGU" prefix="r0" component-url="/_astro/Comments.DAE8LkK5.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;slug&quot;:[0,&quot;rcore-tutorial-chapter-1&quot;],&quot;data-astro-cid-4sn4zg3r&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><h2><i class="ri-discuss-line"></i> 暂无评论</h2><hr class="my-8"/><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。<br/>（提交一次评论后，本提示将不再展示）</p><!--astro:end--></astro-island> </section> </main>  <footer class="mt-16 py-8 text-secondary"> <div class="container container--wide text-sm"> <div class="flex justify-between flex-wrap"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpcIp" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,151]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
 rCore Tutorial Chapter 1 练习 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
 主页
-</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="my-4"> <div class="flex justify-between flex-wrap"> <p class="m-2">
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
 &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
 |
 <a href="/sitemap-index.xml" class="link">站点地图</a>
@@ -576,7 +571,7 @@ rCore Tutorial Chapter 1 练习 </span> </div> <div class="m-2"> <ul data-astro-
 <a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
         <a href="https://github.com/Skywt2003/Daydreamer" class="link"
           >Daydreamer</a
-        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="flex justify-between flex-wrap"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
 浙 ICP 备 2021019606 号 - 1</a>
 |
 <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
@@ -587,4 +582,4 @@ rCore Tutorial Chapter 1 练习 </span> </div> <div class="m-2"> <ul data-astro-
         >
           <img src="/upyun.png" class="h-6" />
         </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </div> </footer> </body></html>  
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 

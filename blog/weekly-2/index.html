@@ -1,0 +1,183 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #2：大学生活的一点点遗憾</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #2：大学生活的一点点遗憾</title><link rel="canonical" href="https://skywt.cn/blog/weekly-2/"><meta name="description" content="Weekly 第二期。"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #2：大学生活的一点点遗憾"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/weekly-2/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #2：大学生活的一点点遗憾"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="Weekly 第二期。"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #2：大学生活的一点点遗憾 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #2：大学生活的一点点遗憾 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #2：大学生活的一点点遗憾</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 5 月 27 日 15:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E6%BB%95%E7%8E%8B%E9%98%81">🌆 封面图：滕王阁</a></li>
+<li><a href="#%F0%9F%8F%AB-%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%B4%BB%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E9%81%97%E6%86%BE">🏫 大学生活的一点点遗憾</a></li>
+<li><a href="#%F0%9F%8C%90-%E5%9F%BA%E4%BA%8E-tailscale-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9A%84%E5%B0%9D%E8%AF%95">🌐 基于 Tailscale 搭建「个人网络基础设施」的尝试</a></li>
+<li><a href="#%F0%9F%9A%97-%E6%8B%BF%E6%98%BE%E5%BE%AE%E9%95%9C%E7%9C%8B%E7%8B%82%E9%A3%99">🚗 拿显微镜看《狂飙》</a></li>
+<li><a href="#%F0%9F%8D%B2-%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E6%B5%B7%E5%BA%95%E6%8D%9E">🍲 你不知道的海底捞！</a></li>
+<li><a href="#%F0%9F%8C%90-%E4%B8%AD%E6%96%87%E4%BA%92%E8%81%94%E7%BD%91%E6%AD%A3%E5%9C%A8%E5%8A%A0%E9%80%9F%E5%B4%A9%E5%A1%8C">🌐 中文互联网正在加速崩塌</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%89%E5%A5%BD%E7%9A%84%E8%AF%91%E8%80%85%E6%98%AF%E4%B9%A6%E7%B1%8D%E7%9A%84%E5%B9%B8%E8%BF%90%E4%BA%8C">📚 有好的译者，是书籍的幸运（二）</a></li>
+<li><a href="#%E2%9C%A8-%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97">✨ 博客系统更新日志</a></li>
+</ul>
+<!--more-->
+<h2><a id="🌆-封面图滕王阁" class="content__heading-anchor"></a>🌆 封面图：滕王阁</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/4085939757.jpg" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/4085939757.jpg" alt="南昌滕王阁" title="" /></a></p>
+<p>这周去了南昌玩！</p>
+<h2><a id="🏫-大学生活的一点点遗憾" class="content__heading-anchor"></a>🏫 大学生活的一点点遗憾</h2>
+<p>周二晚上去隔壁中南大学逛了逛。在一个陌生的、真正的大学校园里，静谧的夜晚，宽阔的马路上一个人都没有，远处的教学楼窗户里发出暖黄色的灯光。</p>
+<p>恍惚之间，我会有一种感觉：或许某个平行世界的我，会在这样一所大学里，过上小时候想象中的大学生活。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/3241497128.jpg" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/3241497128.jpg" alt="中南大学的校园" title="" /></a></p>
+<p>（并不是因为中南大学就比 HNU 好，我一直不十分在意所谓的大学排名；只是这种陌生的大学校园，给了我一些<strong>想象的空间</strong>）</p>
+<p><strong>大学，在我曾经的理解里，是一个充满活力的地方，在这里能找到一群有意思的人，一起做一些有意思的事情。</strong>然而，事实是，身边的大多数同学都忙着考研、考公或者卷成绩保研，仿佛一只只碌碌无为的蚂蚁，即使有空闲也将大多数时间花在平庸无聊的娱乐活动上，很少遇到真正有想法、有意思的人；这三年我自己也没做什么有意思的事。如果要细数的话，我觉得去年夏天当迎新班导的经历，或许是我做过的最有意思的事之一。</p>
+<p>不知道这是我的大学本身不够好，还是这个时代的风气就是如此。每每在这样的环境里感到无聊，只能从一些书籍中与有趣和伟大的灵魂交流。从书中，也能看到一些世界顶尖高校里学生的学习生活，他们是多么有想法，他们的生活是多么有趣，多么充满激情！</p>
+<p><strong>大学，在我曾经的印象里，应该是一个传授「大行之道」的地方。</strong>在读到《浪潮之巅》介绍的「纽曼式大学」的时候，我真心觉得这就是大学应该成为的样子：学生应该相互学习，自由发展；大学应该传授「<strong>大行之道（Universall Knowledge）</strong>」，而非「雕虫小技」（书中继而介绍了斯坦福大学，着实令人羡慕）。然而，现实是，大学里的所有通识课程充斥着大量照本宣科的思想政治，几乎没有一点营养；至于专业课，则大多老师教的都是「雕虫小技」，念 PPT，读概念，讲政治，做题。很少能听到老师们对于专业、行业的宏观理解。</p>
+<p>这导致我不知道去上课有什么意义：有的老师上课的内容就是把一些知识详细地给我们讲一遍，连 XSS、SQL 注入这些东西居然都要上课讲，明明网络上有大量的学习资源，自己实践才是最好的学习方式，根本没必要来上课。退一万步说，网络上也有相同内容的、质量好一万倍的名牌大学课程，都可以免费参与。那么我为什么要赶这么远的路，到教室里去听课呢？我来上课自然是希望听到一些自学学不到的东西，或许是所谓的「大行之道」，或许是对专业、行业的理解，或许是从他们的视角看到的对这个世界的理解，这种理解处于我们本科生达不到的 level。然而，能听到这些内容的课（即我觉得值得上的课），很少。</p>
+<p>（这或许也是和大多数同学的学习能力相适应的吧。身边太多同学，都是老师教什么就学什么，老师不教就不知道自己学，老师上课让回去自学某些知识，还屡遭吐槽。不过每个人成长的背景、形成的习惯和观念不同，我无法评判。）</p>
+<p><strong>所以，有点遗憾没能经历我想要的大学生活。</strong></p>
+<p>（不过纵使如此，我还要感谢 HNU，感谢她自由和人性化的行政和管理、开放的校园、便捷的地理位置，特别是疫情三年的优良体验。我相信这一切已经打败全国 90% 的大学了，我已经很幸运了……）</p>
+<h2><a id="🌐-基于-tailscale-搭建个人网络基础设施的尝试" class="content__heading-anchor"></a>🌐 基于 Tailscale 搭建「个人网络基础设施」的尝试</h2>
+<p>上周了解了 Tailscale 的 NAT 穿透原理，并搭建和配置了 Headscale 实现了虚拟组网。</p>
+<p>然而，在实际使用上遇到了这个问题：<strong>在 iOS / iPadOS 上，系统限制不能同时启用两个 VPN 软件。</strong>这意味着，开启了 Tailscale 就必须关闭其他用于众所周知的目的的软件，「访问 VPN 中的其他设备」和「访问国际互联网」这两个需求不能共存。</p>
+<p>如果有这样一种配置方式，使得我在设备上连接上 VPN 之后，既能够访问 VPN 中我的其他设备，又能访问国际互联网，同时达成这两个目的，那该多好！这样不仅解决了上述问题，我在任何客户端主机上需要进行的配置也大大简化了，本来要配置 Tailscale + 代理软件，现在只要配置 Tailscale 即可。</p>
+<p><strong>使用 Tailscale 实现这一目的是有可能的。</strong></p>
+<p>Tailscale 提供了 <strong>exit node</strong> 的功能。如果主机 A 将 VPN 中的一个结点 B 设置为 exit node 之后，A 节点所有访问外部网络的流量都要经过 B 进行转发。那么，通过 B 节点上恰当的配置，我们实际上是可以在 B 上实现类似透明代理的功能，即在 B 上安装代理软件，将经过 B 的所有流量转发给代理软件进行分流。这样，只要将所有客户端中的 exit node 设置为 B，就能实现前述目的。</p>
+<p>这整套东西很酷！几乎满足了我对网络访问的所有需求。所以，我想了一个很酷的名字：「<strong>个人网络基础设施</strong>」。</p>
+<p>以上的配置涉及到 Tailscale 的原理，以及 iptables 的配置，要学的东西还挺多。改天如果能够成功实现，写篇博客。😁</p>
+<p>其实，我已经积攒了很多篇写了一半的博客。之所以没有发出来，是因为<strong>我认为它们其实没有达到我对自己博客内容质量的要求</strong>。折腾这些东西的目的是<strong>让它们成功跑起来</strong>，而写博客的目的是<strong>将它们讲清楚</strong>。后者的要求比前者要高不少，而我有时往往止步于前者「成功跑起来」这一目的。比如配置 PVE 核显直通，很多配置我并没有搞清楚具体是什么意思，然而配置了就成功跑起来了。要写成博客，还得进一步地学习。最近看到《<a href="https://jack-vanlightly.com/blog/2022/1/25/write-for-others-but-mostly-for-yourself">Write For Others But Mostly For Yourself</a>》中认为，由于想到他人会阅读自己的博客，写作过程中不得不将知识抽丝剥茧、深入理解。启动「internal BS detector」。所以，博客首先是提升自己认知能力的工具。</p>
+<h2><a id="🚗-拿显微镜看狂飙" class="content__heading-anchor"></a>🚗 拿显微镜看《狂飙》</h2>
+<p>本周看了 b 站 up 主「食影双修」的<a href="https://www.bilibili.com/video/BV1Cy4y197sw">《狂飙》系列解析</a>。这才意识到以前看《狂飙》的时候，很多存在疑虑的点，都是主创隐藏的暗线。非常推荐观看！</p>
+<p>《狂飙》这部剧，为了过审，删改了大量情节，进行了大量重新配音（独立声卡），真的太可惜了。按照原来的剧本，应该全程都会是很精彩的剧。不过这删减本身，似乎也成了一种展现当下创作环境的行为艺术……😅</p>
+<p>下面是我超级喜欢的一张剧照。背景的暗红色不仅有政治意涵，更给人一种压抑和恐怖之感。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/3395698192.jpg" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/3395698192.jpg" alt="《狂飙》人物：赵立冬" title="" /></a></p>
+<h2><a id="🍲-你不知道的海底捞" class="content__heading-anchor"></a>🍲 你不知道的海底捞！</h2>
+<p>在海底捞，留下了很多令我印象深刻的体验。而从服务业的角度来说，这些体验或许可以说是令人震撼。</p>
+<p>本周心血来潮看了《海底捞你学不会》这本书。本书作者深度采访了从海底捞基层员工、公司高管到创始人张勇等一系列人员，尝试揭开海底捞的秘密。这本书成书于 2011 年，现在已经过了 13 年，海底捞依然是长盛不衰、广受欢迎的火锅品牌。</p>
+<p>一直以来，我以为海底捞是「巨头资本用最先进的管理理念打造的品牌」。然而本书讲述的事实是，海底捞是草根起家，创办时只有 8000 元的资本和北京的第一家店，总裁张勇是个电焊工。</p>
+<p>其实最神奇的一点是，<strong>对人性化、个性化的服务的要求，和对连锁餐饮规范化、流程化的要求，是相互矛盾的。</strong>海底捞是如何同时做到这两点的呢？（肯德基有一本厚厚的服务员规范手册，然而你一定体验过肯德基某些服务员态度并不好的现象）</p>
+<p>海底捞的管理，反而用的是中国传统文化里的儒家理念，<strong>极其重视员工的集体认同</strong>，尊重每个员工。如孟子所言：</p>
+<blockquote>
+<p>食而弗爱，豕交之也；爱而不敬，兽畜之也。</p>
+<p>君之视臣如手足，则臣视君如腹心；君之视臣如犬马，则臣视君如国人；君之视臣如土芥，则臣视君如寇仇。</p>
+</blockquote>
+<p>简单来说，每个员工出于这种集体认同，真心地想要海底捞好；同时，从制度设计上非常注重放权，基层员工有很大权力，能有很大创新空间。我吃过很多家海底捞，除了统一的规范化服务之外，很多店服务员都会创造独特的体验，比如有的提供免费的冰粉，有的提供各种小游戏，有的针对预定客户会准备贺卡……之前饱受争议的「科目二」也是源于某个基层服务员的创新。</p>
+<p>白手起家发展到火锅巨头的创业故事非常励志。这个品牌也非常独特和神奇。</p>
+<h2><a id="🌐-中文互联网正在加速崩塌" class="content__heading-anchor"></a>🌐 中文互联网正在加速崩塌</h2>
+<p>最近很多地方都看到了这篇《<strong>中文互联网正在加速崩塌</strong>》。不过现在已经被微信 ban 了。本文指出，中文互联网正在加速崩塌，移动互联网出现之前的中文互联网内容，已经几乎消失殆尽。本文认为原因主要是：1）企业由于运营原因关闭网站；2）互联网监管趋于严格。</p>
+<p>作者以非常感性的笔触提出并评述了上述问题。其中发出的感叹我也十分认同。然而，对于我们对技术领域有足够了解的人来说，<strong>互联网内容的消失是必然的</strong>。</p>
+<p><strong>互联网从来都是一种服务。</strong>当我们访问一个网页时，空气中飘散着无数调制的电磁波，数不清的光缆里流过了无数的电信号，目标的服务器 24 小时待命，从磁盘到内存、CPU 都在不断地流过数据，为了处理我们的请求。这些都是无比脆弱的，并且不是免费的。</p>
+<p>浏览一个网页，和阅读一份报纸或者一本书，本质上是不同的：打开一本书的动作发生时，和出版社、作者等都没有任何关系，即使作者离世、出版社倒闭，也不会影响我们对这本书的阅读。然而，打开一个网页的过程中，则是实实在在地向目标的服务器发送一个请求并获得响应。这一过程中产生的流量为网页所属的企业增加了成本。一旦企业倒闭，服务器关机，网页就不复存在。这就好比：读者每翻一页书，出版社就要付出 0.01 元流量费；出版社一旦倒闭，所有书籍都无法打开。这对传统的信息传播来说是无法想象的。</p>
+<p>现代运维技术使得服务能一直维持运行，连偶尔几次下线几个小时都已经被认为是十分严重的事故。这给大多数不了解其技术原理的用户带来了这样的<strong>错觉</strong>：网页和书籍是类似的信息传播渠道；一个网页似乎会永远存在下去。就像发明互联网那一代人的期望一样：<strong>互联网已经像水和空气一样，无处不在。</strong>随时随地访问互联网，成了自然而然的事情。然而，只要自己搭建过网站就能知道，这种假象是多么脆弱。</p>
+<p>这启示我们忽略这一层抽象，<strong>不能将任何网站看成长久存在的数据平台</strong>。只有自己本地的硬盘，才是长久存在的数据平台。有了这样的观念，对所谓「中文互联网的加速崩塌」，就不会感到奇怪了。</p>
+<p>阅读本文后，我才发现自己其实早就意识到了这一点，这才建立了自己的博客和 self-hosted 的一切，不依附于任何其他平台，自己负责运维和管理。</p>
+<h2><a id="📚-有好的译者是书籍的幸运二" class="content__heading-anchor"></a>📚 有好的译者，是书籍的幸运（二）</h2>
+<p>本周阅读了《<strong>This Explains Everything</strong>》的中文版《<strong>世界因何美妙而优雅地运行</strong>》。</p>
+<p>这本书确实很吸引我。这个世界上一些非常聪明的头脑，在书中讨论了很多非常终极的问题。然而，读中文版的时候总觉得读不下去。去豆瓣上看了一眼，果然又是翻译的问题。</p>
+<p>对照着英文版才发现，中文充斥了大量语言不通、错译。例如，《事实，虚幻，与我们的概率性世界》（Fact, Fiction, and Our Probabilistic World）这一章节里：</p>
+<blockquote>
+<p>即便有着测量的误差，行星还是没有按照定律精密而准确地运行。</p>
+</blockquote>
+<p>英文原版是：</p>
+<blockquote>
+<p>Planets didn't follow laws with exact precision, even after accounting for measurement error.</p>
+</blockquote>
+<p>使用任何翻译软件，都能翻译出「accounting for」是「考虑到」的意思；任何一个<strong>学过英语且智力正常</strong>的人，也都知道这里「accounting for」是「考虑到」的意思；正常的翻译应该是「即便考虑到测量的误差」，而作者偏偏将此处翻译成「即便有着测量的误差」。这句主语是「行星」，什么叫「行星有着测量的误差」？原文此处想要表达的是行星不精确运行是在考虑了测量误差之外的，而译者这么翻译容易让人误以为行星是由于测量误差，没有被观测到准确精密地运行。</p>
+<p>本书充斥着大量这样质量的翻译。我实在无法想象，什么样的情况下会产生这样烂的翻译。</p>
+<p>上一期《<a href="https://skywt.cn/blog/weekly-1/#📚-有好的译者是书籍的幸运">📚 有好的译者，是书籍的幸运</a>》提到，「<strong>一个缺乏翻译素养的译者，其作品所造成的文化损失绝对不亚于一般的经济犯罪和刑事犯罪。</strong>」我将其与建筑设计相比较。然而，现在想想，缺乏翻译素养的译者的作品造成的文化损失，比缺乏艺术修养的建筑设计师造成的文化损失更甚：出版社买下了本书的独家版权，意味着几年内不会有更好的译本出版；如此多的中文母语者，多少人读了中文译本望而却步，其中导致了多么宝贵的文化的流失，特别是对于这样一部伟大的作品！<strong>这简直是严重的经济犯罪和刑事犯罪。</strong></p>
+<h2><a id="✨-博客系统更新日志" class="content__heading-anchor"></a>✨ 博客系统更新日志</h2>
+<ul>
+<li><strong>全新重构博客后端。</strong>之前基于 Sequelize ORM 和 SQLite，然而 Sequelize ORM 对 TypeScript 的支持并不好，SQLite 也不方便拓展。这次彻底用 TypeORM 和 Postgres 重构了后端。也重新设计了 API 使其更符合 RESTful 标准。</li>
+<li><strong>前端根据 BEM 命名规范重构所有 CSS。</strong>如果说 Tailwind 适合绘制 Web App 的 UI，那么 BEM 更适合构建大型的、存在较多样式复用的网页项目。代码组织的最佳实践总能给人一种优雅的感觉。</li>
+</ul>
+<p>下周见！</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1Hplv3" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,164]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #2：大学生活的一点点遗憾 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a>
+|
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
+        <a href="https://github.com/Skywt2003/Daydreamer" class="link"
+          >Daydreamer</a
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 
