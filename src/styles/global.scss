@@ -16,6 +16,10 @@
   @include text-tertiary;
 }
 
+.font-kai {
+  @include font-kai;
+}
+
 /*
  * 根元素定义
  */
@@ -85,6 +89,16 @@ footer {
   @include text-primary;
 }
 
+.header {
+  @apply mt-12;
+  @extend .container, .container--wide;
+  &__heading {
+    @apply mt-4 mx-4 text-center;
+    @apply sm:hidden;
+    @include text-secondary;
+  }
+}
+
 .navbar {
   @apply py-2 sticky top-0 backdrop-blur-md z-10 transition-all;
   @apply font-thin;
@@ -111,10 +125,102 @@ footer {
   }
 }
 
-// 诸如「实验室」这样的页面，显示标题的部分
-.page-heading {
-  @include bg-front;
-  @apply h-[30rem];
+// page 应该应用于 main
+.page {
+  &__banner-wrapper {
+    @include bg-front;
+    @apply mt-8;
+    @apply h-[30rem];
+  }
+  &__headpic {
+    @apply shadow-lg rounded-lg;
+  }
+  &__heading {
+    @apply leading-relaxed;
+  }
+  &__divide {
+    @apply my-8;
+    &--between-sections {
+      @extend .container;
+    }
+  }
+  &__meta {
+    @apply leading-relaxed mt-4;
+    @include text-secondary;
+  }
+  &__section {
+    @extend .container;
+    &--wide {
+      @extend .container--wide;
+    }
+    &--width-unlimited {
+      @apply max-w-full;
+    }
+    &--at-top {
+      @apply mt-8 sm:mt-32;
+    }
+    &--after-something {
+      @apply mt-16 py-16;
+    }
+    &--with-padding {
+      @apply py-24;
+    }
+  }
+}
+
+.cover {
+  @apply min-h-screen;
+  @apply flex flex-col justify-center;
+  &__heading {
+    @apply drop-shadow-xl;
+    @apply animate-fade-up animate-ease-in-out animate-duration-[800ms];
+  }
+  &__subheading {
+    @apply drop-shadow-xl;
+    @apply mt-4 font-bold;
+    @apply animate-fade-up animate-ease-in-out animate-duration-[800ms];
+    @include text-secondary;
+  }
+  &__nav {
+    @apply mt-12 font-thin;
+    @apply animate-fade-up animate-ease-in-out animate-duration-[800ms];
+    @include text-tertiary;
+  }
+  &__hint {
+    @apply mt-2 font-thin;
+    @include text-tertiary;
+    &--fade-in {
+      @apply animate-fade-up animate-ease-in-out animate-duration-[800ms];
+    }
+  }
+  &__warning {
+    @apply mt-2;
+  }
+}
+
+.banner {
+  @apply container container--wide h-full px-4 flex flex-col justify-center items-center sm:items-start;
+  &__heading {
+    @apply mt-4;
+  }
+  &__caption {
+    @apply mt-4 text-secondary;
+  }
+}
+
+// 博客文章列表底部的「上一页 / 下一页」组件
+.paginator {
+  @apply flex;
+  @include text-secondary;
+  &__left {
+    @apply basis-1/3 text-left;
+  }
+  &__center {
+    @apply basis-1/3 text-center;
+  }
+  &__right {
+    @apply basis-1/3 text-right;
+  }
 }
 
 .card {
@@ -131,7 +237,7 @@ footer {
 
   // 在一段文字中插入信息的 card 组件
   &--in-content {
-    @apply p-2 leading-loose;
+    @apply p-2 leading-relaxed;
   }
 
   // 专门用于 Bento 的 card 组件
@@ -204,16 +310,16 @@ hr {
   @apply prose dark:prose-neutral dark:prose-invert max-w-none;
   img {
     @apply shadow-lg rounded-lg;
+    @apply max-h-[600px];
   }
   blockquote {
     @apply not-italic;
+    @include font-kai;
     strong,
     b {
       @apply font-bold;
     }
-    :before {
-      content: "";
-    }
+    :before,
     :after {
       content: "";
     }
@@ -228,7 +334,7 @@ hr {
     @apply relative;
   }
 
-  .heading-anchor {
+  &__heading-anchor {
     @apply absolute;
     @apply -top-20;
   }
@@ -238,8 +344,10 @@ hr {
   // 1）当应用于标题时不美观
   // 2）当应用于大量超链接列表时，无必要（因为用户已知道都是超链接）
   // 所以添加此属性，消除默认下划线，改为 hover 下划线
-  .no-underline-by-default {
-    @apply decoration-transparent hover:decoration-inherit transition-all;
+  &__link {
+    &--no-underline-by-default {
+      @apply decoration-transparent hover:decoration-inherit transition-all;
+    }
   }
 }
 
@@ -298,6 +406,25 @@ hr {
   }
 }
 
-.font-kai {
-  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", "Noto Serif SC", serif;
+.selections {
+  @apply flex flex-wrap mt-8;
+  @extend .content;
+  &__group {
+    @apply basis-full sm:basis-1/2 px-2;
+    h2 {
+      @apply mt-2;
+    }
+  }
+}
+
+.footer {
+  @apply mt-16 py-8 text-sm;
+  @include text-secondary;
+  @extend .container, .container--wide;
+  &__row {
+    @apply flex justify-between flex-wrap;
+  }
+  &__divide {
+    @apply my-4;
+  }
 }

@@ -5,9 +5,11 @@ import friends_yml from "@configs/friends.yml";
 ---
 
 <Page title="友人" heading="友谊地久天长。" caption="SkyWT 的朋友们。">
-  <FriendsCards groups={friends_yml.groups} />
+  <section class="page__section page__section--wide">
+    <FriendsCards groups={friends_yml.groups} />
+  </section>
 
-  <section class="container mt-16 py-16">
+  <section class="page__section page__section--after-something">
     <h2>关于友情链接</h2>
     <div class="mt-8 content">
       <p>

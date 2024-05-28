@@ -12,21 +12,21 @@ const { frontmatter } = Astro.props;
   description={frontmatter.description}
   keywords={frontmatter.keywords.split(",")}
 >
-  <main>
-    <section class="container mt-8 sm:mt-32">
-      <h1 class="primary-color">{frontmatter.title}</h1>
-      <hr class="my-8" />
+  <main class="page">
+    <section class="page__section page__section--at-top">
+      <h1 class="page__heading">{frontmatter.title}</h1>
+      <hr class="page__divide" />
       <article class="content">
         <slot />
       </article>
-      {
-        frontmatter.id && (
-          <>
-            <hr class="my-8" />
-            <Comments client:load articleId={frontmatter.id} />
-          </>
-        )
-      }
     </section>
+    {
+      frontmatter.id && (
+        <>
+          <hr class="page__divide page__divide--between-sections" />
+          <Comments client:load articleId={frontmatter.id} />
+        </>
+      )
+    }
   </main>
 </Layout>

@@ -37,7 +37,7 @@ export default {
       }
       const slug = toc.slugify(content, { num: hash[content] });
       const heading = `<h${tok.hLevel}>`;
-      const anchor = `<a id="${slug}" class="heading-anchor"></a>`;
+      const anchor = `<a id="${slug}" class="content__heading-anchor"></a>`;
       return heading + anchor;
     };
 

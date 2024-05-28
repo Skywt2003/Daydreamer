@@ -44,3 +44,7 @@
 @mixin active-front {
   @apply bg-gray-300 dark:bg-neutral-950;
 }
+
+@mixin font-kai {
+  font-family: "KaiTi", "KaiTiGB2312", "STKaiti", "Noto Serif SC", serif;
+}

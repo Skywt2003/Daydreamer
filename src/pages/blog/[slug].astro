@@ -27,8 +27,8 @@ const article = await apis.getArticle(slug);
   description={article.description ?? article.digest}
   keywords={article.keywords ?? []}
 >
-  <main>
-    <section class="container mt-8 sm:mt-32">
+  <main class="page">
+    <section class="page__section page__section--at-top">
       {
         article.headPic && (
           <a href={article.headPic} data-fancybox data-caption={article.title}>
@@ -36,13 +36,13 @@ const article = await apis.getArticle(slug);
               src={article.headPic}
               alt={article.title}
               title={article.title}
-              class="mb-8 shadow-lg rounded-lg"
+              class="page__headpic mb-8"
             />
           </a>
         )
       }
-      <h1 class="leading-relaxed">{article.title}</h1>
-      <p class="mt-4 text-secondary leading-relaxed">
+      <h1 class="page__heading">{article.title}</h1>
+      <p class="page__meta">
         <i class="ri-calendar-line"></i>
         <span>{utils.getFullDate(article.created)}</span>
         {
@@ -56,16 +56,20 @@ const article = await apis.getArticle(slug);
         }
       </p>
 
-      <hr class="my-8" />
+      <hr class="page__divide" />
 
-      <article class="content content--slide-enter">
+      <article class="content">
         <Fragment set:html={markdown.parseContent(article.text ?? "")} />
       </article>
-
-      <hr class="my-8" />
-
-      {article.allowComment && <Comments client:load articleId={article.id} />}
     </section>
+    {
+      article.allowComment && (
+        <>
+          <hr class="page__divide page__divide--between-sections" />
+          <Comments client:load articleId={article.id} />
+        </>
+      )
+    }
   </main>
 </Layout>
 

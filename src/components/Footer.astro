@@ -12,63 +12,62 @@ interface Props {
 const { menuItems, pathItems } = Astro.props;
 ---
 
-<footer class="mt-16 py-8 text-secondary">
-  <div class="container container--wide text-sm">
-    <div class="flex justify-between flex-wrap">
-      <div class="m-2">
-        <Path items={pathItems} />
-      </div>
-      <div class="m-2">
-        <Menu showIcon={false} items={menuItems} />
-      </div>
+<footer class="footer">
+  <div class="footer__row">
+    <div class="m-2">
+      <Path items={pathItems} />
     </div>
-    <hr class="my-4" />
-    <div class="flex justify-between flex-wrap">
-      <p class="m-2">
-        &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
-        |
-        <a href="/sitemap-index.xml" class="link">站点地图</a>
-        |
-        <a href="/friends" class="link">友情链接</a>
-        |
-        <a href="https://foreverblog.cn/go.html" class="link">虫洞</a>
-        <!-- |
+    <div class="m-2">
+      <Menu showIcon={false} items={menuItems} />
+    </div>
+  </div>
+  <hr class="footer__divide" />
+  <div class="footer__row">
+    <p class="m-2">
+      &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
+      |
+      <a href="/sitemap-index.xml" class="link">站点地图</a>
+      |
+      <a href="/friends" class="link">友情链接</a>
+      |
+      <a href="https://foreverblog.cn/go.html" class="link">虫洞</a>
+      <!-- |
         <a href="https://github.com/Skywt2003/Daydreamer" class="link"
           >Daydreamer</a
         > -->
-      </p>
-      <div class="m-2">
-        <CC by={true} nc={true} />
-        <NotByAI />
-        <a
-          href="https://www.foreverblog.cn/"
-          target="_blank"
-          class="inline-block mx-1"
-        >
-          <img
-            src="https://img.foreverblog.cn/logo_en_default.png"
-            alt="Forever Blog Badage"
-            class="inline-block h-4 grayscale"
-          />
-        </a>
-      </div>
+    </p>
+    <div class="m-2">
+      <CC by={true} nc={true} />
+      <NotByAI />
+      <a
+        href="https://www.foreverblog.cn/"
+        target="_blank"
+        class="inline-block mx-1"
+      >
+        <img
+          src="https://img.foreverblog.cn/logo_en_default.png"
+          alt="Forever Blog Badage"
+          class="inline-block h-4 grayscale"
+        />
+      </a>
     </div>
-    <div class="flex justify-between flex-wrap">
-      <p class="m-2">
-        <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
-          浙 ICP 备 2021019606 号 - 1</a
-        >
-        |
-        <a
-          href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
-          target="_blank"
-          class="link before:content-[url('/mps.png')] before:align-middle"
-        >
-          浙公网安备 33080202000472 号</a
-        >
-      </p>
-      <p class="m-2">
-        <!-- <span class="align-middle">由</span>
+  </div>
+  <div class="footer__row">
+    <p class="m-2">
+      <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+        浙 ICP 备 2021019606 号 - 1</a
+      >
+      |
+      <a
+        href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472"
+        target="_blank"
+        class="link before:content-[url('/mps.png')] before:align-middle"
+      >
+        浙公网安备 33080202000472 号</a
+      >
+    </p>
+    <p class="m-2">
+      <!-- <span class="align-middle">由</span>
         <a
           href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
           class="inline-block align-middle"
@@ -76,7 +75,6 @@ const { menuItems, pathItems } = Astro.props;
           <img src="/upyun.png" class="h-6" />
         </a>
         <span class="align-middle">提供 CDN 加速、云存储服务</span> -->
-      </p>
-    </div>
+    </p>
   </div>
 </footer>

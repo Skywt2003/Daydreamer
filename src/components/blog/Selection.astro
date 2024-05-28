@@ -8,17 +8,20 @@ interface Props {
 const { selections } = Astro.props;
 ---
 
-<div class="flex flex-wrap content my-8">
+<div class="selections">
   {
     selections.map((selection) => (
-      <div class="basis-full sm:basis-1/2 px-2">
+      <div class="selections__group">
         <h2>{selection.name}</h2>
         <ul>
           {selection.slugs.map(async (slug) => {
             const post = await apis.getArticle(slug);
             return (
               <li>
-                <a href={"/blog/" + slug} class="no-underline-by-default">
+                <a
+                  href={"/blog/" + slug}
+                  class="content__link content__link--no-underline-by-default"
+                >
                   {post.title}
                 </a>
               </li>
@@ -29,9 +32,3 @@ const { selections } = Astro.props;
     ))
   }
 </div>
-
-<style lang="scss">
-  h2 {
-    @apply mt-4;
-  }
-</style>

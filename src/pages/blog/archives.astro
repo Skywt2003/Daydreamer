@@ -33,11 +33,11 @@ function groupByYear(articles: GotArticle[]): GroupedArticles {
   description={"文章归档"}
   keywords={[]}
 >
-  <main>
-    <section class="container mt-32">
-      <h1>文章归档</h1>
-      <p class="mt-4">共发布 {articles.length} 篇文章。</p>
-      <hr class="my-8" />
+  <main class="page">
+    <section class="page__section page__section--at-top">
+      <h1 class="page__heading">文章归档</h1>
+      <p class="page__meta">共发布 {articles.length} 篇文章。</p>
+      <hr class="page__divide" />
       <article class="content">
         {
           Object.entries(groupedArticles)
@@ -51,7 +51,7 @@ function groupByYear(articles: GotArticle[]): GroupedArticles {
                       {utils.getMonthDay(article.created)}
                       <a
                         href={"/blog/" + article.slug}
-                        class="no-underline-by-default"
+                        class="content__link content__link--no-underline-by-default"
                       >
                         {article.title}
                       </a>

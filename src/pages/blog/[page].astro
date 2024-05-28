@@ -25,11 +25,13 @@ const { page } = Astro.props;
   description={`博客第 ${page.currentPage} 页`}
   keywords={["博客"]}
 >
-  <main>
-    <section class="container mt-8 sm:mt-32">
+  <main class="page">
+    <section class="page__section page__section--at-top">
       <Passages articles={page.data} />
-      <div class="text-secondary flex">
-        <div class="basis-1/3">
+    </section>
+    <section class="page__section">
+      <div class="paginator">
+        <div class="paginator__left">
           {
             page.url.prev && (
               <a
@@ -41,10 +43,10 @@ const { page } = Astro.props;
             )
           }
         </div>
-        <div class="basis-1/3 text-center">
+        <div class="paginator__center">
           <span>第 {page.currentPage} 页</span>
         </div>
-        <div class="basis-1/3 text-right">
+        <div class="paginator__right">
           {
             page.url.next && (
               <a href={page.url.next} class="link">
@@ -59,20 +61,3 @@ const { page } = Astro.props;
     <Subscribe />
   </main>
 </Layout>
-
-<style lang="scss">
-  .link {
-    @apply transition-all;
-    &:hover {
-      @apply underline;
-    }
-  }
-
-  img {
-    @apply shadow-lg rounded;
-  }
-
-  h1 {
-    @apply leading-normal;
-  }
-</style>

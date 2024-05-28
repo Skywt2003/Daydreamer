@@ -85,15 +85,15 @@ export default function Comments(props: Props) {
       }}
     >
       {error ? (
-        <>
+        <section className="page__section">
           <h2>
             <i className="ri-discuss-line"></i>
             {" 评论"}
           </h2>
           <p className="card card--in-content my-4">🚧 抱歉，获取评论失败。</p>
-        </>
+        </section>
       ) : (
-        <>
+        <section className="page__section">
           <h2>
             <i className="ri-discuss-line"></i>
             {count > 0 ? " 共 " + count + " 条评论" : " 暂无评论"}
@@ -108,32 +108,36 @@ export default function Comments(props: Props) {
               sending={sending}
             ></Comment>
           ))}
-        </>
+        </section>
       )}
-      <hr className="my-8" />
-      <h2>
-        <i className="ri-discuss-line"></i>
-        {" 发表新的评论"}
-      </h2>
-      {selected === null ? (
-        <CommentForm
-          selected={selected}
-          setSelected={setSelected}
-          submitComment={submitComment}
-          sending={sending}
-        ></CommentForm>
-      ) : (
-        <div className="mt-4">
-          <span
-            className="link underline"
-            onClick={() => {
-              setSelected(null);
-            }}
-          >
-            取消评论回复
-          </span>
-        </div>
-      )}
+
+      <hr className="page__divide page__divide--between-sections" />
+
+      <section className="page__section">
+        <h2>
+          <i className="ri-discuss-line"></i>
+          {" 发表新的评论"}
+        </h2>
+        {selected === null ? (
+          <CommentForm
+            selected={selected}
+            setSelected={setSelected}
+            submitComment={submitComment}
+            sending={sending}
+          ></CommentForm>
+        ) : (
+          <div className="mt-4">
+            <span
+              className="link underline"
+              onClick={() => {
+                setSelected(null);
+              }}
+            >
+              取消评论回复
+            </span>
+          </div>
+        )}
+      </section>
     </CookiesProvider>
   );
 }

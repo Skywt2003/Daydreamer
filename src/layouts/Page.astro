@@ -16,19 +16,13 @@ const { title, heading, caption } = Astro.props;
   description=""
   keywords={[]}
 >
-  <main>
-    <section class="mt-8">
-      <div class="page-heading">
-        <div
-          class="container container--wide h-full px-4 flex flex-col justify-center items-center sm:items-start"
-        >
-          <h1 class="mt-4">{heading}</h1>
-          <h5 class="mt-4 text-secondary">{caption}</h5>
-        </div>
-      </div>
-      <div class="container container--wide">
-        <slot />
+  <main class="page">
+    <section class="page__banner-wrapper">
+      <div class="banner">
+        <h1 class="banner__heading">{heading}</h1>
+        <h5 class="banner__caption">{caption}</h5>
       </div>
     </section>
+    <slot />
   </main>
 </Layout>

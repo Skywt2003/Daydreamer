@@ -32,26 +32,30 @@ services_yml.groups.map((group) => {
   heading="生命不息，折腾不止。"
   caption="我自托管的各种开源服务。"
 >
-  <p class="text-secondary text-center mt-16">
-    <span class="mr-4">
-      <span class="bg-green-500 rounded-full w-2 h-2 inline-block align-middle"
-      ></span>
-      {running} 运行中
-    </span>
-    <span class="mr-4">
-      <span class="bg-yellow-500 rounded-full w-2 h-2 inline-block align-middle"
-      ></span>
-      {stopped} 暂时关闭
-    </span>
-    <span>
-      <span class="bg-red-500 rounded-full w-2 h-2 inline-block align-middle"
-      ></span>
-      {error} 故障
-    </span>
-  </p>
-  <ServicesCards groups={services_yml.groups} />
+  <section class="page__section page__section--wide">
+    <p class="text-secondary text-center mt-16">
+      <span class="mr-4">
+        <span
+          class="bg-green-500 rounded-full w-2 h-2 inline-block align-middle"
+        ></span>
+        {running} 运行中
+      </span>
+      <span class="mr-4">
+        <span
+          class="bg-yellow-500 rounded-full w-2 h-2 inline-block align-middle"
+        ></span>
+        {stopped} 暂时关闭
+      </span>
+      <span>
+        <span class="bg-red-500 rounded-full w-2 h-2 inline-block align-middle"
+        ></span>
+        {error} 故障
+      </span>
+    </p>
+    <ServicesCards groups={services_yml.groups} />
+  </section>
 
-  <section class="container mt-16 py-16">
+  <section class="page__section page__section--after-something">
     <h2>什么是 Self-hosting？</h2>
     <div class="mt-8 content">
       <p>Self-hosting 即「自托管」，将开源的服务部署在自己的服务器上。</p>

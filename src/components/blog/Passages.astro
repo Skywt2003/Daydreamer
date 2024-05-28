@@ -20,7 +20,10 @@ const { articles } = Astro.props;
             />
           </a>
         )}
-        <a href={"/blog/" + article.slug} class="no-underline-by-default">
+        <a
+          href={"/blog/" + article.slug}
+          class="content__link content__link--no-underline-by-default"
+        >
           <h1>{article.title}</h1>
         </a>
         <div class="summary">
