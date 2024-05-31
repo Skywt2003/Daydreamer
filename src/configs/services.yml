@@ -21,28 +21,28 @@ groups:
         app: Snapdrop 文件传输
         url: https://drop.skywt.cn
         method: Docker
+      - name: GHProxy
+        app: GitHub 资源访问加速
+        url: https://gh.skywt.net
+        method: Cloudflare Workers
       - name: CV
         app: WebCV 在线简历
         url: https://cv.skywt.cn
-        method: Vercel, DogeCloud
+        method: Vercel
   - name: 👨‍💻 效率工具
     services:
       - name: Memos
         app: memos 卡片笔记
         url: https://memos.skywt.cn
         method: Docker
-      - name: Password
-        app: VaultWarden 密码管理
-        url: https://pass.skywt.cn
-        method: Docker
-      - name: Chat
-        app: NextChat GPT 客户端
-        url: https://chat.skywt.cn
-        method: Vercel
-      - name: ChatGPT
-        app: Better ChatGPT 客户端
-        url: https://chatgpt.skywt.cn
-        method: Vercel
+      # - name: Chat
+      #   app: NextChat GPT 客户端
+      #   url: https://chat.skywt.cn
+      #   method: Vercel
+      # - name: ChatGPT
+      #   app: Better ChatGPT 客户端
+      #   url: https://chatgpt.skywt.cn
+      #   method: Vercel
       - name: RSS
         app: FreshRSS 在线阅读器
         url: https://rss.skywt.cn
@@ -58,6 +58,10 @@ groups:
       - name: Archive
         app: ArchiveBox 网页存档
         url: https://archive.skywt.cn
+        method: Docker
+      - name: Password
+        app: VaultWarden 密码管理
+        url: https://pass.skywt.cn
         method: Docker
   - name: 🛠️ 开发与运维
     services:
@@ -123,6 +127,10 @@ groups:
       #   url: https://pgadmin.skywt.cn
       #   method: Docker 💤
       #   status: stopped
+      - name: DBMS
+        app: CloudBeaver 数据库管理
+        url: https://dbms.skywt.cn
+        method: Docker
       - name: phpMyAdmin
         app: phpMyAdmin
         url: https://phpmyadmin.skywt.cn
