@@ -43,12 +43,12 @@ export default {
 
     parser.renderer.rules.image = (tokens: any[], idx: number) => {
       const src = u.escapeHtml(tokens[idx].src);
-      const title = tokens[idx].title
-        ? u.escapeHtml(u.replaceEntities(tokens[idx].title))
-        : "";
       const alt = tokens[idx].alt
         ? u.escapeHtml(u.replaceEntities(u.unescapeMd(tokens[idx].alt)))
         : "";
+      const title = tokens[idx].title
+        ? u.escapeHtml(u.replaceEntities(tokens[idx].title))
+        : alt;
       const fancybox_opening = `<a href="${src}" data-fancybox data-caption="${title}">`;
       const image = `<img src="${src}" alt="${alt}" title="${title}" />`;
       const fancybox_closing = `</a>`;
