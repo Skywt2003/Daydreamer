@@ -6,7 +6,7 @@
 
 作为一个折腾博客五年多的「折腾达人」，本文汇总自己多年的折腾经验，形成一个我认为的「最佳实践」，希望能够作为参考。同时为了简化过程，这篇博客介绍的并不完全是我服务器上的部署方式，更加优化的一些地方在文末有列举。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="博客,搭建"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -154,7 +154,7 @@
 <p>还需要安装 Caddy（或 Nginx），作为 Web Server。这个相当于作为整个服务器的「网关」，可以不以容器的方式安装（因为 Caddy 的 <code>caddy reload</code> 命令真的很爽）。</p>
 <h2><a id="创建容器网络" class="content__heading-anchor"></a>创建容器网络</h2>
 <p>为了让 Typecho 容器能够访问数据库，phpMyAdmin 能够管理数据库，我们要分别为他们创建网络，和数据库互联。假定这两个网络名为 <code>blog</code> 和 <code>db_admin</code>。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/258955983.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/01/258955983.png" alt="容器网络" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/258955983.png" data-fancybox data-caption="容器网络"><img src="https://blog.skywt.cn/usr/uploads/2023/01/258955983.png" alt="容器网络" title="容器网络" /></a></p>
 <p>我们可以先创建网络，稍后在相关的 <code>docker-compose.yml</code> 中指定连接：</p>
 <pre><code class="language-bash">docker network create blog
 docker network create db_admin
@@ -192,7 +192,7 @@ docker network create db_admin
 <pre><code class="language-bash">docker-compose up -d
 </code></pre>
 <p>Docker Compose 会自动 pull 最新的 MariaDB 镜像并在后台启动容器（<code>-d</code> 就是使容器后台运行）。使用命令 <code>docker ps -a</code> 查看所有容器，可以查看到该容器正在运行。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/3536239266.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/3536239266.png" alt="Docker 启动了 mariadb 容器" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/3536239266.png" data-fancybox data-caption="Docker 启动了 mariadb 容器"><img src="https://blog.skywt.cn/usr/uploads/2022/07/3536239266.png" alt="Docker 启动了 mariadb 容器" title="Docker 启动了 mariadb 容器" /></a></p>
 <p><strong>💡 Docker 镜像的来源：</strong>所有 Docker 镜像都可以在 <a href="https://hub.docker.com/">Dockerhub</a> 上找到，<code>docker pull</code> 的默认来源也是 Dockerhub。</p>
 <p>💡 运行 <code>docker-compose down</code> 会<strong>停止并删除</strong>容器。所以我们需要「容器无状态」，将带有状态的数据都可持久化存储，挂载到外部。</p>
 <h2><a id="用-phpmyadmin-管理数据库" class="content__heading-anchor"></a>用 phpMyAdmin 管理数据库</h2>
@@ -221,13 +221,13 @@ docker network create db_admin
 <li><code>ports</code> 指定将容器内 80 端口映射到容器外 8080 端口。启动容器之后访问 http://IP:8080 就可以看到 phpMyAdmin 管理面板啦。</li>
 </ul>
 <p>在 phpMyAdmin 中，我们需要为 Typecho 创建数据库和用户。点击上面的「账户」，然后点击「新增用户账户」，用户名填写 typecho，密码可以随机设置一个，并勾选「创建与用户同名的数据库并授予所有权限」。其他部分保持默认即可。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1458052255.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1458052255.png" alt="phpMyAdmin 创建用户和数据库" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1458052255.png" data-fancybox data-caption="phpMyAdmin 创建用户和数据库"><img src="https://blog.skywt.cn/usr/uploads/2022/07/1458052255.png" alt="phpMyAdmin 创建用户和数据库" title="phpMyAdmin 创建用户和数据库" /></a></p>
 <p>点击「执行」，我们就为 Typecho 创建了用户和数据库。</p>
 <p><strong>💡 为什么不使用 root 用户？</strong>root 用户拥有最高权限，任何时候使用 root 用户都是非常危险的。而我们创建的 typecho 用户则只有操作 typecho 这一个数据库的权限。</p>
 <h2><a id="安装-typechofpm容器" class="content__heading-anchor"></a>安装 Typecho（FPM）容器</h2>
 <p>💡 <strong>关于 typecho 与 typecho-fpm：</strong> 在 Dockerhub 上可以看到 Typecho 镜像有多个 tags：<code>typecho</code>、<code>typecho-apache</code>（同 <code>typecho</code>）和 <code>typecho-fpm</code>。<code>typecho</code> 镜像中自带了一个 Apache，启动容器后可以直接访问；而 <code>typecho-fpm</code> 只有 php 环境，并不带 Web 服务器，需要自己配置一个支持 php-fpm 的服务器提供访问。<br>
 为了使用 HTTPS，我们必须在外部配置一个 Web 服务器，所以如果使用前者，流量会经过两个 Web 服务器而拖慢速度。更推荐使用后者。WordPress 和 WordPress-fpm 镜像同理。原理图如下：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/1750222524.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/01/1750222524.png" alt="Typecho FPM 原理示意" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/1750222524.png" data-fancybox data-caption="Typecho FPM 原理示意"><img src="https://blog.skywt.cn/usr/uploads/2023/01/1750222524.png" alt="Typecho FPM 原理示意" title="Typecho FPM 原理示意" /></a></p>
 <p>用以下 <code>docker-compose.yml</code> 文件启动 Typecho-fpm 容器：</p>
 <pre><code class="language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span>
 
@@ -280,9 +280,9 @@ sudo apt install caddy
 </ul></li>
 </ul>
 <p>保存 Caddyfile 后，启动 Caddy（<code>service caddy start</code>），在相同目录下 <code>caddy reload</code>。这时访问 example.com 就可以看到 Typecho 的初始化界面了！</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1696539037.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1696539037.png" alt="Typecho 容器运行成功" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1696539037.png" data-fancybox data-caption="Typecho 容器运行成功"><img src="https://blog.skywt.cn/usr/uploads/2022/07/1696539037.png" alt="Typecho 容器运行成功" title="Typecho 容器运行成功" /></a></p>
 <h2><a id="typecho-初始化" class="content__heading-anchor"></a>Typecho 初始化</h2>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1653221282.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1653221282.png" alt="Typecho 的初始化界面" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1653221282.png" data-fancybox data-caption="Typecho 的初始化界面"><img src="https://blog.skywt.cn/usr/uploads/2022/07/1653221282.png" alt="Typecho 的初始化界面" title="Typecho 的初始化界面" /></a></p>
 <p>数据库地址就是 mariadb 容器名，用户名、数据库名、密码就是刚才在 phpMyAdmin 里创建的。一切就绪后，点击「确认，开始安装」。</p>
 <p>然后设置好 Typecho 登录用的账号密码，不出意外，Typecho 博客就搭建完成啦！</p>
 <h2><a id="下一步" class="content__heading-anchor"></a>下一步</h2>

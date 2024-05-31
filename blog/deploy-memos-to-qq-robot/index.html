@@ -2,7 +2,7 @@
 
 "><meta name="robots" content="index, follow"><meta property="og:title" content="部署 Memos 接入 QQ 机器人"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/deploy-memos-to-qq-robot/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="部署 Memos 接入 QQ 机器人"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="前几天部署了开源的浮墨笔记（flomo）替代品：[Memos](https://github.com/usememos/memos)。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="memos,usememos,qq,机器人,部署"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -142,7 +142,7 @@ MEMOS_API = <span class="hljs-string">&#x27;https://memos.skywt.cn/api/memo?open
 </code></pre>
 <p>回到 NoneBot 的主目录启动 bot.py 并放在后台，发送消息 <code>memo 这是一条测试笔记</code>，可以看到正确的输出。<br>
 进入 Memos 可以看到成功添加了一条 memo。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" alt="聊天界面，机器人回复添加成功" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" data-fancybox data-caption="聊天界面，机器人回复添加成功"><img src="https://blog.skywt.cn/usr/uploads/2023/01/172335256.png" alt="聊天界面，机器人回复添加成功" title="聊天界面，机器人回复添加成功" /></a></p>
 <h2><a id="参考资料" class="content__heading-anchor"></a>参考资料</h2>
 <ul>
 <li><a href="https://docs.go-cqhttp.org/guide">go-cqhttp 使用指南</a></li>

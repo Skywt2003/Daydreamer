@@ -2,7 +2,7 @@
 
 "><meta name="robots" content="index, follow"><meta property="og:title" content="全新个人网站 Daydreamer 设计开发手记"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/new-personal-website-daydreamer-design-development-log/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="全新个人网站 Daydreamer 设计开发手记"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="想写一个新的个人主页很久了，甚至基于 Next.js、Nuxt.js 分别做过雏形，但是都半途而废。寒假接触到了早有耳闻的 Astro.js，这个框架简洁优雅的设计吸引了我。于是一发不可收拾，开发了全新版本的主页，并将各种页面和博客系统也集成进了这个主页。在设计和开发的过程中有无数的纠结和思考，特此记录下来。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="个人主页,astro,tailwind,bento,darkmode,夜间模式,暗黑模式,github,actions"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -99,7 +99,7 @@
 <p>很早之前试用了 <a href="https://bento.me">Bento.me</a> 这个广受好评的工具，虽然功能比较有限，但是其 UI / UX 设计精雕细琢，非常精致。这次可以说我的网站 Bento 部分其实很大程度仿制了 Bento.me 的风格。</p>
 <p>由于 Bento 布局不是线性的，所以没法像平常的网页一样采用响应式的逻辑，当页面宽度减小时自动调整。Bento.me 对于这个问题的解决办法是：提供大屏幕（四列）、小屏幕（两列）两套布局，让用户分别配置调整。参考这一方法，我的 Bento 组件也针对四列、两列分别指定了布局。</p>
 <p>在使用 Astro 编写这一部分组件的时候，最麻烦的其实是确定一个 Box 的抽象层级。每个 Box 看似都可以写成一个组件、可复用，但是许多 Box 又有不同的背景、背景位置、前景色、hover 行为、对齐方式…… 这些都只能在 Box 的最外围元素上指定，如果通过 props 传递，则过于冗长，代码会十分丑陋。综合考虑，我定义每个 Box 最外层用一个 BoxWrapper 组件，专门负责 positioning，分别指定四列、两列模式的大小、位置；在 BoxWrapper 的 slot 中放置内部的组件，干脆分为多种组件：纯文字的 Box、带背景的 BgBox、地图组件 Map（其实这是个图片）以及 MBTI 组件等等。虽然各个组件之中还有不少重复代码，不符合 DRY 原则，但是暂时想不到更加合理的解耦合方式。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/2186256819.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/2186256819.png" alt="最终的 Bento 效果" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/2186256819.png" data-fancybox data-caption="最终的 Bento 效果"><img src="https://blog.skywt.cn/usr/uploads/2024/03/2186256819.png" alt="最终的 Bento 效果" title="最终的 Bento 效果" /></a></p>
 <h2><a id="字体的选择" class="content__heading-anchor"></a>字体的选择</h2>
 <p>对于一个有设计的网站，字体的选择其实非常重要。它是网站 personality 的重要部分（参考《Refactoring UI》）。</p>
 <p>我一直钟情于 serif 字体，因为它们看起来文艺且有些复古，非常适合个人博客。所以，这次我还是全局使用了<strong>思源宋体</strong>。为了在不同平台呈现相同的字体体验，我使用 Google Fonts 并使用 loli.net 的镜像。</p>
@@ -113,7 +113,7 @@
 <p>让网站支持 darkmode 是我的一个执念。因为：1）所有浏览器、操作系统都有了 darkmode 的功能，如果不去兼容这个功能，会感觉自己的网站是「功能残缺」的；2）我既想要纯白的简洁设计，又想要在被窝里看着不伤眼睛的暗色设计。同时做两套主题能够满足我这样的要求。</p>
 <p>然而 darkmode 设计和实现起来并不容易。为了保证颜色的协调，往往需要对两套主题单独调整颜色，并不是简单的「反色」。</p>
 <p>比如，我们天然会认为「<strong>颜色较浅（较亮）的元素是突出的</strong>」。如果要绘制一个按钮或卡片，不管白天黑夜，前景都必须比背景更浅（更亮）。所以在白天就要采用「浅灰色背景、白色前景」，夜晚就要使用「黑色背景、深灰色前景」，这样看起来才会统一且协调。比如，看下面四种配色方案下的按钮，显然 2 和 3 是比较正常的，而 1 和 4 则比较奇怪。（然而事实上，1 和 3、2 和 4 分别互为反色。）</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/3175599989.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/3175599989.png" alt="四种配色方案中的按钮" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/3175599989.png" data-fancybox data-caption="四种配色方案中的按钮"><img src="https://blog.skywt.cn/usr/uploads/2024/03/3175599989.png" alt="四种配色方案中的按钮" title="四种配色方案中的按钮" /></a></p>
 <p>由此可见，<strong>darkmode 不能是单纯的反色</strong>，而是对色彩方案的单独设计。这一点在 Apple Developer 的《<a href="https://developer.apple.com/cn/design/human-interface-guidelines/">人机界面指南</a>》中《<a href="https://developer.apple.com/cn/design/human-interface-guidelines/dark-mode">深色模式</a>》一篇也有提及：</p>
 <blockquote>
 <p>深色模式下的调色盘包含<strong>较暗的背景颜色和较亮的前景颜色</strong>。需要注意的是，<strong>这些颜色不一定是其对应的浅色颜色的反转</strong>：虽然很多颜色是被反转的，但有些颜色则不是。有关更多信息，请参阅<a href="https://developer.apple.com/cn/design/human-interface-guidelines/color#Specifications">规范</a>。</p>
@@ -134,7 +134,7 @@
 <p>然而，「夜晚不会产生阴影」的前提「夜晚没有光线」，这一点很奇怪，因为如果没有光线，我们就看不见任何东西，怎么能看见页面中的各种元素呢？</p>
 <p>这提示我重新思考 lightmode、darkmode 和整个网页对应我们现实生活经验中的具体场景。想象一个开着灯的房间，地面上摆满了网页里的各种元素。当开着灯的时候（lightmode），所有按钮、卡片都呈现白色，并自然地投射出黑色的阴影；当关了灯后（darkmode），所有按钮、卡片<strong>本身会发出微弱的光</strong>（否则无法解释为什么还能看到它们）。</p>
 <p>因此，我调整了夜间模式阴影的颜色。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/1210753927.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/1210753927.png" alt="白天和夜晚的按钮" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/1210753927.png" data-fancybox data-caption="白天和夜晚的按钮"><img src="https://blog.skywt.cn/usr/uploads/2024/03/1210753927.png" alt="白天和夜晚的按钮" title="白天和夜晚的按钮" /></a></p>
 <p>这不是最好的设计，但应该至少是逻辑可以自洽的设计……</p>
 <h3><a id="主题切换按钮" class="content__heading-anchor"></a>主题切换按钮？</h3>
 <p>还有一个比较犹豫的点，就是是否要在网站中加上<strong>主题切换按钮</strong>，即在「跟随系统、亮色主题、暗色主题」之间切换。这是不少网站流行的做法。</p>

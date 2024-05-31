@@ -2,7 +2,7 @@
 
 "><meta name="robots" content="index, follow"><meta property="og:title" content="七大私有化部署笔记 &#38; 知识库系统横评"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/seven-notes-and-wiki-systems-evaluation/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="七大私有化部署笔记 &#38; 知识库系统横评"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="故事的起源是一个由于线性代数期末考几道计算题卡住算不出来折腾半天而考后看某课代表提前交卷又感觉人均 AK 了以致十分 emo 想要暂时逃避学习的下午。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="思源笔记,notion,私有化,本地,部署,outline,trilium,appflowy,anytype,obsidian"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -106,7 +106,7 @@
 <li><strong>纯文本的 Markdown 功能不足。</strong>观摩了 Obsidian 开创性的双链功能，才感觉这种近乎纯文本的记笔记方式可能的确不能更好地组织知识网络。并且文档树完全是以文件名排序的，也不利于自己的整理。</li>
 </ul>
 <h2><a id="从-notion-而来的需求" class="content__heading-anchor"></a>从 Notion 而来的需求</h2>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/3923025903.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/3923025903.png" alt="Notion 界面" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/3923025903.png" data-fancybox data-caption="Notion 界面"><img src="https://skywt.cn/usr/uploads/2022/01/3923025903.png" alt="Notion 界面" title="Notion 界面" /></a></p>
 <p>Notion 可以是非常优秀的知识库软件，界面美观、功能强大、理念先进，但是存在一些问题：</p>
 <ul>
 <li><strong>无法私有化部署。</strong>数据只能存储在 Notion 的服务器上。这就导致：
@@ -145,7 +145,7 @@
 <p>注意：本文仅针对建立「学习笔记&amp;知识库系统」这一方面对这些应用测评，很多应用（如 Notion）除此之外还有团队协作、项目规划以至于建立 GTD 系统等等用途，而其他应用（如思源笔记）则没有，不代表各个方面某应用绝对的优胜性。</p>
 <h2><a id="outline这是想给人部署的吗" class="content__heading-anchor"></a>Outline：这是想给人部署的吗？？</h2>
 <p>Outline 的定位是「团队知识库」，我正是被这优雅的界面设计打动的。</p>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/2662116183.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/2662116183.png" alt="Outline 官方 demo 截图" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/2662116183.png" data-fancybox data-caption="Outline 官方 demo 截图"><img src="https://skywt.cn/usr/uploads/2022/01/2662116183.png" alt="Outline 官方 demo 截图" title="Outline 官方 demo 截图" /></a></p>
 <p>和大多数开源软件的商业模式一样，Outline 提供了收费的在线版（30 天免费体验，而且不支持个人用户）和可以自己部署的开源版本。自己部署就是「折腾而白嫖」的一种方式，说得好听点就叫做「技术变现」吧……</p>
 <p>然而这个软件好像设计之初就根本没有考虑个人私有化部署，吐血。</p>
 <ul>
@@ -177,17 +177,17 @@
 <p>逻辑和 Notion 类似，功能非常强大，对于每个文档可以自定义若干属性（一些归属于文档的键值对），也有不同的文档类型（文本、关系图、Mermaid 图、代码等），可以定义特殊的文档存放一些 js 脚本，通过属性可以调用这些脚本实现特定的功能。</p>
 <p>例如，按下左边的 Today 按钮可以立即在 root &gt; Journal &gt; 年份 &gt; 月份 文件夹下用每日模板创建一个页面并自动填好日期，而这一切都是在一个叫做 Today 的文档中的脚本实现的，由于这个文档设置了书签而会显示在左边侧栏。</p>
 <p>所谓的「插件」统统可以通过文档内 js 实现。例如这个字数统计插件：</p>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/1372974204.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/1372974204.png" alt="Trilium 的字数统计插件" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/1372974204.png" data-fancybox data-caption="Trilium 的字数统计插件"><img src="https://skywt.cn/usr/uploads/2022/01/1372974204.png" alt="Trilium 的字数统计插件" title="Trilium 的字数统计插件" /></a></p>
 <p>有了这个文档，只要在文章属性中加上 <code>#wordCount</code> 标签，就会执行这里面的脚本显示文章的字数统计。</p>
 <p>官方样例还给出了各种脚本建立 Todo List、可视化体重追踪程序等等一系列强大的用途。</p>
 <p>只是，这个 UI……</p>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/76241332.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/76241332.png" alt="Trilium 的默认主题界面" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/76241332.png" data-fancybox data-caption="Trilium 的默认主题界面"><img src="https://skywt.cn/usr/uploads/2022/01/76241332.png" alt="Trilium 的默认主题界面" title="Trilium 的默认主题界面" /></a></p>
 <p>太丑了……（吐血）</p>
 <p>这诡异的字体，这生硬的交互，这令人窒息的圆角矩形……这就叫做「直男审美」吧……<br>
 真的，开发者难道没有用过 Notion 吗？就不能学学吗？？？</p>
 <p>好在 Trilium 支持自定义主题，只要建立一个文档，设置属性 <code>#appTheme=themeName</code> 就可以在 config 里看到名为 themeName 的主题了。</p>
 <p>搞来 Notion 的配色，尝试调整了一下默认的主题：</p>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/3885939585.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/3885939585.png" alt="Trilium 自定义主题后的界面" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/3885939585.png" data-fancybox data-caption="Trilium 自定义主题后的界面"><img src="https://skywt.cn/usr/uploads/2022/01/3885939585.png" alt="Trilium 自定义主题后的界面" title="Trilium 自定义主题后的界面" /></a></p>
 <pre><code class="language-css"><span class="hljs-selector-pseudo">:root</span> {
     <span class="hljs-attr">--main-font-family</span>: serif <span class="hljs-meta">!important</span>;
     <span class="hljs-attr">--tree-font-family</span>: serif <span class="hljs-meta">!important</span>;
@@ -256,7 +256,7 @@
 <p>总之，虽然不是特别适合我自己，Trilium 还是值得尝试的。</p>
 <h2><a id="appflowy为取代-notion-而生的新秀" class="content__heading-anchor"></a>AppFlowy：为取代 Notion 而生的新秀</h2>
 <p>AppFlowy 似乎就是为了取代 Notion 而生的。</p>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/785568134.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/785568134.png" alt="AppFlowy 官方 demo 截图" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/785568134.png" data-fancybox data-caption="AppFlowy 官方 demo 截图"><img src="https://skywt.cn/usr/uploads/2022/01/785568134.png" alt="AppFlowy 官方 demo 截图" title="AppFlowy 官方 demo 截图" /></a></p>
 <p>试用了一下，还是放弃了。</p>
 <ul>
 <li>不支持网页端，只有本地客户端。</li>
@@ -298,7 +298,7 @@
    --ssl=<span class="hljs-literal">true</span>
 </code></pre>
 <p>注意如果用 Nginx/Caddy 反代走 https 则需要加上后面的 <code>--servePath=docs.skywt.cn --ssl=true</code>，否则不需要。</p>
-<p><a href="https://skywt.cn/usr/uploads/2022/01/1016182864.png" data-fancybox data-caption=""><img src="https://skywt.cn/usr/uploads/2022/01/1016182864.png" alt="思源笔记界面" title="" /></a></p>
+<p><a href="https://skywt.cn/usr/uploads/2022/01/1016182864.png" data-fancybox data-caption="思源笔记界面"><img src="https://skywt.cn/usr/uploads/2022/01/1016182864.png" alt="思源笔记界面" title="思源笔记界面" /></a></p>
 <p>其实看得出来基本上这个软件的很多功能甚至有些 UI 都是仿 Obsidian 的。不过在某些方面比 Obsidian 更加优秀。<br>
 总体来说这个体验还是比较完美的。</p>
 <ul>

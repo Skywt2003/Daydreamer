@@ -157,7 +157,7 @@ $(<span class="hljs-variable language_">document</span>).<span class="hljs-title
 }
 </code></pre>
 <p><code>interfaceForStu</code> 这个函数就是弹出点击验证码的。可以看到点击签退时，弹出了一个浮层，尝试构造一个 <code>src</code> 去看看，比如 <code>https://5u5u5u5u.com:443/learning/popup/inspect_ques2.jsp?type=2&amp;frequency=3&amp;time=3&amp;verifyNotPassStyle=1&amp;timeoutStyle=1&amp;resType=1</code>。可以看到这个 iframe 内部的验证码页面：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" alt="“无忧乐行”的验证码" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" data-fancybox data-caption="“无忧乐行”的验证码"><img src="https://blog.skywt.cn/usr/uploads/2022/07/3520133636.png" alt="“无忧乐行”的验证码" title="“无忧乐行”的验证码" /></a></p>
 <p>形式是向后端请求一个图片，要求用户在指定时间内按照顺序用鼠标点击四个汉字的位置。</p>
 <p>F12 审阅这个页面的代码。还是一样的风格，JS 内联在 HTML 里……（看第五行和第八行，一个 type 字段写了两遍，单双引号、空格风格还不统一…… 🤮）</p>
 <pre><code class="language-js"><span class="hljs-comment">//后台验证</span>
@@ -354,7 +354,7 @@ $(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
 </code></pre>
 <p>很简单，只要把绑定在 document 上 <code>hide</code> 事件的监听器取消掉就好了。</p>
 <p>然而其实还有另一个监听器（虽然没找到代码在哪里）：<code>visibilitychange</code>，通过 Chrome 的 F12 可以找到：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" alt="Chrome 的 F12 工具可以看到监听器" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" data-fancybox data-caption="Chrome 的 F12 工具可以看到监听器"><img src="https://blog.skywt.cn/usr/uploads/2022/07/1234198249.png" alt="Chrome 的 F12 工具可以看到监听器" title="Chrome 的 F12 工具可以看到监听器" /></a></p>
 <p>用 jQuery 的 <code>off()</code> 可以解绑这俩监听器：</p>
 <pre><code class="language-js">$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;hide&#x27;</span>);
 $(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;visibilitychange&#x27;</span>);

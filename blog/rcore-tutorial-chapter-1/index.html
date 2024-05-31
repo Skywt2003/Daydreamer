@@ -2,7 +2,7 @@
 
 "><meta name="robots" content="index, follow"><meta property="og:title" content="rCore Tutorial Chapter 1 练习"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/rcore-tutorial-chapter-1/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="rCore Tutorial Chapter 1 练习"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="这是 [rCore Tutorial Book](http://rcore-os.cn/rCore-Tutorial-Book-v3) 第一章「应用程序与基本执行环境」的练习。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="rcore,chapter1,练习,题解,教程"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -493,7 +493,7 @@ error!(<span class="hljs-string">&quot;[kernel] .bss [{:#x}, {:#x})&quot;</span>
 <pre><code>make run LOG=trace
 </code></pre>
 <p>可以看到终端彩色的输出：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" alt="终端的彩色信息输出" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" data-fancybox data-caption="终端的彩色信息输出"><img src="https://blog.skywt.cn/usr/uploads/2023/04/3054220379.png" alt="终端的彩色信息输出" title="终端的彩色信息输出" /></a></p>
 <h3><a id="问答作业" class="content__heading-anchor"></a>问答作业</h3>
 <p><strong>请学习 gdb 调试工具的使用（这对后续调试很重要），并通过 gdb 简单跟踪从机器加电到跳转到 0x80200000 的简单过程。只需要描述重要的跳转即可，只需要描述在 qemu 上的情况。</strong></p>
 <p>由于我们的内核运行在 QEMU 里，我们没法直接通过原生的 gdb 像调试寻常的程序一样对它进行调试。不过，QEMU 提供了一些接口，可以通过网络（1234 端口）与 QEMU 之外的 gdb 对接（这个功能设计之初是为了方便网络调试），在 <code>os/Makefile</code> 里，已经为我们写好了使用 gdb 开启调试的命令。</p>

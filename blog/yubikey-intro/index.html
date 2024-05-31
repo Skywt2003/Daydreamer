@@ -2,7 +2,7 @@
 
 "><meta name="robots" content="index, follow"><meta property="og:title" content="Yubikey 安全密钥折腾记（2）：使用入门"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/yubikey-intro/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Yubikey 安全密钥折腾记（2）：使用入门"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="自从上次[使用 Cloudflare Zero 的优惠买下两个 YubiKey](https://blog.skywt.cn/posts/yubikey-purchase) 之后，这俩玩意被我搁置了一个学期。原因之一是学习成本不低，关于它们的文档、教程都充斥着不少不太了解的名词、概念，令人望而却步。于是经过查阅各种资料，在这篇博客中我将（用白话文）介绍我**从零开始**的 YubiKey 入门之旅。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="Yubikey,使用,入门,教程,OTP,FIDO,PIV,NFC"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -114,7 +114,7 @@ Yubikey 安全密钥折腾记（2）：使用入门 </span> </h5> <div class="na
 <li><a href="https://www.yubico.com/products/yubico-authenticator/">Yubico Authenticator</a>：一个 App，用于生成二次验证的密码（生成时需要 YubiKey 验证），类似于 Google Authenticator。不同之处在于真正秘密的信息都存储在 YubiKey 硬件上，通过很强的加密机制保障安全性。手机上可以通过 NFC 和 YubiKey 交互。</li>
 </ul>
 <p>安装 YubiKey Manager 后，插入 YubiKey 它就可以识别到。可以看到支持的三个主要应用：OTP、FIDO2 和 PIV，这是三个相互独立的功能。在 Interfaces 里则可以控制各种功能的开关。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2023/08/3328629347.jpg" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/08/3328629347.jpg" alt="YubiKey Manager 的界面" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/08/3328629347.jpg" data-fancybox data-caption="YubiKey Manager 的界面"><img src="https://blog.skywt.cn/usr/uploads/2023/08/3328629347.jpg" alt="YubiKey Manager 的界面" title="YubiKey Manager 的界面" /></a></p>
 <h2><a id="设置前准备" class="content__heading-anchor"></a>设置前准备……</h2>
 <p>理论上，为了保证较高的安全性，接下来的操作都应该在一台全新安装的、断开网络连接的 USB 镜像（比如 Ubuntu Live）或者虚拟机中进行；所有生成的临时文件都应该放在重启后就消失的 tmpfs 里。如果确实有特殊的需求，可以配置这样的环境，不过对于个人而言应该没什么必要。</p>
 <h2><a id="otp" class="content__heading-anchor"></a>OTP</h2>
@@ -147,7 +147,7 @@ Yubikey 安全密钥折腾记（2）：使用入门 </span> </h5> <div class="na
 <li><strong>WebAuthn</strong>，使用兼容 FIDO2 协议的硬件来认证，比如 YubiKey。最近比较流行的 Passkey（通行密钥）也属于此。</li>
 <li>其他冷门的协议，比如下图 VaultWarden 支持的「YubiKey OTP 安全钥匙」，就是前文所述 OTP 功能里的 Yubico OTP 的协议。</li>
 </ul>
-<p><a href="https://blog.skywt.cn/usr/uploads/2023/07/41258762.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2023/07/41258762.png" alt="VaultWarden 支持的各种 2FA 方式" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2023/07/41258762.png" data-fancybox data-caption="VaultWarden 支持的各种 2FA 方式"><img src="https://blog.skywt.cn/usr/uploads/2023/07/41258762.png" alt="VaultWarden 支持的各种 2FA 方式" title="VaultWarden 支持的各种 2FA 方式" /></a></p>
 <p>上面提到的 <strong>WebAuthn</strong> 就是 FIDO 的一项功能。国外如 Google、Microsoft、Apple 等的应用基本都支持这个协议，可能由于 FIDO Alliance 在国内影响力有限，国内应用很少支持。可以在  https://webauthn.me 测试 WebAuthn 功能。</p>
 <p>由于我使用的 BitWarden 本身支持设置 TOTP 作为各种 2FA 并且非常方便，我只有在自己 VaultWarden 实例的登录上使用了 YubiKey 作为 2FA。</p>
 <h3><a id="ssh-via-fido" class="content__heading-anchor"></a>SSH via FIDO</h3>

@@ -99,17 +99,17 @@
 <!--more-->
 <h2><a id="10appnode" class="content__heading-anchor"></a>1.0：AppNode</h2>
 <p>最早听说的就是「Linux 服务器流行用 CentOS」，于是在最早买的美国的 Bandwagon VPS 上装了 CentOS（当然主要用途不是搭网站，而是 emmmmm……）。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/1945717048.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/1945717048.png" alt="AppNode 官网截图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/1945717048.png" data-fancybox data-caption="AppNode 官网截图"><img src="https://blog.skywt.cn/usr/uploads/2022/03/1945717048.png" alt="AppNode 官网截图" title="AppNode 官网截图" /></a></p>
 <p>想不起来是怎么接触到 AppNode 的。这真的是一个非常优秀的产品。</p>
 <p>「LNMP」指的是 Linux + Nginx + MySQL + PHP，据说是当时最为流行的服务器架构。简单来说，大概示意图是这样的（灵魂画师上线了（这个海豚真难画 😵‍💫））：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/4230507240.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/4230507240.png" alt="LNMP 架构示意图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/4230507240.png" data-fancybox data-caption="LNMP 架构示意图"><img src="https://blog.skywt.cn/usr/uploads/2022/03/4230507240.png" alt="LNMP 架构示意图" title="LNMP 架构示意图" /></a></p>
 <p>AppNode 所有功能完全免费，之前付费版和免费版唯一的区别是免费版限制 3 个网站，付费版无限制。某次更新之后，免费版的网站数量限制增加到了 10 个，基本上就是无限制了。</p>
 <p>AppNode 还集成了一大堆功能，所有功能都有对应的「管理面板」的组件，可视化控制，简直是神仙设计。<br>
 （和 AppNode 类似的还有一个「宝塔面板」（有个很 NB 的域名：bt.cn），虽然功能似乎更加强大，不过显然有更多收费功能和其他限制，似乎主打「提供服务」。个人认为对于个人服务器运维而言不如 AppNode）</p>
 <p>可惜 AppNode 很早就停更了。也由于很久没更新，时不时就有一些奇怪的 bug。这种过于「黑箱」的封装式设计，虽然利于生产环境的快速部署，但是显然是不利于我们的开发和学习研究的。所以我就去寻找了 AppNode 更「透明化」的替代品。</p>
 <h2><a id="15lnmporg" class="content__heading-anchor"></a>1.5：LNMP.org</h2>
 <p>「LNMP 一键安装包」这种东西其实是不少的，但是功能全面、持续更新的似乎不多。<a href="https://lnmp.org">LNMP.org</a> 是我找到的比较满意的选择。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/3259393412.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/3259393412.png" alt="LNMP.org 的官网截图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/3259393412.png" data-fancybox data-caption="LNMP.org 的官网截图"><img src="https://blog.skywt.cn/usr/uploads/2022/03/3259393412.png" alt="LNMP.org 的官网截图" title="LNMP.org 的官网截图" /></a></p>
 <p>不仅可选安装 LNMPA（Apache）、PureFTP 等等，还有 Let's Encrypt 自动获取证书的脚本（并会自动写入 crontab 自动续签），以及数据库备份、修复权限等等各种脚本。</p>
 <p>所有功能都是以 Shell 脚本的形式实现的，足够轻量，不会像 AppNode 那样感觉是一个「黑箱」（虽然使用起来也没有 AppNode 直观），甚至可以非常容易地阅读源码，自己动手对脚本进行一些小修改。</p>
 <p>纯命令行操作，不提供图形界面。其实对于各种功能熟悉了之后，会感觉 AppNode 的图形界面挺累赘的。真正专业的运维不可能在一个网页里点来点去吧 =_=</p>
@@ -145,7 +145,7 @@
 <p>解决方案自然是有的。我发现了这个叫做 Traefik 的东西。</p>
 <p>通过在容器的 <code>docker-compose.yml</code> 中指定一些 <code>labels</code>，容器可以被 Traefik 探测到，并可以通过调整 <code>labels</code> 设置反向代理等等。Traefik 本身也作为一个容器（只是挂载了 <code>/var/run/docker.sock</code> 可以探测 Docker 的服务），只暴露 80/443 端口，而其他容器只须加入 Traefik 的网络，无需暴露任何端口。</p>
 <p>这 Traefik，相比我之前「暴露端口」的部署方式，有点真正「路由网关」的意思了。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/2542314666.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/2542314666.png" alt="Traefik 架构示意图（来自官方文档）" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/2542314666.png" data-fancybox data-caption="Traefik 架构示意图（来自官方文档）"><img src="https://blog.skywt.cn/usr/uploads/2022/03/2542314666.png" alt="Traefik 架构示意图（来自官方文档）" title="Traefik 架构示意图（来自官方文档）" /></a></p>
 <p>然而，Traefik 只能作为路由网关，而没有 Web 服务器的功能。如果我要搞一个静态的网站，还需要在它的后端部署上 Caddy/Nginx。</p>
 <p>尤其是，<a href="https://blog.skywt.cn/posts/gracefully-caddy-wildcard-certificates-and-404-page">这里提到的奇怪的需求</a>，很难用 Traefik 实现。虽然它也提供了自动申请、续签证书，Alidns 泛域名证书插件等等，但是我需要的是 Traefik 做一次路由，如果没有匹配则传给 Caddy 再做一次路由，这种思路非常不优雅。事实上我搜了一通资料也没有配置成功。</p>
 <p>然而我发现了另一个东西来替代 Traefik：Caddy-docker-proxy。</p>
@@ -153,7 +153,7 @@
 <p>这本质上只是一个 Caddy 的插件，为 Caddy 加上了服务探测的功能，使用之后我们既可以像 Traefik 一样通过 <code>labels</code> 设定配置而被服务发现，也可以用 Caddyfile 写自己特殊的配置（作为 Web 服务器使用），插件会自动在内存中生成一个完整的 Caddyfile。换句话说，对于我的需求来说它结合了 Caddy 和 Traefik 的优点。正合我意！</p>
 <p>关于这东西的安装，还是挺曲折的。Caddy-docker-proxy 的 Docker 镜像里 Caddy 主程序没有集成 Alidns 的插件，而这是我必需的。所以我用了一个有点骚的方法：在宿主机用 Xcaddy 编译好带 Caddy-docker-proxy 和 Alidns 两个插件的 Caddy 二进制文件，然后挂载到容器内的 <code>/bin/caddy</code>。</p>
 <p>所以现在是 Caddy 作为网关，也可以进行容器化部署了。这大概是本阶段的终极架构！</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/3605943964.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/03/3605943964.png" alt="最终架构示意图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/03/3605943964.png" data-fancybox data-caption="最终架构示意图"><img src="https://blog.skywt.cn/usr/uploads/2022/03/3605943964.png" alt="最终架构示意图" title="最终架构示意图" /></a></p>
 <h2><a id="30kubernetes" class="content__heading-anchor"></a>3.0：Kubernetes</h2>
 <p>这大概才是生产前沿真正应用的技术。但是我还不会。</p>
 <p><strong>未完待续……</strong></p>

@@ -10,7 +10,7 @@
 
 **本文将带你踏上一段旅程，从一个空文件夹开始，一步一步添加工具，最终配置一套完整的前端工具链。**在其中，我们可以对各个工具的概念、用途和原理有一个比较系统的认识。每个部分都列出了相关文档的链接，方便查阅。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="前端,配置,Webpack,React.js,TypeScript,PostCSS,Tailwind,ESLint"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -143,7 +143,7 @@
 <p>我们使用 <strong>React.js</strong> 前端框架，使用 <strong>Tailwind</strong> 编写 CSS，使用 <strong>TypeScript</strong> 编写脚本，并使用 <strong>ESLint</strong> 进行代码检查。最终，希望达到和使用 create-react-app 工具创建的项目类似的开发体验。</p>
 <h2><a id="tldr" class="content__heading-anchor"></a>TL；DR</h2>
 <p><strong>配置完毕后，整套工具链的示意图如下：</strong></p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" alt="配置完毕后的工具链示意图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" data-fancybox data-caption="配置完毕后的工具链示意图"><img src="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" alt="配置完毕后的工具链示意图" title="配置完毕后的工具链示意图" /></a></p>
 <h2><a id="从创建一个-npm-项目开始" class="content__heading-anchor"></a>从创建一个 npm 项目开始</h2>
 <p>创建一个空目录（一般目录名就是项目名），进入其中执行 <code>npm init</code>，这个命令会交互式地让你填写该项目的元信息。</p>
 <p>我们将这个项目命名为 <strong>study-chain</strong>（意为 study frontend toolchain）：</p>
@@ -785,7 +785,7 @@ npm i @types/react @types/react-dom --save-dev
 <p>至此，一套比较完整的<strong>前端项目 starter</strong> 终于配置完毕了。完整的项目可以在<a href="https://github.com/Skywt2003/starter.git">这个仓库</a>查看。</p>
 <p>回顾一下，我们首先使用了 <strong>webpack</strong> 作为打包工具；其 <strong>PostCSS</strong> 插件能够对 CSS 进行处理；<strong>Tailwind</strong> 则可以作为 PostCSS 插件集成。我们使用 <strong>Babel</strong> 这个 transpiler 处理各种脚本文件，其中 <strong>env</strong> preset 将 ECMAScript 较先进的特性转译为旧特性的实现，确保兼容性；<strong>TypeScript</strong> 和 <strong>React JSX</strong> 两个 preset 则分别将它们各自的语法转译成 JavaScript。最后，我们使用 <strong>ESLint</strong> 作为代码质量检查工具，并配置其针对 TypeScript 和 JSX 的规则。</p>
 <p>使用的工具链关系示意图如下：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" alt="配置完毕后的工具链示意图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" data-fancybox data-caption="配置完毕后的工具链示意图"><img src="https://blog.skywt.cn/usr/uploads/2024/03/543791890.png" alt="配置完毕后的工具链示意图" title="配置完毕后的工具链示意图" /></a></p>
 <p>相比从前，各种工具让开发的过程变得越来越优雅和美妙。然而每个工具背后，都有无数前人的辛勤付出，没有他们的这些努力，我们无法得到这样现代化的前端开发体验。</p>
 <p>现代前端开发，就是<strong>站在巨人的肩膀上</strong>。</p>
 <h3><a id="一点思考-🤔" class="content__heading-anchor"></a>一点思考 🤔</h3>

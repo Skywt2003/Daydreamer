@@ -2,7 +2,7 @@
 
 "><meta name="robots" content="index, follow"><meta property="og:title" content="配置一个舒适的 zsh 环境"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/configure-a-comfortable-zsh-environment/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="配置一个舒适的 zsh 环境"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="作为 *nix（指 macOS）重度用户，也作为 VPS 玩家，每天接触最多的就是终端。一个高效、美观的终端可以显著提升日常作业的效率和幸福感。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="zsh,macos,配置,插件"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -104,10 +104,10 @@
 </blockquote>
 <p><a href="https://github.com/romkatv/powerlevel10k">Github 项目地址</a></p>
 <p>这个主题非常强大，第一次使用就惊艳到了我。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/1018271782.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/10/1018271782.png" alt="Powerlevel10k 初始配置" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/1018271782.png" data-fancybox data-caption="Powerlevel10k 初始配置"><img src="https://blog.skywt.cn/usr/uploads/2022/10/1018271782.png" alt="Powerlevel10k 初始配置" title="Powerlevel10k 初始配置" /></a></p>
 <p>首先第一次使用就有一个非常友好的 configuration wizard 引导你进行「傻瓜式」的配置。这个主题也提供了相当多的样式，可以根据偏好自己选择。不管是简洁还是炫酷的风格都有……</p>
 <p>而且它还支持集成 git。当进入一个 git 仓库，当前输入行前就会显示对应的信息，包括有多少更改未提交、分支名等等。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/1288509120.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/10/1288509120.png" alt="Powerlevel10k 会显示 git 仓库的信息" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/1288509120.png" data-fancybox data-caption="Powerlevel10k 会显示 git 仓库的信息"><img src="https://blog.skywt.cn/usr/uploads/2022/10/1288509120.png" alt="Powerlevel10k 会显示 git 仓库的信息" title="Powerlevel10k 会显示 git 仓库的信息" /></a></p>
 <p>p10k 本身提供了丰富的插件（这好像是插件的插件）。一切都是可以自定义的。如果不满足于引导式配置程序简单的配置，也可以自己修改相应的配置文件（如图中右边显示的 <code>127.0.0.1:10800</code> 就是我配置了终端显示当前代理）。支持在终端显示时间、网络甚至内存等等各种信息。</p>
 <p>这个主题的安装也非常方便（其实本质上是 zsh 插件），先 clone 这个 git 仓库（我自己一般都 clone 到 <code>~/.zsh</code> 目录下），然后在 <code>.zshrc</code> 中引入即可：</p>
 <pre><code class="language-bash"><span class="hljs-built_in">source</span> ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
@@ -121,7 +121,7 @@
 </blockquote>
 <p><a href="https://github.com/zsh-users/zsh-autosuggestions">Github 项目地址</a></p>
 <p>这个插件可以根据历史记录等对当前的输入提供建议，建议会以浅灰色的背景显示于当前输入文本「下方」：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/3275320390.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/10/3275320390.png" alt="zsh-autosuggestions 提供了 echo 的建议" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/3275320390.png" data-fancybox data-caption="zsh-autosuggestions 提供了 echo 的建议"><img src="https://blog.skywt.cn/usr/uploads/2022/10/3275320390.png" alt="zsh-autosuggestions 提供了 echo 的建议" title="zsh-autosuggestions 提供了 echo 的建议" /></a></p>
 <p>像这张图中一样，只要输入 <code>ec</code> 两个字符，这个插件就会建议 <code>echo $SHELL</code>（由于我刚刚输入过这个命令），并以灰色显示。我可以照着输入，也可以按方向右键直接自动补全。</p>
 <p>（是不是有点 Copilot 的感觉 🙃）</p>
 <p>安装方法类似，clone 仓库后在 <code>.zshrc</code> 里加入：</p>
@@ -137,7 +137,7 @@
 <p>之前使用过 <a href="https://fig.io/">Fig</a> 这个软件，这是一个终端的拓展程序，可以在输入的时候实时提供一个小下拉列表，显示自动补全的各个候选项。然而劝退我的是这个软件需要登录才能使用，而且随着商业化也变得愈发臃肿。于是我找到了更优秀、更原生的平替，就是 zsh-autocomplete。</p>
 <p>这个插件和 Fig 一样可以在输入的时候实时提供自动补全，而且是在终端内实时更新的。这被称为「实时预输入自动补全」（real-time type-ahead autocompletion）。即每多输入一个字符，补全列表就会发生变化，根据用户的输入实时更新。</p>
 <p>更舒服的是它可以实时显示常用命令各种选项的解释文本，有了这个插件基本可以不需要 <code>man</code> 了，也不再需要死记硬背各种 arguments 是什么意思。这个功能大大提高了终端的操作效率。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/2096228329.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/10/2096228329.png" alt="zsh-autocomplete 可以实时显示各种选项的解释" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/10/2096228329.png" data-fancybox data-caption="zsh-autocomplete 可以实时显示各种选项的解释"><img src="https://blog.skywt.cn/usr/uploads/2022/10/2096228329.png" alt="zsh-autocomplete 可以实时显示各种选项的解释" title="zsh-autocomplete 可以实时显示各种选项的解释" /></a></p>
 <p>和其他插件的用法一样，clone 到本地之后只要在 <code>.zshrc</code> 里 <code>source</code> 即可：</p>
 <pre><code class="language-bash"><span class="hljs-built_in">source</span> ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 </code></pre>

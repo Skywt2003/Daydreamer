@@ -133,7 +133,7 @@
 <p>返回状态码则可以直接在 <code>file_server</code> 小节中加上 <code>status 404</code>。这个功能貌似是经过了<a href="https://github.com/caddyserver/caddy/issues/3312">一番讨论</a>之后加上的。文档中的相关说明在<a href="https://caddyserver.com/docs/caddyfile/directives/file_server">这里</a>。</p>
 <p>由于 <code>404.html</code> 引用了同目录下的资源文件，但是如果直接访问的话引用地址（如 <code>//xxx.skywt.cn/assets</code>）又没有进行重定向，资源会加载不出。解决方法是 <code>redir /assets/* https://skywt.cn{uri}</code>（当然 rewrite 也可以）。</p>
 <p>404 页面放一句一言。有内味了。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/02/3056187439.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/02/3056187439.png" alt="404 页面的截图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/02/3056187439.png" data-fancybox data-caption="404 页面的截图"><img src="https://blog.skywt.cn/usr/uploads/2022/02/3056187439.png" alt="404 页面的截图" title="404 页面的截图" /></a></p>
 <h2><a id="caddyfile" class="content__heading-anchor"></a>Caddyfile</h2>
 <p>完整的 Caddyfile（部分）如下：</p>
 <pre><code>*.skywt.cn {

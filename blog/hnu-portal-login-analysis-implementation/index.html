@@ -101,7 +101,7 @@
 <!--more-->
 <p><strong>⚠️ 警告：本文介绍的研究试验仅供学习交流，请勿用于任何非法用途。</strong></p>
 <p>提示：为了保证账号安全性，本文中所有的示例字符串都进行了一些字符的修改。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" data-fancybox data-caption="湖南大学「统一身份认证」截图"><img src="https://blog.skywt.cn/usr/uploads/2022/05/1036085568.png" alt="湖南大学「统一身份认证」截图" title="湖南大学「统一身份认证」截图" /></a></p>
 <p>研究地址：<a href="http://cas.hnu.edu.cn/cas/login">http://cas.hnu.edu.cn/cas/login</a>，其实是「统一身份认证」，应该是想做一个类似 SSO 的东西。非常神奇的是这个网站直接用 https 访问会出错，但是登录之后又会跳转 https。</p>
 <h2><a id="按下登录之后" class="content__heading-anchor"></a>按下「登录」之后</h2>
 <p>审查元素可以看到整个表单的 HTML 代码是这样的：</p>
@@ -148,7 +148,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </code></pre>
 <p>整个表单的 id 是 <code>fm1</code>，可以看到其中「登录」按钮组件 id 为<code>dl</code>。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" alt="文件树" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" data-fancybox data-caption="文件树"><img src="https://blog.skywt.cn/usr/uploads/2022/05/2711591586.png" alt="文件树" title="文件树" /></a></p>
 <p>查看文件树，我们大概可以猜到 <code>/cas/js/login/login.js</code> 是负责处理登录操作的代码，<code>pwdYz.js</code> 用来验证密码的强度，<code>security.js</code> 是下面会用到的 RSA 加密算法的代码。</p>
 <p>按下这个登录按钮之后会发生什么呢？我们可以看到 <code>login.js</code> 中有这样一段代码：</p>
 <pre><code class="language-js">jQuery.<span class="hljs-title function_">getJSON</span>(<span class="hljs-string">&quot;v2/getPubKey&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>){

@@ -16,7 +16,7 @@ DVWA 的每个漏洞（vulnerability）分为四个安全等级（也代表攻�
 * **High**：（或许更难攻击的）不良安全实践。
 * **Impossible**：安全的实践。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="DVWA,通关,教程,靶场,漏洞,ctf"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -281,16 +281,16 @@ DVWA 通关教程 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tf
 </code></pre>
 <p><strong>⚠️ 注意：在开启之前，检查系统端口占用情况。</strong>macOS 默认会安装 httpd，这个服务可能会被某些软件（疑似 Tailscale）开启，占用 80 端口。即使容器跑起来之后，访问 <code>localhost</code> 只能看到莫名其妙的一行「It works! 」提示。这种情况下，要么关闭 httpd，要么更改容器映射的端口。</p>
 <p>现在，访问 <code>localhost</code>，能看到 DVWA 的登录页面，这代表服务成功跑起来了：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/1185019003.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/1185019003.png" alt="DVWA 登录页面" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/1185019003.png" data-fancybox data-caption="DVWA 登录页面"><img src="https://blog.skywt.cn/usr/uploads/2024/05/1185019003.png" alt="DVWA 登录页面" title="DVWA 登录页面" /></a></p>
 <p>此时还没创建数据库，可以访问 <code>localhost/setup.php</code> 进行初始化检查，并创建数据库：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/2381126624.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/2381126624.png" alt="DVWA Setup 页面" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/2381126624.png" data-fancybox data-caption="DVWA Setup 页面"><img src="https://blog.skywt.cn/usr/uploads/2024/05/2381126624.png" alt="DVWA Setup 页面" title="DVWA Setup 页面" /></a></p>
 <p>可以看到所有 PHP 相关的配置都默认 OK 了，无需我们手动调整。这就是使用 Docker 部署的好处。</p>
 <p>创建数据库后，回到登录页面，使用默认用户名 <code>admin</code> 和默认密码 <code>password</code> 即可登录。</p>
 <p>此外，访问 <code>localhost:8080</code>，可以看到 phpMyAdmin 的登录页面。使用 root 用户登录，即可方便地查看、编辑数据库。</p>
 <h3><a id="配置-recaptcha" class="content__heading-anchor"></a>配置 reCAPTCHA</h3>
 <p>DVWA 包含 Insecure CAPTCHA 这个实验，要用到 Google 的 reCAPTCHA。这是一种机器人检测工具，就是「给一堆图片让我们选出其中的摩托车」这类的验证器。</p>
 <p>为了使用 Google reCAPTCHA，我们需要在<a href="https://www.google.com/recaptcha/admin/create">这个页面</a>注册一个新的站点，申请 public key 和 private key：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/1012265525.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/1012265525.png" alt="DVWA 申请页面" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/1012265525.png" data-fancybox data-caption="DVWA 申请页面"><img src="https://blog.skywt.cn/usr/uploads/2024/05/1012265525.png" alt="DVWA 申请页面" title="DVWA 申请页面" /></a></p>
 <p>「reCAPTCHA type」其实是要选择版本，v2 版本是要对用户请求发起质询的，v3 版本则是在使用时根据用户行为打分。建议选择 v2 的「&quot;I'm not a robot&quot; Checkbox」版本，这个版本最直观。别忘了在下面的「Domains」里加入 <code>localhost</code>。</p>
 <p>提交之后会得到 public key 和 private key，需要将这两个 key 填入 DVWA 的配置文件。刚才在 compose 文件中我们已经将配置文件目录挂载到名为 <code>config</code> 的 volume 中，只要找到其中的 <code>config.inc.php</code> 并填写即可。</p>
 <p>由于众所周知的原因，reCAPTCHA 的默认服务器在国内无法访问，而我们的容器中的 PHP 进程需要访问其服务器才能验证 reCAPTCHA。解决方案是将 www.google.com 替换成不用代理即可访问的镜像站 www.recaptcha.net。需要修改的是 <code>/var/www/html/external/recaptcha/recaptchalib.php</code> 中的 url 变量。</p>
@@ -323,7 +323,7 @@ DVWA 通关教程 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tf
 <li>表单中增加了隐藏的 input 组件 <code>user_token</code>，值为每次随机的字符串，用于防止 CSRF 攻击。</li>
 </ul>
 <p>添加了 token 只是略微增加了我们爆破的复杂性：每一个登录请求都必须对应一个对表单的请求。可以使用 BurpSuite 的「Grep - Extract」功能提取 token，用 Pitchfork 模式逐一尝试。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/3106872127.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/3106872127.png" alt="截屏2022-08-03 17.44.14.png" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/3106872127.png" data-fancybox data-caption="截屏2022-08-03 17.44.14.png"><img src="https://blog.skywt.cn/usr/uploads/2024/05/3106872127.png" alt="截屏2022-08-03 17.44.14.png" title="截屏2022-08-03 17.44.14.png" /></a></p>
 <h3><a id="impossible账户锁定" class="content__heading-anchor"></a>Impossible：账户锁定</h3>
 <p>在 high 的基础上：</p>
 <ul>
@@ -416,7 +416,7 @@ DVWA 通关教程 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tf
 <h3><a id="medium限制-mime" class="content__heading-anchor"></a>Medium：限制 MIME</h3>
 <p>只限制请求的 MIME 为 <code>image/jpeg</code> 或者 <code>image/png</code>，并不实际检测上传的内容。</p>
 <p>可以仍然上传这个 PHP 文件，只要在上传的请求中修改一下 Content-Type 就行了。</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/4042635291.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/4042635291.png" alt="截屏2022-08-05 12.11.55.png" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/4042635291.png" data-fancybox data-caption="截屏2022-08-05 12.11.55.png"><img src="https://blog.skywt.cn/usr/uploads/2024/05/4042635291.png" alt="截屏2022-08-05 12.11.55.png" title="截屏2022-08-05 12.11.55.png" /></a></p>
 <p>也可以在真实的图片文件后加 PHP 一句话木马再上传。下文 high 中详述。</p>
 <h3><a id="high限制文件拓展名" class="content__heading-anchor"></a>High：限制文件拓展名</h3>
 <p>相比 medium，这个等级：</p>
@@ -758,7 +758,7 @@ DVWA 通关教程 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tf
 <p>和 medium 相比，这次代码做了充分的混淆，使代码几乎不可读。仔细观察，这段代码里用了 <code>eval</code> 函数。代码<strong>先构造出要执行的 JavaScript 代码</strong>，然后使用 <code>eval</code> 执行。</p>
 <p>既然构造出的代码要被执行，那能不能被我们看到呢？答案是肯定的。</p>
 <p>在 F12 里选中 Submit 按钮，可以看到其 click 事件绑定了一个函数，这个函数来源于 VM8084:1：</p>
-<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/4124032546.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/05/4124032546.png" alt="F12 console 里看到的事件绑定" title="" /></a></p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/05/4124032546.png" data-fancybox data-caption="F12 console 里看到的事件绑定"><img src="https://blog.skywt.cn/usr/uploads/2024/05/4124032546.png" alt="F12 console 里看到的事件绑定" title="F12 console 里看到的事件绑定" /></a></p>
 <p>这个 VM 指的是 V8 引擎为<strong>没有对应来源的 JavaScript</strong> 创造的虚拟机环境。对于有对应来源的脚本，这个地方本来会显示源文件地址。</p>
 <p>进入这个 VM8084:1，就能看到脚本构造出的可读 JavaScript 代码。看来，之前的代码混淆相当于没有作用了。</p>
 <pre><code class="language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;phrase&quot;</span>).<span class="hljs-property">value</span> = <span class="hljs-string">&quot;&quot;</span>;
