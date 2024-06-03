@@ -10,9 +10,10 @@
 - [x] 图片灯箱 Fancybox
 - [x] 组件数据分离
 - [x] 文章 RSS
-- [ ] 评论区头像加载优化（Gravatar 镜像缓存）
-- [ ] SEO 优化
-- [ ] blog.skywt.cn 全站重定向
+- [x] SEO 优化
+- [x] blog.skywt.cn 全站重定向
+- [ ] 评论区头像加载优化（Gravatar 镜像缓存等）
 - [ ] 实验室 Services 接入检测
   - [ ] 本地后端监听
-- [ ] 评论管理
+- [ ] pingback 协议
+- [ ] 图床、图片资源存储重定向
