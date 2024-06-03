@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #2：大学生活的一点点遗憾</title><link>https://skywt.cn/blog/weekly-2/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-2/</guid><pubDate>Mon, 27 May 2024 07:00:00 GMT</pubDate><content:encoded>&lt;!--more--&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #3：写博客的目的</title><link>https://skywt.cn/blog/weekly-3/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-3/</guid><description>&gt; 在我看来，驱动我们人类向前的东西中，真正有价值的不是国家，而是有创造性的、有情感的个人，是人格。只有个人才能造就高尚和尊贵，而随大流的人群在思想和感觉上都是迟钝的。
+&gt;
+&gt; —— 爱因斯坦《我的世界观》
+
+</description><pubDate>Mon, 03 Jun 2024 07:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;在我看来，驱动我们人类向前的东西中，真正有价值的不是国家，而是有创造性的、有情感的个人，是人格。只有个人才能造就高尚和尊贵，而随大流的人群在思想和感觉上都是迟钝的。&lt;/p&gt;
+&lt;p&gt;—— 爱因斯坦《我的世界观》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--more--&gt;
+&lt;h2&gt;🌆 封面图：夏天的云&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/06/351306371.jpg&quot; alt=&quot;封面图：夏天的云&quot;&gt;&lt;/p&gt;
+&lt;p&gt;夏天独有的粉红色的云。&lt;/p&gt;
+&lt;h2&gt;👔 衣物收纳方案&lt;/h2&gt;
+&lt;p&gt;本月底就要前往杭州，租的房子也马上要到期了。是时候做好搬家的准备了。&lt;/p&gt;
+&lt;p&gt;由于衣服太多，之前总是懒得整理，因为总是不想面对这种繁琐的局面。冬装由于很厚，不知道怎么收纳，只能挂在衣柜里，非常占地方。于是，在 b 站上找到了这个视频：&lt;a href=&quot;https://www.bilibili.com/video/BV1jb411F7BN/?share_source=copy_web&amp;amp;vd_source=cd3fa74d3421ce574a62e3c11dcde9f6&quot;&gt;教你 9 种冬装收纳技巧，整齐漂亮省空间，再多厚衣服也不怕&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;本视频提出的所有衣物收纳方案，其实可以归纳为两种：对于上衣（外套、羽绒服、卫衣等），将衣服上部分装入下 1/3 部分外翻形成的袋子，形成稳定的结构；对于长裤，将其横向卷起，塞入一条裤腿的 1/2 部分外翻形成的袋子，形成稳定结构。相比传统将衣服折叠起来收纳的方案，其创新点在于：通过这种方式收纳衣物之后，衣物都会形成稳定的结构，即使有扰动也不容易散架。这种方法太好了！&lt;/p&gt;
+&lt;p&gt;此外，我还要强烈推荐「真空收纳袋」，即可以抽真空的衣物收纳袋，最好配合电动的抽气泵。将衣服装进收纳袋并抽出空气，这么做的意义不仅在于减小体积，更大的优势是能让抽真空后的袋子变硬，达到一种稳定的状态。&lt;/p&gt;
+&lt;p&gt;结合以上两点，不仅衣物本身达到了稳定的状态，收纳袋的形态也能达成稳定的状态，非常方便搬运、寄件、存放。&lt;/p&gt;
+&lt;p&gt;之前提到了&lt;a href=&quot;https://skywt.cn/blog/weekly-0/#🎛%EF%B8%8F-无状态-stateless-的优雅性&quot;&gt;无状态 Stateless 的优雅性&lt;/a&gt;，我们应该对所有使用的应用进行&lt;strong&gt;显式的状态管理&lt;/strong&gt;。其实，对各种东西进行收纳，是一种&lt;strong&gt;对生活的状态管理&lt;/strong&gt;，良好的收纳能够解除生活与住所之间的耦合性。现在的我们或是住在宿舍，或是租房，处于实际上「居无定所」的状态，确定和管理归属于我们本身的「state」，至关重要。&lt;/p&gt;
+&lt;p&gt;此外，还有一个很好奇的地方：该视频的 up 主「妙招姐」的团队，是个专门制作「生活妙招」视频的团队，虽然看起来像营销号，但其实每期内容都比较有质量。比如这期衣物收纳，他们说这个方法之前，我自己根本想不到。&lt;strong&gt;他们是如何高效产出这样的内容的呢？&lt;/strong&gt;是从什么其他信息源获取的吗？可是我在网上其他地方也没找到类似的衣服收纳方案。难道是确定一个选题之后，所有团队成员苦思冥想「衣物收纳方法」头脑风暴个几天吗？&lt;/p&gt;
+&lt;h2&gt;🙏 赛博菩萨 Cloudflare&lt;/h2&gt;
+&lt;p&gt;本周通过 Cloudflare Workers 部署了 GitHub 文件资源访问加速服务：&lt;a href=&quot;https://gh.skywt.net&quot;&gt;gh.skywt.net&lt;/a&gt;。由于众所周知的原因，经常遇到 GitHub 访问受阻的问题，而在陌生的或临时使用的机器，或者新开起来的虚拟机或容器内，配置代理软件并不是一件特别容易和方便的事情。这个「Web 代理」能够提供一个临时性的解决方案。&lt;a href=&quot;https://github.com/Skywt2003/gh-proxy&quot;&gt;项目源码&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;项目其实 fork 自我一直在用的 &lt;a href=&quot;https://github.com/hunshcn/gh-proxy&quot;&gt;gh-proxy&lt;/a&gt;。我研究了一下其原理，并重构了部分源码。高中的时候就用过类似的服务了，当时以为这个很复杂。现在的我看这个源码，原来这么简单。&lt;/p&gt;
+&lt;p&gt;同时了解和学习了 Cloudflare Workers。再一次体验到了 Serverless 的便捷和优雅，更体会到了 Cloudflare 的菩萨心肠 😭……普通用户每天 10 万请求免费，可以说非常慷慨了。&lt;/p&gt;
+&lt;p&gt;推荐阅读：《&lt;a href=&quot;https://mp.weixin.qq.com/s/i4wk9ebyUK7irNSwuT3NWQ&quot;&gt;吊打公有云的赛博佛祖 Cloudflare&lt;/a&gt;》。Cloudflare 的恩情还不完！！！😭&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虽然我一直在倡导下云理念，但如果是上 Cloudflare 这样的赛博菩萨云，我举双手赞成。&lt;/p&gt;
+&lt;p&gt;利益相关：CF 没给我钱，我倒是给 CF 付了钱。纯粹是 CF 产品非常出色，极好地解决了我的需求，我非常乐意付点费支持一下，并告诉更多朋友有这项福利。与之相反，我付钱给传统公有云厂商之后的感受是，这做的都是什么玩意，我必须写文章狠狠地骂他们，才能缓解内心的精神损失。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;《&lt;a href=&quot;https://mp.weixin.qq.com/s/jU418HAlObe1nWgzEsLrJQ&quot;&gt;赛博菩萨 Cloudflare 圆桌访谈与问答录&lt;/a&gt;》中指出，「Cloudflare 有着相当独特的商业模式 —— &lt;strong&gt;免流量费，靠安全赚钱&lt;/strong&gt;。」&lt;/p&gt;
+&lt;p&gt;似乎国外的许多大厂都非常慷慨，Google Cloud、AWS、Cloudflare、Vercel 等等都有大量的免费额度，也有诸如 1.1.1.1 这类网络基础设施，供全球海量用户免费使用。而国内顶尖的大厂，却很少如此慷慨：买个服务器叠加一堆优惠券还不如国外便宜，提供的镜像站、DNS 也动不动就停止运营……&lt;/p&gt;
+&lt;h2&gt;📜 一份载入史册的杰出判决书&lt;/h2&gt;
+&lt;p&gt;上节《西方法律思想史》课后，老师给我们分享了这个&lt;a href=&quot;https://mp.weixin.qq.com/s/4Opl9uj0WaSh3pAuhPxzwQ&quot;&gt;载入史册的杰出判决书&lt;/a&gt;。说实话，看了之后，有些颠覆我对司法的印象。&lt;/p&gt;
+&lt;p&gt;检察院提起公诉，认为被告人：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;酒后驾驶摩托车，酒精含量达到醉酒标准；&lt;/li&gt;
+&lt;li&gt;无摩托车驾驶证，属于无证驾驶；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;已经认罪认罚。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;综上，检察院建议「&lt;strong&gt;判处被告人何某拘役一个月，并处罚金&lt;/strong&gt;」。&lt;/p&gt;
+&lt;p&gt;然而，法院认为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当事人虽然酒精含量达到醉酒标准，但事实并未影响驾驶（不同人对酒精的耐受能力不同）；当事人独自一人夜里在无人街道上驾驶，也没有危害公共安全，也不属于危险驾驶；&lt;/li&gt;
+&lt;li&gt;当事人老家在农村，大家普遍没有考取驾驶证的习惯；当事人已有数十年摩托车驾驶经验，且持有 C1 驾驶证，有驾驶更简单的摩托车的能力；&lt;/li&gt;
+&lt;li&gt;从社会效果角度，疫情当下，民生艰难，当事人如果被判拘役和罚金，则难免让人同情。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最终法院宣判&lt;strong&gt;当事人无罪&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;说实话，这非常颠覆我关于司法的印象。以前认为，法官是类似「自动机」的角色，即纯粹以法律法规、司法解释等为依据作出判决，相当于这些资料是「算法」，法官只是算法的执行官。事实上，这就是典型的&lt;strong&gt;实证主义法学&lt;/strong&gt;，即研究法律本身，不关心其哲学基础、与社会的关系等。这是一种「法律内部视角」。&lt;/p&gt;
+&lt;p&gt;窥见法学的世界全景后，会发现这种视角只是冰山一角。&lt;/p&gt;
+&lt;p&gt;再一次体会到所谓「隔行如隔山」，也很幸运能够看见这个新的广阔世界。&lt;/p&gt;
+&lt;h2&gt;📱 我对社交媒体的看法&lt;/h2&gt;
+&lt;p&gt;我大概已经一两个月没看朋友圈和 QQ 空间了。这并不是我一直以来的习惯，而是我充分考虑后的决策。&lt;/p&gt;
+&lt;p&gt;以前是很喜欢看和发微信朋友圈、QQ 空间的，认为这是我们表达自我、分享生活的渠道。诚然，表达自我、分享生活本身没有问题，但是我们的精力是多么有限，&lt;strong&gt;真正值得我们关注的人和事，少之又少&lt;/strong&gt;。朋友圈和空间展示的是所有好友的动态，大多数都是我不熟的朋友分享的生活里的鸡毛蒜皮，大多数无聊至极，我并不关心。而如果真正想要关心和自己玩的好的朋友最近的生活，没有比一起吃个饭聊聊天更好的方式，而不是通过朋友圈这样充斥着精心打造的人设的平台。&lt;/p&gt;
+&lt;p&gt;《为什么精英都是时间控》这本书里提到，相比时间管理，更重要的是&lt;strong&gt;精力管理&lt;/strong&gt;。身处信息爆炸的时代，每天都有无数的信息输入在蚕食我们的精力。所以，对每天输入我们脑海的信息进行把握，对于我们每天更高效的学习生活而言，是至关重要的。而朋友圈这类没有价值的信息，就没有必要来占据我们日常的精力了。&lt;/p&gt;
+&lt;p&gt;其实，我们会发现一个令人惊讶的事实：我们生活方式中的很大一部分，比如发朋友圈、刷视频等等，&lt;strong&gt;都是近 10 年才出现的&lt;/strong&gt;。但凡是 10 年以前人们的生活，都不存在朋友圈这样的东西。那才是自然状态的生活。我们如今的生活，其实严重地被微信这样的产品异化了。&lt;/p&gt;
+&lt;p&gt;除了朋友圈以外，我也卸载了手机上所有娱乐性质的社交媒体，包括小红书、b 站、酷安等。基于以下的考虑。&lt;/p&gt;
+&lt;p&gt;我认为，一般而言，刷社交媒体的行为有两种目的：1）获取信息；2）娱乐消遣。&lt;strong&gt;这两种目的是不能混淆的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于获取信息，我主要是用 RSS。我最讨厌根据兴趣推荐的无限信息流，那些工具往往会让人沉迷其中，丧失主动性，蚕食人的时间和注意力。一切商业化的获取信息的软件，设计的目的都在于此。而 RSS 真是个伟大的发明，结合我自己部署的 &lt;a href=&quot;https://rsshub.skywt.cn&quot;&gt;RSSHub&lt;/a&gt; 和 &lt;a href=&quot;https://wewe.skywt.cn&quot;&gt;WeWeRSS&lt;/a&gt;，一切信息流皆可 RSS，皆可被我们控制。这才是获取信息的最完美形态。&lt;/p&gt;
+&lt;p&gt;对于娱乐消遣，我倾向于使用连续的时间进行高质量的娱乐活动。比如看个电影。如果要刷 b 站，iOS / iPadOS / macOS 提供的「屏幕使用时间」功能也可以很好地阻止我们沉迷。（用 Apple 生态很好的一点是，macOS 上的 Safari 里的 bilibili 网页版，和 App 的限制是联动的）&lt;/p&gt;
+&lt;h2&gt;✍️ 写博客的目的&lt;/h2&gt;
+&lt;p&gt;博客文章可以分为两种：技术博客和生活博客。&lt;strong&gt;技术博客&lt;/strong&gt;就是写最近学的东西；&lt;strong&gt;生活博客&lt;/strong&gt;（如本篇）就是记录生活中发生的事情和一些思考。&lt;/p&gt;
+&lt;p&gt;技术博客的目的很简单，如上周「&lt;a href=&quot;https://skywt.cn/blog/weekly-2/#🌐-基于-tailscale-搭建个人网络基础设施的尝试&quot;&gt;基于 Tailscale 搭建『个人网络基础设施』的尝试&lt;/a&gt;」中提到，博客首先是提升自己认知能力的工具。这也是对所谓「费曼学习法」的实践，即「教会别人一个知识，才算自己学懂了这个知识」。其实也能从《卡片笔记写作法》中提到的「必要难度 Desirable Difficulty 理论」得到印证：人的记忆的存储强度 Storage Strength 和提取强度 Retrieval Strength 是&lt;strong&gt;负相关&lt;/strong&gt;的关系，即存储知识越困难，提取知识越容易。&lt;/p&gt;
+&lt;p&gt;而对于生活博客，这是我最近几周才开始写的。其主要意义在于提供一个表达和与人交流的平台。&lt;/p&gt;
+&lt;p&gt;人在与人交流的时候，会释放某些激素，从而调节情绪（忘了这是哪里看到过的理论了，不过大概是这个意思）。这就是为什么我们需要与人交流，否则如果长期独居、独处则会导致情绪压抑。&lt;strong&gt;与人交流是生活的必需。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;然而，和别人线下聊天，有两个问题：1）沟通是即时的（即「同步的」），留给思考的内存有限，往往很难有特别深度的交流，也有很多东西无法充分表达出来；2）面对不同的人，对于不同的性格，适合交流的话题是不同的，在交流的时候需要考虑另一方的个性情况，这会带来额外的心智负担（尤其作为 INFJ……）。虽然我也挺喜欢和别人线下聊天，不过这种方式有时无法完全解决我们与人交流的需求。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;博客能够作为一种交流工具，解决上述的两个问题。&lt;/strong&gt;首先，博客是一种「异步沟通」，在撰写的时候能够充分思考；其次，撰写的时候也可以专注于表达本身，而不是想象阅读者的状态。&lt;/p&gt;
+&lt;p&gt;所以，我还是希望自己能坚持写博客。&lt;/p&gt;
+&lt;h2&gt;📚 本周在读：《How We Learn》、《我的世界观》&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;《How We Learn》&lt;/strong&gt;，中译《精准学习》。搞不懂为什么译者要自作聪明取一个不一样的中文书名，因为本书介绍的就是 how we learn，即我们人类是如何学习的。本书的独特之处在于，&lt;strong&gt;用机器学习的机制来解释人脑的学习机制&lt;/strong&gt;。机器学习领域在越来越能够模拟人脑学习机制的同时，也为人脑的学习机制提供了一种清晰的解释方式（清晰指的是能够用算法描述）。对于有些了解机器学习的我们计算机专业学生来说，非常友好。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;《我的世界观》&lt;/strong&gt;，爱因斯坦。我曾以为顶尖的科学家大多都是一心扑在自己领域的 nerd，事实上很多站在科学顶端的科学家，对各个领域乃至整个世界都有完整和体系化的思考。比如最近在看的李飞飞、爱因斯坦。看别人的传记，能够看到别人看待世界的方式和思考的方式。在许多地方，也能发现自己在和伟大的灵魂共鸣。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下周见。&lt;/p&gt;
+</content:encoded><author>me@skywt.cn</author></item><item><title>Weekly #2：大学生活的一点点遗憾</title><link>https://skywt.cn/blog/weekly-2/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-2/</guid><pubDate>Mon, 27 May 2024 07:00:00 GMT</pubDate><content:encoded>&lt;!--more--&gt;
 &lt;h2&gt;🌆 封面图：滕王阁&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/05/4085939757.jpg&quot; alt=&quot;南昌滕王阁&quot;&gt;&lt;/p&gt;
 &lt;p&gt;这周去了南昌玩！&lt;/p&gt;
@@ -4469,73 +4542,6 @@ unsigned float_twice(unsigned uf) {
 从 2022.12.25 下单到 2023.3.2 收到货，前前后后两个月，这东西终于漂洋到海到了我手上。&lt;/p&gt;
 &lt;h2&gt;Get started&lt;/h2&gt;
 &lt;p&gt;接下来，我会探（折）究（腾）Yubikey 各种功能与个人生活中的安全实践。希望在安全感丧失的数字时代，这种硬件能带给我们一些保障。（&lt;del&gt;说到底还是自己爱折腾吧&lt;/del&gt;）&lt;/p&gt;
-</content:encoded><author>me@skywt.cn</author></item><item><title>部署 Memos 接入 QQ 机器人</title><link>https://skywt.cn/blog/deploy-memos-to-qq-robot/</link><guid isPermaLink="true">https://skywt.cn/blog/deploy-memos-to-qq-robot/</guid><description>前几天部署了开源的浮墨笔记（flomo）替代品：[Memos](https://github.com/usememos/memos)。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。
-
-</description><pubDate>Sat, 07 Jan 2023 08:12:00 GMT</pubDate><content:encoded>&lt;p&gt;前几天部署了开源的浮墨笔记（flomo）替代品：&lt;a href=&quot;https://github.com/usememos/memos&quot;&gt;Memos&lt;/a&gt;。这个项目已经有了 Android、iOS 客户端、浏览器拓展等等一系列生态。但是对比原版的浮墨笔记，少了 QQ / 微信的接入对于我来说不太方便。Memos 提供了简便的 API，我们可以自己动手，部署一个 QQ 机器人。&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;h2&gt;前置准备&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;服务器，最好是境内的。&lt;/li&gt;
-&lt;li&gt;搭建好的 Memos 实例（我的实例：&lt;a href=&quot;https://memos.skywt.cn/&quot;&gt;memos.skywt.cn&lt;/a&gt;）。&lt;/li&gt;
-&lt;li&gt;一个可登录的闲置 QQ 账号。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;运行 go-cqhttp&lt;/h2&gt;
-&lt;p&gt;我们的机器人在服务端分为两个组件，这两个组件都要部署在我们的服务器上。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;go-cqhttp&lt;/strong&gt; 负责与腾讯 QQ 服务器通信，管理我们的账号登录、消息收发等过程；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;NoneBot&lt;/strong&gt; 负责将 go-cqhttp 收到的消息进行处理，控制发送消息的内容，运行我们想要的业务逻辑。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;首先部署 go-cqhttp。前往 GitHub 上的 &lt;a href=&quot;https://github.com/Mrs4s/go-cqhttp/releases&quot;&gt;release&lt;/a&gt; 下载最新适合服务器架构的版本，下载解压之后是一个单文件程序。第一次运行，在提示选择通信方式时，选择「反向 Websocket 通信」，之后程序就会在相同目录下生成配置文件。&lt;/p&gt;
-&lt;p&gt;编辑配置文件，根据提示将 uin 和 password 字段分别改为自己的 QQ 和密码。虽然配置文件中说「密码为空时可以使用扫码登录」，但是经过实测只有在同一网络环境下 QQ 才会允许扫码登录。部署在服务器上扫码是无法登录的，只能使用密码。&lt;br&gt;
-除此之外，修改文件底部 servers 部分 ws-reverse 中 universal 的地址。我设定的是 &lt;code&gt;ws://127.0.0.1:8989/ws/&lt;/code&gt;。这个地址告诉 go-cqhttp，该从哪里与后端的 NoneBot 通信。&lt;/p&gt;
-&lt;p&gt;修改完毕后，再次启动 go-cqhttp，可能会提示需要扫码、滑块验证、手机验证之类，跟着程序的提示进行即可。&lt;br&gt;
-程序会提示，对于腾讯云的服务器需要修改 DNS 为 &lt;code&gt;114.114.114.114&lt;/code&gt;。编辑 &lt;code&gt;/etc/resolv.conf&lt;/code&gt; 并修改就行。&lt;br&gt;
-出现以下消息就表明登录成功：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;[INFO]: 登录成功 欢迎使用: SkyWT
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;此时可能会出现大量的「Connection Refused」消息，这是因为我们还没启动后端的 NoneBot。忽略他们即可。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[WARNING]: 连接到反向 WebSocket Universal 服务器 ws://127.0.0.1:8989/ws/ 时出现错误: dial tcp 127.0.0.1:8989: connect: connection refused
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;接下来，要将 go-cqhttp 放到后台运行，开始编写 NoneBot 的主程序。&lt;/p&gt;
-&lt;h2&gt;编写运行 NoneBot&lt;/h2&gt;
-&lt;p&gt;参阅 NoneBot 的&lt;a href=&quot;https://docs.nonebot.dev/guide/getting-started.html&quot;&gt;官方指南&lt;/a&gt;编写主要的代码，包括 &lt;code&gt;bot.py&lt;/code&gt; 和 &lt;code&gt;config.py&lt;/code&gt;。在后者中要指定与 go-cqhttp 的 &lt;code&gt;config.yml&lt;/code&gt; 中配置一致的 HOST 和 PORT。我的配置分别是 &lt;code&gt;127.0.0.1&lt;/code&gt; 和 &lt;code&gt;8989&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;接下来，我们可以通过编写插件的方式使 QQ 机器人实现 Memo 备忘录的功能。&lt;br&gt;
-其实直接根据文档里的插件修改一下就可以了：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;from nonebot import on_command, CommandSession
-import requests
-import json
-
-__plugin_name__ = &apos;Memos&apos;
-__plugin_usage__ = r&amp;quot;&amp;quot;&amp;quot;
-memo [需要添加的 Memo 内容]
-&amp;quot;&amp;quot;&amp;quot;
-MEMOS_API = &apos;https://memos.skywt.cn/api/memo?openId=************&apos;
-
-@on_command(&apos;memo&apos;, aliases=(&apos;note&apos;))
-async def memo(session: CommandSession):
-    memo_text = session.current_arg_text.strip()
-    if not memo_text:
-        await session.send(&apos;Memo 内容不能为空！&apos;)
-        return
-    ret = await send_memo(memo_text)
-    await session.send(ret)
-
-async def send_memo(memo_text: str) -&amp;gt; str:
-    data_to_send = {&apos;content&apos;: memo_text}
-    r = requests.post(MEMOS_API, data=json.dumps(data_to_send))
-    if r.status_code == 200:
-        return &apos;添加成功&apos;
-    else:
-        return &apos;添加失败，请查阅日志&apos;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;回到 NoneBot 的主目录启动 bot.py 并放在后台，发送消息 &lt;code&gt;memo 这是一条测试笔记&lt;/code&gt;，可以看到正确的输出。&lt;br&gt;
-进入 Memos 可以看到成功添加了一条 memo。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2023/01/172335256.png&quot; alt=&quot;聊天界面，机器人回复添加成功&quot;&gt;&lt;/p&gt;
-&lt;h2&gt;参考资料&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.go-cqhttp.org/guide&quot;&gt;go-cqhttp 使用指南&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.nonebot.dev/guide&quot;&gt;NoneBot 使用指南&lt;/a&gt;：文档通俗易懂，强烈推荐&lt;/li&gt;
-&lt;/ul&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>感谢订阅 SkyWT 的博客。</title><link>https://skywt.cn/blog/</link><guid isPermaLink="true">https://skywt.cn/blog/</guid><description>订阅成功。</description><pubDate>Wed, 01 Nov 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;订阅成功。该 RSS 源显示最近发布的 20 篇文章。当有新文章时，RSS 源会及时更新。&lt;/p&gt;
 &lt;p&gt;前往&lt;a href=&quot;https://skywt.cn/blog/archives&quot;&gt;文章归档&lt;/a&gt;页面即可一览全部文章。&lt;/p&gt;
 &lt;p&gt;RSS 真是个伟大的发明，用开放的标准将独立的内容连接在一起，也将我们连接在一起。&lt;/p&gt;

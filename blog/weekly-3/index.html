@@ -1,0 +1,185 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #3：写博客的目的</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #3：写博客的目的</title><link rel="canonical" href="https://skywt.cn/blog/weekly-3/"><meta name="description" content="> 在我看来，驱动我们人类向前的东西中，真正有价值的不是国家，而是有创造性的、有情感的个人，是人格。只有个人才能造就高尚和尊贵，而随大流的人群在思想和感觉上都是迟钝的。
+>
+> —— 爱因斯坦《我的世界观》"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #3：写博客的目的"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/weekly-3/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #3：写博客的目的"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 在我看来，驱动我们人类向前的东西中，真正有价值的不是国家，而是有创造性的、有情感的个人，是人格。只有个人才能造就高尚和尊贵，而随大流的人群在思想和感觉上都是迟钝的。
+>
+> —— 爱因斯坦《我的世界观》"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #3：写博客的目的 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #3：写博客的目的 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #3：写博客的目的</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 6 月 3 日 07:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E5%A4%8F%E5%A4%A9%E7%9A%84%E4%BA%91">🌆 封面图：夏天的云</a></li>
+<li><a href="#%F0%9F%91%94-%E8%A1%A3%E7%89%A9%E6%94%B6%E7%BA%B3%E6%96%B9%E6%A1%88">👔 衣物收纳方案</a></li>
+<li><a href="#%F0%9F%99%8F-%E8%B5%9B%E5%8D%9A%E8%8F%A9%E8%90%A8-cloudflare">🙏 赛博菩萨 Cloudflare</a></li>
+<li><a href="#%F0%9F%93%9C-%E4%B8%80%E4%BB%BD%E8%BD%BD%E5%85%A5%E5%8F%B2%E5%86%8C%E7%9A%84%E6%9D%B0%E5%87%BA%E5%88%A4%E5%86%B3%E4%B9%A6">📜 一份载入史册的杰出判决书</a></li>
+<li><a href="#%F0%9F%93%B1-%E6%88%91%E5%AF%B9%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93%E7%9A%84%E7%9C%8B%E6%B3%95">📱 我对社交媒体的看法</a></li>
+<li><a href="#%E2%9C%8D%EF%B8%8F-%E5%86%99%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%9B%AE%E7%9A%84">✍️ 写博客的目的</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%9C%A8%E8%AF%BBhow-we-learn%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%E8%A7%82">📚 本周在读：《How We Learn》、《我的世界观》</a></li>
+</ul>
+<blockquote>
+<p>在我看来，驱动我们人类向前的东西中，真正有价值的不是国家，而是有创造性的、有情感的个人，是人格。只有个人才能造就高尚和尊贵，而随大流的人群在思想和感觉上都是迟钝的。</p>
+<p>—— 爱因斯坦《我的世界观》</p>
+</blockquote>
+<!--more-->
+<h2><a id="🌆-封面图夏天的云" class="content__heading-anchor"></a>🌆 封面图：夏天的云</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/06/351306371.jpg" data-fancybox data-caption="封面图：夏天的云"><img src="https://blog.skywt.cn/usr/uploads/2024/06/351306371.jpg" alt="封面图：夏天的云" title="封面图：夏天的云" /></a></p>
+<p>夏天独有的粉红色的云。</p>
+<h2><a id="👔-衣物收纳方案" class="content__heading-anchor"></a>👔 衣物收纳方案</h2>
+<p>本月底就要前往杭州，租的房子也马上要到期了。是时候做好搬家的准备了。</p>
+<p>由于衣服太多，之前总是懒得整理，因为总是不想面对这种繁琐的局面。冬装由于很厚，不知道怎么收纳，只能挂在衣柜里，非常占地方。于是，在 b 站上找到了这个视频：<a href="https://www.bilibili.com/video/BV1jb411F7BN/?share_source=copy_web&amp;vd_source=cd3fa74d3421ce574a62e3c11dcde9f6">教你 9 种冬装收纳技巧，整齐漂亮省空间，再多厚衣服也不怕</a>。</p>
+<p>本视频提出的所有衣物收纳方案，其实可以归纳为两种：对于上衣（外套、羽绒服、卫衣等），将衣服上部分装入下 1/3 部分外翻形成的袋子，形成稳定的结构；对于长裤，将其横向卷起，塞入一条裤腿的 1/2 部分外翻形成的袋子，形成稳定结构。相比传统将衣服折叠起来收纳的方案，其创新点在于：通过这种方式收纳衣物之后，衣物都会形成稳定的结构，即使有扰动也不容易散架。这种方法太好了！</p>
+<p>此外，我还要强烈推荐「真空收纳袋」，即可以抽真空的衣物收纳袋，最好配合电动的抽气泵。将衣服装进收纳袋并抽出空气，这么做的意义不仅在于减小体积，更大的优势是能让抽真空后的袋子变硬，达到一种稳定的状态。</p>
+<p>结合以上两点，不仅衣物本身达到了稳定的状态，收纳袋的形态也能达成稳定的状态，非常方便搬运、寄件、存放。</p>
+<p>之前提到了<a href="https://skywt.cn/blog/weekly-0/#🎛%EF%B8%8F-无状态-stateless-的优雅性">无状态 Stateless 的优雅性</a>，我们应该对所有使用的应用进行<strong>显式的状态管理</strong>。其实，对各种东西进行收纳，是一种<strong>对生活的状态管理</strong>，良好的收纳能够解除生活与住所之间的耦合性。现在的我们或是住在宿舍，或是租房，处于实际上「居无定所」的状态，确定和管理归属于我们本身的「state」，至关重要。</p>
+<p>此外，还有一个很好奇的地方：该视频的 up 主「妙招姐」的团队，是个专门制作「生活妙招」视频的团队，虽然看起来像营销号，但其实每期内容都比较有质量。比如这期衣物收纳，他们说这个方法之前，我自己根本想不到。<strong>他们是如何高效产出这样的内容的呢？</strong>是从什么其他信息源获取的吗？可是我在网上其他地方也没找到类似的衣服收纳方案。难道是确定一个选题之后，所有团队成员苦思冥想「衣物收纳方法」头脑风暴个几天吗？</p>
+<h2><a id="🙏-赛博菩萨-cloudflare" class="content__heading-anchor"></a>🙏 赛博菩萨 Cloudflare</h2>
+<p>本周通过 Cloudflare Workers 部署了 GitHub 文件资源访问加速服务：<a href="https://gh.skywt.net">gh.skywt.net</a>。由于众所周知的原因，经常遇到 GitHub 访问受阻的问题，而在陌生的或临时使用的机器，或者新开起来的虚拟机或容器内，配置代理软件并不是一件特别容易和方便的事情。这个「Web 代理」能够提供一个临时性的解决方案。<a href="https://github.com/Skywt2003/gh-proxy">项目源码</a>。</p>
+<p>项目其实 fork 自我一直在用的 <a href="https://github.com/hunshcn/gh-proxy">gh-proxy</a>。我研究了一下其原理，并重构了部分源码。高中的时候就用过类似的服务了，当时以为这个很复杂。现在的我看这个源码，原来这么简单。</p>
+<p>同时了解和学习了 Cloudflare Workers。再一次体验到了 Serverless 的便捷和优雅，更体会到了 Cloudflare 的菩萨心肠 😭……普通用户每天 10 万请求免费，可以说非常慷慨了。</p>
+<p>推荐阅读：《<a href="https://mp.weixin.qq.com/s/i4wk9ebyUK7irNSwuT3NWQ">吊打公有云的赛博佛祖 Cloudflare</a>》。Cloudflare 的恩情还不完！！！😭</p>
+<blockquote>
+<p>虽然我一直在倡导下云理念，但如果是上 Cloudflare 这样的赛博菩萨云，我举双手赞成。</p>
+<p>利益相关：CF 没给我钱，我倒是给 CF 付了钱。纯粹是 CF 产品非常出色，极好地解决了我的需求，我非常乐意付点费支持一下，并告诉更多朋友有这项福利。与之相反，我付钱给传统公有云厂商之后的感受是，这做的都是什么玩意，我必须写文章狠狠地骂他们，才能缓解内心的精神损失。</p>
+</blockquote>
+<p>《<a href="https://mp.weixin.qq.com/s/jU418HAlObe1nWgzEsLrJQ">赛博菩萨 Cloudflare 圆桌访谈与问答录</a>》中指出，「Cloudflare 有着相当独特的商业模式 —— <strong>免流量费，靠安全赚钱</strong>。」</p>
+<p>似乎国外的许多大厂都非常慷慨，Google Cloud、AWS、Cloudflare、Vercel 等等都有大量的免费额度，也有诸如 1.1.1.1 这类网络基础设施，供全球海量用户免费使用。而国内顶尖的大厂，却很少如此慷慨：买个服务器叠加一堆优惠券还不如国外便宜，提供的镜像站、DNS 也动不动就停止运营……</p>
+<h2><a id="📜-一份载入史册的杰出判决书" class="content__heading-anchor"></a>📜 一份载入史册的杰出判决书</h2>
+<p>上节《西方法律思想史》课后，老师给我们分享了这个<a href="https://mp.weixin.qq.com/s/4Opl9uj0WaSh3pAuhPxzwQ">载入史册的杰出判决书</a>。说实话，看了之后，有些颠覆我对司法的印象。</p>
+<p>检察院提起公诉，认为被告人：</p>
+<ol>
+<li>酒后驾驶摩托车，酒精含量达到醉酒标准；</li>
+<li>无摩托车驾驶证，属于无证驾驶；</li>
+<li><strong>已经认罪认罚。</strong></li>
+</ol>
+<p>综上，检察院建议「<strong>判处被告人何某拘役一个月，并处罚金</strong>」。</p>
+<p>然而，法院认为：</p>
+<ol>
+<li>当事人虽然酒精含量达到醉酒标准，但事实并未影响驾驶（不同人对酒精的耐受能力不同）；当事人独自一人夜里在无人街道上驾驶，也没有危害公共安全，也不属于危险驾驶；</li>
+<li>当事人老家在农村，大家普遍没有考取驾驶证的习惯；当事人已有数十年摩托车驾驶经验，且持有 C1 驾驶证，有驾驶更简单的摩托车的能力；</li>
+<li>从社会效果角度，疫情当下，民生艰难，当事人如果被判拘役和罚金，则难免让人同情。</li>
+</ol>
+<p>最终法院宣判<strong>当事人无罪</strong>。</p>
+<p>说实话，这非常颠覆我关于司法的印象。以前认为，法官是类似「自动机」的角色，即纯粹以法律法规、司法解释等为依据作出判决，相当于这些资料是「算法」，法官只是算法的执行官。事实上，这就是典型的<strong>实证主义法学</strong>，即研究法律本身，不关心其哲学基础、与社会的关系等。这是一种「法律内部视角」。</p>
+<p>窥见法学的世界全景后，会发现这种视角只是冰山一角。</p>
+<p>再一次体会到所谓「隔行如隔山」，也很幸运能够看见这个新的广阔世界。</p>
+<h2><a id="📱-我对社交媒体的看法" class="content__heading-anchor"></a>📱 我对社交媒体的看法</h2>
+<p>我大概已经一两个月没看朋友圈和 QQ 空间了。这并不是我一直以来的习惯，而是我充分考虑后的决策。</p>
+<p>以前是很喜欢看和发微信朋友圈、QQ 空间的，认为这是我们表达自我、分享生活的渠道。诚然，表达自我、分享生活本身没有问题，但是我们的精力是多么有限，<strong>真正值得我们关注的人和事，少之又少</strong>。朋友圈和空间展示的是所有好友的动态，大多数都是我不熟的朋友分享的生活里的鸡毛蒜皮，大多数无聊至极，我并不关心。而如果真正想要关心和自己玩的好的朋友最近的生活，没有比一起吃个饭聊聊天更好的方式，而不是通过朋友圈这样充斥着精心打造的人设的平台。</p>
+<p>《为什么精英都是时间控》这本书里提到，相比时间管理，更重要的是<strong>精力管理</strong>。身处信息爆炸的时代，每天都有无数的信息输入在蚕食我们的精力。所以，对每天输入我们脑海的信息进行把握，对于我们每天更高效的学习生活而言，是至关重要的。而朋友圈这类没有价值的信息，就没有必要来占据我们日常的精力了。</p>
+<p>其实，我们会发现一个令人惊讶的事实：我们生活方式中的很大一部分，比如发朋友圈、刷视频等等，<strong>都是近 10 年才出现的</strong>。但凡是 10 年以前人们的生活，都不存在朋友圈这样的东西。那才是自然状态的生活。我们如今的生活，其实严重地被微信这样的产品异化了。</p>
+<p>除了朋友圈以外，我也卸载了手机上所有娱乐性质的社交媒体，包括小红书、b 站、酷安等。基于以下的考虑。</p>
+<p>我认为，一般而言，刷社交媒体的行为有两种目的：1）获取信息；2）娱乐消遣。<strong>这两种目的是不能混淆的。</strong></p>
+<p>对于获取信息，我主要是用 RSS。我最讨厌根据兴趣推荐的无限信息流，那些工具往往会让人沉迷其中，丧失主动性，蚕食人的时间和注意力。一切商业化的获取信息的软件，设计的目的都在于此。而 RSS 真是个伟大的发明，结合我自己部署的 <a href="https://rsshub.skywt.cn">RSSHub</a> 和 <a href="https://wewe.skywt.cn">WeWeRSS</a>，一切信息流皆可 RSS，皆可被我们控制。这才是获取信息的最完美形态。</p>
+<p>对于娱乐消遣，我倾向于使用连续的时间进行高质量的娱乐活动。比如看个电影。如果要刷 b 站，iOS / iPadOS / macOS 提供的「屏幕使用时间」功能也可以很好地阻止我们沉迷。（用 Apple 生态很好的一点是，macOS 上的 Safari 里的 bilibili 网页版，和 App 的限制是联动的）</p>
+<h2><a id="✍️-写博客的目的" class="content__heading-anchor"></a>✍️ 写博客的目的</h2>
+<p>博客文章可以分为两种：技术博客和生活博客。<strong>技术博客</strong>就是写最近学的东西；<strong>生活博客</strong>（如本篇）就是记录生活中发生的事情和一些思考。</p>
+<p>技术博客的目的很简单，如上周「<a href="https://skywt.cn/blog/weekly-2/#🌐-基于-tailscale-搭建个人网络基础设施的尝试">基于 Tailscale 搭建『个人网络基础设施』的尝试</a>」中提到，博客首先是提升自己认知能力的工具。这也是对所谓「费曼学习法」的实践，即「教会别人一个知识，才算自己学懂了这个知识」。其实也能从《卡片笔记写作法》中提到的「必要难度 Desirable Difficulty 理论」得到印证：人的记忆的存储强度 Storage Strength 和提取强度 Retrieval Strength 是<strong>负相关</strong>的关系，即存储知识越困难，提取知识越容易。</p>
+<p>而对于生活博客，这是我最近几周才开始写的。其主要意义在于提供一个表达和与人交流的平台。</p>
+<p>人在与人交流的时候，会释放某些激素，从而调节情绪（忘了这是哪里看到过的理论了，不过大概是这个意思）。这就是为什么我们需要与人交流，否则如果长期独居、独处则会导致情绪压抑。<strong>与人交流是生活的必需。</strong></p>
+<p>然而，和别人线下聊天，有两个问题：1）沟通是即时的（即「同步的」），留给思考的内存有限，往往很难有特别深度的交流，也有很多东西无法充分表达出来；2）面对不同的人，对于不同的性格，适合交流的话题是不同的，在交流的时候需要考虑另一方的个性情况，这会带来额外的心智负担（尤其作为 INFJ……）。虽然我也挺喜欢和别人线下聊天，不过这种方式有时无法完全解决我们与人交流的需求。</p>
+<p><strong>博客能够作为一种交流工具，解决上述的两个问题。</strong>首先，博客是一种「异步沟通」，在撰写的时候能够充分思考；其次，撰写的时候也可以专注于表达本身，而不是想象阅读者的状态。</p>
+<p>所以，我还是希望自己能坚持写博客。</p>
+<h2><a id="📚-本周在读how-we-learn我的世界观" class="content__heading-anchor"></a>📚 本周在读：《How We Learn》、《我的世界观》</h2>
+<ul>
+<li><strong>《How We Learn》</strong>，中译《精准学习》。搞不懂为什么译者要自作聪明取一个不一样的中文书名，因为本书介绍的就是 how we learn，即我们人类是如何学习的。本书的独特之处在于，<strong>用机器学习的机制来解释人脑的学习机制</strong>。机器学习领域在越来越能够模拟人脑学习机制的同时，也为人脑的学习机制提供了一种清晰的解释方式（清晰指的是能够用算法描述）。对于有些了解机器学习的我们计算机专业学生来说，非常友好。</li>
+<li><strong>《我的世界观》</strong>，爱因斯坦。我曾以为顶尖的科学家大多都是一心扑在自己领域的 nerd，事实上很多站在科学顶端的科学家，对各个领域乃至整个世界都有完整和体系化的思考。比如最近在看的李飞飞、爱因斯坦。看别人的传记，能够看到别人看待世界的方式和思考的方式。在许多地方，也能发现自己在和伟大的灵魂共鸣。</li>
+</ul>
+<p>下周见。</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HplKN" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,165]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #3：写博客的目的 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a>
+|
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
+        <a href="https://github.com/Skywt2003/Daydreamer" class="link"
+          >Daydreamer</a
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 
