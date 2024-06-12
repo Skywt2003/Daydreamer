@@ -74,7 +74,14 @@
     },
     { once: false },
   );
-</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/cppint128" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>C++中的128位整型 __int128</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>C++里有普通的 32 位整数类型 int 和 64 位整数类型 long long，但是如果我们要存一个128位的整数，前两个似乎就无能为力了。这时候我们就要用到 __int128这种类型了。</p>
+</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/phinplus" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>欧拉函数 φ(n) 的几个常用性质</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>之前我们已经知道欧拉函数 $\varphi(n)$ 的计算公式：</p>
+<pre><code class="language-math">\displaystyle \varphi (n)=n \ast \prod_{i-1}^{r} (\frac {p_i-1} {p_i})
+</code></pre>
+<p>我们还知道它的两条性质：<br>
+如果$\varphi(x)$中的x是质数 p 的 k 次幂，那么 $\displaystyle \varphi (x)=\varphi (p^k)=(p-1)p^{k-1}$ ；<br>
+欧拉函数是积性函数，如果 x 和 y 互质，则 $\varphi(xy)=\varphi(x) \varphi(y)=(x-1)(y-1)$ 。</p>
+<p>今天我们要证明上述性质，再介绍几条新的性质。</p>
+</div><a href="/blog/phinplus" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cppint128" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>C++中的128位整型 __int128</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>C++里有普通的 32 位整数类型 int 和 64 位整数类型 long long，但是如果我们要存一个128位的整数，前两个似乎就无能为力了。这时候我们就要用到 __int128这种类型了。</p>
 </div><a href="/blog/cppint128" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cf510d" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CodeForces 510D Fox And Jumping：DP + 数论 + 离散</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>很伤心，为什么NOIP不能用 C++11……</p>
 <p>CodeForces 510D Fox And Jumping：<a href="https://codeforces.com/problemset/problem/510/D" title="510D">510D</a></p>
 </div><a href="/blog/cf510d" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/dinkelbach" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>0/1 分数规划与 Dinkelbach 迭代法</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>0/1 分数规划是一种常见的模型：给你 n 个价值 $a_i$ 与 n 个代价 $b_i$，让你选出 m 个数字，使得 $ \sum \frac {a_i} {b_i} $ 最大。显然这种题目可以用二分，但是有一种更优秀的方法：Dinkelbach 迭代法。</p>
@@ -93,9 +100,7 @@ $$</p>
 <p>$$(a \div b) \bmod x=((a \bmod x)\div (b \bmod x))\bmod x$$</p>
 </div><a href="/blog/inverse" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/euler-and-fermat" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>欧拉函数、费马小定理与欧拉定理略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>在数论中，对正整数 n，欧拉函数 $\varphi (n)$ 是小于或等于 n 的正整数中与 n 互质的数的数目。此函数以其首名研究者欧拉命名，它又称为 φ 函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。（来自维基百科）</p>
 </div><a href="/blog/euler-and-fermat" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/euclidean-algorithm" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>欧几里德算法与拓展欧几里德算法略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>欧几里德算法（Euclidean algorithm）又叫做辗转相除法，用于求最大公约数。这个算法已经十分常见了。扩展欧几里德算法（Extended Euclidean algorithm）是欧几里德算法的扩展（废话……），这个算法在解不定方程的时候十分常见。</p>
-</div><a href="/blog/euclidean-algorithm" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cantor-expansion" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>康托展开（Cantor Expansion）例题 + 略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>现在有N个数，分别为1到N，如果要问你这些数的所有排列中，从小到大数的第N个是多少，如何求解？</p>
-<p>显然当N很小时直接写个模拟就可以了。但是这样写的时间复杂度至少是$A_N^N$，也就是$N!$，很容易超时。想想$13!$已经是6227020800了……有没有更快的方法呢？</p>
-</div><a href="/blog/cantor-expansion" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/13" class="link">
+</div><a href="/blog/euclidean-algorithm" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/13" class="link">
 上一页
 </a> </div> <div class="paginator__center"> <span>第 14 页</span> </div> <div class="paginator__right"> <a href="/blog/15" class="link">
 下一页
