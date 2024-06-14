@@ -17,19 +17,23 @@ const articles = await apis.getArticles(1, 10);
 >
   <main class="page">
     <section class="page__section page__section--at-top">
-      <h1>文章精选</h1>
-      <Selection selections={selections_yml.selections} />
-      <p class="card card--in-content">
-        🗃️ 前往「<a href="/blog/archives" class="link link--with-underline"
-          >文章归档</a
-        >」页面即可一览博客的全部文章。<br />
-        📧 现在可以<a
-          href="https://mailchi.mp/97e1f54049cd/subscribe"
-          class="link link--with-underline">使用邮箱订阅博客</a
-        >，或者<a href="/rss.xml" class="link link--with-underline"
-          >通过 RSS 订阅</a
-        >。欢迎订阅！
-      </p>
+      <!-- <h1>文章精选</h1>
+      <Selection selections={selections_yml.selections} /> -->
+      <div class="card card--in-content">
+        <p>
+          🗃️ 前往「<a href="/blog/archives" class="link link--with-underline"
+            >文章归档</a
+          >」页面即可一览博客的全部文章。
+        </p>
+        <p class="mt-1">
+          📧 现在可以<a
+            href="https://mailchi.mp/97e1f54049cd/subscribe"
+            class="link link--with-underline">使用邮箱订阅博客</a
+          >，或者<a href="/rss.xml" class="link link--with-underline"
+            >通过 RSS 订阅</a
+          >。欢迎订阅！
+        </p>
+      </div>
     </section>
 
     <hr class="page__divide page__divide--between-sections" />
