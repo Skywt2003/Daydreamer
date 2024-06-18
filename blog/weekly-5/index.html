@@ -1,0 +1,185 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #5：夏天的晚霞</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #5：夏天的晚霞</title><link rel="canonical" href="https://skywt.cn/blog/weekly-5/"><meta name="description" content="> 也许有更好的时代，但这个时代是我们的。
+"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #5：夏天的晚霞"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/weekly-5/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #5：夏天的晚霞"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 也许有更好的时代，但这个时代是我们的。
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.ByZW6W1J.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #5：夏天的晚霞 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #5：夏天的晚霞 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #5：夏天的晚霞</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 6 月 18 日 07:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE-%E5%A4%8F%E5%A4%A9%E7%9A%84%E6%99%9A%E9%9C%9E">🌆 封面图 ：夏天的晚霞</a></li>
+<li><a href="#%E2%9B%93%EF%B8%8F-%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E4%B8%8D%E5%8F%AF%E7%AF%A1%E6%94%B9%E7%89%B9%E6%80%A7">⛓️ 区块链的不可篡改特性</a></li>
+<li><a href="#%F0%9F%93%91-%E5%A6%82%E6%9E%9C%E8%83%BD%E5%9B%9E%E5%88%B0%E5%A4%A7%E4%B8%80%E5%A4%A7%E4%BA%8C">📑 如果能回到大一大二……</a></li>
+<li><a href="#%F0%9F%8C%86-cities-skylines-ii">🌆 Cities Skylines II</a></li>
+<li><a href="#%F0%9F%8E%A8-%E4%B8%80%E4%BA%9B%E6%9C%89%E8%AE%BE%E8%AE%A1%E6%84%9F%E7%9A%84%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99%E9%89%B4%E8%B5%8F">🎨 一些有设计感的官方网站鉴赏</a></li>
+<li><a href="#%F0%9F%92%AC-quotes">💬 Quotes</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%9C%A8%E8%AF%BB%E7%AC%AC%E4%B8%80%E6%9C%AC%E7%BB%8F%E6%B5%8E%E5%AD%A6%E7%AB%A5%E5%B9%B4%E7%9A%84%E6%B6%88%E9%80%9D%E4%B8%96%E4%B8%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%9B%BE%E4%B9%A6%E9%A6%86">📚 本周在读：《第一本经济学》、《童年的消逝》、《世上为什么要有图书馆》</a></li>
+</ul>
+<blockquote>
+<p>也许有更好的时代，但这个时代是我们的。</p>
+</blockquote>
+<!--more-->
+<h2><a id="🌆-封面图-夏天的晚霞" class="content__heading-anchor"></a>🌆 封面图 ：夏天的晚霞</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/06/4196270677.jpg" data-fancybox data-caption="封面图：夏天的晚霞"><img src="https://blog.skywt.cn/usr/uploads/2024/06/4196270677.jpg" alt="封面图：夏天的晚霞" title="封面图：夏天的晚霞" /></a></p>
+<p>夏天总是会有很好看的晚霞。</p>
+<h2><a id="⛓️-区块链的不可篡改特性" class="content__heading-anchor"></a>⛓️ 区块链的不可篡改特性</h2>
+<p>人类历史上所有记录信息的方式，都有这样的特点：<strong>随着时间的推移，记录的信息变得逐渐模糊。</strong></p>
+<p>区块链打破了这一规则，并且正好相反：<strong>随着时间的推移，曾经记录信息的区块被越来越多的后续区块确认，即推翻这个区块也越来越难。</strong>在链上每追加一个区块，都是对之前所有区块的一次确认，自然而然地「维护」了之前的信息。</p>
+<p>（当然，以上的讨论仅限于全球互联网仍然存在的前提。如果互联网不在了，或者分裂为多个不连通的区域，或者如果没有电力了，甚至如果人类文明都不在了，或许还是用《三体》中提到的「把字刻在石头上」这类方式保存信息最靠谱）</p>
+<p>比特币等加密货币，只是上述特性的一个很小的应用：将<strong>交易记录</strong>这一信息永远放在链上。</p>
+<p>以合同签署为例。其实，现代纸质合同并不可靠。无论是手写签字还是盖章，都无法避免合同伪造：1）某一方可以伪造合同的签字或盖章，然后宣称对方和自己签署了这个合同；2）某一方也可以不承认曾经签字或盖章，否认自己签署了某个合同。综合这两点，如果在法庭上产生「一方拿出合同，一方否认合同」的纠纷，究竟是拿出合同的这一方伪造了合同，还是否认合同的这一方单方面不承认合同？法庭是无法判断的（如果没有其他信息的话）。不难发现，虽然《合同法》尝试构建一个客观的合约系统，但是事实上很难做到这一点。</p>
+<p>而区块链技术让真正严格、客观的合同签署成为了可能。以太坊的「智能合约」即是应用方式之一。</p>
+<p><strong>真正推动人类文明进步的技术创新，就是将历史上不可能的事情变成可能。</strong></p>
+<p>之前考虑将博客同步到 xLog，这是一个基于区块链的博客平台。所有博客文章、评论、互动等都发布在链上。仔细想想，这有点可怕：如果一篇文章被我发布到区块链上，<strong>将永远无法将其删除！</strong>如果现在博客里有些以后看来不合时宜的话呢？如果未来要经历背景调查、政治审查或者其他事件，需要删除曾经发过的内容呢？</p>
+<p><strong>对数据的掌控权，也包括对数据进行删除的权利。</strong>传统的 Web，发布的文章随时都能删除，删除后就无法被访问。即使是不经过我们同意就备份网页的 Web Archive，也可以给他们发邮件请求删除页面。当然，任何人都能备份博客内容，但至少这种备份是主动的行为。而在区块链上发布的内容，只要这条链还有人在使用，则内容将永生永世无法被删除，永远轻易地被访问。细思恐极！</p>
+<p>开发者 DIYgod 也在<a href="https://v2ex.com/t/882349">V2EX</a> 提到了存在的问题：</p>
+<blockquote>
+<p>链上操作都是透明和不可撤销的，这导致用户无法真正删除一篇文章，通过区块链历史可以看到文章的修改记录。</p>
+</blockquote>
+<h2><a id="📑-如果能回到大一大二" class="content__heading-anchor"></a>📑 如果能回到大一大二……</h2>
+<p>直到大三，我决定且确定不读研了，才开始探索自我，真正感觉到大学生活应该这样度过。</p>
+<p>大三之前，我还是希望保研的。要争保研就得卷成绩，太痛苦了，太卷了。每节课的考勤、每个小组作业或者 pre、每个实验作业，都要计入成绩。换句话说，如果要争取保研，一切的目标就是成绩，成绩以外的一切因素都和大学生活无关了。特别是 HNU 取消了论文、竞赛保研的背景下。<strong>大学不应该是这样的。</strong></p>
+<p>仔细想想，成绩排名真的这么合理吗？考试成绩和能力水平显然不是线性关系，80 分要求我们对课程知识有完善的掌握，而 90 分或者 95 分甚至更高，则要求进行大量的刷题，对所有题型做到滚瓜烂熟。在 80 分以上有非常明显的边际效应，需要投入大量的时间，也就是所谓的「卷」。要筛选足够水平的人，以 80 分为门槛完全够了；而就是因为<strong>保研名额有限（即教育资源不足）</strong>，才硬要按照排名选前几名的同学。结果，选出的是实际水平差不多，但<strong>刷了更多题</strong>的同学。这种排名制度岂不是完完全全在培养「做题家」吗？</p>
+<p>（当然，公不公平、合不合理也是相对的。任何一种制度，其既得利益者往往倾向于认为其是公平的，而利益受损的人则倾向于认为其不公平。只要参加过辩论赛，就能有这样的体会：有的真理不是越辩越明的）</p>
+<p>现在大三已经接近尾声，我觉得有点后悔。如果我早一点决定不读研，也不至于大一大二花这么多时间卷成绩。为了争取保研，我们都身不由己。</p>
+<p>如果能回到大一大二，我一定要少花点时间卷成绩，花更多时间学习、阅读、参加社交活动，听更多讲座，探索更多世界。大学四年时光太宝贵，应该花在更有意义的事情上才对。不过「如果」这样的假设并没有意义，毕竟当时没有不读研的决心；我能做的只有珍惜剩下的不到一年在校时光。</p>
+<h2><a id="🌆-cities-skylines-ii" class="content__heading-anchor"></a>🌆 Cities Skylines II</h2>
+<p>《都市天际线 2》这个游戏真的非常令人上瘾。本周周末重新玩了一会，结果一不小心又玩到了凌晨 😇。</p>
+<p><strong>为什么这个游戏有如此魔力？</strong>我觉得主要在于其<strong>快速反馈</strong>的特性。本质上，设计一个城市，和做开发写程序、画电路板、写一篇文章的过程是一样的，都是<strong>创造</strong>的过程。区别在于，反馈周期和反馈强度不同。写程序的反馈只是程序成功跑起来了，或许只是一行简单的提示，即使是前端也是若干 UI 而已；而在 Cities Skylines 里设计一个城市，立即会有市民入住，车水马龙，一辆辆车和一个个行人，都是真实存在在这个小小的虚拟世界里活动着的物体。我们能看到这是一种快速的反馈，给人成就感。</p>
+<p>这个游戏让我看到了新的世界。</p>
+<p>比如一个城市的交通总体设计，我以前从来没有留意过。道路是有分级的，从高速公路、城市快速路到主干道路、二级道路、小巷等。城市环线就是一种很好的城市快速路的方式。越高级的道路，车速越快，路口应该越少。为什么要有小区、园区的概念？从道路设计的角度来说，目的之一是防止在主干道上产生过多的路口。有了这些实际的体验，当我来到一个新的城市，在看地图的时候我能够对城市的结构有更加系统性的了解。</p>
+<p>比如关于立交桥。在接触这个游戏之前，在面对大城市的巨型立交桥的时候，我只能感觉到一种人类工业文明的力量感（类似坐民航客机的感觉），但是对其具体的逻辑是没有认知的。现在我才知道，立交桥的本质是<strong>避免道路交叉</strong>。在十字路口，每个方向车道有左转、直行、右转三种选择，而四个方向来的这些路线难免会交叉。为了解决这一问题，简单的解决方案是<strong>红绿灯</strong>或者<strong>环岛</strong>，但是这两种方案都需要车辆减速甚至停止等待，这在高速公路上是不可接受的。那么，在高速公路的交叉口，为了解决这一问题，可以通过精心设计的匝道连接，让每个车道左转、直行、右转都能直接到达对应车道。而为了避免交叉，这些匝道需要利用纵向立体空间，故名曰「立交桥」。知道了这一原理，所有看似复杂的立交桥在我眼里就不再是神秘的庞然大物了，我们甚至可以自己设计立交。</p>
+<p>在游戏里最常见的是苜蓿叶立交和堆栈式立交。苜蓿叶最容易造，堆栈式就比较复杂，从上到下一共要分四层。下面就是我第一次手搓的堆栈式立交。虽然还是很堵……（其实我觉得最酷的是涡轮立交，但是太难造了）</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/06/3176215674.png" data-fancybox data-caption="第一次手搓的堆栈立交！"><img src="https://blog.skywt.cn/usr/uploads/2024/06/3176215674.png" alt="第一次手搓的堆栈立交！" title="第一次手搓的堆栈立交！" /></a></p>
+<p>创造的过程本身就很令人兴奋。可以实践自己的各种关于城建的有趣想法。比如我在玩的城市取名「千岛市」，基于这样的理念：每个小区或者园区都是有相对的独立性的，可以将它们做成一小块一小块的岛屿，通过海上的高速公路连接。而许多功能分区也能建造成独立的岛屿，比如「文体中心岛」、「大学岛」、「航空岛」，每个岛都要修精致的环岛路和护岸！在「大学岛」我可以打造自己梦想的大学，要修一条环岛电车轨道（一直觉得电车很浪漫，估计是新海诚的电影给我的印象）。地铁轨道也可以修在海面之上，就像厦门一样！海上高速公路的交界，可以修建海上立交……太酷了！</p>
+<p>游玩一个新的游戏，也是打开一个新的世界。</p>
+<h2><a id="🎨-一些有设计感的官方网站鉴赏" class="content__heading-anchor"></a>🎨 一些有设计感的官方网站鉴赏</h2>
+<p>一般来说，政府机构的官方网站都是很烂的。这并不是我国独有的现象，而是政府机构的性质决定的。然而网上冲浪的时候偶然能发现几个我觉得做得非常不错的政府机构官方网站，有些惊艳到我。</p>
+<p><a href="https://www.beijing.gov.cn">北京市政府</a>：这个配图和色调实在是太漂亮了，第一眼看到就有一种既温暖又庄严的感觉。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/06/76567892.png" data-fancybox data-caption=""><img src="https://blog.skywt.cn/usr/uploads/2024/06/76567892.png" alt="" title="" /></a></p>
+<p><a href="https://www.visitfinland.com/zh/">芬兰旅游局</a>：准确来说是芬兰旅游局开设的 Visit Finland 网站。这个网站风格非常现代，开屏是视频背景，而且加载完了有一个从黑色背景 fade-in 的效果。主标题是 slogan，「世界上最幸福的国家」。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/06/1706280651.png" data-fancybox data-caption="芬兰旅游局网站"><img src="https://blog.skywt.cn/usr/uploads/2024/06/1706280651.png" alt="芬兰旅游局网站" title="芬兰旅游局网站" /></a></p>
+<h2><a id="💬-quotes" class="content__heading-anchor"></a>💬 Quotes</h2>
+<blockquote>
+<p>If you're not embarrassed by the first version of your product, you've launched too late.</p>
+<p>—— <a href="https://x.com/reidhoffman/status/847142924240379904">Reid Hoffman</a></p>
+</blockquote>
+<blockquote>
+<p>谨将此书译献给，一切有理想的现实主义者和有现实感的理想主义者！</p>
+<p>—— 马基雅维利《君主论》（拿破仑批注版），刘训练译注</p>
+</blockquote>
+<blockquote>
+<p><strong>每个个体被定义与记住的，是与同类的不同点，而不是相同点。</strong>与所有其他人做一样的选择，就会收获与其他人一样的结果。</p>
+<p><strong>人生回首时，我们最后悔的大多数不是做了的事，而是没做的事，不是吗？</strong>同学们可以想想，几十年后你坐在壁炉边时，会希望今天的你做出怎样的决定，奔赴怎样的伟大可能。</p>
+<p>—— 真格基金《<a href="https://mp.weixin.qq.com/s/S1W4pxa6YKcAa36MclWUYQ">写给更年轻的人</a>》</p>
+</blockquote>
+<blockquote>
+<p>Just pirate it. If you still like it when you can afford it in the future, buy it then. Also don't forget to feel bad. ;)</p>
+<p>—— @notch from Minecraft</p>
+</blockquote>
+<h2><a id="📚-本周在读第一本经济学童年的消逝世上为什么要有图书馆" class="content__heading-anchor"></a>📚 本周在读：《第一本经济学》、《童年的消逝》、《世上为什么要有图书馆》</h2>
+<p><strong>《第一本经济学》</strong>。高中政治老师推荐的经济学教材，现在才开始读。本书介绍的许多知识其实高中政治必修一都学过，所以首先当作复习了。</p>
+<p>本书补充的是经济学的全局视角，因为高中教材只是简单的入门，并且对许多问题避而不谈，这本书能带来更加全面的视角。本书介绍了市场经济、计划经济以及混合经济（包括种种干预措施和影响）。不过，显然本书偏向于支持纯粹市场经济，认为许多政府干预行为反而导致了经济萧条。</p>
+<p>我们中学接受的教育都是所谓的「社会主义视角」，而我感觉看到的越来越多的书为我们补充了「资本主义视角」。比如《黑客与画家》《穷爸爸富爸爸》等等。前者认为，贫穷是由于资本的剥削压迫；后者则认为，贫穷是由于认知水平的低下，在一个相对公平的社会里，人可以抓住机遇、创造财富。</p>
+<p><strong>《童年的消逝》</strong>。将年纪小的人称为社会意义上的儿童并特殊地对待他们，即「童年」的概念，是人类特有的，也是最近几百年才形成的，在此之前，法律对儿童没有特殊对待，社会也不将儿童与成人区别开来（即没有「儿童」、「成人」的社会概念）。本书探究「童年」这一概念是如何产生的，并揭示：在当今时代，「童年」这一概念正在逐步消逝。</p>
+<p>本书认为，活字印刷术的发明，是传播媒介的一大进步。从此，儿童需要学习才能掌握获取信息的方式，从而成人能够向儿童隐藏信息。而电视的发明，是传播媒介的一大反动（名词解释：反动，指违反历史发展方向），使得文化传播退化回 15 世纪还未发明活字印刷术的时代，即传播信息的渠道无需任何学习即可掌握。本书内核类似《娱乐至死》，只是作者讨论的角度聚焦于儿童这一概念。</p>
+<p><strong>《世上为什么要有图书馆》</strong>，超喜欢这本书。作者是一名文学领域的博士，来到西安市做文旅局挂职副局长，负责了西安市碑林区图书馆的建设。本书展示了体制内一些我从未接触过的东西，很新奇。也揭示了作为一名传统意义上的文人，是如何面对官场（体制内）各种荒诞的。其实在读的时候频繁有这样的感受：他们文学家，和我们「理科生」，看待世界的视角真不一样。</p>
+<p>（其实真正让我对体制内工作完全劝退的一本小说是《沧浪之水》，非常推荐阅读）</p>
+<p>下周见～</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1Hpmhj" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,167]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #5：夏天的晚霞 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a>
+|
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" class="link">虫洞</a> <!-- |
+        <a href="https://github.com/Skywt2003/Daydreamer" class="link"
+          >Daydreamer</a
+        > --> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  <a href="https://www.foreverblog.cn/" target="_blank" class="inline-block mx-1"> <img src="https://img.foreverblog.cn/logo_en_default.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> </div> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <p class="m-2"> <!-- <span class="align-middle">由</span>
+        <a
+          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+          class="inline-block align-middle"
+        >
+          <img src="/upyun.png" class="h-6" />
+        </a>
+        <span class="align-middle">提供 CDN 加速、云存储服务</span> --> </p> </div> </footer> </body></html> 

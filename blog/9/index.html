@@ -74,7 +74,16 @@
     },
     { once: false },
   );
-</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/noip-precontest-qipa" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>分享几道 NOIP 初赛的奇葩题目</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>快看看 CCF 是怎么把初赛完成脑筋急转弯竞赛的……</p>
+</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/sorting-algorithm-stability" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>（转）八大排序算法稳定性分析</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>转自知乎：<a href="https://zhuanlan.zhihu.com/p/36120420">八大排序算法稳定性分析，原来稳定性是这个意思……</a><br>
+这是 €€F 非常喜欢的排序稳定性分析……</p>
+<p><strong>稳定性定义：</strong> 排序前后两个相等的数相对位置不变，则算法稳定。<br>
+<strong>稳定性的好处：</strong> 从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。</p>
+<p><strong>各排序算法的稳定性：</strong></p>
+<ol>
+<li>堆排序、快速排序、希尔排序、直接选择排序<strong>不是稳定</strong>的排序算法；</li>
+<li>基数排序、冒泡排序、直接插入排序、折半插入排序、归并排序<strong>是稳定</strong>的排序算法。</li>
+</ol>
+</div><a href="/blog/sorting-algorithm-stability" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/noip-precontest-qipa" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>分享几道 NOIP 初赛的奇葩题目</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>快看看 CCF 是怎么把初赛完成脑筋急转弯竞赛的……</p>
 <blockquote>
 <p>孙某和张某是考古学家老李的学生。有一天，老李拿了一件古物来考验两人，两人都无法验证出来这件古物试谁的。老李告诉了孙某拥有者的姓，告诉张某拥有者的名，并且在纸条上写下以下几个人的人名，问他们知道谁才是拥有者？<br>
 纸条上的名字有：<strong>沈万三、岳飞、岳云、张飞、张良、张鹏、赵括、赵云、赵鹏、沈括。</strong></p>
@@ -119,12 +128,7 @@ Now the counter-terrorist knows the number N. They want to know the final points
 </div><a href="/blog/master-theorem" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/poj3465" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>POJ 3465 Battle 题解：可“反悔”的贪心</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>很多题目的贪心想法都是一个简单粗暴的贪心加上可“反悔”的操作。这样可以确保答案的正确性。</p>
 <h2>Description</h2>
 <p>You're Zhu Rengong, a formidable hero. After a number of challenging missions, you are finally facing the final Boss – a black dragon called Heilong. Due to his overwhelming power, you have to plan your actions carefully.</p>
-</div><a href="/blog/poj3465" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/poj3244" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>POJ 3244 Difference between Triplets 题解：（线段树或树状数组）或（排序 + 前缀和）</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>坠痛苦的是，POJ 的辣鸡 G++ 编译器不支持 <code>long long</code>，害得我调试调了半天……</p>
-<h2>Description</h2>
-<p>For every pair of triplets, $T_a = (I_a, J_a, K_a)$ and $T_b = (I_b, J_b, K_b)$, we define the difference value between $T_a$ and $T_b$ as follows:</p>
-<p>$$ D(T_a, T_b) = \max (I_a − I_b, J_a − J_b, K_a − K_b) − \min (I_a − I_b, J_a − J_b, K_a − K_b) $$</p>
-<p>Now you are given $N$ triplets, could you write a program to calculate the sum of the difference values between every unordered pair of triplets?</p>
-</div><a href="/blog/poj3244" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/8" class="link">
+</div><a href="/blog/poj3465" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/8" class="link">
 上一页
 </a> </div> <div class="paginator__center"> <span>第 9 页</span> </div> <div class="paginator__right"> <a href="/blog/10" class="link">
 下一页
