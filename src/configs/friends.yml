@@ -67,6 +67,11 @@ groups:
         slogan:
         url: https://kaiyi.cool
         avatar: https://kaiyi.cool/_astro/portrait.lBf0EGlL_1llb4H.webp
+      - name: 雪舞灵颜
+        desc:
+        slogan: 随至爱见至美。
+        url: https://mys.forevers.love
+        avatar: https://friend.s3-us-east-1.ossfiles.com/b_1f7895cd0c20cf1ea2f6903ffabafdf1.jpg
       - name: idealclover
         desc:
         slogan: Stay simple, stay naive.
