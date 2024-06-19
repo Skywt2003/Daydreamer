@@ -24,33 +24,39 @@ const { menuItems, pathItems } = Astro.props;
   <hr class="footer__divide" />
   <div class="footer__row">
     <p class="m-2">
-      &#169; 2017-2024 <a href="/" class="link">SkyWT</a>
-      |
+      &#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
       <a href="/sitemap-index.xml" class="link">站点地图</a>
       |
       <a href="/friends" class="link">友情链接</a>
       |
-      <a href="https://foreverblog.cn/go.html" class="link">虫洞</a>
-      <!-- |
-        <a href="https://github.com/Skywt2003/Daydreamer" class="link"
-          >Daydreamer</a
-        > -->
-    </p>
-    <div class="m-2">
-      <CC by={true} nc={true} />
-      <NotByAI />
-      <a
-        href="https://www.foreverblog.cn/"
-        target="_blank"
-        class="inline-block mx-1"
+      <a href="https://foreverblog.cn/go.html" target="_blank" class="link"
+        >虫洞</a
       >
+    </p>
+
+    <p class="m-2">
+      <a href="https://www.boyouquan.com/" target="_blank" class="mx-1">
         <img
-          src="https://img.foreverblog.cn/logo_en_default.png"
+          src="/boyouquan.png"
+          alt="Boyouquan Badge"
+          class="inline-block h-4 grayscale"
+        />
+      </a>
+      <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1">
+        <img
+          src="/forever_blog.png"
           alt="Forever Blog Badage"
           class="inline-block h-4 grayscale"
         />
       </a>
-    </div>
+      <a href="https://blogscn.fun/" target="_blank" class="mx-1">
+        <img
+          src="/blogscn.png"
+          alt="BLOGS·CN Badge"
+          class="inline-block h-4 grayscale"
+        />
+      </a>
+    </p>
   </div>
   <div class="footer__row">
     <p class="m-2">
@@ -66,15 +72,9 @@ const { menuItems, pathItems } = Astro.props;
         浙公网安备 33080202000472 号</a
       >
     </p>
-    <p class="m-2">
-      <!-- <span class="align-middle">由</span>
-        <a
-          href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
-          class="inline-block align-middle"
-        >
-          <img src="/upyun.png" class="h-6" />
-        </a>
-        <span class="align-middle">提供 CDN 加速、云存储服务</span> -->
-    </p>
+    <div class="m-2">
+      <CC by={true} nc={true} />
+      <NotByAI />
+    </div>
   </div>
 </footer>
