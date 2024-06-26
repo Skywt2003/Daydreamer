@@ -74,7 +74,9 @@
     },
     { once: false },
   );
-</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/cf994" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CodeForces Round #488 Div2 题解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>这是我的博客发布的第 100 篇文章！:tada:</p>
+</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/vscode-ipch-too-large" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>解决 vscode 预编译信息（ipch 文件）占用过大问题</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>今天发现 vscode 工作区目录下有一个 .vscode 隐藏目录，里面有大量的 ipch 文件，而且占用存储空间都很大。我的工作区一共代码占了不足 300MB，但是那个文件夹占了足足 2.2GB！</p>
+<p>点进去可以发现，似乎都是针对某个代码生成的。比如写了个很长的代码，它就给我生成了 170+MB 的 ipch……</p>
+</div><a href="/blog/vscode-ipch-too-large" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cf994" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>CodeForces Round #488 Div2 题解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>这是我的博客发布的第 100 篇文章！:tada:</p>
 <h2>D - Open Communication</h2>
 <h3>Description</h3>
 <p>有两个玩家，给出分别 n 和 m 个数对，$1\leq n,m\leq 12$，所有数字都 $\in [0,9]$，并且一个数对里的数字不相同，不会有重复的数对。现在有一个“共享数字”，这个数字在 A 玩家的数对里和 B 玩家的数对里都至少出现一次。如果你可以推断出这个数字，输出这个数字；如果你无法推断出这个数字，但是你确信两个玩家都知道这个数字，输出 0；如果连玩家也不知道，输出 -1。</p>
@@ -103,11 +105,7 @@
 <p>本质上是一种动态规划吧。</p>
 </div><a href="/blog/matrix-multiply-in-graph" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/bitset" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>C++ 手写 Bitset 代码模板</h1></a><div class="summary" data-astro-cid-mtynfrjh><h2>引言</h2>
 <p>Bitset 是一种利用对布尔数组压位存储的方法，达到优化时间常数、空间常数的目的的黑科技。利用 Bitset，可以方便地对布尔数组进行按位逻辑运算，优化 32 或 64 的常数。在某些<del>素质极差的</del>卡常题中运用会有奇效。</p>
-</div><a href="/blog/bitset" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/nowcoder-17f" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>牛客练习赛 17 F 玩游戏 题解：神奇的博弈</h1></a><div class="summary" data-astro-cid-mtynfrjh><h2>Description</h2>
-<p>牛客练习赛 17 F 【玩游戏】：<a href="https://www.nowcoder.com/acm/contest/109/F" title="Link">Link</a></p>
-<p>给定两个串 S 和 T，|S| &gt;= |T|。alice 和 bob 轮流操作串 S，bob 先手。<br>
-对于每次操作，alice 或 bob 会选择删掉 S 的第一位或最后一位。当操作以后的串的长度等于 |T| 时，游戏停止。如果停止时的串=T，则 alice 获胜，否则 bob 获胜。问在 alice 和 bob 均采取最优策略的情况下，谁赢？</p>
-</div><a href="/blog/nowcoder-17f" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/7" class="link">
+</div><a href="/blog/bitset" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/7" class="link">
 上一页
 </a> </div> <div class="paginator__center"> <span>第 8 页</span> </div> <div class="paginator__right"> <a href="/blog/9" class="link">
 下一页
