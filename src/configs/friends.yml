@@ -77,6 +77,11 @@ groups:
         slogan: 做一个自由自在的废物。
         url: https://rabithua.club
         avatar: https://http-1255663050.cos.ap-nanjing.myqcloud.com/blog/avatar.jpeg
+      - name: 愧怍
+        desc:
+        slogan: 道阻且长，行则将至。
+        url: https://kuizuo.cn
+        avatar: https://kuizuo.cn/img/logo.png
       - name: idealclover
         desc:
         slogan: Stay simple, stay naive.
