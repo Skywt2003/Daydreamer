@@ -1,0 +1,154 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #7：大厂实习初体验</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #7：大厂实习初体验</title><link rel="canonical" href="https://skywt.cn/blog/weekly-7/"><meta name="description" content="> 医药、法律、商业、工程，都是高贵的理想和维生的条件。但是，诗、美、浪漫、爱，才是我们生存的原因。
+>
+> ——《死亡诗社》"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #7：大厂实习初体验"><meta property="og:type" content="article"><meta property="og:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta property="og:url" content="https://skywt.cn/blog/weekly-7/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #7：大厂实习初体验"><meta name="twitter:image" content="https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 医药、法律、商业、工程，都是高贵的理想和维生的条件。但是，诗、美、浪漫、爱，才是我们生存的原因。
+>
+> ——《死亡诗社》"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D1M-uX2O.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.Chao4eaI.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #7：大厂实习初体验 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #7：大厂实习初体验 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #7：大厂实习初体验</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 7 月 2 日 20:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E6%9D%AD%E5%B7%9E">🌆 封面图：杭州！</a></li>
+<li><a href="#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-%E5%A4%A7%E5%8E%82%E5%AE%9E%E4%B9%A0%E5%88%9D%E4%BD%93%E9%AA%8C">🧑‍💻 大厂实习初体验</a></li>
+<li><a href="#%F0%9F%8F%99%EF%B8%8F-%E5%8E%BB%E5%9B%9E%E6%9D%AD%E5%B7%9E%E9%9A%8F%E6%83%B3">🏙️ 去（回）杭州随想</a></li>
+<li><a href="#%F0%9F%9B%A0%EF%B8%8F-%E5%85%B3%E4%BA%8E%E9%AB%98%E8%80%83%E6%8A%80%E6%9C%AF%E8%BF%99%E9%97%A8%E5%AD%A6%E7%A7%91">🛠️ 关于高考「技术」这门学科</a></li>
+<li><a href="#%F0%9F%93%9D-%E5%B8%8C%E6%9C%9B%E6%8A%8A-weekly-%E5%9D%9A%E6%8C%81%E4%B8%8B%E5%8E%BB">📝 希望把 Weekly 坚持下去！</a></li>
+</ul>
+<blockquote>
+<p>医药、法律、商业、工程，都是高贵的理想和维生的条件。但是，诗、美、浪漫、爱，才是我们生存的原因。</p>
+<p>——《死亡诗社》</p>
+</blockquote>
+<!--more-->
+<h2><a id="🌆-封面图杭州" class="content__heading-anchor"></a>🌆 封面图：杭州！</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/06/324660359.jpg" data-fancybox data-caption="我 ❤️ 杭州"><img src="https://blog.skywt.cn/usr/uploads/2024/06/324660359.jpg" alt="我 ❤️ 杭州" title="我 ❤️ 杭州" /></a></p>
+<h2><a id="🧑‍💻-大厂实习初体验" class="content__heading-anchor"></a>🧑‍💻 大厂实习初体验</h2>
+<p>本周是在某大厂实习的第一周。这也是我的第一份实习。</p>
+<p>实习地点是该厂位于杭州的全球总部，今年新开放的园区，硬件条件真的很不错。整体的建筑设计，包括空间、灯光、窗户之类的各种设计，都给人很舒服的感觉。园区内有大量绿化，除了篮球场、健身房等设施以外，甚至还有个田径场。这个园区希望营造的「<strong>校园感</strong>」，从硬件设施上来说确实达到了。其中的办公楼，就很像某些大学设计独特的图书馆。</p>
+<p>第一次在真正的大厂里工作，接触到了很多我之前不知道的东西。比如，工作的网络环境完全在企业内网中，不管是代码平台还是各种项目管理、行政、文档平台，一切都部署在内网中，不仅 npm 仓库有镜像，甚至 npm 工具本身都有集团专属的 fork 版本。GPT4o 等工具也有集团内网提供的平台可以免费使用。虽然可以申请合法的国际信道，但是我发现工作中几乎用不到境外网路访问，除了偶尔用一下 Google。我们要使用的许多开源库，也有集团内的 fork 版放在内网代码平台。<strong>在这里，就像在一个密闭的空间里工作，很少用到外部互联网的资源。</strong>（在以前，写任何前端项目的时候，离开 GitHub 和 Stack Overflow 都是无法想象的……）</p>
+<p>该厂的 MacBook 普及率高到了我以前无法想象的地步。入职前申请设备的时候我猜想，以 MacBook 的市场占有率来看，选择 MacBook 的人数占比应该不会超过一半，大多数应该还是选择 Windows PC 吧……结果第一次开会的时候，看见<strong>所有人使用的都是 MacBook</strong>，没有一台其他品牌的笔记本。这着实震惊了我……（我也领到了全新的 M3 Pro 的 MacBook Pro，嘿嘿）</p>
+<p>工作，和我之前想象的一样，确实有些累。每天坐在电脑前，高度专注，到了晚饭时间都非常累了，真不知道同事们是怎么如此有精力加班的。一下子从上学期末每天自由快乐学习阅读的生活，转变到现在这样的生活，一时有些过渡不过来。或许还是需要缓慢地去适应。</p>
+<p>在步入社会之前，我们所处的所有组织机构，从幼儿园到小学、中学、大学，<strong>存在的目的都是为了我们</strong>，学校都是为了「培养学生」这一目的而存在的。而公司企业，则是我们第一个真正接触的，<strong>目的不是为了我们</strong>的地方：客户和经济效益才是它们的目的。想起来高中班主任有一次说道：「你们现在在上学，生病了还有人嘘寒问暖，我们上班的生病缺勤一次，全勤奖就没啦！」确实，离开了学校，没有任何社会机构为我们存在、为我们负责了。虽然还未遭遇真正的危机和挫折，但是离开象牙塔的这种感觉已经让我有所感触。</p>
+<p>在一个新环境里，也忍不住幻想自己的未来。还是很喜欢该厂招聘网页的那句 slogan：</p>
+<blockquote>
+<p><strong>一起打开有意思的未来！</strong></p>
+</blockquote>
+<p><strong>我不是来混一口饭吃的</strong>。我真的很希望做一些有意思的事情，遇到有意思的人，开启有意思的未来。希望有这样的地方，能满足我的愿望。</p>
+<h2><a id="🏙️-去回杭州随想" class="content__heading-anchor"></a>🏙️ 去（回）杭州随想</h2>
+<p>杭州是我的「<strong>第二故乡</strong>」。高中的我在这里度过了三年多的时光。我觉得这次我来到杭州，用上期标题里的「去（回）杭州」来描述很贴切。既是回到曾经的城市，也是奔赴新的生活。</p>
+<p>上期提到了，回到杭州，我惊讶于<strong>杭州居然新开通了这么多条地铁线路</strong>。三年前，还没有杭州西站，还没有 19 号线，每次开学从杭州东站到达杭州，都要坐公交车去学校。现在，19 号线连通杭州东站、杭州西站、萧山国际机场，还经过我们中学附近的文三路站，可以在沈塘桥站换乘 2 号线。而沈塘桥站的商业街也不见了，变成了一个很大、很空旷的换乘站。</p>
+<p>周末回到文三路，去逛了曾经生活过的地方。许多地方还在，许多地方不见了。全家 FamilyMart 不开了，打印店变成了社区服务中心，酒店变成了写字楼……三年时光如弹指一挥间，令人感慨。</p>
+<p>这次回杭州，还有一个直观的感受：（和长沙相比）<strong>杭州的物价真高！</strong>周末在屋子里点外卖，发现一餐居然基本都要三十多元，和肯德基麦当劳的日常价差不多了。大多数的商家处于这样一种情况：价格正好处于让我心痛的价格。如果价格更低一点，我下单的时候就不会心痛了；如果价格更高一点，我就不会想吃，不会下单也不会心痛了；而它们正处于这个尴尬的价格：既没有高到让我不想吃，又没有低到让我不犹豫。所以，在杭州点外卖，总是很心痛的。😭</p>
+<p>虽然都说杭州是「美食荒漠」，但是我其实特别喜欢杭州的几家连锁餐饮品牌：外婆家、绿茶、炉鱼、新白鹿、老娘舅等等。但是，它们的价格似乎都处于上述的「心痛价」……</p>
+<blockquote>
+<p>实习一周的感受：</p>
+<ol>
+<li>上班好累 😭 感觉身体被掏空</li>
+<li>杭州物价好高 😭 感觉钱包被掏空</li>
+</ol>
+</blockquote>
+<p>网友锐评精选：</p>
+<blockquote>
+<p>杭州赚钱杭州花，一分别想带回家。</p>
+</blockquote>
+<p>以及科普一个新发现的冷知识：<strong>「杭州学军中学」这个名字究竟是哪里来的？</strong>高中的时候就一直很好奇。现在查了 Wikipedia 才知道，文革期间的 1966 年 5 月 7 日，毛泽东发出《<a href="https://zh.wikipedia.org/wiki/五七指示">五七指示</a>》，其中提到：「军队应该是一个大学校……这个大学校，学政治，学军事，学文化……学生也是这样，以学为主，兼学别样，即不但学文，也要<strong>学工、学农、学军</strong>，也要批判资产阶级。学制要缩短，教育要革命……」为了响应这个指示，杭州现在的文一路、文二路、文三路，当时分别改名为「学工路」、「学农路」、「学军路」。处于学军路（文三路）的当时的杭州大学附属中学，即更名为<strong>杭州学军中学</strong>。改革开放后，文一路、文二路、文三路的路名改了回来，而学军中学的校名却延续至今。</p>
+<h2><a id="🛠️-关于高考技术这门学科" class="content__heading-anchor"></a>🛠️ 关于高考「技术」这门学科</h2>
+<p>众所不周知，浙江的新高考，除了语文、数学、英语、物理、化学、生物、政治、历史、地理这九门传统的学科以外，还有一门浙江独有的学科，叫做「<strong>技术</strong>」。选考是七选三，我当年选的就是物理、化学、技术。</p>
+<p>这门学科其实分为<strong>通用技术</strong>（General Technology，GT）和<strong>信息技术</strong>（Information Technology，IT）两门，每一门各占 50 分，合计 100 分。</p>
+<p>我们当时信息技术的考点包括：Word 字处理、Excel 表处理、Access 数据库、Flash 动画制作，GoldWave 音频处理，以及 Visual Basic 编程（我们下一届改为了 Python）和一些简单的算法与数据结构。</p>
+<p>通用技术的考点包括：金属、木材加工工艺、焊接、画草图和三视图、控制论常识等。</p>
+<p>在高中学习这些，可以说是遥遥领先了。进入大学发现许多东西在高中「技术」课上都学过了，比如小学期实训的焊接、数据库课程的各种概念。如果学的是机械或者土木一类的专业，通用技术学的金工木工和草图、三视图一定也能派上用场。</p>
+<p>仔细想想，高中学的其他所有学科，基本都是「<strong>科学</strong>」。数学、物理、化学、生物、地理这类<strong>自然科学</strong>不必说，即使政治、历史这两门也是<strong>社会科学</strong>（只是高考基本靠背诵，没有体现什么科学方法）。所谓科学，就是探究这个世界的运行原理。</p>
+<p>「科学技术」两个概念，这些学科都只涉及前者。为什么很少涉及技术呢？我认为一个很重要的原因是：技术更新迭代的速度太快。例如信息技术这门学科：关于 Flash 的这些教材才刚刚普及开没几年，就被彻底淘汰了……</p>
+<p>之所以「技术」尤其是信息技术这门课只特供于浙江省，我觉得或许和「共同富裕示范区」有关。以前我们一直自嘲衢州是「浙江的西藏」，是全省经济最弱后的地方；然而，从小到大，即使在外婆家的乡下，我也没见到特别贫困的生活。反而经济的高速发展给我们家带来了机会。然而，上了大学，将眼界放大至全国，我才真正认识到原来居然中国居然有这么穷的地方，人们连用上电脑都很困难，更别提将信息技术纳入高考了。所以，生在浙江，我真的很幸运。</p>
+<h2><a id="📝-希望把-weekly-坚持下去" class="content__heading-anchor"></a>📝 希望把 Weekly 坚持下去！</h2>
+<p><strong>我不希望生活只是无意识流过的时间。</strong>我希望自己每天的生活在时间里留下印记。这是思考为什么要写 Weekly 的时候，我现在脑海里蹦出的第一个想法。</p>
+<p>各种新奇的想法和思考，都是在闲暇生活中产生的。一个过于忙碌的人，每天被按部就班的事项排满，是很难迸发灵感、发挥创造力的。我不希望自己过上每天「感觉身体被掏空」的生活，除了工作就是视频娱乐的生活，一个月只有发薪日感觉快乐的生活。我不希望被「卷入」工作。我也希望追求生活里其他值得追求的东西。</p>
+<p>每周写的 Weekly 可以作为见证。</p>
+<p>下周见。</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpmMO" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,169]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #7：大厂实习初体验 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 

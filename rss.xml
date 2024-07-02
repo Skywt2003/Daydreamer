@@ -1,4 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #6：出发，去（回）杭州！</title><link>https://skywt.cn/blog/weekly-6/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-6/</guid><description>&gt; When we first dropped our bags on apartment floors
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #7：大厂实习初体验</title><link>https://skywt.cn/blog/weekly-7/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-7/</guid><description>&gt; 医药、法律、商业、工程，都是高贵的理想和维生的条件。但是，诗、美、浪漫、爱，才是我们生存的原因。
+&gt;
+&gt; ——《死亡诗社》
+
+</description><pubDate>Tue, 02 Jul 2024 20:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;医药、法律、商业、工程，都是高贵的理想和维生的条件。但是，诗、美、浪漫、爱，才是我们生存的原因。&lt;/p&gt;
+&lt;p&gt;——《死亡诗社》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--more--&gt;
+&lt;h2&gt;🌆 封面图：杭州！&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/06/324660359.jpg&quot; alt=&quot;我 ❤️ 杭州&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;🧑‍💻 大厂实习初体验&lt;/h2&gt;
+&lt;p&gt;本周是在某大厂实习的第一周。这也是我的第一份实习。&lt;/p&gt;
+&lt;p&gt;实习地点是该厂位于杭州的全球总部，今年新开放的园区，硬件条件真的很不错。整体的建筑设计，包括空间、灯光、窗户之类的各种设计，都给人很舒服的感觉。园区内有大量绿化，除了篮球场、健身房等设施以外，甚至还有个田径场。这个园区希望营造的「&lt;strong&gt;校园感&lt;/strong&gt;」，从硬件设施上来说确实达到了。其中的办公楼，就很像某些大学设计独特的图书馆。&lt;/p&gt;
+&lt;p&gt;第一次在真正的大厂里工作，接触到了很多我之前不知道的东西。比如，工作的网络环境完全在企业内网中，不管是代码平台还是各种项目管理、行政、文档平台，一切都部署在内网中，不仅 npm 仓库有镜像，甚至 npm 工具本身都有集团专属的 fork 版本。GPT4o 等工具也有集团内网提供的平台可以免费使用。虽然可以申请合法的国际信道，但是我发现工作中几乎用不到境外网路访问，除了偶尔用一下 Google。我们要使用的许多开源库，也有集团内的 fork 版放在内网代码平台。&lt;strong&gt;在这里，就像在一个密闭的空间里工作，很少用到外部互联网的资源。&lt;/strong&gt;（在以前，写任何前端项目的时候，离开 GitHub 和 Stack Overflow 都是无法想象的……）&lt;/p&gt;
+&lt;p&gt;该厂的 MacBook 普及率高到了我以前无法想象的地步。入职前申请设备的时候我猜想，以 MacBook 的市场占有率来看，选择 MacBook 的人数占比应该不会超过一半，大多数应该还是选择 Windows PC 吧……结果第一次开会的时候，看见&lt;strong&gt;所有人使用的都是 MacBook&lt;/strong&gt;，没有一台其他品牌的笔记本。这着实震惊了我……（我也领到了全新的 M3 Pro 的 MacBook Pro，嘿嘿）&lt;/p&gt;
+&lt;p&gt;工作，和我之前想象的一样，确实有些累。每天坐在电脑前，高度专注，到了晚饭时间都非常累了，真不知道同事们是怎么如此有精力加班的。一下子从上学期末每天自由快乐学习阅读的生活，转变到现在这样的生活，一时有些过渡不过来。或许还是需要缓慢地去适应。&lt;/p&gt;
+&lt;p&gt;在步入社会之前，我们所处的所有组织机构，从幼儿园到小学、中学、大学，&lt;strong&gt;存在的目的都是为了我们&lt;/strong&gt;，学校都是为了「培养学生」这一目的而存在的。而公司企业，则是我们第一个真正接触的，&lt;strong&gt;目的不是为了我们&lt;/strong&gt;的地方：客户和经济效益才是它们的目的。想起来高中班主任有一次说道：「你们现在在上学，生病了还有人嘘寒问暖，我们上班的生病缺勤一次，全勤奖就没啦！」确实，离开了学校，没有任何社会机构为我们存在、为我们负责了。虽然还未遭遇真正的危机和挫折，但是离开象牙塔的这种感觉已经让我有所感触。&lt;/p&gt;
+&lt;p&gt;在一个新环境里，也忍不住幻想自己的未来。还是很喜欢该厂招聘网页的那句 slogan：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一起打开有意思的未来！&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;我不是来混一口饭吃的&lt;/strong&gt;。我真的很希望做一些有意思的事情，遇到有意思的人，开启有意思的未来。希望有这样的地方，能满足我的愿望。&lt;/p&gt;
+&lt;h2&gt;🏙️ 去（回）杭州随想&lt;/h2&gt;
+&lt;p&gt;杭州是我的「&lt;strong&gt;第二故乡&lt;/strong&gt;」。高中的我在这里度过了三年多的时光。我觉得这次我来到杭州，用上期标题里的「去（回）杭州」来描述很贴切。既是回到曾经的城市，也是奔赴新的生活。&lt;/p&gt;
+&lt;p&gt;上期提到了，回到杭州，我惊讶于&lt;strong&gt;杭州居然新开通了这么多条地铁线路&lt;/strong&gt;。三年前，还没有杭州西站，还没有 19 号线，每次开学从杭州东站到达杭州，都要坐公交车去学校。现在，19 号线连通杭州东站、杭州西站、萧山国际机场，还经过我们中学附近的文三路站，可以在沈塘桥站换乘 2 号线。而沈塘桥站的商业街也不见了，变成了一个很大、很空旷的换乘站。&lt;/p&gt;
+&lt;p&gt;周末回到文三路，去逛了曾经生活过的地方。许多地方还在，许多地方不见了。全家 FamilyMart 不开了，打印店变成了社区服务中心，酒店变成了写字楼……三年时光如弹指一挥间，令人感慨。&lt;/p&gt;
+&lt;p&gt;这次回杭州，还有一个直观的感受：（和长沙相比）&lt;strong&gt;杭州的物价真高！&lt;/strong&gt;周末在屋子里点外卖，发现一餐居然基本都要三十多元，和肯德基麦当劳的日常价差不多了。大多数的商家处于这样一种情况：价格正好处于让我心痛的价格。如果价格更低一点，我下单的时候就不会心痛了；如果价格更高一点，我就不会想吃，不会下单也不会心痛了；而它们正处于这个尴尬的价格：既没有高到让我不想吃，又没有低到让我不犹豫。所以，在杭州点外卖，总是很心痛的。😭&lt;/p&gt;
+&lt;p&gt;虽然都说杭州是「美食荒漠」，但是我其实特别喜欢杭州的几家连锁餐饮品牌：外婆家、绿茶、炉鱼、新白鹿、老娘舅等等。但是，它们的价格似乎都处于上述的「心痛价」……&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实习一周的感受：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上班好累 😭 感觉身体被掏空&lt;/li&gt;
+&lt;li&gt;杭州物价好高 😭 感觉钱包被掏空&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;网友锐评精选：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;杭州赚钱杭州花，一分别想带回家。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以及科普一个新发现的冷知识：&lt;strong&gt;「杭州学军中学」这个名字究竟是哪里来的？&lt;/strong&gt;高中的时候就一直很好奇。现在查了 Wikipedia 才知道，文革期间的 1966 年 5 月 7 日，毛泽东发出《&lt;a href=&quot;https://zh.wikipedia.org/wiki/五七指示&quot;&gt;五七指示&lt;/a&gt;》，其中提到：「军队应该是一个大学校……这个大学校，学政治，学军事，学文化……学生也是这样，以学为主，兼学别样，即不但学文，也要&lt;strong&gt;学工、学农、学军&lt;/strong&gt;，也要批判资产阶级。学制要缩短，教育要革命……」为了响应这个指示，杭州现在的文一路、文二路、文三路，当时分别改名为「学工路」、「学农路」、「学军路」。处于学军路（文三路）的当时的杭州大学附属中学，即更名为&lt;strong&gt;杭州学军中学&lt;/strong&gt;。改革开放后，文一路、文二路、文三路的路名改了回来，而学军中学的校名却延续至今。&lt;/p&gt;
+&lt;h2&gt;🛠️ 关于高考「技术」这门学科&lt;/h2&gt;
+&lt;p&gt;众所不周知，浙江的新高考，除了语文、数学、英语、物理、化学、生物、政治、历史、地理这九门传统的学科以外，还有一门浙江独有的学科，叫做「&lt;strong&gt;技术&lt;/strong&gt;」。选考是七选三，我当年选的就是物理、化学、技术。&lt;/p&gt;
+&lt;p&gt;这门学科其实分为&lt;strong&gt;通用技术&lt;/strong&gt;（General Technology，GT）和&lt;strong&gt;信息技术&lt;/strong&gt;（Information Technology，IT）两门，每一门各占 50 分，合计 100 分。&lt;/p&gt;
+&lt;p&gt;我们当时信息技术的考点包括：Word 字处理、Excel 表处理、Access 数据库、Flash 动画制作，GoldWave 音频处理，以及 Visual Basic 编程（我们下一届改为了 Python）和一些简单的算法与数据结构。&lt;/p&gt;
+&lt;p&gt;通用技术的考点包括：金属、木材加工工艺、焊接、画草图和三视图、控制论常识等。&lt;/p&gt;
+&lt;p&gt;在高中学习这些，可以说是遥遥领先了。进入大学发现许多东西在高中「技术」课上都学过了，比如小学期实训的焊接、数据库课程的各种概念。如果学的是机械或者土木一类的专业，通用技术学的金工木工和草图、三视图一定也能派上用场。&lt;/p&gt;
+&lt;p&gt;仔细想想，高中学的其他所有学科，基本都是「&lt;strong&gt;科学&lt;/strong&gt;」。数学、物理、化学、生物、地理这类&lt;strong&gt;自然科学&lt;/strong&gt;不必说，即使政治、历史这两门也是&lt;strong&gt;社会科学&lt;/strong&gt;（只是高考基本靠背诵，没有体现什么科学方法）。所谓科学，就是探究这个世界的运行原理。&lt;/p&gt;
+&lt;p&gt;「科学技术」两个概念，这些学科都只涉及前者。为什么很少涉及技术呢？我认为一个很重要的原因是：技术更新迭代的速度太快。例如信息技术这门学科：关于 Flash 的这些教材才刚刚普及开没几年，就被彻底淘汰了……&lt;/p&gt;
+&lt;p&gt;之所以「技术」尤其是信息技术这门课只特供于浙江省，我觉得或许和「共同富裕示范区」有关。以前我们一直自嘲衢州是「浙江的西藏」，是全省经济最弱后的地方；然而，从小到大，即使在外婆家的乡下，我也没见到特别贫困的生活。反而经济的高速发展给我们家带来了机会。然而，上了大学，将眼界放大至全国，我才真正认识到原来居然中国居然有这么穷的地方，人们连用上电脑都很困难，更别提将信息技术纳入高考了。所以，生在浙江，我真的很幸运。&lt;/p&gt;
+&lt;h2&gt;📝 希望把 Weekly 坚持下去！&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;我不希望生活只是无意识流过的时间。&lt;/strong&gt;我希望自己每天的生活在时间里留下印记。这是思考为什么要写 Weekly 的时候，我现在脑海里蹦出的第一个想法。&lt;/p&gt;
+&lt;p&gt;各种新奇的想法和思考，都是在闲暇生活中产生的。一个过于忙碌的人，每天被按部就班的事项排满，是很难迸发灵感、发挥创造力的。我不希望自己过上每天「感觉身体被掏空」的生活，除了工作就是视频娱乐的生活，一个月只有发薪日感觉快乐的生活。我不希望被「卷入」工作。我也希望追求生活里其他值得追求的东西。&lt;/p&gt;
+&lt;p&gt;每周写的 Weekly 可以作为见证。&lt;/p&gt;
+&lt;p&gt;下周见。&lt;/p&gt;
+</content:encoded><author>me@skywt.cn</author></item><item><title>Weekly #6：出发，去（回）杭州！</title><link>https://skywt.cn/blog/weekly-6/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-6/</guid><description>&gt; When we first dropped our bags on apartment floors
 &gt; Took our broken hearts put them in a drawer
 &gt; Everybody here was someone else before
 &gt; And you can want who you want
@@ -26,7 +81,7 @@ Welcome to New York, welcome to New York&lt;/p&gt;
 &lt;p&gt;关于入职也有很多值得记录的感受，还是留给下一期吧。&lt;/p&gt;
 &lt;h2&gt;🌆 封面图：在飞机上&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/06/3281384168.jpg&quot; alt=&quot;封面图：在飞机上&quot;&gt;&lt;/p&gt;
-&lt;p&gt;本来订好了火车票的，出发前一天突然决定想要坐飞机。反正能报销，就改为飞机票饿了。&lt;/p&gt;
+&lt;p&gt;本来订好了火车票的，出发前一天突然决定想要坐飞机。反正能报销，就改为飞机票了。&lt;/p&gt;
 &lt;p&gt;很喜欢乘坐飞机的感受。能够感觉到民航产业中蕴含的人类工业文明的力量，俯瞰大自然的时候也能感觉到一种独特的美感。&lt;/p&gt;
 &lt;h2&gt;✈️ 出发，去（回）杭州！&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/06/3139962195.jpg&quot; alt=&quot;《光遇》同款的云海！&quot;&gt;&lt;/p&gt;
@@ -4104,84 +4159,6 @@ Breakpoint 1, 0x0000000080200000 in stext ()
 「我也 20 岁了，有点像开玩笑似的。」直子说，「我，一点儿也没做 20 岁的准备，挺纳闷儿的，就像谁从背后硬推给我的一样。」&lt;br&gt;
 —— 村上春树《挪威的森林》&lt;/p&gt;
 &lt;/blockquote&gt;
-</content:encoded><author>me@skywt.cn</author></item><item><title>Kali Linux 安装配置踩坑记录</title><link>https://skywt.cn/blog/kali-linux-install-log/</link><guid isPermaLink="true">https://skywt.cn/blog/kali-linux-install-log/</guid><description>寝室里新买了一台迷你主机，想要安装 Kali 和 Windows 双系统。之前只在 macOS 里跑过 Kali 的虚拟机，从来没有当作主力来使用，所以很少考虑个性化的配置问题，但是这次装了 Kali 作为宿主系统打算长期使用才感觉，配置一个舒适的 Linux 环境真的很折腾……
-
-
-</description><pubDate>Sat, 01 Apr 2023 14:38:00 GMT</pubDate><content:encoded>&lt;p&gt;寝室里新买了一台迷你主机，想要安装 Kali 和 Windows 双系统。之前只在 macOS 里跑过 Kali 的虚拟机，从来没有当作主力来使用，所以很少考虑个性化的配置问题，但是这次装了 Kali 作为宿主系统打算长期使用才感觉，配置一个舒适的 Linux 环境真的很折腾……&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;p&gt;（头图是 Kali 默认壁纸，很好看！）&lt;/p&gt;
-&lt;h2&gt;Keychron 键盘蓝牙连接问题&lt;/h2&gt;
-&lt;p&gt;我使用的京东京造键盘（其实是 Keychron 贴牌）习惯使用蓝牙无线连接，但是在装好的 Kali 上蓝牙连接之后，虽然可以正常使用，但是只要断开一次，之后就没法自动重连，必须重新配对。键盘尝试自动重连的时候，一直连不上，蓝牙连接按钮一直闪；而在右上角蓝牙连接面板点击设备重连，则会弹出一个「Connected」通知后立马弹出「Disconnected」的通知。&lt;br&gt;
-记得之前用这个蓝牙键盘连接树霉派 Raspbian 也有一样的问题。而 macOS、Windows 蓝牙连接都没有问题。&lt;/p&gt;
-&lt;p&gt;上网搜了一圈，似乎是 Keychron 用了独特的蓝牙连接方式。根据&lt;a href=&quot;https://forum.manjaro.org/t/bluetooth-keyboard-keeps-connecting-and-disconnecting-after-rebooting/107772&quot;&gt;这篇帖子&lt;/a&gt;中的方法，只需要如下操作：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;首先删除设备列表里对应设备；&lt;/li&gt;
-&lt;li&gt;长按 Fn + 1/2/3 进入配对模式；&lt;/li&gt;
-&lt;li&gt;在蓝牙面板搜索到设备后，不要直接连接，而是右键进行配对（pair）；&lt;/li&gt;
-&lt;li&gt;配对成功后会 disconnect，这时候再在蓝牙面板里连接；&lt;/li&gt;
-&lt;li&gt;连接成功后，右键设置为「信任」。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;按照如上步骤操作，之后如果键盘断连就可以自动重连。&lt;/p&gt;
-&lt;h2&gt;中文拼音输入法配置&lt;/h2&gt;
-&lt;h3&gt;Fcitx vs iBus&lt;/h3&gt;
-&lt;p&gt;Fcitx 和 iBus 是 Linux 下比较常见的两个输入法框架。在安装输入法之前，我们需要先安装二者其一。&lt;/p&gt;
-&lt;p&gt;这两者有何区别呢？咨询了 new bing，大概的比较是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Fcitx 比较轻量，iBus 功能更加强大；&lt;/li&gt;
-&lt;li&gt;Fcitx 比较新，iBus 有着悠久的历史；&lt;/li&gt;
-&lt;li&gt;Fcitx 最初就是为中文五笔输入法而开发的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;面对 iBus 好几百个包依赖（new bing 说的），我毅然决然选择了简洁的 Fcitx。&lt;/p&gt;
-&lt;p&gt;顺便好奇搜了一下这个奇怪的名字 Fcitx 是怎么来的：Free Chinese Input Tool of X，但也可以有其他的解释。中文名叫做“小企鹅输入法”。详情可以看看&lt;a href=&quot;https://fcitx-im.org/wiki/History/zh-cn&quot;&gt;这段历史&lt;/a&gt;。&lt;/p&gt;
-&lt;h3&gt;安装配置 Fcitx&lt;/h3&gt;
-&lt;p&gt;Fcitx 本身只是一个输入法框架，但是它有自带的名为 pinyin 的拼音输入法。安装非常容易：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;sudo apt-get install fcitx
-sudo apt-get install fcitx-pinyin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;安装完成之后在 Kali 的设置里就能看到输入法的选项，这时候点进设置里「Fcitx 输入法」选项，会发现什么输入法都没有。此时需要重启设备，才能正常配置。&lt;/p&gt;
-&lt;p&gt;重启之后，进入设置选项就可以看到默认添加了拼音和双拼的输入法，默认是按 Ctrl + Space 切换。虽然这个输入法配色有点像搜狗，但是不用担心，这就是 Fcitx 自带的开源拼音输入法。&lt;/p&gt;
-&lt;p&gt;除了这个输入法之外，如果你爱好折腾、定制化，或者要求各个平台极致的统一，可以试试跨平台的 &lt;a href=&quot;https://rime.im/&quot;&gt;RIME 中州韵输入法引擎&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;（如果去网上找教程，大部分都会让我们全装 Google 拼音输入法，这是个最后更新于 2013 年的古董产品，个人觉得实在没有必要继续用了（虽然体验过 Android 上的 Google 拼音，n 年前的词频算法吊打如今的搜狗百度，确实很强））&lt;/p&gt;
-&lt;h3&gt;配置 Mac 风格输入符号映射&lt;/h3&gt;
-&lt;p&gt;使用 Macbook 的同学都知道，Macbook 的键盘和一般笔记本是有些不一样的，我用起来感觉差别最大的就是右上角 P 按键右边的两个按键，在中文模式下，Macbook 键盘上标的是 &lt;code&gt;【】&lt;/code&gt; 和 &lt;code&gt;「」&lt;/code&gt;。实际上 &lt;code&gt;「」&lt;/code&gt; 是台湾和日语风格的引号，我个人特别喜欢用这个，但是 Fcitx 默认并没有这样的配置。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;/usr/share/fcitx/data/punc.mb.zh_CN&lt;/code&gt; 这个文件规定了中文输入法的符号映射，直接修改这个文件并重启 Fcitx 即可。值得一提的是，在修改这个文件之前我们是没法直接在键盘上输入 &lt;code&gt;【】&lt;/code&gt; 这种符号的，所以编辑这个文件的时候也没法输入……可以使用 Ctrl + Shift + Alt + U 打开 Fcitx 自带的 Unicode 输入面板，搜索 LEFT/RIGHT BLACK LENTICULAR BRACKET，就是这俩符号。&lt;/p&gt;
-&lt;h2&gt;更改用户目录文件夹名&lt;/h2&gt;
-&lt;p&gt;如果安装 Kali 的时候选择中文，会有个非常雷人的设置：用户主目录 &lt;code&gt;～&lt;/code&gt; 下的各个文件夹，名称全都是中文：“桌面”、“下载”……这导致没安装输入法的时候甚至在终端里没法直接 cd 进入“下载”目录。（发现这个情况的时候血压高了）&lt;/p&gt;
-&lt;p&gt;要改这个也很简单，先创建好想要的文件夹，然后编辑 &lt;code&gt;~/.config/user-dirs.dirs&lt;/code&gt; 文件，将中文目录改为想要的英文目录即可。注意一定要先创建好文件夹，如果直接改这个配置文件就重启，所有文件夹路径都会变成 &lt;code&gt;$HOME&lt;/code&gt;……网上许多抄來抄去的资料都没说清楚这一点。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# This file is written by xdg-user-dirs-update
-# If you want to change or add directories, just edit the line you&apos;re
-# interested in. All local changes will be retained on the next run.
-# Format is XDG_xxx_DIR=&amp;quot;$HOME/yyy&amp;quot;, where yyy is a shell-escaped
-# homedir-relative path, or XDG_xxx_DIR=&amp;quot;/yyy&amp;quot;, where /yyy is an
-# absolute path. No other format is supported.
-# 
-XDG_DESKTOP_DIR=&amp;quot;$HOME/Desktop&amp;quot;
-XDG_DOWNLOAD_DIR=&amp;quot;$HOME/Downloads&amp;quot;
-XDG_TEMPLATES_DIR=&amp;quot;$HOME/Templates&amp;quot;
-XDG_PUBLICSHARE_DIR=&amp;quot;$HOME/Public&amp;quot;
-XDG_DOCUMENTS_DIR=&amp;quot;$HOME/Documents&amp;quot;
-XDG_MUSIC_DIR=&amp;quot;$HOME/Music&amp;quot;
-XDG_PICTURES_DIR=&amp;quot;$HOME/Pictures&amp;quot;
-XDG_VIDEOS_DIR=&amp;quot;$HOME/Videos&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;网卡问题&lt;/h2&gt;
-&lt;p&gt;// 2023-04-06 更新。&lt;/p&gt;
-&lt;p&gt;在不同的两个磁盘分区里安装好 Windows 和 Kali 的双系统后，Kali 知道 Windows 的存在，但是 Windows 是不知道 Kali 的存在的。所以我在 BIOS 里设置了从 Kali 启动系统，Kali 的启动界面会让我选择进入 Kali 还是 Windows。&lt;/p&gt;
-&lt;p&gt;然而，有时候进入 Kali 后会无法使用无线网卡（但是能检测到设备），而在 Windows 里可以正常使用。我的迷你主机网卡是 Intel AX200，Kali 中的驱动程序一切完备。上网查了很多资料（&lt;a href=&quot;https://askubuntu.com/questions/1382918/wireless-adapter-mediatek-mt7921-is-not-working-after-a-reboot-in-ubuntu-21-10&quot;&gt;参考&lt;/a&gt;），这个情况大概的原因是 Windows 由于一些关于 fastboot 的技术，在关机前把网卡设置成了一个 Kali 不认识的模式。但是不知道这个模式开关在哪里，毕竟我的 BIOS 里 Fastboot 和 Secure Boot 都关掉了。&lt;/p&gt;
-&lt;p&gt;目前的解决方法是，Windows 关机前关闭 WiFi 开关。&lt;/p&gt;
-&lt;h2&gt;macOS 风格键盘快捷键&lt;/h2&gt;
-&lt;p&gt;// 2023-04-18 更新&lt;/p&gt;
-&lt;p&gt;如果用习惯了 macOS，转到其他主流操作系统使用快捷键会很不习惯。众所周知，macOS 里的 Command 按键相当于一般的 Control，而使用终端时 Control 又就是 Control。这意味着，这个键盘映射规则并不是简单的。&lt;br&gt;
-还好，有开源的方案可以在 Linux / Windows 上实现 macOS 风格快捷键：&lt;a href=&quot;https://kinto.sh/&quot;&gt;kinto.sh&lt;/a&gt;。使用官网的脚本即可一键安装，非常方便。具体可以查看它的文档。&lt;/p&gt;
-&lt;p&gt;美中不足的是 macOS 国行版使用 Caps Lock 按钮切换输入法的设定，似乎在其他操作系统里没有找到替代方案。&lt;/p&gt;
-&lt;h2&gt;还有一大堆问题……&lt;/h2&gt;
-&lt;p&gt;其实现在这个 Kali 的使用体验上还有不少问题，比如这个应用程序菜单的管理，比如屏幕字体显示的问题……不过对整体的使用而言影响不大，都是一些细节上的问题。相比 macOS、Windows 这样的商业操作系统，可能这就是「集市与大教堂」的差异吧。慢慢折腾了。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;[ ] 屏幕字体显示优化&lt;/li&gt;
-&lt;li&gt;[ ] 正常的应用程序菜单管理&lt;/li&gt;
-&lt;li&gt;[x] macOS 风格键盘 shortcut&lt;/li&gt;
-&lt;li&gt;[ ] .……&lt;/li&gt;
-&lt;/ul&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>感谢订阅 SkyWT 的博客。</title><link>https://skywt.cn/blog/</link><guid isPermaLink="true">https://skywt.cn/blog/</guid><description>订阅成功。</description><pubDate>Wed, 01 Nov 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;订阅成功。该 RSS 源显示最近发布的 20 篇文章。当有新文章时，RSS 源会及时更新。&lt;/p&gt;
 &lt;p&gt;前往&lt;a href=&quot;https://skywt.cn/blog/archives&quot;&gt;文章归档&lt;/a&gt;页面即可一览全部文章。&lt;/p&gt;
 &lt;p&gt;RSS 真是个伟大的发明，用开放的标准将独立的内容连接在一起，也将我们连接在一起。&lt;/p&gt;
