@@ -57,6 +57,11 @@ groups:
         slogan: THIS IS MY STORY.
         url: https://www.isolitude.cn/
         avatar: https://pic.isolitude.cn/2022/01/28/683727a137bb0.png
+      - name: Arthals
+        desc:
+        slogan: 所见高山远木，阔云流风；所幸岁月盈余，了无拘束。
+        url: https://arthals.ink/
+        avatar: https://arthals.ink/_next/image?url=https%3A%2F%2Fcdn.arthals.ink%2FArthals.png&w=384&q=75
       - name: 张洪 Heo
         desc: 极具设计感的网站。
         slogan: 分享设计与科技生活。
