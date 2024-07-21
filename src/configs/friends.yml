@@ -72,16 +72,6 @@ groups:
         slogan:
         url: https://kaiyi.cool
         avatar: https://kaiyi.cool/_astro/portrait.lBf0EGlL_1llb4H.webp
-      - name: 雪舞灵颜
-        desc:
-        slogan: 随至爱见至美。
-        url: https://mys.forevers.love
-        avatar: https://friend.s3-us-east-1.ossfiles.com/b_1f7895cd0c20cf1ea2f6903ffabafdf1.jpg
-      - name: 于长野
-        desc:
-        slogan: 做一个自由自在的废物。
-        url: https://rabithua.club
-        avatar: https://http-1255663050.cos.ap-nanjing.myqcloud.com/blog/avatar.jpeg
       - name: 愧怍
         desc:
         slogan: 道阻且长，行则将至。
@@ -117,6 +107,24 @@ groups:
         slogan:
         url: https://www.vhrise.com
         avatar: https://thirdqq.qlogo.cn/g?k=EaL0QicATH5MUdhX9NmzuVQ&b=oidb&s=0&rand=16724791560
+  - name: AdventureX
+    desc: 总有人心里有火炬，而且彼此能看见。
+    friends:
+      - name: 垚
+        desc:
+        slogan: (✿╹◡╹) 无存在感小透明 (╹◡╹✿)
+        url: https://www.huaji.store
+        avatar: https://ry.huaji.store/images/logo@2x.png
+      - name: 于长野
+        desc:
+        slogan: 做一个自由自在的废物。
+        url: https://rabithua.club
+        avatar: https://http-1255663050.cos.ap-nanjing.myqcloud.com/blog/avatar.jpeg
+      - name: 雪舞灵颜
+        desc:
+        slogan: 随至爱见至美。
+        url: https://mys.forevers.love
+        avatar: https://friend.s3-us-east-1.ossfiles.com/b_1f7895cd0c20cf1ea2f6903ffabafdf1.jpg
   - name: 🌟 旧友们
     desc: 我们曾经终日游荡，在故乡的青山上。
     friends:
