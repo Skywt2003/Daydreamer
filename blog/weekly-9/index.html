@@ -1,0 +1,150 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #9：AdventrueX —— 热爱为主，搞钱为辅</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #9：AdventrueX —— 热爱为主，搞钱为辅</title><link rel="canonical" href="https://skywt.cn/blog/weekly-9/"><meta name="description" content="> 总有人心里有火炬，而且彼此能看见。
+>
+> —— 麦卡锡《长路》"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #9：AdventrueX —— 热爱为主，搞钱为辅"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-9/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #9：AdventrueX —— 热爱为主，搞钱为辅"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 总有人心里有火炬，而且彼此能看见。
+>
+> —— 麦卡锡《长路》"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content="AdventureX,黑客松,湖畔,杭州"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D1M-uX2O.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.Chao4eaI.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #9：AdventrueX —— 热爱为主，搞钱为辅 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #9：AdventrueX —— 热爱为主，搞钱为辅 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top"> <a href="https://blog.skywt.cn/usr/uploads/2024/07/2476447176.jpg" data-fancybox data-caption="Weekly #9：AdventrueX —— 热爱为主，搞钱为辅"> <img src="https://blog.skywt.cn/usr/uploads/2024/07/2476447176.jpg" alt="Weekly #9：AdventrueX —— 热爱为主，搞钱为辅" title="Weekly #9：AdventrueX —— 热爱为主，搞钱为辅" class="page__headpic mb-8"> </a> <h1 class="page__heading">Weekly #9：AdventrueX —— 热爱为主，搞钱为辅</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 7 月 21 日 23:50</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E6%B9%96%E7%95%94%E7%9A%84%E6%97%A5%E5%87%BA">🌆 封面图：湖畔的日出</a></li>
+<li><a href="#%F0%9F%94%A5-%E7%83%AD%E7%88%B1%E4%B8%BA%E4%B8%BB%E6%90%9E%E9%92%B1%E4%B8%BA%E8%BE%85">🔥 热爱为主，搞钱为辅</a></li>
+<li><a href="#%F0%9F%A4%9D-%E6%88%91%E5%85%B6%E5%AE%9E%E5%B9%B6%E4%B8%8D%E8%BF%99%E4%B9%88%E7%A4%BE%E6%81%90">🤝 我其实并不这么社恐</a></li>
+<li><a href="#%F0%9F%8C%9F-%E6%97%B6%E4%BB%A3%E4%B8%AD%E7%9A%84%E9%9D%92%E6%98%A5%E5%8A%9B%E9%87%8F">🌟 时代中的青春力量</a></li>
+<li><a href="#%F0%9F%92%AC-%E6%9C%80%E5%90%8E%E8%A6%81%E8%AF%B4%E7%9A%84%E8%AF%9D">💬 最后要说的话</a></li>
+</ul>
+<blockquote>
+<p>总有人心里有火炬，而且彼此能看见。</p>
+<p>—— 麦卡锡《长路》</p>
+</blockquote>
+<!--more-->
+<p>本周在杭州参加了 <strong>AdventureX</strong>，这是第一个面向中国年轻人的黑客松。我觉得<strong>这是我参加过的最有意思、最有意义也最酷的活动</strong>。不仅认识了很多新朋友，也了解到了很多新东西，甚至彻底改变了我的一些观念。</p>
+<h2><a id="🌆-封面图湖畔的日出" class="content__heading-anchor"></a>🌆 封面图：湖畔的日出</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/07/1839020241.jpg" data-fancybox data-caption="封面图：湖畔的日出"><img src="https://blog.skywt.cn/usr/uploads/2024/07/1839020241.jpg" alt="封面图：湖畔的日出" title="封面图：湖畔的日出" /></a></p>
+<p>这次比赛的五天里，看了两次日出。</p>
+<p>第一次是周三早上。前一天晚上我们熬夜讨论（和聊天），甚至凌晨的时候离开会场去散步，不知不觉到了凌晨四点。骑车回酒店休息的时候，正好碰上了日出，看到了天一点一点亮起来。</p>
+<p>第二次是周五早上。这天上午 8:30 是项目提交 DDL，所以前一天晚上我们完全没有睡觉。四点半的时候，距离日出还有不到一小时，我们临时决定：打车去西湖看日出！</p>
+<p>人在半夜的时候总会有那种白天不会产生的、很疯狂的想法。😁</p>
+<h2><a id="🔥-热爱为主搞钱为辅" class="content__heading-anchor"></a>🔥 热爱为主，搞钱为辅</h2>
+<p>第一天展会的合作方 Spark Lab 准备了一个大展示牌，是个关于大家在做的项目的坐标轴，横轴是「热爱」，纵轴是「赚钱」。大家可以根据自己的 MBTI 选择一个颜色的贴纸，然后将贴纸贴在自己的项目对应的坐标轴位置。</p>
+<p>最后的结果让我印象深刻，是这样的：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/07/1696097582.jpg" data-fancybox data-caption="热爱为主，搞钱为辅"><img src="https://blog.skywt.cn/usr/uploads/2024/07/1696097582.jpg" alt="热爱为主，搞钱为辅" title="热爱为主，搞钱为辅" /></a></p>
+<p>我觉得，一句话概括就是：<strong>热爱为主，搞钱为辅</strong>。大家在做自己项目的时候，大多是以发自内心的热爱为主导。这样的热爱，在大学里很少见，在大厂里也很难见到。<strong>这很酷</strong>。</p>
+<p>我真的感受到了参加这次比赛的体验，和平常在大厂打工的体验，有多么不同。一个最直观的感受就是：在大厂干了一天活，到晚饭时间就非常累了，每天晚上回来都是什么都不想做的状态；早上起床，也经常是充满了怨气地来到工位。似乎每天都很累。而在这里，虽然中间三天都没怎么睡觉，却一点也不犯困，每天都很兴奋。或许这就是创造带来的兴奋感。</p>
+<p>归根结底，<strong>大厂必然是压制员工的创新的</strong>。作为一个大型的多人协作组织，大厂需要的是对决策的服从，而非质疑。作为个人而言，在这一过程中自己的创新显然被压制了，从而难以获得价值感和意义感。真正能够展现自己创意的工作，或许只能在小团队中产生，比如这次黑客松。</p>
+<h2><a id="🤝-我其实并不这么社恐" class="content__heading-anchor"></a>🤝 我其实并不这么社恐</h2>
+<p>参加比赛之前，以为我会很社恐。甚至开幕式之前的那个中午，即将出发前往会场的时候，真的有一种强烈的恐惧感。</p>
+<p>然而到了会场，不管是第一天的开幕式、展会，还是之后的比赛、expo，<strong>我发现自己并没有这么社恐</strong>。因为能够感觉到，大家都是普通人，大家也有和我一样面对陌生人的感觉（几个社牛除外）。但是想到大家心中都怀揣着一样的激情和热爱，相互了解也并不再是如此难的事情。</p>
+<p>特别是，和有意思的人认识和交流，反而是一件非常快乐的事情。我们对许多事情都深有同感，能够找到共鸣；我也能听到他们对许多事情的想法和看法，接触不一样的世界观，引发许多思考。这一过程真的非常神奇。</p>
+<p>现在我理解了《乔布斯传》里所说的乔布斯「喜欢和人一起散步」。我真正地感受到，<strong>观点会在碰撞中产生</strong>。与他人的交流之中，不同思维的碰撞往往能产生各种各样的想法，这些想法是一个人平时想不到的。</p>
+<h2><a id="🌟-时代中的青春力量" class="content__heading-anchor"></a>🌟 时代中的青春力量</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/07/1395325749.jpg" data-fancybox data-caption="所有的火，都是火"><img src="https://blog.skywt.cn/usr/uploads/2024/07/1395325749.jpg" alt="所有的火，都是火" title="所有的火，都是火" /></a></p>
+<p>高中的时候看到过这样一句话：</p>
+<blockquote>
+<p><strong>总有人心里有火炬，而且彼此能看见。</strong></p>
+<p>—— 麦卡锡《长路》</p>
+</blockquote>
+<p>参加这次活动的时候，有感而发。<strong>我认为这次活动是对这句话最好的见证。</strong></p>
+<p>之前 <a href="https://skywt.cn/blog/weekly-4/">Weekly #4 阅读与人生自我设计</a>中提到，<strong>要认清时代的主潮</strong>。我觉得当今时代最根本的主潮之一就是：<strong>经济下行</strong>。由此，年轻人的内卷也好，躺平也好，迷茫焦虑也好，卷绩点、考研、考公考编风气的盛行也好，都是这一主潮的外在表征。</p>
+<p>而在这次比赛里我感受到的却是一种截然相反的风气：大家都充满激情和热爱，有着各种想法以及将它们变为现实的驱动力。将这样一群年轻人聚在一起，就将这种热情无限地聚集和放大，迸发出属于青年和青春的力量。这一切反而与时代的风气格格不入。<strong>这是对时代风气的反叛，也是对「嬉皮士精神」最好的诠释。</strong></p>
+<blockquote>
+<p>他们发明。</p>
+<p>他们想象。</p>
+<p>他们治愈。</p>
+<p>他们探索。</p>
+<p>他们创造。</p>
+</blockquote>
+<h2><a id="💬-最后要说的话" class="content__heading-anchor"></a>💬 最后要说的话</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/07/3023577575.jpg" data-fancybox data-caption="开放中，可以来聊～"><img src="https://blog.skywt.cn/usr/uploads/2024/07/3023577575.jpg" alt="开放中，可以来聊～" title="开放中，可以来聊～" /></a></p>
+<p>非常感谢主办方和合作方。主办方是一群高中生。他们的种种努力，无论是陪我们熬的夜，对 LGBT 群体的尊重，还是超酷的伍德斯托克音乐节，都被我们看在眼里。正是他们独属于少年的理想主义，让这场活动更酷。</p>
+<p>我还要感谢队友 <strong>Kronight</strong>、<strong>薇龙</strong>和 <strong>Seimo</strong>。或许是由于我们队早就确定了「友谊第一，比赛第二」的总方针，我们队内有特别融洽的氛围。也要感谢其他我遇见的伙伴们。我永远会记得和这群人凌晨三四点一起熬的夜、逛的马路、看的日出、吃的海底捞。</p>
+<p>或许如薇龙所说，这一切都是命中注定的缘分。✨</p>
+<p>明年希望能再见。</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpsJa" prefix="r0" component-url="/_astro/Comments.guW41fyt.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,171]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #9：AdventrueX —— 热爱为主，搞钱为辅 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
