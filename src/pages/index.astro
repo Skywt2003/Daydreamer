@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Menu from "@components/menu/Menu.astro";
 import Bento from "@components/bento/Bento.astro";
 import ProjectsCards from "@components/projects/ProjectsCards.astro";
-import Rating from "@components/Rating.astro";
+import Rating from "@components/Rating";
 import projects_yml from "@configs/projects.yml";
 import menu_yml from "@configs/menu.yml";
 import Navbar from "@components/Navbar.astro";
@@ -102,7 +102,7 @@ import Navbar from "@components/Navbar.astro";
           这个网站的整套程序，命名为 Daydreamer。我将其定义为一个持续开发的
           playground，之后将会尝试陆续添加各种好玩的功能。
         </p>
-        <Rating />
+        <Rating client:load />
       </div>
     </section>
   </main>
