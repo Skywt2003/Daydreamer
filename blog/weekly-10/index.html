@@ -1,0 +1,205 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #10：游戏作为第九艺术</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #10：游戏作为第九艺术</title><link rel="canonical" href="https://skywt.cn/blog/weekly-10/"><meta name="description" content="> 「您今天还保留着您所有的理想，那些您当年带往远方世界去的所有理想吗？所有这些您还保留着，没有损坏，或者说有些已经死亡，已经枯萎？或者到头来人家没有把这些理想强行从您怀里抢走，扔在污泥里，被成千上万驰向生活目标的车轮碾得粉碎？或者说您一点也没有丢失？」
+>
+> —— 茨威格《忘却的梦》"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #10：游戏作为第九艺术"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-10/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #10：游戏作为第九艺术"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 「您今天还保留着您所有的理想，那些您当年带往远方世界去的所有理想吗？所有这些您还保留着，没有损坏，或者说有些已经死亡，已经枯萎？或者到头来人家没有把这些理想强行从您怀里抢走，扔在污泥里，被成千上万驰向生活目标的车轮碾得粉碎？或者说您一点也没有丢失？」
+>
+> —— 茨威格《忘却的梦》"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.Bz1ZbssJ.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #10：游戏作为第九艺术 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #10：游戏作为第九艺术 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #10：游戏作为第九艺术</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 7 月 25 日 21:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E4%B8%80%E4%B8%AA%E5%B9%B3%E5%87%A1%E7%9A%84%E6%99%9A%E4%B8%8A">🌆 封面图：一个平凡的晚上</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E9%87%8D%E8%AF%BB%E4%B8%80%E4%B8%AA%E9%99%8C%E7%94%9F%E5%A5%B3%E4%BA%BA%E7%9A%84%E6%9D%A5%E4%BF%A1">📚 本周重读：《一个陌生女人的来信》</a></li>
+<li><a href="#%F0%9F%AA%BDsky-%E5%85%89%E9%81%87%E6%B8%B8%E6%88%8F%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%B9%9D%E8%89%BA%E6%9C%AF">🪽《Sky 光遇》：游戏作为第九艺术</a></li>
+<li><a href="#%E2%9C%A8%E5%91%BD%E7%90%86%E5%AD%A6%E9%9A%8F%E6%83%B3">✨「命理学」随想</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%9C%A8%E8%AF%BB%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F">📚 本周在读：《蛤蟆先生去看心理医生》</a></li>
+<li><a href="#%E2%9A%99%EF%B8%8F-quantumult-x-%E5%85%A5%E9%97%A8">⚙️ Quantumult X 入门</a></li>
+<li><a href="#%F0%9F%92%AC-quotes">💬 Quotes</a></li>
+<li><a href="#%F0%9F%8E%B5-%E9%9D%92%E5%B9%B4%E5%8F%8B%E8%B0%8A%E5%9C%86%E8%88%9E%E6%9B%B2">🎵 青年友谊圆舞曲</a></li>
+</ul>
+<blockquote>
+<p>「您今天还保留着您所有的理想，那些您当年带往远方世界去的所有理想吗？所有这些您还保留着，没有损坏，或者说有些已经死亡，已经枯萎？或者到头来人家没有把这些理想强行从您怀里抢走，扔在污泥里，被成千上万驰向生活目标的车轮碾得粉碎？或者说您一点也没有丢失？」</p>
+<p>—— 茨威格《忘却的梦》</p>
+</blockquote>
+<!--more-->
+<p>这期 Weekly 本来写了一半是要上周发的，但是上周去参加了 AdventrueX，改发了一期「特别篇」。所以这篇内容，留到了这周发。</p>
+<p>说起来，Weekly 发布时间已经变成不定了。我希望只要保持一周的周一到周日任何一天能发就好。😁</p>
+<h2><a id="🌆-封面图一个平凡的晚上" class="content__heading-anchor"></a>🌆 封面图：一个平凡的晚上</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/07/3087953175.jpg" data-fancybox data-caption="封面图：一个平凡的晚上"><img src="https://blog.skywt.cn/usr/uploads/2024/07/3087953175.jpg" alt="封面图：一个平凡的晚上" title="封面图：一个平凡的晚上" /></a></p>
+<p>从 AdventureX 回来，就好似做了一场梦。回到了大厂平庸无聊的生活，只能将梦想重新埋在心底。</p>
+<h2><a id="📚-本周重读一个陌生女人的来信" class="content__heading-anchor"></a>📚 本周重读：《一个陌生女人的来信》</h2>
+<p>上周重读了茨威格的《人类群星闪耀时》，本周我重读了他的另一部作品，是一部小说集：《<strong>一个陌生女人的来信</strong>》。仍然是茨威格的风格，我实在太喜欢了。</p>
+<p>每个故事核心的情节其实都非常简单。然而茨威格的语言就有这样神奇的魔力，能将一个无比简单的情节渲染成充满诗意和情感的故事，让人深深共鸣。</p>
+<p>《<strong>忘却的梦</strong>》讲述的是一对曾经的初恋情侣，多年后再一次相见。他们回忆了曾经的初恋是多么美好，表达了自己仍然是多么爱对方。然而女方却选择为了钱财和地位，和另一个男人结婚。男方质问女方为什么。</p>
+<blockquote>
+<p>随后她轻轻地、几乎是无声地问道：「您当时对我是怎么想的？」</p>
+<p>他惊讶地抬眼望着她。</p>
+<p>「这我可以坦率地告诉您，因为明天我就要回到我的新故乡去了。—— 我并没有生您的气，即使是瞬间，我也未曾做出过糊涂的、含有敌意的决断，<strong>因为生活本身已经把色彩缤纷的火焰冷却成了微光闪烁的同情的火苗了。</strong>我对您不理解，只是——感到惋惜。」</p>
+</blockquote>
+<blockquote>
+<p>这时他轻声地，像是在对自己说：「可是爱情呢？」</p>
+<p>这话她听到了。她嘴唇上露出一丝浅浅的微笑。</p>
+<p>「<strong>您今天还保留着您所有的理想，那些您当年带往远方世界去的所有理想吗？所有这些您还保留着，没有损坏，或者说有些已经死亡，已经枯萎？或者到头来人家没有把这些理想强行从您怀里抢走，扔在污泥里，被成千上万驰向生活目标的车轮碾得粉碎？或者说您一点也没有丢失？</strong>」</p>
+<p>他沮丧地点点头，沉默不语。</p>
+</blockquote>
+<p>《<strong>家庭女教师</strong>》以两个小女孩的视角展开，她们是姐妹。她们喜爱的家庭女教师，被父母发现和她们的舅舅「通奸」。在羞愧之中，女教师离开了她们家。</p>
+<p>小女孩还无法理解这一切是怎么回事，但女教师哭得红肿的眼睛、母亲的咒骂、舅舅苍白的脸色，让她们第一次认识到，现实世界是多么残酷。这就是<strong>成长</strong>。</p>
+<blockquote>
+<p>就在这天下午，她们长大了好几岁。只是到了晚上，当她们单独待在黑暗的房间里时，才会再度产生儿童的恐惧：对孤独的恐惧，对死者画像的恐惧，以及对许多说不清的事物充满预感的恐惧。全家人一片慌张和忙乱，竟然没人想起给她们的房间生火。她们两人冷得爬到一张床上，用瘦弱的胳膊互相紧紧抱住，两个修长的尚未发育成熟的身体依偎在一起，好似在恐惧中寻找救援。可是，她们依然都不敢开口，但是妹妹此刻终于哭了，姐姐立即跟着猛烈地抽泣起来。她们紧紧地抱在一起哭，两人脸上热泪滚滚，从缓缓滴落到畅快直流。她们胸贴着胸，紧紧搂在一起，一声高一声低，彼此应和着对方的悲泣。她们两人有着相同的痛苦，成了同一个在黑暗中哭泣的身体。<strong>她们现在已经不再是为那个不幸的女教师而哭泣，也不是为她们即将失去父母而哭泣，而是因为一种剧烈的恐惧感震撼了她们，尤其是因为对这个陌生世界可能发生的一切感到恐惧，对于这个世界今天她们才向它投去可怕的一瞥。她们对自己正在进入的生活感到恐惧。这生活就像一片幽暗的树林，轰然耸立在她们面前，阴森可怕，望而生畏，可是她们又必须去穿越。</strong>渐渐地，她们两人混乱的恐惧变得越来越朦胧，像梦幻一样；她们的哭泣声也越来越微弱；她们两人的呼吸也缓缓地汇成一气，如同方才的眼泪一样。就这样，她们终于进入了梦乡。</p>
+</blockquote>
+<p>最为著名的《<strong>一个陌生女人的来信</strong>》讲述的故事则更有戏剧性。四十一岁的男主突然收到一封长长的信，原来是男主根本不认识的女主，一直暗恋了他十多年。女主躺在病床上，临终前在信中回顾了自己一生对男主的爱恋。</p>
+<p>女主对爱情的痴狂，真的深深震撼了我。</p>
+<blockquote>
+<p>我知道，我知道，我的孩子昨天死了 —— 在这个世界上我现在只有你，只有你了，而你对我却一无所知，此刻你完全感觉不到，正在嬉戏取闹，或者正在跟什么人寻欢作乐，调情狎昵呢。我现在只有你，只有与我素昧平生的你，我始终爱着的你。</p>
+</blockquote>
+<h2><a id="🪽sky-光遇游戏作为第九艺术" class="content__heading-anchor"></a>🪽《Sky 光遇》：游戏作为第九艺术</h2>
+<blockquote>
+<p>游戏可以和电影、书籍一样解决情感饥渴。</p>
+<p>—— 陈星汉</p>
+</blockquote>
+<p>《<strong>Sky 光遇</strong>》（Sky: Children of the Light）这款游戏，陪伴我度过了许多时光。本周，它迎来了五周年庆典。我觉得值得回忆我和这个游戏的缘分。</p>
+<p>高中的时候还在用小米 6，在酷安上看到的这款游戏的测试服（现在的国际服）。当时要玩上这个游戏可真不容易！由于只支持 Google 的账号体系，Google 框架自然是不必说，它还要求设备通过 Google Play 的 Safetynet 验证，这就需要各种折腾。直接安装 apk 是不行的，当时还用了一种特殊的安装器，连同一些游戏数据一起安装。那个每天折腾刷机的时代已经离我很远了，很多曾经天天折腾的事物都退出了历史舞台，比如 Xposed、TWRP……所以我几乎不记得我是怎么折腾的了。总之，还在安卓国际服测试服阶段，我就玩上了这个游戏。这个账号延续至今。</p>
+<p>印象中测试服最早是日本服，游戏里遇到很多日本玩家。游戏本来是设计了「挥手」这个打招呼的方式的，但是由于最早一批玩家都来自日本，游戏中的「鞠躬」成了最流行的打招呼方式，延续至今……</p>
+<p>后来在「网易 UU 加速器」里可以直接下载安卓版，我便安利给了高中同学，一起联机。记得是疫情隔离的寒假，那真是一些独特的体验和回忆。永远记得高二暑假一起玩过的「梦想季」。</p>
+<p>游戏温暖治愈的设定，当时狠狠戳中了我。陌生人初看对方都是黑影，只有用蜡烛点燃对方才能看见对方的样子；通过蜡烛和升华烛可以解锁好友互动的各种方式；特别是暴风眼的设计和「重生」的设定，这一切通过游戏这样的载体展现了一种艺术感。</p>
+<p>《Sky 光遇》每隔一段时间会推出新的持续两三个月的活动，称为「<strong>奇妙之旅</strong>」或者「<strong>季节</strong>」，会开放新的地图、道具和故事。记得入坑的时候恰逢最早的季节「凛冬季」。之后让我印象深刻的季节有：和《小王子》联名的「<strong>小王子季</strong>」，开放了绝美的星光沙漠地图；让全图天空变黑的「<strong>破晓季</strong>」，我唯一买了季卡的季节；和歌手 AURORA 联名的「<strong>AURORA 季</strong>」，万人联机的赛博演唱会（我会为任何没看过这个的人感到惋惜！）；和上美影联名的「<strong>九色鹿季</strong>」，展现敦煌文化的灿烂和浪漫……</p>
+<p>这个游戏带来的回忆太多了，有太多言语无法描述的震撼体验。可惜由于版权等种种原因，很多季节错过了就无法再次体验，非常可惜。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/07/156364906.jpg" data-fancybox data-caption="由于 bug 而产生的景点「千星城」"><img src="https://blog.skywt.cn/usr/uploads/2024/07/156364906.jpg" alt="由于 bug 而产生的景点「千星城」" title="由于 bug 而产生的景点「千星城」" /></a></p>
+<p>如果你也玩这个（国际服），快来找我联机吧。<strong>我太需要人联机了</strong> 😭。</p>
+<p>说到游戏作为一种艺术，我必须安利 AdventureX 上看到的一个队伍做的游戏：《<a href="https://adaptive-chill-676.notion.site/a14ff166d3224d5dadb85d0369e7c038">未见边界</a>》。在 AdventureX 的 AI 赛道卷得出奇、各个队伍都在应用 AI 的「加速主义」浪潮之下，这个作品反其道而行之，表达了反对过度依赖 AI 的内核。这也可以算是一种<strong>对时代浪潮的反叛</strong>，很「嬉皮士精神」。最为特别的是，游戏里确实用到了 AI 大模型作为引导，有一种「打破第四面墙」的感觉！他们用三天时间就完成了整个游戏的设计，非常厉害。虽然 expo 的时候已经被他们剧透完了……感觉是个很有意思的游戏，期待上线！</p>
+<h2><a id="✨命理学随想" class="content__heading-anchor"></a>✨「命理学」随想</h2>
+<p>上周参加 AdventureX，听了一位队友离奇的身世。她说她对命理学有一些研究，因为无法想象有怎样的「命」才会经历她这一切。</p>
+<p>我想起小时候我妈在一个十分神秘的大师那里算过我们的命。其中结果包含我们未来的财富。（具体结果此处不透露了）不过后来想想，我对此是有一些逻辑上的质疑的。光从「财富」这一点上，就有很奇怪的地方。</p>
+<p><strong>如何定义一个人的「财富」呢？</strong>其实所有资产都能看作「债券」：人民币是国家担保的债券；存在银行里的钱是银行担保的债券；支付宝、微信支付余额是阿里、腾讯担保的债券；各种理财产品，则可以看作风险更大一些的债券；更神奇的是加密货币是无人担保，仅依靠共识而有价值的债券……这一切债券风险等级是从高到低的，是各自不同的。假设资产 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的风险为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>，那么，当定义一个人的财富的时候，究竟哪些属于「财富」呢？如果要量化财富，则要取一个阈值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">f(x) &lt; k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 的资产计入财富；而这一阈值显然是无法天然地确定的。</p>
+<p>所以，如果这个世界有 API，你会发现无法查询一个人拥有的财富，因为根本没法准确定义一个人拥有的财富。</p>
+<p>本质上，<strong>财富是人类社会中定义的，并且没有形成共识</strong>。任何人类社会之外的东西，即使是超自然力量，无法使用共识的定义，自然无法表达这一概念。任何人类社会中定义的参数，比如事业、爱情，都是如此。</p>
+<p>不过，「命理学」是有存在的空间的，因为现实世界里就有太多科学无法解释的事物。诸如意识、存在、意义这类老生常谈的话题，科学目前都无法解释；这也是哲学和宗教存在的空间。</p>
+<h2><a id="📚-本周在读蛤蟆先生去看心理医生" class="content__heading-anchor"></a>📚 本周在读：《蛤蟆先生去看心理医生》</h2>
+<p>关于心理咨询的一本很好的入门书籍。非常推荐给想要接受心理咨询，但是对「心理咨询」没有概念的朋友阅读。</p>
+<p>很有意思的是，这本书的人物等设定都延续儿童小说《柳林风声》，相当于《柳林风声》的续集。这种写法很有意思！对于一些艺术作品中成功塑造的人物，我们往往对其有非常具体的认识。以他们为背景，就比引入新的人物更加让人熟悉和亲近。</p>
+<p>（不过这样的设定也带来了一些奇怪的问题，比如书中蛤蟆先生提到，他的侄子（应该是小蛤蟆）居然有宠物狗……）</p>
+<p>之前看过的另一本关于心理咨询的书籍是《也许，你该找个人聊聊》，作者作为一名心理咨询师讲述了她遇到的各种各样的求助者，同时也讲述了作者自己由于失恋也去接受心理咨询的经历。从这两本书里，我们能够了解到一个观念：接受心理咨询，和去医院看病，逻辑是不同的。</p>
+<p>接受心理咨询，本质上是在咨询师的引导下，找到自己一直在逃避的事情，「和自己和解」。最后的这一步，只能自己迈出。</p>
+<h2><a id="⚙️-quantumult-x-入门" class="content__heading-anchor"></a>⚙️ Quantumult X 入门</h2>
+<p>本周购买了 Quantumult X。这是一个 iOS + macOS 跨平台的代理软件。</p>
+<p>一直以来，iPhone 上使用的都是 Shadowrocket，而 MacBook 上则是直接使用 v2ray 内核。Shadowrocket 的 UI 很丑，稳定性有时候也不好。最主要的是，无法跨端同步，我在电脑上精心配制的分流规则无法直接在手机上应用。同时维护两个平台也太麻烦了。</p>
+<p>之前搭建 Tailscale 的时候进行过整合的尝试，希望构建 all-in-one 的「个人网络基础设施」。但是最终未果。现在我在杭州，住处的网络环境暂时没有条件再搭建 VPN 了。</p>
+<p>Quantumult X 作为一个跨平台的工具，很好地解决了上述问题。</p>
+<h2><a id="💬-quotes" class="content__heading-anchor"></a>💬 Quotes</h2>
+<blockquote>
+<p>所见高山远木，阔云流风；<br>
+所幸岁月盈余，了无拘束。</p>
+<p>—— <a href="https://arthals.ink">Arthals</a></p>
+</blockquote>
+<blockquote>
+<p>你犯的错不会比 Microsoft 和 Crowdstrike 更严重。</p>
+</blockquote>
+<h2><a id="🎵-青年友谊圆舞曲" class="content__heading-anchor"></a>🎵 青年友谊圆舞曲</h2>
+<blockquote>
+<p>蓝色的天空像大海一样<br>
+广阔的大路上尘土飞扬<br>
+穿森林过海洋来自各方<br>
+千万个青年人欢聚一堂<br>
+拉起手唱起歌跳起舞来<br>
+让我们唱一支友谊之歌</p>
+<p>欢乐的歌声在回旋荡漾<br>
+歌颂着我们的幸福时光<br>
+亲爱的朋友啊心连着心<br>
+我们有共同的美好理想<br>
+拉起手唱起歌跳起舞来<br>
+让我们唱一支和平之歌</p>
+<p>白鸽在天空中展翅飞翔<br>
+青春的花朵在心中开放<br>
+年轻的朋友们团结起来<br>
+为和平为友谊献出力量<br>
+拉起手唱起歌跳起舞来<br>
+让我们唱一支团结之歌</p>
+</blockquote>
+<p>下周见。</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpsYU" prefix="r0" component-url="/_astro/Comments.CQWrrEpu.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,172]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #10：游戏作为第九艺术 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
