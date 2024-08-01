@@ -82,6 +82,11 @@ groups:
         slogan: 道阻且长，行则将至。
         url: https://kuizuo.cn
         avatar: https://kuizuo.cn/img/logo.png
+      - name: tanscp
+        desc:
+        slogan: 一只打呼噜的猫。
+        url: https://tanscp.com/
+        avatar: placeholder
       - name: 夏梦喧嚣
         desc:
         slogan:
@@ -112,7 +117,7 @@ groups:
         slogan:
         url: https://www.vhrise.com
         avatar: https://thirdqq.qlogo.cn/g?k=EaL0QicATH5MUdhX9NmzuVQ&b=oidb&s=0&rand=16724791560
-  - name: AdventureX
+  - name: 🔥 AdventureX
     desc: 总有人心里有火炬，而且彼此能看见。
     friends:
       - name: 垚
