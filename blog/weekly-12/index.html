@@ -1,0 +1,196 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #12：用「认知行为疗法」控制情绪</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #12：用「认知行为疗法」控制情绪</title><link rel="canonical" href="https://skywt.cn/blog/weekly-12/"><meta name="description" content="> 希拉鲁姆什么也没说。平生头一次，他真正明白了黑夜是什么 —— 它是这个世界投下的影子，投射在天空中。
+"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #12：用「认知行为疗法」控制情绪"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-12/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #12：用「认知行为疗法」控制情绪"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 希拉鲁姆什么也没说。平生头一次，他真正明白了黑夜是什么 —— 它是这个世界投下的影子，投射在天空中。
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.7.0"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.Bz1ZbssJ.css">
+<link rel="stylesheet" href="/_astro/about.JKzvL09E.css"><script type="module" src="/_astro/hoisted.B7CfB7Zh.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #12：用「认知行为疗法」控制情绪 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #12：用「认知行为疗法」控制情绪 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #12：用「认知行为疗法」控制情绪</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 8 月 6 日 23:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E5%A4%8F%E5%A4%A9%E7%9A%84%E4%BA%91%E4%BA%8C">🌆 封面图：夏天的云（二）</a></li>
+<li><a href="#%F0%9F%91%80-%E7%94%A8%E8%AE%A4%E7%9F%A5%E8%A1%8C%E4%B8%BA%E7%96%97%E6%B3%95%E6%8E%A7%E5%88%B6%E6%83%85%E7%BB%AA">👀 用「认知行为疗法」控制情绪</a></li>
+<li><a href="#%F0%9F%8E%B5-%E8%82%96%E6%96%AF%E5%A1%94%E7%A7%91%E7%BB%B4%E5%A5%87%E7%AC%AC%E4%BA%8C%E5%9C%86%E8%88%9E%E6%9B%B2">🎵 肖斯塔科维奇第二圆舞曲</a></li>
+<li><a href="#%F0%9F%8E%AC-%E6%9C%AC%E5%91%A8%E8%A7%82%E5%BD%B1%E5%B8%83%E8%BE%BE%E4%BD%A9%E6%96%AF%E5%A4%A7%E9%A5%AD%E5%BA%97">🎬 本周观影：《布达佩斯大饭店》</a></li>
+<li><a href="#%F0%9F%87%AC%F0%9F%87%A7-%E6%8A%8A%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80%E6%8D%A2%E6%88%90%E8%8B%B1%E8%AF%AD">🇬🇧 把系统语言换成英语！</a></li>
+<li><a href="#%F0%9F%93%91-%E6%AD%A3%E5%9C%A8%E5%88%B6%E4%BD%9C%E6%88%91%E7%9A%84%E5%85%A8%E6%96%B0%E7%AE%80%E5%8E%86-40">📑 正在制作我的全新简历 4.0！</a></li>
+<li><a href="#%F0%9F%AA%A7-%E4%B8%80%E5%88%99%E5%85%A8%E6%96%B0-twitter-%E7%BD%AE%E9%A1%B6%E8%B4%B4">🪧 一则全新 Twitter 置顶贴</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%9C%A8%E8%AF%BB%E4%BD%A0%E4%B8%80%E7%94%9F%E7%9A%84%E6%95%85%E4%BA%8B">📚 本周在读：《你一生的故事》</a></li>
+</ul>
+<blockquote>
+<p>希拉鲁姆什么也没说。平生头一次，他真正明白了黑夜是什么 —— 它是这个世界投下的影子，投射在天空中。</p>
+</blockquote>
+<!--more-->
+<h2><a id="🌆-封面图夏天的云二" class="content__heading-anchor"></a>🌆 封面图：夏天的云（二）</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/08/4188349588.jpg" data-fancybox data-caption="夏天的云"><img src="https://blog.skywt.cn/usr/uploads/2024/08/4188349588.jpg" alt="夏天的云" title="夏天的云" /></a></p>
+<h2><a id="👀-用认知行为疗法控制情绪" class="content__heading-anchor"></a>👀 用「认知行为疗法」控制情绪</h2>
+<p>在精力充沛的时候，我是有充分的理智的，想要学习更多知识，想要看更多书，想要认识更多人，想要创造。这时候，对一切的认知往往是清晰和积极的。</p>
+<p>然而当劳累的时候，心情郁闷或者烦躁的时候，我的思想往往不受理性的控制，而纯粹沦为感性的机器。对任何事情的认知都会笼罩上一层负面的滤镜。</p>
+<p>《伯恩斯新情绪疗法》中介绍的「认知行为疗法」，尝试教我们解决这一问题。本书指出，<strong>负面情绪源于「认知扭曲」</strong>，而负面情绪本身又加深了错误的认知，从而形成恶性循环。这些所谓的「认知扭曲」，当我们情绪正常时，是能够明显发现其错误的，但在负面情绪之下则可能陷入其中，比如「TA 肯定是讨厌我了」「我肯定做不好这件事情」，诸如此类。</p>
+<p>为了打破这些「认知扭曲」，我们能够在清醒的时候建立一种响应机制。例如，书中列出了<strong>十大认知扭曲：</strong></p>
+<ul>
+<li>非此即彼：完美主义，认为 1% 不做成就 100% 失败</li>
+<li>以偏概全</li>
+<li>心理过滤</li>
+<li>否定正面思考</li>
+<li>妄下结论：包括心理猜测（读心术）、先知错误</li>
+<li>放大和缩小</li>
+<li>情绪化推理</li>
+<li>「应该」句式</li>
+<li>乱贴标签</li>
+<li>罪责归己 / 罪责归人</li>
+</ul>
+<p>为了建立一套能够客观运行的情绪调控机制，我们可以将其标准化（就像麦当劳标准化的餐饮制作流程）。本书介绍的改变感受的四步流程：</p>
+<ol>
+<li>描述导致心理沮丧的事件。</li>
+<li>记录负面感受。</li>
+<li>「三栏法」，写下自动思维、认知扭曲、理性回应。</li>
+<li>重新评估。</li>
+</ol>
+<p>这种方法建立了一种不需要太多理性的思考框架，并借助客观的外部媒介（用纸和笔写下）。经过实测，这种方法确实有一定效果。很推荐这本《伯恩斯新情绪疗法》！</p>
+<p>人类的感性虽然是伟大的能力，但也非常容易让理性失去控制。我认为时刻保持清醒是作为人类最重要的能力。</p>
+<h2><a id="🎵-肖斯塔科维奇第二圆舞曲" class="content__heading-anchor"></a>🎵 肖斯塔科维奇第二圆舞曲</h2>
+<p>我不是一个很懂音乐的人。但上学期自训队的交响乐表演，其中《肖斯塔科维奇第二圆舞曲》给我留下了最为深刻的印象。</p>
+<p><a href="https://www.bilibili.com/video/BV1VF411x7nU/?share_source=copy_web&amp;vd_source=cd3fa74d3421ce574a62e3c11dcde9f6">肖斯塔科维奇《第二圆舞曲》（俄罗斯圣彼得堡爱乐）</a></p>
+<p>交响乐真是一种很神奇的艺术形式。我们接触的大多数艺术形式，特别是通俗的艺术，比如电影、摄影、小说、绘画、戏剧、流行音乐，<strong>我们对艺术作品的感觉都源于我们生活的经验</strong>。没有相关的经历，可能对于作品就无法产生共情。然而纯音乐，特别是交响乐，却不是如此。<strong>我们对这种艺术作品的感知纯粹来源于作品本身</strong>。或许这可以被称为「纯艺术」。</p>
+<h2><a id="🎬-本周观影布达佩斯大饭店" class="content__heading-anchor"></a>🎬 本周观影：《布达佩斯大饭店》</h2>
+<p>对这部经典电影早有耳闻，也一直在我的观影 list 里。一直觉得对这种很经典的、很艺术的电影，作为消遣在茶余饭后观赏则有些浪费了（这居然成了我拖延症的理由……）。这周终于看了。</p>
+<p>最吸引我的自然是本片的构图和色调。这是电影作为一种视觉艺术的体现。随着一层层故事的进入，环境、色彩甚至光影的变化，很有效地营造了氛围，将欧洲那个年代的历史展现在我们的眼前。</p>
+<p>看到结尾「本片灵感源于史蒂芬 · 茨威格的作品」的字幕，shock 了一下……最近恰好在重读茨威格的作品，太巧了！不过看到这行字幕才回想起来，这部作品确实很有茨威格的风格。像诗一样的语言，像诗一样看待世界的方式。正如他本人所言：</p>
+<blockquote>
+<p>即便在惊恐的深渊中，我也会一而再地抬头仰望那些旧日的星辰。</p>
+<p>—— 茨威格《昨日的世界》</p>
+</blockquote>
+<p>最近看的虚构类文学作品有点多，似乎我对文学越来越感兴趣了。不过仔细想想，文学只是关于文字这种表达形式的学问。音乐、电影甚至游戏，都可以是同等的表达形式。我深深着迷的东西，其实是<strong>这些形式背后表达的内容</strong>，那些深刻的情感和伟大的精神。</p>
+<h2><a id="🇬🇧-把系统语言换成英语" class="content__heading-anchor"></a>🇬🇧 把系统语言换成英语！</h2>
+<p>Via：<a href="https://www.v2ex.com/t/952624">我发现把系统语言切换成 English 的好处</a>。</p>
+<p>翻译讲求信达雅，这固然没错，但许多时候这种「翻译感」并不适合需要简单直白高效的 UI。例如：Finder 翻译成「访达」，虽然确实很信达雅，有一股 Apple 特有的艺术气息，但却丧失了原来直白高效的感觉。</p>
+<p>还有经典的「拷贝」和「复制」。Apple 系产品的「拷贝」等于非 Apple 系产品的「复制」（二者都是 copy）；而 Apple 系产品的「复制」其实是 duplicate……不难发现，虽然翻译是为了本地化，让我们更好理解，但对我们而言，这些外来词被翻译后反而不如原来的英文好理解。</p>
+<p>这类问题最多的当属 Apple Music 不可。「Play Next」被翻译成「插播」，「Library」被译为「资料库」。第一次从国产音乐软件转移过来的我，见到这样的 UI 完全摸不着头脑。</p>
+<p>然而，将系统语言换成英语也有一些问题。iOS 大多数 App 都支持单独设定语言，所以可以将一些没兼容好的软件设为中文；然而系统自带的 Apple Music 却无法单独设置语言，这导致很多中文歌名、歌手名都会显示为英文，根本不认识！</p>
+<ul>
+<li>到底姓在前还是名在前？？？
+<ul>
+<li>孙燕姿 —— Yanzi Sun</li>
+<li>周深 —— Zhou Shen</li>
+<li>毛不易 —— Mao Bu Yi</li>
+</ul></li>
+<li>莫文蔚 —— Karen Mok</li>
+<li>薛之谦 —— Joker Xue</li>
+<li>凤凰传奇 —— Phoenix Legend</li>
+<li>……</li>
+</ul>
+<h2><a id="📑-正在制作我的全新简历-40" class="content__heading-anchor"></a>📑 正在制作我的全新简历 4.0！</h2>
+<p>技术岗一般不会很看重简历的设计，许多大厂都有自己的简历系统，或许面试官根本不看简历的 PDF。但既然我都用前端技术来写简历了，自然希望做得有意思一点。</p>
+<p>我的简历 3.0，是基于 Astro 做的在线简历。部署在 <a href="https://cv.skywt.cn">cv.skywt.cn</a>。</p>
+<p>可能由于我没有系统地学过平面设计和排版一类的知识，我对于含有大量文字内容的排版，感觉最重要的东西是<strong>字体</strong>。因为简历、博客这类排版有大量文字，很少有平面设计的发挥空间（这反而利好我这样的设计小白），而文字本身传达的视觉信息则更加重要。</p>
+<p>一直以来我都比较喜欢 serif 字体，比如博客和上一版简历用的都是<strong>思源宋体</strong>。这种字体统一、文艺、正式，并且可以方便地作为 Web 字体。通过这种字体，能够很好地传达一种「性格」，也就是《Refactoring UI》里说的 personality。</p>
+<p>然而，在仔细端详我的简历之后，我突然觉得：<strong>我想传达的性格不应该是这样的</strong>。我不想要这么正式古板，不想要这么文艺复古和多愁善感。我希望传达的是科技感、年轻、热情和热爱。</p>
+<p>然而，普通的 sans 字体都太普通了，很难表达出我想要的感觉。不管是苹方、方正还是思源，用在简历里都显得特别廉价，一点都不 impressive。</p>
+<p>在某厂实习期间，看到的一款字体似乎比较符合我想要传达的性格：<strong>钉钉进步体</strong>。基于这个字体，我全面改造了我的简历，希望能传达出「进取」的感觉。</p>
+<p>马上上线，准备秋招！</p>
+<h2><a id="🪧-一则全新-twitter-置顶贴" class="content__heading-anchor"></a>🪧 一则全新 Twitter 置顶贴</h2>
+<blockquote>
+<p>自我介绍一下：</p>
+<p>[object Object]</p>
+</blockquote>
+<blockquote>
+<p>补充说明：</p>
+<ol>
+<li>没有对象。</li>
+<li>我有一个很丰富的自己想要介绍给你，可惜这里空隙太小，写不下。</li>
+</ol>
+</blockquote>
+<p>一般来说，关于一个人的自我介绍信息可以用一个 Object 来表达。包含若干 key-value pairs，例如「姓名：SkyWT」，「爱好：阅读，coding，……」。然而可能由于一些格式兼容问题，我本来想把这个很大的 Object 输出给你的，结果输出出来就变成了 <code>[object Object]</code>。😉</p>
+<h2><a id="📚-本周在读你一生的故事" class="content__heading-anchor"></a>📚 本周在读：《你一生的故事》</h2>
+<p>特德 · 姜的科幻小说总有一些独特的脑洞和创意。之前读了他的《呼吸》，本周读了这本《你一生的故事》，两本其实都是短篇科幻小说集，每一篇描述的世界，都有一个很有意思的独特设定。</p>
+<p>他的小说很擅长将一些非常抽象但很有趣、很有哲理的观念或设定，用一种具象的形式表现出来。比如我特别喜欢的《呼吸》里的《<strong>焦虑是自由引起的眩晕</strong>》：</p>
+<p>量子领域的发现推翻了牛顿经典力学的「决定论」，揭示了「世界上存在真随机」这一事实，但我们的生活中其实很难直观感受到这一点。小说的设定将这一点抽象出来了：世界上存在一种叫做「<strong>棱镜</strong>」的设备，其上有两盏灯。当设备被激活这一刻，有一半的概率左边灯亮，一半的概率右边灯亮，这是纯随机的。不同的灯亮，意味着出现了两个平行世界。</p>
+<p>更有趣的是，棱镜里保存着一块量子硬盘，两个平行世界的人都能写入、读取数据，但不能覆盖已写入的部分。所以，两个平行世界的人可以保持一段时间的沟通，当硬盘数据写满之后两个世界就彻底失去通讯。当面临一些人生重大决策的时候，可以将棱镜看成抛硬币的机器，根据灯亮做出决策，并可以通过设备和平行世界作出另一决策的自己沟通！</p>
+<p>我们在生活中，特别是在面临一些重大决策的时候，经常会想：「<strong>如果我们选择了另一条路，现在的人生会怎样呢？</strong>」然而，小说告诉我们：知道这个问题的答案，或许并不是一件好事。正是我们做出的种种选择，造就了今天在这个时空的自己。</p>
+<p>下周见～</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(a,o,i)=>o in a?A(a,o,{enumerable:!0,configurable:!0,writable:!0,value:i}):a[o]=i;var d=(a,o,i)=>(g(a,typeof o!="symbol"?o+"":o,i),i);{let a={0:t=>m(t),1:t=>i(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(i(t)),5:t=>new Set(i(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in a?a[l](e):void 0},i=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1Hptvq" prefix="r0" component-url="/_astro/Comments.CQWrrEpu.js" component-export="default" renderer-url="/_astro/client.DbokQZWz.js" props="{&quot;articleId&quot;:[0,174]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #12：用「认知行为疗法」控制情绪 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
