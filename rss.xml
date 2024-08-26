@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #14：做 PPT 相比 coding 的痛苦之处</title><link>https://skywt.cn/blog/weekly-14/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-14/</guid><description>&gt; 「你看看我太太，」老先生继续说，「她还是小姑娘的时候就很漂亮，而我却一直其貌不扬。在火车上，我第一眼看见她，就立刻爱上了她。我知道，如果那时不找她搭话的话，很可能再也见不到她了。车厢里坐满了人，我坐在她的对面。在这种情况下，要当着别人的面跟她搭话，我觉得这是我所经历过的最可怕的时刻。我得在下一站下车，没有多少时间了。我快要急死了。她要是拒绝我怎么办？还当着所有乘客的面，多丢脸呀！可是我还是冒险去做了。你看，我得到的奖励是什么？我生命中最宝贵的东西。」他温柔地抚摸了一下妻子的手。
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>WebCV：基于 Astro.js 的在线简历</title><link>https://skywt.cn/blog/webcv/</link><guid isPermaLink="true">https://skywt.cn/blog/webcv/</guid><description>基于 Astro.js 制作了我的新版在线简历。隆重推出：[cv.skywt.cn](https://cv.skywt.cn/)。
+
+</description><pubDate>Mon, 26 Aug 2024 21:47:00 GMT</pubDate><content:encoded>&lt;p&gt;基于 Astro.js 制作了我的新版在线简历。隆重推出：&lt;a href=&quot;https://cv.skywt.cn/&quot;&gt;cv.skywt.cn&lt;/a&gt;。&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h2&gt;为什么要用 Web 制作简历？&lt;/h2&gt;
+&lt;p&gt;要制作一份能够&lt;strong&gt;充分自定义&lt;/strong&gt;的简历，有很多种工具，很多种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最简单的是直接用 Microsoft Word 编辑；&lt;/li&gt;
+&lt;li&gt;也可以用 Markdown 写好简历再应用模板；&lt;/li&gt;
+&lt;li&gt;更高端的方式是用 LaTeX 或者 Typest 这样的工具编译生成简历；&lt;/li&gt;
+&lt;li&gt;甚至可以用 Figma 来进行更精细的制作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最开始我打算用 LaTeX 编写简历，在 Overleaf 上也能找到不错的模板。然而从成功地使用模板，到随心所欲地自定义模板，这个学习曲线不是一般地陡峭。&lt;/p&gt;
+&lt;p&gt;后来看到了关于 Typest 的安利，号称能替代 LaTeX。于是尝试了一下 Typest。然而这一套新的语法和 LaTeX 一样上手门槛高，劝退了我。&lt;/p&gt;
+&lt;p&gt;仔细想想，本质上这些工具都是一种「&lt;strong&gt;描述简历内容的语言&lt;/strong&gt;」而已。使用这些工具创造简历的过程，实际上是在向计算机描述我们想要看到的简历的过程。那么，作为一名前端开发者，我最熟悉的「语言」是什么呢？答案当然是 &lt;strong&gt;Web 的技术栈&lt;/strong&gt;。（实际上，在使用 LaTeX 的时候，我经常会想：「如果能用 CSS 来写样式就好了……」）&lt;/p&gt;
+&lt;p&gt;上周的《&lt;a href=&quot;https://skywt.cn/blog/weekly-14/&quot;&gt;Weekly #14：做 PPT 相比 coding 的痛苦之处&lt;/a&gt;》里也提到，例如 PPT 这样的工具的&lt;strong&gt;表达能力&lt;/strong&gt;就是不如代码的。擅长 coding 的人用起这些工具来十分痛苦……&lt;/p&gt;
+&lt;p&gt;于是我选用了 Astro、Tailwind 这一套技术栈制作了这个简历系统。&lt;/p&gt;
+&lt;h2&gt;使用指南&lt;/h2&gt;
+&lt;p&gt;这是我为自己制作的简历。开源在 GitHub：&lt;a href=&quot;https://github.com/Skywt2003/WebCV&quot;&gt;WebCV&lt;/a&gt;。如果你也喜欢，可以 fork 并轻易地填充你自己的内容。&lt;/p&gt;
+&lt;p&gt;如果需要导出 PDF，可以使用浏览器的「打印」功能。&lt;/p&gt;
+&lt;h3&gt;简历结构&lt;/h3&gt;
+&lt;p&gt;每一份简历分为一个 header 和若干 section。&lt;/p&gt;
+&lt;p&gt;Header 部分显示个人信息，包括姓名、电话、邮箱、照片等。&lt;/p&gt;
+&lt;p&gt;每个 section 是简历的一个板块，包含标题（如「教育经历」）和若干 project。&lt;/p&gt;
+&lt;p&gt;每个 project 可以是一段教育经历、实习经历、项目经历、获奖经历、校园经历等。基本结构如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/08/1661284501.png&quot; alt=&quot;一个 Project 的结构&quot;&gt;&lt;/p&gt;
+&lt;p&gt;其中 title、subtitle、desc、date、caption、techs、items 的内容都可在下述的配置文件中配置。&lt;/p&gt;
+&lt;p&gt;表格 table 的结构比较特殊，包含 N 行、M 列、NM 个单元格，每个格子包含若干行，每行是一些技术栈的展示。具体结构可查看下述配置文件。&lt;/p&gt;
+&lt;h3&gt;简历配置&lt;/h3&gt;
+&lt;p&gt;对一份简历的描述，称为一个「配置文件」，是一个 YAML 格式的文件，在项目的 &lt;code&gt;src/content/cv/&lt;/code&gt; 目录下。部署网站后，访问对应文件名的路径，即可查看对应简历。&lt;/p&gt;
+&lt;p&gt;例如，在该目录下放置 &lt;code&gt;example.yml&lt;/code&gt; 配置文件，则部署网站后访问 &lt;code&gt;/example&lt;/code&gt; 即可查看该简历。&lt;/p&gt;
+&lt;p&gt;内容可参考我当前的简历配置文件：&lt;a href=&quot;https://github.com/Skywt2003/WebCV/blob/e7b88c518886a78b40cd48fc97c15ede6431d013/src/content/cv/general.yml&quot;&gt;general.yml&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;关于设计&lt;/h2&gt;
+&lt;h3&gt;图标库 tabler&lt;/h3&gt;
+&lt;p&gt;展现某个项目的技术栈的时候，如果能在对应的技术（比如 React.js）前展示一个小图标，那肯定很酷！&lt;/p&gt;
+&lt;p&gt;我找到了一个包含大量库和框架的图标库：&lt;strong&gt;Tabler Icons&lt;/strong&gt;。它有很多&lt;strong&gt;前端框架&lt;/strong&gt;的图标，React、Next、Vue、Nuxt 甚至 Astro，但是&lt;strong&gt;后端的库和框架&lt;/strong&gt;图标是一个都没有……所以我的简历里后端的框架或库都找了一些抽象的图标来表示。&lt;/p&gt;
+&lt;p&gt;可以在 &lt;a href=&quot;https://tabler.io/icons&quot;&gt;Tabler Icons&lt;/a&gt; 官网找到所有支持的图标。&lt;/p&gt;
+&lt;h3&gt;字体选用&lt;/h3&gt;
+&lt;p&gt;对于含有大量文字的排版，留给平面设计的空间并不多，&lt;strong&gt;字体的选择&lt;/strong&gt;就至关重要，这甚至直接决定了页面的整体风格。&lt;/p&gt;
+&lt;p&gt;一直以来我都比较喜欢 serif 字体，比如博客和上一版简历用的都是&lt;strong&gt;思源宋体&lt;/strong&gt;。这种字体统一、文艺、正式，并且可以方便地作为 Web 字体。通过这种字体，能够很好地传达一种「性格」，也就是《Refactoring UI》里说的 personality。然而，在仔细端详我的简历之后，我突然觉得：&lt;strong&gt;我想传达的性格不应该是这样的&lt;/strong&gt;。我不想要这么正式古板，不想要这么文艺复古和多愁善感。我希望传达的是科技感、年轻、热情和热爱。&lt;/p&gt;
+&lt;p&gt;然而，普通的 sans 字体都太普通了，很难表达出我想要的感觉。不管是苹方、方正还是思源，用在简历里都显得特别廉价，一点都不 impressive。&lt;/p&gt;
+&lt;p&gt;在某厂实习期间，看到的一款字体似乎比较符合我想要传达的性格：&lt;strong&gt;钉钉进步体&lt;/strong&gt;。这个字体有个性却不花哨，介于艺术字体和 sans 字体之间，非常适合用在简历里。当然，这种字体只适合用作标题，正文部分我还是用了 Google 的思源黑体。这样的字体组合，能够很好地传达出我想表达的气质。&lt;/p&gt;
+&lt;h3&gt;其他优化&lt;/h3&gt;
+&lt;p&gt;相比 WebCV 1.0，本次还有如下更新：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;兼容了 Darkmode，和博客访问体验一致。&lt;/li&gt;
+&lt;li&gt;兼容移动端访问（虽然目前效果并不理想）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;尾声&lt;/h2&gt;
+&lt;p&gt;我觉得一份简历能&lt;strong&gt;代表我&lt;/strong&gt;，至少求职简历能代表我的事业追求。所以我希望它传达出我的某种 personality。这种信息不仅是通过内容传达的，也是通过形式传达的（比如排版、配色、字体）。&lt;/p&gt;
+&lt;p&gt;希望你能 get 到 😉。&lt;/p&gt;
+</content:encoded><author>me@skywt.cn</author></item><item><title>Weekly #14：做 PPT 相比 coding 的痛苦之处</title><link>https://skywt.cn/blog/weekly-14/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-14/</guid><description>&gt; 「你看看我太太，」老先生继续说，「她还是小姑娘的时候就很漂亮，而我却一直其貌不扬。在火车上，我第一眼看见她，就立刻爱上了她。我知道，如果那时不找她搭话的话，很可能再也见不到她了。车厢里坐满了人，我坐在她的对面。在这种情况下，要当着别人的面跟她搭话，我觉得这是我所经历过的最可怕的时刻。我得在下一站下车，没有多少时间了。我快要急死了。她要是拒绝我怎么办？还当着所有乘客的面，多丢脸呀！可是我还是冒险去做了。你看，我得到的奖励是什么？我生命中最宝贵的东西。」他温柔地抚摸了一下妻子的手。
 &gt;
 &gt; 汉内坎普太太补充说：「最珍贵的礼物是我们自己争取来的。克服了丢面子的恐惧，世界就会向你敞开大门！」
 
@@ -13,7 +64,7 @@
 &lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/08/270342576.jpg&quot; alt=&quot;日落时分&quot;&gt;&lt;/p&gt;
 &lt;p&gt;夕阳无限好，只是近黄昏。&lt;/p&gt;
 &lt;h2&gt;📑 做 PPT 相比 coding 的痛苦之处&lt;/h2&gt;
-&lt;p&gt;本周在准备转正答辩 PPT。由于最后要交一个 PPT 文件，所以不能使用 LaTeX、Nodeppt、slidev 这类的先进 slide 方案，只能使用古法手工制作 PPT：Microsoft PowerPoint 或者Apple Keynote。我选择了后者。&lt;/p&gt;
+&lt;p&gt;本周在准备转正答辩 PPT。由于最后要交一个 PPT 文件，所以不能使用 LaTeX、Nodeppt、slidev 这类的先进 slide 方案，只能使用古法手工制作 PPT：Microsoft PowerPoint 或者 Apple Keynote。我选择了后者。&lt;/p&gt;
 &lt;p&gt;去厂内找了一些 PPT 模板，都太丑了，且有多处元素不对齐、字体或大小颜色不一致等问题，还超级喜欢用微软雅黑。真的是非常草台班子的模板。所以我仅仅从模板里捞了一些素材，从零开始自己做。&lt;/p&gt;
 &lt;p&gt;这种古法制作 PPT 太痛苦了，做的时候总是感叹：&lt;strong&gt;为什么不能用 CSS！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;首先是元素对齐的问题。&lt;/strong&gt;Apple Keynote 能够开启辅助线对齐，用触控板能感受到对齐时的微小震动反馈，虽然这体验至少比用鼠标好一些，但远比不上直接用 Flex 布局来得直观。&lt;/p&gt;
@@ -2504,86 +2555,6 @@ And moonwalkers, and dream talkers&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;是呀，我们慢慢在夜里才敢做梦，慢慢成为了没有梦想的平凡之辈。&lt;/p&gt;
 &lt;p&gt;但是我们本可以在白天做着白日梦，我们可以登上月球，可以大声谈论自己的梦想。&lt;/p&gt;
-</content:encoded><author>me@skywt.cn</author></item><item><title>找寻一个简易的 Kindle 书摘管理方案</title><link>https://skywt.cn/blog/find-an-easy-kindle-extraction-management-solution/</link><guid isPermaLink="true">https://skywt.cn/blog/find-an-easy-kindle-extraction-management-solution/</guid><description>上学期，我购入了 Kindle 并决定将它离线使用。Kindle 的阅读体验确实一流，但是由于亚马逊生态的封闭，从 Kindle 导出书摘、笔记就有些困难。
-
-</description><pubDate>Sat, 12 Aug 2023 07:20:00 GMT</pubDate><content:encoded>&lt;p&gt;上学期，我购入了 Kindle 并决定将它离线使用。Kindle 的阅读体验确实一流，但是由于亚马逊生态的封闭，从 Kindle 导出书摘、笔记就有些困难。&lt;/p&gt;
-&lt;!--more--&gt;
-&lt;h2&gt;书摘导出的困难&lt;/h2&gt;
-&lt;p&gt;在阅读时的划线批注，存储在哪里呢？&lt;/p&gt;
-&lt;p&gt;将 Kindle 连接电脑后，观察挂载的硬盘目录，会发现书籍对应的 mobi 文件同目录下有一个同名的以 &lt;code&gt;.sdr&lt;/code&gt; 结尾的文件夹，文件夹中有拓展名为 &lt;code&gt;.mbs&lt;/code&gt; 和 &lt;code&gt;.mbp1&lt;/code&gt; 的文件，这便是 Kindle 保存我们的阅读信息的地方，包括阅读时的划线、阅读位置、书签等各种信息。对于 mobi 以外的其他格式，这个文件的拓展名也不一样。&lt;/p&gt;
-&lt;p&gt;然而，这两个文件采用了 Kindle 专有的格式，用文本编辑器无法打开。论坛里有大佬编写了 &lt;a href=&quot;https://www.mobileread.com/forums/showthread.php?t=322172&quot;&gt;KRDS&lt;/a&gt; 软件——用于这两个文件的解析器，可以将这些文件的内容解析为 json 数据。然而，经过尝试，解析得到的书摘（划线）只记录了「在书中的开始位置」和「在书中的结束位置」，而这些位置的地址格式也是 Kindle 的专有格式，是不可读的。&lt;/p&gt;
-&lt;p&gt;似乎，从 sdr 文件夹中读取和阅读时完全一致的数据，非常困难。&lt;/p&gt;
-&lt;h2&gt;My Clippings.txt&lt;/h2&gt;
-&lt;p&gt;在书中划线批注时，Kindle 还会将我们的划线批注，连同时间、书籍信息等内容，以特定的文本格式自动加入一个名为 My Clippings.txt 的文档中。这个文件在 Kindle 的根目录下 documents 文件夹里。在 Kindle 图书馆里，会显示为一本书，叫做「我的书摘」。&lt;/p&gt;
-&lt;p&gt;这个文本文件和上述实际存储我们书摘的 sdr 文件夹是独立的。Kindle 做的只是在我们添加书摘时，将内容的副本加到 txt 文档的末端。这意味着，当我们因为误划线等原因删除书摘，它仍然会停留在 txt 文档中；其中的书摘按照时间顺序排列；当我们修改书的作者等元信息，txt 中书摘记录的内容并不会修改。也就是说，这个文本文件失去了和书籍的耦合。这不是我想要的书摘管理方式。&lt;/p&gt;
-&lt;p&gt;既然这个 txt 是可读的，我们可以定期将它导入电脑管理。许多号称能导入、同步、管理 Kindle 书摘的软件，都是这么做的。&lt;/p&gt;
-&lt;h2&gt;其他软件的解决方案&lt;/h2&gt;
-&lt;p&gt;一个有名的简体中文 Kindle 网站是&lt;a href=&quot;https://bookfere.com&quot;&gt;书伴网&lt;/a&gt;。它推出了&lt;a href=&quot;https://memo.bookfere.com&quot;&gt;书见&lt;/a&gt;，提供了 My Clippings.txt 书摘导入上传的功能。并且在导入的页面支持简单的编辑、去重等功能。然而，我使用的时候还是有几个小问题让我不太喜欢：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;书摘解析器并不完美。比如不能正确处理 CRLF 和 LF 两种换行符的问题。&lt;/li&gt;
-&lt;li&gt;存在 bug，比如对一本书修改作者名后，如果存在两本书名、作者名都相同的书籍（重复书籍），不会自动合并。（这个 bug 一般人应该不会遇到，是因为我用 Calibre 管理 Kindle 书籍时，读书读到一半发现作者有误，修改了作者，后面的笔记记录的作者也修改了）&lt;/li&gt;
-&lt;li&gt;数据不能导出。我不相信任何网站能够长久存在。我希望导入的书摘数据能存到我的本地。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;另一个看起来不错的软件是 &lt;a href=&quot;https://knotesapp.com&quot;&gt;Knotes&lt;/a&gt;。它同样支持从 Kindle 等各种地方导入书摘。然而试用之后，还是有我不喜欢的点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;这是一个创业团队的产品，野心似乎不止于简单的书摘管理，功能比较繁多，大多是我用不到的。&lt;/li&gt;
-&lt;li&gt;UI 不太喜欢。不是我想要的风格。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;我只是想要一个简单的、UI 符合我审美的书摘管理器。而这两个软件中我最需要的功能就是解析、导入 My Clippings.txt。于是我就有了自己写一个的念头。&lt;/p&gt;
-&lt;h2&gt;奇怪的格式&lt;/h2&gt;
-&lt;p&gt;既然要自己写这样一个软件，首先是要能够解析 My Clippings.txt 文件。以上体验的两个软件，My Clippings.txt 的解析器都不是开源的。&lt;/p&gt;
-&lt;p&gt;这个文件内容大概是这样的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;平凡的世界 (路遥)
-- 您在第 280 页（位置 #4283-4286）的标注 | 添加于 2023年5月19日星期五 下午1:11:48
-
-勿容置疑，她是一个普普通通的人，她的思想、气质、感情，优点和缺点，都是属于普通人的。但普通人和出类拔萃的人一样，也有自己的欢乐和痛苦，只不过不为大多数人了解罢了。人们宁愿去关心一个蹩脚电影演员的吃喝拉撒和鸡毛蒜皮，而不愿了解一个普通人波涛汹涌的内心世界……
-==========
-邓小平时代 (傅高义)
-- 您在位置 #388-390的标注 | 添加于 2023年7月4日星期二 下午6:18:24
-
-当会谈结束后他们起身走向门口时，邓小平向麦理浩做了个手势，身高逾一米八的港督俯下身，听到这位身材只有一米五几的主人对他说：“你如果觉得统治香港不容易，那就来统治中国试试。”
-==========
-人类群星闪耀时 (斯蒂芬·茨威格)
-- 您在第 172 页（位置 #2633-2637）的标注 | 添加于 2023年7月13日星期四 上午12:09:04
-
-伟大的对决中，英雄虽死犹生，失败中的意志崛起，直抵无限高峰。因为偶然的成功和轻易的胜利只能点燃人的虚荣之心，却不能获得一个人在与不可战胜的强大命运的搏击中，因为覆灭而升华的高尚心灵。这类一切时代，一切悲剧中最伟大的杰作，时常刻画于诗人笔下又千百次地在生活中诞生。 
-==========
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;每两条书摘之间用多个等号组成的分割线隔开，每一条记录包含：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一行：书名、作者。&lt;/li&gt;
-&lt;li&gt;第二行：摘录位置和时间。有的位置包含页码，有的不包含。&lt;/li&gt;
-&lt;li&gt;空行。&lt;/li&gt;
-&lt;li&gt;摘录内容。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;看起来，按照一定的模式可以将其转换为 json 格式。如果有这样一个解析器能够正确解析，实现书摘的管理器就没什么大问题了。&lt;/p&gt;
-&lt;h2&gt;构建一个 npm 模块&lt;/h2&gt;
-&lt;p&gt;上网搜索了一圈，在 Github 上找到了&lt;a href=&quot;https://github.com/sawyerh/highlights&quot;&gt;这个代码仓库&lt;/a&gt;，仓库里包含了作者自用的书摘管理器，其中&lt;a href=&quot;https://github.com/sawyerh/highlights/blob/main/packages/kindle-clippings-to-json/kindle-my-clippings.js&quot;&gt;这段代码&lt;/a&gt;是一个可用的解析器代码。但是，它只支持英文版的 My Clippings.txt。看来，我可以修改一下使之支持中文版。&lt;/p&gt;
-&lt;p&gt;很自然地，想要将其构建成一个 npm 模块方便使用。然而，之前我丝毫没有写 npm 模块的经历，连 node 都不太会用……好在，有万能的 GPT 来帮忙。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如何编写一个 npm 模块？请告诉我典型的目录结构，并给我一个示例代码。&lt;/p&gt;
-&lt;p&gt;如何发布一个 npm 模块？&lt;/p&gt;
-&lt;p&gt;如何引入并使用一个 npm 模块？&lt;/p&gt;
-&lt;p&gt;如何使模块兼容 TypeScript？&lt;/p&gt;
-&lt;p&gt;CommonJS 和 ES6 之类的标准有何区别？&lt;/p&gt;
-&lt;p&gt;……&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;（事实上，这基本上也是我第一次用 TypeScript 和 eslint……）&lt;/p&gt;
-&lt;p&gt;其实代码主要内容是很少的，无非就是按照上面奇怪的格式，先用等号分割每条记录，然后对每条记录分别解析书名、作者、页码、起止位置、时间戳、内容……只是正则表达式依然令人头疼（并且 GPT 似乎也不太懂）。&lt;/p&gt;
-&lt;p&gt;于是，这个&lt;a href=&quot;https://github.com/Skywt2003/kindle-zhcn-clippings-to-json&quot;&gt;适用于简体中文的 Kindle MyClippings.txt 解析器&lt;/a&gt;就大功告成啦。它可以解析一个字符串的内容，返回一个 JavaScript Object，包含每条书摘的具体内容。目前我测试的自己的书摘暂时没有遇到 bug。&lt;/p&gt;
-&lt;h2&gt;下一步：成型的书摘管理软件&lt;/h2&gt;
-&lt;p&gt;接下来是我正在开发的书摘管理软件。&lt;/p&gt;
-&lt;p&gt;还是决定基于 Next.js，然而如果要做在线部署的 Web 软件，则要考虑用户登录之类的操作，有些繁琐（我甚至考查了许多可以自托管的 SSO 软件，没有特别满意的）。于是我大胆决定：基于 Electron 开发桌面软件。&lt;/p&gt;
-&lt;p&gt;这又是一个完全没接触过的框架。还好，我们有 GPT。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如何基于 Next.js、TypeScript 创建一个 Electron 项目？请告诉我典型的目录结构，并给我一个示例代码。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;基本上是用逻辑其实是仿照前面介绍的书见进行开发的。&lt;/p&gt;
-&lt;p&gt;开发一个桌面软件和开发一个 Web 软件的前端思路还是有差异的，毕竟是要我们用做网页的思路来做桌面软件。我能想到的就是针对窗口大小调整做出更详细的优化，并让所有 p 元素不可选择 🙃。&lt;/p&gt;
-&lt;p&gt;目前这个软件还在开发中。想了很久叫什么名字，最后还是取了直白的「BookNotes」。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2023/08/2102661038.png&quot; alt=&quot;软件启动首页截图，包含随机选取的一句书摘&quot;&gt;&lt;/p&gt;
-&lt;p&gt;900 磅的思源宋体真的很好看！&lt;/p&gt;
-&lt;p&gt;在这里先挖个坑，等有空慢慢开发吧。&lt;/p&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>感谢订阅 SkyWT 的博客。</title><link>https://skywt.cn/blog/</link><guid isPermaLink="true">https://skywt.cn/blog/</guid><description>订阅成功。</description><pubDate>Wed, 01 Nov 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;订阅成功。该 RSS 源显示最近发布的 20 篇文章。当有新文章时，RSS 源会及时更新。&lt;/p&gt;
 &lt;p&gt;前往&lt;a href=&quot;https://skywt.cn/blog/archives&quot;&gt;文章归档&lt;/a&gt;页面即可一览全部文章。&lt;/p&gt;
 &lt;p&gt;RSS 真是个伟大的发明，用开放的标准将独立的内容连接在一起，也将我们连接在一起。&lt;/p&gt;

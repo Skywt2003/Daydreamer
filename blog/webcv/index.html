@@ -1,0 +1,158 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>WebCV：基于 Astro.js 的在线简历</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>WebCV：基于 Astro.js 的在线简历</title><link rel="canonical" href="https://skywt.cn/blog/webcv/"><meta name="description" content="基于 Astro.js 制作了我的新版在线简历。隆重推出：[cv.skywt.cn](https://cv.skywt.cn/)。
+"><meta name="robots" content="index, follow"><meta property="og:title" content="WebCV：基于 Astro.js 的在线简历"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/webcv/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="WebCV：基于 Astro.js 的在线简历"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="基于 Astro.js 制作了我的新版在线简历。隆重推出：[cv.skywt.cn](https://cv.skywt.cn/)。
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.14.2"><meta name="keywords" content="简历,网页,web,CV,resume,求职简历,简历模板,在线简历"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.Bz1ZbssJ.css">
+<link rel="stylesheet" href="/_astro/about.C9eFCau8.css"><script type="module" src="/_astro/hoisted.Dqwyr6z_.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+WebCV：基于 Astro.js 的在线简历 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+WebCV：基于 Astro.js 的在线简历 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">WebCV：基于 Astro.js 的在线简历</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 8 月 26 日 21:47</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-web-%E5%88%B6%E4%BD%9C%E7%AE%80%E5%8E%86">为什么要用 Web 制作简历？</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">使用指南</a>
+<ul>
+<li><a href="#%E7%AE%80%E5%8E%86%E7%BB%93%E6%9E%84">简历结构</a></li>
+<li><a href="#%E7%AE%80%E5%8E%86%E9%85%8D%E7%BD%AE">简历配置</a></li>
+</ul></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E8%AE%BE%E8%AE%A1">关于设计</a>
+<ul>
+<li><a href="#%E5%9B%BE%E6%A0%87%E5%BA%93-tabler">图标库 tabler</a></li>
+<li><a href="#%E5%AD%97%E4%BD%93%E9%80%89%E7%94%A8">字体选用</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96">其他优化</a></li>
+</ul></li>
+<li><a href="#%E5%B0%BE%E5%A3%B0">尾声</a></li>
+</ul>
+<p>基于 Astro.js 制作了我的新版在线简历。隆重推出：<a href="https://cv.skywt.cn/">cv.skywt.cn</a>。</p>
+<!--more-->
+<h2><a id="为什么要用-web-制作简历" class="content__heading-anchor"></a>为什么要用 Web 制作简历？</h2>
+<p>要制作一份能够<strong>充分自定义</strong>的简历，有很多种工具，很多种方式：</p>
+<ul>
+<li>最简单的是直接用 Microsoft Word 编辑；</li>
+<li>也可以用 Markdown 写好简历再应用模板；</li>
+<li>更高端的方式是用 LaTeX 或者 Typest 这样的工具编译生成简历；</li>
+<li>甚至可以用 Figma 来进行更精细的制作。</li>
+</ul>
+<p>最开始我打算用 LaTeX 编写简历，在 Overleaf 上也能找到不错的模板。然而从成功地使用模板，到随心所欲地自定义模板，这个学习曲线不是一般地陡峭。</p>
+<p>后来看到了关于 Typest 的安利，号称能替代 LaTeX。于是尝试了一下 Typest。然而这一套新的语法和 LaTeX 一样上手门槛高，劝退了我。</p>
+<p>仔细想想，本质上这些工具都是一种「<strong>描述简历内容的语言</strong>」而已。使用这些工具创造简历的过程，实际上是在向计算机描述我们想要看到的简历的过程。那么，作为一名前端开发者，我最熟悉的「语言」是什么呢？答案当然是 <strong>Web 的技术栈</strong>。（实际上，在使用 LaTeX 的时候，我经常会想：「如果能用 CSS 来写样式就好了……」）</p>
+<p>上周的《<a href="https://skywt.cn/blog/weekly-14/">Weekly #14：做 PPT 相比 coding 的痛苦之处</a>》里也提到，例如 PPT 这样的工具的<strong>表达能力</strong>就是不如代码的。擅长 coding 的人用起这些工具来十分痛苦……</p>
+<p>于是我选用了 Astro、Tailwind 这一套技术栈制作了这个简历系统。</p>
+<h2><a id="使用指南" class="content__heading-anchor"></a>使用指南</h2>
+<p>这是我为自己制作的简历。开源在 GitHub：<a href="https://github.com/Skywt2003/WebCV">WebCV</a>。如果你也喜欢，可以 fork 并轻易地填充你自己的内容。</p>
+<p>如果需要导出 PDF，可以使用浏览器的「打印」功能。</p>
+<h3><a id="简历结构" class="content__heading-anchor"></a>简历结构</h3>
+<p>每一份简历分为一个 header 和若干 section。</p>
+<p>Header 部分显示个人信息，包括姓名、电话、邮箱、照片等。</p>
+<p>每个 section 是简历的一个板块，包含标题（如「教育经历」）和若干 project。</p>
+<p>每个 project 可以是一段教育经历、实习经历、项目经历、获奖经历、校园经历等。基本结构如下图：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/08/1661284501.png" data-fancybox data-caption="一个 Project 的结构"><img src="https://blog.skywt.cn/usr/uploads/2024/08/1661284501.png" alt="一个 Project 的结构" title="一个 Project 的结构" /></a></p>
+<p>其中 title、subtitle、desc、date、caption、techs、items 的内容都可在下述的配置文件中配置。</p>
+<p>表格 table 的结构比较特殊，包含 N 行、M 列、NM 个单元格，每个格子包含若干行，每行是一些技术栈的展示。具体结构可查看下述配置文件。</p>
+<h3><a id="简历配置" class="content__heading-anchor"></a>简历配置</h3>
+<p>对一份简历的描述，称为一个「配置文件」，是一个 YAML 格式的文件，在项目的 <code>src/content/cv/</code> 目录下。部署网站后，访问对应文件名的路径，即可查看对应简历。</p>
+<p>例如，在该目录下放置 <code>example.yml</code> 配置文件，则部署网站后访问 <code>/example</code> 即可查看该简历。</p>
+<p>内容可参考我当前的简历配置文件：<a href="https://github.com/Skywt2003/WebCV/blob/e7b88c518886a78b40cd48fc97c15ede6431d013/src/content/cv/general.yml">general.yml</a>。</p>
+<h2><a id="关于设计" class="content__heading-anchor"></a>关于设计</h2>
+<h3><a id="图标库-tabler" class="content__heading-anchor"></a>图标库 tabler</h3>
+<p>展现某个项目的技术栈的时候，如果能在对应的技术（比如 React.js）前展示一个小图标，那肯定很酷！</p>
+<p>我找到了一个包含大量库和框架的图标库：<strong>Tabler Icons</strong>。它有很多<strong>前端框架</strong>的图标，React、Next、Vue、Nuxt 甚至 Astro，但是<strong>后端的库和框架</strong>图标是一个都没有……所以我的简历里后端的框架或库都找了一些抽象的图标来表示。</p>
+<p>可以在 <a href="https://tabler.io/icons">Tabler Icons</a> 官网找到所有支持的图标。</p>
+<h3><a id="字体选用" class="content__heading-anchor"></a>字体选用</h3>
+<p>对于含有大量文字的排版，留给平面设计的空间并不多，<strong>字体的选择</strong>就至关重要，这甚至直接决定了页面的整体风格。</p>
+<p>一直以来我都比较喜欢 serif 字体，比如博客和上一版简历用的都是<strong>思源宋体</strong>。这种字体统一、文艺、正式，并且可以方便地作为 Web 字体。通过这种字体，能够很好地传达一种「性格」，也就是《Refactoring UI》里说的 personality。然而，在仔细端详我的简历之后，我突然觉得：<strong>我想传达的性格不应该是这样的</strong>。我不想要这么正式古板，不想要这么文艺复古和多愁善感。我希望传达的是科技感、年轻、热情和热爱。</p>
+<p>然而，普通的 sans 字体都太普通了，很难表达出我想要的感觉。不管是苹方、方正还是思源，用在简历里都显得特别廉价，一点都不 impressive。</p>
+<p>在某厂实习期间，看到的一款字体似乎比较符合我想要传达的性格：<strong>钉钉进步体</strong>。这个字体有个性却不花哨，介于艺术字体和 sans 字体之间，非常适合用在简历里。当然，这种字体只适合用作标题，正文部分我还是用了 Google 的思源黑体。这样的字体组合，能够很好地传达出我想表达的气质。</p>
+<h3><a id="其他优化" class="content__heading-anchor"></a>其他优化</h3>
+<p>相比 WebCV 1.0，本次还有如下更新：</p>
+<ul>
+<li>兼容了 Darkmode，和博客访问体验一致。</li>
+<li>兼容移动端访问（虽然目前效果并不理想）。</li>
+</ul>
+<h2><a id="尾声" class="content__heading-anchor"></a>尾声</h2>
+<p>我觉得一份简历能<strong>代表我</strong>，至少求职简历能代表我的事业追求。所以我希望它传达出我的某种 personality。这种信息不仅是通过内容传达的，也是通过形式传达的（比如排版、配色、字体）。</p>
+<p>希望你能 get 到 😉。</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpuhG" prefix="r0" component-url="/_astro/Comments.CQWrrEpu.js" component-export="default" renderer-url="/_astro/client.Bd2Qst3j.js" props="{&quot;articleId&quot;:[0,177]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+WebCV：基于 Astro.js 的在线简历 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
