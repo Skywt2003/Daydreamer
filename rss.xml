@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly 15：这个夏天的日落合集</title><link>https://skywt.cn/blog/weekly-15/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-15/</guid><description>&gt; 我只对未来感兴趣，因为我的余生将在那里度过。
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><item><title>Weekly #15：这个夏天的日落合集</title><link>https://skywt.cn/blog/weekly-15/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-15/</guid><description>&gt; 我只对未来感兴趣，因为我的余生将在那里度过。
 &gt;
 &gt; —— Charles Kettering，via《远见》
 
@@ -59,6 +59,7 @@ Tying you to me&lt;/p&gt;
 git filter-repo --replace-text &amp;lt;(echo &apos;literal_or_regex_to_find==&amp;gt;replacement&apos;)
 git push origin --force
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下周见！&lt;/p&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>WebCV：基于 Astro.js 的在线简历</title><link>https://skywt.cn/blog/webcv/</link><guid isPermaLink="true">https://skywt.cn/blog/webcv/</guid><description>基于 Astro.js 制作了我的新版在线简历。隆重推出：[cv.skywt.cn](https://cv.skywt.cn/)。
 
 </description><pubDate>Mon, 26 Aug 2024 21:47:00 GMT</pubDate><content:encoded>&lt;p&gt;基于 Astro.js 制作了我的新版在线简历。隆重推出：&lt;a href=&quot;https://cv.skywt.cn/&quot;&gt;cv.skywt.cn&lt;/a&gt;。&lt;/p&gt;
