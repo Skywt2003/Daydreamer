@@ -1,0 +1,161 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Docker 代理配置方法合集</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Docker 代理配置方法合集</title><link rel="canonical" href="https://skywt.cn/blog/docker-proxy-configuration/"><meta name="description" content="由于众所周知的原因，使用 Docker 时可能会遇到诸多网络问题。然而，网络上关于此的文章充斥着杂乱无章的错误内容，而官方文档的描述也没有特别清楚。本文依据文档和亲身实践，整理 Docker 中各种代理配置方法，留供参考。"><meta name="robots" content="index, follow"><meta property="og:title" content="Docker 代理配置方法合集"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/docker-proxy-configuration/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Docker 代理配置方法合集"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="由于众所周知的原因，使用 Docker 时可能会遇到诸多网络问题。然而，网络上关于此的文章充斥着杂乱无章的错误内容，而官方文档的描述也没有特别清楚。本文依据文档和亲身实践，整理 Docker 中各种代理配置方法，留供参考。"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.14.2"><meta name="keywords" content="Docker,proxy,网络,代理,配置,翻墙,容器,daemon,pull,build"><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.Bz1ZbssJ.css">
+<link rel="stylesheet" href="/_astro/about.C9eFCau8.css"><script type="module" src="/_astro/hoisted.CDGpIg0b.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Docker 代理配置方法合集 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Docker 代理配置方法合集 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Docker 代理配置方法合集</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 9 月 7 日 15:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#docker-daemon-%E4%BB%A3%E7%90%86">Docker daemon 代理</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E5%86%85%E4%BB%A3%E7%90%86">容器内代理</a></li>
+<li><a href="#build-%E6%97%B6%E4%BB%A3%E7%90%86">Build 时代理</a></li>
+<li><a href="#%E6%88%91%E7%9A%84%E7%BB%88%E6%9E%81%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">我的终极代理解决方案</a></li>
+</ul>
+<p>由于众所周知的原因，使用 Docker 时可能会遇到诸多网络问题。然而，网络上关于此的文章充斥着杂乱无章的错误内容，而官方文档的描述也没有特别清楚。本文依据文档和亲身实践，整理 Docker 中各种代理配置方法，留供参考。</p>
+<!--more-->
+<h2><a id="docker-daemon-代理" class="content__heading-anchor"></a>Docker daemon 代理</h2>
+<p>当执行 <code>docker pull</code> 拉取镜像，一般是从 DockerHub 等仓库拉取，此时容易遇到网络问题。</p>
+<p>这一拉取过程实际上是 <strong>Docker daemon</strong> 在执行，而它是由 systemd 启动管理的，并不直接使用我们 shell 中配置的代理环境变量。为了让其走代理，需要编写其 systemd 配置。</p>
+<p>文件位置：<code>/etc/systemd/system/docker.service.d/http-proxy.conf</code>。</p>
+<p>内容示例：</p>
+<pre><code>[Service]
+Environment=&quot;HTTP_PROXY=http://127.0.0.1:1080&quot;
+Environment=&quot;HTTPS_PROXY=http://127.0.0.1:1080&quot;
+</code></pre>
+<p>保存配置后，需要重启 Docker daemon。注意：这会重启所有容器。</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre>
+<p>相关文档：<a href="https://docs.docker.com/config/daemon/systemd/">Configure the daemon to use a proxy</a>。</p>
+<h2><a id="容器内代理" class="content__heading-anchor"></a>容器内代理</h2>
+<p>容器内的应用或许需要访问网络，我们也希望其流量通过代理。这需要在容器内配置环境变量。</p>
+<p>可以在 Dockerfile 或者 <code>docker run</code> 的时候设定环境变量，但这要求对每个容器都写重复的配置。有一种更方便的方式：进行如下配置后，启动的容器都会自动设置 <code>http_proxy</code> 等环境变量。</p>
+<p>文件位置：<code>~/.docker/config.json</code></p>
+<p>内容示例：</p>
+<pre><code>{
+ &quot;proxies&quot;: {
+   &quot;default&quot;: {
+     &quot;httpProxy&quot;: &quot;http://example:1080&quot;,
+     &quot;httpsProxy&quot;: &quot;http://example:1080&quot;,
+     &quot;noProxy&quot;: &quot;*.test.example.com,.example.org,127.0.0.0/8,192.168.0.0/16&quot;
+   }
+ }
+}
+</code></pre>
+<p>指定 <code>httpProxy</code> 属性值，相当于在容器内同时设定 <code>http_proxy</code> 和 <code>HTTP_PROXY</code> 两个环境变量。</p>
+<p>保存配置后，无需重启任何服务。在<strong>保存配置之后启动</strong>的 docker 容器，都会自动配置对应环境变量（之前的容器不会改变）。然而，应用是否读取该环境变量并使用代理设置，取决于应用的实现。这并不是一个标准。</p>
+<p><strong>⚠️ 注意：</strong>此处环境变量会在容器内被读取，所以地址 127.0.0.1 指的是容器自身，而非宿主机。</p>
+<p><strong>⚠️ 注意：</strong>如果容器是以 root 模式启动的（使用 sudo），上面所述的 <code>~/.docker/config.json</code> 其实指的是 <code>/root/.docker/config.json</code>。</p>
+<p><strong>⚠️ 注意：</strong>curl 等工具并不支持 socks 代理，只支持 http。所以建议统一配置 htp 代理。</p>
+<p>相关文档：<a href="https://docs.docker.com/network/proxy/">Use a proxy server with the Docker CLI</a>。</p>
+<h2><a id="build-时代理" class="content__heading-anchor"></a>Build 时代理</h2>
+<p>在运行 <code>docker build</code> 时，许多操作容易遇到网络问题。这个 build 过程其实也在一个 Docker 容器中进行，所以读取不到我们 shell 环境的代理环境变量，也访问不到我们的主机网络。</p>
+<p>解决方案是，首先指定 build 时使用的网络环境为 host：</p>
+<pre><code class="language-bash">docker build --network=host
+</code></pre>
+<p>或者在 <code>docker-compose.yml</code> 中：</p>
+<pre><code class="language-yaml"><span class="hljs-attr">build:</span>
+  <span class="hljs-attr">context:</span> <span class="hljs-string">.</span>
+  <span class="hljs-attr">network:</span> <span class="hljs-string">host</span>
+  <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">Dockerfile</span>
+</code></pre>
+<p>接下来，在 Dockerfile 中，设置环境变量：</p>
+<pre><code class="language-dockerfile"><span class="hljs-keyword">ENV</span> http_proxy <span class="hljs-string">&quot;http://127.0.0.1:1080&quot;</span>
+<span class="hljs-keyword">ENV</span> HTTP_PROXY <span class="hljs-string">&quot;http://127.0.0.1:1080&quot;</span>
+<span class="hljs-keyword">ENV</span> https_proxy <span class="hljs-string">&quot;http://127.0.0.1:1080&quot;</span>
+<span class="hljs-keyword">ENV</span> HTTPS_PROXY <span class="hljs-string">&quot;http://127.0.0.1:1080&quot;</span>
+</code></pre>
+<h2><a id="我的终极代理解决方案" class="content__heading-anchor"></a>我的终极代理解决方案</h2>
+<p>我们希望容器内外的网络都使用同样的代理。为了方便容器内的访问，更好的选择是将代理程序作为一个容器运行。</p>
+<p>我的解决方案是：单独启动一个名为 <strong>proxy</strong> 的容器，专门负责进行网络代理；映射 1080 端口，为宿主机提供代理。</p>
+<ul>
+<li><strong>容器外：</strong>只要配置代理地址 <code>http://127.0.0.1:1080</code>。</li>
+<li><strong>容器内：</strong>只要加入 proxy 同一网络，并配置代理地址 <code>http://proxy:1080</code>。</li>
+</ul>
+<p><strong>⚠️ 注意：</strong>不要将此端口暴露在公网中，否则被 ISP 扫描到可能要写保证书。</p>
+<p><strong>Happy Self-hosting！</strong></p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpuNc" prefix="r0" component-url="/_astro/Comments.CQWrrEpu.js" component-export="default" renderer-url="/_astro/client.Bd2Qst3j.js" props="{&quot;articleId&quot;:[0,179]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Docker 代理配置方法合集 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
