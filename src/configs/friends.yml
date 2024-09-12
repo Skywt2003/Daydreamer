@@ -172,7 +172,7 @@ groups:
     desc: We're happy, free, confused and lonely at the same time.
     friends:
       - name: B1ue1nWh1te
-        desc: 很强的学长。
+        desc: 很强的币圈学长。
         slogan: 云卷云舒，处之泰然。
         url: https://www.seaeye.cn/
         avatar: https://img.seaeye.cn/img/seaeye/portrait.jpg
@@ -191,11 +191,26 @@ groups:
         slogan:
         url: https://kawatsuki.com/
         avatar: https://kawatsuki.com/MyPic/bella.png
+      - name: WuJean
+        desc:
+        slogan: 岳麓山下你和我。
+        url: https://wujean.github.io/
+        avatar: https://wujean.github.io/img/avatar.png
+      - name: LightDust
+        desc:
+        slogan: This world is not perfect, but still wonderful.
+        url: https://lightdust02.github.io/
+        avatar: https://lightdust02.github.io/images/doge.png
       - name: 贰猹的小窝
         desc:
         slogan: 用这生命中的每一秒，给自己一个不后悔的未来。
         url: https://noionion.top/
         avatar: placeholder
+      - name: Mufanc
+        desc:
+        slogan: 星河璀璨，凡尘点点。
+        url: https://blog.mufanc.xyz/
+        avatar: https://blog.mufanc.xyz/assets/images/avatar.jpeg
       - name: Ripple
         desc:
         slogan: 超高校级的游戏玩家！
@@ -206,16 +221,6 @@ groups:
         slogan: 我们都曾是海滩上玩沙堡的孩子。现在仍是，只不过不在海滩上罢了。
         url: https://cyp0633.icu/
         avatar: https://cyp0633-public-resource.oss-cn-qingdao.aliyuncs.com/blog/cyp0633-icon.jpg
-      - name: WuJean
-        desc:
-        slogan: 岳麓山下你和我。
-        url: https://wujean.github.io/
-        avatar: https://wujean.github.io/img/avatar.png
-      - name: Mufanc
-        desc:
-        slogan: 星河璀璨，凡尘点点。
-        url: https://blog.mufanc.xyz/
-        avatar: https://blog.mufanc.xyz/assets/images/avatar.jpeg
       - name: Ekennis
         desc:
         slogan: Ekke の Space.
