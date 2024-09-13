@@ -6,7 +6,7 @@
 
 常见的方法是轻重链剖分，即 Heavy-Light Decomposition。
 
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.14.2"><meta name="keywords" content=""><script>
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content=""><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -31,8 +31,8 @@
         },
         { once: false },
       );
-    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.Bz1ZbssJ.css">
-<link rel="stylesheet" href="/_astro/about.C9eFCau8.css"><script type="module" src="/_astro/hoisted.Dqwyr6z_.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D_JCtxLP.css">
+<link rel="stylesheet" href="/_astro/about.CeG4KcMB.css"><script type="module" src="/_astro/hoisted.nLLij5o4.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -138,7 +138,7 @@
     <span class="hljs-keyword">return</span> ret*f;
 }
 
-<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e5</span>+<span class="hljs-number">5</span>;
+<span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;
 <span class="hljs-type">const</span> <span class="hljs-type">int</span> maxe=<span class="hljs-number">2</span>*maxn;
 
 <span class="hljs-type">int</span> n,m,root,tt;
@@ -157,9 +157,9 @@
         <span class="hljs-type">int</span> tree[maxn*<span class="hljs-number">4</span>],tag[maxn*<span class="hljs-number">4</span>];
 
         <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push_down</span><span class="hljs-params">(<span class="hljs-type">int</span> tl,<span class="hljs-type">int</span> tr,<span class="hljs-type">int</span> p)</span></span>{
-            <span class="hljs-built_in">add</span>(tree[ls],tag[p]*(mid-tl+<span class="hljs-number">1</span>)%tt);
+            <span class="hljs-built_in">add</span>(tree[ls],tag[p]*(mid-tl<span class="hljs-number">+1</span>)%tt);
             <span class="hljs-built_in">add</span>(tag[ls],tag[p]);
-            <span class="hljs-built_in">add</span>(tree[rs],tag[p]*(tr-(mid+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>)%tt);
+            <span class="hljs-built_in">add</span>(tree[rs],tag[p]*(tr-(mid<span class="hljs-number">+1</span>)<span class="hljs-number">+1</span>)%tt);
             <span class="hljs-built_in">add</span>(tag[rs],tag[p]);
             tag[p]=<span class="hljs-number">0</span>;
         }
@@ -177,19 +177,19 @@
             }
             <span class="hljs-built_in">push_down</span>(tl,tr,p);
             <span class="hljs-keyword">if</span> (x&lt;=mid  ) <span class="hljs-built_in">update</span>(x,tl,mid,ls,delta);
-            <span class="hljs-keyword">if</span> (mid+<span class="hljs-number">1</span>&lt;=x) <span class="hljs-built_in">update</span>(x,mid+<span class="hljs-number">1</span>,tr,rs,delta);
+            <span class="hljs-keyword">if</span> (mid<span class="hljs-number">+1</span>&lt;=x) <span class="hljs-built_in">update</span>(x,mid<span class="hljs-number">+1</span>,tr,rs,delta);
             tree[p]=(tree[ls]+tree[rs])%tt;
         }
 
         <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-type">int</span> sl,<span class="hljs-type">int</span> sr,<span class="hljs-type">int</span> tl,<span class="hljs-type">int</span> tr,<span class="hljs-type">int</span> p,<span class="hljs-type">int</span> delta)</span></span>{
             <span class="hljs-keyword">if</span> (sl&lt;=tl &amp;&amp; tr&lt;=sr){
-                <span class="hljs-built_in">add</span>(tree[p],(tr-tl+<span class="hljs-number">1</span>)*delta%tt);
+                <span class="hljs-built_in">add</span>(tree[p],(tr-tl<span class="hljs-number">+1</span>)*delta%tt);
                 <span class="hljs-built_in">add</span>(tag[p],delta);
                 <span class="hljs-keyword">return</span>;
             }
             <span class="hljs-built_in">push_down</span>(tl,tr,p);
             <span class="hljs-keyword">if</span> (sl&lt;=mid  ) <span class="hljs-built_in">update</span>(sl,sr,tl,mid,ls,delta);
-            <span class="hljs-keyword">if</span> (mid+<span class="hljs-number">1</span>&lt;=sr) <span class="hljs-built_in">update</span>(sl,sr,mid+<span class="hljs-number">1</span>,tr,rs,delta);
+            <span class="hljs-keyword">if</span> (mid<span class="hljs-number">+1</span>&lt;=sr) <span class="hljs-built_in">update</span>(sl,sr,mid<span class="hljs-number">+1</span>,tr,rs,delta);
             tree[p]=(tree[ls]+tree[rs])%tt;
         }
 
@@ -198,7 +198,7 @@
             <span class="hljs-built_in">push_down</span>(tl,tr,p);
             <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>;
             <span class="hljs-keyword">if</span> (x&lt;=mid  ) <span class="hljs-built_in">add</span>(ret,<span class="hljs-built_in">query</span>(x,tl,mid,ls));
-            <span class="hljs-keyword">if</span> (mid+<span class="hljs-number">1</span>&lt;=x) <span class="hljs-built_in">add</span>(ret,<span class="hljs-built_in">query</span>(x,mid+<span class="hljs-number">1</span>,tr,rs));
+            <span class="hljs-keyword">if</span> (mid<span class="hljs-number">+1</span>&lt;=x) <span class="hljs-built_in">add</span>(ret,<span class="hljs-built_in">query</span>(x,mid<span class="hljs-number">+1</span>,tr,rs));
             <span class="hljs-keyword">return</span> ret;
         }
 
@@ -207,7 +207,7 @@
             <span class="hljs-built_in">push_down</span>(tl,tr,p);
             <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>;
             <span class="hljs-keyword">if</span> (sl&lt;=mid  ) <span class="hljs-built_in">add</span>(ret,<span class="hljs-built_in">query</span>(sl,sr,tl,mid,ls));
-            <span class="hljs-keyword">if</span> (mid+<span class="hljs-number">1</span>&lt;=sr) <span class="hljs-built_in">add</span>(ret,<span class="hljs-built_in">query</span>(sl,sr,mid+<span class="hljs-number">1</span>,tr,rs));
+            <span class="hljs-keyword">if</span> (mid<span class="hljs-number">+1</span>&lt;=sr) <span class="hljs-built_in">add</span>(ret,<span class="hljs-built_in">query</span>(sl,sr,mid<span class="hljs-number">+1</span>,tr,rs));
             <span class="hljs-keyword">return</span> ret;
         }
 };
@@ -239,7 +239,7 @@
         f[x][<span class="hljs-number">0</span>]=fa[x];<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">23</span>;i++) f[x][i]=f[f[x][i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>];
         <span class="hljs-type">int</span> max_size=<span class="hljs-number">0</span>,k=<span class="hljs-number">-1</span>;
         <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=lnk[x];i;i=nxt[i]) <span class="hljs-keyword">if</span> (to[i]!=fa[x]){
-            fa[to[i]]=x;deep[to[i]]=deep[x]+<span class="hljs-number">1</span>;
+            fa[to[i]]=x;deep[to[i]]=deep[x]<span class="hljs-number">+1</span>;
             <span class="hljs-built_in">make_tree</span>(to[i]);
             size[x]+=size[to[i]];
             <span class="hljs-keyword">if</span> (size[to[i]]&gt;max_size) max_size=size[to[i]],k=to[i];
@@ -259,8 +259,8 @@
     <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">change_single</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> delta,SegmentTree &amp;tree)</span></span>{
         <span class="hljs-keyword">while</span> (x!=l){
             <span class="hljs-keyword">if</span> (top[x]!=x){
-                <span class="hljs-keyword">if</span> (deep[top[x]]&gt;=deep[l]) tree.<span class="hljs-built_in">update</span>(id[top[x]]+<span class="hljs-number">1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>,delta),x=top[x];
-                <span class="hljs-keyword">else</span> tree.<span class="hljs-built_in">update</span>(id[l]+<span class="hljs-number">1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>,delta),x=l;
+                <span class="hljs-keyword">if</span> (deep[top[x]]&gt;=deep[l]) tree.<span class="hljs-built_in">update</span>(id[top[x]]<span class="hljs-number">+1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>,delta),x=top[x];
+                <span class="hljs-keyword">else</span> tree.<span class="hljs-built_in">update</span>(id[l]<span class="hljs-number">+1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>,delta),x=l;
             } <span class="hljs-keyword">else</span> tree.<span class="hljs-built_in">update</span>(id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>,delta),x=fa[x];
         }
         tree.<span class="hljs-built_in">update</span>(id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>,delta);
@@ -277,8 +277,8 @@
         <span class="hljs-type">int</span> ret=<span class="hljs-number">0</span>;
         <span class="hljs-keyword">while</span> (x!=l){
             <span class="hljs-keyword">if</span> (top[x]!=x){
-                <span class="hljs-keyword">if</span> (deep[top[x]]&gt;=deep[l]) <span class="hljs-built_in">add</span>(ret,tree.<span class="hljs-built_in">query</span>(id[top[x]]+<span class="hljs-number">1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>)),x=top[x];
-                <span class="hljs-keyword">else</span> <span class="hljs-built_in">add</span>(ret,tree.<span class="hljs-built_in">query</span>(id[l]+<span class="hljs-number">1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>)),x=l;
+                <span class="hljs-keyword">if</span> (deep[top[x]]&gt;=deep[l]) <span class="hljs-built_in">add</span>(ret,tree.<span class="hljs-built_in">query</span>(id[top[x]]<span class="hljs-number">+1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>)),x=top[x];
+                <span class="hljs-keyword">else</span> <span class="hljs-built_in">add</span>(ret,tree.<span class="hljs-built_in">query</span>(id[l]<span class="hljs-number">+1</span>,id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>)),x=l;
             } <span class="hljs-keyword">else</span> <span class="hljs-built_in">add</span>(ret,tree.<span class="hljs-built_in">query</span>(id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>)),x=fa[x];
         }
         <span class="hljs-built_in">add</span>(ret,tree.<span class="hljs-built_in">query</span>(id[x],<span class="hljs-number">1</span>,n,<span class="hljs-number">1</span>));
@@ -340,7 +340,7 @@ SegmentTree tree;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
- </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="Z1zFnNN" prefix="r0" component-url="/_astro/Comments.CQWrrEpu.js" component-export="default" renderer-url="/_astro/client.Bd2Qst3j.js" props="{&quot;articleId&quot;:[0,98]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="Z1zFnNN" prefix="r0" component-url="/_astro/Comments.BdzVuXw3.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;articleId&quot;:[0,98]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
