@@ -114,7 +114,7 @@ Environment=&quot;HTTPS_PROXY=http://127.0.0.1:1080&quot;
 <p>保存配置后，无需重启任何服务。在<strong>保存配置之后启动</strong>的 docker 容器，都会自动配置对应环境变量（之前的容器不会改变）。然而，应用是否读取该环境变量并使用代理设置，取决于应用的实现。这并不是一个标准。</p>
 <p><strong>⚠️ 注意：</strong>此处环境变量会在容器内被读取，所以地址 127.0.0.1 指的是容器自身，而非宿主机。</p>
 <p><strong>⚠️ 注意：</strong>如果容器是以 root 模式启动的（使用 sudo），上面所述的 <code>~/.docker/config.json</code> 其实指的是 <code>/root/.docker/config.json</code>。</p>
-<p><strong>⚠️ 注意：</strong>curl 等工具并不支持 socks 代理，只支持 http。所以建议统一配置 htp 代理。</p>
+<p><strong>⚠️ 注意：</strong>curl 等工具并不支持 socks 代理，只支持 http。所以建议统一配置 http 代理。</p>
 <p>相关文档：<a href="https://docs.docker.com/network/proxy/">Use a proxy server with the Docker CLI</a>。</p>
 <h2><a id="build-时代理" class="content__heading-anchor"></a>Build 时代理</h2>
 <p>在运行 <code>docker build</code> 时，许多操作容易遇到网络问题。这个 build 过程其实也在一个 Docker 容器中进行，所以读取不到我们 shell 环境的代理环境变量，也访问不到我们的主机网络。</p>
