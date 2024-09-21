@@ -38,6 +38,6 @@ export async function GET(context: APIContext) {
     description: "热爱与激情永不止息。",
     site: context.site || "",
     items: rssItems,
-    customData: `<language>zh-cn</language>`,
+    customData: `<language>zh-cn</language><follow_challenge><feedId>54825248999897099</feedId><userId>56938040811317248</userId></follow_challenge>`,
   });
 }
