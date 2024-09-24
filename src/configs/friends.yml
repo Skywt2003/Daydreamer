@@ -168,12 +168,15 @@ groups:
         slogan: 做智慧而勤劳的人。
         url: https://capata.top/
         avatar: placeholder
+      - name: Hangliang Ding
+        url: https://foreverpiano.github.io
+        avatar: placeholder
   - name: 🏫 HNUers
     desc: We're happy, free, confused and lonely at the same time.
     friends:
       - name: B1ue1nWh1te
-        desc: 很强的币圈学长。
-        slogan: 云卷云舒，处之泰然。
+        desc: 很强的学长。
+        slogan: 知行合一，宁静致远。
         url: https://www.seaeye.cn/
         avatar: https://img.seaeye.cn/img/seaeye/portrait.jpg
       - name: Kaisuping
