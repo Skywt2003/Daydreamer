@@ -1,0 +1,144 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #19：你好，武汉！</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #19：你好，武汉！</title><link rel="canonical" href="https://skywt.cn/blog/weekly-19/"><meta name="description" content="Weekly 第 19 期。"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #19：你好，武汉！"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-19/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #19：你好，武汉！"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="Weekly 第 19 期。"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D_JCtxLP.css">
+<link rel="stylesheet" href="/_astro/about.CeG4KcMB.css"><script type="module" src="/_astro/hoisted.nLLij5o4.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #19：你好，武汉！ </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #19：你好，武汉！ </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #19：你好，武汉！</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 9 月 29 日 22:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E9%B9%A6%E9%B9%89%E6%B4%B2%E5%A4%A7%E6%A1%A5">🌆 封面图：鹦鹉洲大桥</a></li>
+<li><a href="#%F0%9F%8C%89-%E6%AD%A6%E6%B1%89%E7%9A%84%E5%85%AC%E5%85%B1%E4%BA%A4%E9%80%9A">🌉 武汉的公共交通</a></li>
+<li><a href="#%F0%9F%94%90-authelia%E6%9B%B4%E7%AE%80%E6%B4%81%E7%9A%84%E5%BC%80%E6%BA%90-sso-%E6%9C%8D%E5%8A%A1">🔐 Authelia：更简洁的开源 SSO 服务</a></li>
+<li><a href="#%F0%9F%A4%94-q4a-%231%E5%A4%A7%E5%8E%82%E9%87%8C%E5%AD%A6%E5%8E%86%E5%AF%B9%E6%99%8B%E5%8D%87%E7%9A%84%E5%BD%B1%E5%93%8D">🤔 Q4A #1：大厂里学历对晋升的影响</a></li>
+</ul>
+<!--more-->
+<h2><a id="🌆-封面图鹦鹉洲大桥" class="content__heading-anchor"></a>🌆 封面图：鹦鹉洲大桥</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/2499414412.jpg" data-fancybox data-caption="封面图：鹦鹉洲大桥"><img src="https://blog.skywt.cn/usr/uploads/2024/10/2499414412.jpg" alt="封面图：鹦鹉洲大桥" title="封面图：鹦鹉洲大桥" /></a></p>
+<p>本周去武汉参加了金山校招开放日活动。这也是我第一次来武汉，顺便在武汉玩了几天！</p>
+<p>武汉给我的第一印象就是<strong>大</strong>。民国时期，国民政府将武昌、汉口、汉阳三镇合并，成为了这座超大城市，也形成了武汉「多中心」的格局。这几天花在地铁上的时间很多，花在打车上的钱也不少！</p>
+<p>几座跨江大桥的恢弘气势，很难不让人感到宏伟壮观。</p>
+<h2><a id="🌉-武汉的公共交通" class="content__heading-anchor"></a>🌉 武汉的公共交通</h2>
+<p>武汉有非常丰富的公共交通形式。例如在光谷，有公交、BRT、有轨电车、地铁/轻轨。这四种交通方式运力从小到大，造价也从低到高。</p>
+<p>武汉的 <strong>BRT</strong> 并不像厦门那样有专门的高架桥，而只是简单地划分了公交专用道。相比普通的公交车，好处是：1）车速可以更快；2）可以使用容量更大的车型；3）不受道路拥堵影响。</p>
+<p>光谷的<strong>有轨电车</strong>是比较独特的一种公共交通。在机动车道和非机动车道之间有一条有轨电车道。一列电车很长，形似地铁。在经过路口时，电车也要和机动车一样等待红灯。相比公交和 BRT，优势是：1）车速可以更更快；2）车型容量更更大；3）不受道路拥堵影响。当然造价也更高。相比地铁的优势是造价低、更快捷。（遗憾的是，光谷电车并不支持 NFC 交通联合卡）</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/319154630.jpg" data-fancybox data-caption="武汉光谷有轨电车"><img src="https://blog.skywt.cn/usr/uploads/2024/10/319154630.jpg" alt="武汉光谷有轨电车" title="武汉光谷有轨电车" /></a></p>
+<p>武汉的<strong>地铁</strong>也很特别。所有地铁站内的官方名称都是「<strong>武汉轨道交通</strong>」而不是「武汉地铁」。听武汉本地的朋友说这是出于历史原因：在最初规划时计划造轻轨，所以名为「轨道交通」；造完一号线后由于成本等种种因素，之后改建了地铁。所以目前一号线是高架轻轨，其他线都是地铁。从一号线换乘其他线路，要从地上乘坐长长的电梯到地下。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/1437210938.jpg" data-fancybox data-caption="武汉轨道交通一号线"><img src="https://blog.skywt.cn/usr/uploads/2024/10/1437210938.jpg" alt="武汉轨道交通一号线" title="武汉轨道交通一号线" /></a></p>
+<p>（插播一则冷知识：武汉光谷出现在地铁站名中的英文是 Optics Valley，「光学山谷」）</p>
+<p><strong>地铁五号线</strong>是无人驾驶的列车。首尾车厢经过单独设计，可以在车头的挡风玻璃看到车前隧道内部。非常酷！</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/3648569094.jpg" data-fancybox data-caption="无人驾驶的武汉地铁五号线"><img src="https://blog.skywt.cn/usr/uploads/2024/10/3648569094.jpg" alt="无人驾驶的武汉地铁五号线" title="无人驾驶的武汉地铁五号线" /></a></p>
+<p>虽然有丰富且独特的公共交通，但武汉的道路交通还是不敢恭维。在高德地图上呈现红黑色的拥堵路段、疯狂的司机师傅、横冲直撞的非机动车，我都体会到了……和长沙一样，在武汉的路上骑车，可能有生命危险。😇</p>
+<p>关于武汉交通还有一个不得不提的存在，那就是「<strong>萝卜快跑</strong>」，百度的无人驾驶出租车服务。它并不是如我想象的那样可以随意指定上下车地点，而是在路边有许多固定的上下车点，可以从中选择。有的小巷内没有设点，就无法在其中上下车。所以武汉的朋友说它其实类似公共交通的地位，无法解决「最后一公里」的问题。这项服务也引发了诸多问题，比如交通事故消息被压、本地司机罢工等。我本想体验一下，可惜等了十分钟都没呼叫到车……希望下次有机会体验！</p>
+<h2><a id="🔐-authelia更简洁的开源-sso-服务" class="content__heading-anchor"></a>🔐 Authelia：更简洁的开源 SSO 服务</h2>
+<p>之前一直用 Keycloak 作为我 self-hosted 的 SSO 系统，部署在 <a href="https://auth.skywt.cn">SkyAuth</a>。然而 Keycloak 历史悠久，异常庞大，功能复杂，默认 UI 丑陋（一股 RedHat 风味）；基于 Java 开发，自定义主题困难。作为 UI 颜控的我完全无法忍受。于是我在找寻其替代品。</p>
+<p>本周将其换成了 <strong>Authelia</strong>。这也是一个开源的 SSO，后端基于 Go，前端基于 React，相比之下功能简洁不少，也可以方便地进行一些自定义。接下来，我希望将博客评论区集成第三方登录，如 GitHub、Google 甚至我自己的 SSO。慢慢折腾。</p>
+<h2><a id="🤔-q4a-#1大厂里学历对晋升的影响" class="content__heading-anchor"></a>🤔 Q4A #1：大厂里学历对晋升的影响</h2>
+<p>秋招进行至今，已经经历了几十场面试。由于我目前无读研打算，学历将停留在本科，于是每一场的反问环节，我都有一个保留问题：「<strong>您觉得大厂里学历对晋升有影响吗？或者影响大吗？</strong>」</p>
+<p>由于不同企业内部、不同面试官的经历都有所不同，或许某一名面试官的经历不能反映普遍情况。所以我每场面试都会问，希望得到足够多的数据。</p>
+<p>面试官对于这个问题的回答，统计结果大致如下：（只针对前端开发岗位）</p>
+<ul>
+<li><strong>70%：「无影响」</strong>
+<ul>
+<li>没有影响。学历只是「敲门砖」，进去后只看能力。</li>
+<li>就我的个人经历而言，没有感觉到影响。</li>
+<li>甚至有硕士定级比本科生低的。</li>
+<li>可能有一定相关性，但并不构成因果关系。名校出身的人大多视野更开阔、思维更敏捷。</li>
+</ul></li>
+<li><strong>10%：「只影响入职定级」</strong>
+<ul>
+<li>可能只会影响入职时的定级，但入职后不太会看。</li>
+</ul></li>
+<li><strong>20%：「有影响，但不大」</strong>
+<ul>
+<li>可能有，但微乎其微，学历只是像一个 label 贴在你身上。</li>
+<li>可能有，但你的本科也是 985，其实已经够了。</li>
+<li>可能有。但几年后的环境可能更差，你现在就业是更好的选择。</li>
+<li>（笑）这个问题我可能很难回答你……</li>
+</ul></li>
+</ul>
+<p>秋招是痛苦的。武汉之行被插入了五场面试。国庆终于可以好好休息一下。下周见～</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpB0i" prefix="r0" component-url="/_astro/Comments.BdzVuXw3.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;articleId&quot;:[0,182]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #19：你好，武汉！ </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
