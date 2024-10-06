@@ -1,0 +1,218 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #20：我的个人宣言 v0.1</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #20：我的个人宣言 v0.1</title><link rel="canonical" href="https://skywt.cn/blog/weekly-20/"><meta name="description" content="> 游戏的格局越大，人类能贡献的潜能就越特别。作为人类，我们最大的优势正好就是过度专业化的对立面 —— 广泛融合各类知识的能力。
+>
+> ——《成长的边界》
+"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #20：我的个人宣言 v0.1"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-20/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #20：我的个人宣言 v0.1"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 游戏的格局越大，人类能贡献的潜能就越特别。作为人类，我们最大的优势正好就是过度专业化的对立面 —— 广泛融合各类知识的能力。
+>
+> ——《成长的边界》
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D_JCtxLP.css">
+<link rel="stylesheet" href="/_astro/about.CeG4KcMB.css"><script type="module" src="/_astro/hoisted.nLLij5o4.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #20：我的个人宣言 v0.1 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #20：我的个人宣言 v0.1 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #20：我的个人宣言 v0.1</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 10 月 6 日 18:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E8%92%B8%E6%B1%BD%E6%9C%BA%E8%BD%A6">🌆 封面图：蒸汽机车</a></li>
+<li><a href="#%E2%98%80%EF%B8%8F-%E5%A4%8F%E6%97%A5%E7%BB%88%E6%9B%B2">☀️ 夏日终曲</a></li>
+<li><a href="#%F0%9F%93%83-%E6%88%91%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%AE%A3%E8%A8%80-v01">📃 我的个人宣言 v0.1</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%9C%A8%E8%AF%BB%E6%88%90%E9%95%BF%E7%9A%84%E8%BE%B9%E7%95%8C">📚 本周在读：《成长的边界》</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%BC%80%E5%A7%8B%E8%AF%BB%E8%AE%A1%E7%AE%97">📚 本周开始读：《计算》</a></li>
+<li><a href="#%F0%9F%90%A6-%E5%85%A8%E6%96%B0%E6%8E%A8%E7%89%B9%E7%BD%AE%E9%A1%B6%E5%B8%96">🐦 全新推特置顶帖</a></li>
+<li><a href="#%F0%9F%92%B3-%E6%9F%90%E5%A4%A7%E5%8E%82%E9%93%B6%E8%A1%8C%E5%8D%A1-cvv-%E6%B3%84%E6%BC%8F%E4%BC%A0%E9%97%BB">💳 某大厂银行卡 CVV 泄漏传闻</a></li>
+<li><a href="#%F0%9F%A4%94-q4a-%232%E5%9C%B0%E9%93%81%E4%B8%80%E5%8F%B7%E7%BA%BF%E6%A0%87%E8%AF%86%E8%89%B2%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%A7%E5%A4%9A%E9%80%89%E7%94%A8%E7%BA%A2%E8%89%B2">🤔 Q4A #2：地铁一号线标识色为什么大多选用红色？</a></li>
+<li><a href="#%F0%9F%8C%9F-bookmarks-%230">🌟 Bookmarks #0</a></li>
+</ul>
+<blockquote>
+<p>游戏的格局越大，人类能贡献的潜能就越特别。作为人类，我们最大的优势正好就是过度专业化的对立面 —— 广泛融合各类知识的能力。</p>
+<p>——《成长的边界》</p>
+</blockquote>
+<!--more-->
+<h2><a id="🌆-封面图蒸汽机车" class="content__heading-anchor"></a>🌆 封面图：蒸汽机车</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/4199959647.jpg" data-fancybox data-caption="蒸汽机车"><img src="https://blog.skywt.cn/usr/uploads/2024/10/4199959647.jpg" alt="蒸汽机车" title="蒸汽机车" /></a></p>
+<p>本周去参观了中南大学铁道校区。图为该校区内陈列的蒸汽机车。</p>
+<p>上网查了才知道校内陈列的三列机车是真实的已退役机车（而不是模型）。第一次知道原来这种机车如此庞大，车轮近一人高。</p>
+<h2><a id="☀️-夏日终曲" class="content__heading-anchor"></a>☀️ 夏日终曲</h2>
+<p>随着长沙天气一波明显的降温，能明显地感知到，<strong>夏天终于结束了</strong>。</p>
+<p>气温的变化给人体带来的感受，以及桂花的香气带来的感受，是非常感性的。我没法用言语描述出这种感觉。但它会让我回想起以前每个夏天结束的时候。秋天的夜晚，金黄色的落叶。有些不重要的场景不知为何就记得特别清晰，比如高中的晚上在教学楼走廊里和同学泡泡面吃，开水呈现出的水雾，它们带走的夏天。</p>
+<p>都怪各种文学作品，都怪《Call Me by Your Name》这样的电影，让人对夏季有这样的执念。🥲</p>
+<p>再见了，21 岁的夏天。👋</p>
+<h2><a id="📃-我的个人宣言-v01" class="content__heading-anchor"></a>📃 我的个人宣言 v0.1</h2>
+<p>《高效能人士的七个习惯》中指出，要制定自己的「个人宣言」（或可称为「个人宪法」），描述自己最根本的、最核心的价值观和追求。当面临重大决策时，可以将其作为参考依据。</p>
+<p>「个人宣言」的制定是一个长期和动态的过程。成长的过程中我们或许随时会有新的思考，我们的三观也会不断更新。所以，现在我制定的版本号是 v0.1。</p>
+<p>我的三条核心追求，按照优先顺序排列如下：</p>
+<ol>
+<li><strong>学习 Learn。</strong>此处的学习并非局限于某一个领域的「study」，而是对万事万物、对整个世界的了解。「读万卷书，行万里路。」</li>
+<li><strong>创造 Create。</strong>理想的劳动应该是充分发挥自己创造力的过程。（因此，我非常讨厌刷题和考试）</li>
+<li><strong>影响 Influence。</strong>我们的存在应该或多或少地对这个世界产生正面的影响和改变。当然，这在目前阶段并非最主要的目标。一个人的「影响力」是需要慢慢积累的。</li>
+</ol>
+<p>其他暂时未列入上面三条的追求（优先级相对较低），有：</p>
+<ul>
+<li><strong>自由。</strong>能够不被拘束地做自己想做的事的权利。</li>
+<li><strong>对自己负责的权利。</strong>我们不应<strong>被迫地</strong>让别人对我们负责。折腾 self-hosting 也是出于这样的追求：我希望自己负责我的敏感数据的安全，而非某个大厂的草台班子或实习生来负责。</li>
+<li><strong>与他人不同。</strong>从信息论的角度来看，是我们身上与大多数人不同的那一部分，定义了我们。</li>
+</ul>
+<p>想到其他的再随时更新。</p>
+<h2><a id="📚-本周在读成长的边界" class="content__heading-anchor"></a>📚 本周在读：《成长的边界》</h2>
+<p>成为专才还是成为通才，是个一直辩论不完的辩题。本书倾向于后者，认为不应过早和过度地一头扎入某个专业化领域，应该从宏观角度考虑自己的发展。</p>
+<p>本书将学习环境分为两种：</p>
+<ul>
+<li><strong>友好型：</strong>各种体育运动、国际象棋等，能够通过刻意练习得到提升。</li>
+<li><strong>恶劣型：</strong>金融或政治的趋势预测，疾病诊断等，这些领域很难通过刻意练习得到稳定的提升。</li>
+</ul>
+<p><strong>前者就是本书所说的「专业化」</strong>。通过诸如所谓的「一万小时定律」大量地在某个领域进行刻意练习，从而培养直觉。本书引证认为，这反而容易让人陷入固定的思维模式，从而无法产生变革和创新。</p>
+<p><strong>相比之下，后者就是通向「通才」的道路。</strong>在更宏观的复杂领域，并不是通过无脑的刻意练习就能得到提高的，需要有大局的观念和深度的思考。这才是人类独有的思维模式。</p>
+<p>然而，<strong>我只能给这本书打 70 分</strong>。这本书有和之前读的《终身成长》一样的「美式畅销书」的毛病：大量地堆砌事例而论证太少。每一节都是以小故事开头（估计为了吸引一些低水平阅读者的注意力），逻辑和观点只是穿插在期间，很不清晰，引用太多，废话连篇。这是一种很低效的信息传达，非常不符合《金字塔原理》讲述的沟通方式。我看了一段又一段的故事，真的很急：「你到底想说什么呢？！」</p>
+<p>我觉得其实看完第一章就够了。</p>
+<h2><a id="📚-本周开始读计算" class="content__heading-anchor"></a>📚 本周开始读：《计算》</h2>
+<p>上学期有幸听了吴翰清（道哥）来 HNU 的岳麓讲坛《一种计算主义的世界观》，并种草了他新出版的《<strong>计算</strong>》这本书。由于涉及到太多数学知识，这次讲座我其实并没有太听懂。浏览了《计算》这本书发现，这次讲座可以视为对部分书中内容的 summary。本周开始啃这本书！</p>
+<p>这本书要回答的核心问题是：<strong>计算的原理是什么？</strong>这是一个看似不言自明，其实很难回答的问题。我们的生活中有无数的计算，但真正面对这个问题思考的时候，我们会发现<strong>很难用语言来描述计算的定义、本质和原理</strong>。不信的话，你可以试试给「计算」下一个严谨的定义。</p>
+<p>基于此，本书尝试讨论四个问题：</p>
+<ol>
+<li><strong>数学是发明还是发现？</strong></li>
+<li><strong>无穷的本质是什么？</strong>数学中有无穷的概念，但物理上至今并没有任何证据揭示无穷的实在。</li>
+<li><strong>机器能思考吗？</strong>大脑的思维模型是离散的还是连续的？神经网络至今缺乏可解释性。</li>
+<li><strong>宇宙是一台计算机吗？</strong>现代量子理论解释下世界是离散的（所有物理量是普朗克单位的整数倍），这意味着宇宙是可计算的。</li>
+</ol>
+<p>仔细想想，每个问题都很有意思，并且都很难回答。</p>
+<p>对于每个问题，就像哲学一样，学界有不同的学派和学说，不同的「主义」，有不同的回答。而本书中作者秉持的就是所谓「<strong>计算主义</strong>」，作者的解释是「一种将世间所有过程都视为计算的世界观」。</p>
+<h2><a id="🐦-全新推特置顶帖" class="content__heading-anchor"></a>🐦 全新推特置顶帖</h2>
+<p>推特（现称 X）是个很神奇的平台，在上面可以认识很多有意思的人。</p>
+<p>我觉得我（目前）发推的目的是：</p>
+<ol>
+<li>展现我的世界观。Show myself。</li>
+<li>与更多新朋友建立 connections。</li>
+</ol>
+<p>（第一点也是为了更好地进行第二点）</p>
+<p>自我介绍对我来说一直挺困难的，本周更新了推特置顶帖，目前内容如下：</p>
+<blockquote>
+<p><strong>嗨</strong> 👋</p>
+<p>你好，我是 SkyWT。可以叫我 Sky。<br>
+很高兴认识你～</p>
+<p>是浙江人。目前在湖南长沙上大学。<br>
+INFJ。努力感知这世界的一切。<br>
+爱好 📚阅读、🧑‍💻coding。技术栈偏前端。<br>
+爱好折腾 homelab 和 self-hosting。<br>
+超级细节控。喜欢 Apple。</p>
+<p>我目前将自己定义为 🎨<strong>Design Engineer</strong>。<br>
+仍在积极探索职业方向。</p>
+<p>我的个人主页和博客网站：skywt.cn<br>
+博客基本每周会更新，记录所思所想，渴望与你共鸣。欢迎访问～</p>
+<p><strong>社交媒体展现的只是我想让你看到的我。</strong><br>
+相比虚拟世界的社交，我更喜欢线下面对面的沟通。如果你离我不远，不如来聊聊？☕️</p>
+</blockquote>
+<h2><a id="💳-某大厂银行卡-cvv-泄漏传闻" class="content__heading-anchor"></a>💳 某大厂银行卡 CVV 泄漏传闻</h2>
+<p>最近大厂的事故真是一场接一场，并呈现<strong>危害越来越大</strong>的特征。之前只是某些云宕机几小时，后来是宕机或事故几天甚至几周，后来出现了照片泄漏等数据安全的问题，现在甚至是涉及钱的数据安全都出现问题。</p>
+<p>参考：<a href="https://www.hats-land.com/archives/security/2024-moutuan-credit-card-data-breach.html">某团信用卡数据泄露传闻：分析与观点</a>。</p>
+<p>上上周刚因为某云盘的照片泄漏，讨论过 <a href="https://skywt.cn/blog/weekly-17-18/#☁%EF%B8%8F-self-hosting-的必要性">☁️ Self-hosting 的必要性</a>。然而这次涉及金钱的这些服务并不能 self-hosting。我觉得仅有的解决方案是：尽量选择规模更大的支付平台、尽量少绑定，以及自求多福。</p>
+<h2><a id="🤔-q4a-#2地铁一号线标识色为什么大多选用红色" class="content__heading-anchor"></a>🤔 Q4A #2：地铁一号线标识色为什么大多选用红色？</h2>
+<p>一般来说，每条地铁都有一个标识色。去了很多城市，我发现大多数城市地铁 1 号线都不约而同选用了红色。</p>
+<p>想象一下，你来到一座新的城市，第一次乘坐地铁，发现 1 号线是蓝色（或者黄色，或者绿色），会不会感到有些奇怪？</p>
+<p><strong>地铁一号线标识色为什么大多选用红色？</strong></p>
+<ol>
+<li><strong>文化相关：</strong>
+<ol>
+<li>中国传统文化中，红色代表庄重、喜庆。</li>
+<li>红色在本政权中的象征意义。</li>
+</ol></li>
+<li><strong>物理性质：</strong>红光波长最长，最为醒目。（因此也被用于交通信号灯）</li>
+<li><strong>已形成的惯例：</strong>北京、上海等许多大城市都选用红色作为 1 号线标识色，已成惯例。</li>
+<li>……（评论区 👇）</li>
+</ol>
+<h2><a id="🌟-bookmarks-#0" class="content__heading-anchor"></a>🌟 Bookmarks #0</h2>
+<p>从本周起，我尝试将各处收藏的有意思的网站资源链接也统一同步到 Weekly，方便查找。</p>
+<p><strong>项目：</strong></p>
+<ul>
+<li><a href="https://github.com/winterx/color4bg.js">color4bg.js</a>：基于 WebGL 和 JavaScript 生成动态的抽象网页背景。</li>
+</ul>
+<p><strong>设计：</strong></p>
+<ul>
+<li><a href="https://www.patreon.com">Patreon.com</a>：十分具有设计感的官网。巨幅的 slogan 和全屏背景，带来的效果非常 impressive。</li>
+<li><a href="https://amie.so">Amie.so</a>：这个官网实在太酷了。不过技术难度也挺大。</li>
+</ul>
+<p>我希望建立这样一个平台，能够聚合我的所有日记、笔记、收藏、Twitter 帖子、GitHub 动态、一闪而过的想法等等，这样写周报就方便很多。人一天接触和生产的信息太多也太散乱，如果能统一管理就好了。这篇《<a href="https://soulteary.com/2022/01/24/building-a-personal-information-platform-with-mastodon-part-1.html">使用 Mastodon 搭建个人信息平台：前篇</a>》是一个参考。</p>
+<p>下周见～</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpBg3" prefix="r0" component-url="/_astro/Comments.BdzVuXw3.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;articleId&quot;:[0,183]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #20：我的个人宣言 v0.1 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
