@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SkyWT</title><description>热爱与激情永不止息。</description><link>https://skywt.cn/</link><language>zh-cn</language><follow_challenge><feedId>54825248999897099</feedId><userId>56938040811317248</userId></follow_challenge><item><title>组件库 DayDesign 设计手记</title><link>https://skywt.cn/blog/daydesign-design-log/</link><guid isPermaLink="true">https://skywt.cn/blog/daydesign-design-log/</guid><description>**UI/UX 决定了 一个网站的 personality。**
 
-网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。</description><pubDate>Mon, 14 Oct 2024 17:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;UI/UX 决定了 一个网站的 personality。&lt;/strong&gt;&lt;/p&gt;
+网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。
+
+</description><pubDate>Mon, 14 Oct 2024 17:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;UI/UX 决定了 一个网站的 personality。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;DayDesign 是一个简洁优雅、轻拟物风的 React 组件库。官网：&lt;a href=&quot;https://daydesign.skywt.cn&quot;&gt;DayDesign&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;Colors&lt;/h2&gt;
+&lt;p&gt;我首先定义了各种元素的颜色（我定义为 Sass 的 mixin，这样可以方便地复用）。每种颜色都有两套配色方案，分别对应 Lightmode 和 Darkmode。我主要定义了这些颜色：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;背景色（全局背景）&lt;/li&gt;
+&lt;li&gt;前景色（卡片、按钮等放在背景上的物体）&lt;/li&gt;
+&lt;li&gt;前景 hover 的颜色、active 的颜色&lt;/li&gt;
+&lt;li&gt;前景物体在背景上的 shadow 颜色&lt;/li&gt;
+&lt;li&gt;前景物体在背景上的 border 颜色及其 hover 时的颜色&lt;/li&gt;
+&lt;li&gt;一级、二级、三级文字颜色&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然，如之前在《&lt;a href=&quot;https://skywt.cn/blog/new-personal-website-daydreamer-design-development-log/&quot;&gt;全新个人网站 Daydreamer 设计开发手记&lt;/a&gt;》中所说，Lightmode 和 Darkmode 绝不是简单的反色，而是要重新选择所有配色。所以以上的颜色都是语义的，具体指定的颜色，则根据 Light / Dark 定义在 &lt;a href=&quot;https://github.com/Skywt2003/DayDesign/blob/master/src/styles/mixins.scss&quot;&gt;mixins.scss&lt;/a&gt; 里。&lt;/p&gt;
+&lt;h2&gt;Design&lt;/h2&gt;
+&lt;p&gt;我很喜欢拟物风，因为拟物风看起来更精致、更符合物理直觉、更有人文气息。&lt;/p&gt;
+&lt;p&gt;然而拟物风的设计难度也比扁平风要大得多。扁平化的风格之下，只需要一个简单的边框就能分隔出一个组件；而拟物风里，必须不断推敲各个组件&lt;strong&gt;符合现实生活经验&lt;/strong&gt;的样式。&lt;/p&gt;
+&lt;p&gt;比如这个 Tabs 组件：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.skywt.cn/usr/uploads/2024/10/3477910731.png&quot; alt=&quot;Tabs 效果图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;用外边框的 inner-shadow 做出凹槽的效果，用 Tab 的 shadow 做出立体效果，让整个组件符合现实经验（就像一个开关一样）。&lt;/p&gt;
+&lt;p&gt;最难的点在于&lt;strong&gt;如何做 hover 效果&lt;/strong&gt;。如何提示用户这个 Tabs 是可交互的呢？不能直接套用按钮的 hover 效果，因为 Tabs 里是没有突出显示的 Tab（图中的选项 2）可点击切换，有突出显示的 Tab（图中的选项 1）不可点击，这和按钮是相反的。我参考了各种 UI 的实现，最终的选择是：hover 时，整个 Tabs 外框颜色加深高亮显示（当然，Light、Dark 模式颜色不同），这样用户可以知道这整个组件是可交互的。输入框也按照这个思路统一了 hover 效果。&lt;/p&gt;
+&lt;p&gt;综上所述，&lt;strong&gt;其实拟物风真的并不适合更复杂的 UI&lt;/strong&gt;。因为设计出合理的拟物 UI 难度很大，费时费力。&lt;/p&gt;
+&lt;h2&gt;Why&lt;/h2&gt;
+&lt;p&gt;使用各种现成的组件库，有两个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;风格不符合。&lt;/strong&gt;大多数流行的 Web 组件库，比如 Ant Design，都追求&lt;strong&gt;高效&lt;/strong&gt;、&lt;strong&gt;明快&lt;/strong&gt;的风格。毕竟一般的 Web App 都追求效率和生产力。这在设计上的体现就是极致的简约和扁平化，动效也是简单快速。这些本身当然很好，然而这不是我的博客想要传达的风格。如前所述，我喜欢轻拟物风。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大众脸。&lt;/strong&gt;虽然前端组件库百花齐放，但被广泛大量使用的组件库不外乎 Ant Desgin、Shadcn、Bootstrap 那几种。这导致很多用了这些组件库的网页看起来都很「&lt;strong&gt;大众脸&lt;/strong&gt;」。我依然清晰地记得第一次接触到 Boostrap 的时候，有一种恍然大悟的感觉：原来之前看起来莫名长得这么像的网页，都是用了这个组件库！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以在做我的博客前端的时候，我没有使用任何组件库，而是用 Tailwind 自己写了所有组件样式。现在，我将所有组件样式抽离出来，做成 DayDesign 这个 React 组件库。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为什么我如此重视网站的 UI/UX 设计呢？&lt;/strong&gt;除了和我个性里的感性有关，我觉得最重要的原因就和前文开头所述一样：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;比如我的网站全局用了 serif 字体，就是希望传递一种古典、人文、感性的气息。如果我希望传递的是 Geek 风，或许全局用 monospace 字体就是更好的选择。&lt;/p&gt;
+&lt;p&gt;归根结底，这其实就是《Refactoring UI》里说的 &lt;strong&gt;personality&lt;/strong&gt;：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Every design has some sort of personality.&lt;/strong&gt; A banking site might try to communicate secure and professional, while a trendy new startup might have a design that feels fun and playful.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;有趣的是，设计给你带来的影响是潜移默化的。&lt;/strong&gt;文字、图片这些内容给你带来影响，这种影响本身是你可以感觉到的；而 UI/UX 带给你的影响你却无法明显感知到，像是一种「暗示」。例如，走进宜家精心设计的样板房里，你会觉得有回家的感觉，舒适、惬意，这是灯光、配色、布局等等各种设计给你带来的综合主观感受，你用理性是很难说清楚的。（这有点像「侧信道攻击」）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;依照经验来看，越感性的人越容易受到设计风格的「暗示」。&lt;/strong&gt;上一个版本的网站，我首页只写了一句话：「✨ 你能听到星星的呼唤吗？」结果有朋友就是被这句话 touch 到了。&lt;/p&gt;
+&lt;h2&gt;Afterword&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;我们可以随时将一个灵感转变为现实。这就是我们热爱 coding、热爱前端的原因。&lt;/strong&gt;&lt;/p&gt;
 </content:encoded><author>me@skywt.cn</author></item><item><title>Weekly #21：我们可以随时将一个灵感转变为现实</title><link>https://skywt.cn/blog/weekly-21/</link><guid isPermaLink="true">https://skywt.cn/blog/weekly-21/</guid><description>&gt; 历史上最伟大的领袖与政治家都不是问题解决者。他们是开创者，他们是创造者。即便在遭逢冲突的时代，例如战争或者经济大萧条，他们都为了打造出自己理想的社会而采取行动。丘吉尔（Winston Churchill）与小罗斯福（Franklin Delano Roosevelt）就是两个形象鲜明的开创者政治家。他们不只试着解选民之苦，甚至还有时间按照他们的愿景，把自己的时代打造成通往未来的基础。
 &gt;
 &gt; ——《最小阻力之路》

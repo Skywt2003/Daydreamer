@@ -1,134 +1,8 @@
-<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>组件库 DayDesign 设计手记</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>组件库 DayDesign 设计手记</title><link rel="canonical" href="https://skywt.cn/blog/daydesign-design-log/"><meta name="description" content="
-**UI/UX 决定了 一个网站的 personality。**
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>组件库 DayDesign 设计手记</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>组件库 DayDesign 设计手记</title><link rel="canonical" href="https://skywt.cn/blog/daydesign-design-log/"><meta name="description" content="**UI/UX 决定了 一个网站的 personality。**
 
-网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。
+网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。"><meta name="robots" content="index, follow"><meta property="og:title" content="组件库 DayDesign 设计手记"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/daydesign-design-log/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="组件库 DayDesign 设计手记"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="**UI/UX 决定了 一个网站的 personality。**
 
-<!--more-->
-
-DayDesign 是一个简洁优雅、轻拟物风的 React 组件库。官网：[DayDesign](https://daydesign.skywt.cn)。
-
-## Colors
-
-我首先定义了各种元素的颜色（我定义为 Sass 的 mixin，这样可以方便地复用）。每种颜色都有两套配色方案，分别对应 Lightmode 和 Darkmode。我主要定义了这些颜色：
-
-- 背景色（全局背景）
-- 前景色（卡片、按钮等放在背景上的物体）
-- 前景 hover 的颜色、active 的颜色
-- 前景物体在背景上的 shadow 颜色
-- 前景物体在背景上的 border 颜色及其 hover 时的颜色
-- 一级、二级、三级文字颜色
-
-当然，如之前在《[全新个人网站 Daydreamer 设计开发手记](https://skywt.cn/blog/new-personal-website-daydreamer-design-development-log/)》中所说，Lightmode 和 Darkmode 绝不是简单的反色，而是要重新选择所有配色。所以以上的颜色都是语义的，具体指定的颜色，则根据 Light / Dark 定义在 [mixins.scss](https://github.com/Skywt2003/DayDesign/blob/master/src/styles/mixins.scss) 里。
-
-## Design
-
-我很喜欢拟物风，因为拟物风看起来更精致、更符合物理直觉、更有人文气息。
-
-然而拟物风的设计难度也比扁平风要大得多。扁平化的风格之下，只需要一个简单的边框就能分隔出一个组件；而拟物风里，必须不断推敲各个组件**符合现实生活经验**的样式。
-
-比如这个 Tabs 组件：
-
-![Tabs 效果图](https://blog.skywt.cn/usr/uploads/2024/10/3477910731.png)
-
-用外边框的 inner-shadow 做出凹槽的效果，用 Tab 的 shadow 做出立体效果，让整个组件符合现实经验（就像一个开关一样）。
-
-最难的点在于**如何做 hover 效果**。如何提示用户这个 Tabs 是可交互的呢？不能直接套用按钮的 hover 效果，因为 Tabs 里是没有突出显示的 Tab（图中的选项 2）可点击切换，有突出显示的 Tab（图中的选项 1）不可点击，这和按钮是相反的。我参考了各种 UI 的实现，最终的选择是：hover 时，整个 Tabs 外框颜色加深高亮显示（当然，Light、Dark 模式颜色不同），这样用户可以知道这整个组件是可交互的。输入框也按照这个思路统一了 hover 效果。
-
-综上所述，**其实拟物风真的并不适合更复杂的 UI**。因为设计出合理的拟物 UI 难度很大，费时费力。
-
-## Why
-
-使用各种现成的组件库，有两个问题：
-
-1. **风格不符合。**大多数流行的 Web 组件库，比如 Ant Design，都追求**高效**、**明快**的风格。毕竟一般的 Web App 都追求效率和生产力。这在设计上的体现就是极致的简约和扁平化，动效也是简单快速。这些本身当然很好，然而这不是我的博客想要传达的风格。如前所述，我喜欢轻拟物风。
-2. **大众脸。**虽然前端组件库百花齐放，但被广泛大量使用的组件库不外乎 Ant Desgin、Shadcn、Bootstrap 那几种。这导致很多用了这些组件库的网页看起来都很「**大众脸**」。我依然清晰地记得第一次接触到 Boostrap 的时候，有一种恍然大悟的感觉：原来之前看起来莫名长得这么像的网页，都是用了这个组件库！
-
-所以在做我的博客前端的时候，我没有使用任何组件库，而是用 Tailwind 自己写了所有组件样式。现在，我将所有组件样式抽离出来，做成 DayDesign 这个 React 组件库。
-
-**为什么我如此重视网站的 UI/UX 设计呢？**除了和我个性里的感性有关，我觉得最重要的原因就和前文开头所述一样：
-
-> 网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。
-
-比如我的网站全局用了 serif 字体，就是希望传递一种古典、人文、感性的气息。如果我希望传递的是 Geek 风，或许全局用 monospace 字体就是更好的选择。
-
-归根结底，这其实就是《Refactoring UI》里说的 **personality**：
-
-> **Every design has some sort of personality.** A banking site might try to communicate secure and professional, while a trendy new startup might have a design that feels fun and playful.
-
-**有趣的是，设计给你带来的影响是潜移默化的。**文字、图片这些内容给你带来影响，这种影响本身是你可以感觉到的；而 UI/UX 带给你的影响你却无法明显感知到，像是一种「暗示」。例如，走进宜家精心设计的样板房里，你会觉得有回家的感觉，舒适、惬意，这是灯光、配色、布局等等各种设计给你带来的综合主观感受，你用理性是很难说清楚的。（这有点像「侧信道攻击」）
-
-**依照经验来看，越感性的人越容易受到设计风格的「暗示」。**上一个版本的网站，我首页只写了一句话：「✨ 你能听到星星的呼唤吗？」结果有朋友就是被这句话 touch 到了。
-
-## Afterword
-
-**我们可以随时将一个灵感转变为现实。这就是我们热爱 coding、热爱前端的原因。**
-
-"><meta name="robots" content="index, follow"><meta property="og:title" content="组件库 DayDesign 设计手记"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/daydesign-design-log/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="组件库 DayDesign 设计手记"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="
-**UI/UX 决定了 一个网站的 personality。**
-
-网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。
-
-<!--more-->
-
-DayDesign 是一个简洁优雅、轻拟物风的 React 组件库。官网：[DayDesign](https://daydesign.skywt.cn)。
-
-## Colors
-
-我首先定义了各种元素的颜色（我定义为 Sass 的 mixin，这样可以方便地复用）。每种颜色都有两套配色方案，分别对应 Lightmode 和 Darkmode。我主要定义了这些颜色：
-
-- 背景色（全局背景）
-- 前景色（卡片、按钮等放在背景上的物体）
-- 前景 hover 的颜色、active 的颜色
-- 前景物体在背景上的 shadow 颜色
-- 前景物体在背景上的 border 颜色及其 hover 时的颜色
-- 一级、二级、三级文字颜色
-
-当然，如之前在《[全新个人网站 Daydreamer 设计开发手记](https://skywt.cn/blog/new-personal-website-daydreamer-design-development-log/)》中所说，Lightmode 和 Darkmode 绝不是简单的反色，而是要重新选择所有配色。所以以上的颜色都是语义的，具体指定的颜色，则根据 Light / Dark 定义在 [mixins.scss](https://github.com/Skywt2003/DayDesign/blob/master/src/styles/mixins.scss) 里。
-
-## Design
-
-我很喜欢拟物风，因为拟物风看起来更精致、更符合物理直觉、更有人文气息。
-
-然而拟物风的设计难度也比扁平风要大得多。扁平化的风格之下，只需要一个简单的边框就能分隔出一个组件；而拟物风里，必须不断推敲各个组件**符合现实生活经验**的样式。
-
-比如这个 Tabs 组件：
-
-![Tabs 效果图](https://blog.skywt.cn/usr/uploads/2024/10/3477910731.png)
-
-用外边框的 inner-shadow 做出凹槽的效果，用 Tab 的 shadow 做出立体效果，让整个组件符合现实经验（就像一个开关一样）。
-
-最难的点在于**如何做 hover 效果**。如何提示用户这个 Tabs 是可交互的呢？不能直接套用按钮的 hover 效果，因为 Tabs 里是没有突出显示的 Tab（图中的选项 2）可点击切换，有突出显示的 Tab（图中的选项 1）不可点击，这和按钮是相反的。我参考了各种 UI 的实现，最终的选择是：hover 时，整个 Tabs 外框颜色加深高亮显示（当然，Light、Dark 模式颜色不同），这样用户可以知道这整个组件是可交互的。输入框也按照这个思路统一了 hover 效果。
-
-综上所述，**其实拟物风真的并不适合更复杂的 UI**。因为设计出合理的拟物 UI 难度很大，费时费力。
-
-## Why
-
-使用各种现成的组件库，有两个问题：
-
-1. **风格不符合。**大多数流行的 Web 组件库，比如 Ant Design，都追求**高效**、**明快**的风格。毕竟一般的 Web App 都追求效率和生产力。这在设计上的体现就是极致的简约和扁平化，动效也是简单快速。这些本身当然很好，然而这不是我的博客想要传达的风格。如前所述，我喜欢轻拟物风。
-2. **大众脸。**虽然前端组件库百花齐放，但被广泛大量使用的组件库不外乎 Ant Desgin、Shadcn、Bootstrap 那几种。这导致很多用了这些组件库的网页看起来都很「**大众脸**」。我依然清晰地记得第一次接触到 Boostrap 的时候，有一种恍然大悟的感觉：原来之前看起来莫名长得这么像的网页，都是用了这个组件库！
-
-所以在做我的博客前端的时候，我没有使用任何组件库，而是用 Tailwind 自己写了所有组件样式。现在，我将所有组件样式抽离出来，做成 DayDesign 这个 React 组件库。
-
-**为什么我如此重视网站的 UI/UX 设计呢？**除了和我个性里的感性有关，我觉得最重要的原因就和前文开头所述一样：
-
-> 网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。
-
-比如我的网站全局用了 serif 字体，就是希望传递一种古典、人文、感性的气息。如果我希望传递的是 Geek 风，或许全局用 monospace 字体就是更好的选择。
-
-归根结底，这其实就是《Refactoring UI》里说的 **personality**：
-
-> **Every design has some sort of personality.** A banking site might try to communicate secure and professional, while a trendy new startup might have a design that feels fun and playful.
-
-**有趣的是，设计给你带来的影响是潜移默化的。**文字、图片这些内容给你带来影响，这种影响本身是你可以感觉到的；而 UI/UX 带给你的影响你却无法明显感知到，像是一种「暗示」。例如，走进宜家精心设计的样板房里，你会觉得有回家的感觉，舒适、惬意，这是灯光、配色、布局等等各种设计给你带来的综合主观感受，你用理性是很难说清楚的。（这有点像「侧信道攻击」）
-
-**依照经验来看，越感性的人越容易受到设计风格的「暗示」。**上一个版本的网站，我首页只写了一句话：「✨ 你能听到星星的呼唤吗？」结果有朋友就是被这句话 touch 到了。
-
-## Afterword
-
-**我们可以随时将一个灵感转变为现实。这就是我们热爱 coding、热爱前端的原因。**
-
-"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content="DayDesign,组件库,Components,Library,博客,拟物,React,Reactjs,Astro,Astrojs,UI,UX,设计"><script>
+网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content="DayDesign,组件库,Components,Library,博客,拟物,React,Reactjs,Astro,Astrojs,UI,UX,设计"><script>
       function addMatomo() {
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
@@ -202,8 +76,56 @@ DayDesign 是一个简洁优雅、轻拟物风的 React 组件库。官网：[Da
     },
     { once: false },
   );
-</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">组件库 DayDesign 设计手记</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 10 月 14 日 17:00</span>  </p> <hr class="page__divide"> <article class="content"> <p><strong>UI/UX 决定了 一个网站的 personality。</strong></p>
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">组件库 DayDesign 设计手记</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 10 月 14 日 17:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#colors">Colors</a></li>
+<li><a href="#design">Design</a></li>
+<li><a href="#why">Why</a></li>
+<li><a href="#afterword">Afterword</a></li>
+</ul>
+<p><strong>UI/UX 决定了 一个网站的 personality。</strong></p>
 <p>网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。</p>
+<!--more-->
+<p>DayDesign 是一个简洁优雅、轻拟物风的 React 组件库。官网：<a href="https://daydesign.skywt.cn">DayDesign</a>。</p>
+<h2><a id="colors" class="content__heading-anchor"></a>Colors</h2>
+<p>我首先定义了各种元素的颜色（我定义为 Sass 的 mixin，这样可以方便地复用）。每种颜色都有两套配色方案，分别对应 Lightmode 和 Darkmode。我主要定义了这些颜色：</p>
+<ul>
+<li>背景色（全局背景）</li>
+<li>前景色（卡片、按钮等放在背景上的物体）</li>
+<li>前景 hover 的颜色、active 的颜色</li>
+<li>前景物体在背景上的 shadow 颜色</li>
+<li>前景物体在背景上的 border 颜色及其 hover 时的颜色</li>
+<li>一级、二级、三级文字颜色</li>
+</ul>
+<p>当然，如之前在《<a href="https://skywt.cn/blog/new-personal-website-daydreamer-design-development-log/">全新个人网站 Daydreamer 设计开发手记</a>》中所说，Lightmode 和 Darkmode 绝不是简单的反色，而是要重新选择所有配色。所以以上的颜色都是语义的，具体指定的颜色，则根据 Light / Dark 定义在 <a href="https://github.com/Skywt2003/DayDesign/blob/master/src/styles/mixins.scss">mixins.scss</a> 里。</p>
+<h2><a id="design" class="content__heading-anchor"></a>Design</h2>
+<p>我很喜欢拟物风，因为拟物风看起来更精致、更符合物理直觉、更有人文气息。</p>
+<p>然而拟物风的设计难度也比扁平风要大得多。扁平化的风格之下，只需要一个简单的边框就能分隔出一个组件；而拟物风里，必须不断推敲各个组件<strong>符合现实生活经验</strong>的样式。</p>
+<p>比如这个 Tabs 组件：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/3477910731.png" data-fancybox data-caption="Tabs 效果图"><img src="https://blog.skywt.cn/usr/uploads/2024/10/3477910731.png" alt="Tabs 效果图" title="Tabs 效果图" /></a></p>
+<p>用外边框的 inner-shadow 做出凹槽的效果，用 Tab 的 shadow 做出立体效果，让整个组件符合现实经验（就像一个开关一样）。</p>
+<p>最难的点在于<strong>如何做 hover 效果</strong>。如何提示用户这个 Tabs 是可交互的呢？不能直接套用按钮的 hover 效果，因为 Tabs 里是没有突出显示的 Tab（图中的选项 2）可点击切换，有突出显示的 Tab（图中的选项 1）不可点击，这和按钮是相反的。我参考了各种 UI 的实现，最终的选择是：hover 时，整个 Tabs 外框颜色加深高亮显示（当然，Light、Dark 模式颜色不同），这样用户可以知道这整个组件是可交互的。输入框也按照这个思路统一了 hover 效果。</p>
+<p>综上所述，<strong>其实拟物风真的并不适合更复杂的 UI</strong>。因为设计出合理的拟物 UI 难度很大，费时费力。</p>
+<h2><a id="why" class="content__heading-anchor"></a>Why</h2>
+<p>使用各种现成的组件库，有两个问题：</p>
+<ol>
+<li><strong>风格不符合。</strong>大多数流行的 Web 组件库，比如 Ant Design，都追求<strong>高效</strong>、<strong>明快</strong>的风格。毕竟一般的 Web App 都追求效率和生产力。这在设计上的体现就是极致的简约和扁平化，动效也是简单快速。这些本身当然很好，然而这不是我的博客想要传达的风格。如前所述，我喜欢轻拟物风。</li>
+<li><strong>大众脸。</strong>虽然前端组件库百花齐放，但被广泛大量使用的组件库不外乎 Ant Desgin、Shadcn、Bootstrap 那几种。这导致很多用了这些组件库的网页看起来都很「<strong>大众脸</strong>」。我依然清晰地记得第一次接触到 Boostrap 的时候，有一种恍然大悟的感觉：原来之前看起来莫名长得这么像的网页，都是用了这个组件库！</li>
+</ol>
+<p>所以在做我的博客前端的时候，我没有使用任何组件库，而是用 Tailwind 自己写了所有组件样式。现在，我将所有组件样式抽离出来，做成 DayDesign 这个 React 组件库。</p>
+<p><strong>为什么我如此重视网站的 UI/UX 设计呢？</strong>除了和我个性里的感性有关，我觉得最重要的原因就和前文开头所述一样：</p>
+<blockquote>
+<p>网页带来的感觉，一半源于网站上的图片、文字这些内容，另一半则源于字体、配色、动效等 UI/UX 设计。</p>
+</blockquote>
+<p>比如我的网站全局用了 serif 字体，就是希望传递一种古典、人文、感性的气息。如果我希望传递的是 Geek 风，或许全局用 monospace 字体就是更好的选择。</p>
+<p>归根结底，这其实就是《Refactoring UI》里说的 <strong>personality</strong>：</p>
+<blockquote>
+<p><strong>Every design has some sort of personality.</strong> A banking site might try to communicate secure and professional, while a trendy new startup might have a design that feels fun and playful.</p>
+</blockquote>
+<p><strong>有趣的是，设计给你带来的影响是潜移默化的。</strong>文字、图片这些内容给你带来影响，这种影响本身是你可以感觉到的；而 UI/UX 带给你的影响你却无法明显感知到，像是一种「暗示」。例如，走进宜家精心设计的样板房里，你会觉得有回家的感觉，舒适、惬意，这是灯光、配色、布局等等各种设计给你带来的综合主观感受，你用理性是很难说清楚的。（这有点像「侧信道攻击」）</p>
+<p><strong>依照经验来看，越感性的人越容易受到设计风格的「暗示」。</strong>上一个版本的网站，我首页只写了一句话：「✨ 你能听到星星的呼唤吗？」结果有朋友就是被这句话 touch 到了。</p>
+<h2><a id="afterword" class="content__heading-anchor"></a>Afterword</h2>
+<p><strong>我们可以随时将一个灵感转变为现实。这就是我们热爱 coding、热爱前端的原因。</strong></p>
  </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpBLy" prefix="r0" component-url="/_astro/Comments.BdzVuXw3.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;articleId&quot;:[0,185]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
