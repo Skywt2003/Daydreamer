@@ -1,0 +1,180 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #22：每个人都天生不同</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #22：每个人都天生不同</title><link rel="canonical" href="https://skywt.cn/blog/weekly-22/"><meta name="description" content="> 20 多岁的大好年华，可以做一些非同寻常、稀奇古怪、大胆冒险、不可理喻、疯狂愚蠢、无利可图、看起来与「成功」不沾边的事。在余生里，这些经历将成为你的灵感缪斯。
+>
+> —— 凯文 · 凯利《宝贵的人生建议》
+"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #22：每个人都天生不同"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-22/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #22：每个人都天生不同"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="> 20 多岁的大好年华，可以做一些非同寻常、稀奇古怪、大胆冒险、不可理喻、疯狂愚蠢、无利可图、看起来与「成功」不沾边的事。在余生里，这些经历将成为你的灵感缪斯。
+>
+> —— 凯文 · 凯利《宝贵的人生建议》
+"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D_JCtxLP.css">
+<link rel="stylesheet" href="/_astro/about.CeG4KcMB.css"><script type="module" src="/_astro/hoisted.nLLij5o4.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #22：每个人都天生不同 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #22：每个人都天生不同 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #22：每个人都天生不同</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2024 年 10 月 20 日 20:00</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#%F0%9F%8C%86-%E5%B0%81%E9%9D%A2%E5%9B%BE%E7%A7%8B%E5%A4%A9%E7%9A%84%E5%8D%88%E5%90%8E">🌆 封面图：秋天的午后</a></li>
+<li><a href="#%F0%9F%94%90-%E5%88%87%E6%8D%A2%E5%88%B0-apple-passwords">🔐 切换到 Apple Passwords</a></li>
+<li><a href="#%F0%9F%92%A1-twil%E7%BD%91%E7%AB%99%E7%9A%84-well-known-%E7%9B%AE%E5%BD%95">💡 TWIL：网站的 Well-Known 目录</a></li>
+<li><a href="#%F0%9F%93%9A-%E6%9C%AC%E5%91%A8%E5%9C%A8%E8%AF%BB%E5%A4%A9%E7%94%9F%E4%B8%8D%E5%90%8Cmbti-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97">📚 本周在读：《天生不同》，MBTI 入门指南</a></li>
+<li><a href="#%F0%9F%8C%9F-bookmarks-%232">🌟 Bookmarks #2</a></li>
+</ul>
+<blockquote>
+<p>20 多岁的大好年华，可以做一些非同寻常、稀奇古怪、大胆冒险、不可理喻、疯狂愚蠢、无利可图、看起来与「成功」不沾边的事。在余生里，这些经历将成为你的灵感缪斯。</p>
+<p>—— 凯文 · 凯利《宝贵的人生建议》</p>
+</blockquote>
+<!--more-->
+<h2><a id="🌆-封面图秋天的午后" class="content__heading-anchor"></a>🌆 封面图：秋天的午后</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/1654087502.jpg" data-fancybox data-caption="封面图：秋天的午后"><img src="https://blog.skywt.cn/usr/uploads/2024/10/1654087502.jpg" alt="封面图：秋天的午后" title="封面图：秋天的午后" /></a></p>
+<p>咱们 HNU 图书馆真是古色古香！</p>
+<h2><a id="🔐-切换到-apple-passwords" class="content__heading-anchor"></a>🔐 切换到 Apple Passwords</h2>
+<p>iOS、iPadOS、macOS 的最新版本，将之前集成在系统里的密码管理器做成了独立的 App，功能已经比较完善，支持 OTP、Passkey 和完美的自动填充，iCloud 同步。</p>
+<p>于是，本周我将主用的密码管理器从 BitWarden 换到了 Apple Passwords。</p>
+<p>Apple Native 的 App 果然有最完美的用户体验。之前用的 BitWarden 的自动填充，是通过快捷键调用、脚本实现的，不仅没有输入框的 UI，也会出现填充错的情况。而使用 Apple 原生的 Passwords，在 Safari 里输入框旁边就会出现填充提示，简洁高效。（然而这种体验仅限于 Safari。在 Chrome 或 Firefox 里的 iCloud Passwords 插件体验还不如 BitWarden）</p>
+<p>许多网站开启 2FA 后，要填写 OTP。用了 Passwords，Safari 居然支持自动填写（就像自动填写手机短信验证码一样）（当然，阿里云等少数网站不支持）。而之前 BitWarden 极其不优雅的做法是：自动填充密码后，将 OTP 放在剪切板里……</p>
+<p><strong>自动填充 OTP 是怎么实现的呢？</strong>原来，WHATWG HTML Living Standard 文档的 <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls:-the-autocomplete-attribute">Autofilling form controls: the autocomplete attribute</a> 这一部分定义了各种 autocomplete 形式，包含 <code>one-time-code</code>，即我们一般使用的六位 OTP。许多国内网站（如阿里云）表单没做这个属性，因此不支持。</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2024/10/3162643076.png" data-fancybox data-caption="Passwords 支持直接点击跳转修改密码"><img src="https://blog.skywt.cn/usr/uploads/2024/10/3162643076.png" alt="Passwords 支持直接点击跳转修改密码" title="Passwords 支持直接点击跳转修改密码" /></a></p>
+<p>还有一个神奇之处：Passwords 会检测你在不同站点使用的相同密码，并提示危险，会显示一个「Change Password」的按钮，点击即可直接进入该网站修改密码的页面。（当然，有的网站不支持，如阿里云 💢）</p>
+<p>这是怎么做到的呢？网站如何约定「修改密码页面」呢？其实，Passwords 打开的是 <code>https://example.com/.well-known/change-password</code> 这个 URL。</p>
+<h2><a id="💡-twil网站的-well-known-目录" class="content__heading-anchor"></a>💡 TWIL：网站的 Well-Known 目录</h2>
+<p><strong>This Week I've Learnt：</strong></p>
+<p>一些应用需要获得某个站点的 metadata，例如用于搜索引擎爬虫的 robots.txt。越来越流行直接通过 HTTP 协议传递这种信息。而这意味着得约定一个路径存放这种信息。</p>
+<p>因此，RFC 8615 定义了 Well-Known URI，即一个网站的 <code>/.well-known/</code> 开头的路径：<a href="https://www.rfc-editor.org/rfc/rfc8615.html">IETF RFC 8615 Defining Well-Known Uniform Resource Identifiers</a>。</p>
+<p>具体约定了哪些 Well-Known URI，则由文档中给出的 <a href="https://www.iana.org/assignments/well-known-uris/">IANA Well-Known URIs Registry</a> 登记收录。</p>
+<p>常用的 Well-Known URI 有如下几个：</p>
+<ul>
+<li><code>/.well-known/change-password</code>：修改密码的 URL。由 <a href="https://w3c.github.io/webappsec-change-password-url/#the-change-password-well-known-uri">W3C A Well-Known URL for Changing Passwords</a> 定义。</li>
+<li><code>/.well-known/security.txt</code>：当研究人员发现网站漏洞时，该文件提供管理人员的联系方式。由 <a href="https://www.rfc-editor.org/rfc/rfc9116.html">RFC 9116</a> 定义。</li>
+<li><code>/.well-known/openid-configuration</code>：用于公示 OpenID 相关的信息，一般返回一个 JSON，如 <a href="https://auth.skywt.cn/.well-known/openid-configuration">auth.skywt.cn/.well-known/openid-configuration</a>。由 <a href="https://openid.net/specs/openid-connect-discovery-1_0.html">OpenID Connect Discovery 1.0</a> 定义。</li>
+<li><code>/.well-known/acme-challenge</code>：用于 ACME 质询。Caddy Server 会为我们自动配置这个路径。由 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a> 定义。</li>
+<li><code>/.well-known/dnt-policy.txt</code>：网站的 Do Not Track 政策。由 <a href="https://www.eff.org/dnt-policy">EFF's DNT Policy</a> 定义。</li>
+<li><code>/.well-known/carddav</code> 和 <code>/.well-known/caldav</code>：用于通讯录同步，Nextcloud 自带此功能。由 <a href="https://www.rfc-editor.org/rfc/rfc6764.html">RFC 6764</a> 定义。</li>
+</ul>
+<p>没了解过这些通行的标准，你的网站就会和阿里云一样，不支持自动填充 OTP，不支持改密码！👀</p>
+<h2><a id="📚-本周在读天生不同mbti-入门指南" class="content__heading-anchor"></a>📚 本周在读：《天生不同》，MBTI 入门指南</h2>
+<p>高中接触到 MBTI，测了很多次自己都是 INFJ。当时很着迷于性格分析，经常分析和推断认识的每个人的 MBTI。后来，MBTI 在网上大为流行，无论是谁都给自己打上某个类型的 tag，这种工具好像沦为了类似「星座」的东西，充满了商业营销的气息。许多人会问：「你信不信 MBTI」，就像「你信不信星座」一样。</p>
+<p>对某个领域充分了解才能做出判断。子曰：「君子于其所不知，盖阙如也。」</p>
+<p>这本《<strong>天生不同</strong>》，是经典的 MBTI 入门读物。MBTI 全称 Myers-Briggs Type Indicator，本书作者之一正是 MBTI 理论的提出者之一 Isabel Myers。</p>
+<p>本书介绍了 MBTI 的四个维度：</p>
+<ol>
+<li><strong>对世界的关注：</strong>内倾 Introversion / 外倾 Extroversion。</li>
+<li><strong>偏好的感知方式：</strong>感觉 Sensing / 直觉 iNtuition。</li>
+<li><strong>偏好的判断方式：</strong>思维 Thinking / 情感 Feeling。</li>
+<li><strong>对外偏好的心理功能：</strong>感知 Perception / 判断 Judgement。</li>
+</ol>
+<p>以及形成的 16 种人格组合的性格描述。（不过这一部分更推荐 <a href="https://www.16personalities.com/ch/类型描述">16 Personalities</a> 网站）</p>
+<p>看这本书的时候，我一直在想之前的问题：<strong>MBTI 科学吗？有多大实用价值？</strong></p>
+<p><strong>如果按照「可证伪」的标准来看，MBTI 不是科学</strong>。因为如果生活中出现了不符合 MBTI 的特例，能找到各种其他因素进行解释（因为一个人的全部并不是只由这四维决定的），所以 MBTI 理论<strong>无法被证伪</strong>。（类似地，根据这个定义，弗洛伊德的精神分析也不是科学；宏观经济学也不是科学）</p>
+<p><strong>然而，MBTI 是有实用价值的。</strong></p>
+<p>每个人都是独一无二的。然而，<strong>我们可以根据某些特征对人进行分类</strong>。依据的特征越多，形成的类别越多，每个类别组内个体就越相似，最极端情况是每个人自成一类；反之，依据的特征越少，形成的类别越少，每个类别组内个体差异越大，最极端情况是所有人都在同一类。而一个有效的分类法，应该介于这二者之间：<strong>类别不至于过多，而又多到足够反映每个类别组内个体的某些特征。这样的分类方法，就是有实用价值的。</strong></p>
+<p>而 MBTI 选取的分类特征，我认为也有足够的代表性，足够接近本质。该理论提出人的两大<strong>核心心理功能</strong>是<strong>感知 Perception</strong> 和<strong>判断 Judgement</strong>，即 MBTI 的第二维和第三维。这二者是前后承接的两个环节，而这二者之间不同人的偏好不同，则决定了 MBTI 的第四维；在这两个环节之前，不同人关注的信息来源不同，决定了第一维。</p>
+<p>但是，<strong>实际应用该理论，其实也是有些困难的。</strong>因为：</p>
+<ol>
+<li><strong>这四个维度不是全面的</strong>（或者无法证明是全面的）。一个人的性格，不仅受到这四个维度的影响，可能还有别的维度，例如我们经常提到的「敏感」等。</li>
+<li>一个人展现出来的样子，不仅由性格决定。阅历、智商、相貌、气质等等。这些因素有的在性格之外，有的和性格有交叠。<strong>我们是无法将一个人的「性格」抽象出来单独考察、分类的。</strong></li>
+</ol>
+<p>因此，MBTI 只能作为一种方向性的参考。它虽然不是完全科学的，但却是自洽的、有一定实用价值的。</p>
+<h2><a id="🌟-bookmarks-#2" class="content__heading-anchor"></a>🌟 Bookmarks #2</h2>
+<p><strong>网站：</strong></p>
+<ul>
+<li><a href="https://plainvanillaweb.com/index.html">Plain Vanilla</a>：An explainer for doing web development using only vanilla techniques. No tools, no frameworks — just HTML, CSS, and JavaScript.</li>
+<li><a href="http://billie66.github.io/TLCL/">TLCL</a>：在线书籍《The Linux Command Line》中文版。</li>
+</ul>
+<p><strong>项目：</strong></p>
+<ul>
+<li><a href="https://github.com/frostming/fxzhihu">frostming/fxzhihu: 为知乎生成可分享的卡片及 Instant View</a>：知乎作为平台不断作死，对上面的部分优质内容而言真的很浪费。</li>
+<li><a href="https://github.com/superseriousbusiness/gotosocial">superseriousbusiness/gotosocial: Fast, fun, small ActivityPub server.</a>：微型的 ActivityPub server，适合自部署。</li>
+<li><a href="https://github.com/leafac/kill-the-newsletter">leafac/kill-the-newsletter: Convert email newsletters into Atom feeds</a>：将 Newsletter 转为 RSS 订阅。</li>
+</ul>
+<p><strong>文章：</strong></p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/ocGLvUmAnglZbcKRmK72Yg">大前端：如何突破动态化容器的天花板？- 美团技术团队</a>：「前端工程领域的核心问题是部署成本和用户体验的平衡。」</li>
+<li><a href="https://mp.weixin.qq.com/s/Z2sNg-VjdmGD5kymZPrrYQ">一文搞懂第三方支付系统架构设计 - 腾讯云开发者</a></li>
+<li><a href="https://www.fxzhihu.com/question/870573710/answer/7848446713?redirect=false">如何找到愿意为之付出一生的研究事业？ - @Thoughts Memo | FxZhihu</a></li>
+<li><a href="https://www.mckinsey.com.cn/中国消费市场的真相/">中国消费市场的真相 – McKinsey Greater China</a>：「仅关注总体指标往往不能全面把握实际情况，更细致的观察不可或缺。」</li>
+</ul>
+<p>下周见！</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpC2j" prefix="r0" component-url="/_astro/Comments.BdzVuXw3.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;articleId&quot;:[0,186]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #22：每个人都天生不同 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
