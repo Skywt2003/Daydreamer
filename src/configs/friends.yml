@@ -82,6 +82,11 @@ groups:
         slogan: 道阻且长，行则将至。
         url: https://kuizuo.cn
         avatar: https://kuizuo.cn/img/logo.png
+      - name: 松茶
+        desc:
+        slogan: Trying to light up the dark.
+        url: https://cynosura.one
+        avatar: https://cynosura.one/img/profile-avatar.webp
       - name: tanscp
         desc:
         slogan: 一只打呼噜的猫。
@@ -120,6 +125,11 @@ groups:
   - name: 🔥 AdventureX
     desc: 总有人心里有火炬，而且彼此能看见。
     friends:
+      - name: Steven Lynn
+        desc:
+        slogan: ようこそ、スディブンの世界
+        url: https://stv.lol
+        avatar: https://cdn.statically.io/gh/stvlynn/cloudimg@master/blog/2310/00119-3903136696-glass.63hcxtyhkr00.webp
       - name: 垚
         desc:
         slogan: (✿╹◡╹) 无存在感小透明 (╹◡╹✿)
