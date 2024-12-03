@@ -102,6 +102,10 @@ groups:
         slogan:
         url: https://lyuan.co
         avatar: https://purofiiru.ushiromiya.com/avatar/a16be0d8886caa88c4c6e66fd6fc48bf?s=400&r=G
+      - name: Stmoonar
+        slogan: A Large Language Model Developer.
+        url: https://stmoonar.me
+        avatar: https://os.skywt.cn/daydreamer/f1a17492-137c-45f5-af0d-7fb978407ed0
       - name: idealclover
         desc:
         slogan: Stay simple, stay naive.
@@ -130,6 +134,11 @@ groups:
   - name: 🔥 AdventureX
     desc: 总有人心里有火炬，而且彼此能看见。
     friends:
+      - name: 甜檸 Citron
+        desc: 
+        slogan: 出碟你記得幫襯。
+        url: https://blog.citrons.cc/
+        avatar: https://blog.citrons.cc/avatar
       - name: Steven Lynn
         desc:
         slogan: ようこそ、スディブンの世界
