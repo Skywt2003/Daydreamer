@@ -1,0 +1,133 @@
+<!DOCTYPE html><html> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Weekly #24：职规大赛历险记</title><link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="博客文章 RSS 订阅" href="https://skywt.cn/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><title>Weekly #24：职规大赛历险记</title><link rel="canonical" href="https://skywt.cn/blog/weekly-24/"><meta name="description" content="本周回学校参加了「湖南省第二届职业生涯规划大赛」，一周都在忙这个事儿。"><meta name="robots" content="index, follow"><meta property="og:title" content="Weekly #24：职规大赛历险记"><meta property="og:type" content="article"><meta property="og:image" content="/og.svg"><meta property="og:url" content="https://skywt.cn/blog/weekly-24/"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SkyWT"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@skywt2003"><meta name="twitter:title" content="Weekly #24：职规大赛历险记"><meta name="twitter:image" content="/og.svg"><meta name="twitter:image:alt" content="SkyWT"><meta name="twitter:description" content="本周回学校参加了「湖南省第二届职业生涯规划大赛」，一周都在忙这个事儿。"><meta name="twitter:creator" content="@skywt2003"><link rel="shortcut icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/avatar.png"><meta name="generator" content="Astro v4.15.4"><meta name="keywords" content=""><script>
+      function addMatomo() {
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//analytics.skywt.cn/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+      }
+
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          addMatomo();
+        },
+        { once: false },
+      );
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D_JCtxLP.css">
+<link rel="stylesheet" href="/_astro/about.CeG4KcMB.css"><script type="module" src="/_astro/hoisted.nLLij5o4.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #24：职规大赛历险记 </span> </h5> </header> <div id="navbar-sentinal"></div> <nav class="navbar" id="navbar-wrapper"> <div class="navbar__content"> <h5 class="navbar__path"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #24：职规大赛历险记 </span> </h5> <div class="navbar__menu"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> <i class="ri-home-line" data-astro-cid-tfcnbjmv></i>
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv> <i class="ri-newspaper-line" data-astro-cid-tfcnbjmv></i> 博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv> <i class="ri-server-line" data-astro-cid-tfcnbjmv></i> 实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv> <i class="ri-contacts-line" data-astro-cid-tfcnbjmv></i> 友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv> <i class="ri-cup-line" data-astro-cid-tfcnbjmv></i> 关于 </a> </li> </ul>  </div> </div> </nav> <script>
+  // 使用 ViewTransition 后，所有 DOM 操作的 js 都有一堆问题
+  // 这里用了极不优雅的 var，有待改进
+  var observer;
+  function addNavObserver() {
+    const headerEl = document.querySelector("#navbar-wrapper");
+    const sentinalEl = document.querySelector("#navbar-sentinal");
+    if (!sentinalEl || !headerEl) return;
+    observer = new window.IntersectionObserver((e) => {
+      if (!e[0].isIntersectin && e[0].boundingClientRect.top <= 0) {
+        headerEl.classList.add("navbar--sticked");
+      } else {
+        headerEl.classList.remove("navbar--sticked");
+      }
+    });
+    observer.observe(sentinalEl);
+  }
+
+  function removeNavObserver() {
+    if (observer) observer.disconnect();
+    observer = null;
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      addNavObserver();
+    },
+    { once: false },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    () => {
+      removeNavObserver();
+    },
+    { once: false },
+  );
+</script>  <main class="page"> <section class="page__section page__section--at-top">  <h1 class="page__heading">Weekly #24：职规大赛历险记</h1> <p class="page__meta"> <i class="ri-calendar-line"></i> <span>2025 年 1 月 13 日 11:45</span>  </p> <hr class="page__divide"> <article class="content"> <h2><a id="文章目录" class="content__heading-anchor"></a>文章目录</h2>
+<ul>
+<li><a href="#weekly-%2324%E8%81%8C%E8%A7%84%E5%A4%A7%E8%B5%9B%E5%8E%86%E9%99%A9%E8%AE%B0">Weekly #24：职规大赛历险记</a>
+<ul>
+<li><a href="#%F0%9F%8C%87-%E5%B0%81%E9%9D%A2%E5%9B%BE%E5%90%8E%E6%B9%96%E7%83%9F%E8%8A%B1">🌇 封面图：后湖烟花</a></li>
+<li><a href="#%F0%9F%A4%B5-%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E5%A4%A7%E8%B5%9B">🤵 职业生涯规划大赛</a></li>
+<li><a href="#%F0%9F%8E%92-%E5%A4%A7%E5%AD%A6%E8%BE%85%E5%AF%BC%E5%91%98%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%B8%B8">🎒 大学辅导员的工作日常</a></li>
+</ul></li>
+</ul>
+<h1><a id="weekly-#24职规大赛历险记" class="content__heading-anchor"></a>Weekly #24：职规大赛历险记</h1>
+<p>本周回学校参加了「湖南省第二届职业生涯规划大赛」，一周都在忙这个事儿。</p>
+<!--more-->
+<h2><a id="🌇-封面图后湖烟花" class="content__heading-anchor"></a>🌇 封面图：后湖烟花</h2>
+<p><a href="https://blog.skywt.cn/usr/uploads/2025/01/1213356193.jpg" data-fancybox data-caption="后湖烟花"><img src="https://blog.skywt.cn/usr/uploads/2025/01/1213356193.jpg" alt="后湖烟花" title="后湖烟花" /></a></p>
+<p>虽然最近新加了一块「禁止燃放售卖烟花」的告示牌，但后湖售卖烟花的小摊小贩仍然不少。每天路过都能看到烟花绽放。</p>
+<p>这或许就是属于长沙的松弛感 😎。</p>
+<h2><a id="🤵-职业生涯规划大赛" class="content__heading-anchor"></a>🤵 职业生涯规划大赛</h2>
+<p><strong>TL；DR</strong>：如果你所在的学校对该比赛没有激励政策（如竞赛保研），<strong>强烈不建议浪费时间参加这个比赛</strong>。快跑！</p>
+<ol>
+<li><strong>没有任何激励</strong>。无奖金。无奖品。甚至连荣誉证书都没有打印。</li>
+<li><strong>这是 PPT 演讲比赛，并不是职业生涯规划比赛</strong>。真正有能力的人，玩不过那些专门搞演讲、专门搞 PPT 的人。</li>
+<li><strong>这是一个非常「体制内」的赛事</strong>。例如，可能需要依靠学校相关领导的「运作」，答辩需要有较强的说「场面话」的能力。</li>
+</ol>
+<p>之前阴差阳错地被辅导员拉过来参加了这个比赛，为了帮她完成「上面派下来的指标」。本以为做个 PPT 交了就好，没想到通过了网评，得代表 HNU 参加省赛。在报销车票的承诺下，本已经回家的我，又回到长沙待了一周，准备参加这个比赛。😇</p>
+<p>我参加的是「就业赛道本科组」。赛制是 PPT 演讲 6 分钟，需要全程脱稿 😰；评委提问答辩 7 分钟。需要提交的材料包括 PPT 和个人简历。</p>
+<p>做出符合这种比赛风格的 PPT，是我从未尝试过的挑战。大一参加的大创项目由于经费不足草草收尾，之后再也没有参加过类似的比赛。之前做过的 PPT，基本都是学术风课程汇报 PPT，最喜欢的配色是白底黑字，最喜欢的字体是 Times New Roman 和宋体……好在曦姐（我的辅导员）有着丰富的做 PPT 经验。在经历了小红书上买了 N 个模板并缝合、找 PPT 设计公司外包制作某些页（¥300 / 页 😰）之后，一个炫酷的 PPT 终于诞生！</p>
+<p>学到的一个 tips：PPT 最麻烦的是字体问题，特别是这种需要一定效果的 PPT，需要安装很多艺术字体，而大赛演讲时使用的电脑环境多半是没有的。一个通用的技巧是：将 PPT 转为图片版，即将每一页 PPT 内容都转为图片，再组合成一个 PPT。可以在 PowerPoint 内导出为 JPEF 或 PNG，然后使用 WPS 中「插入图片到多个幻灯片」功能，制作图片版 PPT。</p>
+<p>在《<a href="https://skywt.cn/blog/weekly-14/">Weekly #14：做 PPT 相比 coding 的痛苦之处</a>》中我就提到了，<strong>我超级讨厌 PowerPoint 这样的工具</strong>，因为它们的表达能力相比代码差远了，使用起来非常痛苦。这次制作这么复杂的 PPT，我再一次有同样的感受。经常出现多个元素重叠，想要选择下面的元素，点击却选择了上面的元素；如果将上面的元素移开，则又破坏了精心调整的对齐关系……啊！实在是太痛苦了！！！</p>
+<p>网上找到的 PPT 模板，以及企业做出的 PPT 成品，都有些很奇怪的现象：有的将元素进行了很混乱的组合，有的能将一大堆元素重叠起来（几乎是无法手动编辑的状态）……我严重怀疑他们专业做 PPT 的企业，是不是用了什么更高端的工具，然后将成果转换为 PPT 格式的。</p>
+<p>成品预览（码了，要脸）：</p>
+<p><a href="https://blog.skywt.cn/usr/uploads/2025/01/915113863.jpg" data-fancybox data-caption="PPT 首页"><img src="https://blog.skywt.cn/usr/uploads/2025/01/915113863.jpg" alt="PPT 首页" title="PPT 首页" /></a></p>
+<p>卡着点提交了 PPT，下一个挑战是：要全程脱稿演讲，并且演讲时基本不能看 PPT 😰（背对着屏幕）。花了一下午和一晚上确定了稿子，又花了一下午和一晚上对着 PPT 脱稿排练，最后总算达到了比较熟练的状态。已经很久没有背这么长的文字了……</p>
+<p>本次比赛的评委提问都比较尖锐。在候场室观赛时，有选手介绍了多项项目经历，评委就问道：「这个项目你负责了多少？你现在是大三，也就是 2022 年入学的。我查了你的项目 2023 年 X 月份就结项了，也就是说你大一就主导了这个项目？」而在我前面答辩的一个女生的职业目标是财务领域，随口说了一句和区块链有关的项目，被问「区块链是什么」，支支吾吾答不上来。据说，许多选手的项目经历存在包装的成分……</p>
+<p>我自己现场的发挥（我自认为）还是不错的，演讲部分没有卡壳，答辩部分发挥得也尚可。幸亏我的项目都是自己的，被问到也能答出个所以然。尤其是观察了前几位答辩支支吾吾的表现，我的答辩环节自信了很多。</p>
+<p>第一位提问的评委似乎是湖大的老师或领导（事后老师告诉我），问我「学校能带给我什么资源」。我对这个问题并没有准备，回答的大概意思是校友、老师、科研平台等资源。赛后老师告诉我，这位评委其实是在递话，他想让我说的是 HNU 依托国家超算中心之类的平台，想要借此拔高一下 HNU，结果我并没有 get 到……这就是我所缺乏的说「场面话」的能力 😇。</p>
+<h2><a id="🎒-大学辅导员的工作日常" class="content__heading-anchor"></a>🎒 大学辅导员的工作日常</h2>
+<p>这周接触得很多的就是辅导员。带我参加比赛的超会做 PPT 的曦姐，当班导时就接触过的同为 INFJ 的刘王老师，咱们的辅导员标准 P 人冯导，以及隔壁工管院的活力满满的在工作之余还同时运营着自媒体搞点副业的韦子夏老师 <a href="https://www.xiaohongshu.com/user/profile/6013c00300000000010079ff?xsec_token=YBfEflRYKGTh48kRHlfvbG-6w01bRs51sa8yxkwKp787I=&amp;xsec_source=app_share&amp;xhsshare=CopyLink&amp;appuid=6293af61000000002102039b&amp;apptime=1736782295&amp;share_id=235e9249cf5c431eaf71fb7a8a4360e4">@夏与葡萄园</a> 等等。感觉辅导员也是很有意思的职业。</p>
+<p>辅导员是所有学生的负责人，我们平时有事都会去找他们。然而，有时他们也会和我们一样经历焦虑、迷茫、无助。其实之前当班导的时候我也有类似的感受：「遇到了困难希望有大人过来帮忙解决」-「意识到自己就是那个大人」……让我印象最为深刻的就是某一晚，某个学生的「突发情况」，不仅让刘王老师不得不加班做工作，还面临了一些两难的抉择。如果是我，也一定会备感压力。</p>
+<p>他们也会有同事之间的不愉快，有时作为体制内的角色也会身不由己。</p>
+<p>当然，网络舆论有时并不善待辅导员这一群体，因为某些学校的某些辅导员（或者其实是校领导）的所作所为确实令人不愉快。我认为本质上是制度没有有效约束辅导员的权力。</p>
+<p>而很幸运的是，我遇到的辅导员都是很好的人。</p>
+<p>下周见～</p>
+ </article> </section> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script> <hr class="page__divide page__divide--between-sections"> <astro-island uid="1HpCxO" prefix="r0" component-url="/_astro/Comments.BdzVuXw3.js" component-export="default" renderer-url="/_astro/client.BIGLHmRd.js" props="{&quot;articleId&quot;:[0,188]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;Comments&quot;,&quot;value&quot;:true}" await-children=""><section class="page__section"><h2><i class="ri-discuss-line"></i> 暂无评论</h2></section><hr class="page__divide page__divide--between-sections"/><section class="page__section"><h2><i class="ri-discuss-line"></i> 发表新的评论</h2><p class="mt-4 card card--in-content"><b>所有评论都将经过博主审核。</b>请勿填写无意义邮箱或发表无关评论、广告等，否则会被视为垃圾评论。</p><form class="mt-4 form"><input placeholder="你的名字" type="text" class="form__input" required="" value=""/><input placeholder="邮箱" type="email" class="form__input" required="" value=""/><input placeholder="网址" type="url" class="form__input" value=""/><textarea rows="8" class="sm:col-span-3 form__input" placeholder="说点什么吧……" required=""></textarea><button type="submit" class="sm:col-span-3 form__button">提交</button></form><p class="mt-4 text-secondary text-sm leading-normal">提交评论即表明你同意本网站使用 Cookie，并允许本站在后台记录你的邮箱、IP 地址等必要信息。这些信息不会被透露给其他用户。（提交一次评论后，本提示将不再展示）</p></section><!--astro:end--></astro-island>  </main>  <footer class="footer"> <div class="footer__row"> <div class="m-2"> <a href="/" class="link">SkyWT</a> <span>
+/
+<a href="/blog" class="link"> 博客 </a> </span><span>
+/
+Weekly #24：职规大赛历险记 </span> </div> <div class="m-2"> <ul data-astro-cid-tfcnbjmv> <li data-astro-cid-tfcnbjmv> <a class="link" href="/" data-astro-cid-tfcnbjmv> 
+主页
+</a> </li> <li data-astro-cid-tfcnbjmv> <a class="link" href="/blog" data-astro-cid-tfcnbjmv>  博客 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/lab" data-astro-cid-tfcnbjmv>  实验室 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/friends" data-astro-cid-tfcnbjmv>  友人 </a> </li><li data-astro-cid-tfcnbjmv> <a class="link" href="/about" data-astro-cid-tfcnbjmv>  关于 </a> </li> </ul>  </div> </div> <hr class="footer__divide"> <div class="footer__row"> <p class="m-2">
+&#169; 2017-2024 <a href="/" class="link">SkyWT</a> |
+<a href="/sitemap-index.xml" class="link">站点地图</a>
+|
+<a href="/friends" class="link">友情链接</a>
+|
+<a href="https://foreverblog.cn/go.html" target="_blank" class="link">虫洞</a> </p> <p class="m-2"> <a href="https://www.boyouquan.com/" target="_blank" class="mx-1"> <img src="/boyouquan.png" alt="Boyouquan Badge" class="inline-block h-4 grayscale"> </a> <a href="https://www.foreverblog.cn/" target="_blank" class="mx-1"> <img src="/forever_blog.png" alt="Forever Blog Badage" class="inline-block h-4 grayscale"> </a> <a href="https://blogscn.fun/" target="_blank" class="mx-1"> <img src="/blogscn.png" alt="BLOGS·CN Badge" class="inline-block h-4 grayscale"> </a> </p> </div> <div class="footer__row"> <p class="m-2"> <a href="https://beian.miit.gov.cn/" target="_blank" class="link">
+浙 ICP 备 2021019606 号 - 1</a>
+|
+<a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33080202000472" target="_blank" class="link before:content-[url('/mps.png')] before:align-middle">
+浙公网安备 33080202000472 号</a> </p> <div class="m-2"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="inline-block mx-1" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/cc.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/by.svg" data-astro-cid-h3ykra2n> <img class="icon" src="/cc/nc.svg" data-astro-cid-h3ykra2n>   </a>  <a href="https://notbyai.fyi" target="_blank" class="inline-block mx-1" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-light.svg" alt="Not By AI Badge" class="badge inline-block dark:hidden" data-astro-cid-hwbnc4sm> <img src="/not-by-ai-dark.svg" alt="Not By AI Badge" class="badge hidden dark:inline-block" data-astro-cid-hwbnc4sm> </a>  </div> </div> </footer> </body></html> 
