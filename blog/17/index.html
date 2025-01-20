@@ -26,7 +26,7 @@
     </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.D_JCtxLP.css">
 <link rel="stylesheet" href="/_astro/about.CeG4KcMB.css">
 <style>h1[data-astro-cid-mtynfrjh]{line-height:1.625}
-</style><script type="module" src="/_astro/hoisted.nLLij5o4.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
+</style><script type="module" src="/_astro/hoisted.BaJnAOVi.js"></script></head> <body> <header class="header"> <h5 class="header__heading"> <a href="/" class="link">SkyWT</a> <span>
 /
 <a href="/blog" class="link"> 博客 </a> </span><span>
 /
@@ -74,7 +74,14 @@
     },
     { once: false },
   );
-</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/euler-and-fermat" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>欧拉函数、费马小定理与欧拉定理略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>在数论中，对正整数 n，欧拉函数 $\varphi (n)$ 是小于或等于 n 的正整数中与 n 互质的数的数目。此函数以其首名研究者欧拉命名，它又称为 φ 函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。（来自维基百科）</p>
+</script>  <main class="page"> <section class="page__section page__section--at-top"> <article class="content" data-astro-cid-mtynfrjh><a href="/blog/inverse" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>乘法逆元三种求法总结</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>当我们取模的时候，被模数很大，无法直接计算其值，我们就会用取模运算的下面两个性质：</p>
+<p>$$<br>
+(a+b) \bmod x=((a \bmod x)+(b \bmod x))\bmod x \<br>
+(a\ast b) \bmod x=((a \bmod x)\ast (b \bmod x))\bmod x<br>
+$$</p>
+<p>那么对于除法，是否也满足这个式子呢？</p>
+<p>$$(a \div b) \bmod x=((a \bmod x)\div (b \bmod x))\bmod x$$</p>
+</div><a href="/blog/inverse" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/euler-and-fermat" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>欧拉函数、费马小定理与欧拉定理略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>在数论中，对正整数 n，欧拉函数 $\varphi (n)$ 是小于或等于 n 的正整数中与 n 互质的数的数目。此函数以其首名研究者欧拉命名，它又称为 φ 函数（由高斯所命名）或是欧拉总计函数（totient function，由西尔维斯特所命名）。（来自维基百科）</p>
 </div><a href="/blog/euler-and-fermat" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/euclidean-algorithm" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>欧几里德算法与拓展欧几里德算法略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>欧几里德算法（Euclidean algorithm）又叫做辗转相除法，用于求最大公约数。这个算法已经十分常见了。扩展欧几里德算法（Extended Euclidean algorithm）是欧几里德算法的扩展（废话……），这个算法在解不定方程的时候十分常见。</p>
 </div><a href="/blog/euclidean-algorithm" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/cantor-expansion" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>康托展开（Cantor Expansion）例题 + 略解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>现在有N个数，分别为1到N，如果要问你这些数的所有排列中，从小到大数的第N个是多少，如何求解？</p>
 <p>显然当N很小时直接写个模拟就可以了。但是这样写的时间复杂度至少是$A_N^N$，也就是$N!$，很容易超时。想想$13!$已经是6227020800了……有没有更快的方法呢？</p>
@@ -96,9 +103,7 @@
 </blockquote>
 <p>（2018.08.29 更新此文，你没有阅读过的船新版本）</p>
 </div><a href="/blog/network-flows" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/hello-world-again" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>Hello World again！</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>原博客搭建于阿里云主机，空间太小（才200M……），限制也很多，故弃用，搬到这个Bandwagon主机上，然后买了个新域名：<a href="http://skywt.cn">skywt.cn</a>…… 原博客已弃用。</p>
-</div><a href="/blog/hello-world-again" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh><article class="content" data-astro-cid-mtynfrjh><a href="/blog/bzoj1003" class="content__link content__link--no-underline-by-default" data-astro-cid-mtynfrjh><h1 data-astro-cid-mtynfrjh>BZOJ1003 物流运输 题解</h1></a><div class="summary" data-astro-cid-mtynfrjh><p>最近准备刷刷BZOJ上的水题……</p>
-<p>物流公司要把一批货物从码头A运到码头B。由于货物量比较大，需要n天才能运完。货物运输过程中一般要转停好几个码头。物流公司通常会设计一条固定的运输路线，以便对整个运输过程实施严格的管理和跟踪。由于各种因素的存在，有的时候某个码头会无法装卸货物。这时候就必须修改运输路线，让货物能够按时到达目的地。但是修改路线是一件十分麻烦的事情，会带来额外的成本。因此物流公司希望能够订一个n天的运输计划，使得总成本尽可能地小。</p>
-</div><a href="/blog/bzoj1003" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/16" class="link">
+</div><a href="/blog/hello-world-again" data-astro-cid-mtynfrjh>阅读更多</a></article><hr class="my-8" data-astro-cid-mtynfrjh> </section> <section class="page__section"> <div class="paginator"> <div class="paginator__left"> <a href="/blog/16" class="link">
 上一页
 </a> </div> <div class="paginator__center"> <span>第 17 页</span> </div> <div class="paginator__right"> <a href="/blog/18" class="link">
 下一页
